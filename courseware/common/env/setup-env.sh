@@ -10,7 +10,7 @@ if [[ ! -x "$VENV/bin/python" ]]; then
   "$PY" -m venv "$VENV"
 fi
 "$VENV/bin/python" -m pip install -q --upgrade pip
-"$VENV/bin/python" -m pip install -q "dbt-core==1.11.8" "dbt-duckdb==1.11.1" "pyyaml>=6,<7" pytest
+"$VENV/bin/python" -m pip install -q "dbt-core==1.11.8" "dbt-duckdb==1.11.1" "pyyaml>=6,<7" pytest ipykernel pandas "nbformat>=5" deltalake pyarrow "pyspark==3.5.7"
 echo "dbt: $("$VENV/bin/dbt" --version 2>/dev/null | grep -E 'installed|duckdb' | tr '\n' ' ')"
 # Astro CLI (same `astro dev` commands as the learners' dev container). Installed without sudo.
 if ! command -v astro >/dev/null 2>&1 && [[ ! -x "$HOME/.local/bin/astro" ]]; then
@@ -26,3 +26,6 @@ Done. In every terminal you use for the demos, run:
 
 That puts dbt, duckdb and astro on PATH and points docker at Docker Desktop.
 MSG
+
+# Register the kernel the anchor notebooks use
+"$VENV/bin/python" -m ipykernel install --user --name cg-dxp --display-name "Python (cg-dxp)" >/dev/null

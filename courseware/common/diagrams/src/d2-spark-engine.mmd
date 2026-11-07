@@ -1,0 +1,25 @@
+flowchart LR
+  Q["dbt model (SQL)"] --> Pl["Driver<br/>plans the query"]
+  Pl --> E1["Executor"]
+  Pl --> E2["Executor"]
+  Pl --> E3["Executor"]
+  E1 --> F1["partition<br/>of files"]
+  E2 --> F2["partition<br/>of files"]
+  E3 --> F3["partition<br/>of files"]
+  F1 --> R["Result:<br/>a Delta table"]
+  F2 --> R
+  F3 --> R
+  N["Many machines,<br/>one query.<br/>Databricks runs it;<br/>you write SQL."] -.-> Pl
+  class Q yellow
+  class Pl focus
+  class E1,E2,E3 blue
+  class F1,F2,F3 grey
+  class R green
+  class N aqua
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

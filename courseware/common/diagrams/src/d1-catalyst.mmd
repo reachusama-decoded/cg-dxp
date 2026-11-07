@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph tiers ["Catalyst skills"]
+    direction TB
+    O["Orchestrators<br/>dplc-concierge"] --> W["Workflow<br/>source / domain / consumer-aligned"] --> Dd["Document<br/>PRD, data contract, runbook"] --> Cp["Capability<br/>query-catalog, write-dbt-model"]
+  end
+  subgraph phases ["Nine lifecycle phases"]
+    direction LR
+    P0["0 prereq"] --> P1["1 triage"] --> P2["2 discovery"] --> P3["3 design"] --> P4["4 build"] --> P5["5 validate"] --> P6["6 publish"] --> P7["7 operate"] --> P8["8 evolve"]
+  end
+  class O grey
+  class W aqua
+  class Dd focus
+  class Cp green
+  class P0,P1,P2,P3 yellow
+  class P4,P5,P6 blue
+  class P7,P8 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

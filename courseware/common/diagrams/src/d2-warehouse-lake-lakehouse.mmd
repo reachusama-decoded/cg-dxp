@@ -1,0 +1,26 @@
+flowchart TB
+  subgraph W ["Data warehouse"]
+    direction TB
+    W1["Tables, SQL, ACID"] --- W2["Proprietary storage"] --- W3["Costly to scale,<br/>structured only"]
+  end
+  subgraph L ["Data lake"]
+    direction TB
+    L1["Files in object storage<br/>(S3), any format"] --- L2["Cheap, scales"] --- L3["No guarantees:<br/>the swamp"]
+  end
+  subgraph H ["Lakehouse"]
+    direction TB
+    H1["Files in object storage"] --- H2["+ open table format<br/>(Delta): ACID, versions"] --- H3["+ SQL engine (Spark)<br/>+ governance (Unity Catalog)"]
+  end
+  W --> H
+  L --> H
+  class W1,W2,W3 grey
+  class L1,L2,L3 yellow
+  class H1,H2 blue
+  class H3 focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

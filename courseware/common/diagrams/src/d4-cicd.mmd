@@ -1,0 +1,20 @@
+flowchart LR
+  B["feature branch"] --> PR["pull request<br/>review"] --> Mg["merge"]
+  Mg -->|webhook| H["Harness pipeline"]
+  H --> SQA["SQA<br/>shared: check who<br/>deployed last"]
+  SQA --> PRD["Production<br/>release branch + CRQ"]
+  PRD --> As["Astro + Databricks"]
+  Hs["Git history =<br/>what was live"] -.-> Mg
+  class B,PR aqua
+  class Mg yellow
+  class H focus
+  class SQA,PRD blue
+  class As green
+  class Hs grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

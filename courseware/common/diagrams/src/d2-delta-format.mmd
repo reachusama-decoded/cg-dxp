@@ -1,0 +1,24 @@
+flowchart LR
+  subgraph T ["A Delta table (a folder in S3)"]
+    direction TB
+    P1["part-0001.parquet"]
+    P2["part-0002.parquet"]
+    P3["part-0003.parquet"]
+    LG["_delta_log/<br/>000.json  000.json<br/>001.json  002.json"]
+  end
+  LG -->|gives| A["ACID commits"]
+  LG -->|gives| V["Versions,<br/>time travel"]
+  LG -->|gives| M["MERGE, UPDATE,<br/>DELETE"]
+  LG -->|gives| S["Schema enforcement"]
+  O["OPTIMIZE / ZORDER:<br/>compact and co-locate"] -.-> P1
+  class P1,P2,P3 grey
+  class LG focus
+  class A,V,M,S green
+  class O yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -1,0 +1,18 @@
+flowchart LR
+  Dp["DAG processor<br/>parses dags/"] --> Db[("Metadata DB")]
+  Sc["Scheduler<br/>what is due"] --> Db
+  Wk["Workers<br/>run tasks"] --> Db
+  Tr["Triggerer<br/>deferred waits"] --> Db
+  Ui["API server + UI"] --> Db
+  Loc["astro dev start:<br/>all of these<br/>on your laptop"] -.-> Dp
+  Cl["Astro hosted:<br/>the same, run for you"] -.-> Sc
+  class Dp,Sc,Wk,Tr,Ui blue
+  class Db focus
+  class Loc,Cl grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

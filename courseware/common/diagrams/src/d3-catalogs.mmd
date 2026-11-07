@@ -1,0 +1,17 @@
+flowchart LR
+  Src["Source-aligned catalog<br/>ingested feeds"] --> App["Application catalog<br/>your workspace: build here"]
+  App -->|DQ rules pass,<br/>blueprint copies| Dom["Domain catalog<br/>curated, shared"]
+  Dom --> Mk["Marketplace"]
+  Acc["Access by group;<br/>contract (ODCS) records it"] -.-> Dom
+  class Src grey
+  class App yellow
+  class Dom focus
+  class Mk green
+  class Acc aqua
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

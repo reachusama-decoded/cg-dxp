@@ -1,0 +1,48 @@
+flowchart LR
+  subgraph src ["sources"]
+    H["holdings_raw"]
+    Po["positions_raw"]
+    Pr["prices_raw"]
+    Fx["fx_rates_raw"]
+    Fm["fund_master_raw"]
+  end
+  subgraph stg ["staging (views)"]
+    SH["stg_holdings"]
+    SP["stg_positions"]
+    SPr["stg_prices"]
+    SF["stg_fx_rates"]
+    SFm["stg_funds"]
+  end
+  subgraph int ["intermediate (views)"]
+    IH["int_holdings_enriched"]
+    IP["int_positions_dated"]
+    IF["int_fund_attributes"]
+  end
+  subgraph marts ["marts (tables)"]
+    F["fct_portfolio_returns"]
+    A["agg_fund_exposure"]
+    AD["agg_fund_daily_exposure"]
+  end
+  H --> SH --> IH
+  Pr --> SPr --> IH
+  Fx --> SF --> IH
+  Po --> SP --> IP
+  Fm --> SFm --> IF
+  IH --> F
+  IF --> F
+  IH --> A
+  IF --> A
+  A --> AD
+  T["tests"] -.-> marts
+  class H,Po,Pr,Fx,Fm grey
+  class SH,SP,SPr,SF,SFm aqua
+  class IH,IP,IF blue
+  class F,A,AD focus
+  class T green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

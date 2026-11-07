@@ -1,0 +1,15 @@
+flowchart LR
+  A["Vendor prices"] --> R
+  B["Instrument master"] --> R
+  F["FX rates"] --> R
+  R["Rules per column<br/>direct · constant · lookup<br/>aggregate · derive<br/>+ row rules: dedup, filter"] --> T["rpt_eod_prices_us<br/>one row per instrument<br/>per business date"]
+  class A,B,F grey
+  class R focus
+  class T green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

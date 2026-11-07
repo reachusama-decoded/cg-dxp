@@ -1,0 +1,25 @@
+flowchart LR
+  Ca["Catalyst<br/>generates"] --> Dc["Dev container<br/>(Docker)"]
+  Dc --> G["GitHub<br/>pull request"]
+  G -->|merge| H["Harness<br/>CI/CD"]
+  H -->|deploys| Af["Airflow on Astro"]
+  Af -->|Cosmos| dbt["dbt"]
+  dbt -->|SQL| Db["Databricks<br/>(Spark)"]
+  Db --> Dl["Delta on S3"]
+  Dl --> UC["Unity Catalog"]
+  UC --> Mk["Marketplace"]
+  Af -.->|metrics, alerts| Dd["Datadog"]
+  Db -.-> Dd
+  class Ca,Dc,G aqua
+  class H yellow
+  class Af,dbt,Db blue
+  class Dl focus
+  class UC,Mk green
+  class Dd red
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

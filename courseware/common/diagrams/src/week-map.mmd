@@ -1,0 +1,17 @@
+flowchart LR
+  D1["Day 1<br/>Design"] --> D2["Day 2<br/>Platform"] --> D3["Day 3<br/>dbt"] --> D4["Day 4<br/>Airflow"] --> D5["Day 5<br/>Capstone"]
+  D1 -.- A1["PRD + contract"]
+  D2 -.- A2["STTM, SLAs,<br/>container, generated code"]
+  D3 -.- A3["tested pipeline"]
+  D4 -.- A4["scheduled DAG"]
+  D5 -.- A5["your data product"]
+  class D1,D2,D3,D4 blue
+  class D5 focus
+  class A1,A2,A3,A4,A5 grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

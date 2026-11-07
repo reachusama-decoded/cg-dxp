@@ -1,0 +1,15 @@
+flowchart LR
+  P["Producer<br/>knows the source"] --> Cr
+  Cn["Consumer<br/>knows the decision"] --> Cr
+  Cr["Creator<br/>asks the seven questions"] --> T["Transcript"] --> PRD["PRD"] --> DC["Data contract"] --> Rv["Review:<br/>find the invented detail"]
+  class P,Cn blue
+  class Cr focus
+  class T,PRD,DC grey
+  class Rv yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

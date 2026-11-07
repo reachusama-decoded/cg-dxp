@@ -1,0 +1,5 @@
+target/
+warehouse/
+spark-warehouse/
+metastore_db/
+*.log

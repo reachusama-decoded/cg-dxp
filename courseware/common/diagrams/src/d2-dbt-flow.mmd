@@ -1,0 +1,19 @@
+flowchart LR
+  M["SELECT per model<br/>+ Jinja"] -->|dbt run| W["CREATE VIEW / TABLE<br/>in order"]
+  Y["YAML:<br/>sources, tests, config"] --> W
+  W --> T["Tests:<br/>zero rows = pass"]
+  subgraph layers [" "]
+    direction LR
+    St["staging"] --> In["intermediate"] --> Ma["marts"]
+  end
+  class M,Y yellow
+  class W focus
+  class T green
+  class St,In,Ma blue
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

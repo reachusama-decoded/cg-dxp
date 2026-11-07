@@ -1,0 +1,19 @@
+flowchart TB
+  R1["v1 · day 1 file<br/>tenure 53<br/>business: 02 Nov →<br/>system: t1 → t2"] -->|"day 2: changed"| R2["v1 carried forward<br/>tenure 53<br/>business: 02 Nov → 02 Nov<br/>system: t2 → open"]
+  R1 --> R3["v2 · day 2 file<br/>title wrong, tenure 54<br/>business: 03 Nov →<br/>system: t2 → t3"]
+  R3 -->|"correction, same date"| R4["v2 corrected<br/>business: 03 Nov →<br/>system: t3 → open<br/>current"]
+  Q1["as of 02 Nov"] -.-> R2
+  Q2["as was at t2.5"] -.-> R3
+  Q3["as is"] -.-> R4
+  class R1 grey
+  class R2 blue
+  class R3 red
+  class R4 focus
+  class Q1,Q2,Q3 yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

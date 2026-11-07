@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph training ["Training"]
+    direction TB
+    C["Corpus"] --> PT["Pre-training<br/>(compression)"] --> IT["Instruction tuning"] --> RL["Preference tuning"]
+  end
+  subgraph inference ["Inference"]
+    direction TB
+    Pr["Prompt =<br/>whole conversation"] --> Re["Hidden reasoning"] --> Co["Completion<br/>or tool call"]
+  end
+  RL --> Pr
+  W["Context window fills:<br/>summarise, start fresh"] -.-> Pr
+  class C,PT,IT,RL blue
+  class Pr,Re,Co yellow
+  class W grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

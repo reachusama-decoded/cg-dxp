@@ -1,0 +1,27 @@
+flowchart LR
+  seed["7 seeds"] --> src["src_*<br/>source-aligned"]
+  src --> dt["dom_trading__trade"]
+  src --> dd["dom_* dimensions"]
+  dt --> lp["dom_trading__latest_price"]
+  dt --> gp["dom_positions__position"]
+  dd --> gp
+  lp --> gp
+  gp --> ps["rpt_portfolio_summary"]
+  ps --> ab["rpt_advisor_book"]
+  ps --> sa["agg_segment_aum"]
+  lp --> alp["api_latest_price"]
+  dt --> ts["ts_daily_market"]
+  dt --> ia["agg_instrument_activity"]
+  dd --> fn["agg_fund_nav"]
+  lp --> fn
+  class seed grey
+  class src aqua
+  class dt,dd,lp,gp blue
+  class ps,ab,sa,alp,ts,ia,fn focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant S as Airflow scheduler
+  participant C as Cosmos task
+  participant D as dbt
+  participant B as Databricks (Spark)
+  participant L as Delta on S3
+  participant M as Datadog
+  S->>C: 06:00, run due
+  C->>D: dbt run --select model
+  D->>B: compiled SQL
+  B->>L: read inputs, write table
+  L-->>B: commit v+1
+  B-->>D: rows, status
+  D-->>C: success / failure
+  C-->>S: task state
+  S->>M: metrics, failure event

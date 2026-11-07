@@ -1,0 +1,16 @@
+flowchart TD
+  Q1["Who needs it?<br/>Which decision?"] --> Q2["Does it exist?<br/>What do people do today?"] --> Q3["Can we build it?"] --> Q4["Is it worth it?"]
+  Q4 -->|yes| B["Design it"]
+  Q4 -->|exists| R["Reuse it"]
+  Q4 -->|no| S["Stop"]
+  class Q1,Q2,Q3,Q4 yellow
+  class B focus
+  class R green
+  class S grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

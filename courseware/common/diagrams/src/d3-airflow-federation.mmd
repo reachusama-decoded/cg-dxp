@@ -1,0 +1,16 @@
+flowchart LR
+  Old["One central Airflow<br/>~12,000 DAGs"] --> New["Astro per team<br/>vended from a template"]
+  New --> A1["Team A"]
+  New --> A2["Team B"]
+  A1 -->|asset event| K["Platform plugin<br/>+ Kafka"] -->|subscribe| A2
+  class Old red
+  class New focus
+  class A1,A2 blue
+  class K aqua
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

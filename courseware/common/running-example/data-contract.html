@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-11-09" />
+  <title>Data Contract: US End-of-Day Price Sheet</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Data Contract: US End-of-Day Price Sheet</h1>
+<p class="date">2026-11-09</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#data-contract">Data Contract</a>
+<ul>
+<li><a href="#identity">1. Identity</a></li>
+<li><a href="#schema">2. Schema</a></li>
+<li><a href="#service-level-agreements-slas">3. Service Level Agreements (SLAs)</a></li>
+<li><a href="#data-quality-rules">4. Data Quality Rules</a></li>
+<li><a href="#access-security">5. Access &amp; Security</a></li>
+<li><a href="#change-management">6. Change Management</a></li>
+<li><a href="#consumer-registry">7. Consumer Registry</a></li>
+<li><a href="#approvals">8. Approvals</a></li>
+<li><a href="#appendix-revision-history">Appendix: Revision History</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="data-contract">Data Contract</h1>
+<blockquote>
+<p>The data contract is the authoritative agreement between producers and consumers. It defines what data is provided, at what quality, and under what terms.</p>
+</blockquote>
+<p>Generated with the <code>data-contract</code> skill from the PRD and the interview, then reviewed. Eight sections, as the Catalyst template requires.</p>
+<hr />
+<h2 id="identity">1. Identity</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Product Name</td>
+<td>US End-of-Day Price Sheet (<code>rpt_eod_prices_us</code>)</td>
+</tr>
+<tr class="even">
+<td>Domain Catalog</td>
+<td>Investment Data › Pricing (domain catalog <code>investment_data</code>)</td>
+</tr>
+<tr class="odd">
+<td>Owner</td>
+<td>Head of Pricing Operations (business data owner)</td>
+</tr>
+<tr class="even">
+<td>Steward</td>
+<td>Pricing Operations analyst lead</td>
+</tr>
+<tr class="odd">
+<td>Version</td>
+<td>1.0.0</td>
+</tr>
+<tr class="even">
+<td>Effective Date</td>
+<td>2026-11-09</td>
+</tr>
+<tr class="odd">
+<td>Review Cadence</td>
+<td>Quarterly, and on any schema change</td>
+</tr>
+<tr class="even">
+<td>Classification</td>
+<td>Sensitivity: General</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Criticality: High (feeds the morning price email and risk exposure)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="schema">2. Schema</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 16%" />
+<col style="width: 6%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+<th>PII</th>
+<th>Sensitivity</th>
+<th>Criticality</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>price_key</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td><code>instrument_id</code> + <code>|</code> + <code>price_date</code>; the unique row key</td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>US0378331005|2026-11-04</code></td>
+</tr>
+<tr class="even">
+<td><code>instrument_id</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td>ISIN of the instrument (upper case, trimmed)</td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>US0378331005</code></td>
+</tr>
+<tr class="odd">
+<td><code>ticker</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td>Ticker from the instrument master</td>
+<td>No</td>
+<td>General</td>
+<td>Medium</td>
+<td><code>AAPL</code></td>
+</tr>
+<tr class="even">
+<td><code>instrument_name</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td>Name from the instrument master</td>
+<td>No</td>
+<td>General</td>
+<td>Low</td>
+<td><code>Apple Inc</code></td>
+</tr>
+<tr class="odd">
+<td><code>price_date</code></td>
+<td><code>DATE</code></td>
+<td>No</td>
+<td>Business date of the close</td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>2026-11-04</code></td>
+</tr>
+<tr class="even">
+<td><code>price_native</code></td>
+<td><code>DECIMAL(18,6)</code></td>
+<td>No</td>
+<td>Vendor close in the instrument’s currency</td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>231.151000</code></td>
+</tr>
+<tr class="odd">
+<td><code>native_ccy</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td>ISO 4217 code of <code>price_native</code></td>
+<td>No</td>
+<td>General</td>
+<td>Medium</td>
+<td><code>USD</code></td>
+</tr>
+<tr class="even">
+<td><code>fx_rate_to_usd</code></td>
+<td><code>DECIMAL(18,8)</code></td>
+<td>No</td>
+<td>Same-day FX close used; <code>1.0</code> for USD</td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>1.00000000</code></td>
+</tr>
+<tr class="odd">
+<td><code>price_usd</code></td>
+<td><code>DECIMAL(18,6)</code></td>
+<td>No</td>
+<td><code>price_native × fx_rate_to_usd</code></td>
+<td>No</td>
+<td>General</td>
+<td>High</td>
+<td><code>231.151000</code></td>
+</tr>
+<tr class="even">
+<td><code>price_source</code></td>
+<td><code>STRING</code></td>
+<td>No</td>
+<td><code>VENDOR</code> for this release (<code>MANUAL</code> reserved)</td>
+<td>No</td>
+<td>General</td>
+<td>Medium</td>
+<td><code>VENDOR</code></td>
+</tr>
+<tr class="odd">
+<td><code>vendor_ts</code></td>
+<td><code>TIMESTAMP</code></td>
+<td>No</td>
+<td>Vendor timestamp of the delivery that supplied the price</td>
+<td>No</td>
+<td>General</td>
+<td>Medium</td>
+<td><code>2026-11-04T21:05:00</code></td>
+</tr>
+</tbody>
+</table>
+<p>Grain: one row per active US-listed instrument per US business date.</p>
+<hr />
+<h2 id="service-level-agreements-slas">3. Service Level Agreements (SLAs)</h2>
+<h3 id="sla-targets">3.1 SLA Targets</h3>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 35%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement Method</th>
+<th>Measurement Window</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Delivery</td>
+<td>Published by 07:30 America/New_York on US business days (breach after 07:45)</td>
+<td>DAG run end time vs 07:30 ET</td>
+<td>Per run; reported monthly</td>
+</tr>
+<tr class="even">
+<td>Freshness</td>
+<td>Vendor and FX files received ≤ 12 h before the run (warn), ≤ 24 h (fail)</td>
+<td><code>dbt source freshness</code> on <code>_received_at</code></td>
+<td>Per run</td>
+</tr>
+<tr class="odd">
+<td>Completeness</td>
+<td>≥ 99.5% of active US instruments priced for the business date</td>
+<td><code>assert_us_completeness</code> test</td>
+<td>Per run</td>
+</tr>
+<tr class="even">
+<td>Availability</td>
+<td>≥ 99.5% of business-hour minutes the table is queryable</td>
+<td>Platform monitoring</td>
+<td>Monthly</td>
+</tr>
+<tr class="odd">
+<td>Data Quality</td>
+<td>100% of rows pass the quality rules in section 4</td>
+<td>dbt test results</td>
+<td>Per run</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breach-response">3.2 Breach Response</h3>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Severity</th>
+<th>Definition</th>
+<th>Response Time</th>
+<th>Resolution Time</th>
+<th>Escalation Path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Critical</td>
+<td>No sheet by 07:45 ET, or a published USD price built from a wrong rate</td>
+<td>15 minutes</td>
+<td>2 hours</td>
+<td>On-call engineer → Pricing Ops lead → Head of Pricing Operations</td>
+</tr>
+<tr class="even">
+<td>High</td>
+<td>Completeness below 99.5%, or a &gt; 5% move unexplained by 09:30 ET</td>
+<td>30 minutes</td>
+<td>Same business day</td>
+<td>On-call engineer → Pricing Ops lead</td>
+</tr>
+<tr class="odd">
+<td>Medium</td>
+<td>Freshness warning; sheet published late but before 07:45</td>
+<td>2 hours</td>
+<td>Next business day</td>
+<td>Team channel</td>
+</tr>
+<tr class="even">
+<td>Low</td>
+<td>Documentation or metadata gap</td>
+<td>1 business day</td>
+<td>5 business days</td>
+<td>Team backlog</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="data-quality-rules">4. Data Quality Rules</h2>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 16%" />
+<col style="width: 26%" />
+<col style="width: 14%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule ID</th>
+<th>Column(s)</th>
+<th>Rule Description</th>
+<th>Severity</th>
+<th>Action on Failure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DQ-01</td>
+<td><code>price_key</code></td>
+<td>Unique and not null (one row per instrument per date)</td>
+<td>Critical</td>
+<td>Fail the build; do not publish</td>
+</tr>
+<tr class="even">
+<td>DQ-02</td>
+<td><code>instrument_id</code></td>
+<td>Exists in the instrument master</td>
+<td>Critical</td>
+<td>Fail the build</td>
+</tr>
+<tr class="odd">
+<td>DQ-03</td>
+<td><code>price_usd</code></td>
+<td>Not null (a non-USD price without a same-day rate is a failure, never defaulted)</td>
+<td>Critical</td>
+<td>Fail the build</td>
+</tr>
+<tr class="even">
+<td>DQ-04</td>
+<td><code>price_native</code></td>
+<td>Greater than zero</td>
+<td>High</td>
+<td>Fail the build</td>
+</tr>
+<tr class="odd">
+<td>DQ-05</td>
+<td><code>price_source</code></td>
+<td>In (<code>VENDOR</code>, <code>MANUAL</code>)</td>
+<td>Medium</td>
+<td>Fail the build</td>
+</tr>
+<tr class="even">
+<td>DQ-06</td>
+<td>all</td>
+<td>Completeness ≥ 99.5% of active US instruments for the date</td>
+<td>High</td>
+<td>Publish with the missing list; notify</td>
+</tr>
+<tr class="odd">
+<td>DQ-07</td>
+<td><code>price_usd</code></td>
+<td>Day-on-day move &gt; 5% flagged for explanation</td>
+<td>Medium</td>
+<td>Publish with flag; duty to explain within 2 business hours</td>
+</tr>
+<tr class="even">
+<td>DQ-08</td>
+<td><code>price_date</code>, <code>vendor_ts</code></td>
+<td><code>price_date</code> not after the vendor timestamp’s date</td>
+<td>High</td>
+<td>Fail the build</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="access-security">5. Access &amp; Security</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Access model</td>
+<td>Schema-level read via AD group <code>pricing-consumers</code>; table-level read for <code>risk-models</code></td>
+</tr>
+<tr class="even">
+<td>Request process</td>
+<td>Marketplace request, approved by the steward</td>
+</tr>
+<tr class="odd">
+<td>Row-level security</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Column masking</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>Audit</td>
+<td>Databricks query audit log</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="change-management">6. Change Management</h2>
+<h3 id="breaking-changes">6.1 Breaking Changes</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 35%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Change Type</th>
+<th>Example</th>
+<th>Minimum Notice Period</th>
+<th>Migration Support</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Column removal or rename</td>
+<td>Renaming <code>price_usd</code></td>
+<td>30 days</td>
+<td>Old column kept for one release</td>
+</tr>
+<tr class="even">
+<td>Grain change</td>
+<td>Adding intraday rows</td>
+<td>60 days</td>
+<td>New product version</td>
+</tr>
+<tr class="odd">
+<td>Type narrowing</td>
+<td><code>DECIMAL(18,6)</code> to <code>DECIMAL(12,2)</code></td>
+<td>30 days</td>
+<td>Consumer sign-off</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-breaking-changes">6.2 Non-Breaking Changes</h3>
+<ul>
+<li>Adding a nullable column (for example <code>move_pct</code> for the 5% flag)</li>
+<li>Adding instruments as the master changes</li>
+<li>Documentation and metadata updates</li>
+</ul>
+<h3 id="versioning-policy">6.3 Versioning Policy</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scheme</td>
+<td>Semantic versioning; major for breaking, minor for additive, patch for fixes</td>
+</tr>
+<tr class="even">
+<td>Announcement</td>
+<td>Marketplace changelog and the consumers’ channel</td>
+</tr>
+<tr class="odd">
+<td>Deprecation</td>
+<td>Previous major version kept for 90 days</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="consumer-registry">7. Consumer Registry</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 13%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Consumer</th>
+<th>Team</th>
+<th>Use Case</th>
+<th>Access Level</th>
+<th>Contact</th>
+<th>Onboarded Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pricing analysts</td>
+<td>US product team</td>
+<td>Confirm and publish the daily closes</td>
+<td>Read</td>
+<td>pricing-us</td>
+<td>2026-11-09</td>
+</tr>
+<tr class="even">
+<td>Sales desk</td>
+<td>US distribution</td>
+<td>Price lookups</td>
+<td>Read</td>
+<td>sales-desk-us</td>
+<td>2026-11-09</td>
+</tr>
+<tr class="odd">
+<td>Risk</td>
+<td>Investment risk</td>
+<td>USD prices for exposure</td>
+<td>Read</td>
+<td>risk-models</td>
+<td>2026-11-09</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="approvals">8. Approvals</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Name</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Producer representative</td>
+<td>Priya Nair, Data Operations</td>
+<td></td>
+<td>Pending</td>
+</tr>
+<tr class="even">
+<td>Consumer representative</td>
+<td>Marcus Lee, US product team</td>
+<td></td>
+<td>Pending</td>
+</tr>
+<tr class="odd">
+<td>Data Owner</td>
+<td>Head of Pricing Operations</td>
+<td></td>
+<td>Pending</td>
+</tr>
+<tr class="even">
+<td>Data Steward</td>
+<td>Pricing Operations analyst lead</td>
+<td></td>
+<td>Pending</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-revision-history">Appendix: Revision History</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Summary of Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.0.0</td>
+<td>2026-11-09</td>
+<td>Sam Ortega</td>
+<td>First version from the discovery interview</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

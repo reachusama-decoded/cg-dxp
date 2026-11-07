@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant You
+  participant H as Harness (Copilot, Claude Code)
+  participant M as Model
+  participant T as Tools
+  You->>H: prompt + skill + context
+  H->>M: the whole conversation
+  M-->>M: hidden reasoning
+  M->>H: tool call (JSON)
+  H->>T: run it
+  T->>H: result
+  H->>M: result appended
+  M->>H: answer
+  H->>You: artefact
+  Note over You,T: harness plus model is an agent, and a skill steers the model

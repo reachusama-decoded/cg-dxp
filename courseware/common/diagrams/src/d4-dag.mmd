@@ -1,0 +1,22 @@
+flowchart LR
+  S["start"] --> F["source_freshness_check"] --> G
+  subgraph G ["dbt_pipeline (Cosmos)"]
+    direction LR
+    St["staging"] --> In["intermediate"] --> Ma["marts"] --> Te["tests"]
+  end
+  G --> P["publish_to_catalog"] --> E["end"]
+  Cb["callbacks:<br/>failure → Datadog + Teams<br/>retry → ticket<br/>SLA miss → Teams"] -.-> G
+  Sc["schedule 06:00 weekdays<br/>retries 2, backoff"] -.-> S
+  class S,E grey
+  class F yellow
+  class St,In,Ma,Te blue
+  class P focus
+  class Cb red
+  class Sc aqua
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

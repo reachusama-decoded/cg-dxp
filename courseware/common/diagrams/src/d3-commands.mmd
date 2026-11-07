@@ -1,0 +1,14 @@
+flowchart LR
+  Dg["dbt debug"] --> Sd["dbt seed"] --> Rn["dbt run"] --> Ts["dbt test"] --> Dc["dbt docs"]
+  Bd["dbt build<br/>run + test, in graph order"] -.-> Rn
+  Sel["--select<br/>model · tag:layer · +upstream · downstream+"] -.-> Rn
+  class Dg,Sd,Rn,Ts,Dc blue
+  class Bd focus
+  class Sel grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

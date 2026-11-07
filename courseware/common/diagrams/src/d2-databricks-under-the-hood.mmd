@@ -1,0 +1,49 @@
+flowchart TB
+  subgraph src ["Sources"]
+    direction LR
+    S1["Vendor files"]
+    S2["Databases"]
+    S3["Streams, APIs"]
+  end
+  subgraph ing ["Ingestion"]
+    direction LR
+    I1["Auto Loader / COPY INTO"]
+    I2["dbt seed, notebooks"]
+    I3["Kafka, Lakeflow"]
+  end
+  subgraph sto ["Storage: S3"]
+    direction LR
+    D1["Delta tables<br/>Parquet + _delta_log"]
+  end
+  subgraph eng ["Compute: Databricks"]
+    direction LR
+    E1["Spark clusters"]
+    E2["SQL warehouses<br/>(Photon)"]
+  end
+  subgraph gov ["Governance"]
+    G1["Unity Catalog<br/>catalog.schema.table<br/>permissions, lineage"]
+  end
+  subgraph use ["Consumers"]
+    direction LR
+    U1["dbt"]
+    U2["Notebooks, BI"]
+    U3["Marketplace, APIs"]
+  end
+  src --> ing --> sto
+  sto <--> eng
+  gov -.-> sto
+  gov -.-> eng
+  eng --> use
+  class S1,S2,S3 grey
+  class I1,I2,I3 aqua
+  class D1 focus
+  class E1,E2 blue
+  class G1 green
+  class U1,U2,U3 yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

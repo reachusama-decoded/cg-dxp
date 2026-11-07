@@ -1,0 +1,46 @@
+erDiagram
+  CLIENTS ||--o{ PORTFOLIOS : owns
+  ADVISORS ||--o{ PORTFOLIOS : manages
+  PORTFOLIOS ||--o{ TRADES : places
+  INSTRUMENTS ||--o{ TRADES : traded
+  FUNDS ||--o{ FUND_HOLDINGS : holds
+  INSTRUMENTS ||--o{ FUND_HOLDINGS : weighted
+  TRADES {
+    int trade_id PK
+    int ts
+    int portfolio_id FK
+    int instrument_id FK
+    string side
+    int qty
+    int price_cents
+    int fee_bps
+  }
+  INSTRUMENTS {
+    int instrument_id PK
+    string ticker
+    string asset_class
+    string ccy
+  }
+  PORTFOLIOS {
+    int portfolio_id PK
+    int client_id FK
+    int advisor_id FK
+    string strategy
+  }
+  CLIENTS {
+    int client_id PK
+    string segment
+  }
+  ADVISORS {
+    int advisor_id PK
+    string region
+  }
+  FUNDS {
+    int fund_id PK
+    string style
+  }
+  FUND_HOLDINGS {
+    int fund_id FK
+    int instrument_id FK
+    decimal weight_pct
+  }

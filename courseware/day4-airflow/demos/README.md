@@ -1,0 +1,22 @@
+# Day 4 demos
+
+## bitemporal/
+
+A dbt-duckdb project with a custom incremental strategy, `bitemporal_load` (`macros/bitemporal_load.sql`), in the spirit of the paved path's `bitemporal_load_v2`. One seed holds three batches of an associate feed. `bash demo.sh` loads them in turn and prints the audit trail and the as-is, as-of and as-was queries (`show.py`).
+
+## airflow_local/
+
+An Astro project that uses the same `astro dev` commands as the learners' container and the same image family and versions: `astro-runtime:3.1-17-base` (Airflow 3.1.8, Python 3.12), astronomer-cosmos 1.15.0, the HTTP provider 5.4.0, and dbt 1.11.8 with dbt-duckdb in the cosmos venv at `/home/astro/.venv/cosmos/bin/dbt`. Two products live under `dags/`: `portfolio_analytics` (the challenge-03 DAG shape over the Day 3 project) and `eod_prices` (the Day 2 contract-to-code product). DuckDB files live under `include/warehouse/`.
+
+```
+bash run.sh start      # build and start; the first time takes several minutes
+bash run.sh seed       # load both products' seeds into the container's DuckDB files
+bash run.sh trigger    # unpause and trigger portfolio_analytics_daily (or: trigger eod_prices_daily)
+bash run.sh wait       # poll until the run finishes
+bash run.sh status     # runs and task states
+bash run.sh stale      # make the custodian feed look two days old, so the freshness gate fails
+bash run.sh fresh      # stamp it fresh again
+bash run.sh stop       # stop the stack; the image stays built
+```
+
+The UI is at http://localhost:8080 with no login in the local stack. Deliberate differences from the learners' DAG: DuckDB instead of Databricks, `max_active_tasks=1` because a DuckDB file takes one writer, and `callbacks.py` and `notifications.py` sit beside the DAG file.

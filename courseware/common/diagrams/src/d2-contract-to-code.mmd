@@ -1,0 +1,20 @@
+flowchart LR
+  Ctr["Contract + STTM + SLAs"] --> Sk["Catalyst skills"]
+  Sk --> P["dbt project + tests"]
+  Sk --> Dg["Airflow DAG"]
+  P -->|dbt build| Tb["Tables in your schema"]
+  Dg -->|astro dev start| Ru["A scheduled run"]
+  Rv["You review every line"] -.-> P
+  Rv -.-> Dg
+  class Ctr focus
+  class Sk aqua
+  class P,Dg blue
+  class Tb,Ru green
+  class Rv yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a
