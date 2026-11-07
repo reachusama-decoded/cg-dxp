@@ -44,8 +44,6 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 #### 09:00 · 15 min · Intro/Outro — Welcome — the week, and the people in the room
 
-**Assessment.** Anchor › Welcome; the week map
-
 **Purpose.** Logistics, the sponsor's welcome video if there is one, the facilitators, and the rule that every data product mentioned gets written down.
 
 **Instructor notes.**
@@ -68,9 +66,9 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 **Adapt.** Running late: cut the facilitator introductions to names and one line each.
 
-#### 09:15 · 15 min · Independent or pairs work — Activity 1 — introductions and pain points
+**Assessment.** Anchor › Welcome; the week map
 
-**Assessment.** Anchor › Activity 1 card
+#### 09:15 · 15 min · Independent or pairs work — Activity 1 — introductions and pain points
 
 **Purpose.** Everyone speaks once, and the room produces the list of real products that every later activity draws on.
 
@@ -89,9 +87,9 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 **Adapt.** If a guest is late, extend to twenty minutes and start the share-out.
 
-#### 09:30 · 15 min · Explain — Guest — the DXP operating model: the sponsor, or the fallback below
+**Assessment.** Anchor › Activity 1 card
 
-**Assessment.** Anchor › The DXP operating model (personas diagram)
+#### 09:30 · 15 min · Explain — Guest — the DXP operating model: the sponsor, or the fallback below
 
 **Purpose.** Why the programme exists: trusted self-service data for people and AI, four personas, the creator at the intersection.
 
@@ -113,9 +111,9 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 **Adapt.** A long guest Q&A eats the share-out; move the share-out into the data-product block and shorten it.
 
-#### 09:45 · 20 min · Feedback and discussion — Shareback — products and pain points
+**Assessment.** Anchor › The DXP operating model (personas diagram)
 
-**Assessment.** Anchor › The room's products (type into the table live)
+#### 09:45 · 20 min · Feedback and discussion — Shareback — products and pain points
 
 **Purpose.** Collect each table's products and pain points into one visible list; connect pain points to the week's themes.
 
@@ -140,9 +138,9 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 **Adapt.** Skip tables that duplicate an earlier product; ask them only for a new pain point.
 
-#### 10:05 · 10 min · Questioning — Whiteboard — what is a data product?
+**Assessment.** Anchor › The room's products (type into the table live)
 
-**Assessment.** Anchor › What is a data product (two diagrams)
+#### 10:05 · 10 min · Questioning — Whiteboard — what is a data product?
 
 **Purpose.** Promises, assets and alignment as three views of one thing; what a data product is not; the capstone previewed.
 
@@ -173,6 +171,8 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 
 **Adapt.** Over time: show the alignment diagram and skip the elicitation.
 
+**Assessment.** Anchor › What is a data product (two diagrams)
+
 #### 10:15 · 15 min · Break — Break, back at 10:30
 
 ### 2. Discovery, justification and Catalyst
@@ -180,8 +180,6 @@ Welcome · Activity 1: introductions and pain points · Guest: the DXP operating
 Whiteboard: how do you design a data product? · Activity 2: justify a product · Debrief · Whiteboard: lifetime value and adoption · Demo: Catalyst · Activity 3: compare independent PRDs · Lunch
 
 #### 10:30 · 10 min · Questioning — Whiteboard — how do you design a data product?
-
-**Assessment.** Anchor › Discovery questions (triage diagram)
 
 **Purpose.** The questions a creator asks before anything is built: who, what for, exists?, can we, worth it.
 
@@ -204,9 +202,9 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Transition.** Introduce Activity 2.
 
-#### 10:40 · 20 min · Independent or pairs work — Activity 2 — justify a product
+**Assessment.** Anchor › Discovery questions (triage diagram)
 
-**Assessment.** Anchor › Activity 2 card
+#### 10:40 · 20 min · Independent or pairs work — Activity 2 — justify a product
 
 **Purpose.** Each table justifies one product from the list with the non-technical questions and finds its hardest question.
 
@@ -225,9 +223,9 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Adapt.** Twenty minutes is firm; the debrief absorbs overrun.
 
-#### 11:00 · 25 min · Feedback and discussion — Debrief
+**Assessment.** Anchor › Activity 2 card
 
-**Assessment.** Anchor › Debrief and lifetime value
+#### 11:00 · 25 min · Feedback and discussion — Debrief
 
 **Purpose.** Follow each product to the person deciding; name the consumer and the business owner; surface the unresolved question.
 
@@ -250,9 +248,9 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Transition.** Those costs and barriers you just described: let's price them.
 
-#### 11:25 · 15 min · Questioning — Whiteboard — lifetime value and adoption
+**Assessment.** Anchor › Debrief and lifetime value
 
-**Assessment.** Anchor › Lifetime value and adoption (mindmap)
+#### 11:25 · 15 min · Questioning — Whiteboard — lifetime value and adoption
 
 **Purpose.** Costs and payoffs of a product over its life; why products fail on adoption and what to do about it.
 
@@ -278,9 +276,9 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Adapt.** Cut the responses list to three if behind.
 
-#### 11:40 · 10 min · Instructor-led demo — Demo — Catalyst: a skill is a prompt
+**Assessment.** Anchor › Lifetime value and adoption (mindmap)
 
-**Assessment.** Catalyst skills repo, then Copilot Chat (or Claude Code)
+#### 11:40 · 10 min · Instructor-led demo — Demo — Catalyst: a skill is a prompt
 
 **Purpose.** What a skill is, the data-contract template, lifecycle skills calling skills, scripts; one PRD generated from a transcript.
 
@@ -312,9 +310,9 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Transition.** Pairs: same product, hidden descriptions, compare.
 
-#### 11:50 · 10 min · Independent or pairs work — Activity 3 — compare independent PRDs
+**Assessment.** Catalyst skills repo, then Copilot Chat (or Claude Code)
 
-**Assessment.** Anchor › Activity 3 card
+#### 11:50 · 10 min · Independent or pairs work — Activity 3 — compare independent PRDs
 
 **Purpose.** See how input detail changes the output, and that a tidy document can contain invented fields, owners and approvals.
 
@@ -333,6 +331,8 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 
 **Adapt.** If Catalyst is broken for many, run it as a discussion of the planted-errors contract instead.
 
+**Assessment.** Anchor › Activity 3 card
+
 #### 12:00 · 60 min · Break — Lunch, back at 13:00
 
 ### 3. AI foundations and effective practice
@@ -340,8 +340,6 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 Whiteboard: the seven ideas · Demo: the interface on the running example · Break
 
 #### 13:00 · 40 min · Questioning — Whiteboard — the seven ideas, in order
-
-**Assessment.** Anchor › AI foundations (two diagrams), then the Copilot interface
 
 **Purpose.** Models, training, inference and reasoning, tool calls, harnesses, agents and skills; then settings, context and output review on a real task.
 
@@ -381,6 +379,8 @@ Whiteboard: the seven ideas · Demo: the interface on the running example · Bre
 
 **Adapt.** Over time: drop the training-data history, keep tool calls, harness, context.
 
+**Assessment.** Anchor › AI foundations (two diagrams), then the Copilot interface
+
 #### 13:40 · 15 min · Break — Break, back at 13:55
 
 ### 4. Interview, generate and the lifecycle
@@ -388,8 +388,6 @@ Whiteboard: the seven ideas · Demo: the interface on the running example · Bre
 Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief: requirements discovery · Reflect: the planted-errors contract · Activity 5: explore the lifecycle · Before learners leave
 
 #### 13:55 · 5 min · Instructor-led demo — Demo — Voice Memos to transcript
-
-**Assessment.** Anchor › Activity 4 card, Voice Memos
 
 **Purpose.** Turn a producer-consumer interview into a transcript, a PRD and a data contract, then inspect them.
 
@@ -410,9 +408,9 @@ Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief
 3. Say: on Teams or Zoom the meeting transcript does the same job.
 4. Paste the transcript into the Catalyst prompt.
 
-#### 14:00 · 25 min · Independent or pairs work — Activity 4 — interview and generate
-
 **Assessment.** Anchor › Activity 4 card, Voice Memos
+
+#### 14:00 · 25 min · Independent or pairs work — Activity 4 — interview and generate
 
 **Activity 4 — Interview and generate.** Threes, 30 min; the card is in `activities/`.
 
@@ -420,9 +418,9 @@ Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief
 
 **Adapt.** Thirty minutes is firm; generation can finish during the debrief.
 
-#### 14:25 · 20 min · Feedback and discussion — Debrief — requirements discovery
+**Assessment.** Anchor › Activity 4 card, Voice Memos
 
-**Assessment.** Anchor › Debrief (discovery methods diagram), planted-errors contract
+#### 14:25 · 20 min · Feedback and discussion — Debrief — requirements discovery
 
 **Purpose.** Inspect outputs for wrong identifiers and generic knowledge; compare interviews, observation and surveys; walk the PRD and contract sections.
 
@@ -447,9 +445,9 @@ Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief
 
 **Transition.** Last ten minutes: ask Catalyst about itself.
 
-#### 14:45 · 15 min · Independent or pairs work — Activity 5 — explore the lifecycle
+**Assessment.** Anchor › Debrief (discovery methods diagram), planted-errors contract
 
-**Assessment.** Anchor › Activity 5 card
+#### 14:45 · 15 min · Independent or pairs work — Activity 5 — explore the lifecycle
 
 **Purpose.** The nine DPLC phases, the build-phase prerequisites and the skills that support them, checked against guidance; artefacts saved.
 
@@ -465,6 +463,8 @@ Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief
 **Activity 5 — Explore the lifecycle.** Individual, then tables, 15 min; the card is in `activities/`.
 
 **Transition.** Tomorrow: mappings and service levels on today's contract, then the platform.
+
+**Assessment.** Anchor › Activity 5 card
 
 ## Before learners leave
 

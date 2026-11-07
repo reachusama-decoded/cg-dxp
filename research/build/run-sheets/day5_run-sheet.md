@@ -36,8 +36,6 @@ Brief: the day, the rules, ten minutes of reading · Activity 12: discovery work
 
 #### 09:00 · 15 min · Explain — Brief — the day, the rules, ten minutes of reading
 
-**Assessment.** Anchor › Brief; the capstone README
-
 **Purpose.** What the day is, where the project is, the caveats about the data, and ten minutes of reading alone.
 
 **Instructor notes.**
@@ -59,9 +57,9 @@ Brief: the day, the rules, ten minutes of reading · Activity 12: discovery work
 
 **Transition.** Table discovery.
 
-#### 09:15 · 60 min · Independent or pairs work — Activity 12 — discovery worksheet, then playback
+**Assessment.** Anchor › Brief; the capstone README
 
-**Assessment.** Anchor › Activity 12 worksheet; the ERD and pipeline diagrams
+#### 09:15 · 60 min · Independent or pairs work — Activity 12 — discovery worksheet, then playback
 
 **Purpose.** Reverse-engineer the product from the outputs: producer-creator-consumer map, consumer-backwards map, mini-STTM, glossary and trust questions; two-minute playbacks.
 
@@ -80,13 +78,13 @@ Brief: the day, the rules, ten minutes of reading · Activity 12: discovery work
 
 **Adapt.** Wrap by 10:15 at the latest; the build needs the time.
 
+**Assessment.** Anchor › Activity 12 worksheet; the ERD and pipeline diagrams
+
 ### 2. Phase 1: the baseline
 
 Challenge: Atlas Phase 1 · Circulating: section notes, expected results, blockers · Lunch (flexible)
 
 #### 10:15 · 105 min · Independent or pairs work — Challenge — Atlas Phase 1
-
-**Assessment.** Anchor › Phase 1 support, expected results
 
 **Purpose.** Every team establishes the baseline: readiness, seeds, source-aligned, domain-aligned, consumer-aligned, tests, orchestration understood.
 
@@ -105,6 +103,8 @@ Challenge: Atlas Phase 1 · Circulating: section notes, expected results, blocke
 
 **Transition.** Lunch is flexible; everyone back by 13:30 at the latest.
 
+**Assessment.** Anchor › Phase 1 support, expected results
+
 #### 12:00 · 60 min · Break — Lunch, back at 13:30 at the latest
 
 ### 3. Phase 2: extensions and presentation prep
@@ -112,8 +112,6 @@ Challenge: Atlas Phase 1 · Circulating: section notes, expected results, blocke
 Challenge: the fourteen extensions · Presentation prep: technical work stops at 14:30
 
 #### 13:00 · 90 min · Independent or pairs work — Challenge — choose extensions by value to the consumer; technical work stops at 14:30
-
-**Assessment.** Anchor › Phase 2 menu; Activity 13 card
 
 **Purpose.** Teams finish Phase 1, choose extensions that add value, and prepare a two-to-three-minute presentation.
 
@@ -130,13 +128,13 @@ Challenge: the fourteen extensions · Presentation prep: technical work stops at
 
 **Adapt.** Advanced learners who finish Phase 2 can take the advanced path in the README: a product of their own.
 
+**Assessment.** Anchor › Phase 2 menu; Activity 13 card
+
 ### 4. Presentations and close
 
 Activity 13: presentations · Tally sheet and certification evidence · Close
 
 #### 14:30 · 30 min · Independent or pairs work — Activity 13 — capstone presentation
-
-**Assessment.** Anchor › Activity 13; tally sheet
 
 **Purpose.** One person per table, two to three minutes; the certification evidence recorded; the week closed.
 
@@ -159,6 +157,8 @@ Activity 13: presentations · Tally sheet and certification evidence · Close
 
 - “One person per table, two to three minutes: what you built, what was hard, one finding, one trust question and its answer.”
 - “Do we feel we can create a data product and make it work? Then you are done. Thank you for the week.”
+
+**Assessment.** Anchor › Activity 13; tally sheet
 
 ## Before learners leave
 

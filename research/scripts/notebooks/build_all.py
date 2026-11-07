@@ -253,8 +253,6 @@ def run_sheet_docx_md(mod, reg) -> str:
             continue
         b = r["block"]
         out += [f"#### {_hm(r['start'])} · {r['minutes']} min · {row_type(r['label'], b)} — {r['label']}" + (f" — {mdtext(r['title'])}" if r["title"] else ""), ""]
-        if b:
-            out += [f"**Assessment.** {mdtext(b['on_screen']) or '—'}", ""]      # the right-hand column, headed "On screen"
         if b and first[id(b)] is r:
             out += [f"**Purpose.** {mdtext(b['purpose'])}", ""]
             if b.get("notes"):
@@ -269,6 +267,10 @@ def run_sheet_docx_md(mod, reg) -> str:
                 out += [f"**Transition.** {mdtext(b['transition'])}", ""]
             if b.get("flex"):
                 out += [f"**Adapt.** {mdtext(b['flex'])}", ""]
+        # the right-hand column (headed "On screen"); last, because the builder attaches every unlabelled block that
+        # follows a field to that field, and the tables and lists above belong in the notes column
+        if b:
+            out += [f"**Assessment.** {mdtext(b['on_screen']) or '—'}", ""]
     if getattr(mod, "LEAVE_WITH", None):
         out += ["## Before learners leave", ""] + [f"- [ ] {mdtext(i)}" for i in mod.LEAVE_WITH] + [""]
     return "\n".join(out)

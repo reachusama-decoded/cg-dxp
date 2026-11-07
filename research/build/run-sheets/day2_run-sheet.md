@@ -41,8 +41,6 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 
 #### 09:00 · 5 min · Intro/Outro — Welcome — yesterday's contract is today's input
 
-**Assessment.** Anchor › STTM and service levels (two diagrams, nines table)
-
 **Purpose.** Source-to-target mapping rule types; SLI, SLO and SLA as measure, ideal, tolerance; the indicators a product needs; availability in nines.
 
 **Instructor notes.**
@@ -59,9 +57,9 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 - “Open the contract you made yesterday. Everything before lunch happens to that document.”
 - “Hands up: who has written or reviewed source-to-target rules? Worked with an SLI? With an SLA? Usually most hands for SLAs and fewest for SLIs.”
 
-#### 09:05 · 15 min · Instructor-led demo — Demo — STTM and service levels
-
 **Assessment.** Anchor › STTM and service levels (two diagrams, nines table)
+
+#### 09:05 · 15 min · Instructor-led demo — Demo — STTM and service levels
 
 **Ask at the whiteboard — STTM.** Ask in order, write what the room says, add what is missing.
 
@@ -84,9 +82,9 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 
 **Adapt.** Running late: skip how providers get nines; keep the table.
 
-#### 09:20 · 25 min · Independent or pairs work — Activity 6 — extend the contract
+**Assessment.** Anchor › STTM and service levels (two diagrams, nines table)
 
-**Assessment.** Anchor › Activity 6 card
+#### 09:20 · 25 min · Independent or pairs work — Activity 6 — extend the contract
 
 **Purpose.** Ask Catalyst for the transformation types and service measures, then add realistic STTM rules and commitments to a Day 1 contract.
 
@@ -105,11 +103,11 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 
 **Adapt.** Overrun flows into the break; the review block uses whatever was submitted.
 
+**Assessment.** Anchor › Activity 6 card
+
 #### 09:45 · 15 min · Break — Break, back at 10:00
 
 #### 10:00 · 15 min · Feedback and discussion — Shareback — review and present a contract
-
-**Assessment.** VS Code Markdown editor, then Copilot/Claude, then the browser
 
 **Purpose.** Review a submitted contract in the Markdown editor, then generate a self-contained HTML version with an overview, contents and diagrams.
 
@@ -135,13 +133,13 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 
 **Adapt.** If generation stalls, open common/running-example/data-contract.html.
 
+**Assessment.** VS Code Markdown editor, then Copilot/Claude, then the browser
+
 ### 2. Platform architecture
 
 Demo: warehouse, lake, lakehouse · Demo: Databricks under the hood, Delta, Spark · Demo: how the tools fit together · Shareback · Break
 
 #### 10:15 · 30 min · Instructor-led demo — Demo — warehouse, lake and lakehouse; Databricks under the hood; Delta; Spark; the tools together
-
-**Assessment.** Anchor › Platform architecture (five diagrams); the Delta and Spark demos
 
 **Purpose.** Warehouse vs lake vs lakehouse; where Databricks fits; Delta tables under the hood; what the Spark engine does; how the tools fit together.
 
@@ -194,6 +192,8 @@ Demo: warehouse, lake, lakehouse · Demo: Databricks under the hood, Delta, Spar
 
 **Adapt.** Behind: show the tools-together diagram and the Delta demo only; the timeline and Spark are optional.
 
+**Assessment.** Anchor › Platform architecture (five diagrams); the Delta and Spark demos
+
 #### 10:45 · 15 min · Break — Break, back at 11:00
 
 ### 3. Docker
@@ -201,8 +201,6 @@ Demo: warehouse, lake, lakehouse · Demo: Databricks under the hood, Delta, Spar
 Demo: the five steps and the dev container's Dockerfile · Challenge 7: Docker practical · Lunch
 
 #### 11:00 · 25 min · Instructor-led demo — Demo — containers, the challenge's five steps, the dev container's Dockerfile
-
-**Assessment.** Anchor › Docker; a terminal; the dev container's Dockerfile
 
 **Purpose.** Dependencies, reproducibility, isolation and resource limits; Dockerfile to image to container; the dev container and its terminal.
 
@@ -238,9 +236,9 @@ Demo: the five steps and the dev container's Dockerfile · Challenge 7: Docker p
 
 **Transition.** Challenge 7 in the dev container until lunch.
 
-#### 11:25 · 35 min · Independent or pairs work — Challenge 7 — Docker practical
+**Assessment.** Anchor › Docker; a terminal; the dev container's Dockerfile
 
-**Assessment.** Anchor › Challenge box; learners in challenges/v1/01-docker-intro
+#### 11:25 · 35 min · Independent or pairs work — Challenge 7 — Docker practical
 
 **Purpose.** Run, inspect, build and rerun a small image; the one-command gate.
 
@@ -261,6 +259,8 @@ Demo: the five steps and the dev container's Dockerfile · Challenge 7: Docker p
 
 **Adapt.** Experienced people: multi-stage builds, resource limits, Kubernetes questions.
 
+**Assessment.** Anchor › Challenge box; learners in challenges/v1/01-docker-intro
+
 #### 12:00 · 60 min · Break — Lunch, back at 13:00
 
 ### 4. Contract to code
@@ -268,8 +268,6 @@ Demo: the five steps and the dev container's Dockerfile · Challenge 7: Docker p
 Demo: where output lands, live generation · Activity 8: generate and investigate · Break · Debrief · Activity 8b: review another pair's code · Close
 
 #### 13:00 · 15 min · Instructor-led demo — Demo — where output lands, and one minute of live generation
-
-**Assessment.** Anchor › Contract to code; Databricks (learners) and DuckDB (instructor)
 
 **Purpose.** Brief Challenge 8; show authentication, the training schema and where output lands.
 
@@ -299,9 +297,9 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 
 **Transition.** Challenge 8.
 
-#### 13:15 · 50 min · Independent or pairs work — Activity 8 — generate and investigate
+**Assessment.** Anchor › Contract to code; Databricks (learners) and DuckDB (instructor)
 
-**Assessment.** Anchor › Activity 8 card and prompts
+#### 13:15 · 50 min · Independent or pairs work — Activity 8 — generate and investigate
 
 **Purpose.** Generate dbt and Airflow code from the contract, explain it, run as far as possible, and bring one discovery and one correction.
 
@@ -320,11 +318,11 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 
 **Adapt.** If Databricks auth is widespread trouble, let pairs generate and read without running; the debrief is unchanged.
 
+**Assessment.** Anchor › Activity 8 card and prompts
+
 #### 14:05 · 10 min · Break — Break, back at 14:15
 
 #### 14:15 · 15 min · Feedback and discussion — Debrief — in this order
-
-**Assessment.** Anchor › Debrief (dbt flow diagram)
 
 **Purpose.** dbt as ELT; SELECT, Jinja and YAML; views and tables; OLTP and OLAP; the commands; then DAGs, operators, blueprints and task groups.
 
@@ -350,9 +348,9 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 
 **Transition.** Review another pair's code.
 
-#### 14:30 · 20 min · Independent or pairs work — Activity 8b — review another pair's generated code
+**Assessment.** Anchor › Debrief (dbt flow diagram)
 
-**Assessment.** Anchor › Activity 8b card
+#### 14:30 · 20 min · Independent or pairs work — Activity 8b — review another pair's generated code
 
 **Purpose.** Trace one contract rule into code, find one assumption, propose one check and say what happens when it fails.
 
@@ -369,9 +367,9 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 
 **Transition.** One correction each, then close.
 
-#### 14:50 · 10 min · Feedback and discussion — Close — corrections and closing discussion
+**Assessment.** Anchor › Activity 8b card
 
-**Assessment.** Anchor › Before learners leave
+#### 14:50 · 10 min · Feedback and discussion — Close — corrections and closing discussion
 
 **Purpose.** Make one correction and share its reason; record questions for the dbt practical.
 
@@ -387,6 +385,8 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 **Say.**
 
 - “Make one correction now, and say why. Then write down the questions you want answered tomorrow, and keep the access problems on a separate list from the code problems.”
+
+**Assessment.** Anchor › Before learners leave
 
 ## Before learners leave
 

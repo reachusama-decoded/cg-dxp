@@ -41,8 +41,6 @@ Demo: two clocks, three loads, four questions · Guest or volunteer: a real tabl
 
 #### 09:00 · 45 min · Instructor-led demo — Demo — two clocks, three loads, four questions
 
-**Assessment.** Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen
-
 **Purpose.** Business time and system time; loading strategies; a worked history with a correction; which clock answers which question.
 
 **Instructor notes.**
@@ -81,13 +79,13 @@ Demo: two clocks, three loads, four questions · Guest or volunteer: a real tabl
 
 **Adapt.** Over time: skip the macro walk, keep the four queries.
 
+**Assessment.** Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen
+
 ### 2. Airflow orchestration
 
 Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a controlled failure · Challenge 10: Airflow practical · Lunch · Shareback: one run, one log, one output check
 
 #### 09:45 · 15 min · Explain — Orientation — the DAG, and Friday's preview
-
-**Assessment.** Anchor › The DAG diagram; Friday preview
 
 **Purpose.** What orchestration is, connected to the pipeline generated on Day 2; a preview of Friday's work and its starting files.
 
@@ -107,11 +105,11 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 **Transition.** Break, then the Airflow demo.
 
+**Assessment.** Anchor › The DAG diagram; Friday preview
+
 #### 10:00 · 15 min · Break — Break, back at 10:15
 
 #### 10:15 · 30 min · Instructor-led demo — Demo — the stack, a run, the UI, a controlled failure
-
-**Assessment.** Anchor › Airflow cells; the Airflow UI at localhost:8080
 
 **Purpose.** Operators, dependencies, callbacks, the UI, Astro blueprints, and a controlled failure, on a local Astro stack running Day 3's project.
 
@@ -148,9 +146,9 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 **Adapt.** If the stack misbehaves, the status and log cells still show a previous green run.
 
-#### 10:45 · 75 min · Independent or pairs work — Challenge 10 — Airflow practical
+**Assessment.** Anchor › Airflow cells; the Airflow UI at localhost:8080
 
-**Assessment.** Anchor › Challenge box; learners in challenges/v1/03-airflow-orchestration
+#### 10:45 · 75 min · Independent or pairs work — Challenge 10 — Airflow practical
 
 **Purpose.** Launch the assigned Airflow project; learners wire the chain, run tasks inside the scheduler, inspect states and logs.
 
@@ -169,11 +167,11 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 **Adapt.** Fast finishers: the extension questions (late input, failed check, repeated run), then Phase 2.
 
+**Assessment.** Anchor › Challenge box; learners in challenges/v1/03-airflow-orchestration
+
 #### 12:00 · 60 min · Break — Lunch, back at 13:00
 
 #### 13:00 · 30 min · Feedback and discussion — Shareback — one run, one log line, one output check per pair
-
-**Assessment.** Anchor › Challenge box
 
 **Purpose.** Resolve blockers; Phase 2 for those on it; regroup with one run, one log and one output check per pair.
 
@@ -188,13 +186,13 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 **Transition.** CI/CD and the deployment picture.
 
+**Assessment.** Anchor › Challenge box
+
 ### 3. CI/CD and release operations
 
 Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Activity 11: explain a failure and repair · Friday preparation
 
 #### 13:30 · 30 min · Instructor-led demo — Demo — GitOps, Harness, Datadog
-
-**Assessment.** Anchor › CI/CD (diagram), Harness walkthrough, Datadog monitors
 
 **Purpose.** Where code goes, how deployment is initiated, where execution is visible, how failures are investigated: Harness, Astro, Datadog.
 
@@ -227,11 +225,11 @@ Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Acti
 
 **Transition.** Break, then the release decision.
 
+**Assessment.** Anchor › CI/CD (diagram), Harness walkthrough, Datadog monitors
+
 #### 14:00 · 15 min · Break — Break, back at 14:15
 
 #### 14:15 · 20 min · Independent or pairs work — Activity 10 — release decision
-
-**Assessment.** Anchor › Activity 10 card
 
 **Purpose.** A failed candidate with 500 rows and 497 distinct IDs, yesterday's accepted output available: decide what ships and what to tell the consumer.
 
@@ -247,9 +245,9 @@ Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Acti
 
 **Transition.** Write the failure note.
 
-#### 14:35 · 15 min · Independent or pairs work — Activity 11 — explain a failure and repair
+**Assessment.** Anchor › Activity 10 card
 
-**Assessment.** Anchor › Activity 11 card and template
+#### 14:35 · 15 min · Independent or pairs work — Activity 11 — explain a failure and repair
 
 **Purpose.** A short note another creator could use to locate the run and understand what happened; swapped and tested.
 
@@ -265,9 +263,9 @@ Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Acti
 
 **Transition.** Friday preparation.
 
-#### 14:50 · 10 min · Intro/Outro — Friday preparation — the checklist, then the close
+**Assessment.** Anchor › Activity 11 card and template
 
-**Assessment.** Anchor › Friday checklist
+#### 14:50 · 10 min · Intro/Outro — Friday preparation — the checklist, then the close
 
 **Purpose.** Check the starting files and environment; record remaining problems and who resolves them.
 
@@ -278,6 +276,8 @@ Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Acti
 **Say.**
 
 - “Tomorrow starts sharp at nine. The sharper you start, the sharper you finish.”
+
+**Assessment.** Anchor › Friday checklist
 
 ## Before learners leave
 

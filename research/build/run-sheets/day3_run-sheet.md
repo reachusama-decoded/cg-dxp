@@ -40,8 +40,6 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 #### 09:00 · 10 min · Explain — Launch — the pipeline you will build today
 
-**Assessment.** Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline
-
 **Purpose.** Launch the assigned dbt project, explain the task sequence and the checks, and get everyone building Phase 1 (sources and staging).
 
 **Instructor notes.**
@@ -54,9 +52,9 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 - “The README teaches dbt as you go: concept, task, hint, check, a variation, then the solution. Attempt before you open the solution.”
 
-#### 09:10 · 50 min · Independent or pairs work — Challenge 9 — dbt practical: Phase 1 first
-
 **Assessment.** Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline
+
+#### 09:10 · 50 min · Independent or pairs work — Challenge 9 — dbt practical: Phase 1 first
 
 **Challenge — dbt practical (challenge 02).** `challenges/v1/02-dbt-pipeline/README.md` · about 3 hours across the day.
 
@@ -77,11 +75,11 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 **Adapt.** Anyone who knows dbt: skip to Phase 2 and the stretch list.
 
+**Assessment.** Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline
+
 #### 10:00 · 15 min · Break — Break, back at 10:15
 
 #### 10:15 · 45 min · Instructor-led demo — Walkthrough — Phase 2 on DuckDB: intermediate, marts, tests, docs
-
-**Assessment.** Anchor › Walkthrough cells (for support)
 
 **Purpose.** Phase 1 complete for most; Phase 2 started by some; blockers resolved; questions collected.
 
@@ -98,13 +96,13 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 **Transition.** At 11:00 the platform session, or the instructor-led version.
 
+**Assessment.** Anchor › Walkthrough cells (for support)
+
 ### 2. The platform session
 
 Guest: the platform team (or the instructor-led version) · Lunch
 
 #### 11:00 · 60 min · Explain — Guest — the platform team, or the instructor-led version
-
-**Assessment.** Anchor › Platform session (two diagrams, agenda, questions)
 
 **Purpose.** Why the paved path works this way: Airflow on Astronomer, Databricks and Unity Catalog, contracts, the vended repository, compute, operations.
 
@@ -121,6 +119,8 @@ Guest: the platform team (or the instructor-led version) · Lunch
 
 **Adapt.** A short guest session returns time to the practical.
 
+**Assessment.** Anchor › Platform session (two diagrams, agenda, questions)
+
 #### 12:00 · 60 min · Break — Lunch, back at 13:00
 
 ### 3. Complete and extend the practical
@@ -128,8 +128,6 @@ Guest: the platform team (or the instructor-led version) · Lunch
 Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break
 
 #### 13:00 · 75 min · Independent or pairs work — Challenge 9 continued — Phase 2, then the stretch: macros, snapshots, incremental, unit tests
-
-**Assessment.** Anchor › Stretch section
 
 **Purpose.** Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.
 
@@ -144,6 +142,8 @@ Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit 
 
 **Transition.** Break, then the recap.
 
+**Assessment.** Anchor › Stretch section
+
 #### 14:15 · 15 min · Break — Break, back at 14:30
 
 ### 4. Consolidation
@@ -151,8 +151,6 @@ Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit 
 Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
 #### 14:30 · 15 min · Feedback and discussion — Debrief — what did we learn?
-
-**Assessment.** Anchor › Recap table
 
 **Purpose.** Ask the room what it learned and write the ten topics up; arrange tomorrow's contributions (bitemporal loading, deployment).
 
@@ -182,9 +180,9 @@ Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
 **Transition.** Pairs: swap a mapping and its test.
 
-#### 14:45 · 10 min · Independent or pairs work — Activity 9 — test review in pairs
+**Assessment.** Anchor › Recap table
 
-**Assessment.** Anchor › Activity 9 card
+#### 14:45 · 10 min · Independent or pairs work — Activity 9 — test review in pairs
 
 **Purpose.** Exchange one mapping rule and its test; propose a wrong result and decide whether the test would catch it; agree one improvement.
 
@@ -200,9 +198,9 @@ Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
 **Transition.** Two or three examples to the room, then close.
 
-#### 14:55 · 5 min · Feedback and discussion — Close — closing discussion
+**Assessment.** Anchor › Activity 9 card
 
-**Assessment.** Anchor › Before learners leave
+#### 14:55 · 5 min · Feedback and discussion — Close — closing discussion
 
 **Purpose.** Share a missing check; save the dbt work for orchestration; confirm tomorrow's baseline.
 
@@ -218,6 +216,8 @@ Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
 - “Two or three examples to the room: the wrong result, whether the test caught it, the improvement.”
 - “Save the project where it is; tomorrow Airflow runs it. Completing Phase 2 is not a prerequisite for tomorrow: the Airflow challenge ships the solved dbt project.”
+
+**Assessment.** Anchor › Before learners leave
 
 ## Before learners leave
 
