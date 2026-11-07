@@ -1,28 +1,16 @@
-# Data Creators — instructor courseware
+# Data Creators — course materials
 
-The pack for running Capital Group's five-day Data Creators programme. It follows the timetable in `../reference/instructor-plan.md` and the learners' challenges in the training repository (`challenges/v1/01…04`), which are not changed here. Everything the instructor shows runs on this laptop: DuckDB stands in for Databricks, Docker Desktop and the Astro CLI run the same images as the learners' environment, and Claude Code stands in for Copilot with the same Catalyst skills.
-
-Start with [00-week/start-here.md](00-week/start-here.md).
-
-## Layout
+The materials for Capital Group's five-day Data Creators programme. Everything here can be shared with learners as it is.
 
 | Folder | What is in it |
 |---|---|
-| `00-week/` | The week at a glance, the pre-flight checklist, the LLM guide (Claude for the instructor, Copilot for learners), risks and fallbacks |
-| `common/` | `env/` (setup and check scripts), `running-example/` (the "US end-of-day instrument prices" product: interview, PRD, contract, STTM, SLAs, planted errors), `prompts/` (prompt library with Copilot and Claude variants), `diagrams/` (Mermaid sources and rendered PNGs for every diagram in the anchors; `render.sh` rebuilds them), `catalyst/` (installs a subset of Catalyst skills for Claude Code) |
-| `day1-design/` | `day1_anchor.ipynb` (the notebook on the projector: agenda, a diagram per concept with its whiteboard script, demo cells, activity and challenge boxes, a live Q&A section), run sheet, activity cards 1–5 |
-| `day2-platform/` | `day2_anchor.ipynb`, run sheet, activity cards 6–8b, and the demos (`demos/README.md`): the Docker app, Delta under the hood, the Spark engine, the contract-to-code dbt project |
-| `day3-dbt/` | `day3_anchor.ipynb`, run sheet, activity card 9, and the Portfolio Analytics dbt project on DuckDB (challenge 02 plus macros, snapshots, incremental, unit tests; `demos/portfolio_analytics/README.md` maps its cells to the challenge sections) |
-| `day4-airflow/` | `day4_anchor.ipynb`, run sheet, activity cards 10–11, the bitemporal loading demo (a custom dbt strategy) and the local Astro Airflow stack running the Day 3 and Day 2 projects with Cosmos (`demos/README.md`) |
-| `day5-capstone/` | `day5_anchor.ipynb` (brief, discovery, Phase 1 circulation notes with expected results, Phase 2 menu, tally sheet), run sheet, activity cards 12–13, and the Atlas solution on DuckDB (`support/README.md`) |
-| `.claude/skills/` | Catalyst skills copied by `common/catalyst/install-skills.sh` (open this folder in Claude Code to use them) |
+| `day1-design/` … `day5-capstone/` | One anchor notebook per day (`dayN_anchor.ipynb`): the agenda, one numbered section per topic with its diagrams, the demo cells, the activity briefs and the pointers into the training repository's challenges, and a Questions section filled in during the day. `activities/` holds the activity cards; `demos/` (and `day5-capstone/support/`) the code the demos run, on DuckDB and local containers, each with a README. |
+| `common/running-example/` | The product used in every demo: the interview transcript, PRD, data contract (with a planted-errors version), source-to-target mapping and service levels for a US end-of-day instrument price sheet. |
+| `common/prompts/` | The prompt library: one entry per activity, Copilot first and Claude Code where it differs. |
+| `common/diagrams/` | Every diagram in the notebooks, as Mermaid sources and rendered PNGs. |
+| `common/env/` | Scripts that create the local demo environment (a Python virtualenv with dbt and DuckDB, the Astro CLI) and check it. |
+| `common/catalyst/` | Installs a subset of the Catalyst skills for Claude Code into `.claude/skills/`, so the same skills learners run in Copilot can be run here. |
 
-## Conventions
+How to use a notebook: open it in VS Code from its own folder with the `cg-dxp` kernel, run the Setup cell, then follow the sections. Cells that start with `!` run in a shell with the demo environment on `PATH`. The challenges themselves live in the training repository (`challenges/v1/01` to `04`); the notebooks point at them and do not change them.
 
-- Timings are the instructor plan's and sit in the run sheet's timeline table. Each run-sheet part has a purpose, what is on screen, the whiteboard script with the answers a room typically gives, lines to say, the demo steps with their coaching, the transition, and what to do if ahead or behind.
-- Activity cards are written to be shown on the projector and printed one per table. They can be shared with learners as they are.
-- The anchor notebook is learner-facing and goes on the projector each day: a numbered agenda, then one section per topic (demo, activity or challenge, shareback, break), one diagram per concept, the whiteboard questions, demo cells that run the day's code, the activity and challenge boxes, and a Questions section at the end for live notes and sketches (`quick_diagram()` renders Mermaid typed on the spot). Open it in VS Code with the `cg-dxp` kernel from its own folder. Learners can be given it as it is.
-- The run sheet is the instructor-only companion in the same order: every section and part with its time, purpose, what is on screen, what to say, the whiteboard script with the answers rooms give, the demo steps with their coaching, fallbacks, transitions and flex. Nothing in it goes on the projector. It comes as `run-sheet.md` and as `run-sheet.docx`, an A4-landscape Word document in the Decoded house style built with CG Core's lesson-plan builder (`../research/scripts/docx/`); print the Word version for the day.
-- The anchors, run sheets and activity cards are generated from one source per day in `../research/scripts/notebooks/` (`build_all.py`); edit there and rebuild rather than editing the `.ipynb`. `smoke.py` runs every code cell from the terminal; `build_all.py --no-docx` skips the Word build (which needs `node` and `pandoc`).
-- Every demo has a README beside it and a script that runs it end to end (`demo.sh`, `run.sh` or `build.sh`).
-- Learner-facing wording never names an instructor; "the instructor" and "you" are used throughout.
+The notebooks, activity cards and run sheets are generated from one source per day in `../research/scripts/notebooks/`; edit there and rebuild rather than editing the `.ipynb`. The instructor material (run sheets, prep guides, the week's start-here, pre-flight checklist, LLM guide and risks) is in `../instructor/`.

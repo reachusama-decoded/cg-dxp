@@ -9,7 +9,8 @@ import importlib, os, pathlib, re, shutil, subprocess, sys, textwrap
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import dc
 ROOT = pathlib.Path(__file__).resolve().parents[3]
-COURSEWARE = ROOT / "courseware"
+COURSEWARE = ROOT / "courseware"          # learner-shareable
+INSTRUCTOR = ROOT / "instructor"          # instructor-only: run sheets, prep guides, the week docs
 BUILD = ROOT / "research" / "build" / "run-sheets"
 DOCX_BUILDER = ROOT / "research" / "scripts" / "docx" / "build_lesson_plan.js"
 
@@ -275,9 +276,10 @@ def run_sheet_docx_md(mod, reg) -> str:
         out += ["## Before learners leave", ""] + [f"- [ ] {mdtext(i)}" for i in mod.LEAVE_WITH] + [""]
     return "\n".join(out)
 
-def build_docx(md_path: pathlib.Path, out_path: pathlib.Path) -> bool:
+def build_docx(md_path: pathlib.Path, out_path: pathlib.Path, kind: str = "run sheet", portrait: bool = False) -> bool:
     node = shutil.which("node") or "/opt/homebrew/bin/node"
-    env = dict(os.environ, DOC_PROGRAMME="Data Creators", DOC_KIND="run sheet", DOC_ASSESS_HEADER="On screen")
+    env = dict(os.environ, DOC_PROGRAMME="Data Creators", DOC_KIND=kind, DOC_ASSESS_HEADER="On screen",
+               DOC_ORIENTATION="portrait" if portrait else "landscape")
     env.setdefault("PANDOC", shutil.which("pandoc") or "/opt/anaconda3/bin/pandoc")
     r = subprocess.run([node, str(DOCX_BUILDER), str(md_path), str(out_path)], capture_output=True, text=True, env=env)
     if r.returncode != 0:
@@ -291,18 +293,23 @@ def build(day_name: str):
     dc.reset()
     cells = mod.cells()
     nb = dc.write(cells, folder / f"day{mod.DAY}_anchor.ipynb")
-    (folder / "run-sheet.md").write_text(run_sheet_md(mod, dc.REG))
+    inst = INSTRUCTOR / mod.SLUG                      # instructor-only: run sheets and the prep guide
+    inst.mkdir(parents=True, exist_ok=True)
+    (inst / "run-sheet.md").write_text(run_sheet_md(mod, dc.REG))
     docx_note = ""
     if DOCX:
         BUILD.mkdir(parents=True, exist_ok=True)
         src = BUILD / f"day{mod.DAY}_run-sheet.md"
         src.write_text(run_sheet_docx_md(mod, dc.REG))
-        docx_note = ", run-sheet.docx" if build_docx(src, folder / "run-sheet.docx") else ", run-sheet.docx FAILED"
+        docx_note = ", run-sheet.docx" if build_docx(src, inst / "run-sheet.docx") else ", run-sheet.docx FAILED"
+        guide = inst / f"day{mod.DAY}_prep-guide.md"
+        if guide.exists():
+            docx_note += ", prep-guide.docx" if build_docx(guide, inst / f"day{mod.DAY}_prep-guide.docx", kind="instructor prep guide", portrait=True) else ", prep-guide.docx FAILED"
     (folder / "activities").mkdir(exist_ok=True)
     for a in mod.ACTIVITIES:
         slug = re.sub(r"[^a-z0-9]+", "-", a["title"].lower()).strip("-")
         (folder / "activities" / f"{a['number']}-{slug}.md").write_text(activity_md(a, mod.DAY))
-    print(f"day {mod.DAY}: {nb.name} ({sum(c is not None for c in cells)} cells), run-sheet.md{docx_note}, {len(mod.ACTIVITIES)} activity cards -> {folder}")
+    print(f"day {mod.DAY}: {nb.name} ({sum(c is not None for c in cells)} cells), {len(mod.ACTIVITIES)} activity cards -> {folder.relative_to(ROOT)}; run-sheet.md{docx_note} -> {inst.relative_to(ROOT)}")
 
 DOCX = True
 if __name__ == "__main__":

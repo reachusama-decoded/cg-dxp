@@ -30,7 +30,9 @@ const FONTS = path.join(__dirname, "..", "fonts");
 const BLACK = "000000", DARK = "434343", GREY = "666666", MID = "CCCCCC", LIGHT = "F3F3F3", YELLOW = "FEF800";
 // A4 landscape, 2 cm margins (user, 2026-10-19: easier to read, less text-heavy). docx-js takes the portrait size plus
 // the orientation and swaps them, so the page is given portrait; the text runs across the long side.
-const A4_SHORT = 11906, A4_LONG = 16838, MARGIN = 1134, CONTENT_W = A4_LONG - 2 * MARGIN;
+// cg-dxp: DOC_ORIENTATION=portrait gives an A4 portrait page (the prep guides); the default stays landscape (run sheets)
+const PORTRAIT = (process.env.DOC_ORIENTATION || "landscape") === "portrait";
+const A4_SHORT = 11906, A4_LONG = 16838, MARGIN = 1134, CONTENT_W = (PORTRAIT ? A4_SHORT : A4_LONG) - 2 * MARGIN;
 const BODY = 20, CELL = 18, SMALL = 16, LABEL = 14, TITLE = 32, H1 = 28, H2 = 24, H3 = 21;  // half-points
 const LINE = 300, CELL_LINE = 264;
 
@@ -135,6 +137,7 @@ function runs(inl, st = {}) {
         break;
       }
       case "Span": out.push(...runs(x.c[1], st)); break;
+      case "Image": out.push(imageRun(x, ctxWidth(st))); break;
       case "RawInline":
         if (x.c[0] === "html" && /^<!--[\s\S]*-->$/.test(x.c[1].trim())) break;
         fail(`raw ${x.c[0]} in the text: ${x.c[1].slice(0, 60)} (write a placeholder as ‹…›, not <…>)`);
@@ -143,6 +146,22 @@ function runs(inl, st = {}) {
     }
   }
   return out;
+}
+
+// ---------- images (cg-dxp) ----------
+// A PNG in the Markdown becomes an inline picture scaled to the column; the diagrams were rendered at scale 2, so a
+// picture is shown at half its pixel size unless the column is narrower. Only PNG is supported; anything else stops the build.
+const ctxWidth = st => st.width || CONTENT_W;
+function imageRun(x, widthDxa) {
+  const [, , [src]] = x.c;
+  const file = path.resolve(path.dirname(MD), decodeURI(src));
+  if (!fs.existsSync(file)) fail(`image not found: ${src} (resolved to ${file})`);
+  const png = fs.readFileSync(file);
+  if (png.readUInt32BE(0) !== 0x89504e47) fail(`only PNG images are supported: ${src}`);
+  const w = png.readUInt32BE(16), h = png.readUInt32BE(20);
+  const maxPx = Math.floor(widthDxa / 20 * 96 / 72) - 8;
+  const width = Math.min(maxPx, Math.round(w / 2));
+  return new ImageRun({ type: "png", data: png, transformation: { width, height: Math.round(width * h / w) } });
 }
 
 // ---------- blocks ----------
@@ -367,9 +386,17 @@ function blocks(bs, ctx = {}) {
   const out = [];
   for (const b of bs) {
     switch (b.t) {
-      case "Para": case "Plain":
+      case "Para": case "Plain": {
+        const inl = b.c.filter(x => !(x.t === "Space" || x.t === "SoftBreak"));
+        if (inl.length === 1 && inl[0].t === "Image") {           // a picture on its own line: centred, its alt text as a caption
+          const alt = plain(inl[0].c[1]);
+          out.push(new Paragraph({ children: [imageRun(inl[0], ctx.width || CONTENT_W)], alignment: AlignmentType.CENTER, spacing: { before: 120, after: alt ? 40 : 160 }, keepNext: !!alt }));
+          if (alt) out.push(new Paragraph({ children: [new TextRun({ text: alt, font: FONT, size: SMALL, color: GREY, italics: true })], alignment: AlignmentType.CENTER, spacing: { after: 200 } }));
+          break;
+        }
         out.push(para(b.c, ctx, ctx.indent ? { indent: { left: ctx.indent } } : {}));
         break;
+      }
       case "Header":
         out.push(new Paragraph({ children: runs(b.c[2], { size: ctx.size, bold: true }), keepNext: true, spacing: { before: 120, after: 80 } }));
         break;
@@ -587,7 +614,7 @@ const doc = new Document({
   },
   numbering: { config: [{ reference: "bullets", levels: bullets }, { reference: "numbers", levels: numbers }] },
   sections: [{
-    properties: { page: { size: { width: A4_SHORT, height: A4_LONG, orientation: PageOrientation.LANDSCAPE }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
+    properties: { page: { size: { width: A4_SHORT, height: A4_LONG, orientation: PORTRAIT ? PageOrientation.PORTRAIT : PageOrientation.LANDSCAPE }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
     headers: { default: new Header({ children: [twoCell([small(`${PROGRAMME} · Day ${session} ${KIND}`)], [small("For instructors")])] }) },
     footers: { default: new Footer({ children: [twoCell(
       [new TextRun({ children: ["Page ", PageNumber.CURRENT, " of ", PageNumber.TOTAL_PAGES], font: FONT, size: SMALL, color: DARK })],

@@ -22,7 +22,7 @@ One rule covers most of this page: a demo that fails live is not repaired live. 
 | Airflow stack slow or stuck on Day 4 morning | `run.sh status` shows no run or a queued task for minutes | Start the stack before 08:30. Show the previous green run's status and log cells; the learners' practical does not depend on the instructor stack. |
 | Spark demo cannot start | Java not found; `JAVA_HOME` wrong | `source common/env/activate.sh` sets it to the Homebrew OpenJDK 17. If it still fails, the Spark diagram and the saved plan output carry the point. |
 | Mermaid `quick_diagram()` cannot download mermaid-cli | npx hangs on an office network | Draw on the whiteboard or in Excalidraw; the prepared diagrams are PNGs and need nothing. |
-| A Claude generation goes wrong or slow live | Long thinking, a wrong skill, a flat network | Open the prepared artefact in `common/running-example/` and review it as if it had just been generated; the review is the lesson. |
+| A Claude generation goes wrong or slow live | Long thinking, a wrong skill, a flat network | Open the prepared artefact in `courseware/common/running-example/` and review it as if it had just been generated; the review is the lesson. |
 | A DuckDB file is locked | "Could not set lock on file" | A notebook kernel or a dbt process still holds it: restart the kernel, or `pkill -f dbt`. The scripts rebuild every warehouse from seeds. |
 | Google Drive path with spaces | A script fails on an unquoted path | All scripts quote their paths; if a new command fails, wrap the path in quotes or `cd` first. |
 

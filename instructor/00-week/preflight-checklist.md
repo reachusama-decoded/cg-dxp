@@ -13,7 +13,7 @@
 - [ ] Day 4 bitemporal: `bash courseware/day4-airflow/demos/bitemporal/demo.sh` prints the four-row audit trail.
 - [ ] Day 4 Airflow: `cd courseware/day4-airflow/demos/airflow_local && bash run.sh start` (first time builds the image, several minutes), then `bash run.sh seed`, `bash run.sh trigger`, `bash run.sh status` shows a green run, `bash run.sh stop`. Leave the image built; start the stack again on the morning of Day 4.
 - [ ] Day 5 Atlas: `bash courseware/day5-capstone/support/atlas_duckdb/build.sh` ends green and `python courseware/day5-capstone/support/expected-results.py` writes the expected numbers.
-- [ ] Claude Code: open the `courseware/` folder as the project, type `/` and check `data-contract` and `product-requirements-document` appear (installed by `common/catalyst/install-skills.sh`).
+- [ ] Claude Code: open the `courseware/` folder as the project, type `/` and check `data-contract` and `product-requirements-document` appear (installed by `courseware/common/catalyst/install-skills.sh`).
 - [ ] Voice Memos on this laptop records and shows a transcript (Day 1 demo). Alternative: the Teams meeting transcript.
 - [ ] The evening before each day: open that day's anchor in VS Code, Run All, and save it with outputs, so a cell that fails live still has yesterday's output on screen. `~/.venvs/cg-dxp/bin/python research/scripts/notebooks/smoke.py --full dayN` is the terminal check of the same cells (Day 4 needs the Airflow stack started).
 - [ ] `quick_diagram()` downloads mermaid-cli through npx the first time: render one diagram on the office network before Monday.

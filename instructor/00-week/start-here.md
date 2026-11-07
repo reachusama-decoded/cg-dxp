@@ -36,9 +36,10 @@ Work through [preflight-checklist.md](preflight-checklist.md). The two things th
 
 ## Where things are
 
-- Anchor notebooks: `dayN-*/dayN_anchor.ipynb` (kernel `cg-dxp`; generated from `../research/scripts/notebooks/`). Run sheets: `dayN-*/run-sheet.md` and the printable `dayN-*/run-sheet.docx`. Activity cards: `dayN-*/activities/`. Demo code with a README per folder: `dayN-*/demos/` and `day5-capstone/support/`.
-- The running example (a US end-of-day prices product) used in every demo and fallback: `common/running-example/`.
-- Prompts for every AI beat, with Copilot and Claude variants: `common/prompts/`.
-- Whiteboard diagrams as Mermaid: `common/diagrams/`.
+- Learner-facing, in `courseware/` (shareable as it is): anchor notebooks `courseware/dayN-*/dayN_anchor.ipynb` (kernel `cg-dxp`; generated from `research/scripts/notebooks/`), activity cards `courseware/dayN-*/activities/`, demo code with a README per folder `courseware/dayN-*/demos/` and `courseware/day5-capstone/support/`.
+- Instructor-only, in `instructor/`: this folder (`00-week/`), and per day `instructor/dayN-*/run-sheet.md`, the printable `run-sheet.docx`, and the prep guide `dayN_prep-guide.md` (and `.docx`): the concepts in depth, teaching notes, demo and challenge mechanics, a self-test.
+- The running example (a US end-of-day prices product) used in every demo and fallback: `courseware/common/running-example/`.
+- Prompts for every AI beat, with Copilot and Claude variants: `courseware/common/prompts/`.
+- Whiteboard diagrams as Mermaid: `courseware/common/diagrams/`.
 - The LLM guide (how to use Claude on this laptop, what learners see in Copilot, diagnostic prompts to share): [llm-guide.md](llm-guide.md).
 - Risks and fallbacks: [risks-and-fallbacks.md](risks-and-fallbacks.md).

@@ -7,7 +7,7 @@ Learners use Copilot Chat in VS Code with the AI Catalyst plugin, inside the tra
 | | Learners (Copilot) | Instructor (Claude Code) |
 |---|---|---|
 | Where | VS Code Copilot Chat, in the dev container | A terminal in the `courseware/` folder, or Claude Code's VS Code panel with `courseware/` open |
-| Invoke a skill | `/ai-catalyst product-requirements-document <description or pasted transcript>` or `/product-requirements-document …` | `/product-requirements-document <description or pasted transcript>` (installed by `common/catalyst/install-skills.sh`) |
+| Invoke a skill | `/ai-catalyst product-requirements-document <description or pasted transcript>` or `/product-requirements-document …` | `/product-requirements-document <description or pasted transcript>` (installed by `courseware/common/catalyst/install-skills.sh`) |
 | See the skill's instructions | The plugin's skill file; in the Catalyst repo under `skills/<name>/SKILL.md` | `courseware/.claude/skills/<name>/SKILL.md` and its `templates/` |
 | Model | The model picker (Claude and GPT families; the names change month to month) | `/model` |
 | Reasoning effort | "Thinking effort" slider | `/model` also sets the effort level |
@@ -18,7 +18,7 @@ Four lines to say on Day 1 when the interface comes up: the model is the engine,
 
 ## What to generate live and what to have ready
 
-| Beat | Live with Claude | Ready in `common/running-example/` |
+| Beat | Live with Claude | Ready in `courseware/common/running-example/` |
 |---|---|---|
 | Day 1 PRD from a transcript | Yes: paste `interview-transcript.md` into `/product-requirements-document` | `prd.md` |
 | Day 1 data contract | Yes: `/data-contract` with the PRD in context | `data-contract.md`, `data-contract-planted-errors.md` |
@@ -30,7 +30,7 @@ Rule for every live generation: before accepting anything, read one section alou
 
 ## Prompts
 
-The prompt library is `common/prompts/README.md`: one entry per activity, the Copilot form first and the Claude form beneath when they differ. Learners may be given it as it is.
+The prompt library is `courseware/common/prompts/README.md`: one entry per activity, the Copilot form first and the Claude form beneath when they differ. Learners may be given it as it is.
 
 ## Diagnostic prompts to hand learners when they are stuck
 
