@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-"""Build every day's anchor notebook, run sheet and activity cards from the day modules.
-Usage: ~/.venvs/cg-dxp/bin/python build_all.py [day ...]"""
+"""Build every day's anchor notebook, run sheet (Markdown and Word), and activity cards from the day modules.
+Usage: ~/.venvs/cg-dxp/bin/python build_all.py [--no-docx] [day ...]
+
+The Word run sheet is built by research/scripts/docx/build_lesson_plan.js (CG Core's lesson-plan builder) from a second
+Markdown written in that builder's dialect under research/build/run-sheets/; courseware/<day>/run-sheet.md keeps its own format."""
 from __future__ import annotations
-import importlib, pathlib, re, sys, textwrap
+import importlib, os, pathlib, re, shutil, subprocess, sys, textwrap
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import dc
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 COURSEWARE = ROOT / "courseware"
+BUILD = ROOT / "research" / "build" / "run-sheets"
+DOCX_BUILDER = ROOT / "research" / "scripts" / "docx" / "build_lesson_plan.js"
 
 def activity_md(a: dict, day: int) -> str:
     lines = [f"# Activity {a['number']} — {a['title']}", "",
@@ -111,6 +116,173 @@ def run_sheet_md(mod, reg) -> str:
         out += [textwrap.dedent(mod.RUN_SHEET_EXTRA).strip(), ""]
     return "\n".join(out)
 
+# ---------- the Word run sheet, in the CG Core lesson-plan dialect ----------
+# One H4 row per timed part (and per break), typed with one of the builder's seven activity types; a part without a time
+# of its own is folded into the previous row as a bold sub-heading. Fields use the builder's labels (Purpose, On screen,
+# Instructor notes, Say, Transition, Adapt); the whiteboard script, demo steps, fallbacks and activity pointers follow as
+# plain paragraphs, tables and lists, which the builder renders inside the row.
+TYPE_BY_LABEL = [("Welcome", "Intro/Outro"), ("Friday preparation", "Intro/Outro"), ("Demo", "Instructor-led demo"),
+                 ("Walkthrough", "Instructor-led demo"), ("Activity", "Independent or pairs work"), ("Challenge", "Independent or pairs work"),
+                 ("Circulating", "Independent or pairs work"), ("Shareback", "Feedback and discussion"), ("Debrief", "Feedback and discussion"),
+                 ("Close", "Feedback and discussion"), ("Tally", "Feedback and discussion"), ("Whiteboard", "Questioning"),
+                 ("Guest", "Explain"), ("Orientation", "Explain"), ("Launch", "Explain"), ("Brief", "Explain")]
+
+def row_type(label: str, block: dict | None) -> str:
+    for prefix, t in TYPE_BY_LABEL:
+        if label.startswith(prefix):
+            return t
+    bt = (block or {}).get("type", "")
+    if "Break" in bt: return "Break"
+    if "Demo" in bt: return "Instructor-led demo"
+    if any(k in bt for k in ("Challenge", "Practical", "activity", "Individual")): return "Independent or pairs work"
+    if any(k in bt for k in ("Shareback", "Debrief")): return "Feedback and discussion"
+    if bt.startswith("Intro"): return "Intro/Outro"
+    return "Explain"
+
+_TAGS = [(r"<code>(.*?)</code>", r"`\1`"), (r"</?(?:em|i)>", "*"), (r"</?(?:strong|b)>", "**"), (r"<br\s*/?>", " "),
+         (r"</?details>|</?summary>", ""), (r"<a [^>]*>(.*?)</a>", r"\1")]
+
+def mdtext(s, cell: bool = False) -> str:
+    """HTML written for the notebook boxes becomes Markdown the Word builder accepts: no raw HTML, placeholders as ‹…›."""
+    s = str(s)
+    for pat, rep in _TAGS:
+        s = re.sub(pat, rep, s, flags=re.S)
+    parts = s.split("`")
+    for k in range(0, len(parts), 2):                      # outside code spans only
+        parts[k] = re.sub(r"<([^<>`]+)>", "‹\\1›", parts[k])
+    s = "`".join(parts)
+    if cell:
+        s = s.replace("|", "\\|").replace("\n", " ")
+    return s
+
+def _hm(m: int) -> str:
+    return f"{m // 60:02d}:{m % 60:02d}"
+
+def _end(b: dict) -> int:
+    return _mins(b["time"].split("–")[1])
+
+def _rows(mod, reg) -> list[dict]:
+    by_start = {_start(b): b for b in mod.BLOCKS}
+    break_blocks = [b for b in mod.BLOCKS if "Break" in b["type"]]
+    rows, k = [], 0
+    for sec in reg["sections"]:
+        for p in sec["parts"]:
+            if p["kind"] == "break":
+                bb = break_blocks[k] if k < len(break_blocks) else None; k += 1
+                if bb:
+                    start, minutes = _start(bb), _end(bb) - _start(bb)
+                else:
+                    m = re.match(r"(\d+:\d\d)", p["back_at"])
+                    start, minutes = ((_mins(m.group(1)) - p["minutes"]) if m else None), p["minutes"]
+                rows.append({"kind": "break", "sec": sec, "start": start, "minutes": minutes, "back_at": p["back_at"], "lunch": p["lunch"], "block": bb})
+            elif p.get("time") or not rows or rows[-1]["kind"] != "row" or rows[-1]["sec"] is not sec:
+                rows.append({"kind": "row", "sec": sec, "start": _mins(p["time"]) if p.get("time") else None,
+                             "label": p["label"], "title": p["title"], "items": list(p["items"]), "sub": []})
+            else:
+                rows[-1]["sub"].append(p)
+    prev = None
+    for r in rows:
+        if r["start"] is None:
+            r["start"] = prev if prev is not None else _start(mod.BLOCKS[0])
+        prev = r["start"]
+    day_end = _end(mod.BLOCKS[-1])
+    for i, r in enumerate(rows):
+        if r["kind"] == "row":
+            nxt = next((x["start"] for x in rows[i + 1:] if x["start"] > r["start"]), day_end)
+            r["minutes"] = max(nxt - r["start"], 5)
+    current = None
+    for r in rows:
+        if r["kind"] == "row":
+            current = by_start.get(r["start"], current); r["block"] = current
+    return rows
+
+def _items_md(items) -> list[str]:
+    out = []
+    for kind, pl in items:
+        if kind == "say":
+            out += ["**Say.**", ""] + [f"- “{mdtext(x)}”" for x in pl] + [""]
+        elif kind == "whiteboard":
+            out += [f"**Ask at the whiteboard — {mdtext(pl['title'])}.** Ask in order, write what the room says, add what is missing.", "",
+                    "| Ask | Expect, then add |", "|---|---|"] + [f"| {mdtext(q, cell=True)} | {mdtext(a, cell=True)} |" for q, a in pl["items"]] + [""]
+        elif kind == "demo":
+            out += [f"**Demo — {mdtext(pl['title'])}.** {mdtext(pl['line'])}", ""] + [f"{k}. {mdtext(x)}" for k, x in enumerate(pl["steps"], 1)] + [""]
+        elif kind == "fallback":
+            out += [f"**If it breaks.** {mdtext(pl['line'])}", ""] + ([f"- {mdtext(x)}" for x in pl["bullets"]] + [""] if pl["bullets"] else [])
+        elif kind == "activity":
+            out += [f"**Activity {pl['number']} — {mdtext(pl['title'])}.** {pl['grouping']}, {pl['minutes']} min; the card is in `activities/`.", ""]
+        elif kind == "challenge":
+            out += [f"**Challenge — {mdtext(pl['title'])}.** `{pl['path']}` · {mdtext(pl['minutes'])}.", ""]
+    return out
+
+def _label(label: str, title: str) -> str:
+    t = f"{label} — {mdtext(title)}" if title else label
+    return t if t[-1:] in "?.!" else t + "."
+
+def run_sheet_docx_md(mod, reg) -> str:
+    secs = getattr(mod, "SECTIONS", []); by_n = {x["n"]: x for x in secs}
+    out = [f"# Day {mod.DAY} run sheet — {mod.TITLE}", "", f"[Data Creators › Day {mod.DAY} — run sheet for instructors]{{.breadcrumb}}", "",
+           "Instructor-only companion to the anchor notebook, in the notebook's order: the same numbered sections and labelled parts, each with its time, purpose, what is on screen, what to say, what to ask at the whiteboard (with the answers rooms give and what to add), the demo steps with their coaching, fallbacks, the transition and what to do if ahead or behind. Keep the notebook on the projector and this beside it. Times follow the instructor plan; adapt them to the room and keep the sequence.", ""]
+    if reg.get("prep"):
+        out += ["## Before the day", "", mdtext(reg["prep"]), ""]
+    if secs:
+        out += ["## Sections", "", "| # | Section | Time | What happens |", "|---|---|---|---|"]
+        for i, sec in enumerate(secs):
+            end = secs[i + 1]["start"] if i + 1 < len(secs) else _hm(_end(mod.BLOCKS[-1]))
+            out.append(f"| {sec['n']} | {mdtext(sec['title'], cell=True)} | {sec['start']}–{end} | {mdtext(' · '.join(sec['parts']), cell=True)} |")
+        out.append("")
+    out += ["## Day at a glance", "", "| § | Time | Block | Type | On screen |", "|---|---|---|---|---|"]
+    for b in mod.BLOCKS:
+        out.append(f"| {section_of(mod, b)} | {b['time']} | {mdtext(b['title'], cell=True)} | {b['type']} | {mdtext(b['on_screen'], cell=True)} |")
+    out += ["", "## Timeline", ""]
+    rows = _rows(mod, reg)
+    first, last = {}, {}
+    for r in rows:
+        if r["kind"] == "row" and r.get("block"):
+            first.setdefault(id(r["block"]), r); last[id(r["block"])] = r
+    cur = None
+    for r in rows:
+        if r["sec"] is not cur:
+            cur = r["sec"]
+            out += [f"### {cur['n']}. {mdtext(cur['title'])}" if cur["n"] else f"### {mdtext(cur['title'])}", ""]
+            if cur["n"] in by_n:
+                out += [mdtext(" · ".join(by_n[cur["n"]]["parts"])), ""]
+        if r["kind"] == "break":
+            out += [f"#### {_hm(r['start'])} · {r['minutes']} min · Break — {'Lunch' if r['lunch'] else 'Break'}, back at {mdtext(r['back_at'])}", ""]
+            if r["block"] and r["block"].get("notes"):
+                out += ["**Instructor notes.**", ""] + [f"- {mdtext(n)}" for n in r["block"]["notes"]] + [""]
+            continue
+        b = r["block"]
+        out += [f"#### {_hm(r['start'])} · {r['minutes']} min · {row_type(r['label'], b)} — {r['label']}" + (f" — {mdtext(r['title'])}" if r["title"] else ""), ""]
+        if b:
+            out += [f"**Assessment.** {mdtext(b['on_screen']) or '—'}", ""]      # the right-hand column, headed "On screen"
+        if b and first[id(b)] is r:
+            out += [f"**Purpose.** {mdtext(b['purpose'])}", ""]
+            if b.get("notes"):
+                out += ["**Instructor notes.**", ""] + [f"- {mdtext(n)}" for n in b["notes"]] + [""]
+            if b.get("say"):
+                out += ["**Say.**", ""] + [f"- “{mdtext(x)}”" for x in b["say"]] + [""]
+        out += _items_md(r["items"])
+        for sub in r["sub"]:
+            out += [f"**{_label(sub['label'], sub['title'])}**", ""] + _items_md(sub["items"])
+        if b and last[id(b)] is r:
+            if b.get("transition"):
+                out += [f"**Transition.** {mdtext(b['transition'])}", ""]
+            if b.get("flex"):
+                out += [f"**Adapt.** {mdtext(b['flex'])}", ""]
+    if getattr(mod, "LEAVE_WITH", None):
+        out += ["## Before learners leave", ""] + [f"- [ ] {mdtext(i)}" for i in mod.LEAVE_WITH] + [""]
+    return "\n".join(out)
+
+def build_docx(md_path: pathlib.Path, out_path: pathlib.Path) -> bool:
+    node = shutil.which("node") or "/opt/homebrew/bin/node"
+    env = dict(os.environ, DOC_PROGRAMME="Data Creators", DOC_KIND="run sheet", DOC_ASSESS_HEADER="On screen")
+    env.setdefault("PANDOC", shutil.which("pandoc") or "/opt/anaconda3/bin/pandoc")
+    r = subprocess.run([node, str(DOCX_BUILDER), str(md_path), str(out_path)], capture_output=True, text=True, env=env)
+    if r.returncode != 0:
+        print(f"  Word build failed for {md_path.name}: {r.stderr.strip()[-800:]}")
+        return False
+    return True
+
 def build(day_name: str):
     mod = importlib.import_module(day_name)
     folder = COURSEWARE / mod.SLUG
@@ -118,13 +290,23 @@ def build(day_name: str):
     cells = mod.cells()
     nb = dc.write(cells, folder / f"day{mod.DAY}_anchor.ipynb")
     (folder / "run-sheet.md").write_text(run_sheet_md(mod, dc.REG))
+    docx_note = ""
+    if DOCX:
+        BUILD.mkdir(parents=True, exist_ok=True)
+        src = BUILD / f"day{mod.DAY}_run-sheet.md"
+        src.write_text(run_sheet_docx_md(mod, dc.REG))
+        docx_note = ", run-sheet.docx" if build_docx(src, folder / "run-sheet.docx") else ", run-sheet.docx FAILED"
     (folder / "activities").mkdir(exist_ok=True)
     for a in mod.ACTIVITIES:
         slug = re.sub(r"[^a-z0-9]+", "-", a["title"].lower()).strip("-")
         (folder / "activities" / f"{a['number']}-{slug}.md").write_text(activity_md(a, mod.DAY))
-    print(f"day {mod.DAY}: {nb.name} ({sum(c is not None for c in cells)} cells), run-sheet.md, {len(mod.ACTIVITIES)} activity cards -> {folder}")
+    print(f"day {mod.DAY}: {nb.name} ({sum(c is not None for c in cells)} cells), run-sheet.md{docx_note}, {len(mod.ACTIVITIES)} activity cards -> {folder}")
 
+DOCX = True
 if __name__ == "__main__":
-    days = sys.argv[1:] or ["day1", "day2", "day3", "day4", "day5"]
+    args = sys.argv[1:]
+    if "--no-docx" in args:
+        DOCX = False; args.remove("--no-docx")
+    days = args or ["day1", "day2", "day3", "day4", "day5"]
     for d in days:
         build(d)

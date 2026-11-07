@@ -331,7 +331,7 @@ def cells():
                   "Click Transcript to show the text; click off and on again, then Copy transcript.",
                   "Say: on Teams or Zoom the meeting transcript does the same job.",
                   "Paste the transcript into the Catalyst prompt."])),
-          dc.part("Activity 4", "interview and generate"),
+          dc.part("Activity 4", "interview and generate", time="14:00"),
           act("4"),
           dc.md(dc.prompt("Chat view", "/ai-catalyst product-requirements-document\n<paste the transcript>\n\nThen, in the same conversation:\n/ai-catalyst data-contract\nUse the PRD above and the transcript. Where the transcript does not say, leave the cell empty rather than inventing a value.",
                           "/product-requirements-document  <paste transcript>\nthen\n/data-contract  Use the PRD above; leave unknown cells empty.")),

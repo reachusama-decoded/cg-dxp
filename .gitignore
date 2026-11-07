@@ -22,3 +22,6 @@ reference/DataCreators-client/ai-skills/catalyst/.coverage
 
 # sibling CG Core clone (own git repository, large pack): reference only, never committed here
 reference/ts-cg-core/
+
+# Word builder dependencies
+**/node_modules/

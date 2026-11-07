@@ -1,0 +1,12 @@
+{
+  "name": "cg-core-docx",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CG Core's Word documents in the Decoded house style: the instructors' lesson plans and the programme overview",
+  "type": "commonjs",
+  "dependencies": {
+    "docx": "^9.5.1",
+    "docx-preview": "0.3.6",
+    "jszip": "^3.10.1"
+  }
+}

@@ -124,7 +124,7 @@ def cells():
          dc.part("Welcome", "yesterday's contract is today's input", time="09:00"),
          dc.md(dc.say(["Open the contract you made yesterday. Everything before lunch happens to that document.",
                        "Hands up: who has written or reviewed source-to-target rules? Worked with an SLI? With an SLA? Usually most hands for SLAs and fewest for SLIs."])),
-         dc.part("Demo", "STTM and service levels"),
+         dc.part("Demo", "STTM and service levels", time="09:05"),
          dc.anchor("What is the core of a source-to-target mapping?",
                    "The transformation rules: one per target column, plus the row rules, in English precise enough to implement.",
                    "The STTM is where the product's business logic lives; a vague rule becomes a wrong join nobody notices.",

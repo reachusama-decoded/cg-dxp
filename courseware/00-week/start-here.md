@@ -36,7 +36,7 @@ Work through [preflight-checklist.md](preflight-checklist.md). The two things th
 
 ## Where things are
 
-- Anchor notebooks: `dayN-*/dayN_anchor.ipynb` (kernel `cg-dxp`; generated from `../research/scripts/notebooks/`). Run sheets: `dayN-*/run-sheet.md`. Activity cards: `dayN-*/activities/`. Demo code with a README per folder: `dayN-*/demos/` and `day5-capstone/support/`.
+- Anchor notebooks: `dayN-*/dayN_anchor.ipynb` (kernel `cg-dxp`; generated from `../research/scripts/notebooks/`). Run sheets: `dayN-*/run-sheet.md` and the printable `dayN-*/run-sheet.docx`. Activity cards: `dayN-*/activities/`. Demo code with a README per folder: `dayN-*/demos/` and `day5-capstone/support/`.
 - The running example (a US end-of-day prices product) used in every demo and fallback: `common/running-example/`.
 - Prompts for every AI beat, with Copilot and Claude variants: `common/prompts/`.
 - Whiteboard diagrams as Mermaid: `common/diagrams/`.

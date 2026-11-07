@@ -90,7 +90,7 @@ def cells():
                    ["Six raw feeds ship as seeds; five are modelled; refdata is there to inspect and for freshness practice.",
                     "Staging renames and casts, one model per source; intermediate does the joins; marts are the consumer-aligned facts and aggregates.",
                     "The tests are promises from a contract made executable: not null, unique, a relationship, accepted values, NAV within one basis point, the rollup reconciles."]),
-         dc.part("Challenge 9", "dbt practical: Phase 1 first"),
+         dc.part("Challenge 9", "dbt practical: Phase 1 first", time="09:10"),
          dc.md(dc.challenge("dbt practical (challenge 02)", "challenges/v1/02-dbt-pipeline/README.md", "about 3 hours across the day",
                       "Build, test and document the Portfolio Analytics pipeline: eight staging sections, then ten challenges.",
                       [("Where to work", [
