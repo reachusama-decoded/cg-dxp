@@ -79,7 +79,7 @@ def cells():
          dc.code(dc.setup_cell(5)),
          dc.agenda(SECTIONS, lead='The day ends when every table has completed Phase 1 and presented. Cohorts usually present early afternoon.'),
          dc.section(1, "The brief and discovery", "s1"),
-         dc.part("Brief", "the day, the rules, ten minutes of reading"),
+         dc.part("Brief", "the day, the rules, ten minutes of reading", time="09:00"),
          dc.figure("d5-capstone-day", "Friday in one line",
                    ["Discovery first, then the baseline, then extensions, then presentations.",
                     "Phase 1 is the certification bar: every team establishes it; Phase 2 is for teams that have and can explain it."]),
@@ -88,7 +88,7 @@ def cells():
                        "The data is synthetic and has been through several rounds of generation; a few things will look odd. Portfolio and fund do not mean what they mean in our own model; that is deliberate, so the design conversation is real.",
                        "Read the first third of the README on your own now. At 09:15, as a table: what are we being asked to do? Stop discussing by 10:00, 10:15 at the latest, so there is time to build.",
                        "Phase 1 is what you must complete. Phase 2 is open-ended, for whoever finishes. Lunch when you like; everyone back by 13:30; presentations when every table is done with Phase 1."])),
-         dc.part("Activity 12", "discovery worksheet, then playback"),
+         dc.part("Activity 12", "discovery worksheet, then playback", time="09:15"),
          dc.anchor("Seven CSV files and seven output tables. Where do you start?",
                    "From the consumer's question backwards to the sources: the discovery worksheet.",
                    "Teams that map first build faster and present better; teams that start with SQL find the definitions mid-afternoon.",
@@ -118,7 +118,7 @@ def cells():
          </details>
          """),
          dc.section(2, "Phase 1: the baseline", "s2"),
-         dc.part("Challenge", "Atlas Phase 1"),
+         dc.part("Challenge", "Atlas Phase 1", time="10:15"),
          dc.md(dc.challenge("Atlas capstone, Phase 1", "challenges/v1/04-atlas-capstone/README.md", "two to three hours",
                       "Every team establishes the baseline: seeds, the three layers, the tests, and the orchestration understood.",
                       [("Readiness, from the repo root", [
@@ -158,7 +158,7 @@ def cells():
          """),
          dc.break_(60, "13:30 at the latest", lunch=True),
          dc.section(3, "Phase 2: extensions and presentation prep", "s3"),
-         dc.part("Challenge", "choose extensions by value to the consumer; technical work stops at 14:30"),
+         dc.part("Challenge", "choose extensions by value to the consumer; technical work stops at 14:30", time="13:00"),
          dc.md("""
          Choose by value to the consumer, not by difficulty. Each is a README challenge with a solution kept by the instructor; the DuckDB build in `support/atlas_duckdb/` has them all, for comparing a team's result.
 
@@ -172,7 +172,7 @@ def cells():
          """),
          dc.code(f"!cd {AT} && dbt ls --resource-type model --select tag:consumer-aligned && dbt ls --resource-type test | head -12\n# The solution's consumer-aligned models and tests, for reference while a team describes theirs."),
          dc.section(4, "Presentations and close", "s4"),
-         dc.part("Activity 13", "capstone presentation"),
+         dc.part("Activity 13", "capstone presentation", time="14:30"),
          act("13"),
          dc.part("Tally sheet and certification evidence"),
          dc.md("""

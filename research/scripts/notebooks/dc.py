@@ -6,7 +6,7 @@ like Decoded's other notebooks. Everything here is plain HTML inside markdown ce
 VS Code and JupyterLab both render.
 """
 from __future__ import annotations
-import html, pathlib, textwrap
+import html, pathlib, re, textwrap
 import nbformat
 from nbformat.v4 import new_markdown_cell, new_code_cell, new_notebook
 
@@ -17,9 +17,32 @@ GREY = "#434343"; TEXT = "#1a1a1a"
 def _d(s: str) -> str:
     return textwrap.dedent(s).strip("\n")
 
+# ---------- instructor registry: what the run sheet mirrors ----------
+# The notebook is learner-facing. Helpers that carry instructor material (what to say, the whiteboard answers,
+# demo coaching, fallbacks) record it here, in the order of the notebook's sections and parts; build_all.py renders it.
+REG: dict = {"sections": [], "prep": ""}
+
+def reset():
+    REG["sections"] = []; REG["prep"] = ""
+
+def _cur_section() -> dict:
+    if not REG["sections"]:
+        REG["sections"].append({"n": 0, "title": "Before the first section", "anchor": "", "parts": []})
+    return REG["sections"][-1]
+
+def _cur_part() -> dict:
+    sec = _cur_section()
+    if not sec["parts"] or sec["parts"][-1]["kind"] != "part":
+        sec["parts"].append({"kind": "part", "label": "Opening", "title": "", "time": None, "items": []})
+    return sec["parts"][-1]
+
+def _item(kind: str, payload) -> None:
+    _cur_part()["items"].append((kind, payload))
+
 # ---------- cells ----------
-def md(src: str):
-    return new_markdown_cell(_d(src))
+def md(src: str | None):
+    """A markdown cell; None (an instructor-only helper that only registered its content) produces no cell."""
+    return None if src is None else new_markdown_cell(_d(src))
 
 def code(src: str):
     return new_code_cell(_d(src))
@@ -47,26 +70,30 @@ def toc(rows: list[tuple[str, str, str]]):
     return md("\n".join(lines))
 
 def agenda(sections: list[dict], lead: str = ""):
-    """The day's agenda: numbered sections, each with what happens inside it (its parts, in order).
+    """The day's agenda as a table: numbered sections and what happens inside each (its parts, in order).
     sections: dicts with n, title, anchor, start ("HH:MM"), parts (list of str)."""
     lines = ["## Today", ""]
     if lead:
         lines += [lead, ""]
+    lines += ["| # | Section | What happens |", "|---|---|---|"]
     for sec in sections:
-        lines.append(f"{sec['n']}. **[{sec['title']}](#{sec['anchor']})**<br>")
-        lines.append(f"   {' · '.join(sec['parts'])}")
+        lines.append(f"| {sec['n']} | **[{sec['title']}](#{sec['anchor']})** | {' · '.join(sec['parts'])} |")
     return md("\n".join(lines))
 
 def section(n: int, title_text: str, anchor: str):
     """A numbered section: one topic, ideally a whole cycle of demo, activity, shareback and break."""
+    REG["sections"].append({"n": n, "title": title_text, "anchor": anchor, "parts": []})
     return md(f'<a id="{anchor}"></a>\n\n## {n}. {title_text}')
 
-def part(label: str, title_text: str = ""):
-    """A labelled part of a section: Demo, Activity 6, Challenge 7, Shareback, Debrief, Whiteboard, Guest."""
+def part(label: str, title_text: str = "", time: str | None = None):
+    """A labelled part of a section: Demo, Activity 6, Challenge 7, Shareback, Debrief, Whiteboard, Guest.
+    `time` ("HH:MM", the instructor plan's start) ties the part to its run-sheet block; a part without one belongs to the previous part's block."""
+    _cur_section()["parts"].append({"kind": "part", "label": label, "title": title_text, "time": time, "items": []})
     return md(f"### {label}" + (f" — {title_text}" if title_text else ""))
 
 def break_(minutes: int, back_at: str, lunch: bool = False):
     icon, word = ("🍽️", "LUNCH") if lunch else ("☕", "BREAK")
+    _cur_section()["parts"].append({"kind": "break", "minutes": minutes, "back_at": back_at, "lunch": lunch})
     return md(_box("#434343", "#EFEFEF", TEXT, "#fff", f"{icon} {word} &nbsp;·&nbsp; {minutes} min &nbsp;·&nbsp; back at {back_at}",
                    "Questions go in the table at the end; the next part starts on time."))
 
@@ -94,14 +121,12 @@ def anchor(question, what, why, how):
     return md(anchor_box(question, what, why, how))
 
 def whiteboard(title_text: str, items: list[tuple[str, str]], open_: bool = False) -> str:
-    """A folded whiteboard script: (question to ask, answers the room gives / add)."""
-    rows = "".join(f"<tr><td style='vertical-align:top;padding:6px 10px;border-top:1px solid #ccc;width:38%'><strong>{q}</strong></td>"
-                   f"<td style='vertical-align:top;padding:6px 10px;border-top:1px solid #ccc'>{a}</td></tr>" for q, a in items)
-    return (f'<details{" open" if open_ else ""}><summary><strong>🖊️ Whiteboard — {title_text}</strong> (ask, write what the room says, add what is missing)</summary>\n'
-            f'<table style="width:100%;border-collapse:collapse;margin:8px 0;color:{TEXT}"><tr><th style="text-align:left;padding:6px 10px;background:#F3F3F3">Ask</th>'
-            f'<th style="text-align:left;padding:6px 10px;background:#F3F3F3">Expect, then add</th></tr>{rows}</table></details>')
+    """The questions the room works through at the whiteboard. The answers rooms give, and what to add, go to the run sheet only."""
+    _item("whiteboard", {"title": title_text, "items": items})
+    return f"**🖊️ Whiteboard — {title_text}**\n\n" + "\n".join(f"- {q}" for q, _ in items)
 
 def activity(number: str, title_text: str, grouping: str, minutes: int, brief: str, outputs: list[str], debrief: list[str] | None = None, early: str | None = None) -> str:
+    _item("activity", {"number": number, "title": title_text, "grouping": grouping, "minutes": minutes})
     body = (f'<strong>{brief}</strong><br><br>' +
             "<strong>Produce:</strong><br>" + "<br>".join(f"• {o}" for o in outputs))
     if early:
@@ -120,6 +145,7 @@ def _after(box: str, parts: list[str]) -> str:
 def challenge(title_text: str, path: str, minutes: str, line: str, phases: list[tuple[str, list[str]]], gate: str,
               support: list[str] | None = None, stretch: str | None = None) -> str:
     """One line in the box; what learners do, phase by phase, one line per step; then the gate, support and stretch."""
+    _item("challenge", {"title": title_text, "path": path, "minutes": minutes})
     box = _box(GREY, GREY, "#fff", "#f8f8f8", f"🏆 CHALLENGE TIME &nbsp;—&nbsp; {title_text} &nbsp;·&nbsp; {minutes}",
                f"{line} &nbsp;·&nbsp; <code>{path}</code>")
     parts = [f"**{label}**\n\n{_list(steps)}" for label, steps in phases]
@@ -133,19 +159,28 @@ def challenge(title_text: str, path: str, minutes: str, line: str, phases: list[
 def terminal(title_text: str, body: str) -> str:
     return _box(GREY, GREY, "#fff", "#f8f8f8", f"⌨️ TERMINAL &nbsp;—&nbsp; {title_text}", body)
 
+_COACH = re.compile(r"^(Say\b|Point at\b|After each cell\b|Let it run .*narrate|Before the day\b)")
+
 def demo(title_text: str, line: str, steps: list[str] | None = None) -> str:
-    """One line in the box; the exact steps to show learners beneath it, one line each."""
+    """One line in the box; beneath it the steps learners will see, one line each.
+    Coaching steps (Say …, Point at …, Before the day …) go to the run sheet only; every step is recorded there in order."""
+    steps = steps or []
+    _item("demo", {"title": title_text, "line": line, "steps": steps})
+    shown = [s for s in steps if not _COACH.match(s)]
     box = _box("#434343", "#C9DAF8", TEXT, "#fff", f"🖥️ DEMO &nbsp;—&nbsp; {title_text}", line)
-    return _after(box, [_list(steps)] if steps else [])
+    return _after(box, [_list(shown)] if shown else [])
 
 def reflect(title_text: str, line: str, bullets: list[str] | None = None) -> str:
     box = _box("#F8DB59", "#FFF2CC", "#000", "#fffef5", f"💭 {title_text}", line)
     return _after(box, [_list(bullets, numbered=False)] if bullets else [])
 
-def say(lines: list[str]) -> str:
-    return _box("#D9EAD3", "#D9EAD3", TEXT, "#fff", "🗣️ SAY", "<br>".join(f"“{l}”" for l in lines))
+def say(lines: list[str]):
+    """Instructor-only: lines to say, recorded for the run sheet. Produces no cell."""
+    _item("say", lines)
+    return None
 
 def fallback(line: str, bullets: list[str] | None = None) -> str:
+    _item("fallback", {"line": line, "bullets": bullets or []})
     box = _box("#F4CCCC", "#F4CCCC", TEXT, "#fff", "🧯 IF IT BREAKS", line)
     return _after(box, [_list(bullets, numbered=False)] if bullets else [])
 
@@ -162,17 +197,19 @@ def leave_with(items: list[str]) -> str:
 
 # ---------- standard cells ----------
 def how_to_use(day: int, extra: str = "") -> list:
+    """The learner-safe 'about this notebook' cell. `extra` (instructor preparation lines) goes to the run sheet, not the notebook."""
+    if extra:
+        REG["prep"] = (REG.get("prep", "") + "\n" + _d(extra)).strip()
     return [md(f"""
     <a id="how-to-use"></a>
 
-    ## How to use this notebook
+    ## About this notebook
 
-    - This is the anchor for Day {day}: a numbered agenda, then one section per topic, each a cycle of demo, activity or challenge, shareback and break. Every concept has its diagram, every demo its steps, every activity its brief, every challenge its pointer into the learners' repository. Keep it on the projector; switch to a terminal or the browser when a 🖥️ DEMO box says so. Timings are in `run-sheet.md`.
+    - Day {day}'s anchor: the agenda, then one numbered section per topic. Each section runs as a cycle: a demo, an activity or challenge, a shareback, a break.
+    - Every concept has its diagram; every demo has the cells that run it; every activity has its brief; every challenge points into the training repository.
     - Run the **Setup** cell first. Cells that start with `!` run in a shell in this notebook's folder with the demo environment on `PATH`.
-    - 🖊️ Whiteboard blocks are folded: open one when you reach it, ask the questions in order, write what the room says, add what is missing.
-    - The last section, **Questions from the room**, is yours to type in during the day: a table for questions, an empty cell to answer with SQL or Python, and `quick_diagram(...)` to sketch a diagram inline before reaching for Excalidraw.
-    - Learners can be given this notebook as it is; nothing in it is instructor-only. The instructor-only timing notes are in `run-sheet.md` beside it.
-    {extra}
+    - 🖊️ Whiteboard lines are the questions the room works through together.
+    - The last section, **Questions from the room**, collects the day's questions and their answers as they come.
     """)]
 
 def setup_cell(day: int) -> str:
@@ -233,7 +270,7 @@ def qa_section(day: int) -> list:
     ]
 
 def write(cells: list, path: pathlib.Path):
-    nb = new_notebook(cells=cells, metadata={
+    nb = new_notebook(cells=[c for c in cells if c is not None], metadata={
         "kernelspec": {"name": "cg-dxp", "display_name": "Python (cg-dxp)", "language": "python"},
         "language_info": {"name": "python"},
     })

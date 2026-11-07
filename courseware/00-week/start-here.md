@@ -16,8 +16,8 @@ The thread through the week: design conversations, transcripts and reviewed cont
 
 ## How a day runs
 
-- **Anchor from the notebook.** Each day has one notebook, `dayN-*/dayN_anchor.ipynb`, that stays on the projector: agenda, diagrams, demo cells, activity and challenge boxes, and a Questions section for live notes. Every block runs as demo, challenge, shareback, break.
-- **Teach from the whiteboard.** Day 1 and the first hour of Day 2 are elicitation: ask, write what the room says, add what is missing. The anchors and run sheets carry the questions and the answers rooms give.
+- **Anchor from the notebook.** Each day has one notebook, `dayN-*/dayN_anchor.ipynb`, that stays on the projector: a numbered agenda, diagrams, whiteboard questions, demo cells, activity and challenge boxes, and a Questions section for live notes. Every section runs as demo, challenge, shareback, break. It is learner-facing; everything instructor-only is in `run-sheet.md` beside it, in the same section order.
+- **Teach from the whiteboard.** Day 1 and the first hour of Day 2 are elicitation: ask, write what the room says, add what is missing. The anchors carry the questions; the run sheets carry the answers rooms give and what to add.
 - **Demo from the laptop.** Every demo in this pack runs locally (DuckDB, Docker Desktop, the Astro CLI, Claude Code with Catalyst skills). Learners see the same thing in their dev container against Databricks. Say so once; then stop mentioning it.
 - **Practise in the learners' repository.** The challenge READMEs are the learner material. Launch each with the run sheet's script, circulate with its checklist, and regroup at the stated times.
 - **Debrief by asking.** "What did we learn?" and write it up, as the Day 3 recap script does. Then the pair exercise, then save the artefacts.

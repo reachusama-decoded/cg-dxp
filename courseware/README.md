@@ -19,9 +19,10 @@ Start with [00-week/start-here.md](00-week/start-here.md).
 
 ## Conventions
 
-- Timings are the instructor plan's. Each run sheet row has a purpose, what is on screen, a whiteboard script with the answers a room typically gives, lines to say, the transition, and what to do if ahead or behind.
+- Timings are the instructor plan's and sit in the run sheet's timeline table. Each run-sheet part has a purpose, what is on screen, the whiteboard script with the answers a room typically gives, lines to say, the demo steps with their coaching, the transition, and what to do if ahead or behind.
 - Activity cards are written to be shown on the projector and printed one per table. They can be shared with learners as they are.
-- The anchor notebook is what goes on the projector each day: the agenda, one diagram per concept with the whiteboard script folded beneath it, demo cells that run the day's code, the activity and challenge boxes, and a Questions section at the end for live notes and sketches (`quick_diagram()` renders Mermaid typed on the spot). Open it in VS Code with the `cg-dxp` kernel from its own folder.
+- The anchor notebook is learner-facing and goes on the projector each day: a numbered agenda, then one section per topic (demo, activity or challenge, shareback, break), one diagram per concept, the whiteboard questions, demo cells that run the day's code, the activity and challenge boxes, and a Questions section at the end for live notes and sketches (`quick_diagram()` renders Mermaid typed on the spot). Open it in VS Code with the `cg-dxp` kernel from its own folder. Learners can be given it as it is.
+- The run sheet is the instructor-only companion in the same order: every section and part with its time, purpose, what is on screen, what to say, the whiteboard script with the answers rooms give, the demo steps with their coaching, fallbacks, transitions and flex. Nothing in it goes on the projector.
 - The anchors, run sheets and activity cards are generated from one source per day in `../research/scripts/notebooks/` (`build_all.py`); edit there and rebuild rather than editing the `.ipynb`. `smoke.py` runs every code cell from the terminal.
 - Every demo has a README beside it and a script that runs it end to end (`demo.sh`, `run.sh` or `build.sh`).
 - Learner-facing wording never names an instructor; "the instructor" and "you" are used throughout.

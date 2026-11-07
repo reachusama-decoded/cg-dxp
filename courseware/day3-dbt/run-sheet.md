@@ -1,13 +1,19 @@
 # Day 3 run sheet — dbt practical and consolidation
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only companion to the anchor notebook, in the notebook's order: the same numbered sections and labelled parts, each with its time, purpose, what is on screen, what to say, what to ask at the whiteboard (with the answers rooms give and what to add), the demo steps with their coaching, fallbacks, the transition and what to do if ahead or behind. Keep the notebook on the projector and this beside it. Times follow the instructor plan; adapt them to the room and keep the sequence.
+
+## Before the day
+
+- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand.
 
 ## Sections
 
-1. **The dbt practical: launch, Phase 1 and the walkthrough** (09:00–11:00): Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating
-2. **The platform session** (11:00–13:00): Guest: the platform team (or the instructor-led version) · Lunch
-3. **Complete and extend the practical** (13:00–14:30): Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break
-4. **Consolidation** (14:30–15:00): Debrief: what did we learn? · Activity 9: test review in pairs · Close
+| # | Section | Time | What happens |
+|---|---|---|---|
+| 1 | The dbt practical: launch, Phase 1 and the walkthrough | 09:00–11:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating |
+| 2 | The platform session | 11:00–13:00 | Guest: the platform team (or the instructor-led version) · Lunch |
+| 3 | Complete and extend the practical | 13:00–14:30 | Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break |
+| 4 | Consolidation | 14:30–15:00 | Debrief: what did we learn? · Activity 9: test review in pairs · Close |
 
 ## Timeline
 
@@ -24,9 +30,9 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 | 4 | 14:45–14:55 | Test review in pairs | Pair activity | Anchor › Activity 9 card |
 | 4 | 14:55–15:00 | Closing discussion | Debrief | Anchor › Before learners leave |
 
-## Blocks
+## 1. The dbt practical: launch, Phase 1 and the walkthrough
 
-### 09:00–10:00 · Challenge 9 — dbt practical: launch and first hour (Practical, §1)
+### Launch — the pipeline you will build today · 09:00–10:00
 
 **Purpose.** Launch the assigned dbt project, explain the task sequence and the checks, and get everyone building Phase 1 (sources and staging).
 
@@ -42,17 +48,30 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 - “The README teaches dbt as you go: concept, task, hint, check, a variation, then the solution. Attempt before you open the solution.”
 
+### Challenge 9 — dbt practical: Phase 1 first · 09:00–10:00
+
+**Challenge — dbt practical (challenge 02).** `challenges/v1/02-dbt-pipeline/README.md` · about 3 hours across the day.
+
+**Say.**
+
+- “Attempt each section before you open its solution. The solution is for comparing, not for copying.”
+- “You can run the raw dbt commands from the project folder. If dbt says it cannot find your credentials, open a fresh terminal so mise loads the environment, or rerun mise run setup:databricks.”
+
+### Walkthrough — Phase 1 on DuckDB: sources and staging · 09:00–10:00
+
+**Demo — the same project, on DuckDB, section by section.** The learners' challenge 02 solution ported to DuckDB in <code>demos/portfolio_analytics/</code>: one cell per README section, for "what should I see?".
+
+1. Same model names, layers, tags and tests; the Databricks-only post-hook is a no-op macro here.
+2. Use a cell when someone asks what they should see; `demos/portfolio_analytics/README.md` maps each cell to its README section.
+3. Say once: the SQL is the same; only the target differs.
+
 **Transition.** Break; carry on after it.
 
 **If ahead or behind.** Anyone who knows dbt: skip to Phase 2 and the stretch list.
 
-### 10:00–10:15 · Break (Break, §1)
+> ☕ Break · 15 min · back at 10:15
 
-**Purpose.** 
-
-**On screen.** 
-
-### 10:15–11:00 · Continue dbt practical (Practical, §1)
+### Walkthrough — Phase 2 on DuckDB: intermediate, marts, tests, docs · 10:15–11:00
 
 **Purpose.** Phase 1 complete for most; Phase 2 started by some; blockers resolved; questions collected.
 
@@ -67,9 +86,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 - “Could this join pass its tests and still double the reported value?”
 
+### Circulating — three questions per learner, and the symptom table · 10:15–11:00
+
 **Transition.** At 11:00 the platform session, or the instructor-led version.
 
-### 11:00–12:00 · Guest session: the platform (Talk, §2)
+## 2. The platform session
+
+### Guest — the platform team, or the instructor-led version · 11:00–12:00
 
 **Purpose.** Why the paved path works this way: Airflow on Astronomer, Databricks and Unity Catalog, contracts, the vended repository, compute, operations.
 
@@ -88,13 +111,11 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** A short guest session returns time to the practical.
 
-### 12:00–13:00 · Lunch (Break, §2)
+> 🍽️ Lunch · 60 min · back at 13:00
 
-**Purpose.** 
+## 3. Complete and extend the practical
 
-**On screen.** 
-
-### 13:00–14:15 · Complete and extend dbt practical (Practical, §3)
+### Challenge 9 continued — Phase 2, then the stretch: macros, snapshots, incremental, unit tests · 13:00–14:15
 
 **Purpose.** Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.
 
@@ -111,13 +132,11 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Break, then the recap.
 
-### 14:15–14:30 · Break (Break, §3)
+> ☕ Break · 15 min · back at 14:30
 
-**Purpose.** 
+## 4. Consolidation
 
-**On screen.** 
-
-### 14:30–14:45 · Consolidation (Debrief, §4)
+### Debrief — what did we learn? · 14:30–14:45
 
 **Purpose.** Ask the room what it learned and write the ten topics up; arrange tomorrow's contributions (bitemporal loading, deployment).
 
@@ -132,9 +151,24 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 - “Who here has a bitemporal table in production? Would you show us tomorrow morning: the columns and one or two loading strategies, ten minutes?”
 
+**Ask at the whiteboard — what did we learn? (fill gaps from this list, do not lecture it).** Ask in order, write what the room says, add what is missing.
+
+| Ask | Expect, then add |
+|---|---|
+| Models and conventions | Staging and integration models; CG naming (stg_, int_, fct_, agg_; on Friday src_, dom_, rpt_); the SQL behind a transformation is a SELECT dbt wraps. |
+| Dependencies and change | ref() and source() build the graph; a source or schema change is visible in lineage; dbt docs show it. |
+| Testing and contracts | Schema tests and singular tests are the contract's quality rules made executable; catalog information and descriptions come from the same YAML. |
+| Bitemporal loading | Tomorrow morning: the columns and one or two strategies, from a volunteer or guest. Questions to carry: what is business time vs system time? what happens on a correction? |
+| Deployment context | Tomorrow afternoon: Harness and CI/CD, with screenshots for anyone without access. |
+| Catalyst | Generation, iteration, and the repository's data_products area where the code goes; 80 to 90% of the code from a good contract. |
+| Airflow preview | YAML-configured blueprints are tomorrow's topic; today's dbt project is what they will run. |
+| Execution and storage | dbt SQL runs on Databricks as Spark; files on S3 in Delta: columnar, with logs and manifests that give transactions; you can insert and delete, unlike plain Parquet. |
+| Catalogue conventions | Application, domain and source-aligned catalogs; publish via the domain catalog; the Marketplace is discovery. |
+| Quality and materialisation | Checks at project and model level; materialisation set per folder in dbt_project.yml or in the model file. |
+
 **Transition.** Pairs: swap a mapping and its test.
 
-### 14:45–14:55 · Test review in pairs (Pair activity, §4)
+### Activity 9 — test review in pairs · 14:45–14:55
 
 **Purpose.** Exchange one mapping rule and its test; propose a wrong result and decide whether the test would catch it; agree one improvement.
 
@@ -148,9 +182,11 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 - “Would your test catch it? If not, write the expected failure before you write the fix.”
 
+**Activity 9 — Test review in pairs.** Pairs, 10 min; the card is in `activities/`.
+
 **Transition.** Two or three examples to the room, then close.
 
-### 14:55–15:00 · Closing discussion (Debrief, §4)
+### Close — closing discussion · 14:55–15:00
 
 **Purpose.** Share a missing check; save the dbt work for orchestration; confirm tomorrow's baseline.
 
@@ -163,6 +199,11 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 **Say.**
 
 - “Keep this project where it is. Tomorrow Airflow runs it.”
+
+**Say.**
+
+- “Two or three examples to the room: the wrong result, whether the test caught it, the improvement.”
+- “Save the project where it is; tomorrow Airflow runs it. Completing Phase 2 is not a prerequisite for tomorrow: the Airflow challenge ships the solved dbt project.”
 
 ## Before learners leave
 
