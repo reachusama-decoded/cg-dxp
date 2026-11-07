@@ -120,7 +120,12 @@ def cells():
                    ["Day 2's changed record closes the day-1 row's system clock and carries it forward with its business clock ended, then inserts the new version.",
                     "The corrected re-delivery for the same business date closes only the system clock of the defective row and inserts the corrected one.",
                     "As of Monday with today's knowledge: the carried-forward row. As was on Tuesday: the defective row. As is: the corrected row."]),
-         dc.md(dc.demo("three loads on DuckDB, then the four questions", "The cell runs <code>demos/bitemporal/demo.sh</code>: seed, load day 1, load day 2, load the correction, then prints the history, as-is, as-of and as-was queries. The strategy is a custom dbt incremental strategy in <code>demos/bitemporal/macros/bitemporal_load.sql</code>, written to be read: the paved path's <code>bitemporal_load_v2</code> macro does the same job with more strategies.")),
+         dc.md(dc.demo("three loads on DuckDB, then the four questions", "Three loads of a tiny associate feed, then the four questions, from one script.", [
+                  "Run the cell: `demos/bitemporal/demo.sh` seeds, loads day 1, loads day 2, loads the correction, and prints the history and the as-is, as-of and as-was queries.",
+                  "Read the history row by row: which load wrote each row, and which clock closed it.",
+                  "Run the two `sql()` cells: the audit trail for one associate, then as-of 2 November.",
+                  "Open `demos/bitemporal/macros/bitemporal_load.sql` (the cell prints it): three steps on one screen.",
+                  "Say: the paved path's `bitemporal_load_v2` does the same job with more strategies."])),
          dc.code("!bash demos/bitemporal/demo.sh 2>&1 | sed -n '/-- Full history/,$p'"),
          dc.code(f'sql("""select associate_id, job_title, tenure_months, dl_business_start_dt, dl_business_end_dt, dl_system_start_ts, dl_system_end_ts, dl_current_ind\n          from training_demo.dim_associate where associate_id = 1001 order by dl_system_start_ts, dl_business_start_dt""", {BT})\n# The audit trail for one associate. Point at each row: which load wrote it, and which clock closed it.'),
          dc.code(f'sql("select associate_id, job_title, tenure_months from training_demo.dim_associate where dl_business_start_dt <= date \'2026-11-02\' and coalesce(dl_business_end_dt, date \'9999-12-31\') >= date \'2026-11-02\' and dl_system_end_ts is null order by 1", {BT})\n# AS OF 2 November with today\'s knowledge: business clock covers the date, system clock open.'),
@@ -133,8 +138,16 @@ def cells():
          | What did the report say at time T? | system covers T | `dl_system_start_ts <= T and coalesce(dl_system_end_ts, '9999-12-31') > T` |
          | Which versions did a correction replace? | same business start, later system start | order by `dl_system_start_ts` within the key |
          """),
-         dc.md(dc.reflect("GUEST OR VOLUNTEER BRIEF — ten minutes", "Show one real bitemporal table: the DL columns, one row's history ordered by system start, one change that created a version, one correction if you have one, and which strategy the model uses (full, incremental, balance). Then take two questions. If a defect once created a version, show it: it is the best illustration of 'the table is an audit of what the code did'.")),
-         dc.md(dc.reflect("SHAREBACK — which clock?", "Each table takes one: (1) 'What was the associate's title on 2 November?' (2) 'What did the dashboard show on the morning of day 2?' (3) 'When did we learn about the correction?' (4) 'Which rows does an auditor need to see?' Say the clock, then the filter.")),
+         dc.md(dc.reflect("GUEST OR VOLUNTEER BRIEF — ten minutes", "Show one real bitemporal table, then take two questions.", [
+                     "The DL columns, and one row's history ordered by system start.",
+                     "One change that created a version; one correction if you have one.",
+                     "Which strategy the model uses: full, incremental or balance.",
+                     "If a defect once created a version, show it: the table is an audit of what the code did."])),
+         dc.md(dc.reflect("SHAREBACK — which clock?", "Each table takes one question: say the clock, then the filter.", [
+                     "What was the associate's title on 2 November?",
+                     "What did the dashboard show on the morning of day 2?",
+                     "When did we learn about the correction?",
+                     "Which rows does an auditor need to see?"])),
          dc.heading("Orchestration and Friday", "orchestration"),
          dc.anchor("Yesterday's project builds when you type dbt build. Who types it at six in the morning?",
                    "Orchestration: deciding when the pipeline's parts run, in what order, with retries, logs and alerts.",
@@ -156,10 +169,15 @@ def cells():
          dc.figure("d4-airflow-components", "Airflow's components, locally and hosted",
                    ["The DAG processor parses dags/ and reports import errors; the scheduler decides what is due; workers run tasks; the triggerer handles deferred waits; the API server serves the UI.",
                     "astro dev start runs all of them as containers on the laptop; a hosted Astro deployment is the same thing run for you and vended per team."]),
-         dc.md(dc.demo("the stack, a run, the UI", f"""
-         In a terminal in <code>{AL}/</code>: <code>bash run.sh start</code> (done before the day), then the cells below: seed, trigger, wait, status. Open <a href="http://localhost:8080">localhost:8080</a>: the DAGs list (owner, schedule, tags), the graph (five boxes and the dbt task group), the grid (one column per run), a task log (click <code>publish_to_catalog</code>: the published rows are in the log), the code tab.<br>
-         Same commands as the learners': <code>astro dev run dags list</code>, <code>astro dev run dags trigger …</code>, <code>astro dev run tasks states-for-dag-run …</code>.
-         """)),
+         dc.md(dc.demo("the stack, a run, the UI", "Trigger a run on the local Astro stack and read it in the UI the way learners will.", [
+                  f"Before the day, in `{AL}/`: `bash run.sh start`.",
+                  "Run the cells below: seed, trigger, wait, status.",
+                  "Open http://localhost:8080: the DAGs list with owner, schedule and tags.",
+                  "Graph view: five boxes and the dbt task group.",
+                  "Grid view: one column per run.",
+                  "Click `publish_to_catalog` and open its log: the published rows are in it.",
+                  "Code tab: the DAG file as deployed.",
+                  "Say: learners use the same commands: `astro dev run dags list`, `dags trigger`, `tasks states-for-dag-run`."])),
          dc.code(f"!bash {AL}/run.sh seed 2>&1 | grep -E 'Done|rror'"),
          dc.code(f"!bash {AL}/run.sh trigger && bash {AL}/run.sh wait"),
          dc.code(f"!bash {AL}/run.sh status | tail -30"),
@@ -169,17 +187,33 @@ def cells():
                     "Over ninety percent of products fit a blueprint; a custom DAG is for the rest, and can become a new blueprint.",
                     "The challenge is Python on purpose: once the Python makes sense, the YAML is just configuration."]),
          dc.code("!sed -n '1,30p' ../../reference/DataCreators-client/dev-container/edo-training-data-products/data_products/.blueprints/dag_exec_check.py\n# A platform blueprint from the vended repository: the Python learners never write, filled from YAML."),
-         dc.md(dc.demo("a controlled failure, then the repair", "Make the custodian feed look two days old, trigger: the freshness gate fails and everything downstream is <em>upstream_failed</em>; no publish, no rows. Open the failed task's log and read the first useful line. Then stamp the feed fresh, trigger, green. Say: this is the same drill as the challenge's Phase 2 and Friday's extension questions: late input, failed check, repeated run.")),
+         dc.md(dc.demo("a controlled failure, then the repair", "Break the freshness gate on purpose, read the log, repair, rerun.", [
+                  "Run the stale cell: the custodian feed looks two days old; a run is triggered.",
+                  "Watch the freshness gate fail and everything downstream go `upstream_failed`: no publish, no rows.",
+                  "Open the failed task's log in the UI and read the first useful line aloud.",
+                  "Run the fresh cell: the feed is stamped fresh, a run is triggered, green.",
+                  "Say: this is the same drill as the challenge's Phase 2 and Friday's questions: late input, failed check, repeated run."])),
          dc.code(f"!bash {AL}/run.sh stale && bash {AL}/run.sh trigger && bash {AL}/run.sh wait && bash {AL}/run.sh status | grep -E 'source_freshness|publish|state' | head -6"),
          dc.code(f"!bash {AL}/run.sh fresh && bash {AL}/run.sh trigger && bash {AL}/run.sh wait"),
          dc.heading("Challenge 10", "challenge"),
-         dc.md(dc.challenge("Airflow practical (challenge 03)", "challenges/v1/03-airflow-orchestration/README.md", "until 13:30, with lunch", """
-         <strong>Prerequisites, in this order:</strong> <code>mise run setup:databricks</code> done; <code>(cd challenges/v1/02-dbt-pipeline/dbt && dbt seed)</code> (the DAG reads the same four feeds, refreshed); then, from the repo root, <code>astro dev start</code> <em>after</em> setup finished. The UI address is the one astro prints (a per-project hostname and port), not a fixed localhost:8080.<br>
-         <strong>Phase 1</strong> (about 1.5 hours): 1 why orchestration · 2 anatomy of a DAG · 3 <code>dbt debug</code> · 4 the freshness gate (<code>astro dev run tasks test portfolio_analytics_daily source_freshness_check 2026-05-04</code>) · 5 the Cosmos task group · 6 wire the chain (the one TODO: <code>start >> source_freshness_check >> dbt_pipeline >> publish_to_catalog >> end</code>) · 7 schedule · 8 retries · 9 first full run · 10 logs and re-running.<br>
-         <strong>Phase 2:</strong> the alert transport, tiered alerting, SLA and retry tiers, wiring callbacks, the freshness gate as a contract, the monitoring config, the runbook and consumer guide, structural tests, the Databricks submit-run variant, a production-ready DAG.<br>
-         <strong>Gate:</strong> <code>mise run challenge:verify 03</code> (a static check of the wiring); the live run is the evidence: graph, logs, states.<br>
-         <strong>Finished early?</strong> What happens if the input is late? If the quality check fails? If the run is repeated? Show a log or output check that supports each answer.
-         """)),
+         dc.md(dc.challenge("Airflow practical (challenge 03)", "challenges/v1/03-airflow-orchestration/README.md", "until 13:30, with lunch",
+                      "Wire, schedule and run the Portfolio Analytics DAG with Cosmos; Phase 2 is production operations.",
+                      [("Prerequisites, in this order", [
+                          "`mise run setup:databricks` done, in a terminal where `echo $DBT_CATALOG` prints a value.",
+                          "`(cd challenges/v1/02-dbt-pipeline/dbt && dbt seed)`: the DAG reads the same four feeds, refreshed.",
+                          "From the repo root, `astro dev start`, only after setup finished; the UI address is the one astro prints, not a fixed localhost:8080."]),
+                       ("Phase 1, about 1.5 hours", [
+                          "1 Why orchestration.", "2 Anatomy of a DAG.", "3 Connect to Databricks: `dbt debug`.",
+                          "4 The freshness gate: `astro dev run tasks test portfolio_analytics_daily source_freshness_check 2026-05-04`.",
+                          "5 The Cosmos `DbtTaskGroup`.",
+                          "6 Wire the chain, the one TODO: `start >> source_freshness_check >> dbt_pipeline >> publish_to_catalog >> end`.",
+                          "7 Scheduling: a timezone-aware cron.", "8 Retries and exponential backoff.", "9 First full run.", "10 Reading logs and re-running."]),
+                       ("Phase 2", [
+                          "1 The vendor-neutral alert transport.", "2 Tiered failure alerting.", "3 The P2 and P3 tiers: SLA miss and retry.",
+                          "4 Wire the callbacks and the SLA into the DAG.", "5 The freshness gate as a contract.", "6 The monitoring config.",
+                          "7 The runbook and the consumer guide.", "8 Structural tests for the DAG.", "9 Stretch: the `DatabricksSubmitRunOperator` variant.", "10 Capstone: a production-ready DAG."])],
+                      "`mise run challenge:verify 03` is a static check of the wiring; the live run is the evidence: graph, logs, states.",
+                      stretch="What happens if the input is late? If the quality check fails? If the run is repeated? Show a log or output check for each answer.")),
          dc.md("""
          | Symptom | Cause | Fix |
          |---|---|---|
@@ -207,9 +241,13 @@ def cells():
              ("What are the downsides?", "Automation without a real human in the loop; fragility; correlated failures (when one shared system is down, everything is); the maintenance, approval and audit burden. It is not free."),
              ("What is Harness here?", "The CI/CD system, roughly GitOps: a pull request submitted and approved triggers the pipeline. It isolates the creator from the deployment machinery."),
          ])),
-         dc.md(dc.demo("Harness, with screenshots or a guest", """
-         Walk the real thing if someone has access, else the screenshots collected in the pre-flight: pick the environment; find the repository's pipeline; <strong>SQA</strong>: Run → apply the SQA input set → choose the feature branch → run; a few minutes; check who deployed last and whether they finished testing, because SQA is shared. <strong>Production</strong>: the PRD pipeline, fixed values, the release branch, and a change record (CRQ) number before anything runs. Logs for a failed execution. Then: secrets live in AWS Secrets Manager, never in code or a chat; an API token to trigger deployments from an AI assistant is a risk, not a shortcut.
-         """)),
+         dc.md(dc.demo("Harness, with screenshots or a guest", "Walk a deployment to SQA and then to production: live if someone has access, else from the pre-flight screenshots.", [
+                  "Pick the environment and find the repository's pipeline.",
+                  "SQA: Run, apply the SQA input set, choose the feature branch, run; a few minutes.",
+                  "Check who deployed to SQA last and whether they finished testing: SQA is shared.",
+                  "Production: the PRD pipeline, fixed values, the release branch, and a change record (CRQ) number before anything runs.",
+                  "Open the logs of a failed execution.",
+                  "Say: secrets live in AWS Secrets Manager, never in code or a chat; an API token that lets an AI assistant trigger deployments is a risk, not a shortcut."])),
          dc.code(f"!sed -n '1,40p' {AL}/dags/portfolio_analytics/include/monitoring/portfolio_analytics.yml\n# The challenge's monitoring config: six panels, each an SLI with an alert condition and a channel. This is what a Datadog monitor is for: the promises from Day 2, watched."),
          dc.heading("Release decision and the failure note", "exercises"),
          act("10"),
@@ -232,13 +270,12 @@ def cells():
          </details>
          """),
          dc.heading("Friday preparation", "friday"),
-         dc.md(dc.reflect("FRIDAY CHECKLIST — every learner, before leaving", """
-         ☐ Open <code>challenges/v1/04-atlas-capstone/README.md</code> and read the plan of the day.<br>
-         ☐ From the repo root: <code>test -f .mise.toml && test -d data_products/atlas_elt && echo OK</code> and <code>mise exec -- databricks auth describe --profile DEFAULT</code>.<br>
-         ☐ From <code>data_products/atlas_elt</code>: <code>dbt debug</code> passes.<br>
-         ☐ <code>astro dev stop</code> so tomorrow starts clean.<br>
-         ☐ Any failure above goes on the list with a name and a time it will be fixed.
-         """)),
+         dc.md(dc.reflect("FRIDAY CHECKLIST — every learner, before leaving", "Five checks; any failure goes on the list with a name and a time it will be fixed.", [
+                     "☐ Open `challenges/v1/04-atlas-capstone/README.md` and read the plan of the day.",
+                     "☐ From the repo root: `test -f .mise.toml && test -d data_products/atlas_elt && echo OK`.",
+                     "☐ `mise exec -- databricks auth describe --profile DEFAULT`.",
+                     "☐ From `data_products/atlas_elt`: `dbt debug` passes.",
+                     "☐ `astro dev stop`, so tomorrow starts clean."])),
          dc.md(dc.leave_with(LEAVE_WITH)),
          *dc.qa_section(4)]
     return C

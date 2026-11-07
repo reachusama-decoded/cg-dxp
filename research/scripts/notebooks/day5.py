@@ -112,12 +112,17 @@ def cells():
          </details>
          """),
          dc.heading("Phase 1 support", "phase1"),
-         dc.md(dc.challenge("Atlas capstone, Phase 1", "challenges/v1/04-atlas-capstone/README.md", "two to three hours", """
-         <strong>Readiness</strong> (repo root): <code>test -f .mise.toml && test -d data_products/atlas_elt && echo OK</code>; <code>mise exec -- databricks auth describe --profile DEFAULT</code>. Then <code>cd data_products/atlas_elt && dbt debug</code>.<br>
-         <strong>Sections:</strong> 1 inspect the seeds · 2 understand the project (<code>dbt deps</code>, <code>dbt ls</code>) · 3 the Databricks connection · 4 <code>dbt seed</code> · 5 build source-aligned (<code>dbt run --select tag:source-aligned</code>) · 6 build domain-aligned · 7 build consumer-aligned and run the tests · 8 understand the orchestration.<br>
-         <strong>Gate:</strong> <code>mise run challenge:verify 04</code> (not a bare verify.sh: it needs mise's environment). Compare numbers with the expected results below.<br>
-         <strong>Rules:</strong> edit only under <code>data_products/atlas_elt/</code>; the stubs under <code>challenges/</code> are reset templates; solutions live with the instructor.
-         """)),
+         dc.md(dc.challenge("Atlas capstone, Phase 1", "challenges/v1/04-atlas-capstone/README.md", "two to three hours",
+                      "Every team establishes the baseline: seeds, the three layers, the tests, and the orchestration understood.",
+                      [("Readiness, from the repo root", [
+                          "`test -f .mise.toml && test -d data_products/atlas_elt && echo OK`.",
+                          "`mise exec -- databricks auth describe --profile DEFAULT`.",
+                          "`cd data_products/atlas_elt && dbt debug`."]),
+                       ("Sections", [
+                          "1 Inspect the source data.", "2 Understand the dbt project: `dbt deps`, `dbt ls`.", "3 Set up the Databricks connection.", "4 `dbt seed`.",
+                          "5 Build source-aligned: `dbt run --select tag:source-aligned`.", "6 Build domain-aligned.", "7 Build consumer-aligned and run the tests.", "8 Understand the orchestration."])],
+                      "`mise run challenge:verify 04` (not a bare verify.sh: it needs mise's environment); compare numbers with the expected results below.",
+                      support=["Edit only under `data_products/atlas_elt/`; the stubs under `challenges/` are reset templates; solutions live with the instructor."])),
          dc.md("""
          | Section | What to check when circulating | Expected |
          |---|---|---|
@@ -169,7 +174,13 @@ def cells():
          | 4 |  |  |  |  |  |  |  |
          | 5 |  |  |  |  |  |  |  |
          """),
-         dc.md(dc.reflect("CERTIFICATION EVIDENCE — what Phase 1 shows per team", "The worksheet (consumer, decision, sources, rules, assumptions); the three layers built with the tag selectors; the tests passing including the reconciliations; one value checked independently of the model that produced it; an explanation of what the orchestration triggers and where dbt runs; a presentation that states a finding and a caveat. Observed, not handed in.")),
+         dc.md(dc.reflect("CERTIFICATION EVIDENCE — what Phase 1 shows per team", "Observed during the day, not handed in.", [
+                     "The worksheet: consumer, decision, sources, rules, assumptions.",
+                     "The three layers built with the tag selectors.",
+                     "The tests passing, including the reconciliations.",
+                     "One value checked independently of the model that produced it.",
+                     "An explanation of what the orchestration triggers and where dbt runs.",
+                     "A presentation that states a finding and a caveat."])),
          dc.md(dc.say(["One person per table, two to three minutes: what you built, what was hard, one finding, one trust question and its answer.",
                        "Do we feel we can create a data product and make it work? Then you are done. Thank you for the week."])),
          dc.md(dc.leave_with(LEAVE_WITH)),

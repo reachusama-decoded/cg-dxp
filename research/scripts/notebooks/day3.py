@@ -86,18 +86,28 @@ def cells():
                    ["Six raw feeds ship as seeds; five are modelled; refdata is there to inspect and for freshness practice.",
                     "Staging renames and casts, one model per source; intermediate does the joins; marts are the consumer-aligned facts and aggregates.",
                     "The tests are promises from a contract made executable: not null, unique, a relationship, accepted values, NAV within one basis point, the rollup reconciles."]),
-         dc.md(dc.challenge("dbt practical (challenge 02)", "challenges/v1/02-dbt-pipeline/README.md", "about 3 hours across the day", """
-         <strong>Where to work.</strong> <code>cd challenges/v1/02-dbt-pipeline/dbt</code> then <code>dbt debug</code>. Every <code>dbt</code> command runs from that folder; <code>mise run challenge:verify 02</code> and <code>challenge:reset 02</code> run from anywhere.<br>
-         <strong>First three commands.</strong> <code>dbt debug</code> (connection), <code>dbt seed</code> (the eight CSVs into <code>training_dev.training_&lt;you&gt;</code>), <code>dbt ls --resource-type model</code> (ten stubs).<br>
-         <strong>Phase 1</strong> (about an hour): S1 inspect the raw data · S2 read the project · S3 sources and freshness · S4 <code>stg_holdings</code> · S5 the other four staging models · S6 views vs tables · S7 build the staging layer · S8 a staging test.<br>
-         <strong>Phase 2:</strong> C1 the enrichment join · C2 supporting intermediates · C3 <code>agg_fund_exposure</code> · C4 <code>fct_portfolio_returns</code> · C5 generic tests · C6 the NAV reconciliation test · C7 <code>dbt build</code> · C8 docs and lineage · C9 the Databricks post-hook · C10 the capstone mart and its test.<br>
-         <strong>Gate.</strong> <code>mise run challenge:verify 02</code>: seeds, runs, tests; green means solved. <strong>Never</strong> run <code>challenge:reset 02</code> to "start clean": it deletes authored work.<br>
-         <strong>Keep a list</strong> of commands, configuration changes, questions and discoveries; the recap is built from it.
-         """)),
+         dc.md(dc.challenge("dbt practical (challenge 02)", "challenges/v1/02-dbt-pipeline/README.md", "about 3 hours across the day",
+                      "Build, test and document the Portfolio Analytics pipeline: eight staging sections, then ten challenges.",
+                      [("Where to work", [
+                          "`cd challenges/v1/02-dbt-pipeline/dbt`; every `dbt` command runs from here.",
+                          "`dbt debug` (connection), `dbt seed` (eight CSVs into `training_dev.training_<you>`), `dbt ls --resource-type model` (ten stubs).",
+                          "`mise run challenge:verify 02` and `challenge:reset 02` run from anywhere; never reset to \"start clean\": it deletes authored work."]),
+                       ("Phase 1, about an hour", [
+                          "S1 Inspect the raw data.", "S2 Read the dbt project.", "S3 Declare sources and freshness.", "S4 First staging model: `stg_holdings`.",
+                          "S5 The remaining staging models.", "S6 Materialisations: view vs table.", "S7 Build the whole staging layer.", "S8 A staging test."]),
+                       ("Phase 2", [
+                          "C1 The enrichment join: `int_holdings_enriched`.", "C2 The two supporting intermediate models.", "C3 First curated mart: `agg_fund_exposure`.",
+                          "C4 Second curated mart: `fct_portfolio_returns`.", "C5 Generic tests on the marts.", "C6 A singular reconciliation test: NAV within tolerance.",
+                          "C7 The full build: `dbt build`.", "C8 Docs and the lineage graph.", "C9 The Databricks post-hook: `OPTIMIZE … ZORDER`.", "C10 Capstone: a new mart end to end."])],
+                      "`mise run challenge:verify 02` runs seeds, models and tests; green means solved.",
+                      support=["Keep a list of commands, configuration changes, questions and discoveries; the recap is built from it."])),
          dc.md(dc.say(["Attempt each section before you open its solution. The solution is for comparing, not for copying.",
                        "You can run the raw dbt commands from the project folder. If dbt says it cannot find your credentials, open a fresh terminal so mise loads the environment, or rerun mise run setup:databricks."])),
          dc.heading("Walkthrough: Phase 1, sources and staging", "phase1"),
-         dc.md(dc.demo("the same project, on DuckDB, section by section", f"Everything below is the learners' challenge 02 solution ported to DuckDB in <code>{PA}/</code> (same model names, layers, tags and tests; the Databricks-only post-hook becomes a no-op macro). Use a cell when someone asks 'what should I see?'. The file <code>{PA}/README.md</code> maps each cell to the README section.")),
+         dc.md(dc.demo("the same project, on DuckDB, section by section", f"The learners' challenge 02 solution ported to DuckDB in <code>{PA}/</code>: one cell per README section, for \"what should I see?\".", [
+                  "Same model names, layers, tags and tests; the Databricks-only post-hook is a no-op macro here.",
+                  f"Use a cell when someone asks what they should see; `{PA}/README.md` maps each cell to its README section.",
+                  "Say once: the SQL is the same; only the target differs."])),
          dc.md("#### S1 — Inspect the raw data: what feeds the models"),
          dc.code(f'!cd {PA} && dbt seed --full-refresh 2>&1 | grep -E "INSERT|Done" \nsql("select * from training_demo.holdings_raw order by fund_cd, pos_dt limit 8", {DB})\n# A holding: one fund, one instrument, one day, valued in its local currency. Note fund_cd, pos_dt, isin, qty, mkt_val_lc, ccy_cd and _extracted_at.'),
          dc.md("#### S2 — Read the project: layers, materialisations, tags"),
@@ -129,12 +139,11 @@ def cells():
          dc.code(f'!cat {PA}/macros/optimize_mart.sql\n# On Databricks: OPTIMIZE ... ZORDER BY (fund_id, position_date) after each mart, a Delta optimisation. Here: a no-op. A macro that dispatches on target.type is how one project runs on two warehouses.'),
          dc.code(f'sql("select * from training_demo.agg_fund_daily_exposure order by 1,2", {DB})\n!sed -n "1,20p" {PA}/tests/reconcile_daily_exposure.sql\n# C10: the (fund, date) rollup must preserve the strategy-level total. Learners create both the mart and this test.'),
          dc.heading("Circulating", "circulate"),
-         dc.md(dc.reflect("CIRCULATION CHECKLIST — three questions per learner", """
-         <strong>Sources and staging:</strong> can they say what one row means, name its key, and explain the types and units?<br>
-         <strong>Joins and models:</strong> are the lookup keys unique on the right-hand side, do dates belong in the join, and what happens to unmatched rows?<br>
-         <strong>Tests and output:</strong> can they show a value checked independently of the model that produced it?<br><br>
-         <strong>Ask:</strong> "Could this join pass its tests and still double the reported value?" Check the row grain, right-side uniqueness, unmatched rows and an independent total. A successful build alone is insufficient.
-         """)),
+         dc.md(dc.reflect("CIRCULATION CHECKLIST — three questions per learner", "Ask: could this join pass its tests and still double the reported value? A successful build alone is insufficient.", [
+                     "Sources and staging: can they say what one row means, name its key, and explain the types and units?",
+                     "Joins and models: are the lookup keys unique on the right-hand side, do dates belong in the join, and what happens to unmatched rows?",
+                     "Tests and output: can they show a value checked independently of the model that produced it?",
+                     "Check the row grain, right-side uniqueness, unmatched rows and an independent total."])),
          dc.md("""
          | Symptom | Cause | Fix |
          |---|---|---|

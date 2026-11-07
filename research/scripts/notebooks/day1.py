@@ -186,7 +186,9 @@ def cells():
                      "Business data owners: accountable per domain; the DXP site lists owners and stewards.",
                      "Platform providers: one way to create data, with standards, catalogs and metadata, instead of choose-your-own-platform.",
                      "Creators: reusable, trusted products that a consumer finds in a catalog instead of asking a person."]),
-          dc.md(dc.fallback("No sponsor today? Give the three-second test, the four personas and the publishing promise yourself, in five minutes, then move on. Log every question about access or policy in the Q&A table for the platform team.")),
+          dc.md(dc.fallback("No sponsor today? Give the opening yourself in five minutes, then move on.", [
+                     "The three-second test, the four personas and the publishing promise, from the anchor.",
+                     "Log every question about access or policy in the Q&A table for the platform team."])),
           dc.heading("What is a data product?", "data-product"),
           dc.anchor("Is a vendor file dropped in a folder a data product?",
                     "A data set plus promises, made of data, code and infrastructure, that realigns source data to a consumer's decision.",
@@ -252,15 +254,20 @@ def cells():
                      "Document skills produce one artefact from a template: PRD, data contract, transformation spec, runbook.",
                      "Capability skills do one thing and may ship Python: search Databricks, profile a table, write a dbt model, generate a DAG.",
                      "Nine phases, 0 to 8: prereq, triage, discovery, design, build, validate, publish, operate, evolve. Today is discovery and design."]),
-          dc.md(dc.demo("the data-contract skill, then a PRD from the transcript", """
-          <strong>1. The skill is a prompt.</strong> Open <code>common/catalyst/</code> → run <code>install-skills.sh</code> once; then open <code>.claude/skills/data-contract/SKILL.md</code> (the same file learners see in the Catalyst repo). Show the eight required sections and the quality checks. Open <code>templates/data-contract.md</code>: identity, schema, SLAs, quality rules, access, change management, consumer registry, approvals, revision history.<br><br>
-          <strong>2. Skills call skills.</strong> Open <code>.claude/skills/dplc-design/SKILL.md</code>: it runs requirements-acceptance-criteria, feasibility-report, consumer-use-case-map, data-model in sequence. Then <code>dplc-concierge</code>: "start it Friday, maybe a product by Monday".<br><br>
-          <strong>3. Generate.</strong> Learners: Copilot Chat → <code>/ai-catalyst product-requirements-document</code> → paste a description. Instructor: Claude Code in <code>courseware/</code> → <code>/product-requirements-document</code> → paste <code>common/running-example/interview-transcript.md</code>. Point at the moment the skill file is read: that is how you know Catalyst is on, not plain Copilot.<br><br>
-          <strong>4. Read one section aloud</strong> and find the invented detail before accepting anything.
-          """)),
+          dc.md(dc.demo("the data-contract skill, then a PRD from the transcript", "A Catalyst skill is a prompt file: watch one run on the transcript, then find the invented detail.", [
+                  "Open `.claude/skills/data-contract/SKILL.md` (installed by `common/catalyst/install-skills.sh`; the same file learners see in the Catalyst repo): the eight required sections and the quality checks.",
+                  "Open `.claude/skills/data-contract/templates/data-contract.md`: identity, schema, SLAs, quality rules, access, change management, consumer registry, approvals, revision history.",
+                  "Open `.claude/skills/dplc-design/SKILL.md`: it chains requirements-acceptance-criteria, feasibility-report, consumer-use-case-map and data-model.",
+                  "Open `.claude/skills/dplc-concierge/SKILL.md` and say: start it Friday, maybe a product by Monday.",
+                  "Learners' form: Copilot Chat, `/ai-catalyst product-requirements-document`, paste a description.",
+                  "Instructor's form: Claude Code in `courseware/`, `/product-requirements-document`, paste `common/running-example/interview-transcript.md`.",
+                  "Point at the moment the skill file is read: that is how you know Catalyst is on, not plain Copilot.",
+                  "Read one section of the result aloud and find the invented detail before accepting anything."])),
           dc.md(dc.prompt("Chat view", "/ai-catalyst product-requirements-document\nA US end-of-day price sheet for the US product team: closing prices in USD for active US-listed instruments, one row per instrument per business day, from the vendor price feed, the instrument master and the FX feed, published by 07:30 ET. Consumers: pricing analysts, the sales desk, risk.",
                           "/product-requirements-document  (then paste common/running-example/interview-transcript.md)")),
-          dc.md(dc.fallback("Catalyst not installed or slow on the demo laptop: open <code>common/running-example/prd.md</code> (the reviewed output, with the corrections in brackets) and walk the Key Product Information, Problem &amp; Value and Consumers sections. The lesson survives without the generation.")),
+          dc.md(dc.fallback("Catalyst not installed or slow on the demo laptop: review the prepared PRD instead; the lesson survives without the generation.", [
+                     "Open `common/running-example/prd.md`: the reviewed output, with the corrections in brackets.",
+                     "Walk the Key Product Information, Problem and Value, and Consumers sections."])),
           act("3"),
           dc.heading("AI foundations and effective practice", "ai"),
           dc.anchor("Why is the same model brilliant at SQL and unreliable about your fund master?",
@@ -285,11 +292,13 @@ def cells():
               ("6. Which settings?", "Thinking effort is a hidden token budget; maximum can be worse on simple tasks. The context window fills with everything including hidden reasoning; performance degrades; compaction is automatic and random. Summarise to a file and start a new conversation."),
               ("7. How do I know it worked?", "Be sceptical where your task is novel or internal (your source systems, your definitions). Measure on your actual task; keep your own model of where it is reliable."),
           ])),
-          dc.md(dc.demo("the interface on the running example", """
-          Open Copilot Chat (learners) and Claude Code (instructor) side by side.<br>
-          <strong>Model picker:</strong> name the models available this week; say which is least compressed and most expensive. <strong>Thinking effort:</strong> ask the same question at low and at maximum and compare time and answer. <strong>Context:</strong> show the conversation length, then <code>/clear</code> (Claude) or a new chat (Copilot), and say when to do it.<br>
-          Task to use: "Add realistic SLAs to this contract" with <code>common/running-example/data-contract.md</code> attached. Then: "List every number in the SLA section and where it came from."
-          """)),
+          dc.md(dc.demo("the interface on the running example", "Copilot Chat and Claude Code side by side: model, effort and context, on one real task.", [
+                  "Open Copilot Chat (what learners see) and Claude Code (this laptop) side by side.",
+                  "Model picker: name this week's models; say which is least compressed and most expensive.",
+                  "Thinking effort: ask the same question at low and at maximum; compare the time and the answer.",
+                  "Context: show the conversation length, then `/clear` in Claude or a new chat in Copilot; say when to do it.",
+                  "The task: \"Add realistic SLAs to this contract\" with `common/running-example/data-contract.md` attached.",
+                  "Then: \"List every number in the SLA section and where it came from.\""])),
           dc.md(dc.prompt("Chat view, with the contract attached", "List every numeric threshold, date, owner and version in this document, and for each one say whether it came from the transcript, the PRD, or was assumed.",
                           "Same prompt; attach the file with @ or paste it.")),
           dc.heading("Interview and generate", "interview"),
@@ -301,7 +310,11 @@ def cells():
                     ["The producer knows the source; the consumer knows the decision; the creator reconciles them.",
                      "The transcript is the input that stops the model substituting generic knowledge.",
                      "Review is part of the method: the invented detail is always there."]),
-          dc.md(dc.demo("Voice Memos to transcript", "On a Mac: open Voice Memos, record, pause, Done; the Transcript button shows the text; click off and on again to Copy transcript. Free and good enough. On Teams or Zoom the meeting transcript does the same job. Paste the transcript into the Catalyst prompt.")),
+          dc.md(dc.demo("Voice Memos to transcript", "A recording on the laptop becomes the transcript Catalyst reads: free and good enough.", [
+                  "Open Voice Memos on the Mac; record thirty seconds of a mock interview; pause; Done.",
+                  "Click Transcript to show the text; click off and on again, then Copy transcript.",
+                  "Say: on Teams or Zoom the meeting transcript does the same job.",
+                  "Paste the transcript into the Catalyst prompt."])),
           act("4"),
           dc.md(dc.prompt("Chat view", "/ai-catalyst product-requirements-document\n<paste the transcript>\n\nThen, in the same conversation:\n/ai-catalyst data-contract\nUse the PRD above and the transcript. Where the transcript does not say, leave the cell empty rather than inventing a value.",
                           "/product-requirements-document  <paste transcript>\nthen\n/data-contract  Use the PRD above; leave unknown cells empty.")),
@@ -315,7 +328,9 @@ def cells():
               ("What are the sections of a PRD?", "Summary, problem and value, consumers and use cases, solution and what it is not, data requirements, technical design, governance, success criteria, catalog metadata, approval."),
               ("And of a data contract? Why is the glossary there and not in the PRD?", "Identity, schema, SLAs, quality rules, access, change management, consumer registry, approvals, revision history. The glossary sits with the contract because upstream sources define their own terms; alignment of meaning happens there."),
           ])),
-          dc.md(dc.reflect("REFLECT — the planted-errors contract", "Open <code>common/running-example/data-contract-planted-errors.md</code> on the projector. Five invented details are in it. Give the room three minutes to find them before showing the answer key at the end of the file. Pattern to name: identifiers, dates, versions, approvals and confident numbers are where models fill gaps.")),
+          dc.md(dc.reflect("REFLECT — the planted-errors contract", "Five invented details are planted in this contract; the room gets three minutes to find them.", [
+                     "Open `common/running-example/data-contract-planted-errors.md` on the projector; the answer key is at the end of the file.",
+                     "Name the pattern afterwards: identifiers, dates, versions, approvals and confident numbers are where models fill gaps."])),
           dc.heading("Explore the lifecycle", "lifecycle"),
           act("5"),
           dc.md("""

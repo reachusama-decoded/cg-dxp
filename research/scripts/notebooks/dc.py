@@ -86,24 +86,44 @@ def activity(number: str, title_text: str, grouping: str, minutes: int, brief: s
         body += "<br><br><strong>Debrief questions:</strong><br>" + "<br>".join(f"• {d}" for d in debrief)
     return _box("#F8DB59", "#F8DB59", "#000", "#fffef5", f"🎯 ACTIVITY {number} &nbsp;—&nbsp; {title_text} &nbsp;·&nbsp; {grouping} &nbsp;·&nbsp; {minutes} min", body)
 
-def challenge(title_text: str, path: str, minutes: str, body: str) -> str:
-    return _box(GREY, GREY, "#fff", "#f8f8f8", f"🏆 CHALLENGE TIME &nbsp;—&nbsp; {title_text} &nbsp;·&nbsp; {minutes}",
-                f"In the training repository: <code>{path}</code>.<br><br>{body}")
+def _list(items: list[str], numbered: bool = True) -> str:
+    return "\n".join((f"{i}. {t}" if numbered else f"- {t}") for i, t in enumerate(items, 1))
+
+def _after(box: str, parts: list[str]) -> str:
+    """A one-line box, then plain Markdown beneath it (a blank line ends the HTML block)."""
+    return box + "".join("\n\n" + p for p in parts if p)
+
+def challenge(title_text: str, path: str, minutes: str, line: str, phases: list[tuple[str, list[str]]], gate: str,
+              support: list[str] | None = None, stretch: str | None = None) -> str:
+    """One line in the box; what learners do, phase by phase, one line per step; then the gate, support and stretch."""
+    box = _box(GREY, GREY, "#fff", "#f8f8f8", f"🏆 CHALLENGE TIME &nbsp;—&nbsp; {title_text} &nbsp;·&nbsp; {minutes}",
+               f"{line} &nbsp;·&nbsp; <code>{path}</code>")
+    parts = [f"**{label}**\n\n{_list(steps)}" for label, steps in phases]
+    parts.append(f"**Gate.** {gate}")
+    if support:
+        parts.append("**Support.**\n\n" + _list(support, numbered=False))
+    if stretch:
+        parts.append(f"**Finished early?** {stretch}")
+    return _after(box, parts)
 
 def terminal(title_text: str, body: str) -> str:
     return _box(GREY, GREY, "#fff", "#f8f8f8", f"⌨️ TERMINAL &nbsp;—&nbsp; {title_text}", body)
 
-def demo(title_text: str, body: str) -> str:
-    return _box("#434343", "#C9DAF8", TEXT, "#fff", f"🖥️ DEMO &nbsp;—&nbsp; {title_text}", body)
+def demo(title_text: str, line: str, steps: list[str] | None = None) -> str:
+    """One line in the box; the exact steps to show learners beneath it, one line each."""
+    box = _box("#434343", "#C9DAF8", TEXT, "#fff", f"🖥️ DEMO &nbsp;—&nbsp; {title_text}", line)
+    return _after(box, [_list(steps)] if steps else [])
 
-def reflect(title_text: str, body: str) -> str:
-    return _box("#F8DB59", "#FFF2CC", "#000", "#fffef5", f"💭 {title_text}", body)
+def reflect(title_text: str, line: str, bullets: list[str] | None = None) -> str:
+    box = _box("#F8DB59", "#FFF2CC", "#000", "#fffef5", f"💭 {title_text}", line)
+    return _after(box, [_list(bullets, numbered=False)] if bullets else [])
 
 def say(lines: list[str]) -> str:
     return _box("#D9EAD3", "#D9EAD3", TEXT, "#fff", "🗣️ SAY", "<br>".join(f"“{l}”" for l in lines))
 
-def fallback(body: str) -> str:
-    return _box("#F4CCCC", "#F4CCCC", TEXT, "#fff", "🧯 IF IT BREAKS", body)
+def fallback(line: str, bullets: list[str] | None = None) -> str:
+    box = _box("#F4CCCC", "#F4CCCC", TEXT, "#fff", "🧯 IF IT BREAKS", line)
+    return _after(box, [_list(bullets, numbered=False)] if bullets else [])
 
 def prompt(where: str, text: str, claude: str | None = None) -> str:
     badge = lambda l, bg, v: (f'<span style="display:inline-block;margin:0 6px 4px 0;border:1px solid {GREY};border-radius:4px;overflow:hidden;font-size:0.85em;line-height:1.7;white-space:nowrap;">'
