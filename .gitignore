@@ -19,3 +19,6 @@ courseware/day4-airflow/demos/airflow_local/include/warehouse/*
 # client repo local state
 reference/DataCreators-client/dev-container/edo-training-data-products/.local/
 reference/DataCreators-client/ai-skills/catalyst/.coverage
+
+# sibling CG Core clone (own git repository, large pack): reference only, never committed here
+reference/ts-cg-core/
