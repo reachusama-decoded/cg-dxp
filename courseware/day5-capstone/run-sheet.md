@@ -1,19 +1,28 @@
 # Day 5 run sheet — The Atlas capstone
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
 
-| Time | Block | Type | On screen |
-|---|---|---|---|
-| 09:00–09:15 | Brief and individual reading | Intro | Anchor › Brief; the capstone README |
-| 09:15–10:15 | Table discovery and playback | Challenge + shareback | Anchor › Activity 12 worksheet; the ERD and pipeline diagrams |
-| 10:15–12:00 | Phase 1 build | Challenge | Anchor › Phase 1 support, expected results |
-| 12:00–13:00 | Lunch (flexible) | Break |  |
-| 13:00–14:30 | Phase 1 completion, Phase 2 extensions, presentation prep | Challenge | Anchor › Phase 2 menu; Activity 13 card |
-| 14:30–15:00 | Presentations and close | Shareback | Anchor › Activity 13; tally sheet |
+## Sections
+
+1. **The brief and discovery** (09:00–10:15): Brief: the day, the rules, ten minutes of reading · Activity 12: discovery worksheet · Playback: two minutes per table
+2. **Phase 1: the baseline** (10:15–13:00): Challenge: Atlas Phase 1 · Circulating: section notes, expected results, blockers · Lunch (flexible)
+3. **Phase 2: extensions and presentation prep** (13:00–14:30): Challenge: the fourteen extensions · Presentation prep: technical work stops at 14:30
+4. **Presentations and close** (14:30–15:00): Activity 13: presentations · Tally sheet and certification evidence · Close
+
+## Timeline
+
+| § | Time | Block | Type | On screen |
+|---|---|---|---|---|
+| 1 | 09:00–09:15 | Brief and individual reading | Intro | Anchor › Brief; the capstone README |
+| 1 | 09:15–10:15 | Table discovery and playback | Challenge + shareback | Anchor › Activity 12 worksheet; the ERD and pipeline diagrams |
+| 2 | 10:15–12:00 | Phase 1 build | Challenge | Anchor › Phase 1 support, expected results |
+| 2 | 12:00–13:00 | Lunch (flexible) | Break |  |
+| 3 | 13:00–14:30 | Phase 1 completion, Phase 2 extensions, presentation prep | Challenge | Anchor › Phase 2 menu; Activity 13 card |
+| 4 | 14:30–15:00 | Presentations and close | Shareback | Anchor › Activity 13; tally sheet |
 
 ## Blocks
 
-### 09:00–09:15 · Brief and individual reading (Intro)
+### 09:00–09:15 · Brief and individual reading (Intro, §1)
 
 **Purpose.** What the day is, where the project is, the caveats about the data, and ten minutes of reading alone.
 
@@ -30,7 +39,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Table discovery.
 
-### 09:15–10:15 · Table discovery and playback (Challenge + shareback)
+### 09:15–10:15 · Table discovery and playback (Challenge + shareback, §1)
 
 **Purpose.** Reverse-engineer the product from the outputs: producer-creator-consumer map, consumer-backwards map, mini-STTM, glossary and trust questions; two-minute playbacks.
 
@@ -49,7 +58,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Wrap by 10:15 at the latest; the build needs the time.
 
-### 10:15–12:00 · Phase 1 build (Challenge)
+### 10:15–12:00 · Phase 1 build (Challenge, §2)
 
 **Purpose.** Every team establishes the baseline: readiness, seeds, source-aligned, domain-aligned, consumer-aligned, tests, orchestration understood.
 
@@ -66,13 +75,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Lunch is flexible; everyone back by 13:30 at the latest.
 
-### 12:00–13:00 · Lunch (flexible) (Break)
+### 12:00–13:00 · Lunch (flexible) (Break, §2)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 13:00–14:30 · Phase 1 completion, Phase 2 extensions, presentation prep (Challenge)
+### 13:00–14:30 · Phase 1 completion, Phase 2 extensions, presentation prep (Challenge, §3)
 
 **Purpose.** Teams finish Phase 1, choose extensions that add value, and prepare a two-to-three-minute presentation.
 
@@ -91,7 +100,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Advanced learners who finish Phase 2 can take the advanced path in the README: a product of their own.
 
-### 14:30–15:00 · Presentations and close (Shareback)
+### 14:30–15:00 · Presentations and close (Shareback, §4)
 
 **Purpose.** One person per table, two to three minutes; the certification evidence recorded; the week closed.
 

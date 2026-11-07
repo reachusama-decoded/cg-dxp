@@ -1,25 +1,33 @@
 # Day 4 run sheet — Bitemporal loading and Airflow orchestration
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
 
-| Time | Block | Type | On screen |
-|---|---|---|---|
-| 09:00–09:45 | Bitemporal loading | Demo + shareback | Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen |
-| 09:45–10:00 | Orchestration and capstone orientation | Demo | Anchor › The DAG diagram; Friday preview |
-| 10:00–10:15 | Break | Break |  |
-| 10:15–10:45 | Airflow demonstration | Demo | Anchor › Airflow cells; the Airflow UI at localhost:8080 |
-| 10:45–12:00 | Challenge 10 — Airflow practical | Challenge | Anchor › Challenge box; learners in challenges/v1/03-airflow-orchestration |
-| 12:00–13:00 | Lunch | Break |  |
-| 13:00–13:30 | Continue Airflow practical, regroup at 13:30 | Challenge + shareback | Anchor › Challenge box |
-| 13:30–14:00 | CI/CD and deployment context | Demo | Anchor › CI/CD (diagram), Harness walkthrough, Datadog monitors |
-| 14:00–14:15 | Break | Break |  |
-| 14:15–14:35 | Release decision in pairs | Challenge + shareback | Anchor › Activity 10 card |
-| 14:35–14:50 | Explain a failure and repair | Challenge + shareback | Anchor › Activity 11 card and template |
-| 14:50–15:00 | Friday preparation and closing questions | Shareback | Anchor › Friday checklist |
+## Sections
+
+1. **Bitemporal loading** (09:00–09:45): Demo: two clocks, three loads, four questions · Guest or volunteer: a real table · Shareback: which clock?
+2. **Airflow orchestration** (09:45–13:30): Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a controlled failure · Challenge 10: Airflow practical · Lunch · Shareback: one run, one log, one output check
+3. **CI/CD and release operations** (13:30–15:00): Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Activity 11: explain a failure and repair · Friday preparation
+
+## Timeline
+
+| § | Time | Block | Type | On screen |
+|---|---|---|---|---|
+| 1 | 09:00–09:45 | Bitemporal loading | Demo + shareback | Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen |
+| 2 | 09:45–10:00 | Orchestration and capstone orientation | Demo | Anchor › The DAG diagram; Friday preview |
+| 2 | 10:00–10:15 | Break | Break |  |
+| 2 | 10:15–10:45 | Airflow demonstration | Demo | Anchor › Airflow cells; the Airflow UI at localhost:8080 |
+| 2 | 10:45–12:00 | Challenge 10 — Airflow practical | Challenge | Anchor › Challenge box; learners in challenges/v1/03-airflow-orchestration |
+| 2 | 12:00–13:00 | Lunch | Break |  |
+| 2 | 13:00–13:30 | Continue Airflow practical, regroup at 13:30 | Challenge + shareback | Anchor › Challenge box |
+| 3 | 13:30–14:00 | CI/CD and deployment context | Demo | Anchor › CI/CD (diagram), Harness walkthrough, Datadog monitors |
+| 3 | 14:00–14:15 | Break | Break |  |
+| 3 | 14:15–14:35 | Release decision in pairs | Challenge + shareback | Anchor › Activity 10 card |
+| 3 | 14:35–14:50 | Explain a failure and repair | Challenge + shareback | Anchor › Activity 11 card and template |
+| 3 | 14:50–15:00 | Friday preparation and closing questions | Shareback | Anchor › Friday checklist |
 
 ## Blocks
 
-### 09:00–09:45 · Bitemporal loading (Demo + shareback)
+### 09:00–09:45 · Bitemporal loading (Demo + shareback, §1)
 
 **Purpose.** Business time and system time; loading strategies; a worked history with a correction; which clock answers which question.
 
@@ -39,7 +47,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Over time: skip the macro walk, keep the four queries.
 
-### 09:45–10:00 · Orchestration and capstone orientation (Demo)
+### 09:45–10:00 · Orchestration and capstone orientation (Demo, §2)
 
 **Purpose.** What orchestration is, connected to the pipeline generated on Day 2; a preview of Friday's work and its starting files.
 
@@ -56,13 +64,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Break, then the Airflow demo.
 
-### 10:00–10:15 · Break (Break)
+### 10:00–10:15 · Break (Break, §2)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 10:15–10:45 · Airflow demonstration (Demo)
+### 10:15–10:45 · Airflow demonstration (Demo, §2)
 
 **Purpose.** Operators, dependencies, callbacks, the UI, Astro blueprints, and a controlled failure, on a local Astro stack running Day 3's project.
 
@@ -82,7 +90,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** If the stack misbehaves, the status and log cells still show a previous green run.
 
-### 10:45–12:00 · Challenge 10 — Airflow practical (Challenge)
+### 10:45–12:00 · Challenge 10 — Airflow practical (Challenge, §2)
 
 **Purpose.** Launch the assigned Airflow project; learners wire the chain, run tasks inside the scheduler, inspect states and logs.
 
@@ -101,13 +109,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Fast finishers: the extension questions (late input, failed check, repeated run), then Phase 2.
 
-### 12:00–13:00 · Lunch (Break)
+### 12:00–13:00 · Lunch (Break, §2)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 13:00–13:30 · Continue Airflow practical, regroup at 13:30 (Challenge + shareback)
+### 13:00–13:30 · Continue Airflow practical, regroup at 13:30 (Challenge + shareback, §2)
 
 **Purpose.** Resolve blockers; Phase 2 for those on it; regroup with one run, one log and one output check per pair.
 
@@ -124,7 +132,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** CI/CD and the deployment picture.
 
-### 13:30–14:00 · CI/CD and deployment context (Demo)
+### 13:30–14:00 · CI/CD and deployment context (Demo, §3)
 
 **Purpose.** Where code goes, how deployment is initiated, where execution is visible, how failures are investigated: Harness, Astro, Datadog.
 
@@ -141,13 +149,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Break, then the release decision.
 
-### 14:00–14:15 · Break (Break)
+### 14:00–14:15 · Break (Break, §3)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 14:15–14:35 · Release decision in pairs (Challenge + shareback)
+### 14:15–14:35 · Release decision in pairs (Challenge + shareback, §3)
 
 **Purpose.** A failed candidate with 500 rows and 497 distinct IDs, yesterday's accepted output available: decide what ships and what to tell the consumer.
 
@@ -163,7 +171,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Write the failure note.
 
-### 14:35–14:50 · Explain a failure and repair (Challenge + shareback)
+### 14:35–14:50 · Explain a failure and repair (Challenge + shareback, §3)
 
 **Purpose.** A short note another creator could use to locate the run and understand what happened; swapped and tested.
 
@@ -179,7 +187,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Friday preparation.
 
-### 14:50–15:00 · Friday preparation and closing questions (Shareback)
+### 14:50–15:00 · Friday preparation and closing questions (Shareback, §3)
 
 **Purpose.** Check the starting files and environment; record remaining problems and who resolves them.
 

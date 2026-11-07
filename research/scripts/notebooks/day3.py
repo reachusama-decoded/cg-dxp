@@ -58,26 +58,30 @@ ACTIVITIES = [
       debrief=["Which wrong results would have passed every test in the project?", "What value did you check without using the model that produced it?"]),
 ]
 
+SECTIONS = [
+ dict(n=1, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s1", start="09:00",
+      parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1 on DuckDB", "Break", "Walkthrough: Phase 2 on DuckDB", "Circulating"]),
+ dict(n=2, title="The platform session", anchor="s2", start="11:00",
+      parts=["Guest: the platform team (or the instructor-led version)", "Lunch"]),
+ dict(n=3, title="Complete and extend the practical", anchor="s3", start="13:00",
+      parts=["Challenge 9 continued: Phase 2", "Stretch: macros, snapshots, incremental, unit tests", "Break"]),
+ dict(n=4, title="Consolidation", anchor="s4", start="14:30",
+      parts=["Debrief: what did we learn?", "Activity 9: test review in pairs", "Close"]),
+]
+
 def cells():
     A = {a["number"]: a for a in ACTIVITIES}
     act = lambda n: dc.md(dc.activity(n, A[n]["title"], A[n]["grouping"], A[n]["minutes"], A[n]["brief"], A[n]["outputs"], A[n].get("debrief"), A[n].get("early")))
-    agenda = "| Time | Block | Type | Where |\n|---|---|---|---|\n" + "\n".join(f"| {b['time']} | {b['title']} | {b['type']} | {b['on_screen']} |" for b in BLOCKS)
+    
     PA = "demos/portfolio_analytics"
     DB = f'HERE / "{PA}/warehouse/training_dev.duckdb"'
     C = [dc.title(3, TITLE, "anchor notebook"),
-         dc.toc([("How to use this notebook", "how-to-use", "Start here"),
-                 ("Welcome and launch", "launch", "Agenda · how the day runs · the pipeline · the launch box · what to keep"),
-                 ("Walkthrough: Phase 1, sources and staging", "phase1", "S1–S8 on DuckDB, section by section, with what learners should see"),
-                 ("Walkthrough: Phase 2, intermediate, marts, tests, docs", "phase2", "C1–C10 · materialisations · the NAV test · docs"),
-                 ("Circulating", "circulate", "The three-point checklist · blockers and fixes"),
-                 ("The platform session", "platform", "Agenda for a guest · the instructor-led version · learners' questions"),
-                 ("Stretch: macros, snapshots, incremental, unit tests", "stretch", "For fast finishers, with cells"),
-                 ("Consolidation", "recap", "The recap table · Activity 9 · tomorrow's volunteers"),
-                 ("Questions from the room", "questions", "Live Q&A, answers, sketches")]),
+         
          *dc.how_to_use(3, "- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
          dc.code(dc.setup_cell(3)),
-         dc.heading("Welcome and launch", "launch"),
-         dc.md(f"### Today\n\n{agenda}\n\nThe rhythm changes: a short launch, then self-paced practice from the README, with the instructor walking the room. A platform session at 11:00 (guest or instructor-led). Recap and a pair exercise at the end."),
+         dc.agenda(SECTIONS, lead='The rhythm changes: a short launch, then self-paced practice from the README, with the instructor walking the room. A platform session at 11:00 (guest or instructor-led). Recap and a pair exercise at the end.'),
+         dc.section(1, "The dbt practical: launch, Phase 1 and the walkthrough", "s1"),
+         dc.part("Launch", "the pipeline you will build today"),
          dc.anchor("Yesterday Catalyst generated a dbt project for you. Could you have written it, and could you tell if it is wrong?",
                    "dbt from the inside: sources, staging, intermediate, marts, tests, docs, on the Portfolio Analytics case, on Databricks.",
                    "Reviewing generated code needs the same knowledge as writing it; the practical builds that knowledge one section at a time.",
@@ -86,6 +90,7 @@ def cells():
                    ["Six raw feeds ship as seeds; five are modelled; refdata is there to inspect and for freshness practice.",
                     "Staging renames and casts, one model per source; intermediate does the joins; marts are the consumer-aligned facts and aggregates.",
                     "The tests are promises from a contract made executable: not null, unique, a relationship, accepted values, NAV within one basis point, the rollup reconciles."]),
+         dc.part("Challenge 9", "dbt practical: Phase 1 first"),
          dc.md(dc.challenge("dbt practical (challenge 02)", "challenges/v1/02-dbt-pipeline/README.md", "about 3 hours across the day",
                       "Build, test and document the Portfolio Analytics pipeline: eight staging sections, then ten challenges.",
                       [("Where to work", [
@@ -103,7 +108,7 @@ def cells():
                       support=["Keep a list of commands, configuration changes, questions and discoveries; the recap is built from it."])),
          dc.md(dc.say(["Attempt each section before you open its solution. The solution is for comparing, not for copying.",
                        "You can run the raw dbt commands from the project folder. If dbt says it cannot find your credentials, open a fresh terminal so mise loads the environment, or rerun mise run setup:databricks."])),
-         dc.heading("Walkthrough: Phase 1, sources and staging", "phase1"),
+         dc.part("Walkthrough", "Phase 1 on DuckDB: sources and staging"),
          dc.md(dc.demo("the same project, on DuckDB, section by section", f"The learners' challenge 02 solution ported to DuckDB in <code>{PA}/</code>: one cell per README section, for \"what should I see?\".", [
                   "Same model names, layers, tags and tests; the Databricks-only post-hook is a no-op macro here.",
                   f"Use a cell when someone asks what they should see; `{PA}/README.md` maps each cell to its README section.",
@@ -125,7 +130,8 @@ def cells():
                     "Set per folder in dbt_project.yml; override per model with config(). Both are configuration, not SQL."]),
          dc.md("#### S8 — A staging test is a query that must return no rows"),
          dc.code(f'!sed -n "1,20p" {PA}/models/staging/schema.yml\n!cd {PA} && dbt test --select stg_holdings 2>&1 | grep -E "PASS|FAIL|Done"\n# not_null and unique compile to select-the-violations queries. Zero rows is a pass.'),
-         dc.heading("Walkthrough: Phase 2, intermediate, marts, tests, docs", "phase2"),
+         dc.break_(15, "10:15"),
+         dc.part("Walkthrough", "Phase 2 on DuckDB: intermediate, marts, tests, docs"),
          dc.md("#### C1 — The enrichment join: holdings × prices × FX, grain unchanged"),
          dc.code(f'!sed -n "1,45p" {PA}/models/intermediate/int_holdings_enriched.sql\n# Left joins on (instrument, date) and (currency, GBP, date). Ask the room: what happens when the FX rate is missing? Here it defaults to 1.0 via coalesce; the running example on Day 2 chose to leave it null and fail the test. Both are decisions; the contract should say which.'),
          dc.md("#### C3, C4 — The marts: an aggregate by strategy and the daily-grain fact with a calculated NAV"),
@@ -138,7 +144,7 @@ def cells():
          dc.md("#### C9, C10 — The Databricks post-hook and the capstone mart"),
          dc.code(f'!cat {PA}/macros/optimize_mart.sql\n# On Databricks: OPTIMIZE ... ZORDER BY (fund_id, position_date) after each mart, a Delta optimisation. Here: a no-op. A macro that dispatches on target.type is how one project runs on two warehouses.'),
          dc.code(f'sql("select * from training_demo.agg_fund_daily_exposure order by 1,2", {DB})\n!sed -n "1,20p" {PA}/tests/reconcile_daily_exposure.sql\n# C10: the (fund, date) rollup must preserve the strategy-level total. Learners create both the mart and this test.'),
-         dc.heading("Circulating", "circulate"),
+         dc.part("Circulating", "three questions per learner, and the symptom table"),
          dc.md(dc.reflect("CIRCULATION CHECKLIST — three questions per learner", "Ask: could this join pass its tests and still double the reported value? A successful build alone is insufficient.", [
                      "Sources and staging: can they say what one row means, name its key, and explain the types and units?",
                      "Joins and models: are the lookup keys unique on the right-hand side, do dates belong in the join, and what happens to unmatched rows?",
@@ -155,7 +161,8 @@ def cells():
          | `dbt docs serve` cannot bind | `DBT_HOST` holds the Databricks host | `dbt docs serve --host 127.0.0.1 --port 8081` |
          | A relationship test fails after a learner edits a key | Keys changed in staging without the fund master | Trace the key back to the source; staging must not invent keys |
          """),
-         dc.heading("The platform session", "platform"),
+         dc.section(2, "The platform session", "s2"),
+         dc.part("Guest", "the platform team, or the instructor-led version"),
          dc.anchor("Why does the paved path look the way it does?",
                    "An hour from the platform team: Airflow on Astronomer, Databricks and Unity Catalog, contracts and the Marketplace, the vended repository, compute, operations.",
                    "Learners will create products in that repository next month; the decisions behind it are the context the practicals cannot give.",
@@ -183,7 +190,9 @@ def cells():
 
          </details>
          """),
-         dc.heading("Stretch: macros, snapshots, incremental, unit tests", "stretch"),
+         dc.break_(60, "13:00", lunch=True),
+         dc.section(3, "Complete and extend the practical", "s3"),
+         dc.part("Challenge 9 continued", "Phase 2, then the stretch: macros, snapshots, incremental, unit tests"),
          dc.anchor("The README's Phase 2 is done. What does a production dbt project have that this one does not?",
                    "Macros that dispatch on the warehouse, a custom generic test, a snapshot (SCD type 2), an incremental mart, a unit test, an exposure.",
                    "These are the pieces the platform's vended project uses, and what tomorrow's bitemporal macro builds on.",
@@ -191,10 +200,12 @@ def cells():
          dc.code(f'!cat {PA}/macros/to_base_ccy.sql\n!cat {PA}/tests/generic/test_non_negative.sql\n# A macro names a repeated expression once; a generic test is a macro that returns the violating rows.'),
          dc.code(f'!cd {PA} && dbt snapshot 2>&1 | grep -E "snapshot|Done"\nsql("select fund_cd, fund_name, strategy_code, is_active, dbt_valid_from, dbt_valid_to from training_demo.fund_master_snapshot order by 1", {DB})\n# A snapshot keeps history: change a watched column in the seed, snapshot again, and the old row closes (dbt_valid_to) while a new one opens. Tomorrow adds the second clock.'),
          dc.code(f'!cd {PA} && dbt run --select agg_fund_daily_exposure_incremental 2>&1 | grep -E "incremental|Done"\n!cd {PA} && dbt run --select agg_fund_daily_exposure_incremental 2>&1 | grep -E "incremental|Done"\n!sed -n "1,25p" {PA}/models/stretch/agg_fund_daily_exposure_incremental.sql\n# First run: full load. Second run: only dates newer than the table holds, replaced on the unique key (delete+insert) so a re-delivered day does not duplicate.'),
-         dc.code(f'!sed -n "/unit_tests:/,$p" {PA}/models/stretch/stretch.yml\n!cd {PA} && dbt test --select stg_holdings,test_type:unit 2>&1 | grep -E "unit_test|PASS|FAIL|Done"\n# A unit test runs the model SQL on made-up rows and compares with expected rows: no warehouse data, pure logic.'),
+         dc.code(f'!sed -n "/unit_tests:/,\\$p" {PA}/models/stretch/stretch.yml\n!cd {PA} && dbt test --select stg_holdings,test_type:unit 2>&1 | grep -E "unit_test|PASS|FAIL|Done"\n# A unit test runs the model SQL on made-up rows and compares with expected rows: no warehouse data, pure logic.'),
          dc.md(dc.prompt("Chat view, in the learner project", "/ai-catalyst adding-dbt-unit-test\nAdd a dbt unit test for stg_holdings covering: a null ISIN becomes CASH_<ccy>; fund codes are trimmed and upper-cased; a row with a null position date is dropped.",
                          "/adding-dbt-unit-test  (same text) — or simply: add a unit_tests entry for stg_holdings in a YAML file covering those three cases")),
-         dc.heading("Consolidation", "recap"),
+         dc.break_(15, "14:30"),
+         dc.section(4, "Consolidation", "s4"),
+         dc.part("Debrief", "what did we learn?"),
          dc.md(dc.whiteboard("what did we learn? (fill gaps from this list, do not lecture it)", [
              ("Models and conventions", "Staging and integration models; CG naming (stg_, int_, fct_, agg_; on Friday src_, dom_, rpt_); the SQL behind a transformation is a SELECT dbt wraps."),
              ("Dependencies and change", "ref() and source() build the graph; a source or schema change is visible in lineage; dbt docs show it."),
@@ -207,7 +218,9 @@ def cells():
              ("Catalogue conventions", "Application, domain and source-aligned catalogs; publish via the domain catalog; the Marketplace is discovery."),
              ("Quality and materialisation", "Checks at project and model level; materialisation set per folder in dbt_project.yml or in the model file."),
          ], open_=True)),
+         dc.part("Activity 9", "test review in pairs"),
          act("9"),
+         dc.part("Close", "closing discussion"),
          dc.md(dc.say(["Two or three examples to the room: the wrong result, whether the test caught it, the improvement.",
                        "Save the project where it is; tomorrow Airflow runs it. Completing Phase 2 is not a prerequisite for tomorrow: the Airflow challenge ships the solved dbt project."])),
          dc.md(dc.leave_with(LEAVE_WITH)),

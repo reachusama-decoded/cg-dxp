@@ -55,25 +55,31 @@ ACTIVITIES = [
       debrief=["Which teams picked the same outputs, and did their numbers agree?", "What would you tell the next cohort before they start?"]),
 ]
 
+SECTIONS = [
+ dict(n=1, title="The brief and discovery", anchor="s1", start="09:00",
+      parts=["Brief: the day, the rules, ten minutes of reading", "Activity 12: discovery worksheet", "Playback: two minutes per table"]),
+ dict(n=2, title="Phase 1: the baseline", anchor="s2", start="10:15",
+      parts=["Challenge: Atlas Phase 1", "Circulating: section notes, expected results, blockers", "Lunch (flexible)"]),
+ dict(n=3, title="Phase 2: extensions and presentation prep", anchor="s3", start="13:00",
+      parts=["Challenge: the fourteen extensions", "Presentation prep: technical work stops at 14:30"]),
+ dict(n=4, title="Presentations and close", anchor="s4", start="14:30",
+      parts=["Activity 13: presentations", "Tally sheet and certification evidence", "Close"]),
+]
+
 def cells():
     A = {a["number"]: a for a in ACTIVITIES}
     act = lambda n: dc.md(dc.activity(n, A[n]["title"], A[n]["grouping"], A[n]["minutes"], A[n]["brief"], A[n]["outputs"], A[n].get("debrief"), A[n].get("early")))
-    agenda = "| Time | Block | Type | Where |\n|---|---|---|---|\n" + "\n".join(f"| {b['time']} | {b['title']} | {b['type']} | {b['on_screen']} |" for b in BLOCKS)
+    
     exp = (ROOT / "courseware/day5-capstone/support/expected-results.md").read_text().split("\n", 2)[2]
     AT = "support/atlas_duckdb"
     DB = f'HERE / "{AT}/warehouse/training_dev.duckdb"'
     C = [dc.title(5, TITLE, "anchor notebook"),
-         dc.toc([("How to use this notebook", "how-to-use", "Start here · build the Atlas solution on DuckDB first"),
-                 ("The brief", "brief", "Agenda · what to say at 09:00"),
-                 ("Discovery", "discovery", "The data · the pipeline · Activity 12 worksheet · hints"),
-                 ("Phase 1 support", "phase1", "Launch box · section notes · expected results · blockers"),
-                 ("Phase 2 menu", "phase2", "The fourteen extensions, grouped"),
-                 ("Presentations and certification", "presentations", "Activity 13 · tally sheet · evidence"),
-                 ("Questions from the room", "questions", "Live Q&A, answers, sketches")]),
+         
          *dc.how_to_use(5, "- Before the day: `bash support/atlas_duckdb/build.sh` and `python support/expected-results.py`, so the expected numbers below are from this laptop's build of the solution."),
          dc.code(dc.setup_cell(5)),
-         dc.heading("The brief", "brief"),
-         dc.md(f"### Today\n\n{agenda}\n\nThe day ends when every table has completed Phase 1 and presented. Cohorts usually present early afternoon."),
+         dc.agenda(SECTIONS, lead='The day ends when every table has completed Phase 1 and presented. Cohorts usually present early afternoon.'),
+         dc.section(1, "The brief and discovery", "s1"),
+         dc.part("Brief", "the day, the rules, ten minutes of reading"),
          dc.figure("d5-capstone-day", "Friday in one line",
                    ["Discovery first, then the baseline, then extensions, then presentations.",
                     "Phase 1 is the certification bar: every team establishes it; Phase 2 is for teams that have and can explain it."]),
@@ -82,7 +88,7 @@ def cells():
                        "The data is synthetic and has been through several rounds of generation; a few things will look odd. Portfolio and fund do not mean what they mean in our own model; that is deliberate, so the design conversation is real.",
                        "Read the first third of the README on your own now. At 09:15, as a table: what are we being asked to do? Stop discussing by 10:00, 10:15 at the latest, so there is time to build.",
                        "Phase 1 is what you must complete. Phase 2 is open-ended, for whoever finishes. Lunch when you like; everyone back by 13:30; presentations when every table is done with Phase 1."])),
-         dc.heading("Discovery", "discovery"),
+         dc.part("Activity 12", "discovery worksheet, then playback"),
          dc.anchor("Seven CSV files and seven output tables. Where do you start?",
                    "From the consumer's question backwards to the sources: the discovery worksheet.",
                    "Teams that map first build faster and present better; teams that start with SQL find the definitions mid-afternoon.",
@@ -111,7 +117,8 @@ def cells():
 
          </details>
          """),
-         dc.heading("Phase 1 support", "phase1"),
+         dc.section(2, "Phase 1: the baseline", "s2"),
+         dc.part("Challenge", "Atlas Phase 1"),
          dc.md(dc.challenge("Atlas capstone, Phase 1", "challenges/v1/04-atlas-capstone/README.md", "two to three hours",
                       "Every team establishes the baseline: seeds, the three layers, the tests, and the orchestration understood.",
                       [("Readiness, from the repo root", [
@@ -123,6 +130,7 @@ def cells():
                           "5 Build source-aligned: `dbt run --select tag:source-aligned`.", "6 Build domain-aligned.", "7 Build consumer-aligned and run the tests.", "8 Understand the orchestration."])],
                       "`mise run challenge:verify 04` (not a bare verify.sh: it needs mise's environment); compare numbers with the expected results below.",
                       support=["Edit only under `data_products/atlas_elt/`; the stubs under `challenges/` are reset templates; solutions live with the instructor."])),
+         dc.part("Circulating", "section notes, expected results, blockers"),
          dc.md("""
          | Section | What to check when circulating | Expected |
          |---|---|---|
@@ -148,7 +156,9 @@ def cells():
          | Target path under `/Volumes/...` is not mounted | The project writes artefacts to a Unity Catalog volume in production | Add `--target-path target` for local inspection and clean it up after |
          | Transient "Error during request to server" | Databricks | Retry |
          """),
-         dc.heading("Phase 2 menu", "phase2"),
+         dc.break_(60, "13:30 at the latest", lunch=True),
+         dc.section(3, "Phase 2: extensions and presentation prep", "s3"),
+         dc.part("Challenge", "choose extensions by value to the consumer; technical work stops at 14:30"),
          dc.md("""
          Choose by value to the consumer, not by difficulty. Each is a README challenge with a solution kept by the instructor; the DuckDB build in `support/atlas_duckdb/` has them all, for comparing a team's result.
 
@@ -161,10 +171,12 @@ def cells():
          | Orchestration | 12 understand and extend the orchestration · 13 params-driven orchestration |
          """),
          dc.code(f"!cd {AT} && dbt ls --resource-type model --select tag:consumer-aligned && dbt ls --resource-type test | head -12\n# The solution's consumer-aligned models and tests, for reference while a team describes theirs."),
-         dc.heading("Presentations and certification", "presentations"),
+         dc.section(4, "Presentations and close", "s4"),
+         dc.part("Activity 13", "capstone presentation"),
          act("13"),
+         dc.part("Tally sheet and certification evidence"),
          dc.md("""
-         ### Tally sheet (fill in during the day)
+         **Tally sheet** (fill in during the day)
 
          | Table | Outputs chosen | Phase 1 built (src / dom / consumer) | Tests pass | Independent check shown | Orchestration explained | Phase 2 taken | Presenter |
          |---|---|---|---|---|---|---|---|
@@ -181,6 +193,7 @@ def cells():
                      "One value checked independently of the model that produced it.",
                      "An explanation of what the orchestration triggers and where dbt runs.",
                      "A presentation that states a finding and a caveat."])),
+         dc.part("Close"),
          dc.md(dc.say(["One person per table, two to three minutes: what you built, what was hard, one finding, one trust question and its answer.",
                        "Do we feel we can create a data product and make it work? Then you are done. Thank you for the week."])),
          dc.md(dc.leave_with(LEAVE_WITH)),

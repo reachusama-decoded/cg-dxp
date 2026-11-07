@@ -83,28 +83,28 @@ ACTIVITIES = [
       """),
 ]
 
+SECTIONS = [
+ dict(n=1, title="Bitemporal loading", anchor="s1", start="09:00",
+      parts=["Demo: two clocks, three loads, four questions", "Guest or volunteer: a real table", "Shareback: which clock?"]),
+ dict(n=2, title="Airflow orchestration", anchor="s2", start="09:45",
+      parts=["Orientation: the DAG, and Friday", "Break", "Demo: the stack, a run, the UI, a controlled failure", "Challenge 10: Airflow practical", "Lunch", "Shareback: one run, one log, one output check"]),
+ dict(n=3, title="CI/CD and release operations", anchor="s3", start="13:30",
+      parts=["Demo: GitOps, Harness, Datadog", "Break", "Activity 10: release decision", "Activity 11: explain a failure and repair", "Friday preparation"]),
+]
+
 def cells():
     A = {a["number"]: a for a in ACTIVITIES}
     act = lambda n: dc.md(dc.activity(n, A[n]["title"], A[n]["grouping"], A[n]["minutes"], A[n]["brief"], A[n]["outputs"], A[n].get("debrief"), A[n].get("early")))
-    agenda = "| Time | Block | Type | Where |\n|---|---|---|---|\n" + "\n".join(f"| {b['time']} | {b['title']} | {b['type']} | {b['on_screen']} |" for b in BLOCKS)
+    
     BT = 'HERE / "demos/bitemporal/warehouse/bitemporal.duckdb"'
     AL = "demos/airflow_local"
     C = [dc.title(4, TITLE, "anchor notebook"),
-         dc.toc([("How to use this notebook", "how-to-use", "Start here · start the Airflow stack first"),
-                 ("Welcome", "welcome", "Agenda"),
-                 ("Bitemporal loading", "bitemporal", "Two clocks · the demo · the macro · which clock answers which question"),
-                 ("Orchestration and Friday", "orchestration", "The DAG · the capstone preview"),
-                 ("Airflow", "airflow", "Components · the demo stack · operators, >>, callbacks, blueprints · a controlled failure"),
-                 ("Challenge 10", "challenge", "Launch box · support table · extension questions"),
-                 ("CI/CD and deployment", "cicd", "GitOps · Harness · Datadog · secrets"),
-                 ("Release decision and the failure note", "exercises", "Activities 10 and 11"),
-                 ("Friday preparation", "friday", "The checklist"),
-                 ("Questions from the room", "questions", "Live Q&A, answers, sketches")]),
+         
          *dc.how_to_use(4, "- Before the day: `bash demos/airflow_local/run.sh start` (Docker Desktop running; the image is already built) and `bash demos/bitemporal/demo.sh` once. The Airflow UI is http://localhost:8080."),
          dc.code(dc.setup_cell(4)),
-         dc.heading("Welcome", "welcome"),
-         dc.md(f"### Today\n\n{agenda}\n\nMorning: history (bitemporal loading) and orchestration (Airflow) with a long practical. Afternoon: the deployment picture, then two short exercises that turn a failed run into a decision and a note. Close by checking Friday's starting line."),
-         dc.heading("Bitemporal loading", "bitemporal"),
+         dc.agenda(SECTIONS, lead="Morning: history (bitemporal loading) and orchestration (Airflow) with a long practical. Afternoon: the deployment picture, then two short exercises that turn a failed run into a decision and a note. Close by checking Friday's starting line."),
+         dc.section(1, "Bitemporal loading", "s1"),
+         dc.part("Demo", "two clocks, three loads, four questions"),
          dc.anchor("The source corrects Monday's value on Wednesday. What was true on Monday, and what did we believe on Tuesday?",
                    "Two clocks on every row: business time (when it was true) and system time (when the warehouse knew it). Nothing is overwritten; corrections add versions.",
                    "Audit, reproducible reports and 'as was' questions all need the second clock; a status flag or an overwrite loses it.",
@@ -138,17 +138,20 @@ def cells():
          | What did the report say at time T? | system covers T | `dl_system_start_ts <= T and coalesce(dl_system_end_ts, '9999-12-31') > T` |
          | Which versions did a correction replace? | same business start, later system start | order by `dl_system_start_ts` within the key |
          """),
+         dc.part("Guest or volunteer", "a real bitemporal table"),
          dc.md(dc.reflect("GUEST OR VOLUNTEER BRIEF — ten minutes", "Show one real bitemporal table, then take two questions.", [
                      "The DL columns, and one row's history ordered by system start.",
                      "One change that created a version; one correction if you have one.",
                      "Which strategy the model uses: full, incremental or balance.",
                      "If a defect once created a version, show it: the table is an audit of what the code did."])),
+         dc.part("Shareback", "which clock?"),
          dc.md(dc.reflect("SHAREBACK — which clock?", "Each table takes one question: say the clock, then the filter.", [
                      "What was the associate's title on 2 November?",
                      "What did the dashboard show on the morning of day 2?",
                      "When did we learn about the correction?",
                      "Which rows does an auditor need to see?"])),
-         dc.heading("Orchestration and Friday", "orchestration"),
+         dc.section(2, "Airflow orchestration", "s2"),
+         dc.part("Orientation", "the DAG, and Friday's preview"),
          dc.anchor("Yesterday's project builds when you type dbt build. Who types it at six in the morning?",
                    "Orchestration: deciding when the pipeline's parts run, in what order, with retries, logs and alerts.",
                    "A product's promises about delivery time and freshness are kept by the scheduler, not by the SQL.",
@@ -161,7 +164,8 @@ def cells():
          dc.code(f"!sed -n '/^with DAG/,/^) as dag:/p' {AL}/dags/eod_prices/dags/eod_prices_daily.py\n!grep -n '>>' {AL}/dags/eod_prices/dags/eod_prices_daily.py\n# Day 2's generated product, orchestrated: the schedule is the contract's 07:30 ET commitment, 06:30 weekdays New York. Read >> as 'and then'."),
          dc.md(dc.say(["Friday: you get CSV files about a fictional wealth manager called Atlas and a README. Phase 1 is the certification bar: sources, the three layers, tests, and understanding the orchestration. Two to three hours for most teams. Phase 2 is fourteen extensions you choose from. We watch you build it; nobody hands out solutions.",
                        "Work in data_products/atlas_elt, not in the challenge folder. If you run it in the wrong folder, that is on you, and now you have been told."])),
-         dc.heading("Airflow", "airflow"),
+         dc.break_(15, "10:15"),
+         dc.part("Demo", "the stack, a run, the UI, a controlled failure"),
          dc.anchor("What is actually running when you type astro dev start?",
                    "A DAG processor, a scheduler, workers, a triggerer, an API server with the UI, and a metadata database: on your laptop as containers, or hosted by Astronomer.",
                    "Knowing the pieces explains the symptoms: an import error is the processor; a queued task is the scheduler; a failed task is a worker log.",
@@ -195,7 +199,7 @@ def cells():
                   "Say: this is the same drill as the challenge's Phase 2 and Friday's questions: late input, failed check, repeated run."])),
          dc.code(f"!bash {AL}/run.sh stale && bash {AL}/run.sh trigger && bash {AL}/run.sh wait && bash {AL}/run.sh status | grep -E 'source_freshness|publish|state' | head -6"),
          dc.code(f"!bash {AL}/run.sh fresh && bash {AL}/run.sh trigger && bash {AL}/run.sh wait"),
-         dc.heading("Challenge 10", "challenge"),
+         dc.part("Challenge 10", "Airflow practical"),
          dc.md(dc.challenge("Airflow practical (challenge 03)", "challenges/v1/03-airflow-orchestration/README.md", "until 13:30, with lunch",
                       "Wire, schedule and run the Portfolio Analytics DAG with Cosmos; Phase 2 is production operations.",
                       [("Prerequisites, in this order", [
@@ -226,7 +230,11 @@ def cells():
          | `dbt docs serve` fails to bind | `DBT_HOST` is the Databricks host | `--host 127.0.0.1 --port 8081` |
          | Two Astro environments on one laptop | Another project is running | `docker ps` and look for the devcontainer's scheduler |
          """),
-         dc.heading("CI/CD and deployment", "cicd"),
+         dc.break_(60, "13:00", lunch=True),
+         dc.part("Shareback", "one run, one log line, one output check per pair"),
+         dc.md(dc.reflect("SHAREBACK — 13:30, one pair at a time", "Show the run ID, the log line that told you what happened, and the table it produced.", ["Keep credential and path errors separate from the intended data-quality failure.", "Fast finishers: what happens if the input is late? If the quality check fails? If the run is repeated?"])),
+         dc.section(3, "CI/CD and release operations", "s3"),
+         dc.part("Demo", "GitOps, Harness, Datadog"),
          dc.anchor("Your DAG and dbt project are in Git. How do they get to production, and who presses the button?",
                    "Continuous integration (merge often) and continuous deployment (release often), driven by GitHub events through Harness, into Astro and Databricks, watched by Datadog.",
                    "Creators rarely operate this layer, but they read it: which pipeline ran, where the logs are, who deployed last night.",
@@ -249,7 +257,8 @@ def cells():
                   "Open the logs of a failed execution.",
                   "Say: secrets live in AWS Secrets Manager, never in code or a chat; an API token that lets an AI assistant trigger deployments is a risk, not a shortcut."])),
          dc.code(f"!sed -n '1,40p' {AL}/dags/portfolio_analytics/include/monitoring/portfolio_analytics.yml\n# The challenge's monitoring config: six panels, each an SLI with an alert condition and a channel. This is what a Datadog monitor is for: the promises from Day 2, watched."),
-         dc.heading("Release decision and the failure note", "exercises"),
+         dc.break_(15, "14:15"),
+         dc.part("Activity 10", "release decision"),
          act("10"),
          dc.md("""
          <details><summary><strong>Discussion notes for Activity 10</strong></summary>
@@ -261,6 +270,7 @@ def cells():
 
          </details>
          """),
+         dc.part("Activity 11", "explain a failure and repair"),
          act("11"),
          dc.md("""
          <details><summary><strong>Prepared failure example</strong> (for pairs whose environment was blocked)</summary>
@@ -269,7 +279,7 @@ def cells():
 
          </details>
          """),
-         dc.heading("Friday preparation", "friday"),
+         dc.part("Friday preparation", "the checklist, then the close"),
          dc.md(dc.reflect("FRIDAY CHECKLIST — every learner, before leaving", "Five checks; any failure goes on the list with a name and a time it will be fixed.", [
                      "☐ Open `challenges/v1/04-atlas-capstone/README.md` and read the plan of the day.",
                      "☐ From the repo root: `test -f .mise.toml && test -d data_products/atlas_elt && echo OK`.",

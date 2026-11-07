@@ -1,31 +1,40 @@
 # Day 1 run sheet — Product discovery and effective AI use
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
 
-| Time | Block | Type | On screen |
-|---|---|---|---|
-| 09:00–09:15 | Welcome and introductions | Intro | Anchor › Welcome; the week map |
-| 09:15–09:30 | Activity 1 — Introductions and pain points | Group activity | Anchor › Activity 1 card |
-| 09:30–09:45 | Sponsor contribution | Talk | Anchor › The DXP operating model (personas diagram) |
-| 09:45–10:05 | Table share-out | Debrief | Anchor › The room's products (type into the table live) |
-| 10:05–10:15 | What makes a data product | Teach | Anchor › What is a data product (two diagrams) |
-| 10:15–10:30 | Break | Break | Agenda |
-| 10:30–10:40 | Discovery and product justification | Teach | Anchor › Discovery questions (triage diagram) |
-| 10:40–11:00 | Activity 2 — Justify a product | Group activity | Anchor › Activity 2 card |
-| 11:00–11:25 | Debrief | Debrief | Anchor › Debrief and lifetime value |
-| 11:25–11:40 | Lifetime value and adoption | Teach | Anchor › Lifetime value and adoption (mindmap) |
-| 11:40–11:50 | Catalyst demonstration | Demo | Catalyst skills repo, then Copilot Chat (or Claude Code) |
-| 11:50–12:00 | Activity 3 — Compare independent PRDs | Pair activity | Anchor › Activity 3 card |
-| 12:00–13:00 | Lunch | Break |  |
-| 13:00–13:40 | AI foundations and effective practice | Teach + demo | Anchor › AI foundations (two diagrams), then the Copilot interface |
-| 13:40–13:55 | Break | Break |  |
-| 13:55–14:25 | Activity 4 — Interview and generate | Group activity (threes) | Anchor › Activity 4 card, Voice Memos |
-| 14:25–14:45 | Debrief and requirements discovery | Debrief | Anchor › Debrief (discovery methods diagram), planted-errors contract |
-| 14:45–15:00 | Activity 5 — Explore the lifecycle | Individual, then tables | Anchor › Activity 5 card |
+## Sections
+
+1. **Welcome, the room and the operating model** (09:00–10:30): Welcome · Activity 1: introductions and pain points · Guest: the DXP operating model · Shareback: products and pain points · Whiteboard: what is a data product? · Break
+2. **Discovery, justification and Catalyst** (10:30–13:00): Whiteboard: how do you design a data product? · Activity 2: justify a product · Debrief · Whiteboard: lifetime value and adoption · Demo: Catalyst · Activity 3: compare independent PRDs · Lunch
+3. **AI foundations and effective practice** (13:00–13:55): Whiteboard: the seven ideas · Demo: the interface on the running example · Break
+4. **Interview, generate and the lifecycle** (13:55–15:00): Demo: Voice Memos to transcript · Activity 4: interview and generate · Debrief: requirements discovery · Reflect: the planted-errors contract · Activity 5: explore the lifecycle · Before learners leave
+
+## Timeline
+
+| § | Time | Block | Type | On screen |
+|---|---|---|---|---|
+| 1 | 09:00–09:15 | Welcome and introductions | Intro | Anchor › Welcome; the week map |
+| 1 | 09:15–09:30 | Activity 1 — Introductions and pain points | Group activity | Anchor › Activity 1 card |
+| 1 | 09:30–09:45 | Sponsor contribution | Talk | Anchor › The DXP operating model (personas diagram) |
+| 1 | 09:45–10:05 | Table share-out | Debrief | Anchor › The room's products (type into the table live) |
+| 1 | 10:05–10:15 | What makes a data product | Teach | Anchor › What is a data product (two diagrams) |
+| 1 | 10:15–10:30 | Break | Break | Agenda |
+| 2 | 10:30–10:40 | Discovery and product justification | Teach | Anchor › Discovery questions (triage diagram) |
+| 2 | 10:40–11:00 | Activity 2 — Justify a product | Group activity | Anchor › Activity 2 card |
+| 2 | 11:00–11:25 | Debrief | Debrief | Anchor › Debrief and lifetime value |
+| 2 | 11:25–11:40 | Lifetime value and adoption | Teach | Anchor › Lifetime value and adoption (mindmap) |
+| 2 | 11:40–11:50 | Catalyst demonstration | Demo | Catalyst skills repo, then Copilot Chat (or Claude Code) |
+| 2 | 11:50–12:00 | Activity 3 — Compare independent PRDs | Pair activity | Anchor › Activity 3 card |
+| 2 | 12:00–13:00 | Lunch | Break |  |
+| 3 | 13:00–13:40 | AI foundations and effective practice | Teach + demo | Anchor › AI foundations (two diagrams), then the Copilot interface |
+| 3 | 13:40–13:55 | Break | Break |  |
+| 4 | 13:55–14:25 | Activity 4 — Interview and generate | Group activity (threes) | Anchor › Activity 4 card, Voice Memos |
+| 4 | 14:25–14:45 | Debrief and requirements discovery | Debrief | Anchor › Debrief (discovery methods diagram), planted-errors contract |
+| 4 | 14:45–15:00 | Activity 5 — Explore the lifecycle | Individual, then tables | Anchor › Activity 5 card |
 
 ## Blocks
 
-### 09:00–09:15 · Welcome and introductions (Intro)
+### 09:00–09:15 · Welcome and introductions (Intro, §1)
 
 **Purpose.** Logistics, the sponsor's welcome video if there is one, the facilitators, and the rule that every data product mentioned gets written down.
 
@@ -46,7 +55,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Running late: cut the facilitator introductions to names and one line each.
 
-### 09:15–09:30 · Activity 1 — Introductions and pain points (Group activity)
+### 09:15–09:30 · Activity 1 — Introductions and pain points (Group activity, §1)
 
 **Purpose.** Everyone speaks once, and the room produces the list of real products that every later activity draws on.
 
@@ -65,7 +74,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** If a guest is late, extend to twenty minutes and start the share-out.
 
-### 09:30–09:45 · Sponsor contribution (Talk)
+### 09:30–09:45 · Sponsor contribution (Talk, §1)
 
 **Purpose.** Why the programme exists: trusted self-service data for people and AI, four personas, the creator at the intersection.
 
@@ -84,7 +93,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** A long guest Q&A eats the share-out; move the share-out into the data-product block and shorten it.
 
-### 09:45–10:05 · Table share-out (Debrief)
+### 09:45–10:05 · Table share-out (Debrief, §1)
 
 **Purpose.** Collect each table's products and pain points into one visible list; connect pain points to the week's themes.
 
@@ -103,7 +112,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Skip tables that duplicate an earlier product; ask them only for a new pain point.
 
-### 10:05–10:15 · What makes a data product (Teach)
+### 10:05–10:15 · What makes a data product (Teach, §1)
 
 **Purpose.** Promises, assets and alignment as three views of one thing; what a data product is not; the capstone previewed.
 
@@ -122,13 +131,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Over time: show the alignment diagram and skip the elicitation.
 
-### 10:15–10:30 · Break (Break)
+### 10:15–10:30 · Break (Break, §1)
 
 **Purpose.** 
 
 **On screen.** Agenda
 
-### 10:30–10:40 · Discovery and product justification (Teach)
+### 10:30–10:40 · Discovery and product justification (Teach, §2)
 
 **Purpose.** The questions a creator asks before anything is built: who, what for, exists?, can we, worth it.
 
@@ -145,7 +154,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Introduce Activity 2.
 
-### 10:40–11:00 · Activity 2 — Justify a product (Group activity)
+### 10:40–11:00 · Activity 2 — Justify a product (Group activity, §2)
 
 **Purpose.** Each table justifies one product from the list with the non-technical questions and finds its hardest question.
 
@@ -164,7 +173,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Twenty minutes is firm; the debrief absorbs overrun.
 
-### 11:00–11:25 · Debrief (Debrief)
+### 11:00–11:25 · Debrief (Debrief, §2)
 
 **Purpose.** Follow each product to the person deciding; name the consumer and the business owner; surface the unresolved question.
 
@@ -181,7 +190,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Those costs and barriers you just described: let's price them.
 
-### 11:25–11:40 · Lifetime value and adoption (Teach)
+### 11:25–11:40 · Lifetime value and adoption (Teach, §2)
 
 **Purpose.** Costs and payoffs of a product over its life; why products fail on adoption and what to do about it.
 
@@ -200,7 +209,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Cut the responses list to three if behind.
 
-### 11:40–11:50 · Catalyst demonstration (Demo)
+### 11:40–11:50 · Catalyst demonstration (Demo, §2)
 
 **Purpose.** What a skill is, the data-contract template, lifecycle skills calling skills, scripts; one PRD generated from a transcript.
 
@@ -218,7 +227,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Pairs: same product, hidden descriptions, compare.
 
-### 11:50–12:00 · Activity 3 — Compare independent PRDs (Pair activity)
+### 11:50–12:00 · Activity 3 — Compare independent PRDs (Pair activity, §2)
 
 **Purpose.** See how input detail changes the output, and that a tidy document can contain invented fields, owners and approvals.
 
@@ -237,13 +246,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** If Catalyst is broken for many, run it as a discussion of the planted-errors contract instead.
 
-### 12:00–13:00 · Lunch (Break)
+### 12:00–13:00 · Lunch (Break, §2)
 
 **Purpose.** Catalyst setup clinic for anyone blocked.
 
 **On screen.** 
 
-### 13:00–13:40 · AI foundations and effective practice (Teach + demo)
+### 13:00–13:40 · AI foundations and effective practice (Teach + demo, §3)
 
 **Purpose.** Models, training, inference and reasoning, tool calls, harnesses, agents and skills; then settings, context and output review on a real task.
 
@@ -262,13 +271,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Over time: drop the training-data history, keep tool calls, harness, context.
 
-### 13:40–13:55 · Break (Break)
+### 13:40–13:55 · Break (Break, §3)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 13:55–14:25 · Activity 4 — Interview and generate (Group activity (threes))
+### 13:55–14:25 · Activity 4 — Interview and generate (Group activity (threes), §4)
 
 **Purpose.** Turn a producer-consumer interview into a transcript, a PRD and a data contract, then inspect them.
 
@@ -288,7 +297,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Thirty minutes is firm; generation can finish during the debrief.
 
-### 14:25–14:45 · Debrief and requirements discovery (Debrief)
+### 14:25–14:45 · Debrief and requirements discovery (Debrief, §4)
 
 **Purpose.** Inspect outputs for wrong identifiers and generic knowledge; compare interviews, observation and surveys; walk the PRD and contract sections.
 
@@ -306,7 +315,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Last ten minutes: ask Catalyst about itself.
 
-### 14:45–15:00 · Activity 5 — Explore the lifecycle (Individual, then tables)
+### 14:45–15:00 · Activity 5 — Explore the lifecycle (Individual, then tables, §4)
 
 **Purpose.** The nine DPLC phases, the build-phase prerequisites and the skills that support them, checked against guidance; artefacts saved.
 

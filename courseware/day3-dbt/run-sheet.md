@@ -1,23 +1,32 @@
 # Day 3 run sheet — dbt practical and consolidation
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
 
-| Time | Block | Type | On screen |
-|---|---|---|---|
-| 09:00–10:00 | Challenge 9 — dbt practical: launch and first hour | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
-| 10:00–10:15 | Break | Break |  |
-| 10:15–11:00 | Continue dbt practical | Practical | Anchor › Walkthrough cells (for support) |
-| 11:00–12:00 | Guest session: the platform | Talk | Anchor › Platform session (two diagrams, agenda, questions) |
-| 12:00–13:00 | Lunch | Break |  |
-| 13:00–14:15 | Complete and extend dbt practical | Practical | Anchor › Stretch section |
-| 14:15–14:30 | Break | Break |  |
-| 14:30–14:45 | Consolidation | Debrief | Anchor › Recap table |
-| 14:45–14:55 | Test review in pairs | Pair activity | Anchor › Activity 9 card |
-| 14:55–15:00 | Closing discussion | Debrief | Anchor › Before learners leave |
+## Sections
+
+1. **The dbt practical: launch, Phase 1 and the walkthrough** (09:00–11:00): Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating
+2. **The platform session** (11:00–13:00): Guest: the platform team (or the instructor-led version) · Lunch
+3. **Complete and extend the practical** (13:00–14:30): Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break
+4. **Consolidation** (14:30–15:00): Debrief: what did we learn? · Activity 9: test review in pairs · Close
+
+## Timeline
+
+| § | Time | Block | Type | On screen |
+|---|---|---|---|---|
+| 1 | 09:00–10:00 | Challenge 9 — dbt practical: launch and first hour | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
+| 1 | 10:00–10:15 | Break | Break |  |
+| 1 | 10:15–11:00 | Continue dbt practical | Practical | Anchor › Walkthrough cells (for support) |
+| 2 | 11:00–12:00 | Guest session: the platform | Talk | Anchor › Platform session (two diagrams, agenda, questions) |
+| 2 | 12:00–13:00 | Lunch | Break |  |
+| 3 | 13:00–14:15 | Complete and extend dbt practical | Practical | Anchor › Stretch section |
+| 3 | 14:15–14:30 | Break | Break |  |
+| 4 | 14:30–14:45 | Consolidation | Debrief | Anchor › Recap table |
+| 4 | 14:45–14:55 | Test review in pairs | Pair activity | Anchor › Activity 9 card |
+| 4 | 14:55–15:00 | Closing discussion | Debrief | Anchor › Before learners leave |
 
 ## Blocks
 
-### 09:00–10:00 · Challenge 9 — dbt practical: launch and first hour (Practical)
+### 09:00–10:00 · Challenge 9 — dbt practical: launch and first hour (Practical, §1)
 
 **Purpose.** Launch the assigned dbt project, explain the task sequence and the checks, and get everyone building Phase 1 (sources and staging).
 
@@ -37,13 +46,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Anyone who knows dbt: skip to Phase 2 and the stretch list.
 
-### 10:00–10:15 · Break (Break)
+### 10:00–10:15 · Break (Break, §1)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 10:15–11:00 · Continue dbt practical (Practical)
+### 10:15–11:00 · Continue dbt practical (Practical, §1)
 
 **Purpose.** Phase 1 complete for most; Phase 2 started by some; blockers resolved; questions collected.
 
@@ -60,7 +69,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** At 11:00 the platform session, or the instructor-led version.
 
-### 11:00–12:00 · Guest session: the platform (Talk)
+### 11:00–12:00 · Guest session: the platform (Talk, §2)
 
 **Purpose.** Why the paved path works this way: Airflow on Astronomer, Databricks and Unity Catalog, contracts, the vended repository, compute, operations.
 
@@ -79,13 +88,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** A short guest session returns time to the practical.
 
-### 12:00–13:00 · Lunch (Break)
+### 12:00–13:00 · Lunch (Break, §2)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 13:00–14:15 · Complete and extend dbt practical (Practical)
+### 13:00–14:15 · Complete and extend dbt practical (Practical, §3)
 
 **Purpose.** Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.
 
@@ -102,13 +111,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Break, then the recap.
 
-### 14:15–14:30 · Break (Break)
+### 14:15–14:30 · Break (Break, §3)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 14:30–14:45 · Consolidation (Debrief)
+### 14:30–14:45 · Consolidation (Debrief, §4)
 
 **Purpose.** Ask the room what it learned and write the ten topics up; arrange tomorrow's contributions (bitemporal loading, deployment).
 
@@ -125,7 +134,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Pairs: swap a mapping and its test.
 
-### 14:45–14:55 · Test review in pairs (Pair activity)
+### 14:45–14:55 · Test review in pairs (Pair activity, §4)
 
 **Purpose.** Exchange one mapping rule and its test; propose a wrong result and decide whether the test would catch it; agree one improvement.
 
@@ -141,7 +150,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Two or three examples to the room, then close.
 
-### 14:55–15:00 · Closing discussion (Debrief)
+### 14:55–15:00 · Closing discussion (Debrief, §4)
 
 **Purpose.** Share a missing check; save the dbt work for orchestration; confirm tomorrow's baseline.
 

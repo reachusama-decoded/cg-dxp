@@ -46,6 +46,30 @@ def toc(rows: list[tuple[str, str, str]]):
         lines.append(f"| [{t}](#{a}) | {w} |")
     return md("\n".join(lines))
 
+def agenda(sections: list[dict], lead: str = ""):
+    """The day's agenda: numbered sections, each with what happens inside it (its parts, in order).
+    sections: dicts with n, title, anchor, start ("HH:MM"), parts (list of str)."""
+    lines = ["## Today", ""]
+    if lead:
+        lines += [lead, ""]
+    for sec in sections:
+        lines.append(f"{sec['n']}. **[{sec['title']}](#{sec['anchor']})**<br>")
+        lines.append(f"   {' · '.join(sec['parts'])}")
+    return md("\n".join(lines))
+
+def section(n: int, title_text: str, anchor: str):
+    """A numbered section: one topic, ideally a whole cycle of demo, activity, shareback and break."""
+    return md(f'<a id="{anchor}"></a>\n\n## {n}. {title_text}')
+
+def part(label: str, title_text: str = ""):
+    """A labelled part of a section: Demo, Activity 6, Challenge 7, Shareback, Debrief, Whiteboard, Guest."""
+    return md(f"### {label}" + (f" — {title_text}" if title_text else ""))
+
+def break_(minutes: int, back_at: str, lunch: bool = False):
+    icon, word = ("🍽️", "LUNCH") if lunch else ("☕", "BREAK")
+    return md(_box("#434343", "#EFEFEF", TEXT, "#fff", f"{icon} {word} &nbsp;·&nbsp; {minutes} min &nbsp;·&nbsp; back at {back_at}",
+                   "Questions go in the table at the end; the next part starts on time."))
+
 def figure(png: str, alt: str, bullets: list[str] | None = None, rel: str = "../common/diagrams/png"):
     body = f"![{alt}]({rel}/{png}.png)"
     if bullets:
@@ -143,7 +167,7 @@ def how_to_use(day: int, extra: str = "") -> list:
 
     ## How to use this notebook
 
-    - This is the anchor for Day {day}: the agenda, every concept with its diagram, the whiteboard scripts, the activity briefs and the pointers into the learners' challenges. Keep it on the projector; switch to a terminal or the browser when a 🖥️ DEMO box says so.
+    - This is the anchor for Day {day}: a numbered agenda, then one section per topic, each a cycle of demo, activity or challenge, shareback and break. Every concept has its diagram, every demo its steps, every activity its brief, every challenge its pointer into the learners' repository. Keep it on the projector; switch to a terminal or the browser when a 🖥️ DEMO box says so. Timings are in `run-sheet.md`.
     - Run the **Setup** cell first. Cells that start with `!` run in a shell in this notebook's folder with the demo environment on `PATH`.
     - 🖊️ Whiteboard blocks are folded: open one when you reach it, ask the questions in order, write what the room says, add what is missing.
     - The last section, **Questions from the room**, is yours to type in during the day: a table for questions, an empty cell to answer with SQL or Python, and `quick_diagram(...)` to sketch a diagram inline before reaching for Excalidraw.

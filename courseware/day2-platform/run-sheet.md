@@ -1,28 +1,37 @@
 # Day 2 run sheet — Mappings, service levels and implementation foundations
 
-Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
+Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.
 
-| Time | Block | Type | On screen |
-|---|---|---|---|
-| 09:00–09:20 | Mappings and service commitments | Demo | Anchor › STTM and service levels (two diagrams, nines table) |
-| 09:20–09:45 | Activity 6 — Extend the contract | Challenge | Anchor › Activity 6 card |
-| 09:45–10:00 | Break | Break |  |
-| 10:00–10:15 | Review and present a contract | Shareback + demo | VS Code Markdown editor, then Copilot/Claude, then the browser |
-| 10:15–10:45 | Platform architecture: warehouse, lake, lakehouse and Databricks under the hood | Demo + shareback | Anchor › Platform architecture (five diagrams); the Delta and Spark demos |
-| 10:45–11:00 | Break | Break |  |
-| 11:00–11:25 | Docker demonstration | Demo | Anchor › Docker; a terminal; the dev container's Dockerfile |
-| 11:25–12:00 | Challenge 7 — Docker practical | Challenge | Anchor › Challenge box; learners in challenges/v1/01-docker-intro |
-| 12:00–13:00 | Lunch | Break |  |
-| 13:00–13:15 | Contract to code, how the tools fit together, Databricks setup | Demo | Anchor › Contract to code; Databricks (learners) and DuckDB (instructor) |
-| 13:15–14:05 | Challenge 8 — Generate and investigate | Challenge | Anchor › Activity 8 card and prompts |
-| 14:05–14:15 | Break | Break |  |
-| 14:15–14:30 | Debrief | Shareback | Anchor › Debrief (dbt flow diagram) |
-| 14:30–14:50 | Review another pair's generated code | Challenge | Anchor › Activity 8b card |
-| 14:50–15:00 | Corrections and closing discussion | Shareback | Anchor › Before learners leave |
+## Sections
+
+1. **Mappings and service commitments** (09:00–10:15): Demo: STTM and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract
+2. **Platform architecture** (10:15–11:00): Demo: warehouse, lake, lakehouse · Demo: Databricks under the hood, Delta, Spark · Demo: how the tools fit together · Shareback · Break
+3. **Docker** (11:00–13:00): Demo: the five steps and the dev container's Dockerfile · Challenge 7: Docker practical · Lunch
+4. **Contract to code** (13:00–15:00): Demo: where output lands, live generation · Activity 8: generate and investigate · Break · Debrief · Activity 8b: review another pair's code · Close
+
+## Timeline
+
+| § | Time | Block | Type | On screen |
+|---|---|---|---|---|
+| 1 | 09:00–09:20 | Mappings and service commitments | Demo | Anchor › STTM and service levels (two diagrams, nines table) |
+| 1 | 09:20–09:45 | Activity 6 — Extend the contract | Challenge | Anchor › Activity 6 card |
+| 1 | 09:45–10:00 | Break | Break |  |
+| 1 | 10:00–10:15 | Review and present a contract | Shareback + demo | VS Code Markdown editor, then Copilot/Claude, then the browser |
+| 2 | 10:15–10:45 | Platform architecture: warehouse, lake, lakehouse and Databricks under the hood | Demo + shareback | Anchor › Platform architecture (five diagrams); the Delta and Spark demos |
+| 2 | 10:45–11:00 | Break | Break |  |
+| 3 | 11:00–11:25 | Docker demonstration | Demo | Anchor › Docker; a terminal; the dev container's Dockerfile |
+| 3 | 11:25–12:00 | Challenge 7 — Docker practical | Challenge | Anchor › Challenge box; learners in challenges/v1/01-docker-intro |
+| 3 | 12:00–13:00 | Lunch | Break |  |
+| 4 | 13:00–13:15 | Contract to code, how the tools fit together, Databricks setup | Demo | Anchor › Contract to code; Databricks (learners) and DuckDB (instructor) |
+| 4 | 13:15–14:05 | Challenge 8 — Generate and investigate | Challenge | Anchor › Activity 8 card and prompts |
+| 4 | 14:05–14:15 | Break | Break |  |
+| 4 | 14:15–14:30 | Debrief | Shareback | Anchor › Debrief (dbt flow diagram) |
+| 4 | 14:30–14:50 | Review another pair's generated code | Challenge | Anchor › Activity 8b card |
+| 4 | 14:50–15:00 | Corrections and closing discussion | Shareback | Anchor › Before learners leave |
 
 ## Blocks
 
-### 09:00–09:20 · Mappings and service commitments (Demo)
+### 09:00–09:20 · Mappings and service commitments (Demo, §1)
 
 **Purpose.** Source-to-target mapping rule types; SLI, SLO and SLA as measure, ideal, tolerance; the indicators a product needs; availability in nines.
 
@@ -41,7 +50,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Running late: skip how providers get nines; keep the table.
 
-### 09:20–09:45 · Activity 6 — Extend the contract (Challenge)
+### 09:20–09:45 · Activity 6 — Extend the contract (Challenge, §1)
 
 **Purpose.** Ask Catalyst for the transformation types and service measures, then add realistic STTM rules and commitments to a Day 1 contract.
 
@@ -60,13 +69,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Overrun flows into the break; the review block uses whatever was submitted.
 
-### 09:45–10:00 · Break (Break)
+### 09:45–10:00 · Break (Break, §1)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 10:00–10:15 · Review and present a contract (Shareback + demo)
+### 10:00–10:15 · Review and present a contract (Shareback + demo, §1)
 
 **Purpose.** Review a submitted contract in the Markdown editor, then generate a self-contained HTML version with an overview, contents and diagrams.
 
@@ -85,7 +94,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** If generation stalls, open common/running-example/data-contract.html.
 
-### 10:15–10:45 · Platform architecture: warehouse, lake, lakehouse and Databricks under the hood (Demo + shareback)
+### 10:15–10:45 · Platform architecture: warehouse, lake, lakehouse and Databricks under the hood (Demo + shareback, §2)
 
 **Purpose.** Warehouse vs lake vs lakehouse; where Databricks fits; Delta tables under the hood; what the Spark engine does; how the tools fit together.
 
@@ -105,13 +114,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Behind: show the tools-together diagram and the Delta demo only; the timeline and Spark are optional.
 
-### 10:45–11:00 · Break (Break)
+### 10:45–11:00 · Break (Break, §2)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 11:00–11:25 · Docker demonstration (Demo)
+### 11:00–11:25 · Docker demonstration (Demo, §3)
 
 **Purpose.** Dependencies, reproducibility, isolation and resource limits; Dockerfile to image to container; the dev container and its terminal.
 
@@ -129,7 +138,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Challenge 7 in the dev container until lunch.
 
-### 11:25–12:00 · Challenge 7 — Docker practical (Challenge)
+### 11:25–12:00 · Challenge 7 — Docker practical (Challenge, §3)
 
 **Purpose.** Run, inspect, build and rerun a small image; the one-command gate.
 
@@ -148,13 +157,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** Experienced people: multi-stage builds, resource limits, Kubernetes questions.
 
-### 12:00–13:00 · Lunch (Break)
+### 12:00–13:00 · Lunch (Break, §3)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 13:00–13:15 · Contract to code, how the tools fit together, Databricks setup (Demo)
+### 13:00–13:15 · Contract to code, how the tools fit together, Databricks setup (Demo, §4)
 
 **Purpose.** Brief Challenge 8; show authentication, the training schema and where output lands.
 
@@ -171,7 +180,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Challenge 8.
 
-### 13:15–14:05 · Challenge 8 — Generate and investigate (Challenge)
+### 13:15–14:05 · Challenge 8 — Generate and investigate (Challenge, §4)
 
 **Purpose.** Generate dbt and Airflow code from the contract, explain it, run as far as possible, and bring one discovery and one correction.
 
@@ -190,13 +199,13 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **If ahead or behind.** If Databricks auth is widespread trouble, let pairs generate and read without running; the debrief is unchanged.
 
-### 14:05–14:15 · Break (Break)
+### 14:05–14:15 · Break (Break, §4)
 
 **Purpose.** 
 
 **On screen.** 
 
-### 14:15–14:30 · Debrief (Shareback)
+### 14:15–14:30 · Debrief (Shareback, §4)
 
 **Purpose.** dbt as ELT; SELECT, Jinja and YAML; views and tables; OLTP and OLAP; the commands; then DAGs, operators, blueprints and task groups.
 
@@ -213,7 +222,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** Review another pair's code.
 
-### 14:30–14:50 · Review another pair's generated code (Challenge)
+### 14:30–14:50 · Review another pair's generated code (Challenge, §4)
 
 **Purpose.** Trace one contract rule into code, find one assumption, propose one check and say what happens when it fails.
 
@@ -230,7 +239,7 @@ Instructor-only timing companion to the anchor notebook. Times follow the instru
 
 **Transition.** One correction each, then close.
 
-### 14:50–15:00 · Corrections and closing discussion (Shareback)
+### 14:50–15:00 · Corrections and closing discussion (Shareback, §4)
 
 **Purpose.** Make one correction and share its reason; record questions for the dbt practical.
 

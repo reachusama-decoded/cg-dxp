@@ -20,15 +20,34 @@ def activity_md(a: dict, day: int) -> str:
         lines += ["", textwrap.dedent(a["extra"]).strip()]
     return "\n".join(lines) + "\n"
 
+def _mins(t: str) -> int:
+    h, m = t.strip().split(":"); return int(h) * 60 + int(m)
+
+def section_of(mod, block) -> str:
+    """The notebook section a run-sheet block belongs to: the last section whose start is not after the block's start."""
+    n = ""
+    for sec in getattr(mod, "SECTIONS", []):
+        if _mins(sec["start"]) <= _mins(block["time"].split("–")[0]):
+            n = str(sec["n"])
+    return n
+
 def run_sheet_md(mod) -> str:
     out = [f"# Day {mod.DAY} run sheet — {mod.TITLE}", "",
-           "Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. Each row: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.", "",
-           "| Time | Block | Type | On screen |", "|---|---|---|---|"]
+           "Instructor-only timing companion to the anchor notebook. Times follow the instructor plan; adapt them to the room and keep the sequence. The § column is the notebook section the block belongs to. Each block: purpose, what is on screen, notes, a line to say, the transition, and what to do if ahead or behind.", ""]
+    secs = getattr(mod, "SECTIONS", [])
+    if secs:
+        out += ["## Sections", ""]
+        for i, sec in enumerate(secs):
+            end = secs[i + 1]["start"] if i + 1 < len(secs) else "15:00"
+            out.append(f"{sec['n']}. **{sec['title']}** ({sec['start']}–{end}): {' · '.join(sec['parts'])}")
+        out.append("")
+    out += ["## Timeline", "", "| § | Time | Block | Type | On screen |", "|---|---|---|---|---|"]
     for b in mod.BLOCKS:
-        out.append(f"| {b['time']} | {b['title']} | {b['type']} | {b['on_screen']} |")
+        out.append(f"| {section_of(mod, b)} | {b['time']} | {b['title']} | {b['type']} | {b['on_screen']} |")
     out += ["", "## Blocks", ""]
     for b in mod.BLOCKS:
-        out += [f"### {b['time']} · {b['title']} ({b['type']})", "", f"**Purpose.** {b['purpose']}", "", f"**On screen.** {b['on_screen']}", ""]
+        sec = section_of(mod, b)
+        out += [f"### {b['time']} · {b['title']} ({b['type']}{', §' + sec if sec else ''})", "", f"**Purpose.** {b['purpose']}", "", f"**On screen.** {b['on_screen']}", ""]
         if b.get("notes"):
             out += ["**Instructor notes.**", ""] + [f"- {n}" for n in b["notes"]] + [""]
         if b.get("say"):
