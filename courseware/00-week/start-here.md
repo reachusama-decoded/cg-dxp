@@ -7,7 +7,7 @@ Five days, in person, that take a room of CG engineers, product managers and arc
 | Day | Theme | Learners leave with | Practical (learners' repo) |
 |---|---|---|---|
 | 1 | Product discovery and effective AI use | A justified product, an interview transcript, a reviewed PRD and data contract, the nine DPLC phases | Catalyst in Copilot |
-| 2 | Mappings, service levels, platform, Docker, contract to code | A contract with STTM rules and measurable SLAs, a built container, generated dbt and Airflow code they can explain | `challenges/v1/01-docker-intro` |
+| 2 | Mappings, service levels, platform architecture (warehouse, lake, lakehouse; Databricks, Delta and Spark; how the tools fit together), Docker, contract to code | A contract with STTM rules and measurable SLAs, a built container, generated dbt and Airflow code they can explain | `challenges/v1/01-docker-intro` |
 | 3 | dbt practical and consolidation | A built, tested, documented Portfolio Analytics pipeline on Databricks | `challenges/v1/02-dbt-pipeline` |
 | 4 | Bitemporal loading and Airflow orchestration | A scheduled DAG with a freshness gate, callbacks and a controlled failure; the deployment picture | `challenges/v1/03-airflow-orchestration` |
 | 5 | Capstone | The Atlas data product: discovery, Phase 1 baseline, extensions, a presentation | `challenges/v1/04-atlas-capstone` |
@@ -16,7 +16,8 @@ The thread through the week: design conversations, transcripts and reviewed cont
 
 ## How a day runs
 
-- **Teach from the whiteboard.** Day 1 and the first hour of Day 2 are elicitation: ask, write what the room says, add what is missing. The run sheets carry the questions and the answers rooms give.
+- **Anchor from the notebook.** Each day has one notebook, `dayN-*/dayN_anchor.ipynb`, that stays on the projector: agenda, diagrams, demo cells, activity and challenge boxes, and a Questions section for live notes. Every block runs as demo, challenge, shareback, break.
+- **Teach from the whiteboard.** Day 1 and the first hour of Day 2 are elicitation: ask, write what the room says, add what is missing. The anchors and run sheets carry the questions and the answers rooms give.
 - **Demo from the laptop.** Every demo in this pack runs locally (DuckDB, Docker Desktop, the Astro CLI, Claude Code with Catalyst skills). Learners see the same thing in their dev container against Databricks. Say so once; then stop mentioning it.
 - **Practise in the learners' repository.** The challenge READMEs are the learner material. Launch each with the run sheet's script, circulate with its checklist, and regroup at the stated times.
 - **Debrief by asking.** "What did we learn?" and write it up, as the Day 3 recap script does. Then the pair exercise, then save the artefacts.
@@ -35,7 +36,7 @@ Work through [preflight-checklist.md](preflight-checklist.md). The two things th
 
 ## Where things are
 
-- Run sheets: `dayN-*/run-sheet.md`. Activity cards: `dayN-*/activities/`. Demo guides and code: `dayN-*/demos/`.
+- Anchor notebooks: `dayN-*/dayN_anchor.ipynb` (kernel `cg-dxp`; generated from `../research/scripts/notebooks/`). Run sheets: `dayN-*/run-sheet.md`. Activity cards: `dayN-*/activities/`. Demo code with a README per folder: `dayN-*/demos/` and `day5-capstone/support/`.
 - The running example (a US end-of-day prices product) used in every demo and fallback: `common/running-example/`.
 - Prompts for every AI beat, with Copilot and Claude variants: `common/prompts/`.
 - Whiteboard diagrams as Mermaid: `common/diagrams/`.
