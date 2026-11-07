@@ -1,0 +1,215 @@
+{
+  "manifest_sha256": "2604b0908996cdf7a5230398a74c7bea73fd774c0e8fdfc3c80eccfabc5e8b08",
+  "generator_sha256": "c7cca3af6f2bbb52517ff2f3a24750d11c351e94217343c63d9cf49bf3b95df4",
+  "readmes": [
+    {
+      "path": "README.md",
+      "sha256": "1d8db57fe97597e6f38fb35e0907a1745ed4599bbc1b1a9a6f8022984b7700a6",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "runtime/portfolio/README.md",
+      "sha256": "16211a1be041a5142aeca0a3abfb0e98a0e6c0bfc4e49b9243a07717a19e7897",
+      "disposition": "Assigned runtime/setup support; complete learner delivery, no tasks of its own"
+    },
+    {
+      "path": "git/README.md",
+      "sha256": "295b0c7b702ae0eee50584708d070090e6771eb804b87e25a108ae85c556ae95",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "git/phase-one-certified/README.md",
+      "sha256": "643867c16b055f26e40544b38532880519a9da30e19d4325d4fcc2c597484375",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "git/phase-one-certified/starter/README.md",
+      "sha256": "0f6be8c24e83710b58b0a82f1650f3952bba9342f50f904feef635d27ade39f7",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "git/phase-two-proficient/README.md",
+      "sha256": "4f4ef5e184ee71434fa93e432ad27a3a6ce93d5e84bf01cc1c891d324b56fd6c",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "git/phase-two-proficient/starter/README.md",
+      "sha256": "462d481a2138ae3df25c08b92615355d0d76d71280e7cdf5811b11ef12371a8a",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "git/phase-two-proficient/stretch/README.md",
+      "sha256": "08a8862a14f25185e18c25ac18e9d2bee390e2d718e5eb43862693cbdced7a90",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/README.md",
+      "sha256": "a61498e7f4a31fb83d0162006b3dd810e71090026d2bff6e39ec9c0f832e48ef",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/phase-one-certified/README.md",
+      "sha256": "42c2748942c0572f5d6623b984115fe121ad7fe8ad5716d4f9db8c6baddf7b76",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/phase-one-certified/starter/README.md",
+      "sha256": "85f52516a0b731b9346049b31abf6b100abc24886d38d114a5cc8f7b42e4da6f",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/phase-two-proficient/README.md",
+      "sha256": "06ce733c318c95befa6507f7f3af208a104c49eaa49142848ff36e528f1aea60",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/phase-two-proficient/starter/README.md",
+      "sha256": "e72efc1bf0226714b4dad289adf7e6c0ac217ab98f740106bacf92b8f4d0ab2d",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "docker/phase-two-proficient/stretch/README.md",
+      "sha256": "df60a503d80289592abcec84a8ceee59f1252a911d6508acc532bc779ac35820",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/README.md",
+      "sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/phase-one-certified/README.md",
+      "sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/phase-one-certified/starter/README.md",
+      "sha256": "b5b47d14d5b5c9faa6230097e74e0c1549f8d34c4472d07035545176de3652af",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/phase-two-proficient/README.md",
+      "sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/phase-two-proficient/starter/README.md",
+      "sha256": "8ee4060b87561bc0e5ab31a1de69fa52eab2deeaed0a7a407b1b5acf94bf36ec",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "dbt/phase-two-proficient/stretch/README.md",
+      "sha256": "279c028575b6951ef7028943b1a7465aa340a36bc1a2bf6cc15242e5ae9afec0",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "databricks-cli/README.md",
+      "sha256": "be726dfb667ea5491b36fd21f5675f4aa3499a2248eee6600aa49325a14fc3ee",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "databricks-cli/phase-one-certified/README.md",
+      "sha256": "273791d26eea7d13524fd5f7f37b57b69cb8cae5197157c5447cdb8f54eb1288",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "databricks-cli/phase-one-certified/starter/README.md",
+      "sha256": "91ca4c8998c7ea488d8cfaacda3c160bcf364ac9635916e47c6e16b894dd04f1",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "databricks-cli/phase-two-proficient/README.md",
+      "sha256": "f43712ea9dd3979b44d5634502088aafaa526f8bc45f0176bf284ed711296f41",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/README.md",
+      "sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/phase-one-certified/README.md",
+      "sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/phase-one-certified/starter/README.md",
+      "sha256": "615c681b97b24ad87dce765f0575c9363d5b253662bc6f6d5058857f6902c59e",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/phase-two-proficient/README.md",
+      "sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/phase-two-proficient/starter/README.md",
+      "sha256": "6e8c1c104b191dbcaca66425dd85f085d656585048ed66b8df0c3bcdffdbf23f",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "airflow/phase-two-proficient/stretch/README.md",
+      "sha256": "807ac0473432fbf6bca132a1bffca291ae32c1eca30c94988e063c2583d80b4b",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "kafka/README.md",
+      "sha256": "d23213d0364ed7b0707c3ab8521e8ba48286f00bdf7099a06b8f6d3450de4c4b",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "kafka/phase-one-certified/README.md",
+      "sha256": "31365e5ee976eb7b66d18ebdef676d72b975ea0b1812eca6debe0511e921ff78",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "kafka/phase-one-certified/starter/README.md",
+      "sha256": "3f9d31c20bc414e1ed9fc6f66b8aaec0e471c2c4d66a4084db9af3cb11d3f9d8",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "kafka/phase-two-proficient/README.md",
+      "sha256": "33b86e3c2d38a3b2fc5ea407a41ef1c88c757fba62f797df595209e744717c02",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/README.md",
+      "sha256": "c2019e20ea2dbef752f6f6af6f34cf799191e13a072e2e8e4093c4b3dae2d10f",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/phase-one-certified/README.md",
+      "sha256": "f54671b3d2f3ab9c4e36a6ad083f3148385e02c9a257254ac68ef15c3fb9d284",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/phase-one-certified/starter/README.md",
+      "sha256": "713f67c60ac23ef060b2954cab73c5c710870d8154b7b34150f7d8de89571c42",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/phase-two-proficient/README.md",
+      "sha256": "dae6f4eab28878b010155684e5c79d1d72330e314fc489a1359a4bf77dca99db",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/phase-two-proficient/starter/README.md",
+      "sha256": "a2f3edfd9842f2ef9fdfd47923b8d7f9bebc4e62ef984bd521ac1343cae01948",
+      "disposition": "complete learner source"
+    },
+    {
+      "path": "capstone/phase-two-proficient/stretch/README.md",
+      "sha256": "262707cb29bfed7bf5f8197bccb14be24d0e2eeafb9229756d01950adad081a4",
+      "disposition": "complete learner source"
+    }
+  ],
+  "readme_count": 40,
+  "task_count": 60,
+  "full_content": "Every complete source README retained byte-for-byte between support-reference separators; no truncation",
+  "boundary": "No course candidate, promotion, publication or runtime execution performed",
+  "outputs": {
+    "designer/generated/v2-quality-repair/learner-reference.md": "c7e530df67cc49878003dce59ecc52be543d2d530f9eeafe8d52288066cdbc33",
+    "designer/generated/v2-quality-repair/instructor-concepts.md": "df8ab318f361dc682745993c765e0d32b7bb640948eae6c09a390e54227bd87d",
+    "designer/generated/v2-quality-repair/task-summaries.json": "d60ab34993eda0e6a16dfd9255726e90fbb531d8213a023886f772767df84245"
+  }
+}

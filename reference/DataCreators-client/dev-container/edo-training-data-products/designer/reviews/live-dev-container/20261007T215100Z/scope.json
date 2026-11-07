@@ -1,0 +1,2613 @@
+{
+  "run_id": "20261007T215100Z",
+  "client_root": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products",
+  "course_root": "/home/prox-admin/repo/ts-cg-datacreators",
+  "git_revision": "9206c8a6d629ce16851827eb3126646dd1a7ae6a",
+  "initial_git_status": " M README.md\n M builder.toml\n M designer/MATERIALS.template.md\n M designer/reviews/content-audit.json\n M designer/reviews/course-audit.json\n M designer/reviews/qualifying-text/03-day-3-data-systems.txt\n M designer/reviews/qualifying-text/04-day-4-orchestration-systems.txt\n M designer/reviews/qualifying-text/09-appendix-c-dbt-and-tooling-reference.txt\n M designer/reviews/qualifying-text/word-count.json\n M facilitator/README.md\n M learner/03-day-3-data-systems.md\n M learner/04-day-4-orchestration-systems.md\n M learner/09-appendix-c-dbt-and-tooling-reference.md\n M learner/examples/README_AIRFLOW.md\n M learner/index.md\n M learner/practice/README.md\n M mkdocs.yml\n M scripts/check-course.py\n?? designer/TODO.md\n?? designer/reviews/2026-10-07-airflow-guide.md\n?? designer/reviews/2026-10-07-dbt-guide.md\n?? designer/reviews/qualifying-text/16-appendix-j-dbt-guide.txt\n?? designer/reviews/qualifying-text/17-appendix-k-airflow-and-astronomer-guide.txt\n?? facilitator/practice-airflow-guide/\n?? facilitator/practice-dbt-guide/\n?? learner/16-appendix-j-dbt-guide.md\n?? learner/17-appendix-k-airflow-and-astronomer-guide.md\n?? learner/practice/airflow-guide/\n?? learner/practice/dbt-guide/\n?? reference/DeliveryTranscripts/\n?? scripts/generate-platforms-visuals.py\n?? scripts/verify-airflow-guide.py\n?? scripts/verify-dbt-guide.py\n",
+  "initial_hashes": {
+    "challenges/v2/README.md": "3abbe2ef7032dc77a6cd8f6436cf4416d04f91569b54faa67dcdb37f6c15fdec",
+    "challenges/v2/manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2/kafka/README.md": "b887dea6549621c8705fe171b3228d03f7c6a225230193f6c10080cd4bfe4c01",
+    "challenges/v2/git/README.md": "cd705f3ec8305e9f6fb476fa9d6711b8fe12e6ea2885f3dc827330ba9b575031",
+    "challenges/v2/airflow/README.md": "32d76957a8aad27fe532a3c49d3b39f7ea9ae9189f56c9f5be9678cf6fc9894c",
+    "challenges/v2/databricks-cli/README.md": "4beee9e3f84542083df98c215769210d52b5f47e3b3b1464cff9ec29c16c00b5",
+    "challenges/v2/capstone/README.md": "430df71de1bffb5ec9e4a6c321022495f3ebf55bba2e28dbde8297af065cc3f8",
+    "challenges/v2/dbt/README.md": "5a3cd845e37b7dc0ea557c265b3042cf6211618bd8f07c6a32bd7001fcba0abb",
+    "challenges/v2/docker/README.md": "59d5650c9629fa38941486b22034f617516c10e699b52d20c6535e9dad8fa9fd",
+    "challenges/v2/docker/phase-one-certified/README.md": "696acaab9af2c1f11ce5a32fc3e71d62d693b80d79f7b5e2675468be90d1e9ad",
+    "challenges/v2/docker/phase-two-proficient/README.md": "2128c01fc2c4c1a0abed3ae1068c674fb4320be52c3e8296472fd50af4cc9dd2",
+    "challenges/v2/docker/phase-two-proficient/stretch/README.md": "633f3a7ec2b627d82ce3bdbea6809d28b76f9888d4e040abf689d41944dd1b3a",
+    "challenges/v2/docker/phase-two-proficient/starter/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2/docker/phase-two-proficient/starter/README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+    "challenges/v2/docker/phase-two-proficient/starter/Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+    "challenges/v2/docker/phase-two-proficient/starter/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2/docker/phase-two-proficient/starter/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2/docker/phase-two-proficient/starter/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2/docker/phase-one-certified/starter/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2/docker/phase-one-certified/starter/README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+    "challenges/v2/docker/phase-one-certified/starter/Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+    "challenges/v2/docker/phase-one-certified/starter/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2/docker/phase-one-certified/starter/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2/docker/phase-one-certified/starter/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2/dbt/phase-one-certified/README.md": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+    "challenges/v2/dbt/phase-two-proficient/README.md": "c73287181f61490dfaa6d0d9feabe877a3d5ab20ac06cca436bf000da0a427ee",
+    "challenges/v2/dbt/phase-two-proficient/stretch/README.md": "945424136df54ab0b72ff91deb6599a1b931711274374bf0489a1e10e5de8bcc",
+    "challenges/v2/dbt/phase-two-proficient/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/dbt/phase-two-proficient/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+    "challenges/v2/dbt/phase-two-proficient/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/dbt/phase-two-proficient/starter/fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/fund_exposure.sql": "9323a33881ec03d53fcf303a44cfbc1fd62d7b06a8fd4babdae2bb31f4d8f983",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/schema.yml": "503eed658c6cdc7fddb377887d40858b13d6d45de096879e03aabd9435418b7f",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+    "challenges/v2/dbt/phase-one-certified/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/dbt/phase-one-certified/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+    "challenges/v2/dbt/phase-one-certified/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/dbt/phase-one-certified/starter/models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+    "challenges/v2/dbt/phase-one-certified/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/dbt/phase-one-certified/starter/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/dbt/phase-one-certified/starter/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/capstone/phase-one-certified/README.md": "777021807f81752599024cc045fed2f573b12247f46df103bbfdc011506e5c37",
+    "challenges/v2/capstone/phase-two-proficient/README.md": "f490bcae1da054c88b258f4fd9dcc1caacbff9c8a064885bc0b6152e65993054",
+    "challenges/v2/capstone/phase-two-proficient/stretch/README.md": "f3bdf7f8ac911cd9cbb4a0416815619af252c67e8513598dcbbb1c98cc335b49",
+    "challenges/v2/capstone/phase-two-proficient/starter/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2/capstone/phase-two-proficient/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/capstone/phase-two-proficient/starter/README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+    "challenges/v2/capstone/phase-two-proficient/starter/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2/capstone/phase-two-proficient/starter/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2/capstone/phase-one-certified/starter/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2/capstone/phase-one-certified/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/capstone/phase-one-certified/starter/README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+    "challenges/v2/capstone/phase-one-certified/starter/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2/capstone/phase-one-certified/starter/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2/capstone/phase-one-certified/starter/models/starter_status.sql": "5810301b2c30cce19376f225ffde17a26b1085ab2f826ff422af3d9c213ccd45",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2/capstone/phase-one-certified/starter/prepared/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2/capstone/phase-one-certified/starter/prepared/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2/databricks-cli/phase-one-certified/README.md": "31d8333f27293a73b94c80569a790e8cfb1c9272e58053b5e6ce53df59d02055",
+    "challenges/v2/databricks-cli/phase-two-proficient/README.md": "3ce385bb9dacb5e095589155badf7d436efcb63c83c52e5fc2981bff9faa808c",
+    "challenges/v2/databricks-cli/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "challenges/v2/databricks-cli/phase-one-certified/starter/README.md": "6cfd49f817023616e0bee614b4e8a557c7d3bde2232a5fcb020ac43402ecd3b2",
+    "challenges/v2/databricks-cli/phase-one-certified/starter/metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783",
+    "challenges/v2/airflow/phase-one-certified/README.md": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+    "challenges/v2/airflow/phase-two-proficient/README.md": "7c54d0f2e27dc7fe23d14bcbd66a31bd958c9a675956127ed580d4ec1f043ae3",
+    "challenges/v2/airflow/phase-two-proficient/stretch/README.md": "0f45c5861cb005f2b14059a2e1d8f01a90081d51db62b61e3209649a79246dbb",
+    "challenges/v2/airflow/phase-two-proficient/starter/README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+    "challenges/v2/airflow/phase-two-proficient/starter/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/airflow/phase-one-certified/starter/README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+    "challenges/v2/airflow/phase-one-certified/starter/pipeline.py": "73974988a56d2d605f9b6e17cd72410d61a934b2f9fb5c3d43200361e63087ea",
+    "challenges/v2/airflow/phase-one-certified/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/airflow/phase-one-certified/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/airflow/phase-one-certified/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/airflow/phase-one-certified/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/airflow/phase-one-certified/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/git/phase-one-certified/README.md": "7f66f1b2f1444cba471c5801e1e10d84084d375e9baf3c011374a984a941fe0a",
+    "challenges/v2/git/phase-two-proficient/README.md": "84eac9ebd3c0360f193b1535d7ea8b9693d34b57b38c4b766aa8ff08cea5233a",
+    "challenges/v2/git/phase-two-proficient/stretch/README.md": "d27c6145492c08bb613e62240bac295cedcf91f5901115b89ae3fbef14adeb98",
+    "challenges/v2/git/phase-two-proficient/starter/contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d",
+    "challenges/v2/git/phase-two-proficient/starter/README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+    "challenges/v2/git/phase-two-proficient/starter/review-scenario.json": "aa3609de1f9ec6d4c16fb1f35545fd7021b27496b5edabee531e3da675e3bb92",
+    "challenges/v2/git/phase-one-certified/starter/contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d",
+    "challenges/v2/git/phase-one-certified/starter/README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+    "challenges/v2/kafka/phase-one-certified/README.md": "a09c8ed15267114ef80c4de233f2733a07933535f675450f54f863c6397ab8df",
+    "challenges/v2/kafka/phase-two-proficient/README.md": "4bba8627e9eec33c398130ab843ae78f1a6f3af28f9e84596e70bf8bff86fb99",
+    "challenges/v2/kafka/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "challenges/v2/kafka/phase-one-certified/starter/README.md": "865d5aac7165f47907a3568b61c16f99fd1aadd9b1458da433b1fd9fb7f6b008",
+    "challenges/v2/kafka/phase-one-certified/starter/compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+    "challenges/v2/kafka/phase-one-certified/starter/learner-event.json": "1ea7959d63e00ada414f8acdccdb21dce0e99570b45d768a404a64edde16cc84",
+    "challenges/v2/kafka/phase-one-certified/starter/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2/kafka/phase-one-certified/starter/event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+    "challenges/v2/kafka/phase-one-certified/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/kafka/phase-one-certified/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/kafka/phase-one-certified/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/kafka/phase-one-certified/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/kafka/phase-one-certified/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/README.md": "d41e62bdae9cb0322af1f9ba94ea66638bddc58724b419fed4b359f64d90abf7",
+    "challenges/v2-solutions/manifest.json": "f441b5077a20f4778ad29e62d19494392d8cabd068e2de2cb67612467072bef3",
+    "challenges/v2-solutions/docker/phase-one-certified/README.md": "2e6c95c13670b920bd6e7a589777058c4ba419ad196d4d24864a72217d2c5264",
+    "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh": "6ec52b54792468bc924cf5d54bdcf060e7cafd0f137b591551a397a264e0ab30",
+    "challenges/v2-solutions/docker/phase-one-certified/verify.sh": "f44cfaba48fe97714ebce777b6f3b1f59665d3c48aba40667d7e845e83fc2a27",
+    "challenges/v2-solutions/docker/phase-two-proficient/README.md": "0e4864ba271a1ba35aab3575101aa703b0c2943f263eb6d35ec2eb61422b71ce",
+    "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh": "a41c045713fc2c9c1a7c4f7be76da4b8314bd619c3fff839f25eca22a0ff8fce",
+    "challenges/v2-solutions/docker/phase-two-proficient/verify.sh": "dd4b8745d1d38317415f41840c0c10dff80956e438b1c5117471ec53b1fc6115",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/Dockerfile": "40ee62fdd50b5360ab1195ebe98333ed448c2085ee833f9305272f06eed7f077",
+    "challenges/v2-solutions/docker/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/Dockerfile": "9de0b9ad68c7c127dc479175748e587b59b04e567676e0bf98582018becdba9f",
+    "challenges/v2-solutions/docker/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2-solutions/dbt/phase-one-certified/README.md": "40362a32a74421d07735ff2416a136b561973eedd41a16c4a63590e7a2ff5475",
+    "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh": "b55ecafcd2848f6766a232687037763aa83c0cc8753d7b1f6e62a1a32ac2c589",
+    "challenges/v2-solutions/dbt/phase-one-certified/verify.sh": "694884d487f059591855f5ba6b43773c1a4bed0239d90fc899afe2bcb1222847",
+    "challenges/v2-solutions/dbt/phase-two-proficient/README.md": "c118951bc5323cbe835df56172ae26a21ba6bab163d375c0d013617ad32622f5",
+    "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh": "906376a9e1566cc80511ec9230de2e5d7dca74d3b3aa24119f7de0b9b09e978e",
+    "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh": "510dbe64afdea3c797b8b961114adfe6612577d355531dbec2c0e0ab6d73efa6",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/arrival_ledger.sql": "f19d2344bbf5b85fae1b7f28b7cfd944b82a2e97f9cd1b1edd54bba972ddce99",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/capstone/phase-one-certified/README.md": "83283ba994181b080f3ea3a4324846ad93d2d116e145766480d45664568b3b5a",
+    "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh": "083f200e05051ef9dc79c8629da1d41cc00f1446bda8146156656f2bd5d1af1a",
+    "challenges/v2-solutions/capstone/phase-one-certified/verify.sh": "63296a33569733987e3a4fc4d5579a12bee052edfd68c33338d02aa54cdb1710",
+    "challenges/v2-solutions/capstone/phase-two-proficient/README.md": "86a4af2d7ad59e295aa27e1ec4f75e5a124b93526cf8d528ebbfc2abf433785d",
+    "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh": "887071f8cee3ce562d96bf7f2d4d6ac3509f365be1ab95d819d68e787fd7b569",
+    "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh": "898035e6fdb28f3976a3279f3d9712b4e63edab81840487a2e4fcfa5d62a952e",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2-solutions/capstone/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/tests/reconcile_region.sql": "927cc04dc049732abe999f6b211822a5446d6b1c1417ccc8c97a9d06692e883b",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_advisor_leaderboard.sql": "e29b1ae95ae4a00d3a33885f47f4c8e69cd0310746852d2b3658459b9eb6d0f1",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_advisor_book.sql": "64b94c5cc490615710fd6538cca98b2d19e8e62b7de61c19ac7564c7682503fa",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_portfolio_performance.sql": "daee35093070a9d49ba66003b40bc1e40a48e3a3773cc526d98dc76f19331e7c",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_region_report.sql": "522f19500e62103131bd4ca597157e95626380e78bfe6ba94dbb2ebab83e3b9d",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2-solutions/capstone/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/README.md": "b4952143e93c9da5a8d304d46e49bd28bf97358feb3633c0c4dbd684f3f16ced",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh": "365c8fdd883ff455d92374de0bf6ae16307c35de5ea613401e0a99fb7767cc49",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh": "ce8ac86b7d4f057be793ff2f3c6d00bbac6ed826626e5c89445600fba09a0a46",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/solution/metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/solution/discovery.md": "5e8067f3a8563e1bd8514282d52b7edb87e5a94a145bd94abe8198700abd43aa",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-one-certified/README.md": "01c9ea1b31e82d0e7ef844c3babebcf2b2e42b7009d4051d19d5b3701ce0fae2",
+    "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh": "dfa94a4310f6f91b03c11c1cf2abbf73c1691cb443060a2c2b8e185b9ba6512b",
+    "challenges/v2-solutions/airflow/phase-one-certified/verify.sh": "66bf8121c520a85ab80bf619f7567ac065aa8b25a6548ccb371bf6dedd06052d",
+    "challenges/v2-solutions/airflow/phase-two-proficient/README.md": "75f0b309ef2fca1c60422ccc31a8704b47dea114f210d3892c79a0f1af427a48",
+    "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh": "0cbf5f3de8798b570c5a348f3fe6877e58018dc76d8790aedcb413af6793fd99",
+    "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh": "c3a9e52a83809ef548d16fcc995abeb1c3ce7c64f100c4fde91a7725d6b0da3c",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/airflow/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/airflow/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/git/phase-one-certified/README.md": "efc48a68b38d8011dba3dff53149cb2046fb08bbd2bee900af9bd760361d459a",
+    "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh": "b2af1e8354e3d0b3e5255429b8f6b9db58b9c415e8555f8e9d575f7dd98728e7",
+    "challenges/v2-solutions/git/phase-one-certified/verify.sh": "6803b765dd4e996f54c851aaf1cae6325097b59740f61fc3b13845b7ab8dfdd3",
+    "challenges/v2-solutions/git/phase-two-proficient/README.md": "035a66d4eb87e286d8d0e23da0dd3da90f563695abaa3cd0176bde9663cd159d",
+    "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh": "e4e64e2b87a191b496d034c70baf768a1f3d625147dd99e85f7a16f204fbf1c2",
+    "challenges/v2-solutions/git/phase-two-proficient/verify.sh": "b6c391ba288798a3b494a72d51172aac3adc0529a0c752e8887d74a97392ba37",
+    "challenges/v2-solutions/git/phase-two-proficient/solution/contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+    "challenges/v2-solutions/git/phase-two-proficient/solution/workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9",
+    "challenges/v2-solutions/git/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/git/phase-one-certified/solution/contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+    "challenges/v2-solutions/git/phase-one-certified/solution/workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9",
+    "challenges/v2-solutions/git/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/kafka/phase-one-certified/README.md": "5b8a572362ff4aa15dd6e8b7865c12562ac17086dcb9e69e1987cfd315da8c6b",
+    "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh": "a3099a956290caa9e6c88a4d9986256dbc7863114bddc78bf722ebddd808bd0a",
+    "challenges/v2-solutions/kafka/phase-one-certified/verify.sh": "dae12353d4b2e53501346b8d558a361fc5ae6d37f7f15fc2ade7ffcac64b1f72",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+    "challenges/v2-solutions/kafka/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "scripts/challenge-v2.py": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+    "scripts/package-v2.sh": "26b935c5568340a731324ab854a6ea200cdf07f7dc57cb9abc6effcf1753021f",
+    "scripts/review-v2-course.py": "02d3dc3b1854042b4da4db5c58888f392829a021b5b1777acb463beb45e13e0f",
+    "scripts/v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+    "scripts/v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+    "scripts/v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+    "scripts/setup-v2-tools.sh": "cf29522f638fa8299842ee99c6124fbd478e48ef377ecdcf96376f5f4d90046f",
+    "scripts/docker-build-logs.sh": "bc1dd2450e3e9a966bc5f95c647aa7be68bc066b6aa9fdd00cf6a18701a00f0f",
+    "scripts/v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f",
+    "scripts/sync-v2-course.py": "b7a7dca54bd47d17d6605321ffc4c33ae7cc425a62cf387199eba385fe39dcdf",
+    "scripts/build-v2-course.sh": "6a250661e849c21f148cf3756ba2bb01ac286d09f4f71942f4fb14426abe6bd4",
+    "scripts/verify-with-databricks.sh": "893a6b55b79822d5b667c9e604e2b5e902ab07d291f23ac3cf7a20f9d1b1fdaa",
+    "designer/INSTRUCTOR-DEMO-PLAN.md": "0544a09d68274b201c71ddda35e365b6d7d2ec9653a6fbc3bfc546a427356092",
+    "designer/MIGRATION-MAP.md": "0757948e0009957d9a69d5c4a9dd6ef9a6aba108dbcf1293cb5fa65c274e1535",
+    "designer/INSTRUCTOR-DEMO-CATALOGUE.md": "0c05e39939919b35d9ac51f6df203d1ddf32398cb47dbc27101a81eaf224f07b",
+    "designer/PLAN.md": "30e02b065ead0e222fb1deacc883e8feeb6c1c4caed61494b37b25425245df56",
+    "designer/COURSEWARE-SYNC.md": "e3eed6b7e8222e48206ea771c1b257f484bdcb4fea62a6b45e92e61454a71ff7",
+    "designer/CURRICULUM.md": "914593a802fc7d2ddd7a807d23f69c8f2455c2be4e585c298e5ae9c3a57e2dfe",
+    "designer/CHALLENGE-SPEC.md": "6a46584e70b5566ae83f73ad9d2cbe69d1f04ad1adc29574b83cc35e773fcff2",
+    ".devcontainer/README.md": "178d212e9c4adafcf946641bce19ab1013375110ebdd29799b230f508d23c328",
+    ".devcontainer/Dockerfile": "1dbf326001caacecae879a6dc69d45323eba2ccd36b4c07db90429ceb310eb96",
+    ".devcontainer/start-dockerd.sh": "c3a31ec769fe24cd83da4df358c3dd50f870d2fd859dd6a54b4a0d3738597f67",
+    ".devcontainer/requirements.txt": "581193ebbb76884b9ebd93aee06ecb192cc7e07de76947d7e60c2eee0f74b53e",
+    ".devcontainer/post-start.sh": "84b25f552ba66707f3d7a2e2f3916436b97e93da7abd3807953733d17cceeeac",
+    ".devcontainer/setup-databricks-dbt.sh": "410fc603f59ac45bc1c5cce4191fbc6b7cf7997cc99b84c9a57b3103db034e4e",
+    ".devcontainer/check.sh": "147e0ae61c76dab99a501256646bad3b6400c93d1d666b2263d4c08617090bb7",
+    ".devcontainer/sitecustomize.py": "5c5d9e42dd828ff7652082c471a85d9bc6023351307d0b3133ecc9c2db833794",
+    ".devcontainer/TROUBLESHOOTING.md": "45c52263d14d93dff53add8e0284b29e7d7206db00bde4666c5ad9fc885c3bb3",
+    ".devcontainer/devcontainer.json": "fa8cec57cf818ece793cf341884252ad391942726190961fccf88f91fd0ba1b2",
+    ".devcontainer/ensure-dockerd.sh": "5b538fbc65596e77aac8b218576e11a2c2365407768cd013688fdbf798a92e90",
+    ".devcontainer/clone_tools/clone_sources_engine.py": "1d7422e15decaa2ef2769db1f2ec24aee697055c644c5db18f9001e4c71a8207",
+    ".devcontainer/utils/starship.toml": "3eeecc6c7eb6a62b27345b0ab0dab6f338d1b32a0f184b78ff5726afc85b68aa",
+    ".devcontainer/utils/setup-databricks-config.sh": "122e68fd15991941690ccea685ee597a698118727d5236e8306f43a60e20a053",
+    ".devcontainer/utils/bashrc": "22b5508eb72da6077ea3f0c36363f32e98be46855f9fb6997cf1d12942fc26d8",
+    ".devcontainer/utils/normalize-env.sh": "78b56424f5b3590db863620468769e51af3102d3a315cc75729320c78ddd90f2",
+    ".devcontainer/utils/setup-gh-auth.sh": "924fbfc9edcb0837441dd81e1210bf0025b30769f301b0a3d61730f2a77c05ac",
+    ".devcontainer/utils/.env.example": "f38c5780ebb4783f736d58f809f7108e84fb85cd002a834f91da1ca6dd3f9c88",
+    ".devcontainer/utils/pip.conf": "6031ae4dfc7f43f7ddac29dc8de9a7e40886f6520976e692458d4aa9765aa263",
+    ".devcontainer/utils/setup-airflow-settings.sh": "164c4d98a87db4131e64a41ec3048ac33ee0882f78e69fa062900beeb68c4869",
+    ".devcontainer/utils/setup-mise.sh": "d7bb5117ffcec99ba1c9e186dc0d32c4cb946d62da0249a08c1f99202a1f6f7f",
+    ".devcontainer/utils/databricks-oauth-refresh.sh": "5bda15a663afd428f831e5c79db5358bf419c369ac2f255eede3de5432a7910e",
+    ".devcontainer/utils/setup-python-deps.sh": "452a43d60d6e34a2751a015423240c57112ba1401a3ec8986d781343df612df2"
+  },
+  "phases": [
+    {
+      "tool": "git",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "git/phase-one-certified/README.md",
+      "starter": "git/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "git-p1-01",
+          "title": "Inspect the three working states",
+          "concept_ids": [
+            "git-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "git/phase-one-certified/README.md",
+          "anchor": "git-p1-01",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the first commit contains only contract.md. Explain why notes.txt is absent and remove or ignore it before the final clean-state check."
+        },
+        {
+          "id": "git-p1-02",
+          "title": "Commit an intentional contract change",
+          "concept_ids": [
+            "git-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "git/phase-one-certified/README.md",
+          "anchor": "git-p1-02",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Use git show on each hash. A reviewer should see the deadline change independently from the escalation change. Explain how you would unstage an unrelated edit without discarding it."
+        },
+        {
+          "id": "git-p1-03",
+          "title": "Branch and combine compatible work",
+          "concept_ids": [
+            "git-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "git/phase-one-certified/README.md",
+          "anchor": "git-p1-03",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the final contract contains both edits. Explain whether each merge was fast-forward or created a merge commit, using git log --graph --oneline --all."
+        },
+        {
+          "id": "git-p1-04",
+          "title": "Resolve an ownership conflict",
+          "concept_ids": [
+            "git-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "git/phase-one-certified/README.md",
+          "anchor": "git-p1-04",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Intentional failure: git merge upstream-owner should stop with an ownership conflict and a nonzero status. That is the expected exercise state. After repair, show both parents in the resolution commit, no markers, and the agreed owner/escalation text."
+        },
+        {
+          "id": "git-p1-05",
+          "title": "Restore a mistake and explain the final history",
+          "concept_ids": [
+            "git-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "git/phase-one-certified/README.md",
+          "anchor": "git-p1-05",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "git status --porcelain must be empty. git show HEAD:contract.md must match the working file. Explain why restoring this mistake did not delete a previous commit."
+        }
+      ],
+      "prerequisites": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "runtime": {
+        "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+        "workspace": ".local/challenges-v2/git/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "git": "measured by git --version",
+          "gh": "instructor-provided for live Phase2"
+        },
+        "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 60,
+        "high": 90
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/git/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/git/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "git",
+      "id": "phase-two-proficient",
+      "offered": true,
+      "optional": false,
+      "readme": "git/phase-two-proficient/README.md",
+      "starter": "git/phase-two-proficient/starter",
+      "tasks": [
+        {
+          "id": "git-p2-01",
+          "title": "Clone and inspect a collaboration boundary",
+          "concept_ids": [
+            "git-p2-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "git/phase-two-proficient/README.md",
+          "anchor": "git-p2-01",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Record remote repository identity, local branch and upstream. A fixture rehearsal must be labelled simulated; live completion needs the actual sandbox repository."
+        },
+        {
+          "id": "git-p2-02",
+          "title": "Push and propose a scoped pull request",
+          "concept_ids": [
+            "git-p2-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "git/phase-two-proficient/README.md",
+          "anchor": "git-p2-02",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Retain the PR URL and commit hash; the remote PR diff must contain only the intended training change. Do not count a local Markdown PR description as a real PR."
+        },
+        {
+          "id": "git-p2-03",
+          "title": "Respond to a review with a second commit",
+          "concept_ids": [
+            "git-p2-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "git/phase-two-proficient/README.md",
+          "anchor": "git-p2-03",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Record the review/comment identifier, revision hash and the PR diff after the revision. Confirm the new commit is present remotely. This exercise does not authorize the assistant to send messages to others."
+        },
+        {
+          "id": "git-p2-04",
+          "title": "Integrate concurrent upstream work",
+          "concept_ids": [
+            "git-p2-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "git/phase-two-proficient/README.md",
+          "anchor": "git-p2-04",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the upstream commit is an ancestor of your final branch. Both classification and your delivery/escalation changes must survive. Explain the difference between fetching and integrating."
+        },
+        {
+          "id": "git-p2-05",
+          "title": "Read the final review and merge state",
+          "concept_ids": [
+            "git-p2-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "git/phase-two-proficient/README.md",
+          "anchor": "git-p2-05",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "lab/contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Record final PR/check/review state and the relevant remote commit. Show the clean local branch and explain any unresolved gate. Optional stretch: compare a merge workflow with a rebase in a second disposable lab; do not rewrite the shared branch."
+        }
+      ],
+      "prerequisites": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "runtime": {
+        "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+        "workspace": ".local/challenges-v2/git/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "git": "measured by git --version",
+          "gh": "instructor-provided for live Phase2"
+        },
+        "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 75,
+        "high": 110
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/git/phase-two-proficient/solution",
+        "verifier": "challenges/v2-solutions/git/phase-two-proficient/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+        "evidence_state": "supporting-local-checks; live boundary blocked"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "docker",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "docker/phase-one-certified/README.md",
+      "starter": "docker/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "docker-p1-01",
+          "title": "Run an image and inspect the lifecycle",
+          "concept_ids": [
+            "docker-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "docker/phase-one-certified/README.md",
+          "anchor": "docker-p1-01",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Show hello holdings in the logs and exit code 0. Explain why the container is stopped and how that differs from deleting its image."
+        },
+        {
+          "id": "docker-p1-02",
+          "title": "Explore an interactive shell",
+          "concept_ids": [
+            "docker-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "docker/phase-one-certified/README.md",
+          "anchor": "docker-p1-02",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Explain the result of the second-file check. Retain the version and OS observations. Do not claim the container is a virtual machine or has a separate kernel."
+        },
+        {
+          "id": "docker-p1-03",
+          "title": "Use a bounded bind mount",
+          "concept_ids": [
+            "docker-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "docker/phase-one-certified/README.md",
+          "anchor": "docker-p1-03",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the six-holding summary and an expected read-only write failure. Explain which data is in the image and which comes from the mount."
+        },
+        {
+          "id": "docker-p1-04",
+          "title": "Author and run a simple holdings image",
+          "concept_ids": [
+            "docker-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "docker/phase-one-certified/README.md",
+          "anchor": "docker-p1-04",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "The starter image intentionally prints Valid starter: complete the holdings image and exits successfully. That is baseline behavior, not a solution. The completed image must print Portfolio summary and 6 holdings, total market value 12,011,626.50."
+        },
+        {
+          "id": "docker-p1-05",
+          "title": "Prove repeatability and clean scoped resources",
+          "concept_ids": [
+            "docker-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "docker/phase-one-certified/README.md",
+          "anchor": "docker-p1-05",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Retain both outputs and matching image identity. Explain the process exit and the required rebuild for changed copied data. Do not use docker system prune as a lab cleanup command."
+        }
+      ],
+      "prerequisites": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "runtime": {
+        "boundary": "Docker build/run; host Python checks supporting app only.",
+        "workspace": ".local/challenges-v2/docker/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "base_image": "python:3.11-slim",
+          "docker": "instructor-provided; unavailable here"
+        },
+        "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 60,
+        "high": 90
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/docker/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/docker/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+        "evidence_state": "supporting-local-checks; live boundary blocked"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "docker",
+      "id": "phase-two-proficient",
+      "offered": true,
+      "optional": false,
+      "readme": "docker/phase-two-proficient/README.md",
+      "starter": "docker/phase-two-proficient/starter",
+      "tasks": [
+        {
+          "id": "docker-p2-01",
+          "title": "Separate named build targets",
+          "concept_ids": [
+            "docker-p2-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "docker/phase-two-proficient/README.md",
+          "anchor": "docker-p2-01",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Run both tagged targets and retain their different successful outputs. Explain which stages each build needed and why a single default build is not two separately tagged images."
+        },
+        {
+          "id": "docker-p2-02",
+          "title": "Gate the runtime on a tested artifact",
+          "concept_ids": [
+            "docker-p2-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "docker/phase-two-proficient/README.md",
+          "anchor": "docker-p2-02",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Intentional experiment: the changed fixture must make the build fail at the summary assertion. After restoration, the build and runtime output must pass. Record the failed and repaired commands."
+        },
+        {
+          "id": "docker-p2-03",
+          "title": "Run with a bounded runtime user",
+          "concept_ids": [
+            "docker-p2-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "docker/phase-two-proficient/README.md",
+          "anchor": "docker-p2-03",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Show UID 10001 and the correct summary. Explain which input permissions are required and which system paths are not writable to that user."
+        },
+        {
+          "id": "docker-p2-04",
+          "title": "Keep runtime contents focused",
+          "concept_ids": [
+            "docker-p2-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "docker/phase-two-proficient/README.md",
+          "anchor": "docker-p2-04",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Record the differing file lists and commands. Runtime must still produce the expected output without tests being present."
+        },
+        {
+          "id": "docker-p2-05",
+          "title": "Repair a path assumption and explain the result",
+          "concept_ids": [
+            "docker-p2-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "docker/phase-two-proficient/README.md",
+          "anchor": "docker-p2-05",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "Dockerfile",
+            "evidence.md"
+          ],
+          "success_evidence": "Intentional experiment: the default app command should fail in the wrong directory. Repair must restore the default runtime output and non-root UID. Optional stretch: examine cache invalidation after a data-only change; keep it outside core time."
+        }
+      ],
+      "prerequisites": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "runtime": {
+        "boundary": "Docker build/run; host Python checks supporting app only.",
+        "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "base_image": "python:3.11-slim",
+          "docker": "instructor-provided; unavailable here"
+        },
+        "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 75,
+        "high": 110
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/docker/phase-two-proficient/solution",
+        "verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+        "evidence_state": "supporting-local-checks; live boundary blocked"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "dbt",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "dbt/phase-one-certified/README.md",
+      "starter": "dbt/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "dbt-p1-01",
+          "title": "Inspect the project and source grain",
+          "concept_ids": [
+            "dbt-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "dbt/phase-one-certified/README.md",
+          "anchor": "dbt-p1-01",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Show five holdings, three distinct funds and total 250. The status model is intentionally a valid scaffold. Record adapter/version and distinguish the local rehearsal from a connected run."
+        },
+        {
+          "id": "dbt-p1-02",
+          "title": "Declare and use sources",
+          "concept_ids": [
+            "dbt-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "dbt/phase-one-certified/README.md",
+          "anchor": "dbt-p1-02",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Run dbt run --select stg_holdings stg_funds --profiles-dir .. Inspect compiled SQL and explain the difference between the logical source name and physical table name."
+        },
+        {
+          "id": "dbt-p1-03",
+          "title": "Normalize type, unit and key contracts",
+          "concept_ids": [
+            "dbt-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "dbt/phase-one-certified/README.md",
+          "anchor": "dbt-p1-03",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "The staged row count remains five, its total remains 250, and the zero-value C holding is retained. Explain why filtering that zero would alter the holdings-count meaning."
+        },
+        {
+          "id": "dbt-p1-04",
+          "title": "Build a useful mart through ref",
+          "concept_ids": [
+            "dbt-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "dbt/phase-one-certified/README.md",
+          "anchor": "dbt-p1-04",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Compare against A:2 holdings/150, B:2/100, C:1/0. There must be three rows and total 250. Explain why a shared grand total alone would not prove each fund is correct."
+        },
+        {
+          "id": "dbt-p1-05",
+          "title": "Add minimum key and relationship proof",
+          "concept_ids": [
+            "dbt-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "dbt/phase-one-certified/README.md",
+          "anchor": "dbt-p1-05",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, reseed and show a relationship failure; restore it and rebuild. Save the failed-test name, repair and per-fund evidence."
+        }
+      ],
+      "prerequisites": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+      "runtime": {
+        "boundary": "Local DuckDB dbt; optional Databricks rehearsal remains separately measured.",
+        "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "dbt-core": "1.10.13",
+          "dbt-duckdb": "1.9.6",
+          "duckdb": "1.4.1"
+        },
+        "preparation": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 75,
+        "high": 110
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "dbt",
+      "id": "phase-two-proficient",
+      "offered": true,
+      "optional": false,
+      "readme": "dbt/phase-two-proficient/README.md",
+      "starter": "dbt/phase-two-proficient/starter",
+      "tasks": [
+        {
+          "id": "dbt-p2-01",
+          "title": "Diagnose a join fan-out before repair",
+          "concept_ids": [
+            "dbt-p2-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "dbt/phase-two-proficient/README.md",
+          "anchor": "dbt-p2-01",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "The defective join has seven rows and total 400 instead of five/250. This fixture is intentional; it is not a broken starter. Explain why an ordinary foreign-key relationship test would miss the multiplicity."
+        },
+        {
+          "id": "dbt-p2-02",
+          "title": "Repair enrichment at the intended grain",
+          "concept_ids": [
+            "dbt-p2-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "dbt/phase-two-proficient/README.md",
+          "anchor": "dbt-p2-02",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Repaired output must have A: 150 / B: 100 / C: 0, three distinct fund IDs and total250. A reviewer must be able to connect the chosen grain rule to the corrected join."
+        },
+        {
+          "id": "dbt-p2-03",
+          "title": "Write reconciliation that detects the negative case",
+          "concept_ids": [
+            "dbt-p2-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "dbt/phase-two-proficient/README.md",
+          "anchor": "dbt-p2-03",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Record the expected failed test/result and repaired pass. Show that a400 total or an inflated A: 300 fails even if another derived total repeats the same mistake."
+        },
+        {
+          "id": "dbt-p2-04",
+          "title": "Prove incremental update and replay behavior",
+          "concept_ids": [
+            "dbt-p2-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "dbt/phase-two-proficient/README.md",
+          "anchor": "dbt-p2-04",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "First run:2 rows/180. Replay:2/180. Corrected+new input:3 rows/225, with e1=125. Rerun again and prove it remains3/225. Record adapter semantics; recheck the chosen strategy before connected Databricks use."
+        },
+        {
+          "id": "dbt-p2-05",
+          "title": "Explain dependency impact and hand over",
+          "concept_ids": [
+            "dbt-p2-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "dbt/phase-two-proficient/README.md",
+          "anchor": "dbt-p2-05",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the dependency path and saved per-run row totals. Core completion requires repair, negative-case and replay evidence. Optional stretch: port and measure the adapter-specific OPTIMIZE/ZORDER hook from v1, or author the legacy returns mart."
+        }
+      ],
+      "prerequisites": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+      "runtime": {
+        "boundary": "Local DuckDB dbt; optional Databricks rehearsal remains separately measured.",
+        "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "dbt-core": "1.10.13",
+          "dbt-duckdb": "1.9.6",
+          "duckdb": "1.4.1"
+        },
+        "preparation": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 90,
+        "high": 120
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/dbt/phase-two-proficient/solution",
+        "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "databricks-cli",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "databricks-cli/phase-one-certified/README.md",
+      "starter": "databricks-cli/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "databricks-cli-p1-01",
+          "title": "Establish the CLI identity boundary",
+          "concept_ids": [
+            "databricks-cli-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "databricks-cli/phase-one-certified/README.md",
+          "anchor": "databricks-cli-p1-01",
+          "estimate_minutes": {
+            "low": 9,
+            "high": 13
+          },
+          "authored_paths": [
+            "discovery.md",
+            "evidence.md"
+          ],
+          "success_evidence": "A live result must show the remote identity from the real endpoint. An unavailable session is blocked, not pass. The offline fixture contains no claim about your actual remote identity."
+        },
+        {
+          "id": "databricks-cli-p1-02",
+          "title": "Separate workspace and Unity Catalog names",
+          "concept_ids": [
+            "databricks-cli-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "databricks-cli/phase-one-certified/README.md",
+          "anchor": "databricks-cli-p1-02",
+          "estimate_minutes": {
+            "low": 9,
+            "high": 13
+          },
+          "authored_paths": [
+            "discovery.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Write a two-row comparison: object type, qualified path/name and relevant command group. Do not infer Unity Catalog access from a successful workspace directory listing."
+        },
+        {
+          "id": "databricks-cli-p1-03",
+          "title": "Inspect permitted schema and table metadata",
+          "concept_ids": [
+            "databricks-cli-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "databricks-cli/phase-one-certified/README.md",
+          "anchor": "databricks-cli-p1-03",
+          "estimate_minutes": {
+            "low": 9,
+            "high": 13
+          },
+          "authored_paths": [
+            "discovery.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Record the object type/full name and one useful metadata field. If blocked, identify the failing operation and permission boundary, then complete the parsing exercise with metadata.json labelled offline."
+        },
+        {
+          "id": "databricks-cli-p1-04",
+          "title": "Filter JSON and explain a limited result",
+          "concept_ids": [
+            "databricks-cli-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "databricks-cli/phase-one-certified/README.md",
+          "anchor": "databricks-cli-p1-04",
+          "estimate_minutes": {
+            "low": 9,
+            "high": 13
+          },
+          "authored_paths": [
+            "discovery.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the parsed table name training_dev.training_learner.holdings from the fixture. Explain separately what an empty collection and denied access would mean; do not retry by granting yourself privileges."
+        },
+        {
+          "id": "databricks-cli-p1-05",
+          "title": "Produce a bounded discovery handoff",
+          "concept_ids": [
+            "databricks-cli-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "databricks-cli/phase-one-certified/README.md",
+          "anchor": "databricks-cli-p1-05",
+          "estimate_minutes": {
+            "low": 9,
+            "high": 13
+          },
+          "authored_paths": [
+            "discovery.md",
+            "evidence.md"
+          ],
+          "success_evidence": "The handoff must be understandable by a teammate. Core checks assess object-type reasoning and parsing; live CLI evidence remains a separate gate when unavailable."
+        }
+      ],
+      "prerequisites": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "runtime": {
+        "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+        "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "client_source_pin": "0.236.0; live installed version unobserved"
+        },
+        "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 45,
+        "high": 65
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/databricks-cli/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+        "evidence_state": "supporting-local-checks; live boundary blocked"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "databricks-cli",
+      "id": "phase-two-proficient",
+      "offered": false,
+      "optional": false,
+      "readme": "databricks-cli/phase-two-proficient/README.md",
+      "starter": "databricks-cli/phase-two-proficient/starter",
+      "tasks": [],
+      "prerequisites": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "runtime": {
+        "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+        "workspace": ".local/challenges-v2/databricks-cli/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification"
+      },
+      "timing_audit_status": "not-offered"
+    },
+    {
+      "tool": "airflow",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "airflow/phase-one-certified/README.md",
+      "starter": "airflow/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "airflow-p1-01",
+          "title": "Inspect a prepared orchestration baseline",
+          "concept_ids": [
+            "airflow-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "airflow/phase-one-certified/README.md",
+          "anchor": "airflow-p1-01",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the prepared project result A: 150 / B: 100 / C: 0. Explain which graph orders tasks and which graph orders SQL models. The scaffold message is not an Airflow run."
+        },
+        {
+          "id": "airflow-p1-02",
+          "title": "Author a small Python DAG with real dbt tasks",
+          "concept_ids": [
+            "airflow-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "airflow/phase-one-certified/README.md",
+          "anchor": "airflow-p1-02",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Import the actual DAG using DagBag and inspect task IDs and edges. Syntax-only checks are supporting evidence. Record any import error before trying a live run."
+        },
+        {
+          "id": "airflow-p1-03",
+          "title": "Demonstrate the dependency graph and manual run",
+          "concept_ids": [
+            "airflow-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "airflow/phase-one-certified/README.md",
+          "anchor": "airflow-p1-03",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "The run must execute dbt and finish success. Independently inspect fund_exposure in the workspace database and match A: 150 / B: 100 / C: 0. A parsed DAG alone cannot pass this live/local execution gate."
+        },
+        {
+          "id": "airflow-p1-04",
+          "title": "Inspect a controlled task failure",
+          "concept_ids": [
+            "airflow-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "airflow/phase-one-certified/README.md",
+          "anchor": "airflow-p1-04",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Intentional failure: the quality drill raises Intentional quality drill and publish must not create a receipt. After removing the marker, quality and publish succeed and a new receipt exists."
+        },
+        {
+          "id": "airflow-p1-05",
+          "title": "Explain the run and environment boundaries",
+          "concept_ids": [
+            "airflow-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "airflow/phase-one-certified/README.md",
+          "anchor": "airflow-p1-05",
+          "estimate_minutes": {
+            "low": 15,
+            "high": 22
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Core evidence includes the executed run and business output. Record Astro UI/connected verification separately if unavailable. Phase2 starts from this supplied solved DAG, so it can be entered independently."
+        }
+      ],
+      "prerequisites": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+      "runtime": {
+        "boundary": "Airflow local Dag.test execution; Astro UI and connected adapter gates separate.",
+        "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "apache-airflow": "3.1.0",
+          "standard-provider": "1.8.0",
+          "astro": "client container not measured"
+        },
+        "preparation": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 75,
+        "high": 110
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/airflow/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "airflow",
+      "id": "phase-two-proficient",
+      "offered": true,
+      "optional": false,
+      "readme": "airflow/phase-two-proficient/README.md",
+      "starter": "airflow/phase-two-proficient/starter",
+      "tasks": [
+        {
+          "id": "airflow-p2-01",
+          "title": "Define bounded replay and input identity",
+          "concept_ids": [
+            "airflow-p2-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "airflow/phase-two-proficient/README.md",
+          "anchor": "airflow-p2-01",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Both runs must produce three fund rows/250 and matching per-fund values. Record run IDs and explain which state is replaced by dbt materialization."
+        },
+        {
+          "id": "airflow-p2-02",
+          "title": "Inject failure and observe useful retry behavior",
+          "concept_ids": [
+            "airflow-p2-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "airflow/phase-two-proficient/README.md",
+          "anchor": "airflow-p2-02",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show the failed task and blocked publication, then repaired quality and published receipt. Record attempts/run identity. Do not mark the task successful manually as a substitute for rerunning the test."
+        },
+        {
+          "id": "airflow-p2-03",
+          "title": "Prove output correctness after recovery",
+          "concept_ids": [
+            "airflow-p2-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "airflow/phase-two-proficient/README.md",
+          "anchor": "airflow-p2-03",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Correct final state is A: 150 / B: 100 / C: 0, one row per fund, successful quality and a receipt for the repaired run. Show unchanged output after another replay."
+        },
+        {
+          "id": "airflow-p2-04",
+          "title": "Use Astro UI to make an operational decision",
+          "concept_ids": [
+            "airflow-p2-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "airflow/phase-two-proficient/README.md",
+          "anchor": "airflow-p2-04",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Retain run/task identifiers and a description of the relevant log/state evidence. A hosted Astronomer route is optional and requires prepared access."
+        },
+        {
+          "id": "airflow-p2-05",
+          "title": "Write a short incident handoff",
+          "concept_ids": [
+            "airflow-p2-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "airflow/phase-two-proficient/README.md",
+          "anchor": "airflow-p2-05",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "pipeline.py",
+            "incident.md",
+            "evidence.md"
+          ],
+          "success_evidence": "The handoff must explain blocked publication and correct recovered output. Optional stretch: connect an existing neutral alert transport or prepared Datadog monitor and demonstrate an actionable observation; configuration text alone is insufficient."
+        }
+      ],
+      "prerequisites": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+      "runtime": {
+        "boundary": "Airflow local Dag.test execution; Astro UI and connected adapter gates separate.",
+        "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "apache-airflow": "3.1.0",
+          "standard-provider": "1.8.0",
+          "astro": "client container not measured"
+        },
+        "preparation": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 90,
+        "high": 120
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/airflow/phase-two-proficient/solution",
+        "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "kafka",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": true,
+      "readme": "kafka/phase-one-certified/README.md",
+      "starter": "kafka/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "kafka-p1-01",
+          "title": "Read the dataset-arrived contract",
+          "concept_ids": [
+            "kafka-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "kafka/phase-one-certified/README.md",
+          "anchor": "kafka-p1-01",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "learner-event.json",
+            "event-evidence.json",
+            "evidence.md"
+          ],
+          "success_evidence": "Record the event identity and expected A: 150 / B: 100 / C: 0 output. A malformed event must be rejected by the bridge before a trigger."
+        },
+        {
+          "id": "kafka-p1-02",
+          "title": "Start the prepared local broker and inspect a topic",
+          "concept_ids": [
+            "kafka-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "kafka/phase-one-certified/README.md",
+          "anchor": "kafka-p1-02",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "learner-event.json",
+            "event-evidence.json",
+            "evidence.md"
+          ],
+          "success_evidence": "A broker metadata call must return the intended topic/partition. Record topic/group/offset observations. Without Docker/broker, this live gate is blocked; the offline contract check remains available."
+        },
+        {
+          "id": "kafka-p1-03",
+          "title": "Produce and follow a uniquely identified event",
+          "concept_ids": [
+            "kafka-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "kafka/phase-one-certified/README.md",
+          "anchor": "kafka-p1-03",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "learner-event.json",
+            "event-evidence.json",
+            "evidence.md"
+          ],
+          "success_evidence": "Capture event ID, broker partition/offset, run ID and eventual task outcome. Producer exit alone cannot pass. The exact event payload must appear in the run configuration and publication receipt."
+        },
+        {
+          "id": "kafka-p1-04",
+          "title": "Verify the dbt output belongs to the event",
+          "concept_ids": [
+            "kafka-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "kafka/phase-one-certified/README.md",
+          "anchor": "kafka-p1-04",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "learner-event.json",
+            "event-evidence.json",
+            "evidence.md"
+          ],
+          "success_evidence": "Live completion needs the broker event, actual Airflow run, matching receipt and A: 150 / B: 100 / C: 0 output. Offline event simulation must never be labelled end-to-end Kafka execution."
+        },
+        {
+          "id": "kafka-p1-05",
+          "title": "Replay and explain duplicate policy",
+          "concept_ids": [
+            "kafka-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "kafka/phase-one-certified/README.md",
+          "anchor": "kafka-p1-05",
+          "estimate_minutes": {
+            "low": 12,
+            "high": 18
+          },
+          "authored_paths": [
+            "learner-event.json",
+            "event-evidence.json",
+            "evidence.md"
+          ],
+          "success_evidence": "Show identical replay yields the same run ID and unchanged result without a second conflicting run. Record the conflicting-payload failure. Cleanup uses docker compose -p v2-kafka down, never a global prune."
+        }
+      ],
+      "prerequisites": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "runtime": {
+        "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+        "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "broker_image": "apache/kafka:4.1.0; not executed",
+          "confluent-kafka": "2.11.1"
+        },
+        "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 60,
+        "high": 90
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/kafka/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+        "evidence_state": "supporting-local-checks; live boundary blocked"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "kafka",
+      "id": "phase-two-proficient",
+      "offered": false,
+      "optional": true,
+      "readme": "kafka/phase-two-proficient/README.md",
+      "starter": "kafka/phase-two-proficient/starter",
+      "tasks": [],
+      "prerequisites": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "runtime": {
+        "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+        "workspace": ".local/challenges-v2/kafka/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification"
+      },
+      "timing_audit_status": "not-offered"
+    },
+    {
+      "tool": "capstone",
+      "id": "phase-one-certified",
+      "offered": true,
+      "optional": false,
+      "readme": "capstone/phase-one-certified/README.md",
+      "starter": "capstone/phase-one-certified/starter",
+      "tasks": [
+        {
+          "id": "capstone-p1-01",
+          "title": "State the consumer population and grain",
+          "concept_ids": [
+            "capstone-p1-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "capstone/phase-one-certified/README.md",
+          "anchor": "capstone-p1-01",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Record 10,000rawtrades, 2,500conformedportfolios and 1,028activeportfolios. Explain why a1472 portfolio gap is not proof of a missing ID column."
+        },
+        {
+          "id": "capstone-p1-02",
+          "title": "Build the valid-trade domain fact",
+          "concept_ids": [
+            "capstone-p1-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "capstone/phase-one-certified/README.md",
+          "anchor": "capstone-p1-02",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Build and inspect 9,880validtrades; explain the 120 excluded rows. Check trade_id uniqueness/non-null and money/sign conversions on representative buy/sell examples."
+        },
+        {
+          "id": "capstone-p1-03",
+          "title": "Author the active portfolio summary",
+          "concept_ids": [
+            "capstone-p1-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "capstone/phase-one-certified/README.md",
+          "anchor": "capstone-p1-03",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "There must be3,717 positions and 1,028summaryportfolios. Check that every position portfolio is represented once in the summary. Explain the retained identifiers and native-currency valuation limit."
+        },
+        {
+          "id": "capstone-p1-04",
+          "title": "Investigate expected omission and a defective join",
+          "concept_ids": [
+            "capstone-p1-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "capstone/phase-one-certified/README.md",
+          "anchor": "capstone-p1-04",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "The defective query is an intentional teaching fixture, not a starter defect. Show its lost membership and repair on pf.advisor_id=a.advisor_id. Explain why blindly changing every join to LEFT JOIN would not define a correct all-portfolio report."
+        },
+        {
+          "id": "capstone-p1-05",
+          "title": "Prove minimum data quality and give a consumer handoff",
+          "concept_ids": [
+            "capstone-p1-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "capstone/phase-one-certified/README.md",
+          "anchor": "capstone-p1-05",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "All minimum tests pass with known counts. Hand over contract, authored files, representative rows, anti-join evidence and native-currency limitation. Use the supplied orchestration baseline to explain where this slice would execute; connected Atlas execution is a separate gate."
+        }
+      ],
+      "prerequisites": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+      "runtime": {
+        "boundary": "Local dbt/DuckDB raw-to-consumer slice; separately recorded connected Atlas run.",
+        "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "dbt-core": "1.10.13",
+          "duckdb": "1.4.1"
+        },
+        "preparation": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 90,
+        "high": 120
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/capstone/phase-one-certified/solution",
+        "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    },
+    {
+      "tool": "capstone",
+      "id": "phase-two-proficient",
+      "offered": true,
+      "optional": false,
+      "readme": "capstone/phase-two-proficient/README.md",
+      "starter": "capstone/phase-two-proficient/starter",
+      "tasks": [
+        {
+          "id": "capstone-p2-01",
+          "title": "Build a meaningful performance report",
+          "concept_ids": [
+            "capstone-p2-01-concept"
+          ],
+          "status": "core",
+          "order": 1,
+          "source_readme": "capstone/phase-two-proficient/README.md",
+          "anchor": "capstone-p2-01",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "One row per activeportfolio, 1,028 rows. Independently compare sample values and show a zero-volume example yields NULL rate. The output is a training report, not FX-converted economic AUM."
+        },
+        {
+          "id": "capstone-p2-02",
+          "title": "Rank advisor books with explicit ties",
+          "concept_ids": [
+            "capstone-p2-02-concept"
+          ],
+          "status": "core",
+          "order": 2,
+          "source_readme": "capstone/phase-two-proficient/README.md",
+          "anchor": "capstone-p2-02",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Show one row per representedadvisor, correct count/sums and equal rank for ties in the demonstration fixture. Explain why advisors with no active portfolio are outside this report population."
+        },
+        {
+          "id": "capstone-p2-03",
+          "title": "Build the regional rollup from its declared dependency",
+          "concept_ids": [
+            "capstone-p2-03-concept"
+          ],
+          "status": "core",
+          "order": 3,
+          "source_readme": "capstone/phase-two-proficient/README.md",
+          "anchor": "capstone-p2-03",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Inspect every regionalrow and verify the sum of portfolio counts is1,028. All represented advisors must belong to exactly one region in this fixture."
+        },
+        {
+          "id": "capstone-p2-04",
+          "title": "Reconcile independently and reject a defect",
+          "concept_ids": [
+            "capstone-p2-04-concept"
+          ],
+          "status": "core",
+          "order": 4,
+          "source_readme": "capstone/phase-two-proficient/README.md",
+          "anchor": "capstone-p2-04",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "The wrong-key experiment must fail. Restored reports must agree perkey within declared numeric tolerance, have correct grains and retain the 1,028activepopulation. Save the failed assertion and repaired evidence."
+        },
+        {
+          "id": "capstone-p2-05",
+          "title": "Present a fixed completed core and select stretch",
+          "concept_ids": [
+            "capstone-p2-05-concept"
+          ],
+          "status": "core",
+          "order": 5,
+          "source_readme": "capstone/phase-two-proficient/README.md",
+          "anchor": "capstone-p2-05",
+          "estimate_minutes": {
+            "low": 18,
+            "high": 24
+          },
+          "authored_paths": [
+            "models/",
+            "tests/",
+            "contract.md",
+            "evidence.md"
+          ],
+          "success_evidence": "Core is complete only when the four output/proof themes are demonstrated. Optional stretch has separate estimates and never supplies missing minutes to this phase."
+        }
+      ],
+      "prerequisites": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+      "runtime": {
+        "boundary": "Local dbt/DuckDB raw-to-consumer slice; separately recorded connected Atlas run.",
+        "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+        "remote_cleanup": "Not performed by local verification",
+        "versions": {
+          "dbt-core": "1.10.13",
+          "duckdb": "1.4.1"
+        },
+        "preparation": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+        "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+        "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+        "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+      },
+      "timing_audit_status": "estimated-unpiloted",
+      "estimate_minutes": {
+        "low": 90,
+        "high": 120
+      },
+      "solution": {
+        "path": "challenges/v2-solutions/capstone/phase-two-proficient/solution",
+        "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+        "starter_verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+        "evidence_state": "local behavior verified; connected/pilot gates separate"
+      },
+      "starter_contract": {
+        "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+        "success": "Observed baseline state, distinct from challenge completion",
+        "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+      }
+    }
+  ],
+  "readmes": [
+    "challenges/v2/README.md",
+    "challenges/v2/kafka/README.md",
+    "challenges/v2/git/README.md",
+    "challenges/v2/airflow/README.md",
+    "challenges/v2/databricks-cli/README.md",
+    "challenges/v2/capstone/README.md",
+    "challenges/v2/dbt/README.md",
+    "challenges/v2/docker/README.md",
+    "challenges/v2/docker/phase-one-certified/README.md",
+    "challenges/v2/docker/phase-two-proficient/README.md",
+    "challenges/v2/docker/phase-two-proficient/stretch/README.md",
+    "challenges/v2/docker/phase-two-proficient/starter/README.md",
+    "challenges/v2/docker/phase-one-certified/starter/README.md",
+    "challenges/v2/dbt/phase-one-certified/README.md",
+    "challenges/v2/dbt/phase-two-proficient/README.md",
+    "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "challenges/v2/dbt/phase-two-proficient/starter/README.md",
+    "challenges/v2/dbt/phase-one-certified/starter/README.md",
+    "challenges/v2/capstone/phase-one-certified/README.md",
+    "challenges/v2/capstone/phase-two-proficient/README.md",
+    "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "challenges/v2/capstone/phase-two-proficient/starter/README.md",
+    "challenges/v2/capstone/phase-one-certified/starter/README.md",
+    "challenges/v2/databricks-cli/phase-one-certified/README.md",
+    "challenges/v2/databricks-cli/phase-two-proficient/README.md",
+    "challenges/v2/databricks-cli/phase-one-certified/starter/README.md",
+    "challenges/v2/airflow/phase-one-certified/README.md",
+    "challenges/v2/airflow/phase-two-proficient/README.md",
+    "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "challenges/v2/airflow/phase-two-proficient/starter/README.md",
+    "challenges/v2/airflow/phase-one-certified/starter/README.md",
+    "challenges/v2/git/phase-one-certified/README.md",
+    "challenges/v2/git/phase-two-proficient/README.md",
+    "challenges/v2/git/phase-two-proficient/stretch/README.md",
+    "challenges/v2/git/phase-two-proficient/starter/README.md",
+    "challenges/v2/git/phase-one-certified/starter/README.md",
+    "challenges/v2/kafka/phase-one-certified/README.md",
+    "challenges/v2/kafka/phase-two-proficient/README.md",
+    "challenges/v2/kafka/phase-one-certified/starter/README.md"
+  ],
+  "final_hashes": {
+    "challenges/v2/README.md": "3abbe2ef7032dc77a6cd8f6436cf4416d04f91569b54faa67dcdb37f6c15fdec",
+    "challenges/v2/manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2/kafka/README.md": "b887dea6549621c8705fe171b3228d03f7c6a225230193f6c10080cd4bfe4c01",
+    "challenges/v2/git/README.md": "cd705f3ec8305e9f6fb476fa9d6711b8fe12e6ea2885f3dc827330ba9b575031",
+    "challenges/v2/airflow/README.md": "32d76957a8aad27fe532a3c49d3b39f7ea9ae9189f56c9f5be9678cf6fc9894c",
+    "challenges/v2/databricks-cli/README.md": "4beee9e3f84542083df98c215769210d52b5f47e3b3b1464cff9ec29c16c00b5",
+    "challenges/v2/capstone/README.md": "430df71de1bffb5ec9e4a6c321022495f3ebf55bba2e28dbde8297af065cc3f8",
+    "challenges/v2/dbt/README.md": "5a3cd845e37b7dc0ea557c265b3042cf6211618bd8f07c6a32bd7001fcba0abb",
+    "challenges/v2/docker/README.md": "59d5650c9629fa38941486b22034f617516c10e699b52d20c6535e9dad8fa9fd",
+    "challenges/v2/docker/phase-one-certified/README.md": "696acaab9af2c1f11ce5a32fc3e71d62d693b80d79f7b5e2675468be90d1e9ad",
+    "challenges/v2/docker/phase-two-proficient/README.md": "2128c01fc2c4c1a0abed3ae1068c674fb4320be52c3e8296472fd50af4cc9dd2",
+    "challenges/v2/docker/phase-two-proficient/stretch/README.md": "633f3a7ec2b627d82ce3bdbea6809d28b76f9888d4e040abf689d41944dd1b3a",
+    "challenges/v2/docker/phase-two-proficient/starter/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2/docker/phase-two-proficient/starter/README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+    "challenges/v2/docker/phase-two-proficient/starter/Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+    "challenges/v2/docker/phase-two-proficient/starter/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2/docker/phase-two-proficient/starter/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2/docker/phase-two-proficient/starter/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2/docker/phase-one-certified/starter/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2/docker/phase-one-certified/starter/README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+    "challenges/v2/docker/phase-one-certified/starter/Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+    "challenges/v2/docker/phase-one-certified/starter/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2/docker/phase-one-certified/starter/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2/docker/phase-one-certified/starter/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2/dbt/phase-one-certified/README.md": "8bf60e32facde8627651435e8fb0b1c3e19f5687fb23742907d5d624f1beae6a",
+    "challenges/v2/dbt/phase-two-proficient/README.md": "c73287181f61490dfaa6d0d9feabe877a3d5ab20ac06cca436bf000da0a427ee",
+    "challenges/v2/dbt/phase-two-proficient/stretch/README.md": "d208339b2dec55e35edb234712682e46e8780c7038b4cf3c8c8b6aaea320b70f",
+    "challenges/v2/dbt/phase-two-proficient/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/dbt/phase-two-proficient/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+    "challenges/v2/dbt/phase-two-proficient/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/dbt/phase-two-proficient/starter/fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/fund_exposure.sql": "9323a33881ec03d53fcf303a44cfbc1fd62d7b06a8fd4babdae2bb31f4d8f983",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/schema.yml": "503eed658c6cdc7fddb377887d40858b13d6d45de096879e03aabd9435418b7f",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+    "challenges/v2/dbt/phase-two-proficient/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/dbt/phase-two-proficient/starter/seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+    "challenges/v2/dbt/phase-one-certified/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/dbt/phase-one-certified/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+    "challenges/v2/dbt/phase-one-certified/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/dbt/phase-one-certified/starter/models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+    "challenges/v2/dbt/phase-one-certified/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/dbt/phase-one-certified/starter/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/dbt/phase-one-certified/starter/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/capstone/phase-one-certified/README.md": "777021807f81752599024cc045fed2f573b12247f46df103bbfdc011506e5c37",
+    "challenges/v2/capstone/phase-two-proficient/README.md": "f490bcae1da054c88b258f4fd9dcc1caacbff9c8a064885bc0b6152e65993054",
+    "challenges/v2/capstone/phase-two-proficient/stretch/README.md": "c8650f472e75357345dabd3b117e72a1320c83f4626fff38794bfd5b1df55fd3",
+    "challenges/v2/capstone/phase-two-proficient/starter/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2/capstone/phase-two-proficient/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/capstone/phase-two-proficient/starter/README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+    "challenges/v2/capstone/phase-two-proficient/starter/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2/capstone/phase-two-proficient/starter/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2/capstone/phase-two-proficient/starter/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2/capstone/phase-two-proficient/starter/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2/capstone/phase-one-certified/starter/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2/capstone/phase-one-certified/starter/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/capstone/phase-one-certified/starter/README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+    "challenges/v2/capstone/phase-one-certified/starter/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2/capstone/phase-one-certified/starter/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2/capstone/phase-one-certified/starter/models/starter_status.sql": "5810301b2c30cce19376f225ffde17a26b1085ab2f826ff422af3d9c213ccd45",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2/capstone/phase-one-certified/starter/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2/capstone/phase-one-certified/starter/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2/capstone/phase-one-certified/starter/prepared/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2/capstone/phase-one-certified/starter/prepared/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2/databricks-cli/phase-one-certified/README.md": "31d8333f27293a73b94c80569a790e8cfb1c9272e58053b5e6ce53df59d02055",
+    "challenges/v2/databricks-cli/phase-two-proficient/README.md": "3ce385bb9dacb5e095589155badf7d436efcb63c83c52e5fc2981bff9faa808c",
+    "challenges/v2/databricks-cli/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "challenges/v2/databricks-cli/phase-one-certified/starter/README.md": "6cfd49f817023616e0bee614b4e8a557c7d3bde2232a5fcb020ac43402ecd3b2",
+    "challenges/v2/databricks-cli/phase-one-certified/starter/metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783",
+    "challenges/v2/airflow/phase-one-certified/README.md": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+    "challenges/v2/airflow/phase-two-proficient/README.md": "7c54d0f2e27dc7fe23d14bcbd66a31bd958c9a675956127ed580d4ec1f043ae3",
+    "challenges/v2/airflow/phase-two-proficient/stretch/README.md": "73a81e32b627ff1a862f56f76e4871a01fc32d4f43746decfd64573732eece6b",
+    "challenges/v2/airflow/phase-two-proficient/starter/README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+    "challenges/v2/airflow/phase-two-proficient/starter/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/airflow/phase-two-proficient/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/airflow/phase-one-certified/starter/README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+    "challenges/v2/airflow/phase-one-certified/starter/pipeline.py": "73974988a56d2d605f9b6e17cd72410d61a934b2f9fb5c3d43200361e63087ea",
+    "challenges/v2/airflow/phase-one-certified/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/airflow/phase-one-certified/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/airflow/phase-one-certified/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/airflow/phase-one-certified/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/airflow/phase-one-certified/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/airflow/phase-one-certified/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2/git/phase-one-certified/README.md": "7f66f1b2f1444cba471c5801e1e10d84084d375e9baf3c011374a984a941fe0a",
+    "challenges/v2/git/phase-two-proficient/README.md": "84eac9ebd3c0360f193b1535d7ea8b9693d34b57b38c4b766aa8ff08cea5233a",
+    "challenges/v2/git/phase-two-proficient/stretch/README.md": "d27c6145492c08bb613e62240bac295cedcf91f5901115b89ae3fbef14adeb98",
+    "challenges/v2/git/phase-two-proficient/starter/contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d",
+    "challenges/v2/git/phase-two-proficient/starter/README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+    "challenges/v2/git/phase-two-proficient/starter/review-scenario.json": "aa3609de1f9ec6d4c16fb1f35545fd7021b27496b5edabee531e3da675e3bb92",
+    "challenges/v2/git/phase-one-certified/starter/contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d",
+    "challenges/v2/git/phase-one-certified/starter/README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+    "challenges/v2/kafka/phase-one-certified/README.md": "a09c8ed15267114ef80c4de233f2733a07933535f675450f54f863c6397ab8df",
+    "challenges/v2/kafka/phase-two-proficient/README.md": "4bba8627e9eec33c398130ab843ae78f1a6f3af28f9e84596e70bf8bff86fb99",
+    "challenges/v2/kafka/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "challenges/v2/kafka/phase-one-certified/starter/README.md": "865d5aac7165f47907a3568b61c16f99fd1aadd9b1458da433b1fd9fb7f6b008",
+    "challenges/v2/kafka/phase-one-certified/starter/compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+    "challenges/v2/kafka/phase-one-certified/starter/learner-event.json": "1ea7959d63e00ada414f8acdccdb21dce0e99570b45d768a404a64edde16cc84",
+    "challenges/v2/kafka/phase-one-certified/starter/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2/kafka/phase-one-certified/starter/event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+    "challenges/v2/kafka/phase-one-certified/starter/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2/kafka/phase-one-certified/starter/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2/kafka/phase-one-certified/starter/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2/kafka/phase-one-certified/starter/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2/kafka/phase-one-certified/starter/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2/kafka/phase-one-certified/starter/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/README.md": "d41e62bdae9cb0322af1f9ba94ea66638bddc58724b419fed4b359f64d90abf7",
+    "challenges/v2-solutions/manifest.json": "f441b5077a20f4778ad29e62d19494392d8cabd068e2de2cb67612467072bef3",
+    "challenges/v2-solutions/docker/phase-one-certified/README.md": "2e6c95c13670b920bd6e7a589777058c4ba419ad196d4d24864a72217d2c5264",
+    "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh": "6ec52b54792468bc924cf5d54bdcf060e7cafd0f137b591551a397a264e0ab30",
+    "challenges/v2-solutions/docker/phase-one-certified/verify.sh": "f44cfaba48fe97714ebce777b6f3b1f59665d3c48aba40667d7e845e83fc2a27",
+    "challenges/v2-solutions/docker/phase-two-proficient/README.md": "0e4864ba271a1ba35aab3575101aa703b0c2943f263eb6d35ec2eb61422b71ce",
+    "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh": "a41c045713fc2c9c1a7c4f7be76da4b8314bd619c3fff839f25eca22a0ff8fce",
+    "challenges/v2-solutions/docker/phase-two-proficient/verify.sh": "dd4b8745d1d38317415f41840c0c10dff80956e438b1c5117471ec53b1fc6115",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/Dockerfile": "40ee62fdd50b5360ab1195ebe98333ed448c2085ee833f9305272f06eed7f077",
+    "challenges/v2-solutions/docker/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2-solutions/docker/phase-two-proficient/solution/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/.dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/Dockerfile": "9de0b9ad68c7c127dc479175748e587b59b04e567676e0bf98582018becdba9f",
+    "challenges/v2-solutions/docker/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+    "challenges/v2-solutions/docker/phase-one-certified/solution/app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+    "challenges/v2-solutions/dbt/phase-one-certified/README.md": "40362a32a74421d07735ff2416a136b561973eedd41a16c4a63590e7a2ff5475",
+    "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh": "b55ecafcd2848f6766a232687037763aa83c0cc8753d7b1f6e62a1a32ac2c589",
+    "challenges/v2-solutions/dbt/phase-one-certified/verify.sh": "694884d487f059591855f5ba6b43773c1a4bed0239d90fc899afe2bcb1222847",
+    "challenges/v2-solutions/dbt/phase-two-proficient/README.md": "c118951bc5323cbe835df56172ae26a21ba6bab163d375c0d013617ad32622f5",
+    "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh": "906376a9e1566cc80511ec9230de2e5d7dca74d3b3aa24119f7de0b9b09e978e",
+    "challenges/v2-solutions/dbt/phase-two-proficient/legacy-stretch-answers.md": "ae6755ab9a1546a28f8777c2aae27cc41ca4895cb09d4392148e566b6f02c8aa",
+    "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh": "510dbe64afdea3c797b8b961114adfe6612577d355531dbec2c0e0ab6d73efa6",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/arrival_ledger.sql": "f19d2344bbf5b85fae1b7f28b7cfd944b82a2e97f9cd1b1edd54bba972ddce99",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/dbt/phase-two-proficient/solution/seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/capstone/phase-one-certified/README.md": "83283ba994181b080f3ea3a4324846ad93d2d116e145766480d45664568b3b5a",
+    "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh": "083f200e05051ef9dc79c8629da1d41cc00f1446bda8146156656f2bd5d1af1a",
+    "challenges/v2-solutions/capstone/phase-one-certified/verify.sh": "63296a33569733987e3a4fc4d5579a12bee052edfd68c33338d02aa54cdb1710",
+    "challenges/v2-solutions/capstone/phase-two-proficient/README.md": "86a4af2d7ad59e295aa27e1ec4f75e5a124b93526cf8d528ebbfc2abf433785d",
+    "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh": "887071f8cee3ce562d96bf7f2d4d6ac3509f365be1ab95d819d68e787fd7b569",
+    "challenges/v2-solutions/capstone/phase-two-proficient/legacy-stretch-answers.md": "58469a2e83a19d007de069a54fce0ab45a580b89115a74dfb18d20fc92901658",
+    "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh": "898035e6fdb28f3976a3279f3d9712b4e63edab81840487a2e4fcfa5d62a952e",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2-solutions/capstone/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/tests/reconcile_region.sql": "927cc04dc049732abe999f6b211822a5446d6b1c1417ccc8c97a9d06692e883b",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_advisor_leaderboard.sql": "e29b1ae95ae4a00d3a33885f47f4c8e69cd0310746852d2b3658459b9eb6d0f1",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_advisor_book.sql": "64b94c5cc490615710fd6538cca98b2d19e8e62b7de61c19ac7564c7682503fa",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_portfolio_performance.sql": "daee35093070a9d49ba66003b40bc1e40a48e3a3773cc526d98dc76f19331e7c",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/models/rpt_region_report.sql": "522f19500e62103131bd4ca597157e95626380e78bfe6ba94dbb2ebab83e3b9d",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2-solutions/capstone/phase-two-proficient/solution/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+    "challenges/v2-solutions/capstone/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "challenges/v2-solutions/capstone/phase-one-certified/solution/seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/README.md": "b4952143e93c9da5a8d304d46e49bd28bf97358feb3633c0c4dbd684f3f16ced",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh": "365c8fdd883ff455d92374de0bf6ae16307c35de5ea613401e0a99fb7767cc49",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh": "ce8ac86b7d4f057be793ff2f3c6d00bbac6ed826626e5c89445600fba09a0a46",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/solution/metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/solution/discovery.md": "5e8067f3a8563e1bd8514282d52b7edb87e5a94a145bd94abe8198700abd43aa",
+    "challenges/v2-solutions/databricks-cli/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-one-certified/README.md": "01c9ea1b31e82d0e7ef844c3babebcf2b2e42b7009d4051d19d5b3701ce0fae2",
+    "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh": "dfa94a4310f6f91b03c11c1cf2abbf73c1691cb443060a2c2b8e185b9ba6512b",
+    "challenges/v2-solutions/airflow/phase-one-certified/verify.sh": "66bf8121c520a85ab80bf619f7567ac065aa8b25a6548ccb371bf6dedd06052d",
+    "challenges/v2-solutions/airflow/phase-two-proficient/README.md": "75f0b309ef2fca1c60422ccc31a8704b47dea114f210d3892c79a0f1af427a48",
+    "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh": "0cbf5f3de8798b570c5a348f3fe6877e58018dc76d8790aedcb413af6793fd99",
+    "challenges/v2-solutions/airflow/phase-two-proficient/legacy-stretch-answers.md": "746aae3a46fad89c6e76fab1d3b658e652b5b0a412c3175b01f260fc91f37317",
+    "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh": "c3a9e52a83809ef548d16fcc995abeb1c3ce7c64f100c4fde91a7725d6b0da3c",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/airflow/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/airflow/phase-two-proficient/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/airflow/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/git/phase-one-certified/README.md": "efc48a68b38d8011dba3dff53149cb2046fb08bbd2bee900af9bd760361d459a",
+    "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh": "b2af1e8354e3d0b3e5255429b8f6b9db58b9c415e8555f8e9d575f7dd98728e7",
+    "challenges/v2-solutions/git/phase-one-certified/verify.sh": "6803b765dd4e996f54c851aaf1cae6325097b59740f61fc3b13845b7ab8dfdd3",
+    "challenges/v2-solutions/git/phase-two-proficient/README.md": "035a66d4eb87e286d8d0e23da0dd3da90f563695abaa3cd0176bde9663cd159d",
+    "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh": "e4e64e2b87a191b496d034c70baf768a1f3d625147dd99e85f7a16f204fbf1c2",
+    "challenges/v2-solutions/git/phase-two-proficient/verify.sh": "b6c391ba288798a3b494a72d51172aac3adc0529a0c752e8887d74a97392ba37",
+    "challenges/v2-solutions/git/phase-two-proficient/solution/contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+    "challenges/v2-solutions/git/phase-two-proficient/solution/workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9",
+    "challenges/v2-solutions/git/phase-two-proficient/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/git/phase-one-certified/solution/contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+    "challenges/v2-solutions/git/phase-one-certified/solution/workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9",
+    "challenges/v2-solutions/git/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/kafka/phase-one-certified/README.md": "5b8a572362ff4aa15dd6e8b7865c12562ac17086dcb9e69e1987cfd315da8c6b",
+    "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh": "a3099a956290caa9e6c88a4d9986256dbc7863114bddc78bf722ebddd808bd0a",
+    "challenges/v2-solutions/kafka/phase-one-certified/verify.sh": "dae12353d4b2e53501346b8d558a361fc5ae6d37f7f15fc2ade7ffcac64b1f72",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+    "challenges/v2-solutions/kafka/phase-one-certified/evidence/README.md": "056861f076edc85860857d07dc7d2d57b7eac0bb36b717e99b0f2af247af533f",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/kafka/phase-one-certified/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "scripts/challenge-v2.py": "c2af1efb9665c370b50897409aa1dc7e6b0e5b165ed15975c150f5a950f8bf3d",
+    "scripts/package-v2.sh": "c594cc9bc6090881778947b772c56d3dd72a80c646a990b8169e6a6afa294380",
+    "scripts/review-v2-course.py": "02d3dc3b1854042b4da4db5c58888f392829a021b5b1777acb463beb45e13e0f",
+    "scripts/v2-airflow-check.py": "671d097a5190159b41a30d25264326ee50d9fb97b2f8ba06135193276cfc67dd",
+    "scripts/separate-v2-stretch-answers.py": "6429a137c0572e57f41175e84dd533c165d8b6ed7ddcec52268d8b513587f477",
+    "scripts/serve-instructor-demos.py": "e373cc7837f72a6e50e303c1410618e7f00936dd6d54154b0374df6bffb131e9",
+    "scripts/v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+    "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+    "scripts/v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+    "scripts/devc-smoke.py": "9b7f6c830a18c35ff9ae41bf14ce829dcb94d601be314d5df6bbf68c85111885",
+    "scripts/setup-v2-tools.sh": "cf29522f638fa8299842ee99c6124fbd478e48ef377ecdcf96376f5f4d90046f",
+    "scripts/setup-instructor-demos.sh": "002e06d29d169ef53c0c4222fa0cd8cb96bc7dae4678018e6b4aa52460b79c9b",
+    "scripts/docker-build-logs.sh": "bc1dd2450e3e9a966bc5f95c647aa7be68bc066b6aa9fdd00cf6a18701a00f0f",
+    "scripts/v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f",
+    "scripts/sync-v2-course.py": "b7a7dca54bd47d17d6605321ffc4c33ae7cc425a62cf387199eba385fe39dcdf",
+    "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+    "scripts/build-v2-course.sh": "6a250661e849c21f148cf3756ba2bb01ac286d09f4f71942f4fb14426abe6bd4",
+    "scripts/package-v2.py": "f83096f1683bf2b63da80ef0915b99e0c8f3709d26186782176a08740eb431b3",
+    "scripts/verify-with-databricks.sh": "893a6b55b79822d5b667c9e604e2b5e902ab07d291f23ac3cf7a20f9d1b1fdaa",
+    "scripts/run-devc-audit.py": "c8652f18b02b683150d2bd7d7693b6a9ade79f85f8b206759c7f751286c634cf",
+    "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+    "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+    "scripts/instructor_demos/publish.py": "59a07f0496a435e65fbb8a8cb9b9832856907b4f75bf9196dae606ebafea8996",
+    "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+    "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+    "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+    "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+    "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025",
+    "instructor-demos/README.md": "996d84ce51469e5f4ab964baa381e434bf2d6891c7de2296880a3c7c124838bf",
+    "instructor-demos/rehearse-local.py": "ec44c8520413dda9cb393c3dddcee4b326ba226bf3a9cfe2f905021e63419dc6",
+    "instructor-demos/requirements.in": "428f0cbb96b87bc5b6b4310f62470015e49a6f4a598f1017ed41e389d77b450b",
+    "instructor-demos/HANDOFF.md": "56b92d3c6612de8d3966e3151a50660ad67092ae4316182c10d36f3691cd253c",
+    "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+    "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+    "instructor-demos/stories/docker-build-holdings-app/story.yaml": "117fd3677ae371e91d3df7a47f36680d8f7b3e107dd5c1cf23929fc2ccae0414",
+    "instructor-demos/stories/airflow-trigger-graph-and-log/story.yaml": "37e7122cf05334b3b8f63148be0ca0f3413c60939b958f621cee075994b9d85b",
+    "instructor-demos/stories/docker-image-to-shell/story.yaml": "ddfd39b09d07b6567bdfb31029a8d5e068ea0b1283c63c829f8260bb8178a0a5",
+    "instructor-demos/stories/airflow-recover-and-replay/story.yaml": "269ac395dc761d14985829a3900669bf2b2e771625a1ba46a7e68397358f114c",
+    "instructor-demos/stories/docker-bind-mounted-data/story.yaml": "b9c0af130ced251fb5952d51fd66d912287d786b28231deb8a7de0bf9bb7c120",
+    "instructor-demos/stories/dbt-build-and-inspect/story.yaml": "72b517fe09ae9719c63545f5e29962f52d06eac12418b6534f06184bc6a8aef5",
+    "instructor-demos/stories/airflow-quality-blocks-publication/story.yaml": "570f2af74ca20792c381554d53db5e83bcfbc3b1fafd8e1d9bf6922c72d6233b",
+    "instructor-demos/stories/dbt-test-failure-and-repair/story.yaml": "cfc673bdea120b2b3c0755bd8211f71e217cc752796c20c6e6ca712ae61c013a",
+    "instructor-demos/stories/dbt-sources-refs-and-sql/story.yaml": "eeb9afb555557c90bad659e68bf8d6a24efd9e1ba5f93c086dc4a0bbb9fa908c",
+    "instructor-demos/stories/docker-container-lifecycle/story.yaml": "f237f93c08090856ad833f0e9dd4ee16489e9db2192bf66ef1791fa6701dac3b",
+    "instructor-demos/stories/airflow-locate-task-evidence/story.yaml": "ee183f063fe41fdbbe0eb7edeedaf2a8e9b549e464bb398a931502f5c39bcba3",
+    "instructor-demos/stories/dbt-fanout-and-replay/story.yaml": "7a209fbaf788d96d6f31965459ee11409b495f7291f3940500519527433e5db5",
+    "tests/instructor_demos/test_capture.py": "1aed8e7fab7ffa1f4b35334623f5bec3e9d9ac5fe48b766f113d9e6c524452ad",
+    "tests/instructor_demos/test_dbt_verifier.py": "2385846009b428ba4c3887c9719d7e094126f20c825bb3bc43d923b0ddbe0c3a",
+    ".devcontainer/README.md": "178d212e9c4adafcf946641bce19ab1013375110ebdd29799b230f508d23c328",
+    ".devcontainer/Dockerfile": "1dbf326001caacecae879a6dc69d45323eba2ccd36b4c07db90429ceb310eb96",
+    ".devcontainer/start-dockerd.sh": "c3a31ec769fe24cd83da4df358c3dd50f870d2fd859dd6a54b4a0d3738597f67",
+    ".devcontainer/requirements.txt": "581193ebbb76884b9ebd93aee06ecb192cc7e07de76947d7e60c2eee0f74b53e",
+    ".devcontainer/post-start.sh": "84b25f552ba66707f3d7a2e2f3916436b97e93da7abd3807953733d17cceeeac",
+    ".devcontainer/setup-databricks-dbt.sh": "410fc603f59ac45bc1c5cce4191fbc6b7cf7997cc99b84c9a57b3103db034e4e",
+    ".devcontainer/check.sh": "147e0ae61c76dab99a501256646bad3b6400c93d1d666b2263d4c08617090bb7",
+    ".devcontainer/sitecustomize.py": "5c5d9e42dd828ff7652082c471a85d9bc6023351307d0b3133ecc9c2db833794",
+    ".devcontainer/TROUBLESHOOTING.md": "45c52263d14d93dff53add8e0284b29e7d7206db00bde4666c5ad9fc885c3bb3",
+    ".devcontainer/devcontainer.json": "fa8cec57cf818ece793cf341884252ad391942726190961fccf88f91fd0ba1b2",
+    ".devcontainer/ensure-dockerd.sh": "5b538fbc65596e77aac8b218576e11a2c2365407768cd013688fdbf798a92e90",
+    ".devcontainer/clone_tools/clone_sources_engine.py": "1d7422e15decaa2ef2769db1f2ec24aee697055c644c5db18f9001e4c71a8207",
+    ".devcontainer/utils/starship.toml": "3eeecc6c7eb6a62b27345b0ab0dab6f338d1b32a0f184b78ff5726afc85b68aa",
+    ".devcontainer/utils/setup-databricks-config.sh": "122e68fd15991941690ccea685ee597a698118727d5236e8306f43a60e20a053",
+    ".devcontainer/utils/bashrc": "22b5508eb72da6077ea3f0c36363f32e98be46855f9fb6997cf1d12942fc26d8",
+    ".devcontainer/utils/normalize-env.sh": "78b56424f5b3590db863620468769e51af3102d3a315cc75729320c78ddd90f2",
+    ".devcontainer/utils/setup-gh-auth.sh": "924fbfc9edcb0837441dd81e1210bf0025b30769f301b0a3d61730f2a77c05ac",
+    ".devcontainer/utils/.env.example": "f38c5780ebb4783f736d58f809f7108e84fb85cd002a834f91da1ca6dd3f9c88",
+    ".devcontainer/utils/pip.conf": "6031ae4dfc7f43f7ddac29dc8de9a7e40886f6520976e692458d4aa9765aa263",
+    ".devcontainer/utils/setup-airflow-settings.sh": "164c4d98a87db4131e64a41ec3048ac33ee0882f78e69fa062900beeb68c4869",
+    ".devcontainer/utils/setup-mise.sh": "d7bb5117ffcec99ba1c9e186dc0d32c4cb946d62da0249a08c1f99202a1f6f7f",
+    ".devcontainer/utils/databricks-oauth-refresh.sh": "5bda15a663afd428f831e5c79db5358bf419c369ac2f255eede3de5432a7910e",
+    ".devcontainer/utils/setup-python-deps.sh": "452a43d60d6e34a2751a015423240c57112ba1401a3ec8986d781343df612df2",
+    "designer/INSTRUCTOR-DEMO-PLAN.md": "ca4bfad409e422888732c5fec50f6e846afab81b0e9f749d8aca4cb181d0fe9a",
+    "designer/INSTRUCTOR-DEMO-CATALOGUE.md": "21f96db584d3b67267bc852d4b372652c4f2b9726201783676489a2f48a13ec9"
+  },
+  "canonical_starter_bytes_unchanged": true,
+  "changed_initial_inputs": [
+    "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "scripts/challenge-v2.py",
+    "scripts/package-v2.sh"
+  ],
+  "new_inputs": [
+    "challenges/v2-solutions/dbt/phase-two-proficient/legacy-stretch-answers.md",
+    "challenges/v2-solutions/capstone/phase-two-proficient/legacy-stretch-answers.md",
+    "challenges/v2-solutions/airflow/phase-two-proficient/legacy-stretch-answers.md",
+    "scripts/separate-v2-stretch-answers.py",
+    "scripts/demo-checks.py",
+    "scripts/devc-smoke.py",
+    "scripts/setup-instructor-demos.sh",
+    "scripts/instructor-demos.py",
+    "scripts/package-v2.py",
+    "scripts/run-devc-audit.py",
+    "scripts/instructor_demos/README.md",
+    "scripts/instructor_demos/terminal.py",
+    "scripts/instructor_demos/publish.py",
+    "scripts/instructor_demos/browser.py",
+    "scripts/instructor_demos/runner.py",
+    "scripts/instructor_demos/contracts.py",
+    "scripts/instructor_demos/__init__.py",
+    "instructor-demos/requirements.lock",
+    "instructor-demos/README.md",
+    "instructor-demos/rehearse-local.py",
+    "instructor-demos/requirements.in",
+    "instructor-demos/schema/story.schema.json",
+    "instructor-demos/theme/tokens.json",
+    "instructor-demos/stories/docker-build-holdings-app/story.yaml",
+    "instructor-demos/stories/airflow-trigger-graph-and-log/story.yaml",
+    "instructor-demos/stories/docker-image-to-shell/story.yaml",
+    "instructor-demos/stories/airflow-recover-and-replay/story.yaml",
+    "instructor-demos/stories/docker-bind-mounted-data/story.yaml",
+    "instructor-demos/stories/dbt-build-and-inspect/story.yaml",
+    "instructor-demos/stories/airflow-quality-blocks-publication/story.yaml",
+    "instructor-demos/stories/dbt-test-failure-and-repair/story.yaml",
+    "instructor-demos/stories/dbt-sources-refs-and-sql/story.yaml",
+    "instructor-demos/stories/docker-container-lifecycle/story.yaml",
+    "instructor-demos/stories/airflow-locate-task-evidence/story.yaml",
+    "instructor-demos/stories/dbt-fanout-and-replay/story.yaml"
+  ]
+}

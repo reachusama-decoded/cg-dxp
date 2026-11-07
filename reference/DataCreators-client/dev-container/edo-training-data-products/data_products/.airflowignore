@@ -1,0 +1,4 @@
+.*/dbt/.*
+.*/contract/.*
+.*/bundle/.*
+.*/tests/.*

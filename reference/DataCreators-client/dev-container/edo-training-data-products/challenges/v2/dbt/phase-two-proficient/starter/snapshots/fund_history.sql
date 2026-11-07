@@ -1,0 +1,1 @@
+-- TODO: implement fund_history snapshot in assigned schema.

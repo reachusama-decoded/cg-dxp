@@ -1,0 +1,11 @@
+# DuckDB stands in for Databricks. The database name is the file stem (training_dev) and
+# the schema mirrors the learners' training_<username>, so relation names look the same:
+# training_dev.training_demo.stg_holdings. Override with PA_DUCKDB_PATH / PA_SCHEMA.
+portfolio_analytics_challenge:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('PA_DUCKDB_PATH', 'warehouse/training_dev.duckdb') }}"
+      schema: "{{ env_var('PA_SCHEMA', 'training_demo') }}"
+      threads: 4

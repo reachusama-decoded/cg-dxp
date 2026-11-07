@@ -1,0 +1,47 @@
+id: dplc-preflight.case-02-otel-status
+skill: skills/dplc-preflight
+type: artifact
+description: >-
+  A user asks whether Copilot Chat usage reporting is on. The pre-flight must
+  report the OTEL verdict from the script, and must not treat reporting being off
+  as an environment problem -- question 5 is advisory and does not affect
+  readiness. It must also not offer to edit settings.json itself: that write
+  belongs to setup-workspace, and this skill is read-only by contract.
+input:
+  arguments: "Is Copilot Chat usage reporting turned on for me, and is it set up safely?"
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/dplc-preflight/scripts/preflight.py
+rubric:
+  # 0.75, not 0.7. The other two criteria weigh 0.35 each, so at 0.7 an answer
+  # that edited settings.json itself -- scoring zero on the read-only contract
+  # this case exists to guard -- still passed on the strength of the other two.
+  threshold: 0.75
+  criteria:
+  - id: reports_the_verdict
+    weight: 0.35
+    prompt: >-
+      Does the output report the usage-reporting state using the verdict the
+      script produced -- one of NOT_CONFIGURED, ON, ON_PENDING_RESTART,
+      MISCONFIGURED, EXPLICITLY_OFF, CAPTURE_CONTENT_ENABLED or
+      SETTINGS_UNREADABLE -- rather than guessing or answering from general
+      knowledge about VS Code settings? Score 0-1.
+  - id: advisory_not_a_blocker
+    weight: 0.35
+    prompt: >-
+      If usage reporting is not configured, does the output make clear this is
+      advisory and does not make the environment unready? Score 1 if it separates
+      the reporting state from the readiness verdict (for example still reporting
+      READY, or saying explicitly that reporting does not affect readiness). Score
+      0 if it presents reporting being off as a setup failure, a blocker, or a
+      reason the user cannot proceed. Score 0-1.
+  - id: routes_the_write_elsewhere
+    weight: 0.3
+    prompt: >-
+      If a change is needed, does the output point at /setup-workspace (for
+      example `/setup-workspace otel`) rather than editing settings.json itself or
+      instructing the user to hand-edit JSON? Score 1 for routing to the owning
+      skill, 0 if it writes or offers to write the settings file from this skill.
+      Score 0-1.

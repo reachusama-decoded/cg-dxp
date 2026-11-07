@@ -1,0 +1,119 @@
+# One approved catalog/schema, with a unique owned relation prefix from the environment.
+name: cg_capstone
+version: 1.0.0
+config-version: 2
+profile: cg_capstone
+model-paths: [models]
+seed-paths: [data, .local/generated]
+test-paths: [tests]
+macro-paths: [macros]
+target-path: target
+clean-targets: [target, dbt_packages]
+vars:
+  enable_phase_1: false
+  enable_phase_2: false
+  enable_phase_3: false
+  run_nonce: NOT_RUN
+models:
+  cg_capstone:
+    +materialized: view
+    smoke:
+      +tags: [smoke]
+    phase1:
+      +enabled: "{{ var('enable_phase_1', false) }}"
+      +tags: [phase1]
+      dom_cg__product_cost:
+        +materialized: table
+    phase2:
+      +enabled: "{{ var('enable_phase_2', false) }}"
+      +tags: [phase2]
+      rpt_cg__product_research:
+        +materialized: table
+    phase3:
+      +enabled: "{{ var('enable_phase_3', false) }}"
+      +tags: [phase3]
+seeds:
+  cg_capstone:
+    +quote_columns: false
+    cg_products:
+      +column_types:
+        product_id: string
+        listing_id: string
+        fund_name: string
+        vehicle: string
+        share_class: string
+        currency: string
+        ticker: string
+        cusip: string
+        isin: string
+        inception_date: string
+        fund_number: string
+        asset_class: string
+        category: string
+        country: string
+        language: string
+        source_layer: string
+        source_id: string
+        source_url: string
+        source_area: string
+    cg_fees:
+      +column_types:
+        product_id: string
+        component: string
+        value_pct: string
+        as_of_date: string
+        source_field: string
+        source_layer: string
+        source_id: string
+        source_url: string
+        source_area: string
+    cg_returns:
+      +column_types:
+        product_id: string
+        series_name: string
+        basis: string
+        frequency: string
+        return_kind: string
+        period: string
+        start_date: string
+        end_date: string
+        as_of_date: string
+        value_pct: string
+        source_field: string
+        source_layer: string
+        source_id: string
+        source_url: string
+        source_area: string
+    cg_source_receipts:
+      +column_types:
+        source_id: string
+        source_url: string
+        request_method: string
+        request_metadata: string
+        final_url: string
+        retrieved_at_utc: string
+        kind: string
+        http_status: string
+        content_type: string
+        status: string
+        local_path: string
+        bytes: string
+        sha256: string
+        error: string
+    cg_training_enquiries:
+      +column_types:
+        enquiry_id: string
+        product_id: string
+        metric: string
+        business_date: string
+        knowledge_cutoff: string
+    cg_training_history:
+      +column_types:
+        row_uid: string
+        product_id: string
+        metric: string
+        value: string
+        business_valid_from: string
+        business_valid_to: string
+        system_valid_from: string
+        system_valid_to: string

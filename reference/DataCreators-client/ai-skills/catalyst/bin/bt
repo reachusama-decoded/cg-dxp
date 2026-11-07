@@ -1,0 +1,266 @@
+#!/usr/bin/env bash
+# bt — Catalyst behavior-test driver.
+#
+# Wraps `python -m tests.behavior` with sensible defaults for the
+# common workflows (smoke, full, rejudge, list, clean) so nobody has to
+# remember the long flag combinations.
+#
+# Usage:
+#   bin/bt smoke                      single discover-data case live
+#   bin/bt smoke <case-id>            specific single case live
+#   bin/bt cases <id1> <id2> ...      run an explicit list of cases
+#   bin/bt full                       full 62-case live run, concurrency 4
+#   bin/bt execute                    Phase 1: run + cache transcripts only (no judging)
+#   bin/bt evaluate                   Phase 2: re-judge cached transcripts (= rejudge)
+#   bin/bt rejudge                    alias for evaluate
+#   bin/bt run --case <id>            arbitrary case(s) live
+#   bin/bt list                       list discovered cases
+#   bin/bt clean                      wipe workspace/behavior-tests/
+#   bin/bt preview                    render the live-report dashboard from
+#                                     synthetic outcomes (no agent/judge calls)
+#   bin/bt issues [--create]          stage (or file) one GitHub issue per
+#                                     completed case from the latest run
+#   bin/bt triage [--version v]       categorize failed cached cases and emit
+#                                     triage JSON (stdout + report file)
+#
+# Auto-loads .env from repo root if present.
+# Outputs land in workspace/behavior-tests/{cache,live-report,sandboxes}/
+# Open the live HTML report at:
+#   file://$(pwd)/workspace/behavior-tests/live-report/index.html
+#
+# Override defaults with extra flags after the subcommand:
+#   bin/bt full --concurrency 8 --judge-model claude-sonnet-4-6
+
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$REPO_ROOT"
+
+OUT_DIR="workspace/behavior-tests"
+CACHE_DIR="$OUT_DIR/cache"
+LIVE_DIR="$OUT_DIR/live-report"
+
+# Auto-load .env if present.
+if [[ -f .env ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source .env
+  set +a
+fi
+
+# Per-invocation env scrub. Defined here, applied *after*
+# configure_databricks_gateway runs in each subcommand — that order
+# matters when the user wants to scrub TEST_DATABRICKS_* (which the
+# gateway needs to read first to construct ANTHROPIC_BASE_URL).
+#
+#   BT_UNSET_VARS="DATABRICKS_HOST TEST_DATABRICKS_HOST" bin/bt smoke <case>
+apply_unset_vars() {
+  if [[ -n "${BT_UNSET_VARS:-}" ]]; then
+    for _v in $BT_UNSET_VARS; do
+      unset "$_v"
+    done
+    echo "[bt] BT_UNSET_VARS scrubbed: ${BT_UNSET_VARS}" >&2
+  fi
+}
+
+# Resolve a positional arg to a full case id. A case id contains a dot
+# (e.g. `validate-dbt.case-01-happy-path`); a bare skill name (no dot)
+# is resolved to that skill's first behavior case by reading the case
+# file's own id:, so `bin/bt smoke validate-dbt` (or
+# `bin/bt cases validate-dbt`) works whatever the case is named
+# (case-01-happy-path, case-01-artifact, ...).
+# Echoes the resolved id on stdout; exits the script with 2 on
+# resolution failure.
+resolve_case_id() {
+  local arg="$1"
+  if [[ "$arg" == *.* ]]; then
+    echo "$arg"
+    return 0
+  fi
+  local skill_dir first_case
+  skill_dir="$(find tests/behavior/cases -type d -name "$arg" -print -quit 2>/dev/null)"
+  first_case=""
+  [[ -n "$skill_dir" ]] && first_case="$(find "$skill_dir" -maxdepth 1 -name 'case-*.yaml' | sort | head -1)"
+  if [[ -z "$first_case" ]]; then
+    echo "[bt] no behavior case found for skill '$arg' under tests/behavior/cases/" >&2
+    echo "[bt]   pass a full case id, or list candidates: bin/bt list | grep $arg" >&2
+    exit 2
+  fi
+  grep -m1 '^id:' "$first_case" | sed 's/^id:[[:space:]]*//'
+}
+
+usage() {
+  sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'
+  exit "${1:-0}"
+}
+
+cmd="${1:-}"
+[[ -z "$cmd" || "$cmd" == "-h" || "$cmd" == "--help" ]] && usage 0
+shift || true
+
+mkdir -p "$CACHE_DIR" "$LIVE_DIR"
+
+# Default LLM auth path for live runs: point claude-agent-sdk at the
+# workspace's /serving-endpoints/anthropic gateway, which speaks native
+# Anthropic-format and accepts the same TEST_DATABRICKS_TOKEN already used
+# for warehouse SQL. One creds set → both worlds, no extra env to manage.
+#
+# Skipped when:
+#   - ANTHROPIC_BASE_URL is already set    (user opted into a different endpoint
+#                                           via shell env or ~/.claude/settings.json)
+#   - TEST_DATABRICKS_HOST/TOKEN unset     (nothing to derive)
+configure_databricks_gateway() {
+  [[ -n "${ANTHROPIC_BASE_URL:-}" ]] && return 0
+  [[ -z "${TEST_DATABRICKS_HOST:-}" || -z "${TEST_DATABRICKS_TOKEN:-}" ]] && return 0
+  export ANTHROPIC_BASE_URL="${TEST_DATABRICKS_HOST%/}/serving-endpoints/anthropic"
+  export ANTHROPIC_AUTH_TOKEN="${TEST_DATABRICKS_TOKEN}"
+  export ANTHROPIC_CUSTOM_HEADERS="${ANTHROPIC_CUSTOM_HEADERS:-x-databricks-use-coding-agent-mode: true}"
+  export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS="${CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS:-1}"
+  export BEHAVIOR_TESTS_RUNNER_MODEL="${BEHAVIOR_TESTS_RUNNER_MODEL:-databricks-claude-sonnet-4-6}"
+  export BEHAVIOR_TESTS_JUDGE_MODEL="${BEHAVIOR_TESTS_JUDGE_MODEL:-databricks-claude-haiku-4-5}"
+  echo "[bt] Databricks gateway: $ANTHROPIC_BASE_URL  runner=$BEHAVIOR_TESTS_RUNNER_MODEL  judge=$BEHAVIOR_TESTS_JUDGE_MODEL" >&2
+}
+
+case "$cmd" in
+
+  list)
+    exec python -m tests.behavior --list "$@"
+    ;;
+
+  smoke)
+    configure_databricks_gateway
+    apply_unset_vars
+    # Single case, live, fast feedback. Override --case via positional arg
+    # — either a full case id (`validate-dbt.case-01-happy-path`) or a
+    # bare skill name (resolved to that skill's first case; see
+    # resolve_case_id).
+    case_id="discover-data.case-01-happy-path"
+    if [[ -n "${1:-}" && ! "$1" =~ ^- ]]; then
+      case_id="$(resolve_case_id "$1")"
+      shift
+    fi
+    exec python -m tests.behavior \
+      --case "$case_id" \
+      --cache-dir "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --benchmark-dir "$LIVE_DIR" \
+      --judge-model "${BEHAVIOR_TESTS_JUDGE_MODEL:-claude-haiku-4-5}" \
+      "$@"
+    ;;
+
+  cases)
+    # Run an explicit list of cases. Each positional arg is either a full
+    # case id or a bare skill name (resolved to that skill's first
+    # behavior case — see resolve_case_id); extra `--flag` args at the
+    # end pass through.
+    if [[ $# -lt 1 ]]; then
+      echo "Usage: bin/bt cases <case-id-or-skill> [...] [-- extra-flags]" >&2
+      exit 2
+    fi
+    case_args=()
+    while [[ $# -gt 0 && ! "$1" =~ ^- ]]; do
+      resolved="$(resolve_case_id "$1")"
+      case_args+=("--case" "$resolved")
+      shift
+    done
+    configure_databricks_gateway
+    apply_unset_vars
+    exec python -m tests.behavior \
+      "${case_args[@]}" \
+      --cache-dir "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --benchmark-dir "$LIVE_DIR" \
+      --judge-model "${BEHAVIOR_TESTS_JUDGE_MODEL:-claude-haiku-4-5}" \
+      --concurrency 4 \
+      "$@"
+    ;;
+
+  full)
+    configure_databricks_gateway
+    apply_unset_vars
+    # All discovered cases, parallel, live.
+    exec python -m tests.behavior \
+      --cache-dir "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --benchmark-dir "$LIVE_DIR" \
+      --judge-model "${BEHAVIOR_TESTS_JUDGE_MODEL:-claude-haiku-4-5}" \
+      --concurrency 4 \
+      "$@"
+    ;;
+
+  rejudge|evaluate)
+    # Phase 2 of the two-phase pipeline: re-grade cached transcripts
+    # without re-executing the agent. Use after `bin/bt execute` (or any
+    # earlier `bin/bt full`) to iterate on rubrics or structural checks
+    # cheaply. `rejudge` and `evaluate` are interchangeable; `evaluate`
+    # is the preferred two-phase vocabulary.
+    configure_databricks_gateway
+    apply_unset_vars
+    exec python -m tests.behavior \
+      --from-cache "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --benchmark-dir "$LIVE_DIR" \
+      --judge-model "${BEHAVIOR_TESTS_JUDGE_MODEL:-claude-haiku-4-5}" \
+      --concurrency 4 \
+      "$@"
+    ;;
+
+  execute)
+    # Phase 1 of the two-phase pipeline: run the agent for every case,
+    # cache the transcripts, skip checks and judging. Pair with
+    # `bin/bt evaluate` later to grade. Useful when you want to capture
+    # a baseline transcript set overnight and iterate on rubrics in the
+    # morning.
+    configure_databricks_gateway
+    apply_unset_vars
+    exec python -m tests.behavior \
+      --execute-only \
+      --cache-dir "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --concurrency 4 \
+      "$@"
+    ;;
+
+  run)
+    configure_databricks_gateway
+    apply_unset_vars
+    # Arbitrary live run; pass through whatever flags you want.
+    exec python -m tests.behavior \
+      --cache-dir "$CACHE_DIR" \
+      --live-report "$LIVE_DIR" \
+      --benchmark-dir "$LIVE_DIR" \
+      --judge-model "${BEHAVIOR_TESTS_JUDGE_MODEL:-claude-haiku-4-5}" \
+      "$@"
+    ;;
+
+  clean)
+    rm -rf "$OUT_DIR"
+    echo "Cleaned $OUT_DIR"
+    ;;
+
+  preview)
+    # Render the dashboard from synthetic outcomes — for visually
+    # verifying changes to live_report.py without burning a real run.
+    exec python -m tests.behavior.preview "$@"
+    ;;
+
+  issues)
+    # Generate (and optionally `gh issue create`) one issue per
+    # completed case from the latest live-report state.
+    # Default is a dry run — writes per-case markdown to
+    # workspace/behavior-tests/issues/<case>.md so you can eyeball
+    # before bulk-filing.
+    exec python -m tests.behavior.issues "$@"
+    ;;
+
+  triage)
+    # Parse cached behavior-test outcomes, classify failures into the
+    # AICAT-78 taxonomy, and emit machine-readable triage JSON.
+    exec python -m tests.behavior.triage "$@"
+    ;;
+
+  *)
+    echo "Unknown subcommand: $cmd" >&2
+    usage 1
+    ;;
+esac

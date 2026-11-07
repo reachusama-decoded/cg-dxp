@@ -1,0 +1,51 @@
+id: deploy-dab.case-01-happy-path
+skill: skills/deploy-dab
+type: artifact
+description: >
+  Happy-path trigger test. When the user asks to deploy their bundle to local,
+  deploy-dab must activate and drive its gated procedure: scope to one data
+  product, check the setup-databricks-asset-bundle precursor, confirm the per-user
+  schema, run validate then deploy against the local target, and surface the
+  deployed-asset links. Use when the user says "deploy my bundle", "deploy the DAB
+  to local", or "deploy-dab".
+
+  Scope note: bt verifies the deploy *trigger* — that the skill activates for a
+  local deploy, scopes to one data product, and enforces the
+  setup-databricks-asset-bundle precursor. Live execution (validate/deploy
+  workspace round-trip) and the destroy/teardown mode are OUT OF SCOPE for bt:
+  the harness has no human in the loop and a "produce the full artifact" preamble
+  that always elicits the primary deploy flow, so a secondary actuator mode
+  (`--mode destroy`) cannot be steered here. The deploy execution and the teardown
+  gate are covered by the actuator unit tests (scripts/test_deploy.py) and the
+  real-workspace deploy → destroy E2E.
+input:
+  arguments: >
+    I've set up my Databricks Asset Bundle for the sales data product and now I
+    want to deploy it to my own local dev space, then get a link to the job that
+    was created so I can check it. Use deploy-dab to do this.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: triggers_local_deploy
+    weight: 0.45
+    prompt: >
+      Does the output show the deploy-dab skill activating to deploy a Databricks
+      Asset Bundle to the developer's OWN LOCAL dev space (the `local` target) —
+      and NOT to a shared dev/sqa/prd environment? Any of: naming the local target,
+      describing `databricks bundle ... --target local`, or stating it deploys to
+      the developer's personal/dev space, counts. Score 0-1.
+  - id: precursor_and_scope
+    weight: 0.45
+    prompt: >
+      Does it make clear the skill is scoped to a single data product and depends
+      on the setup-databricks-asset-bundle precursor — i.e. it identifies/asks
+      which one data product to deploy and either checks that the bundle exists or,
+      when the bundle is missing/incomplete, routes the user to
+      `/setup-databricks-asset-bundle` instead of deploying? Score 0-1.
+  - id: no_placeholders
+    weight: 0.1
+    prompt: >
+      Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells? Score 0-1.

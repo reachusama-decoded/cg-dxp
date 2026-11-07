@@ -1,0 +1,13 @@
+name: "edo_shared"
+version: "1.0.0"
+config-version: 2
+
+# This package only exists to provide macros (and optionally other shared assets)
+macro-paths:
+  - "macros/spark_utils"
+
+# Optional (only keep if you actually have these dirs under shared/)
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]

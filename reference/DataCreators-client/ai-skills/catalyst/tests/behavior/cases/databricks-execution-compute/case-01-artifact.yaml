@@ -1,0 +1,45 @@
+id: databricks-execution-compute.case-01-artifact
+skill: skills/databricks-execution-compute
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "set up Databricks job cluster"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: distinguishes_compute_modes
+      weight: 0.35
+      prompt: >-
+        Does the response distinguish between at least two distinct
+        Databricks execution compute modes — such as Databricks Connect
+        (remote interactive execution from local IDE), Serverless Job
+        compute (no cluster management, pay-per-use), and Interactive
+        Cluster (long-running, manually managed)? Score 1.0 if two or
+        more modes are correctly described with meaningful differentiators;
+        0.5 if only one mode is described or distinctions are vague;
+        0 if no differentiation is made. Score 0-1.
+    - id: cgrepo_compliance_if_pip
+      weight: 0.35
+      prompt: >-
+        If the response includes any `pip install` or `%pip install`
+        commands, do ALL of them use `--index-url
+        https://cgrepo-aws.capgroup.com/repository/cgpypi/simple/` per
+        Capital Group corporate policy? Score 1.0 if there are no pip
+        install commands in the response; 1.0 if all pip install commands
+        include the cgrepo --index-url flag; 0 if any pip install command
+        points at pypi.org or omits the --index-url flag. Score 0-1.

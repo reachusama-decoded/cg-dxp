@@ -1,0 +1,66 @@
+
+[1m=== CLI tools ===[0m
+  [1;32m[OK]  [0m python on PATH
+  [1;32m[OK]  [0m python is 3.13.x
+  [1;32m[OK]  [0m astro on PATH
+  [1;32m[OK]  [0m astro responds
+  [1;32m[OK]  [0m databricks on PATH
+  [1;32m[OK]  [0m databricks responds
+  [1;32m[OK]  [0m dbt on PATH
+  [1;32m[OK]  [0m docker CLI on PATH
+
+[1m=== Inner dockerd (DinD) ===[0m
+  [1;32m[OK]  [0m dockerd process running
+  [1;32m[OK]  [0m /var/run/docker.sock exists
+  [1;32m[OK]  [0m docker info responds
+
+[1m=== TLS / corp CA plumbing ===[0m
+  [1;32m[OK]  [0m /cacert.pem exists
+  [1;32m[OK]  [0m /cacert.pem has >100 certs
+  [1;32m[OK]  [0m /etc/pip.conf uses corp index
+  [1;32m[OK]  [0m /etc/pip.conf uses corp extra index
+  [1;32m[OK]  [0m SSL_CERT_FILE points to corp bundle
+  [1;32m[OK]  [0m REQUESTS_CA_BUNDLE set
+  [1;32m[OK]  [0m PIP_CERT set
+  [1;32m[OK]  [0m DOCKER_BUILDKIT=1
+  [1;32m[OK]  [0m sitecustomize loaded (VERIFY_X509_STRICT off)
+  [1;32m[OK]  [0m pip can resolve a package (corp index)
+
+[1m=== Astro build readiness ===[0m
+  [1;32m[OK]  [0m Dockerfile uses the corp runtime mirror
+  [1;32m[OK]  [0m Dockerfile pins the corp pip index
+  [1;32m[OK]  [0m requirements.txt requests pip runtime for Astro ONBUILD
+  [1;32m[OK]  [0m airflow_settings.yaml exists
+  [1;32m[OK]  [0m .astro/config.yaml exists
+
+[1m=== Local Airflow runtime ===[0m
+  [1;33m[WARN][0m astro scheduler container running
+         [1;33mfix:[0m run: astro dev start --wait 5m (if a restart/start was interrupted, rerun and wait for completion)
+  [1;33m[WARN][0m astro api-server container running
+         [1;33mfix:[0m run: astro dev start --wait 5m (if a restart/start was interrupted, rerun and wait for completion)
+
+[1m=== Data product scaffolding ===[0m
+  [1;32m[OK]  [0m data_products/ exists
+  [1;32m[OK]  [0m atlas_elt dbt profile exists
+  [1;32m[OK]  [0m atlas_elt dbt project exists
+  [1;32m[OK]  [0m dbt wrapper exists
+  [1;32m[OK]  [0m verify-with-databricks gate exists
+  [1;32m[OK]  [0m atlas_elt profile wires DBT_HOST
+  [1;32m[OK]  [0m atlas_elt profile wires DBT_ACCESS_TOKEN
+  [1;32m[OK]  [0m atlas_elt profile wires DBT_HTTP_PATH
+  [1;32m[OK]  [0m atlas_elt dbt project parses
+
+[1m=== Databricks auth ===[0m
+  [1;32m[OK]  [0m ~/.databrickscfg has DEFAULT profile
+  [1;32m[OK]  [0m DATABRICKS_HOST is set
+  [1;32m[OK]  [0m databricks current-user me works
+  [1mi[0m active auth mode: oauth
+  [1;33m[WARN][0m OAuth->Airflow refresher heartbeat is fresh
+         [1;33mfix:[0m either OAuth refresher has not run yet, or local Airflow is not up yet; start Airflow with astro dev start --wait 5m, then rerun dpc-check. If still WARN, rerun OAuth setup: mise run setup:databricks
+  [1;33m[WARN][0m OAuth Airflow databricks_default connection works
+         [1;33mfix:[0m either local Airflow is not up yet, or Databricks connection is stale/invalid. Start Airflow with astro dev start --wait 5m, then rerun dpc-check. If still WARN, run: mise run databricks:oauth-refresh
+
+[1m=== Summary ===[0m
+  [1;32mOK:[0m 41   [1;31mFAIL:[0m 0   [1;33mWARN:[0m 4
+
+[1;33mHealthy. WARNs are usually expected before first-run setup (databricks auth login). See the fix: hints above.[0m

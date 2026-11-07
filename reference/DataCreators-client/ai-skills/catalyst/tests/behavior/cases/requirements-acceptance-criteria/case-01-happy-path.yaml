@@ -1,0 +1,35 @@
+id: requirements-acceptance-criteria.case-01-happy-path
+skill: skills/requirements-acceptance-criteria
+type: artifact
+description: 'Bootstrap happy-path case. Define functional and non-functional requirements with testable
+  acceptance
+
+  criteria. Use when the user asks to "define the requirements", "write the
+
+  acceptance criteria", "what are the ACs", or "specify what needs to be true
+
+  for this to pass".'
+input:
+  arguments: Document requirements + acceptance criteria for an employee directory data product. Hourly
+    refresh, regulated PII.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/requirements-acceptance-criteria/templates/requirements-acceptance-criteria.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Define functional
+      and non-functional requirements with testable acceptance
+
+      criteria. Use when the user asks to "define the requirements", "w''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

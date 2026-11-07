@@ -1,0 +1,35 @@
+id: privacy-impact-assessment.case-01-happy-path
+skill: skills/privacy-impact-assessment
+type: artifact
+description: 'Bootstrap happy-path case. Assess data classification, PII inventory, privacy risks, and
+  required
+
+  controls. Use when the user asks to "assess privacy impact", "does this have
+
+  PII", "create the PIA", "evaluate data sensitivity", or "check privacy
+
+  requirements".'
+input:
+  arguments: Assess privacy impact of the employee directory data product. PII includes name, manager,
+    work location, manager_id.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/privacy-impact-assessment/templates/privacy-impact-assessment.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Assess data classification,
+      PII inventory, privacy risks, and required
+
+      controls. Use when the user asks to "assess privacy impact", "does th''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

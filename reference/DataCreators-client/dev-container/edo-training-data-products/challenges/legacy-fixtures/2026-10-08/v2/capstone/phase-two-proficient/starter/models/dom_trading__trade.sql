@@ -1,0 +1,1 @@
+select trade_id, ts, portfolio_id, instrument_id, case side when 'B' then 1 else -1 end as direction, qty, price_cents / 100.0 as price, qty * (price_cents / 100.0) as gross_value, qty * (price_cents / 100.0) * fee_bps / 10000.0 as fee, case side when 'B' then qty else -qty end as signed_qty from {{ ref('trades') }} where qty>0 and price_cents>0 and side in ('B','S')

@@ -1,0 +1,106 @@
+schema_version: 1
+id: docker-build-holdings-app
+title: Build a repeatable holdings image
+objective: Explain COPY, WORKDIR and the configured default workload.
+tool: docker
+task_ids:
+- docker-p1-04
+- docker-p1-05
+route: devcontainer-docker
+readiness: draft
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/docker/phase-one-certified/solution
+source_inputs:
+- challenges/v2/docker/phase-one-certified/README.md
+- challenges/v2-solutions/docker/phase-one-certified/solution
+requires:
+- browser
+- docker-client
+- docker-server
+resources:
+- fresh private workspace
+- run-scoped image {{resource}}
+cleanup:
+- if docker image inspect {{resource}} >/dev/null 2>&1; then docker image rm {{resource}};
+  fi
+main_book:
+  include: false
+  teaching_key: docker-images-and-containers
+steps:
+- id: source
+  action:
+    adapter: terminal
+    session: developer
+    command: cat Dockerfile
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: WORKDIR
+    - kind: output-contains
+      text: CMD
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect this instructor-completed Dockerfile.
+    notice: The working directory, copied app and default command are explicit.
+- id: build
+  action:
+    adapter: terminal
+    session: developer
+    command: docker build -t {{resource}} .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - docker
+      - image
+      - inspect
+      - '{{resource}}'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Build an owned image from this context.
+    notice: The image contains the copied teaching inputs.
+- id: run
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm {{resource}}
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 12,011,626.50
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Run its default command.
+    notice: Six holdings have total market value 12,011,626.50.
+- id: config
+  action:
+    adapter: terminal
+    session: developer
+    command: docker image inspect {{resource}} --format '{{.Config.WorkingDir}} {{json
+      .Config.Cmd}} {{.Id}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: /app
+    - kind: output-contains
+      text: 'sha256:'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect configuration and immutable identity.
+    notice: The recorded image ID binds the workload to this build.
+closing_question: Explain COPY, WORKDIR and the configured default workload. Which
+  observation supports your explanation?

@@ -1,0 +1,27 @@
+resources:
+  jobs:
+    funds_dq_job:
+      name: funds_dq_job
+      email_notifications:
+        on_failure:
+          - "Insert distribution list email address here"
+      tasks:
+        - task_key: deequ_verify_task
+          notebook_task:
+            notebook_path: ${workspace.root_path}/files/data_products/${var.data_product_name}/datasets/funds/runtime/dq_verify
+            base_parameters:
+              application_name: edo-training-data-products
+              dataset_name: atlas_funds_base
+              ruleset_name: atlas_funds_base
+              rule_group: Daily
+              schema: "${var.app_catalog}.${var.target_schema}"
+              table: "funds"
+              env: ${var.env}
+              default_catalog: ${var.default_catalog}
+              default_schema: ${var.default_schema}
+          libraries:
+            - jar: ${var.deequ_jar_path}
+          job_cluster_key: job_cluster
+      job_clusters:
+        - job_cluster_key: job_cluster
+          new_cluster: ${var.dqf_cluster}

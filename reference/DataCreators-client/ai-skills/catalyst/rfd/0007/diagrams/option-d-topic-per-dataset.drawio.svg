@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1640" height="1240" viewBox="0 0 1640 1240" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555555"/>
+    </marker>
+    <marker id="arrowProd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0068AE"/>
+    </marker>
+    <marker id="arrowCons" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#008074"/>
+    </marker>
+    <marker id="arrowDash" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8FADB2"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1640" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="820" y="42" text-anchor="middle" font-size="22" font-weight="bold" fill="#083469">Option D: Topic per Dataset</text>
+  <text x="820" y="68" text-anchor="middle" font-size="13" fill="#555555">Each Airflow deployment is BOTH producer and consumer via the embedded astro-dependency-plugin; each plugin subscribes only to the dataset topics it depends on.</text>
+
+  <!-- Section labels -->
+  <text x="60" y="110" font-size="14" font-weight="bold" fill="#555555">Airflow Deployments (each embeds astro-dependency-plugin: produces + consumes)</text>
+
+  <!-- ============ AIRFLOW: PORTFOLIO ============ -->
+  <g>
+    <rect x="60" y="130" width="480" height="270" rx="14" ry="14" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="300" y="158" text-anchor="middle" font-size="16" font-weight="bold" fill="#0068AE">airflow: portfolio</text>
+    <text x="300" y="178" text-anchor="middle" font-size="11" fill="#1F1F1F">Airflow deployment (owns portfolio datasets)</text>
+
+    <!-- DAGs sub-box -->
+    <rect x="80" y="195" width="200" height="80" rx="8" ry="8" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+    <text x="180" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+    <text x="180" y="235" text-anchor="middle" font-size="11" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">etl_portfolio_holdings</text>
+    <text x="180" y="255" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">(produces portfolio.daily_positions)</text>
+
+    <!-- Airflow Assets sub-box -->
+    <rect x="300" y="195" width="220" height="80" rx="8" ry="8" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+    <text x="410" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+    <text x="410" y="235" text-anchor="middle" font-size="10" fill="#1F1F1F">(no upstream deps in this</text>
+    <text x="410" y="250" text-anchor="middle" font-size="10" fill="#1F1F1F">deployment for this DAG)</text>
+
+    <!-- Plugin sub-box -->
+    <rect x="80" y="290" width="440" height="95" rx="8" ry="8" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="300" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+    <line x1="100" y1="322" x2="500" y2="322" stroke="#841574" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="100" y="342" font-size="11" font-weight="bold" fill="#0068AE">produces:</text>
+    <text x="180" y="342" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.portfolio.daily_positions</text>
+    <text x="100" y="362" font-size="11" font-weight="bold" fill="#008074">consumes:</text>
+    <text x="185" y="362" font-size="10" font-style="italic" fill="#1F1F1F">(none — no upstream dataset deps)</text>
+    <text x="100" y="378" font-size="10" font-style="italic" fill="#841574">filter: drop own deployment events</text>
+  </g>
+
+  <!-- ============ AIRFLOW: RISK ============ -->
+  <g>
+    <rect x="580" y="130" width="480" height="270" rx="14" ry="14" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="820" y="158" text-anchor="middle" font-size="16" font-weight="bold" fill="#0068AE">airflow: risk</text>
+    <text x="820" y="178" text-anchor="middle" font-size="11" fill="#1F1F1F">Airflow deployment (owns risk datasets; depends on portfolio + reference)</text>
+
+    <!-- DAGs sub-box -->
+    <rect x="600" y="195" width="200" height="80" rx="8" ry="8" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+    <text x="700" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+    <text x="700" y="235" text-anchor="middle" font-size="11" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">risk_var_pipeline</text>
+    <text x="700" y="255" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">(produces risk.var_calculations)</text>
+
+    <!-- Airflow Assets sub-box -->
+    <rect x="820" y="195" width="220" height="80" rx="8" ry="8" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+    <text x="930" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+    <text x="930" y="234" text-anchor="middle" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">asset://portfolio/daily_positions</text>
+    <text x="930" y="250" text-anchor="middle" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">asset://reference/security_master</text>
+    <text x="930" y="266" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">(trigger risk_var_pipeline)</text>
+
+    <!-- Plugin sub-box -->
+    <rect x="600" y="290" width="440" height="95" rx="8" ry="8" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="820" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+    <line x1="620" y1="322" x2="1020" y2="322" stroke="#841574" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="620" y="342" font-size="11" font-weight="bold" fill="#0068AE">produces:</text>
+    <text x="700" y="342" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.risk.var_calculations</text>
+    <text x="620" y="362" font-size="11" font-weight="bold" fill="#008074">consumes:</text>
+    <text x="705" y="362" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">portfolio.daily_positions, reference.security_master</text>
+    <text x="620" y="378" font-size="10" font-style="italic" fill="#841574">filter: drop own deployment events  (subscribes to N=2 topics)</text>
+  </g>
+
+  <!-- ============ AIRFLOW: REFERENCE ============ -->
+  <g>
+    <rect x="1100" y="130" width="480" height="270" rx="14" ry="14" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="1340" y="158" text-anchor="middle" font-size="16" font-weight="bold" fill="#0068AE">airflow: reference</text>
+    <text x="1340" y="178" text-anchor="middle" font-size="11" fill="#1F1F1F">Airflow deployment (owns reference datasets; consumed by others)</text>
+
+    <!-- DAGs sub-box -->
+    <rect x="1120" y="195" width="200" height="80" rx="8" ry="8" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+    <text x="1220" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+    <text x="1220" y="235" text-anchor="middle" font-size="11" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">reference_security_master</text>
+    <text x="1220" y="255" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">(produces reference.security_master)</text>
+
+    <!-- Airflow Assets sub-box -->
+    <rect x="1340" y="195" width="220" height="80" rx="8" ry="8" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+    <text x="1450" y="215" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+    <text x="1450" y="235" text-anchor="middle" font-size="10" fill="#1F1F1F">(no upstream deps in this</text>
+    <text x="1450" y="250" text-anchor="middle" font-size="10" fill="#1F1F1F">deployment for this DAG)</text>
+
+    <!-- Plugin sub-box -->
+    <rect x="1120" y="290" width="440" height="95" rx="8" ry="8" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="1340" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+    <line x1="1140" y1="322" x2="1540" y2="322" stroke="#841574" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="1140" y="342" font-size="11" font-weight="bold" fill="#0068AE">produces:</text>
+    <text x="1220" y="342" font-size="10" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.reference.security_master</text>
+    <text x="1140" y="362" font-size="11" font-weight="bold" fill="#008074">consumes:</text>
+    <text x="1225" y="362" font-size="10" font-style="italic" fill="#1F1F1F">(none — top of dependency chain)</text>
+    <text x="1140" y="378" font-size="10" font-style="italic" fill="#841574">filter: drop own deployment events</text>
+  </g>
+
+  <!-- Section label: Kafka -->
+  <text x="60" y="450" font-size="14" font-weight="bold" fill="#083469">Kafka Topics — one per dataset</text>
+
+  <!-- ============ KAFKA TOPICS ============ -->
+  <!-- Topic 1: portfolio.daily_positions -->
+  <g>
+    <rect x="80" y="475" width="440" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#083469" stroke-width="1.5"/>
+    <text x="300" y="500" text-anchor="middle" font-size="13" font-weight="bold" fill="#083469">Kafka Topic</text>
+    <text x="300" y="525" text-anchor="middle" font-size="14" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.portfolio.daily_positions</text>
+    <text x="300" y="544" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">1 producer (airflow: portfolio)</text>
+  </g>
+  <!-- Topic 2: risk.var_calculations -->
+  <g>
+    <rect x="600" y="475" width="440" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#083469" stroke-width="1.5"/>
+    <text x="820" y="500" text-anchor="middle" font-size="13" font-weight="bold" fill="#083469">Kafka Topic</text>
+    <text x="820" y="525" text-anchor="middle" font-size="14" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.risk.var_calculations</text>
+    <text x="820" y="544" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">1 producer (airflow: risk)</text>
+  </g>
+  <!-- Topic 3: reference.security_master -->
+  <g>
+    <rect x="1120" y="475" width="440" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#083469" stroke-width="1.5"/>
+    <text x="1340" y="500" text-anchor="middle" font-size="13" font-weight="bold" fill="#083469">Kafka Topic</text>
+    <text x="1340" y="525" text-anchor="middle" font-size="14" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.reference.security_master</text>
+    <text x="1340" y="544" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">1 producer (airflow: reference)</text>
+  </g>
+
+  <!-- Topic N (placeholder dashed) -->
+  <g>
+    <rect x="80" y="585" width="1480" height="56" rx="10" ry="10" fill="#FFFFFF" stroke="#083469" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <text x="820" y="610" text-anchor="middle" font-size="13" font-weight="bold" fill="#083469">... (N more topics)</text>
+    <text x="820" y="628" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">scales to one topic per dataset across the platform — naming convention &amp; topic registry required</text>
+  </g>
+
+  <!-- ============ ARROWS: Producer (plugin -> topic), 1:1 ============ -->
+  <!-- airflow: portfolio plugin -> topic.portfolio.daily_positions -->
+  <line x1="300" y1="385" x2="300" y2="475" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrowProd)"/>
+  <text x="312" y="430" font-size="11" font-weight="bold" fill="#0068AE">produces</text>
+  <!-- airflow: risk plugin -> topic.risk.var_calculations -->
+  <line x1="820" y1="385" x2="820" y2="475" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrowProd)"/>
+  <text x="832" y="430" font-size="11" font-weight="bold" fill="#0068AE">produces</text>
+  <!-- airflow: reference plugin -> topic.reference.security_master -->
+  <line x1="1340" y1="385" x2="1340" y2="475" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrowProd)"/>
+  <text x="1352" y="430" font-size="11" font-weight="bold" fill="#0068AE">produces</text>
+
+  <!-- ============ ARROWS: Cross-Airflow consume (topic -> plugin) ============ -->
+  <!-- topic.portfolio.daily_positions -> airflow: risk plugin (consume) -->
+  <path d="M 520 510 C 600 510, 600 410, 720 385" fill="none" stroke="#008074" stroke-width="2.5" marker-end="url(#arrowCons)"/>
+  <text x="528" y="498" font-size="11" font-weight="bold" fill="#008074">consumes</text>
+  <text x="528" y="513" font-size="11" font-style="italic" fill="#841574">filter: own deployment</text>
+
+  <!-- topic.reference.security_master -> airflow: risk plugin (consume) -->
+  <path d="M 1120 510 C 1020 510, 1000 410, 920 385" fill="none" stroke="#008074" stroke-width="2.5" marker-end="url(#arrowCons)"/>
+  <text x="1020" y="498" font-size="11" font-weight="bold" fill="#008074">consumes</text>
+  <text x="1000" y="513" font-size="11" font-style="italic" fill="#841574">filter: own deployment</text>
+
+  <!-- ============ NON-AIRFLOW CONSUMER: Risk Dashboard ============ -->
+  <g>
+    <rect x="600" y="700" width="440" height="100" rx="12" ry="12" fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+    <text x="820" y="728" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F1F1F">Risk Dashboard service</text>
+    <text x="820" y="748" text-anchor="middle" font-size="11" fill="#555555">Non-Airflow consumer (e.g. web app / streaming UI)</text>
+    <line x1="620" y1="758" x2="1020" y2="758" stroke="#8FADB2" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="620" y="778" font-size="11" font-weight="bold" fill="#1F1F1F">subscribes:</text>
+    <text x="700" y="778" font-size="11" font-family="Menlo, Monaco, monospace" fill="#1F1F1F">data-ready.risk.var_calculations</text>
+    <text x="620" y="794" font-size="10" font-style="italic" fill="#555555">refreshes dashboard widgets when new VaR is published</text>
+  </g>
+
+  <!-- Arrow: topic.risk -> Risk Dashboard -->
+  <line x1="820" y1="555" x2="820" y2="700" stroke="#8FADB2" stroke-width="2.5" stroke-dasharray="2,0" marker-end="url(#arrowDash)"/>
+  <text x="832" y="640" font-size="11" font-weight="bold" fill="#555555">consumes</text>
+
+  <!-- ============ Subscription sprawl callout ============ -->
+  <g>
+    <rect x="80" y="850" width="720" height="200" rx="10" ry="10" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="100" y="878" font-size="14" font-weight="bold" fill="#841574">Cumulative subscription pattern (the sprawl point)</text>
+    <line x1="100" y1="888" x2="780" y2="888" stroke="#841574" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="100" y="912" font-size="12" fill="#1F1F1F"><tspan font-weight="bold" fill="#0068AE">airflow: portfolio</tspan> &#8594; subscribes to 0 topics</text>
+    <text x="100" y="934" font-size="12" fill="#1F1F1F"><tspan font-weight="bold" fill="#0068AE">airflow: risk</tspan> &#8594; subscribes to 2 topics (portfolio + reference)</text>
+    <text x="100" y="956" font-size="12" fill="#1F1F1F"><tspan font-weight="bold" fill="#0068AE">airflow: reference</tspan> &#8594; subscribes to 0 topics</text>
+    <text x="100" y="984" font-size="12" font-style="italic" fill="#841574">As DAGs gain dependencies, each plugin must subscribe to N topics —</text>
+    <text x="100" y="1002" font-size="12" font-style="italic" fill="#841574">subscription lists, ACLs, and consumer-group rebalancing all grow with N.</text>
+    <text x="100" y="1024" font-size="12" font-weight="bold" fill="#083469">N can reach hundreds across the platform.</text>
+  </g>
+
+  <!-- ============ Tradeoff callout ============ -->
+  <g>
+    <rect x="820" y="850" width="740" height="200" rx="10" ry="10" fill="#FFFFFF" stroke="#083469" stroke-width="1.5"/>
+    <text x="840" y="878" font-size="14" font-weight="bold" fill="#083469">Tradeoff: precision vs sprawl</text>
+    <line x1="840" y1="888" x2="1540" y2="888" stroke="#083469" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="840" y="912" font-size="13" font-weight="bold" fill="#008074">Pro: precision</text>
+    <text x="840" y="932" font-size="11" fill="#1F1F1F">Plugins subscribe to exactly the datasets they depend on — zero filtering noise.</text>
+    <text x="840" y="950" font-size="11" fill="#1F1F1F">Natural 1:1 alignment with Airflow Asset URIs. Per-dataset ACLs &amp; retention.</text>
+    <text x="840" y="978" font-size="13" font-weight="bold" fill="#841574">Con: sprawl</text>
+    <text x="840" y="998" font-size="11" fill="#1F1F1F">N topics, N schema-registry entries, N ACLs — provisioning must be automated.</text>
+    <text x="840" y="1016" font-size="11" fill="#1F1F1F">Each Airflow plugin manages a growing subscription list as dependencies expand.</text>
+    <text x="840" y="1034" font-size="11" fill="#1F1F1F">Monitoring, alerting, and consumer-group rebalancing get harder at scale.</text>
+  </g>
+
+  <!-- ============ Legend ============ -->
+  <g>
+    <rect x="80" y="1090" width="1480" height="120" rx="8" ry="8" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1"/>
+    <text x="100" y="1115" font-size="13" font-weight="bold" fill="#083469">Legend</text>
+
+    <rect x="100" y="1130" width="14" height="14" fill="#D0EAE9" stroke="#0068AE"/>
+    <text x="122" y="1142" font-size="11" fill="#1F1F1F">Airflow deployment (container)</text>
+
+    <rect x="320" y="1130" width="14" height="14" fill="#FFFFFF" stroke="#8FADB2"/>
+    <text x="342" y="1142" font-size="11" fill="#1F1F1F">DAGs sub-box</text>
+
+    <rect x="460" y="1130" width="14" height="14" fill="#E0F0EE" stroke="#008074"/>
+    <text x="482" y="1142" font-size="11" fill="#1F1F1F">Airflow Assets sub-box</text>
+
+    <rect x="660" y="1130" width="14" height="14" fill="#F3E0EE" stroke="#841574"/>
+    <text x="682" y="1142" font-size="11" fill="#1F1F1F">astro-dependency-plugin (produces + consumes)</text>
+
+    <rect x="980" y="1130" width="14" height="14" fill="#FFFFFF" stroke="#083469"/>
+    <text x="1002" y="1142" font-size="11" fill="#1F1F1F">Kafka topic (per dataset)</text>
+
+    <rect x="1180" y="1130" width="14" height="14" fill="#E6ECEE" stroke="#8FADB2"/>
+    <text x="1202" y="1142" font-size="11" fill="#1F1F1F">Non-Airflow consumer</text>
+
+    <line x1="100" y1="1175" x2="140" y2="1175" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrowProd)"/>
+    <text x="148" y="1179" font-size="11" fill="#1F1F1F">produces (plugin &#8594; topic)</text>
+
+    <line x1="320" y1="1175" x2="360" y2="1175" stroke="#008074" stroke-width="2.5" marker-end="url(#arrowCons)"/>
+    <text x="368" y="1179" font-size="11" fill="#1F1F1F">consumes (topic &#8594; plugin, filter: own deployment)</text>
+
+    <line x1="760" y1="1175" x2="800" y2="1175" stroke="#8FADB2" stroke-width="2.5" marker-end="url(#arrowDash)"/>
+    <text x="808" y="1179" font-size="11" fill="#1F1F1F">consumes (non-Airflow consumer)</text>
+  </g>
+
+  <!-- Embedded mxfile so drawio can re-open this SVG for editing -->
+  <foreignObject width="0" height="0" x="0" y="0" overflow="hidden">
+    <mxfile xmlns="http://www.w3.org/1999/xhtml" host="rfd-0007" modified="2026-05-05T00:00:00.000Z" agent="claude-code" version="24.0.0">
+      <diagram id="option-d" name="Option D: Topic per Dataset">
+        <mxGraphModel dx="1640" dy="1240" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1640" pageHeight="1240" math="0" shadow="0">
+          <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+
+            <mxCell id="af-portfolio" value="airflow: portfolio&#10;Airflow deployment (owns portfolio datasets)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontColor=#0068AE;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+              <mxGeometry x="60" y="130" width="480" height="270" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-portfolio-dags" value="DAGs&#10;etl_portfolio_holdings&#10;(produces portfolio.daily_positions)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-portfolio">
+              <mxGeometry x="20" y="65" width="200" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-portfolio-assets" value="Airflow Assets&#10;(no upstream deps in this&#10;deployment for this DAG)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#008074;" vertex="1" parent="af-portfolio">
+              <mxGeometry x="240" y="65" width="220" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-portfolio-plugin" value="astro-dependency-plugin&#10;produces: data-ready.portfolio.daily_positions&#10;consumes: (none — no upstream dataset deps)&#10;filter: drop own deployment events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;" vertex="1" parent="af-portfolio">
+              <mxGeometry x="20" y="160" width="440" height="95" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="af-risk" value="airflow: risk&#10;Airflow deployment (owns risk datasets; depends on portfolio + reference)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontColor=#0068AE;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+              <mxGeometry x="580" y="130" width="480" height="270" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-risk-dags" value="DAGs&#10;risk_var_pipeline&#10;(produces risk.var_calculations)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-risk">
+              <mxGeometry x="20" y="65" width="200" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-risk-assets" value="Airflow Assets&#10;asset://portfolio/daily_positions&#10;asset://reference/security_master&#10;(trigger risk_var_pipeline)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#008074;" vertex="1" parent="af-risk">
+              <mxGeometry x="240" y="65" width="220" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-risk-plugin" value="astro-dependency-plugin&#10;produces: data-ready.risk.var_calculations&#10;consumes: portfolio.daily_positions, reference.security_master&#10;filter: drop own deployment events  (subscribes to N=2 topics)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;" vertex="1" parent="af-risk">
+              <mxGeometry x="20" y="160" width="440" height="95" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="af-ref" value="airflow: reference&#10;Airflow deployment (owns reference datasets; consumed by others)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontColor=#0068AE;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+              <mxGeometry x="1100" y="130" width="480" height="270" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-ref-dags" value="DAGs&#10;reference_security_master&#10;(produces reference.security_master)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-ref">
+              <mxGeometry x="20" y="65" width="200" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-ref-assets" value="Airflow Assets&#10;(no upstream deps in this&#10;deployment for this DAG)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#008074;" vertex="1" parent="af-ref">
+              <mxGeometry x="240" y="65" width="220" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-ref-plugin" value="astro-dependency-plugin&#10;produces: data-ready.reference.security_master&#10;consumes: (none — top of dependency chain)&#10;filter: drop own deployment events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;" vertex="1" parent="af-ref">
+              <mxGeometry x="20" y="160" width="440" height="95" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="topic-portfolio" value="Kafka Topic&#10;data-ready.portfolio.daily_positions&#10;1 producer (airflow: portfolio)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="80" y="475" width="440" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="topic-risk" value="Kafka Topic&#10;data-ready.risk.var_calculations&#10;1 producer (airflow: risk)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="600" y="475" width="440" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="topic-ref" value="Kafka Topic&#10;data-ready.reference.security_master&#10;1 producer (airflow: reference)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="1120" y="475" width="440" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="topic-more" value="... (N more topics) — scales to one topic per dataset across the platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;dashed=1;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="80" y="585" width="1480" height="56" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="risk-dashboard" value="Risk Dashboard service (non-Airflow consumer)&#10;subscribes: data-ready.risk.var_calculations&#10;refreshes dashboard widgets when new VaR is published" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="600" y="700" width="440" height="100" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="sprawl" value="Cumulative subscription pattern (the sprawl point)&#10;airflow: portfolio → 0 topics&#10;airflow: risk → 2 topics (portfolio + reference)&#10;airflow: reference → 0 topics&#10;As DAGs gain dependencies, each plugin must subscribe to N topics — N can reach hundreds." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;" vertex="1" parent="1">
+              <mxGeometry x="80" y="850" width="720" height="200" as="geometry"/>
+            </mxCell>
+            <mxCell id="tradeoff" value="Tradeoff: precision vs sprawl&#10;Pro: precision — zero filtering noise; 1:1 with Asset URIs; per-dataset ACLs.&#10;Con: sprawl — N topics, N schema entries, N ACLs; growing subscription lists; harder monitoring &amp; rebalancing." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="820" y="850" width="740" height="200" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="e-prod-portfolio" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2.5;" edge="1" parent="1" source="af-portfolio-plugin" target="topic-portfolio"><mxGeometry relative="1" as="geometry"/></mxCell>
+            <mxCell id="e-prod-risk" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2.5;" edge="1" parent="1" source="af-risk-plugin" target="topic-risk"><mxGeometry relative="1" as="geometry"/></mxCell>
+            <mxCell id="e-prod-ref" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2.5;" edge="1" parent="1" source="af-ref-plugin" target="topic-ref"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+            <mxCell id="e-cons-port-risk" style="endArrow=classic;html=1;strokeColor=#008074;strokeWidth=2.5;curved=1;" edge="1" parent="1" source="topic-portfolio" target="af-risk-plugin"><mxGeometry relative="1" as="geometry"/></mxCell>
+            <mxCell id="e-cons-ref-risk" style="endArrow=classic;html=1;strokeColor=#008074;strokeWidth=2.5;curved=1;" edge="1" parent="1" source="topic-ref" target="af-risk-plugin"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+            <mxCell id="e-cons-risk-dash" style="endArrow=classic;html=1;strokeColor=#8FADB2;strokeWidth=2.5;" edge="1" parent="1" source="topic-risk" target="risk-dashboard"><mxGeometry relative="1" as="geometry"/></mxCell>
+          </root>
+        </mxGraphModel>
+      </diagram>
+    </mxfile>
+  </foreignObject>
+</svg>

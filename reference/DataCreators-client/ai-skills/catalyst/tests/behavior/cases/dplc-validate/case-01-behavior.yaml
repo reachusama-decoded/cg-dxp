@@ -1,0 +1,62 @@
+id: dplc-validate.case-01-behavior
+skill: skills/dplc-validate
+type: artifact
+description: >-
+  Phase 5 (Validate) sub-orchestrator. Drives the Phase 5 gate
+  ("UAT Passed & Accepted?") by producing -- directly or by delegating to
+  leaf doc skills -- the required artifacts: data-quality-sign-off,
+  uat-sign-off, and (when DataOps will own) dataops-handoff-draft. Also
+  consumes / may finalize integration-test-report carried over from Phase 4.
+  This case judges the orchestrator's combined output for Phase-5
+  substance, not the specific delegation mechanism.
+  NOTE: Originally drafted as `type: behavior` with `expected_sequence`
+  on sub-skill delegations. Empirically the gold-standard
+  `dplc-discovery.case-01-behavior` also fails that assertion live
+  (orchestrators in this codebase tend to author leaf documents inline
+  via Bash/Write rather than via the Task tool). Converted to
+  `type: artifact` so the case reflects what these orchestrators
+  actually do. A follow-up will tighten orchestrator skills to delegate
+  explicitly, at which point a behavior-style case can be re-added.
+
+input:
+  arguments: >-
+    Run Phase 5 Validate for the index data product. Phase 4 build
+    artifacts and the data contract are already in context.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: dq_sign_off_present
+      weight: 0.25
+      prompt: >-
+        Does the output include a Data Quality Sign-Off -- a record of
+        DQ rule pass/fail counts, waivers, and a sign-off statement?
+        Score 0-1.
+    - id: uat_sign_off_present
+      weight: 0.25
+      prompt: >-
+        Does the output include a UAT Sign-Off -- acceptance-criteria
+        verification (AC-1, AC-2, ... or equivalent) with pass/fail
+        outcomes and a stakeholder sign-off statement? Score 0-1.
+    - id: handoff_or_ownership
+      weight: 0.15
+      prompt: >-
+        Does the output address operational handoff to DataOps (or
+        explicitly state the owning team will run the product, with
+        runbook / on-call references)? Score 0-1.
+    - id: gate_determination
+      weight: 0.25
+      prompt: >-
+        Does the output make an explicit Phase 5 gate determination --
+        i.e. clearly state whether "UAT Passed & Accepted?" is
+        satisfied and route to Publish vs Rework with reasoning?
+        Score 0-1.
+    - id: grounded_in_phase4
+      weight: 0.10
+      prompt: >-
+        Does the output reference or build on Phase 3/4 inputs (data
+        contract, build checklist, unit-test or integration-test
+        results) rather than ignoring them? Score 0-1.

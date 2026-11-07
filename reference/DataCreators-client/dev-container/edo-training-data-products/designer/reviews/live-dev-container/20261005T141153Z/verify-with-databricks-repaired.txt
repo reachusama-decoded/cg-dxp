@@ -1,0 +1,4 @@
+# verify-with-databricks.sh after F-01 repair, 2026-10-05T16:38:49Z, exit 0, 53 s
+Skipping 28 capstone placeholder model(s) and their dependents
+[0m16:38:35  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=7
+Databricks verification: PASS

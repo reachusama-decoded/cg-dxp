@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(kubectl get *)",
+      "Bash(kubectl logs *)",
+      "Bash(kubectl describe *)"
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "catalyst": {
+      "source": {
+        "source": "github",
+        "repo": "cg-open-itg/catalyst"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "ai-catalyst@catalyst": true
+  }
+}

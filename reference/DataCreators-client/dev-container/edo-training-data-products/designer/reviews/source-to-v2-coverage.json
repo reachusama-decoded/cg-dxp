@@ -1,0 +1,251 @@
+{
+  "missing": [],
+  "legacy_advanced_items": [
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 1,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 2,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 3,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 4,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 5,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 6,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 7,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 8,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 9,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "dbt",
+      "legacy_phase_two_item": 10,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 1,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 2,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 3,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 4,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 5,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 6,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 7,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 8,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 9,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "airflow",
+      "legacy_phase_two_item": 10,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 1,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 2,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 3,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 4,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 5,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 6,
+      "disposition": "Phase1 minimum explanation/proof; deeper legacy stretch retained",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 7,
+      "disposition": "Phase1 minimum explanation/proof; deeper legacy stretch retained",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 8,
+      "disposition": "Phase1 minimum explanation/proof; deeper legacy stretch retained",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 9,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 10,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 11,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 12,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 13,
+      "disposition": "Optional advanced legacy reference",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    },
+    {
+      "tool": "capstone",
+      "legacy_phase_two_item": 14,
+      "disposition": "Phase2 core/supporting proof",
+      "complete_learner_reference": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+      "detailed_mapping": "designer/CURRICULUM.md"
+    }
+  ],
+  "new_sections": [
+    "git",
+    "databricks-cli",
+    "kafka"
+  ],
+  "course_retention": "All12baseline chapters unchanged or retained as exact prefix",
+  "preserved_original_project_files": 728,
+  "preserved_legacy_challenge_files": 248
+}

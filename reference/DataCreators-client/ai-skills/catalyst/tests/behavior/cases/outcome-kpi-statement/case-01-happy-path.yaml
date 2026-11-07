@@ -1,0 +1,32 @@
+id: outcome-kpi-statement.case-01-happy-path
+skill: skills/outcome-kpi-statement
+type: artifact
+description: 'Bootstrap happy-path case. Define measurable business outcomes, KPIs, and success criteria.
+  Use when the
+
+  user asks to "define the KPIs", "what does success look like", "create the
+
+  outcome statement", or "set the metrics for this product".'
+input:
+  arguments: Write the outcome/KPI statement for an employee directory data product (improving HR analytics).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/outcome-kpi-statement/templates/outcome-kpi-statement.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Define measurable
+      business outcomes, KPIs, and success criteria. Use when the
+
+      user asks to "define the KPIs", "what does success look like",''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

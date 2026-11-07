@@ -1,0 +1,5 @@
+**/airflow/**
+**/bundle/**
+**/contract/**
+**/runtime/**
+datasets/**/tests/**

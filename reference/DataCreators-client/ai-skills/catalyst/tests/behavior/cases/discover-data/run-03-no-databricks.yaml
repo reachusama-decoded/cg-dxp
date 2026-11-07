@@ -1,0 +1,18 @@
+type: run
+id: discover-data.run-03-no-databricks
+description: |
+  discover-data run with Databricks credentials intentionally absent.
+  Used to verify the "When Databricks Is Not Configured" branch of
+  the skill (see PR #40 — `skills/discover-data/SKILL.md`): the skill
+  should detect missing creds, offer to invoke `connect-databricks`,
+  and either decline to fabricate a schema or mark any inferred output
+  as unverified.
+
+  Invoke with:
+    BT_UNSET_VARS="DATABRICKS_HOST DATABRICKS_TOKEN DATABRICKS_WAREHOUSE_ID" \
+      bin/bt smoke discover-data.case-03-no-databricks
+skill: skills/discover-data
+input:
+  arguments: Inventory tables for an employee directory data product. Help me find candidate sources.
+environment:
+  databricks: not_required

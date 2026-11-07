@@ -1,0 +1,1 @@
+select 1 as failure where (select count(*) from {{ ref('stg_holdings') }})<>8 or (select count(*) from {{ ref('stg_positions') }})<>8 or (select count(*) from {{ ref('stg_prices') }})<>8 or (select count(*) from {{ ref('stg_fx_rates') }})<>6 or (select count(*) from {{ ref('stg_funds') }})<>4

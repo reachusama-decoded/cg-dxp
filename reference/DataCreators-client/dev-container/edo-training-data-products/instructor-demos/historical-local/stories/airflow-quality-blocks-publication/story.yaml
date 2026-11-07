@@ -1,0 +1,63 @@
+schema_version: 1
+id: airflow-quality-blocks-publication
+title: Quality failure blocks downstream publication
+objective: Explain the observed task state and its business-output evidence boundary.
+tool: airflow
+task_ids:
+- airflow-p1-04
+route: astro-ui
+readiness: draft
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/airflow/phase-one-certified/solution
+source_inputs:
+- challenges/v2/airflow/phase-one-certified/README.md
+- challenges/v2-solutions/airflow/phase-one-certified/solution
+requires:
+- browser
+- env:DEMO_AIRFLOW_RUN_URL
+- env:DEMO_AIRFLOW_LOG_URL
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: airflow-run-and-recovery
+steps:
+- id: run
+  action:
+    adapter: browser
+    verb: navigate
+    url: '{{env.DEMO_AIRFLOW_RUN_URL}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: dbt
+  capture:
+    context: AIRFLOW UI
+    hold_seconds: 3
+  caption:
+    action: Open the assigned fresh run.
+    notice: Live rehearsal must verify a newly triggered run ID, task states and worker-visible
+      paths.
+- id: log
+  action:
+    adapter: browser
+    verb: navigate
+    url: '{{env.DEMO_AIRFLOW_LOG_URL}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: dbt
+  capture:
+    context: AIRFLOW UI
+    hold_seconds: 3
+  caption:
+    action: Open the relevant real task log.
+    notice: Live rehearsal must bind the task log, independently queried output and
+      receipt to that run.
+closing_question: Explain the observed task state and its business-output evidence
+  boundary. Which observation supports your explanation?

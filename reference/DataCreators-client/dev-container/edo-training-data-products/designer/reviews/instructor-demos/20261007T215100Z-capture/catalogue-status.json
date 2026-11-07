@@ -1,0 +1,50 @@
+[
+  {
+    "story": "airflow-locate-task-evidence",
+    "exit_code": 77
+  },
+  {
+    "story": "airflow-quality-blocks-publication",
+    "exit_code": 77
+  },
+  {
+    "story": "airflow-recover-and-replay",
+    "exit_code": 77
+  },
+  {
+    "story": "airflow-trigger-graph-and-log",
+    "exit_code": 77
+  },
+  {
+    "story": "dbt-build-and-inspect",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-fanout-and-replay",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-sources-refs-and-sql",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-test-failure-and-repair",
+    "exit_code": 0
+  },
+  {
+    "story": "docker-bind-mounted-data",
+    "exit_code": 77
+  },
+  {
+    "story": "docker-build-holdings-app",
+    "exit_code": 77
+  },
+  {
+    "story": "docker-container-lifecycle",
+    "exit_code": 77
+  },
+  {
+    "story": "docker-image-to-shell",
+    "exit_code": 77
+  }
+]

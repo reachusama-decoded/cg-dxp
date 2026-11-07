@@ -1,0 +1,26 @@
+id: scaffold-data-product.case-01-happy-path
+skill: skills/scaffold-data-product
+type: artifact
+description: |
+  Bootstrap happy-path case. Scaffold a data-product subtree under
+  data-products/{domain}/datasets/{product}/ per RFD 0003 with airflow/,
+  bundle/, dbt/, contract/, specs/ subdirectories. Trigger phrases:
+  "scaffold a data product", "create dataset directory", "bootstrap data
+  product", "initialize data product layout".
+input:
+  arguments: Scaffold a new data product named employee_directory under the investments domain into the current repo root.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address scaffolding the RFD 0003 directory tree for a single data product? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output produce the 5 RFD 0003 subdirectories (airflow, bundle, dbt, contract, specs) plus README.md, databricks.yml stub, dbt_project.yml stub? Enforces snake_case naming on domain and product? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

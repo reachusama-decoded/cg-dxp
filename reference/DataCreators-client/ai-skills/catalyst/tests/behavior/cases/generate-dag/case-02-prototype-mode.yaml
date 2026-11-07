@@ -1,0 +1,49 @@
+id: generate-dag.case-02-prototype-mode
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Prototype mode emission with no deployed bundle. Caller asks for a DAG
+  for a brand-new dataset where the bundle has not been emitted yet.
+  Skill should emit with a TODO placeholder for job_name and warn the
+  user. Missing MDS tags should appear as TODO comments.
+
+input:
+  arguments: >-
+    Generate an Airflow DAG for client_positions/positions_new_signal in
+    prototype mode. There is no databricks.yml at the data product yet.
+    Owner is data-platform@capgroup.com but other MDS tags are unknown.
+    Use a cron schedule of @daily until the upstream Asset is identified.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: placeholder_job_name
+      weight: 0.25
+      prompt: >-
+        Does the response use a placeholder for job_name (e.g., a TODO
+        comment or {{var}} with a clear "confirm when bundle is deployed"
+        comment)? Score 0-1.
+    - id: missing_tags_todo
+      weight: 0.25
+      prompt: >-
+        Does the response emit TODO comments for missing MDS tags
+        (business_function, data_domain, etc.) rather than refusing? Score 0-1.
+    - id: cron_schedule_with_advisory
+      weight: 0.2
+      prompt: >-
+        Does the response use a cron schedule (since no Asset is identified)
+        AND include an advisory comment about migrating to Asset-driven? Score 0-1.
+    - id: prototype_mode_explicit
+      weight: 0.15
+      prompt: >-
+        Does the response explicitly note this is prototype mode and
+        explain what's missing for production promotion? Score 0-1.
+    - id: no_failure_on_missing_bundle
+      weight: 0.15
+      prompt: >-
+        Does the response emit something useful (with TODOs) rather than
+        STOPing because the bundle is absent? Prototype mode should be
+        permissive. Score 0-1.

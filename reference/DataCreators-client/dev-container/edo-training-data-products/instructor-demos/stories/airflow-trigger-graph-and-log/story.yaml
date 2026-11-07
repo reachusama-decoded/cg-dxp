@@ -1,0 +1,161 @@
+schema_version: 1
+id: airflow-trigger-graph-and-log
+title: 'Scheduled Portfolio Analytics: trigger graph and log'
+objective: Prove current scheduled worker/task identity, blocked publication evidence
+  and independent Databricks output.
+tool: airflow
+task_ids:
+- airflow-guide-04
+- airflow-guide-06
+- airflow-guide-08
+- airflow-guide-12
+route: astro-databricks
+readiness: draft
+audience: Instructor scheduled runtime demonstration; prior answer exposure disclosed
+prerequisites: Fresh scheduled success/failure/repair IDs, prepared Astro UI/API and
+  owned mount; task-time OAuth, expiry/restart and human UI review pending. Contract
+  9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19
+workspace_source: instructor-demos/portfolio-assets/airflow
+workspace_files:
+- source: instructor-demos/portfolio-assets/runtime/README.md
+  destination: runtime/README.md
+- source: instructor-demos/portfolio-assets/runtime/SETUP.md
+  destination: runtime/SETUP.md
+- source: instructor-demos/portfolio-assets/runtime/check-scheduled.py
+  destination: runtime/check-scheduled.py
+- source: instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.json
+  destination: runtime/dataset-runtime-contract.json
+- source: instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.schema.json
+  destination: runtime/dataset-runtime-contract.schema.json
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/advisors.csv
+  destination: runtime/fixtures/atlas/advisors.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/clients.csv
+  destination: runtime/fixtures/atlas/clients.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/fund_holdings.csv
+  destination: runtime/fixtures/atlas/fund_holdings.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/funds.csv
+  destination: runtime/fixtures/atlas/funds.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/instruments.csv
+  destination: runtime/fixtures/atlas/instruments.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/portfolios.csv
+  destination: runtime/fixtures/atlas/portfolios.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/trades.csv
+  destination: runtime/fixtures/atlas/trades.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fund_master_raw.csv
+  destination: runtime/fixtures/portfolio/fund_master_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fx_rates_raw.csv
+  destination: runtime/fixtures/portfolio/fx_rates_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/holdings_raw.csv
+  destination: runtime/fixtures/portfolio/holdings_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/positions_raw.csv
+  destination: runtime/fixtures/portfolio/positions_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/prices_raw.csv
+  destination: runtime/fixtures/portfolio/prices_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/refdata_raw.csv
+  destination: runtime/fixtures/portfolio/refdata_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_custodian_nav.csv
+  destination: runtime/fixtures/portfolio/seed_custodian_nav.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_funds.csv
+  destination: runtime/fixtures/portfolio/seed_funds.csv
+- source: instructor-demos/portfolio-assets/runtime/guide-task-map.json
+  destination: runtime/guide-task-map.json
+- source: instructor-demos/portfolio-assets/runtime/lab.py
+  destination: runtime/lab.py
+source_inputs:
+- instructor-demos/portfolio-assets/airflow
+- instructor-demos/portfolio-assets/runtime/README.md
+- instructor-demos/portfolio-assets/runtime/SETUP.md
+- instructor-demos/portfolio-assets/runtime/check-scheduled.py
+- instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.json
+- instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.schema.json
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/advisors.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/clients.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/fund_holdings.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/funds.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/instruments.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/portfolios.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/trades.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fund_master_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fx_rates_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/holdings_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/positions_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/prices_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/refdata_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_custodian_nav.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_funds.csv
+- instructor-demos/portfolio-assets/runtime/guide-task-map.json
+- instructor-demos/portfolio-assets/runtime/lab.py
+requires:
+- browser
+- env:DC_ASTRO_STAGE
+- env:DC_SUCCESS_RUN
+- env:DC_FAILURE_RUN
+- env:DC_REPAIR_RUN
+- env:DC_SESSION_STARTED_AT
+- env:DC_AIRFLOW_API_URL
+- env:DC_AIRFLOW_API_TOKEN
+- env:DEMO_AIRFLOW_RUN_URL
+- env:DEMO_AIRFLOW_LOG_URL
+- env:DEMO_BROWSER_STATE
+resources:
+- owned Astro DAG/stage
+- owned Databricks relations
+cleanup: []
+main_book:
+  include: false
+  teaching_key: airflow-run-and-recovery
+steps:
+- id: scheduled-evidence
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 runtime/check-scheduled.py "$DC_ASTRO_STAGE" --success "$DC_SUCCESS_RUN"
+      --failure "$DC_FAILURE_RUN" --repair "$DC_REPAIR_RUN" --after "$DC_SESSION_STARTED_AT"
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: fresh scheduled success
+  capture:
+    context: ASTRO SCHEDULED WORKER -> DATABRICKS
+    hold_seconds: 3
+  caption:
+    action: Inspect the three exact scheduled run identities and warehouse-bound receipts.
+    notice: A failed quality gate blocks publication evidence. Actual graph/grid/log
+      framing and recovery pacing must be completed on the live UI.
+- id: fresh-run-ui
+  action:
+    adapter: browser
+    verb: navigate
+    url: '{{env.DEMO_AIRFLOW_RUN_URL}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: publication_evidence
+  capture:
+    context: ASTRO / OWNED FRESH SCHEDULED RUN
+    hold_seconds: 3
+  caption:
+    action: Inspect graph/grid for the API-verified owned run.
+    notice: Use a prepared signed-in browser state outside recording. The URL must
+      bind the exact success or repair run ID.
+- id: quality-failure-log
+  action:
+    adapter: browser
+    verb: navigate
+    url: '{{env.DEMO_AIRFLOW_LOG_URL}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Intentional Portfolio quality drill
+  capture:
+    context: ASTRO / FAILED QUALITY TASK LOG
+    hold_seconds: 3
+  caption:
+    action: Read the intended quality failure log.
+    notice: Bind the log URL to the exact failed scheduled run; downstream publication_evidence
+      is blocked. Human readability and pacing remain pending.
+closing_question: Show the fresh scheduled task identity, independent business output
+  and failure/repair evidence; explain why a green historical grid is insufficient.

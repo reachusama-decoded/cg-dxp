@@ -1,0 +1,34 @@
+id: usage-analytics-report.case-01-happy-path
+skill: skills/usage-analytics-report
+type: artifact
+description: 'Bootstrap happy-path case. Report usage metrics, consumer breakdown, KPI performance, and
+  improvement
+
+  recommendations. Use when the user asks to "create the usage report", "how
+
+  is this product being used", "analyze adoption", or "report on consumer
+
+  metrics".'
+input:
+  arguments: Write the usage analytics report for the employee directory data product (monthly summary).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/usage-analytics-report/templates/usage-analytics-report.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Report usage metrics,
+      consumer breakdown, KPI performance, and improvement
+
+      recommendations. Use when the user asks to "create the usage repo''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

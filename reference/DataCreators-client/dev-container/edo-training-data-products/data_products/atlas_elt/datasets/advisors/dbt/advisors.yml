@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dom_party__advisor
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: rpt_advisor_book
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: rpt_advisor_leaderboard
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: rpt_portfolio_summary
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: rpt_region_report
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: src_crm__advisors
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

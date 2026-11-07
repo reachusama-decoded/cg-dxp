@@ -1,0 +1,68 @@
+# Force use of pip instead of uv
+# ASTRO_RUNTIME_USE_PIP
+
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+# apache-airflow-providers-common-compat==1.7.0
+
+# apache-airflow-providers-common-sql
+# apache-airflow-providers-ftp
+# apache-airflow-providers-ftp
+# apache-airflow-providers-imap
+# apache-airflow-providers-sqlite
+# apache-airflow-providers-amazon
+# astronomer-providers
+# astro-sdk-python
+# apache-airflow-providers-celery
+# apache-airflow-providers-cncf-kubernetes
+# apache-airflow-providers-datadog
+# apache-airflow-providers-elasticsearch
+# apache-airflow-providers-google
+# apache-airflow-providers-microsoft-azure
+# apache-airflow-providers-openlineage
+# apache-airflow-providers-postgres
+# apache-airflow-providers-redis
+
+# Base image, so not sure which of the above were actually installed... so adding above.
+
+# Required by DAGs
+astronomer-cosmos==1.15.0
+apache-airflow-providers-databricks==7.7.4
+apache-airflow-providers-datadog==3.9.2
+apache-airflow-providers-cncf-kubernetes==10.19.0
+apache-airflow-providers-http==5.4.0
+# apache-airflow-providers-apache-spark
+apache-airflow-providers-amazon==9.16.0
+
+# Airflow 3 only: Enables Flask blueprints in plugins (e.g., Scaphe UI)
+# Not needed for Airflow 2 (native support). Comment out for Airflow 2 deployments.
+apache-airflow-providers-fab==3.0.1
+
+astronomer-providers-logging
+
+# DAG utilities
+dag-factory
+airflow-blueprint
+
+# Platform/networking
+dnspython
+
+# DAG dependencies from data_products/ folder
+fsspec==2025.10.0
+s3fs==2025.10.0
+pandas==2.1.4
+pyarrow==18.1.0
+numpy==1.26.4
+pendulum
+pyyaml
+requests
+pytz
+flask
+flask-wtf
+gunicorn
+kafka-python
+confluent-kafka
+
+# Platform plugins
+cimon==0.0.post1.dev134+g665d0a2f7
+scaphe==0.0.post1.dev61+g9f90d99d4
+ttp

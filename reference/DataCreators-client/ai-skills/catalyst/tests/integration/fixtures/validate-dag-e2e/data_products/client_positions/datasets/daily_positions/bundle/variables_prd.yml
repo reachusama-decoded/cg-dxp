@@ -1,0 +1,11 @@
+# data_products/client_positions/datasets/daily_positions/bundle/variables_prd.yml
+# Env-specific variable values for the `prd` Databricks Asset Bundle target.
+# Consumed by `databricks bundle deploy --target prd`. The Airflow DAG
+# reads `databricks_job_prefix` via Airflow Variable (set per Astronomer
+# deployment env) so the composed job_name resolves to the exact deployed
+# resource name in this environment.
+
+targets:
+  prd:
+    variables:
+      databricks_job_prefix: "edo_prd_"

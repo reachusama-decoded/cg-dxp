@@ -1,0 +1,52 @@
+id: configure-sql-warehouse.case-01-artifact
+skill: skills/configure-sql-warehouse
+type: artifact
+description: >-
+  Verify that /configure-sql-warehouse produces a compute DAB scaffold, wires
+  warehouse references into profiles.yml and variables_<env>.yml, and documents
+  the sizing decision in .catalyst-build.yml. Triggered when a user asks to
+  provision a serverless SQL warehouse for a dbt project.
+
+input:
+  arguments: >-
+    Configure a SQL warehouse for the pricing team. We need a dev and production warehouse
+    for dbt batch runs (single-connection, scheduled). Use per-team scope named
+    pricing-team. The platform team's compute policy ID is AAAA1111-bbbb-2222-cccc-dddd33334444.
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: compute_dab_scaffolded
+      weight: 0.30
+      prompt: >-
+        Does the output include a concrete compute DAB file example (a YAML block containing
+        sql_warehouses with cluster_size, auto_stop_mins, channel: CURRENT, and
+        enable_serverless_compute or warehouse_type)? Score 1 if a well-formed warehouse
+        resource definition is present, 0.5 if partial, 0 if absent.
+
+    - id: profiles_and_vars_wired
+      weight: 0.30
+      prompt: >-
+        Does the output show http_path and warehouse_id wired into both profiles.yml (dbt
+        connection target) AND variables_<env>.yml (bundle variable layer)?
+        Score 1 if both files are represented with the correct fields, 0.5 if only one file
+        is shown, 0 if neither is addressed.
+
+    - id: lifecycle_separation
+      weight: 0.20
+      prompt: >-
+        Does the output explicitly state that the warehouse resource must NOT be inlined in
+        the pipeline DAB (databricks.yml), and that jobs should reference the warehouse via
+        ${var.warehouse_id} or a variables file? Score 1 if clearly stated, 0 if absent.
+
+    - id: sizing_rationale_documented
+      weight: 0.20
+      prompt: >-
+        Does the output include a .catalyst-build.yml#warehouse_sizing_rationale block (or
+        equivalent) that records the chosen t-shirt size, workload shape, and the signals that
+        would trigger a resize (spill-to-disk, queued queries)? Score 1 if all three elements
+        are present, 0.5 if partial, 0 if absent.

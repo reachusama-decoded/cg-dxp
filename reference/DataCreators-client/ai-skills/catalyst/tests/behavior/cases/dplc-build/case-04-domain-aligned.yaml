@@ -1,0 +1,22 @@
+id: dplc-build.case-04-domain-aligned
+skill: skills/dplc-build
+type: behavior
+description: >-
+  Phase 4 Build sub-orchestrator, domain-aligned branch. The pipeline-type
+  determination should route to `/domain-aligned` when the user describes
+  building a canonical model that UNIONs existing Unity Catalog tables
+  (cross-source integration). Artifact chain follows in production mode.
+input:
+  arguments: >-
+    Run Phase 4 in production mode. Design artifacts approved. Build a
+    canonical model that UNIONs three existing Unity Catalog tables in
+    cspn_dev1 into a single domain-aligned data product.
+expected_sequence:
+  - skills/domain-aligned
+  - skills/unit-test-report
+  - skills/integration-test-report
+  - skills/code-review-sign-off
+  - skills/build-checklist
+strict_order: false
+allow_extra: true
+max_steps: 80

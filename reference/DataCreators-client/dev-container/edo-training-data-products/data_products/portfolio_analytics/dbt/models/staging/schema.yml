@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_funds
+    description: "Cleaned fund master, one row per fund."
+    columns:
+      - name: fund_id
+        description: "Primary key — fund identifier."
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_holdings
+    description: "Cleaned holdings, one row per (fund, day, instrument)."
+    columns:
+      - name: fund_id
+        tests:
+          - not_null
+      - name: position_date
+        tests:
+          - not_null
+      - name: instrument_id
+        tests:
+          - not_null

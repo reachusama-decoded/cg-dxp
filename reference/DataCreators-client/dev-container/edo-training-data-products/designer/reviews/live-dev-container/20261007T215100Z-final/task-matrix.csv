@@ -1,0 +1,121 @@
+task_id,tool,phase,route,starter,solution,learner_reconstruction,negative,editorial
+git-p1-01,git,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p1-01,git,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p1-02,git,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p1-02,git,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p1-03,git,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p1-03,git,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p1-04,git,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p1-04,git,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p1-05,git,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p1-05,git,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p2-01,git,phase-two-proficient,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p2-01,git,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p2-02,git,phase-two-proficient,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p2-02,git,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p2-03,git,phase-two-proficient,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p2-03,git,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p2-04,git,phase-two-proficient,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p2-04,git,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+git-p2-05,git,phase-two-proficient,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+git-p2-05,git,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p1-01,docker,phase-one-certified,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p1-01,docker,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p1-02,docker,phase-one-certified,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p1-02,docker,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p1-03,docker,phase-one-certified,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p1-03,docker,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p1-04,docker,phase-one-certified,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p1-04,docker,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p1-05,docker,phase-one-certified,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p1-05,docker,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p2-01,docker,phase-two-proficient,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p2-01,docker,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p2-02,docker,phase-two-proficient,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p2-02,docker,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p2-03,docker,phase-two-proficient,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p2-03,docker,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p2-04,docker,phase-two-proficient,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p2-04,docker,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+docker-p2-05,docker,phase-two-proficient,offline/supporting,supporting-only,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+docker-p2-05,docker,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p1-01,dbt,phase-one-certified,offline/supporting,pass,fail,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p1-01,dbt,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p1-02,dbt,phase-one-certified,offline/supporting,pass,fail,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p1-02,dbt,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p1-03,dbt,phase-one-certified,offline/supporting,pass,fail,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p1-03,dbt,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p1-04,dbt,phase-one-certified,offline/supporting,pass,fail,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p1-04,dbt,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p1-05,dbt,phase-one-certified,offline/supporting,pass,fail,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p1-05,dbt,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p2-01,dbt,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p2-01,dbt,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p2-02,dbt,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p2-02,dbt,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p2-03,dbt,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p2-03,dbt,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p2-04,dbt,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p2-04,dbt,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+dbt-p2-05,dbt,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+dbt-p2-05,dbt,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+databricks-cli-p1-01,databricks-cli,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+databricks-cli-p1-01,databricks-cli,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+databricks-cli-p1-02,databricks-cli,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+databricks-cli-p1-02,databricks-cli,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+databricks-cli-p1-03,databricks-cli,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+databricks-cli-p1-03,databricks-cli,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+databricks-cli-p1-04,databricks-cli,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+databricks-cli-p1-04,databricks-cli,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+databricks-cli-p1-05,databricks-cli,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+databricks-cli-p1-05,databricks-cli,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p1-01,airflow,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p1-01,airflow,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p1-02,airflow,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p1-02,airflow,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p1-03,airflow,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p1-03,airflow,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p1-04,airflow,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p1-04,airflow,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p1-05,airflow,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p1-05,airflow,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p2-01,airflow,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p2-01,airflow,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p2-02,airflow,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p2-02,airflow,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p2-03,airflow,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p2-03,airflow,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p2-04,airflow,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p2-04,airflow,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+airflow-p2-05,airflow,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+airflow-p2-05,airflow,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+kafka-p1-01,kafka,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+kafka-p1-01,kafka,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+kafka-p1-02,kafka,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+kafka-p1-02,kafka,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+kafka-p1-03,kafka,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+kafka-p1-03,kafka,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+kafka-p1-04,kafka,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+kafka-p1-04,kafka,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+kafka-p1-05,kafka,phase-one-certified,offline/supporting,pass,supporting-only,not-run; prior solution exposure,phase-level observations only; see report,not-run
+kafka-p1-05,kafka,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p1-01,capstone,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p1-01,capstone,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p1-02,capstone,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p1-02,capstone,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p1-03,capstone,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p1-03,capstone,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p1-04,capstone,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p1-04,capstone,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p1-05,capstone,phase-one-certified,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p1-05,capstone,phase-one-certified,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p2-01,capstone,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p2-01,capstone,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p2-02,capstone,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p2-02,capstone,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p2-03,capstone,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p2-03,capstone,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p2-04,capstone,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p2-04,capstone,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run
+capstone-p2-05,capstone,phase-two-proficient,offline/supporting,pass,pass,not-run; prior solution exposure,phase-level observations only; see report,not-run
+capstone-p2-05,capstone,phase-two-proficient,connected/UI/remote where offered,blocked: missing runtime/assignment,blocked: missing runtime/assignment,not-run,not-run,not-run

@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: atlas
+    description: "Raw Atlas operational extracts, landed by `dbt seed` into the learner's schema."
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    # Source freshness is checked by `dbt source freshness`, NOT by `dbt build`
+    # (freshness is a separate, on-demand command). The `trades` seed has no real
+    # load timestamp, so `ts` (the trade's epoch SECOND) stands in as the
+    # loaded_at_field; thresholds are deliberately wide so the historical teaching
+    # sample reports `pass`/`warn` rather than erroring on age.
+    tables:
+      - name: trades
+        config:
+          loaded_at_field: "cast(timestamp_seconds(ts) as timestamp)"
+          freshness:
+            warn_after: {count: 100000, period: day}
+            error_after: {count: 200000, period: day}
+      - name: instruments
+      - name: portfolios
+      - name: clients
+      - name: advisors
+      - name: funds
+      - name: fund_holdings

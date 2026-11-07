@@ -1,0 +1,34 @@
+id: feasibility-report.case-01-happy-path
+skill: skills/feasibility-report
+type: artifact
+description: 'Bootstrap happy-path case. Assess technical, data availability, and regulatory feasibility
+  for a proposed
+
+  data product. Use when the user asks to "assess feasibility", "can we build
+
+  this", "write the feasibility report", "evaluate technical readiness", or
+
+  "check if this is doable".'
+input:
+  arguments: 'Assess feasibility for an employee directory data product. Sources: ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/feasibility-report/templates/feasibility-report.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Assess technical,
+      data availability, and regulatory feasibility for a proposed
+
+      data product. Use when the user asks to "assess feasibility",''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

@@ -1,0 +1,259 @@
+{
+  "original_files": 728,
+  "missing": [],
+  "changed": [
+    {
+      "before": ".gitignore",
+      "after": ".gitignore",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".dbtignore",
+      "after": ".dbtignore",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".mise.toml",
+      "after": ".mise.toml",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "docs/challenge-run-brief.md",
+      "after": "docs/challenge-run-brief.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/CHANGES.md",
+      "after": "challenges/v1/CHANGES.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".devcontainer/check.sh",
+      "after": ".devcontainer/check.sh",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".devcontainer/TROUBLESHOOTING.md",
+      "after": ".devcontainer/TROUBLESHOOTING.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "data_products/atlas_elt/README.md",
+      "after": "data_products/atlas_elt/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "data_products/portfolio_analytics/README.md",
+      "after": "data_products/portfolio_analytics/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/02-dbt-pipeline/README.md",
+      "after": "challenges/v1/02-dbt-pipeline/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/02-dbt-pipeline/verify.sh",
+      "after": "challenges/v1/02-dbt-pipeline/verify.sh",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/03-airflow-orchestration/README.md",
+      "after": "challenges/v1/03-airflow-orchestration/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/03-airflow-orchestration/verify.sh",
+      "after": "challenges/v1/03-airflow-orchestration/verify.sh",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/01-docker-intro/README.md",
+      "after": "challenges/v1/01-docker-intro/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/04-atlas-capstone/README.md",
+      "after": "challenges/v1/04-atlas-capstone/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/04-atlas-capstone/verify.sh",
+      "after": "challenges/v1/04-atlas-capstone/verify.sh",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/00-environment-check/README.md",
+      "after": "challenges/v1/00-environment-check/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/00-environment-check/AGENTIC_CAPSTONE_CHECK.md",
+      "after": "challenges/v1/00-environment-check/AGENTIC_CAPSTONE_CHECK.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "challenges/03-airflow-orchestration/stubs/README.md",
+      "after": "challenges/v1/03-airflow-orchestration/stubs/README.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/conftest.py",
+      "after": "tests/challenges/conftest.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch04_structure.py",
+      "after": "tests/challenges/offline/test_ch04_structure.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch03.py",
+      "after": "tests/challenges/offline/test_ch03.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_mise_tasks.py",
+      "after": "tests/challenges/offline/test_mise_tasks.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_home.py",
+      "after": "tests/challenges/offline/test_home.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_guides.py",
+      "after": "tests/challenges/offline/test_guides.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch02.py",
+      "after": "tests/challenges/offline/test_ch02.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch00.py",
+      "after": "tests/challenges/offline/test_ch00.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch01.py",
+      "after": "tests/challenges/offline/test_ch01.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_verify_scripts.py",
+      "after": "tests/challenges/offline/test_verify_scripts.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_ch03_stub_sync.py",
+      "after": "tests/challenges/offline/test_ch03_stub_sync.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/offline/test_wiring.py",
+      "after": "tests/challenges/offline/test_wiring.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/live/test_ch02_dbt.py",
+      "after": "tests/challenges/live/test_ch02_dbt.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/live/test_ch01_docker.py",
+      "after": "tests/challenges/live/test_ch01_docker.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/live/test_ch03_airflow.py",
+      "after": "tests/challenges/live/test_ch03_airflow.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/challenges/live/test_ch04_capstone.py",
+      "after": "tests/challenges/live/test_ch04_capstone.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/local_env/offline/auth/test_auth_contracts.py",
+      "after": "tests/local_env/offline/auth/test_auth_contracts.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": "tests/local_env/offline/tooling/test_no_tracked_symlinks.py",
+      "after": "tests/local_env/offline/tooling/test_no_tracked_symlinks.py",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".superpowers/sdd/task-2-report.md",
+      "after": ".superpowers/sdd/task-2-report.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".superpowers/sdd/task-1-report.md",
+      "after": ".superpowers/sdd/task-1-report.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".superpowers/sdd/task-3-report.md",
+      "after": ".superpowers/sdd/task-3-report.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".superpowers/sdd/task-5-report.md",
+      "after": ".superpowers/sdd/task-5-report.md",
+      "exists": true,
+      "unchanged": false
+    },
+    {
+      "before": ".superpowers/sdd/task-4-report.md",
+      "after": ".superpowers/sdd/task-4-report.md",
+      "exists": true,
+      "unchanged": false
+    }
+  ],
+  "unchanged": 686
+}

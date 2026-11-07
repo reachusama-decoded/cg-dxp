@@ -1,0 +1,31 @@
+# US end-of-day instrument prices — the Day 2 contract-to-code example.
+# Generated from the running-example data contract (courseware/common/running-example/).
+name: 'eod_prices'
+version: '1.0'
+profile: 'eod_prices'
+config-version: 2
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  eod_prices:
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +tags: ["marts"]
+
+seeds:
+  eod_prices:
+    vendor_prices_raw:
+      +post-hook: "update {{ this }} set _received_at = {{ dbt.current_timestamp() }}"
+    fx_rates_raw:
+      +post-hook: "update {{ this }} set _received_at = {{ dbt.current_timestamp() }}"

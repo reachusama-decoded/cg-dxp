@@ -1,0 +1,29 @@
+id: domain-aligned.case-01-happy-path
+skill: skills/domain-aligned
+type: artifact
+description: "Bootstrap happy-path case. AI Catalyst DPLC Domain-Aligned Data Product Generator \u2014\
+  \ Build canonical, domain-aligned data products from existing Unity Catalog source tables. Two output\
+  \ modes: **Databricks** (sandbox testing) and **EMR** (Casper IM/MSS production-ready artifacts with\
+  \ DAG, Deequ, DDL). Part of the AI Catalyst DP"
+input:
+  arguments: Generate the domain-aligned pipeline (dim_employee + fact_employee_assignment) from the source-aligned
+    employee directory tables.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: "Does the output meaningfully address the request described by the skill: 'AI Catalyst DPLC\
+      \ Domain-Aligned Data Product Generator \u2014 Build canonical, domain-aligned data products from\
+      \ existing Unity Catalog source ta'? Score 0-1."
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

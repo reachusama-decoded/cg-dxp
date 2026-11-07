@@ -1,0 +1,12 @@
+--index-url https://cgrepo-aws.capgroup.com/repository/cgpypi/simple/
+
+# Third-party deps beyond stdlib + the vendored Catalyst clients.
+# HTTP client used by the collector's raw-requests fallback when the
+# vendored Catalyst Databricks client isn't on the path.
+requests>=2.28
+# YAML parser for dbt_project.yml / profiles.yml.
+pyyaml>=6.0
+# Validates evaluate_findings.py output against the JSON Schema in
+# templates/compute-optimization-findings.json so contract drift fails
+# loudly instead of shipping silently to the report renderer.
+jsonschema>=4.0

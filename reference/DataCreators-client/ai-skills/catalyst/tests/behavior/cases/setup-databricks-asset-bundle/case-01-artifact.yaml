@@ -1,0 +1,43 @@
+id: setup-databricks-asset-bundle.case-01-artifact
+skill: skills/setup-databricks-asset-bundle
+type: artifact
+description: >
+  Scaffold the pipeline Databricks Asset Bundle for a dbt data product: writes
+  databricks.yml with glob includes and per-env variable files, then writes one
+  *.job.yml per dataset with a single dbt-run task using dbt_wrapper.py
+  deps_then_run and persistent compute referenced by variable only. Airflow
+  owns alerting — no email_notifications.
+input:
+  arguments: >
+    Scaffold the pipeline DAB for the employee-directory data product. Datasets:
+    cg_employee_v4 (hourly schedule, dev/qa/prd environments). Target catalog:
+    app_catalog. Schema: employee_directory. Product root: data_products/employee_directory.
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: bundle_root_present
+      weight: 0.3
+      prompt: >
+        Does the output include a databricks.yml with a glob include pattern
+        (datasets/**/bundle/*.yml) and targets for dev and prd? Score 0-1.
+    - id: job_yml_single_dbt_task
+      weight: 0.3
+      prompt: >
+        Does the output include a *.job.yml for the cg_employee_v4 dataset with
+        one dbt-run task that uses spark_python_task pointing at dbt_wrapper.py,
+        invokes deps_then_run, and references persistent compute only by
+        ${var.cluster_id}? Score 0-1.
+    - id: lifecycle_separation
+      weight: 0.25
+      prompt: >
+        Does the output explicitly avoid inline warehouse or persistent-cluster
+        definitions in the pipeline DAB, referencing persistent compute only via
+        ${var.warehouse_id} or ${var.cluster_id}? Score 0-1.
+    - id: no_email_notifications
+      weight: 0.15
+      prompt: >
+        Does the output omit email_notifications.on_failure and include a comment
+        stating that Airflow owns alerting? Score 0-1.

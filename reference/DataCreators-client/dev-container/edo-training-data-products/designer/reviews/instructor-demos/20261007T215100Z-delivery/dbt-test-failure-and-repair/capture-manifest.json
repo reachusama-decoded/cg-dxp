@@ -1,0 +1,604 @@
+{
+  "schema_version": 1,
+  "run_id": "20261007T215100Z-delivery",
+  "story": {
+    "schema_version": 1,
+    "id": "dbt-test-failure-and-repair",
+    "title": "A failed relationship blocks the mart",
+    "objective": "Diagnose the intended missing-key failure and prove repair.",
+    "tool": "dbt",
+    "task_ids": [
+      "dbt-p1-05",
+      "dbt-p2-03"
+    ],
+    "route": "local-duckdb",
+    "readiness": "ready",
+    "audience": "Instructor demonstration; completed instructor copy is explicitly identified",
+    "prerequisites": "Prepared runtime and assigned disposable resources; authenticate outside recording",
+    "workspace_source": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+    "source_inputs": [
+      "challenges/v2/dbt/phase-one-certified/README.md",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution",
+      "scripts/demo-checks.py"
+    ],
+    "requires": [
+      "browser",
+      "dbt",
+      "duckdb-python"
+    ],
+    "resources": [
+      "fresh private workspace"
+    ],
+    "cleanup": [],
+    "main_book": {
+      "include": false,
+      "teaching_key": "dbt-models-and-tests"
+    },
+    "steps": [
+      {
+        "id": "baseline",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "Completed successfully"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Establish the valid baseline.",
+          "notice": "The independent CSV oracle agrees with all three fund results."
+        }
+      },
+      {
+        "id": "defect",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cp seeds/holdings.csv holdings.saved.csv\npython3 -c \"from pathlib import Path; p=Path('seeds/holdings.csv'); p.write_text(p.read_text().replace('A,','UNKNOWN,',1))\"\nrm training.duckdb\ncat seeds/holdings.csv"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "UNKNOWN"
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Introduce one unmatched key in a fresh database.",
+          "notice": "The first holding now references UNKNOWN; an old mart cannot mask this attempt."
+        }
+      },
+      {
+        "id": "failure",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 1,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "FAIL"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "relationship-failure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Observe the expected quality failure.",
+          "notice": "The relationship test fails; the dependent mart is skipped and absent."
+        }
+      },
+      {
+        "id": "repair",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cp holdings.saved.csv seeds/holdings.csv && dbt seed --profiles-dir . && dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "Completed successfully"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Restore the original input and rebuild.",
+          "notice": "The repaired build and independently calculated fund outputs agree."
+        }
+      },
+      {
+        "id": "replay",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt build --profiles-dir . && python3 inspect-output.py exposure"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "CSV/Decimal"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Replay the repaired build.",
+          "notice": "The same five holdings yield the same three per-fund results."
+        }
+      }
+    ],
+    "closing_question": "Diagnose the intended missing-key failure and prove repair. Which observation supports your explanation?",
+    "workspace_files": [
+      {
+        "source": "scripts/demo-checks.py",
+        "destination": "inspect-output.py"
+      }
+    ]
+  },
+  "status": "captured",
+  "route": "local-duckdb",
+  "runtime": {
+    "browser": {
+      "status": "available",
+      "detail": "149.0.7827.55"
+    },
+    "dbt": {
+      "status": "available",
+      "detail": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation"
+    },
+    "duckdb-python": {
+      "status": "available",
+      "detail": "1.4.1"
+    }
+  },
+  "source_hashes": {
+    "story.yaml": "cfc673bdea120b2b3c0755bd8211f71e217cc752796c20c6e6ca712ae61c013a",
+    "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/dbt/phase-one-certified/README.md": "8bf60e32facde8627651435e8fb0b1c3e19f5687fb23742907d5d624f1beae6a",
+    "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+    "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+    "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+    "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+    "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+    "scripts/instructor_demos/publish.py": "59a07f0496a435e65fbb8a8cb9b9832856907b4f75bf9196dae606ebafea8996",
+    "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+    "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+    "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+    "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+    "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+    "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+  },
+  "started_at": "2026-10-07T22:49:27.241065+00:00",
+  "checkpoints": [
+    {
+      "story_id": "dbt-test-failure-and-repair",
+      "step_id": "baseline",
+      "action_time": "2026-10-07T22:49:27.494062+00:00",
+      "observation_time": "2026-10-07T22:49:33.250853+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004hdemo $ \u001b[?2004l\r\r\n22:49:28  Running with dbt=1.10.13\r\n22:49:28  Registered adapter: duckdb=1.9.6\r\n22:49:28  Unable to do partial parsing because saved manifest not found. Starting full parse.\r\n22:49:29  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:29  \r\n22:49:29  Concurrency: 1 threads (target='local')\r\n22:49:29  \r\n22:49:29  1 of 2 START seed file main.funds .............................................. [RUN]\r\n22:49:29  1 of 2 OK loaded seed file main.funds .......................................... [INSERT 3 in 0.04s]\r\n22:49:29  2 of 2 START seed file main.holdings ........................................... [RUN]\r\n22:49:29  2 of 2 OK loaded seed file main.holdings ....................................... [INSERT 5 in 0.01s]\r\n22:49:29  \r\n22:49:29  Finished running 2 seeds in 0 hours 0 minutes and 0.20 seconds (0.20s).\r\n22:49:29  \r\n22:49:29  Completed successfully\r\n22:49:29  \r\n22:49:29  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2\r\n22:49:30  Running with dbt=1.10.13\r\n22:49:30  Registered adapter: duckdb=1.9.6\r\n22:49:30  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:30  \r\n22:49:30  Concurrency: 1 threads (target='local')\r\n22:49:30  \r\n22:49:30  1 of 12 START sql table model main.stg_funds ................................... [RUN]\r\n22:49:30  1 of 12 OK created sql table model main.stg_funds .............................. [OK in 0.04s]\r\n22:49:30  2 of 12 START sql table model main.stg_holdings ................................ [RUN]\r\n22:49:30  2 of 12 OK created sql table model main.stg_holdings ........................... [OK in 0.01s]\r\n22:49:30  3 of 12 START seed file main.funds ............................................. [RUN]\r\n22:49:30  3 of 12 OK loaded seed file main.funds ......................................... [INSERT 3 in 0.03s]\r\n22:49:30  4 of 12 START seed file main.holdings .......................................... [RUN]\r\n22:49:30  4 of 12 OK loaded seed file main.holdings ...................................... [INSERT 5 in 0.01s]\r\n22:49:30  5 of 12 START test not_null_stg_funds_fund_id .................................. [RUN]\r\n22:49:30  5 of 12 PASS not_null_stg_funds_fund_id ........................................ [PASS in 0.02s]\r\n22:49:30  6 of 12 START test unique_stg_funds_fund_id .................................... [RUN]\r\n22:49:30  6 of 12 PASS unique_stg_funds_fund_id .......................................... [PASS in 0.01s]\r\n22:49:30  7 of 12 START test not_null_stg_holdings_fund_id ............................... [RUN]\r\n22:49:30  7 of 12 PASS not_null_stg_holdings_fund_id ..................................... [PASS in 0.01s]\r\n22:49:30  8 of 12 START test relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ . [RUN]\r\n22:49:30  8 of 12 PASS relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ ....... [PASS in 0.01s]\r\n22:49:30  9 of 12 START sql table model main.fund_exposure ............................... [RUN]\r\n22:49:30  9 of 12 OK created sql table model main.fund_exposure .......................... [OK in 0.02s]\r\n22:49:30  10 of 12 START test not_null_fund_exposure_fund_id ............................. [RUN]\r\n22:49:30  10 of 12 PASS not_null_fund_exposure_fund_id ................................... [PASS in 0.01s]\r\n22:49:30  11 of 12 START test reconcile_exposure ......................................... [RUN]\r\n22:49:30  11 of 12 PASS reconcile_exposure ............................................... [PASS in 0.01s]\r\n22:49:30  12 of 12 START test unique_fund_exposure_fund_id ............................... [RUN]\r\n22:49:30  12 of 12 PASS unique_fund_exposure_fund_id ..................................... [PASS in 0.01s]\r\n22:49:30  \r\n22:49:30  Finished running 2 seeds, 3 table models, 7 data tests in 0 hours 0 minutes and 0.29 seconds (0.29s).\r\n22:49:30  \r\n22:49:30  Completed successfully\r\n22:49:30  \r\n22:49:30  Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "Completed successfully",
+          "passed": true
+        },
+        {
+          "kind": "command",
+          "argv": [
+            "{{dbt_python}}",
+            "inspect-output.py",
+            "exposure"
+          ],
+          "exit_code": 0,
+          "output": "CSV/Decimal independent per-fund calculation\nfund   holdings   exposure\nA      2          150.00\nB      2          100.00\nC      1          0.00\nInput: 5 holdings; total: 250",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Establish the valid baseline.",
+        "notice": "The independent CSV oracle agrees with all three fund results."
+      },
+      "frame": "baseline.png",
+      "frame_sha256": "168e1275aec30add212fe2b9c2fa90fc5a95b2280c4bc6ebfea313c42a4be87a",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        0.0,
+        5.757
+      ]
+    },
+    {
+      "story_id": "dbt-test-failure-and-repair",
+      "step_id": "defect",
+      "action_time": "2026-10-07T22:49:33.251428+00:00",
+      "observation_time": "2026-10-07T22:49:35.358563+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cp seeds/holdings.csv holdings.saved.csv\npython3 -c \"from pathlib import Path; p=Path('seeds/holdings.csv'); p.write_text(p.read_text().replace('A,','UNKNOWN,',1))\"\nrm training.duckdb\ncat seeds/holdings.csv"
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cp seeds/holdings.csv holdings.saved.csv\npython3 -c \"from pathlib import Path; p=Path('seeds/holdings.csv'); p.write_text(p.read_text().replace('A,','UNKNOWN,',1))\"\nrm training.duckdb\ncat seeds/holdings.csv"
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\nfund_id,instrument_id,market_value\r\nUNKNOWN,X,100\r\nA,Y,50\r\nB,X,80\r\nB,Z,20\r\nC,Q,0\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "UNKNOWN",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Introduce one unmatched key in a fresh database.",
+        "notice": "The first holding now references UNKNOWN; an old mart cannot mask this attempt."
+      },
+      "frame": "defect.png",
+      "frame_sha256": "ff598ee8f5214653c8ddd4a5b12f19715052ca181722523883e159f23c2014be",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        5.757,
+        7.865
+      ]
+    },
+    {
+      "story_id": "dbt-test-failure-and-repair",
+      "step_id": "failure",
+      "action_time": "2026-10-07T22:49:35.359110+00:00",
+      "observation_time": "2026-10-07T22:49:40.402058+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "observation": {
+        "exit_code": 1,
+        "output": "\u001b[?2004l\r\r\n22:49:36  Running with dbt=1.10.13\r\n22:49:36  Registered adapter: duckdb=1.9.6\r\n22:49:36  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:36  \r\n22:49:36  Concurrency: 1 threads (target='local')\r\n22:49:36  \r\n22:49:36  1 of 2 START seed file main.funds .............................................. [RUN]\r\n22:49:36  1 of 2 OK loaded seed file main.funds .......................................... [INSERT 3 in 0.04s]\r\n22:49:36  2 of 2 START seed file main.holdings ........................................... [RUN]\r\n22:49:36  2 of 2 OK loaded seed file main.holdings ....................................... [INSERT 5 in 0.01s]\r\n22:49:36  \r\n22:49:36  Finished running 2 seeds in 0 hours 0 minutes and 0.15 seconds (0.15s).\r\n22:49:36  \r\n22:49:36  Completed successfully\r\n22:49:36  \r\n22:49:36  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2\r\n22:49:37  Running with dbt=1.10.13\r\n22:49:37  Registered adapter: duckdb=1.9.6\r\n22:49:37  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:37  \r\n22:49:37  Concurrency: 1 threads (target='local')\r\n22:49:37  \r\n22:49:37  1 of 12 START sql table model main.stg_funds ................................... [RUN]\r\n22:49:37  1 of 12 OK created sql table model main.stg_funds .............................. [OK in 0.04s]\r\n22:49:37  2 of 12 START sql table model main.stg_holdings ................................ [RUN]\r\n22:49:37  2 of 12 OK created sql table model main.stg_holdings ........................... [OK in 0.01s]\r\n22:49:37  3 of 12 START seed file main.funds ............................................. [RUN]\r\n22:49:37  3 of 12 OK loaded seed file main.funds ......................................... [INSERT 3 in 0.03s]\r\n22:49:37  4 of 12 START seed file main.holdings .......................................... [RUN]\r\n22:49:38  4 of 12 OK loaded seed file main.holdings ...................................... [INSERT 5 in 0.01s]\r\n22:49:38  5 of 12 START test not_null_stg_funds_fund_id .................................. [RUN]\r\n22:49:38  5 of 12 PASS not_null_stg_funds_fund_id ........................................ [PASS in 0.02s]\r\n22:49:38  6 of 12 START test unique_stg_funds_fund_id .................................... [RUN]\r\n22:49:38  6 of 12 PASS unique_stg_funds_fund_id .......................................... [PASS in 0.01s]\r\n22:49:38  7 of 12 START test not_null_stg_holdings_fund_id ............................... [RUN]\r\n22:49:38  7 of 12 PASS not_null_stg_holdings_fund_id ..................................... [PASS in 0.01s]\r\n22:49:38  8 of 12 START test relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ . [RUN]\r\n22:49:38  8 of 12 FAIL 1 relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ ..... [FAIL 1 in 0.01s]\r\n22:49:38  9 of 12 SKIP relation main.fund_exposure ....................................... [SKIP]\r\n22:49:38  10 of 12 SKIP test not_null_fund_exposure_fund_id .............................. [SKIP]\r\n22:49:38  11 of 12 SKIP test reconcile_exposure .......................................... [SKIP]\r\n22:49:38  12 of 12 SKIP test unique_fund_exposure_fund_id ................................ [SKIP]\r\n22:49:38  \r\n22:49:38  Finished running 2 seeds, 3 table models, 7 data tests in 0 hours 0 minutes and 0.26 seconds (0.26s).\r\n22:49:38  \r\n22:49:38  Completed with 1 error, 0 partial successes, and 0 warnings:\r\n22:49:38  \r\n22:49:38  Failure in test relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ (models/schema.yml)\r\n22:49:38    Got 1 result, configured to fail if != 0\r\n22:49:38  \r\n22:49:38    compiled code at target/compiled/v2_portfolio/models/schema.yml/relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_.sql\r\n22:49:38  \r\n22:49:38  Done. PASS=7 WARN=0 ERROR=1 SKIP=4 NO-OP=0 TOTAL=12\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "FAIL",
+          "passed": true
+        },
+        {
+          "kind": "command",
+          "argv": [
+            "{{dbt_python}}",
+            "inspect-output.py",
+            "relationship-failure"
+          ],
+          "exit_code": 0,
+          "output": "{\"failed_tests\": [\"test.v2_portfolio.relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_.256ea20f18\"], \"publication\": \"fund_exposure skipped and relation absent\"}",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Observe the expected quality failure.",
+        "notice": "The relationship test fails; the dependent mart is skipped and absent."
+      },
+      "frame": "failure.png",
+      "frame_sha256": "87118b12a25340969f814db2d637754fe2668a45ef5fd9877fa5f748a047dc0f",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        7.865,
+        12.908
+      ]
+    },
+    {
+      "story_id": "dbt-test-failure-and-repair",
+      "step_id": "repair",
+      "action_time": "2026-10-07T22:49:40.402757+00:00",
+      "observation_time": "2026-10-07T22:49:45.534855+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cp holdings.saved.csv seeds/holdings.csv && dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cp holdings.saved.csv seeds/holdings.csv && dbt seed --profiles-dir . && dbt build --profiles-dir ."
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\n22:49:41  Running with dbt=1.10.13\r\n22:49:41  Registered adapter: duckdb=1.9.6\r\n22:49:41  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:41  \r\n22:49:41  Concurrency: 1 threads (target='local')\r\n22:49:41  \r\n22:49:41  1 of 2 START seed file main.funds .............................................. [RUN]\r\n22:49:41  1 of 2 OK loaded seed file main.funds .......................................... [INSERT 3 in 0.04s]\r\n22:49:41  2 of 2 START seed file main.holdings ........................................... [RUN]\r\n22:49:41  2 of 2 OK loaded seed file main.holdings ....................................... [INSERT 5 in 0.01s]\r\n22:49:41  \r\n22:49:41  Finished running 2 seeds in 0 hours 0 minutes and 0.15 seconds (0.15s).\r\n22:49:41  \r\n22:49:41  Completed successfully\r\n22:49:41  \r\n22:49:41  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2\r\n22:49:42  Running with dbt=1.10.13\r\n22:49:42  Registered adapter: duckdb=1.9.6\r\n22:49:42  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:42  \r\n22:49:42  Concurrency: 1 threads (target='local')\r\n22:49:42  \r\n22:49:42  1 of 12 START sql table model main.stg_funds ................................... [RUN]\r\n22:49:43  1 of 12 OK created sql table model main.stg_funds .............................. [OK in 0.05s]\r\n22:49:43  2 of 12 START sql table model main.stg_holdings ................................ [RUN]\r\n22:49:43  2 of 12 OK created sql table model main.stg_holdings ........................... [OK in 0.02s]\r\n22:49:43  3 of 12 START seed file main.funds ............................................. [RUN]\r\n22:49:43  3 of 12 OK loaded seed file main.funds ......................................... [INSERT 3 in 0.04s]\r\n22:49:43  4 of 12 START seed file main.holdings .......................................... [RUN]\r\n22:49:43  4 of 12 OK loaded seed file main.holdings ...................................... [INSERT 5 in 0.01s]\r\n22:49:43  5 of 12 START test not_null_stg_funds_fund_id .................................. [RUN]\r\n22:49:43  5 of 12 PASS not_null_stg_funds_fund_id ........................................ [PASS in 0.02s]\r\n22:49:43  6 of 12 START test unique_stg_funds_fund_id .................................... [RUN]\r\n22:49:43  6 of 12 PASS unique_stg_funds_fund_id .......................................... [PASS in 0.01s]\r\n22:49:43  7 of 12 START test not_null_stg_holdings_fund_id ............................... [RUN]\r\n22:49:43  7 of 12 PASS not_null_stg_holdings_fund_id ..................................... [PASS in 0.01s]\r\n22:49:43  8 of 12 START test relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ . [RUN]\r\n22:49:43  8 of 12 PASS relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ ....... [PASS in 0.01s]\r\n22:49:43  9 of 12 START sql table model main.fund_exposure ............................... [RUN]\r\n22:49:43  9 of 12 OK created sql table model main.fund_exposure .......................... [OK in 0.02s]\r\n22:49:43  10 of 12 START test not_null_fund_exposure_fund_id ............................. [RUN]\r\n22:49:43  10 of 12 PASS not_null_fund_exposure_fund_id ................................... [PASS in 0.01s]\r\n22:49:43  11 of 12 START test reconcile_exposure ......................................... [RUN]\r\n22:49:43  11 of 12 PASS reconcile_exposure ............................................... [PASS in 0.01s]\r\n22:49:43  12 of 12 START test unique_fund_exposure_fund_id ............................... [RUN]\r\n22:49:43  12 of 12 PASS unique_fund_exposure_fund_id ..................................... [PASS in 0.01s]\r\n22:49:43  \r\n22:49:43  Finished running 2 seeds, 3 table models, 7 data tests in 0 hours 0 minutes and 0.36 seconds (0.36s).\r\n22:49:43  \r\n22:49:43  Completed successfully\r\n22:49:43  \r\n22:49:43  Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "Completed successfully",
+          "passed": true
+        },
+        {
+          "kind": "command",
+          "argv": [
+            "{{dbt_python}}",
+            "inspect-output.py",
+            "exposure"
+          ],
+          "exit_code": 0,
+          "output": "CSV/Decimal independent per-fund calculation\nfund   holdings   exposure\nA      2          150.00\nB      2          100.00\nC      1          0.00\nInput: 5 holdings; total: 250",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Restore the original input and rebuild.",
+        "notice": "The repaired build and independently calculated fund outputs agree."
+      },
+      "frame": "repair.png",
+      "frame_sha256": "e7ef7f6d447324bd504821284a82a57b2d0463e098d6fb424994875344d16ce6",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        12.909,
+        18.041
+      ]
+    },
+    {
+      "story_id": "dbt-test-failure-and-repair",
+      "step_id": "replay",
+      "action_time": "2026-10-07T22:49:45.535522+00:00",
+      "observation_time": "2026-10-07T22:49:49.380779+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt build --profiles-dir . && python3 inspect-output.py exposure"
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt build --profiles-dir . && python3 inspect-output.py exposure"
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\n22:49:46  Running with dbt=1.10.13\r\n22:49:46  Registered adapter: duckdb=1.9.6\r\n22:49:46  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:49:46  \r\n22:49:46  Concurrency: 1 threads (target='local')\r\n22:49:46  \r\n22:49:46  1 of 12 START sql table model main.stg_funds ................................... [RUN]\r\n22:49:46  1 of 12 OK created sql table model main.stg_funds .............................. [OK in 0.09s]\r\n22:49:46  2 of 12 START sql table model main.stg_holdings ................................ [RUN]\r\n22:49:46  2 of 12 OK created sql table model main.stg_holdings ........................... [OK in 0.02s]\r\n22:49:46  3 of 12 START seed file main.funds ............................................. [RUN]\r\n22:49:46  3 of 12 OK loaded seed file main.funds ......................................... [INSERT 3 in 0.03s]\r\n22:49:46  4 of 12 START seed file main.holdings .......................................... [RUN]\r\n22:49:46  4 of 12 OK loaded seed file main.holdings ...................................... [INSERT 5 in 0.01s]\r\n22:49:46  5 of 12 START test not_null_stg_funds_fund_id .................................. [RUN]\r\n22:49:46  5 of 12 PASS not_null_stg_funds_fund_id ........................................ [PASS in 0.02s]\r\n22:49:46  6 of 12 START test unique_stg_funds_fund_id .................................... [RUN]\r\n22:49:46  6 of 12 PASS unique_stg_funds_fund_id .......................................... [PASS in 0.01s]\r\n22:49:46  7 of 12 START test not_null_stg_holdings_fund_id ............................... [RUN]\r\n22:49:46  7 of 12 PASS not_null_stg_holdings_fund_id ..................................... [PASS in 0.01s]\r\n22:49:46  8 of 12 START test relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ . [RUN]\r\n22:49:46  8 of 12 PASS relationships_stg_holdings_fund_id__fund_id__ref_stg_funds_ ....... [PASS in 0.01s]\r\n22:49:46  9 of 12 START sql table model main.fund_exposure ............................... [RUN]\r\n22:49:46  9 of 12 OK created sql table model main.fund_exposure .......................... [OK in 0.02s]\r\n22:49:46  10 of 12 START test not_null_fund_exposure_fund_id ............................. [RUN]\r\n22:49:46  10 of 12 PASS not_null_fund_exposure_fund_id ................................... [PASS in 0.01s]\r\n22:49:46  11 of 12 START test reconcile_exposure ......................................... [RUN]\r\n22:49:46  11 of 12 PASS reconcile_exposure ............................................... [PASS in 0.01s]\r\n22:49:46  12 of 12 START test unique_fund_exposure_fund_id ............................... [RUN]\r\n22:49:46  12 of 12 PASS unique_fund_exposure_fund_id ..................................... [PASS in 0.01s]\r\n22:49:46  \r\n22:49:46  Finished running 2 seeds, 3 table models, 7 data tests in 0 hours 0 minutes and 0.38 seconds (0.38s).\r\n22:49:46  \r\n22:49:46  Completed successfully\r\n22:49:46  \r\n22:49:46  Done. PASS=12 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=12\r\nCSV/Decimal independent per-fund calculation\r\nfund   holdings   exposure\r\nA      2          150.00\r\nB      2          100.00\r\nC      1          0.00\r\nInput: 5 holdings; total: 250\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "CSV/Decimal",
+          "passed": true
+        },
+        {
+          "kind": "command",
+          "argv": [
+            "{{dbt_python}}",
+            "inspect-output.py",
+            "exposure"
+          ],
+          "exit_code": 0,
+          "output": "CSV/Decimal independent per-fund calculation\nfund   holdings   exposure\nA      2          150.00\nB      2          100.00\nC      1          0.00\nInput: 5 holdings; total: 250",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Replay the repaired build.",
+        "notice": "The same five holdings yield the same three per-fund results."
+      },
+      "frame": "replay.png",
+      "frame_sha256": "e4330a4d51062f10fdc5e2fac14c6984822a8126e38137920d78f234ae5292d6",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        18.042,
+        21.887
+      ]
+    }
+  ],
+  "cleanup": [],
+  "review": {
+    "reviewer": "Codex technical candidate review",
+    "notes": "Technical candidate review: real PTY commands/exits, independent CSV/Decimal assertions and capture bytes checked. Real WebM seek defect reproduced and corrected with the supplied HTTP range server. Print bounds, captions, desktop/mobile, exact copy, pause/seek and packaged-player checks follow export. Human pacing/projector and connected routes remain pending.",
+    "source_hashes": {
+      "story.yaml": "cfc673bdea120b2b3c0755bd8211f71e217cc752796c20c6e6ca712ae61c013a",
+      "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+      "challenges/v2/dbt/phase-one-certified/README.md": "8bf60e32facde8627651435e8fb0b1c3e19f5687fb23742907d5d624f1beae6a",
+      "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+      "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+      "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+      "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+      "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+      "scripts/instructor_demos/publish.py": "59a07f0496a435e65fbb8a8cb9b9832856907b4f75bf9196dae606ebafea8996",
+      "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+      "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+      "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+      "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+      "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+      "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+    },
+    "frames": {
+      "baseline.png": "168e1275aec30add212fe2b9c2fa90fc5a95b2280c4bc6ebfea313c42a4be87a",
+      "defect.png": "ff598ee8f5214653c8ddd4a5b12f19715052ca181722523883e159f23c2014be",
+      "failure.png": "87118b12a25340969f814db2d637754fe2668a45ef5fd9877fa5f748a047dc0f",
+      "repair.png": "e7ef7f6d447324bd504821284a82a57b2d0463e098d6fb424994875344d16ce6",
+      "replay.png": "e4330a4d51062f10fdc5e2fac14c6984822a8126e38137920d78f234ae5292d6"
+    },
+    "videos": [
+      {
+        "path": "video/page@d11125e2e4b4c8d1d222e7ad34a86ff9.webm",
+        "sha256": "79e090f36e04233a67ac9f2ede685ca0c51029a9c8e5e6934a31295c0ca980b2"
+      }
+    ],
+    "verdict": "approved for candidate export"
+  },
+  "recording": "raw real-time browser recording; no compressed waits",
+  "videos": [
+    {
+      "path": "video/page@d11125e2e4b4c8d1d222e7ad34a86ff9.webm",
+      "sha256": "79e090f36e04233a67ac9f2ede685ca0c51029a9c8e5e6934a31295c0ca980b2"
+    }
+  ],
+  "duration_seconds": 25.091,
+  "finished_at": "2026-10-07T22:49:52.584868+00:00",
+  "private_artifacts": {
+    "path": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/instructor-demos/20261007T215100Z-delivery/dbt-test-failure-and-repair",
+    "files": {
+      "baseline.png": "168e1275aec30add212fe2b9c2fa90fc5a95b2280c4bc6ebfea313c42a4be87a",
+      "defect.png": "ff598ee8f5214653c8ddd4a5b12f19715052ca181722523883e159f23c2014be",
+      "developer.events.json": "99b024ac5bbeefb4e2b1ba8af1938fbc66b433e405023f5ad19c534cc26e6bea",
+      "developer.raw.txt": "067d9d94dea98b93a9f11a9d5e270f199a689fdbb1ff49e080639244b0d2d52d",
+      "failure.png": "87118b12a25340969f814db2d637754fe2668a45ef5fd9877fa5f748a047dc0f",
+      "repair.png": "e7ef7f6d447324bd504821284a82a57b2d0463e098d6fb424994875344d16ce6",
+      "replay.png": "e4330a4d51062f10fdc5e2fac14c6984822a8126e38137920d78f234ae5292d6",
+      "video/page@d11125e2e4b4c8d1d222e7ad34a86ff9.webm": "79e090f36e04233a67ac9f2ede685ca0c51029a9c8e5e6934a31295c0ca980b2",
+      "workspace/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+      "workspace/holdings.saved.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "workspace/inspect-output.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+      "workspace/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+      "workspace/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+      "workspace/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+      "workspace/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+      "workspace/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+      "workspace/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+      "workspace/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+      "workspace/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "workspace/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+    }
+  }
+}

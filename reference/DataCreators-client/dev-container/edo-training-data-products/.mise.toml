@@ -1,0 +1,440 @@
+# Mise configuration for dynamic environment management
+
+[tools]
+databricks-cli = "0.236.0"
+python = "3.13.0"
+uv = "0.11.2"
+
+[settings]
+python.github_attestations = false
+
+[env]
+_.python.venv = { path = ".venv", create = true }
+_.source = ".mise/env.sh"
+
+[tasks."setup:python-deps"]
+description = "Install Python dependencies into the venv"
+run = ".devcontainer/utils/setup-python-deps.sh"
+
+[tasks."setup:databricks"]
+description = "Interactive Databricks setup (OAuth default; pass --pat for PAT)"
+usage = '''
+flag "--pat" help="Use PAT instead of OAuth"
+'''
+run = '''
+if [ -n "${usage_pat:-}" ]; then
+  bash .devcontainer/setup-databricks-dbt.sh --pat
+else
+  bash .devcontainer/setup-databricks-dbt.sh
+fi
+'''
+
+[tasks."setup:airflow-settings"]
+description = "Create airflow settings after Databricks setup"
+depends = ["setup:databricks"]
+run = ".devcontainer/utils/setup-airflow-settings.sh"
+
+[tasks."databricks:oauth-refresh"]
+description = "Restart the OAuth->Airflow token refresher (OAuth mode only)"
+run = "nohup .devcontainer/utils/databricks-oauth-refresh.sh --loop >/var/log/dbx-oauth-refresh.log 2>&1 </dev/null & echo started"
+
+[tasks."setup:mise"]
+description = "Trust .mise.toml and install mise shell hook into /etc/profile.d"
+run = ".devcontainer/utils/setup-mise.sh"
+[tasks."setup:gh-auth"]
+description = "Configure GitHub CLI auth bootstrap from existing git credentials"
+run = "bash .devcontainer/utils/setup-gh-auth.sh"
+
+[tasks."setup:env-file"]
+description = "Create config files from templates if they don't exist"
+run = """
+if [ ! -f .devcontainer/.env ]; then
+  cp .devcontainer/utils/.env.example .devcontainer/.env
+  echo "Created .devcontainer/.env from template -- set DATABRICKS_HOST and DATABRICKS_HTTP_PATH (OAuth is default; PAT only for --pat fallback)"
+fi
+"""
+
+[tasks."setup:dbt-deps"]
+description = "Install dbt package deps for atlas_elt (clears the dpc-check parse WARN)"
+depends = ["setup:python-deps"]
+run = "if [ -d data_products/atlas_elt ]; then cd data_products/atlas_elt && dbt deps --profiles-dir dbt_profiles; else echo 'atlas_elt is not in this project; skipping its dbt deps'; fi"
+
+[tasks.setup]
+description = "Full devcontainer setup"
+depends = ["setup:mise", "setup:gh-auth", "setup:python-deps", "setup:dbt-deps"]
+
+[tasks.test]
+description = "Run pytest"
+run = "pytest"
+
+[tasks.lint]
+description = "Run pre-commit hooks on all files"
+run = "pre-commit run --all-files"
+
+[tasks."dbt:deps"]
+description = "Install dbt dependencies for a data product"
+usage = 'arg "<data_product>" help="Data product name e.g. orders"'
+run = "cd data_products/${usage_data_product?} && dbt deps --profiles-dir dbt_profiles"
+
+[tasks."dbt:run"]
+description = "Run dbt models for a data product. Requires DBT_CATALOG, DBT_SCHEMA, DBT_HTTP_PATH env vars (set automatically by mise run clone-sources, or override inline: DBT_CATALOG=x DBT_SCHEMA=y DBT_HTTP_PATH=z mise run dbt:run <data_product>)"
+usage = '''
+arg "<data_product>" help="Data product name e.g. orders"
+flag "--app-catalog <app_catalog>" help="Override app_catalog dbt var (write target, e.g. training_dev). Falls back to dbt_project.yml default."
+arg "[extra_args]" var=#true help="Extra dbt args e.g. --select model_name"
+'''
+run = '''
+set -e
+cd data_products/${usage_data_product?}
+if [ -n "${usage_app_catalog:-}" ]; then
+  /opt/venv/bin/python ../../dbt_wrapper.py run --project-dir . --profiles-dir dbt_profiles --target local --vars "app_catalog: ${usage_app_catalog}" ${usage_extra_args:-}
+else
+  /opt/venv/bin/python ../../dbt_wrapper.py run --project-dir . --profiles-dir dbt_profiles --target local ${usage_extra_args:-}
+fi
+'''
+
+[tasks."dbt:test"]
+description = "Test dbt models for a data product. Requires DBT_CATALOG, DBT_SCHEMA, DBT_HTTP_PATH env vars (set automatically by mise run clone-sources, or override inline: DBT_CATALOG=x DBT_SCHEMA=y DBT_HTTP_PATH=z mise run dbt:test <data_product>)"
+usage = '''
+arg "<data_product>" help="Data product name e.g. orders"
+flag "--app-catalog <app_catalog>" help="Override app_catalog dbt var (write target, e.g. training_dev). Falls back to dbt_project.yml default."
+arg "[extra_args]" var=#true help="Extra dbt args e.g. --select model_name"
+'''
+run = '''
+set -e
+cd data_products/${usage_data_product?}
+if [ -n "${usage_app_catalog:-}" ]; then
+  /opt/venv/bin/python ../../dbt_wrapper.py test --project-dir . --profiles-dir dbt_profiles --target local --vars "app_catalog: ${usage_app_catalog}" ${usage_extra_args:-}
+else
+  /opt/venv/bin/python ../../dbt_wrapper.py test --project-dir . --profiles-dir dbt_profiles --target local ${usage_extra_args:-}
+fi
+'''
+
+[tasks.clone-sources]
+description = "Clone dbt sources for all data products into a user namespaced schema"
+run = """
+python .devcontainer/clone_tools/clone_sources_engine.py "$@"
+"""
+
+[tasks."clone-sources:help"]
+description = "Show clone-sources usage and available CLI flags"
+run = """
+python .devcontainer/clone_tools/clone_sources_engine.py --help
+"""
+
+[tasks."clone-sources:cleanup"]
+description = "Drop the user namespaced schemas created by clone-sources"
+run = """
+python .devcontainer/clone_tools/clone_sources_engine.py --cleanup "$@"
+"""
+
+[tasks."verify:local-dev"]
+description = "Run local-env verification in recommended order"
+run = """
+dpc-check
+pytest tests/local_env/offline
+if [ "${CERT_INTEGRATION_TESTS:-0}" = "1" ]; then
+  pytest tests/local_env/live -m integration
+fi
+bash scripts/verify-with-databricks.sh
+"""
+
+[tasks."challenge:verify"]
+description = "Run a challenge's verification gate. Usage: mise run challenge:verify <NN>"
+usage = 'arg "<challenge>" help="Challenge number e.g. 02"'
+run = '''
+set -e
+# Use a safe single-match glob capture to avoid producing a space-separated list
+case "${usage_challenge?}" in
+  [0-9][0-9]) ;;
+  *) echo "Use a two-digit v1 challenge number" >&2; exit 2 ;;
+esac
+set -- challenges/v1/${usage_challenge?}-*
+[ "$#" -eq 1 ] || { echo "Ambiguous v1 challenge number" >&2; exit 2; }
+DIR="$1"
+[ -d "$DIR" ] || { echo "No challenge dir for '${usage_challenge}' (looked for $DIR)"; exit 1; }
+[ -f "$DIR/verify.sh" ] || { echo "No verify.sh in $DIR"; exit 1; }
+bash "$DIR/verify.sh"
+'''
+
+[tasks."challenge:verify-all"]
+description = "Run every challenge's verification gate in order"
+run = '''
+set -e
+for DIR in challenges/v1/[0-9][0-9]-*; do
+  echo "== $DIR =="
+  if [ -f "$DIR/verify.sh" ]; then
+    bash "$DIR/verify.sh"
+  else
+    echo "No verify.sh in $DIR; skipping"
+  fi
+done
+'''
+
+[tasks."challenge:dbt"]
+description = "Run dbt inside a challenge's dbt project. Usage: mise run challenge:dbt <NN> -- <dbt args>"
+usage = '''
+arg "<challenge>" help="Challenge number e.g. 02"
+arg "[extra_args]" var=#true help="dbt args e.g. build --select stg_holdings"
+'''
+run = '''
+set -e
+# Use a safe single-match glob capture to avoid producing a space-separated list
+case "${usage_challenge?}" in
+  [0-9][0-9]) ;;
+  *) echo "Use a two-digit v1 challenge number" >&2; exit 2 ;;
+esac
+set -- challenges/v1/${usage_challenge?}-*
+[ "$#" -eq 1 ] || { echo "Ambiguous v1 challenge number" >&2; exit 2; }
+DIR="$1"
+if [ "${usage_challenge?}" = "03" ]; then
+  PROJECT_DIR="data_products/portfolio_analytics/dbt"
+  PROFILES_DIR="$PROJECT_DIR"
+elif [ "${usage_challenge?}" = "04" ]; then
+  PROJECT_DIR="data_products/atlas_elt"
+  PROFILES_DIR="$PROJECT_DIR/dbt_profiles"
+else
+  PROJECT_DIR="$DIR/dbt"
+  PROFILES_DIR="$DIR/dbt_profiles"
+fi
+
+# Keep challenge dbt execution aligned with the repository's canonical wrapper pattern.
+if [ -x "/opt/venv/bin/python" ]; then
+  DBT_PY="/opt/venv/bin/python"
+elif [ -x ".venv/bin/python" ]; then
+  DBT_PY=".venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+  DBT_PY="$(command -v python3)"
+elif command -v python >/dev/null 2>&1; then
+  DBT_PY="$(command -v python)"
+else
+  echo "Python interpreter not found; cannot run dbt_wrapper.py" >&2
+  exit 2
+fi
+
+if ! "$DBT_PY" -c "import dbt.cli.main" >/dev/null 2>&1; then
+  echo "dbt core dependencies are missing for $DBT_PY; run 'mise run setup:python-deps' in the devcontainer." >&2
+  exit 2
+fi
+
+"$DBT_PY" dbt_wrapper.py ${usage_extra_args:-build} --project-dir "$PROJECT_DIR" --profiles-dir "$PROFILES_DIR" --target local
+'''
+
+[tasks."challenge:seed"]
+description = "Seed a challenge's raw-source fixtures into your schema. Usage: mise run challenge:seed <NN>"
+usage = 'arg "<challenge>" help="Challenge number e.g. 02"'
+run = '''
+set -e
+# Use a safe single-match glob capture to avoid producing a space-separated list
+case "${usage_challenge?}" in
+  [0-9][0-9]) ;;
+  *) echo "Use a two-digit v1 challenge number" >&2; exit 2 ;;
+esac
+set -- challenges/v1/${usage_challenge?}-*
+[ "$#" -eq 1 ] || { echo "Ambiguous v1 challenge number" >&2; exit 2; }
+DIR="$1"
+if [ "${usage_challenge?}" = "03" ]; then
+  PROJECT_DIR="data_products/portfolio_analytics/dbt"
+  PROFILES_DIR="$PROJECT_DIR"
+elif [ "${usage_challenge?}" = "04" ]; then
+  PROJECT_DIR="data_products/atlas_elt"
+  PROFILES_DIR="$PROJECT_DIR/dbt_profiles"
+else
+  PROJECT_DIR="$DIR/dbt"
+  PROFILES_DIR="$DIR/dbt_profiles"
+fi
+
+# Keep challenge seeding aligned with the repository's canonical wrapper pattern.
+if [ -x "/opt/venv/bin/python" ]; then
+  DBT_PY="/opt/venv/bin/python"
+elif [ -x ".venv/bin/python" ]; then
+  DBT_PY=".venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+  DBT_PY="$(command -v python3)"
+elif command -v python >/dev/null 2>&1; then
+  DBT_PY="$(command -v python)"
+else
+  echo "Python interpreter not found; cannot run dbt_wrapper.py" >&2
+  exit 2
+fi
+
+if ! "$DBT_PY" -c "import dbt.cli.main" >/dev/null 2>&1; then
+  echo "dbt core dependencies are missing for $DBT_PY; run 'mise run setup:python-deps' in the devcontainer." >&2
+  exit 2
+fi
+
+"$DBT_PY" dbt_wrapper.py seed --project-dir "$PROJECT_DIR" --profiles-dir "$PROFILES_DIR" --target local
+'''
+
+[tasks."challenge:reset"]
+description = "Re-blank a challenge's authored files back to stubs. Usage: mise run challenge:reset <NN>"
+usage = 'arg "<challenge>" help="Challenge number e.g. 02"'
+run = '''
+set -e
+# Use a safe single-match glob capture to avoid producing a space-separated list
+case "${usage_challenge?}" in
+  [0-9][0-9]) ;;
+  *) echo "Use a two-digit v1 challenge number" >&2; exit 2 ;;
+esac
+set -- challenges/v1/${usage_challenge?}-*
+[ "$#" -eq 1 ] || { echo "Ambiguous v1 challenge number" >&2; exit 2; }
+DIR="$1"
+[ -d "$DIR/stubs" ] || { echo "No stubs/ to restore for $DIR"; exit 0; }
+if [ "${usage_challenge?}" = "03" ]; then
+  STUB_ROOT="$DIR/stubs"; SOLN_ROOT="$DIR/solution"; DEST="data_products/portfolio_analytics"
+  cp -R "$DIR/stubs/." data_products/portfolio_analytics/
+  echo "Reset data_products/portfolio_analytics/ to challenge 03 stubs."
+elif [ "${usage_challenge?}" = "04" ]; then
+  STUB_ROOT="$DIR/stubs/datasets"; SOLN_ROOT="$DIR/solution/datasets"; DEST="data_products/atlas_elt/datasets"
+  cp -R "$DIR/stubs/datasets/." data_products/atlas_elt/datasets/
+  echo "Reset data_products/atlas_elt/datasets/ to challenge 04 stubs."
+else
+  # Copy stubs into the challenge's dbt/ project so authored model files are re-blanked.
+  # Why: challenge 02's working tree is CH/dbt/ and its stubs mirror dbt/ contents;
+  # copying to the challenge root would strand them beside dbt/ instead of restoring it.
+  STUB_ROOT="$DIR/stubs"; SOLN_ROOT="$DIR/solution"; DEST="$DIR/dbt"
+  cp -R "$DIR/stubs/." "$DIR/dbt/"
+  echo "Reset $DIR/dbt working files to stubs."
+fi
+# Why: `cp -R stubs/.` only overwrites paths the stub tree ships, so any file the
+# trainee creates from scratch (challenge 02 authors models/staging/schema.yml,
+# models/marts/agg_fund_daily_exposure.sql and tests/reconcile_daily_exposure.sql)
+# survived every reset and left a previous answer in place. Those files are exactly
+# the ones present in solution/ but absent from stubs/, so remove that difference —
+# a set small and well-defined enough that nothing generated (target/, logs/) or
+# pre-provisioned (profiles.yml) is ever touched.
+if [ -d "$SOLN_ROOT" ]; then
+  ( cd "$SOLN_ROOT" && find . -type f ) | while IFS= read -r REL; do
+    [ -e "$STUB_ROOT/$REL" ] || rm -f "$DEST/$REL"
+  done
+fi
+# Why: this task resets FILES only. Tables and views built by a previous attempt stay
+# in your Databricks schema, and dbt tests read those stored relations -- so a test on a
+# model you have not rebuilt yet can pass against the previous attempt's data. Say so,
+# because "reset" otherwise implies a clean slate the task cannot deliver.
+echo "Note: files only. Tables/views from earlier attempts remain in your Databricks"
+echo "      schema until a build overwrites them, so a test can still read old data."
+echo "      Run the challenge's full build (or 'mise run challenge:verify ${usage_challenge?}') to bring the"
+echo "      warehouse back in line with your current files."
+'''
+
+[tasks."challenge:v2:prepare"]
+description = "Version2 prepare: isolated tool/phase workspace"
+usage = '''
+arg "<tool>"
+arg "<phase>"
+flag "--workspace <workspace>"
+flag "--mode <mode>" default="offline"
+flag "--dry-run"
+'''
+run = '''
+set -e
+set -- python3 scripts/challenge-v2.py prepare "${usage_tool?}" "${usage_phase?}" --mode "${usage_mode:-offline}"
+if [ -n "${usage_workspace:-}" ]; then set -- "$@" --workspace "$usage_workspace"; fi
+if [ "${usage_dry_run:-false}" = true ]; then set -- "$@" --dry-run; fi
+"$@"
+'''
+
+[tasks."challenge:cg:prepare"]
+description = "CG capstone: create your own product under data_products/ from the challenge template"
+usage = '''
+arg "<name>" help="cg_public_products_<owner>, as assigned"
+flag "--catalog <catalog>"
+flag "--schema <schema>"
+flag "--prefix <prefix>"
+'''
+run = '''
+set -e
+set -- python3 scripts/cg-prepare.py prepare "${usage_name?}"
+if [ -n "${usage_catalog:-}" ]; then set -- "$@" --catalog "$usage_catalog"; fi
+if [ -n "${usage_schema:-}" ]; then set -- "$@" --schema "$usage_schema"; fi
+if [ -n "${usage_prefix:-}" ]; then set -- "$@" --prefix "$usage_prefix"; fi
+"$@"
+'''
+
+[tasks."challenge:cg:diff"]
+description = "CG capstone: list challenge-template files that differ from your product (read-only)"
+usage = 'arg "<name>"'
+run = 'python3 scripts/cg-prepare.py diff "${usage_name?}"'
+
+[tasks."challenge:v2:verify"]
+description = "Version2 verify: isolated tool/phase workspace"
+usage = '''
+arg "<tool>"
+arg "<phase>"
+flag "--workspace <workspace>"
+flag "--mode <mode>" default="offline"
+flag "--dry-run"
+'''
+run = '''
+set -e
+set -- python3 scripts/challenge-v2.py verify "${usage_tool?}" "${usage_phase?}" --mode "${usage_mode:-offline}"
+if [ -n "${usage_workspace:-}" ]; then set -- "$@" --workspace "$usage_workspace"; fi
+if [ "${usage_dry_run:-false}" = true ]; then set -- "$@" --dry-run; fi
+"$@"
+'''
+
+[tasks."challenge:v2:verify-solution"]
+description = "Version2 verify-solution: isolated tool/phase workspace"
+usage = '''
+arg "<tool>"
+arg "<phase>"
+flag "--workspace <workspace>"
+flag "--mode <mode>" default="offline"
+flag "--dry-run"
+'''
+run = '''
+set -e
+set -- python3 scripts/challenge-v2.py verify-solution "${usage_tool?}" "${usage_phase?}" --mode "${usage_mode:-offline}"
+if [ -n "${usage_workspace:-}" ]; then set -- "$@" --workspace "$usage_workspace"; fi
+if [ "${usage_dry_run:-false}" = true ]; then set -- "$@" --dry-run; fi
+"$@"
+'''
+
+[tasks."challenge:v2:verify-starter"]
+description = "Version2 verify-starter: isolated tool/phase workspace"
+usage = '''
+arg "<tool>"
+arg "<phase>"
+flag "--workspace <workspace>"
+flag "--mode <mode>" default="offline"
+flag "--dry-run"
+'''
+run = '''
+set -e
+set -- python3 scripts/challenge-v2.py verify-starter "${usage_tool?}" "${usage_phase?}" --mode "${usage_mode:-offline}"
+if [ -n "${usage_workspace:-}" ]; then set -- "$@" --workspace "$usage_workspace"; fi
+if [ "${usage_dry_run:-false}" = true ]; then set -- "$@" --dry-run; fi
+"$@"
+'''
+
+[tasks."challenge:v2:reset"]
+description = "Version2 reset: isolated tool/phase workspace"
+usage = '''
+arg "<tool>"
+arg "<phase>"
+flag "--workspace <workspace>"
+flag "--mode <mode>" default="offline"
+flag "--dry-run"
+'''
+run = '''
+set -e
+set -- python3 scripts/challenge-v2.py reset "${usage_tool?}" "${usage_phase?}" --mode "${usage_mode:-offline}"
+if [ -n "${usage_workspace:-}" ]; then set -- "$@" --workspace "$usage_workspace"; fi
+if [ "${usage_dry_run:-false}" = true ]; then set -- "$@" --dry-run; fi
+"$@"
+'''
+
+[tasks."challenge:v2:airflow-evidence"]
+description = "Check owned fresh scheduled Astro success/failure/repair and independent Portfolio output"
+usage = '''
+arg "<stage>"
+flag "--success <success>" required=true
+flag "--failure <failure>" required=true
+flag "--repair <repair>" required=true
+flag "--after <after>" required=true
+'''
+run = '''
+set -e
+python3 challenges/v2/runtime/portfolio/check-scheduled.py "${usage_stage?}" --success "${usage_success?}" --failure "${usage_failure?}" --repair "${usage_repair?}" --after "${usage_after?}"
+'''

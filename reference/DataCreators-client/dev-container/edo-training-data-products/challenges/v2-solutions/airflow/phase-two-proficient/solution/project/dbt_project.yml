@@ -1,0 +1,21 @@
+name: portfolio_analytics
+version: '1.0.0'
+config-version: 2
+profile: portfolio_analytics
+model-paths: [models]
+seed-paths: [seeds]
+test-paths: [tests]
+macro-paths: [macros]
+snapshot-paths: [snapshots]
+target-path: target
+models:
+  portfolio_analytics:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+seeds:
+  portfolio_analytics:
+    +quote_columns: false

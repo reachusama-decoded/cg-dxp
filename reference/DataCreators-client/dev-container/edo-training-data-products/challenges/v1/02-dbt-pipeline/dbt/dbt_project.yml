@@ -1,0 +1,46 @@
+name: 'portfolio_analytics_challenge'
+version: '1.0'
+profile: 'portfolio_analytics_challenge'
+config-version: 2
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+target-path: "target"
+
+# Layers are separated by +tags, not +schema: the training catalog gives you exactly
+# one pre-provisioned schema (training_<username>), so every layer materialises into
+# that one schema and is selected by tag (e.g. `--select tag:staging`).
+models:
+  portfolio_analytics_challenge:
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +tags: ["marts"]
+      # Z-ordering is a Databricks Delta optimisation; this post-hook runs after each
+      # mart table is built, co-locating rows by the columns most queries filter on so
+      # reads prune faster. It sits on the marts folder, so only mart tables run it.
+      +post-hook: "OPTIMIZE {{ this }} ZORDER BY (fund_id, position_date)"
+
+# Why: challenge 03's DAG freshness gate runs `dbt source freshness` on the custodian
+# feed, which only passes when _extracted_at is recent. The raw *_raw seeds carry a
+# static, authored timestamp, so refresh it to now on load — that is what lets a freshly
+# seeded feed (reused by challenge 03 via `mise run challenge:seed 02`) pass 03's gate on
+# a green run. Only the five *_raw seeds have an _extracted_at column (fund_master_raw
+# does not, and its product_ref source has no freshness config).
+seeds:
+  portfolio_analytics_challenge:
+    holdings_raw:
+      +post-hook: "update {{ this }} set _extracted_at = current_timestamp()"
+    positions_raw:
+      +post-hook: "update {{ this }} set _extracted_at = current_timestamp()"
+    prices_raw:
+      +post-hook: "update {{ this }} set _extracted_at = current_timestamp()"
+    refdata_raw:
+      +post-hook: "update {{ this }} set _extracted_at = current_timestamp()"
+    fx_rates_raw:
+      +post-hook: "update {{ this }} set _extracted_at = current_timestamp()"

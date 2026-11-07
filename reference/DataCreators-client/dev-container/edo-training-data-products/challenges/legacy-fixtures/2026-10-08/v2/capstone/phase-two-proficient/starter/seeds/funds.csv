@@ -1,0 +1,61 @@
+fund_id,name,style
+1,Beacon Core Bond Fund,FixedIncome
+2,Lumen Balanced Growth Fund,Balanced
+3,Stratford Balanced Growth Fund,Balanced
+4,Orion Core Bond Fund,FixedIncome
+5,Orion Thematic Innovation Fund,Thematic
+6,Beacon Index Tracker Fund,Index
+7,Meridian Global Equity Fund,GlobalEquity
+8,Vantage Index Tracker Fund,Index
+9,Lumen Thematic Innovation Fund,Thematic
+10,Stratford Balanced Growth Fund,Balanced
+11,Kingsley Index Tracker Fund,Index
+12,Kingsley Core Bond Fund,FixedIncome
+13,Vantage Core Bond Fund,FixedIncome
+14,Vantage Core Bond Fund,FixedIncome
+15,Vantage Core Bond Fund,FixedIncome
+16,Lumen Global Equity Fund,GlobalEquity
+17,Lumen Thematic Innovation Fund,Thematic
+18, Orion Multi-Asset Income Fund ,MultiAsset
+19,Northcrest Multi-Asset Income Fund,  MultiAsset
+20,Helvetia Thematic Innovation Fund,Thematic
+21,Vantage Multi-Asset Income Fund,MultiAsset
+22,Beacon Global Equity Fund,GlobalEquity
+23,  Meridian Index Tracker Fund  ,Index
+24,Lumen Multi-Asset Income Fund,MultiAsset
+25,Lumen Core Bond Fund,FixedIncome
+26,Stratford Multi-Asset Income Fund,MultiAsset
+27,Northcrest Global Equity Fund,GlobalEquity
+28,Orion Multi-Asset Income Fund,MultiAsset
+29,Stratford Multi-Asset Income Fund,MultiAsset
+30,Meridian Multi-Asset Income Fund,MultiAsset
+31,Helvetia Thematic Innovation Fund,Thematic
+32,Meridian Balanced Growth Fund,Balanced
+33,Helvetia Balanced Growth Fund,Balanced
+34,Meridian Core Bond Fund,FixedIncome
+35,Lumen Multi-Asset Income Fund,  MultiAsset
+36,Northcrest Core Bond Fund,FixedIncome
+37,Lumen Global Equity Fund,GlobalEquity
+38,Northcrest Global Equity Fund,GlobalEquity
+39,Kingsley Emerging Markets Fund,EmergingMarkets
+40,Beacon Core Bond Fund,  FixedIncome
+41,Northcrest Multi-Asset Income Fund,MultiAsset
+42,Lumen Balanced Growth Fund,Balanced
+43,Vantage Emerging Markets Fund,EmergingMarkets
+44,Vantage Balanced Growth Fund, Balanced
+45,Northcrest Thematic Innovation Fund,Thematic
+46,Meridian Balanced Growth Fund,Balanced
+47,Lumen Index Tracker Fund,Index
+48,Helvetia Index Tracker Fund,Index
+49,Northcrest Core Bond Fund,FixedIncome
+50,Orion Global Equity Fund,GlobalEquity
+51,Vantage Global Equity Fund,GlobalEquity
+52,  Orion Multi-Asset Income Fund  ,MultiAsset
+53,Kingsley Balanced Growth Fund,Balanced
+54,Lumen Core Bond Fund,FixedIncome
+55,Kingsley Core Bond Fund,FixedIncome
+56,Stratford Global Equity Fund,GlobalEquity
+57, Meridian Thematic Innovation Fund ,Thematic
+58,Meridian Index Tracker Fund,Index
+59,Lumen Global Equity Fund,GlobalEquity
+60,Orion Core Bond Fund,FixedIncome

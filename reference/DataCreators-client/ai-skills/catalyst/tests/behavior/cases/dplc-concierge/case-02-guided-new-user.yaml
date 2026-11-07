@@ -1,0 +1,29 @@
+id: dplc-concierge.case-02-guided-new-user
+skill: skills/dplc-concierge
+type: artifact
+description: >-
+  A new or unsure user asks where to start.  The concierge should take the
+  guided path: ask in plain words what they want and offer a short orientation
+  without forcing it, rather than dumping the lifecycle, demanding the right
+  keywords, or routing before it understands the request.  This is judged on the
+  response, not on a sub-skill sequence, because handholding a newcomer is a
+  question-first step that invokes nothing yet.
+input:
+  arguments: "I'm new to this and not sure where to start. I want to build something with my data."
+structural_checks:
+- non_empty_output
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: asks_plainly
+    weight: 0.5
+    prompt: >-
+      Does the response ask, in plain non-jargon language, what the user wants
+      to build or accomplish, instead of dumping the full lifecycle or demanding
+      the right terminology? Score 0-1.
+  - id: guides_not_dumps
+    weight: 0.5
+    prompt: >-
+      Does the response handhold a newcomer: offer a short orientation as an
+      option rather than forcing it, and keep to a single guided step rather
+      than overwhelming them? Score 0-1.

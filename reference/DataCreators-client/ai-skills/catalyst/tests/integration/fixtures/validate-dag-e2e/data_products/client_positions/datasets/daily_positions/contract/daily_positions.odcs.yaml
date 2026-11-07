@@ -1,0 +1,51 @@
+# data_products/client_positions/datasets/daily_positions/contract/daily_positions.odcs.yaml
+# Open Data Contract Standard (ODCS) document for the daily_positions dataset.
+# Consumed by /generate-dag to pre-fill l1_domain and data_classification
+# (RFD 0011 §6 — PY-AIRFLOW-007 — required MDS tag set).
+
+apiVersion: v3.0.0
+kind: DataContract
+id: client_positions.daily_positions
+version: 1.0.0
+status: active
+
+name: daily_positions
+description: >
+  End-of-day client position records for the investment operations domain.
+  Sourced from the upstream `raw_positions_ready` Asset; published daily.
+
+domain: investment_operations                            # → DAG tag `l1_domain` (RFD 0011 §6)
+classification: confidential                             # → DAG tag `data_classification` (RFD 0011 §6); never silently defaulted
+
+owner:
+  team: edo-platform
+  email: edo-platform@capgroup.com
+
+# No `sla:` block is set — the DAG MUST NOT emit a default SLA value
+# (RFD 0011 §5; see compose-with-bundle.md SLA handling).
+
+schema:
+  - name: position_id
+    logicalType: string
+    primaryKey: true
+    description: Surrogate identity key used for MERGE idempotency.
+  - name: as_of_date
+    logicalType: date
+    description: Business date for the position snapshot (partition key).
+  - name: account_id
+    logicalType: string
+  - name: instrument_id
+    logicalType: string
+  - name: quantity
+    logicalType: decimal
+  - name: market_value
+    logicalType: decimal
+
+qualityChecks:
+  - name: no_null_in_primary_key
+    rule: column_values_not_null
+    column: position_id
+  - name: row_count_within_tolerance
+    rule: row_count_between
+    min: 1
+    max: 50000000

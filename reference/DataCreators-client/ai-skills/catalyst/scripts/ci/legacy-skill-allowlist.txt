@@ -1,0 +1,12 @@
+# Allowlist of files permitted to reference legacy skill names.
+# Each entry is a repo-root-relative path (POSIX).
+# Add a path here ONLY if it documents the legacy-skill removal itself.
+# Reviewers: every addition must be justified in the PR description.
+CHANGELOG.md
+tests/ci/test_no_legacy_skill_references.py
+scripts/ci/check-no-legacy-skills.sh
+scripts/ci/legacy-skill-allowlist.txt
+docs/skill-migration-tracker.md
+docs/superpowers/specs/2026-04-29-proposed-skill-metadata.md
+docs/specs/dplc-skill-refactoring-design.md
+docs/superpowers/specs/2026-05-14-dplc-build-skills-design.md

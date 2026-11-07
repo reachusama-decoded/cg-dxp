@@ -1,0 +1,46 @@
+id: databricks-dbsql.case-01-artifact
+skill: skills/databricks-dbsql
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "Configure a SQL warehouse and run SQL against Databricks"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: references_warehouse_management
+      weight: 0.35
+      prompt: >-
+        Does the response accurately cover SQL warehouse lifecycle
+        management — addressing at least two of: start/stop behaviour,
+        t-shirt sizing (2X-Small through 4X-Large or equivalent),
+        auto-stop idle timeout, or channel (Current vs Preview)? Score
+        1.0 if two or more lifecycle aspects are covered accurately;
+        0.5 if only one is covered; 0 if warehouse management is absent
+        or factually wrong. Score 0-1.
+    - id: cites_statement_execution_api
+      weight: 0.35
+      prompt: >-
+        Does the response correctly reference the mechanism for executing
+        SQL queries against a Databricks SQL warehouse — either the
+        Databricks SQL Statement Execution REST API
+        (`/api/2.0/sql/statements`) or the Python SDK equivalent
+        (`w.statement_execution.execute_statement(...)`)? Score 1.0 if
+        the API or SDK call is named correctly with relevant parameters
+        (warehouse_id, statement, etc.); 0.5 if the concept is mentioned
+        but the reference is vague or slightly wrong; 0 if absent or an
+        unrelated mechanism (e.g., JDBC only) is described. Score 0-1.

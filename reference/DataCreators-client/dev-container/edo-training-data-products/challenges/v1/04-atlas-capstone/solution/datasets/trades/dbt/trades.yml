@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dom_trading__trade
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+    columns:
+      - name: portfolio_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dom_portfolio__portfolio')
+                field: portfolio_id
+  - name: src_trading__trades
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

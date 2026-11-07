@@ -1,0 +1,39 @@
+RUNTIME_UPDATES_URL := "https://updates.astronomer.io/astronomer-runtime"
+PYTHON_VERSION := "3.12"
+RUNTIME_VERSION := "13.2.0"
+VENV := ".venv"
+
+AIRFLOW_VERSION := shell('curl -fs $1 | jq -r ".runtimeVersions[\"$2\"].metadata.airflowVersion"', RUNTIME_UPDATES_URL, RUNTIME_VERSION)
+
+_venv:
+    @uv python --quiet install {{ PYTHON_VERSION }}
+    @uv venv --quiet -p {{ PYTHON_VERSION }} --allow-existing --seed {{ VENV }}
+
+_requirements_in: _venv
+    @cp requirements.in {{ VENV }}/requirements.in
+    @echo "\napache-airflow=={{ AIRFLOW_VERSION }}" >> {{ VENV }}/requirements.in
+    @cat requirements-dev.in >> {{ VENV }}/requirements.in
+
+# Compile requirements.txt based on requirements*.in files and Astro Runtime image
+requirements: _requirements_in
+    @docker run -qit --rm --entrypoint python quay.io/astronomer/astro-runtime:{{ RUNTIME_VERSION }} -m pip freeze > {{ VENV }}/requirements.tmp
+    @uv pip compile --quiet --no-emit-package apache-airflow --python-version {{ PYTHON_VERSION }} {{ VENV }}/requirements.in -o {{ VENV }}/requirements.tmp
+    @cp {{ VENV }}/requirements.tmp requirements.txt
+
+# Sync virtual env with requirements.txt, including apache-airflow
+sync: _venv
+    @cp requirements.txt {{ VENV }}/requirements.tmp
+    @echo "\napache-airflow=={{ AIRFLOW_VERSION }}" >> {{ VENV }}/requirements.tmp
+    @uv pip sync {{ VENV }}/requirements.tmp
+
+# Show version of Apache Airflow, Astro Runtime and Astro CLI
+version:
+	@echo Apache Airflow Version: {{ AIRFLOW_VERSION }}
+	@echo Astro Runtime Version: {{ RUNTIME_VERSION }}
+	@astro version
+
+mypy: sync
+    @{{ VENV }}/bin/mypy
+
+pytest: sync
+    @AIRFLOW_HOME=$PWD {{ VENV }}/bin/pytest

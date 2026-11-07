@@ -1,0 +1,82 @@
+[
+  {
+    "id": "nested-git-index",
+    "status": "fixed and locally retested",
+    "source": "test_ch03_stub_sync.py",
+    "observed_defect": "The index check used client-relative names in git show inside a nested course repository.",
+    "fix": "Prefix blob paths with git rev-parse --show-prefix.",
+    "evidence": "249 existing tests pass; canonical starters unchanged"
+  },
+  {
+    "id": "relocated-launchers",
+    "status": "fixed and locally retested",
+    "source": "scripts/challenge-v2.py",
+    "observed_defect": "Moved venv launchers still referenced old Capital/ paths.",
+    "fix": "Invoke Airflow through the selected interpreter/module; measure selected overrides. Fresh separate dbt environment used.",
+    "evidence": "Actual local Airflow failure/repair/replay and dbt outputs pass"
+  },
+  {
+    "id": "weak-dbt-quality-gate",
+    "status": "fixed and locally retested",
+    "source": "scripts/challenge-v2.py",
+    "observed_defect": "Known fixture totals could pass with missing structural tests or a hard-coded mart.",
+    "fix": "Require declared tests and staging types/row identity; compute per-fund outputs from CSV/Decimal; introduce an unmatched key and total-preserving value variation.",
+    "evidence": "Real-dbt tests reject missing tests/hard-coded mart and accept equivalent alternate aggregation"
+  },
+  {
+    "id": "source-seed-order",
+    "status": "fixed and locally retested",
+    "source": "scripts/challenge-v2.py; instructor-demos/stories",
+    "observed_defect": "A dbt source is not a dependency on a seed; rebuild after fixture repair could see old input.",
+    "fix": "Explicit seed before build/run after initial setup and every input repair.",
+    "evidence": "Fresh relationship failure, absent downstream mart, repair and replay captured"
+  },
+  {
+    "id": "embedded-answers",
+    "status": "fixed and locally retested",
+    "source": "challenges/v2/*/phase-two-proficient/stretch/README.md",
+    "observed_defect": "33 assessed answer blocks remained in learner stretch source.",
+    "fix": "Move complete bodies to mirrored instructor legacy-stretch-answers.md files, retaining hashes/provenance and learner pointers.",
+    "evidence": "All 39 client README views regenerated and --check passes; answer separation checked"
+  },
+  {
+    "id": "package-answers-and-runtime",
+    "status": "fixed and locally retested",
+    "source": "scripts/package-v2.py",
+    "observed_defect": "Directory-only exclusions included instructor capture definitions and embedded legacy answers.",
+    "fix": "Prune private/runtime/secret paths; omit full instructor code; strip recognized legacy answer wrappers only in learner export; read back archive hashes.",
+    "evidence": "Fresh learner/instructor extraction and representative dbt starter/reference checks pass"
+  },
+  {
+    "id": "audit-concurrency",
+    "status": "fixed and locally retested",
+    "source": "scripts/run-devc-audit.py",
+    "observed_defect": "Concurrent tests created unrelated evidence files during a phase check.",
+    "fix": "Match newly written evidence by tool, phase and action; task matrix labels phase-level scope explicitly.",
+    "evidence": "24 final checks: 17 local pass, 7 supporting-only, 0 fail"
+  },
+  {
+    "id": "print-and-browser-calibration",
+    "status": "fixed and locally retested",
+    "source": "scripts/instructor_demos; root PDF/HTML adapters",
+    "observed_defect": "Initial terminal width overflowed and some PDF commands spilled onto following pages; media preloads can be cancelled during navigation.",
+    "fix": "Calibrate actual PTY/browser width, readable native captions/dense command pages; preserve cancelled preload evidence separately and require real playback.",
+    "evidence": "Final candidate review records actual bounds/type/media results; full human/projector review pending"
+  },
+  {
+    "id": "external-live-routes",
+    "status": "blocked/not-run",
+    "source": "devc.md sections 1\u20136",
+    "observed_defect": "No approved Docker/Mise/Astro/Databricks/Kafka/training-remote boundary in this shell",
+    "fix": "Continue in the actual assigned environment using the handoff. Draft UI stories still need fresh trigger/API/output/auth/mount assertions; connected dbt/capstone/Astro/Kafka verifier branches remain incomplete.",
+    "evidence": "environment.json; task-matrix.csv; blocked capture manifests"
+  },
+  {
+    "id": "webm-seeking",
+    "status": "fixed and tested",
+    "source": "scripts/serve-instructor-demos.py; portable bundle serve.py",
+    "observed_defect": "The ordinary Python static server caused actual WebM seek operations to return to time zero.",
+    "fix": "Ship a byte-range-capable static server; require completed seek to the requested midpoint and exact 206/416 byte-range behavior.",
+    "evidence": "All four real recordings now pass pause/seek/subtitle/copy/desktop/mobile checks; range-server test passes"
+  }
+]

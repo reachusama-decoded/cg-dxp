@@ -1,0 +1,30 @@
+id: query-catalog.case-01-happy-path
+skill: skills/query-catalog
+type: artifact
+description: 'Bootstrap happy-path case. Discover catalogs, schemas, tables, and columns in Unity Catalog.
+  Trigger phrases: "list tables", "what schemas exist", "find tables matching", "discover data", "search
+  catalog".'
+input:
+  arguments: List tables in ${TEST_CATALOG}.${TEST_SCHEMA}.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/discover.py
+- skills/clients/databricks.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Discover catalogs,
+      schemas, tables, and columns in Unity Catalog. Trigger phrases: "list tables", "what schemas exist",
+      "find tables matchin''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

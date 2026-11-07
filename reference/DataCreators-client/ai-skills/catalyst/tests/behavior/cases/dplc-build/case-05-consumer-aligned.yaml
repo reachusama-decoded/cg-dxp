@@ -1,0 +1,22 @@
+id: dplc-build.case-05-consumer-aligned
+skill: skills/dplc-build
+type: behavior
+description: >-
+  Phase 4 Build sub-orchestrator, consumer-aligned branch. The pipeline-type
+  determination should route to `/consumer-aligned` when the user describes
+  building a consumer-facing outbound layer on top of an existing
+  domain-aligned product. Artifact chain follows in production mode.
+input:
+  arguments: >-
+    Run Phase 4 in production mode. Design artifacts approved. The
+    domain-aligned product is already live in cspn_dev1; publish a
+    consumer-facing outbound mart on top of it for the analytics team.
+expected_sequence:
+  - skills/consumer-aligned
+  - skills/unit-test-report
+  - skills/integration-test-report
+  - skills/code-review-sign-off
+  - skills/build-checklist
+strict_order: false
+allow_extra: true
+max_steps: 80

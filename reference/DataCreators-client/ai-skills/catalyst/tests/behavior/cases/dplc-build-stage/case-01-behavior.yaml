@@ -1,0 +1,22 @@
+id: dplc-build-stage.case-01-behavior
+skill: skills/dplc-build-stage
+type: behavior
+description: >-
+  Deliver stage orchestrator. Should run the three phase
+  sub-orchestrators in order: build → validate → publish. Each phase
+  sub-orchestrator is a separate sub-skill and must be invoked
+  sequentially. Pipeline-type routing (source-aligned / domain-aligned
+  / consumer-aligned) is handled inside `/dplc-build`, not at this
+  stage layer. Mirrors the sibling test at
+  `dplc-design-stage.case-01-behavior`.
+input:
+  arguments: >-
+    Run the Deliver stage. Design artifacts approved; sources land in
+    cspn_dev1.
+expected_sequence:
+  - skills/dplc-build
+  - skills/dplc-validate
+  - skills/dplc-publish
+strict_order: true
+allow_extra: true
+max_steps: 60

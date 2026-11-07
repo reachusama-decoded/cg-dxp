@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_vendor_prices
+    description: "Deduplicated vendor prices, one row per instrument per date."
+    columns:
+      - name: instrument_id
+        tests: [not_null]
+      - name: price_date
+        tests: [not_null]
+  - name: stg_instruments
+    columns:
+      - name: instrument_id
+        tests: [not_null, unique]
+  - name: rpt_eod_prices_us
+    description: "US end-of-day price sheet in USD (see the data contract)."
+    columns:
+      - name: price_key
+        description: "instrument_id|price_date — the contract's grain."
+        tests: [not_null, unique]
+      - name: instrument_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_instruments')
+                field: instrument_id
+      - name: price_usd
+        tests: [not_null]
+      - name: price_source
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['VENDOR', 'MANUAL']

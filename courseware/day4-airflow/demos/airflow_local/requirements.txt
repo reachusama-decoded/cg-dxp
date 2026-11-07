@@ -1,0 +1,4 @@
+# Pinned as in the learners' image (requirements-pypi.txt): Cosmos renders the dbt project
+# as Airflow tasks; the http provider carries the Teams-webhook alert transport.
+astronomer-cosmos==1.15.0
+apache-airflow-providers-http==5.4.0

@@ -1,0 +1,2003 @@
+client_id,name,segment,domicile
+1,Thornbury Foundation,Institutional,CH
+2,Emily Ashworth,Retail,GB
+3,Edward Aldous,Retail,SG
+4,Fatima Khoury,Retail,AE
+5,Maximilian Brandt,HNW,CH
+6,Felix Wagner,Retail,CH
+7,Sota Tanaka,Retail,JP
+8,Inès Girard,HNW,FR
+9, Léa Dubois ,Retail,FR
+10,Hassan Khoury,Retail,AE
+11,Alice Fairfax,UHNW,GB
+12,Tsz Ho,Retail,HK
+13,Edward Ashworth,  UHNW  ,GB
+14,Hannah Wagner,Retail,CH
+15,Felix Schreiber,Retail,CH
+16,Chloé Fontaine,HNW,FR
+17,Sophie Sinclair,HNW,GB
+18,Camille Laurent,Retail,FR
+19,Alice Barrington,Retail,US
+20,Lukas Vogel, Retail ,CH
+21,Sophie Aldous,HNW,US
+22,Emily Carrington,Retail,US
+23,Lena Baumann,Retail,DE
+24,Clara Vogel,Retail,CH
+25,Alice Ashworth,Retail,GB
+26,George Whitfield,HNW,SG
+27,Arthur Sinclair,HNW,GB
+28,Sota Takahashi,HNW,JP
+29,Yui Takahashi,Retail,JP
+30,Hei Tsang,Retail,HK
+31,James Sinclair,Retail,US
+32,William Pemberton,HNW, gb
+33,Eleanor Hollis,Retail,GB
+34,Lukas Schreiber,Retail,DE
+35,Kwok Lam,Retail,HK
+36,Layla Nasser,Retail,AE
+37,Olivia Thorne,HNW,SG
+38,William Hollis,HNW,LU
+39,Beatrice Goodwin,HNW,US
+40,Lukas Schreiber,Retail,CH
+41,Felix Wagner,Retail, CH
+42,William Wexford,Retail,US
+43,Felix Schreiber,Retail,CH
+44,Haruto Suzuki,Retail,JP
+45,Wai Lee,Retail,HK
+46,Arthur Merrick,Retail,GB
+47,James Vaughan,Retail,US
+48,Edward Ashworth,Retail,SG
+49,Henry Thorne,Retail,US
+50,Edward Fairfax,Retail,US
+51,Hugo Fontaine,Retail,FR
+52,Oliver Barrington,Retail,US
+53,Hei Cheung,HNW,HK
+54,Manon Dubois,HNW,FR
+55,Grace Pemberton,  HNW  ,GB
+56,  James Fairfax  ,Retail,GB
+57,Alice Merrick,Retail,US
+58,Charlotte Hollis,Retail,GB
+59,Thomas Fairfax,Retail,US
+60,Camille Lemaire,HNW,FR
+61,Charlotte Pemberton,HNW,SG
+62,Wai Ho,HNW,HK
+63,Layla Habib,Retail,AE
+64,Grace Sinclair,Retail, us
+65,Charlotte Goodwin,HNW,GB
+66,Aisha Nasser,HNW,AE
+67,Olivia Sinclair,UHNW,GB
+68,Ka Ng,HNW,HK
+69,Kwok Lee,Retail,HK
+70,Lena Baumann,HNW,DE
+71,Mia Keller,Retail,DE
+72,Eleanor Sinclair,HNW,US
+73,Jardine Asset Management,Institutional,FR
+74,Emily Sinclair,Retail,GB
+75,Mei Suzuki,Retail,JP
+76,Beatrice Pemberton,Retail,  US
+77,Felix Brandt,Retail,DE
+78,Henry Ashworth,Retail,GB
+79,Alice Wexford,Retail,SG
+80,Wai Ho,Retail,HK
+81,Kaito Suzuki,Retail,JP
+82,Henry Ashworth,HNW,SG
+83,Lena Keller,HNW,  ch
+84,Inès Lemaire,Retail,FR
+85, Niklas Vogel ,Retail,DE
+86,Emily Wexford,Retail,SG
+87,Henry Vaughan,Retail,US
+88,Olivia Carrington, Retail ,US
+89,Thomas Merrick,Retail,US
+90,Eleanor Carrington,Retail,US
+91, Henry Pemberton ,Retail,GB
+92,Marisol Insurance Group,Institutional,FR
+93,Ling Ho,HNW,HK
+94,Eleanor Aldous,HNW,GB
+95,Yan Ng,Retail,HK
+96,Lena Schreiber,Retail,CH
+97,Thomas Wexford,Retail,GB
+98,Ling Lee,HNW,HK
+99,Louis Moreau,Retail, FR
+100,Hei Tsang,HNW,HK
+101,George Fairfax,HNW,SG
+102,Emma Richter,Retail,DE
+103,Hassan Mansour,Retail,AE
+104,Yui Takahashi,HNW,JP
+105, Henry Hollis ,Retail,GB
+106,Edward Hollis,Retail,US
+107,Quillon Pension Fund,Institutional,AE
+108,Felix Richter,HNW,CH
+109,Clara Richter,Retail,CH
+110,Olivia Barrington,Retail,LU
+111,Khalid Mansour,Retail,AE
+112,Clara Brandt,Retail,DE
+113,Fatima Nasser, Retail ,AE
+114,Emma Wagner,Retail,CH
+115,Mia Brandt,HNW,DE
+116,Mei Ito,  Retail  ,JP
+117,Henry Merrick,Retail,GB
+118,Ho Ho,Retail,HK
+119,Emily Barrington,HNW,US
+120,Olivia Wexford,HNW, US
+121, Mei Ng ,HNW,HK
+122,Arthur Merrick,Retail,SG
+123,Thomas Sinclair, UHNW ,US
+124,Arthur Fairfax,Retail,SG
+125,Antoine Laurent,Retail,FR
+126,Belmont Insurance Group,Institutional,SG
+127,Emily Ashworth,Retail,US
+128,Henry Thorne,Retail,US
+129,Emily Barrington,UHNW,GB
+130,Hannah Brandt,Retail,CH
+131,Arthur Hollis,Retail,US
+132,Tariq Al-Rashid,Retail,AE
+133,Emily Vaughan,Retail,US
+134,Clara Keller,Retail,DE
+135,Hana Nakamura,Retail,JP
+136,Tariq Hassan,Retail,AE
+137,William Ashworth, Retail , US
+138,Sophie Vaughan,UHNW,SG
+139,Khalid Habib,UHNW,AE
+140,Olivia Wexford,HNW,US
+141,Antoine Girard,Retail,FR
+142,Oliver Goodwin,Retail,SG
+143,Niklas Wagner,UHNW,CH
+144,Arthur Fairfax,HNW,US
+145,James Carrington,Retail,US
+146, Thomas Fairfax ,Retail, US
+147,Maximilian Keller,HNW,DE
+148,Oliver Pemberton,UHNW,US
+149,Edward Merrick,Retail,  gb
+150,William Fairfax,Retail,SG
+151,Mia Brandt,Retail,CH
+152,Edward Sinclair,Retail,SG
+153,Hei Ng,Retail,HK
+154,Lukas Richter,  Retail  ,CH
+155,Lena Hofmann,Retail,CH
+156,Lena Richter,Retail,  de
+157,  Charlotte Fairfax  ,Retail,US
+158,Foxglove Asset Management,Institutional,SG
+159,Charlotte Goodwin,HNW,US
+160,William Vaughan,HNW,US
+161,Edward Hollis,Retail,US
+162,Henry Whitfield,HNW,GB
+163,Grace Goodwin,Retail,GB
+164,  George Whitfield  ,  HNW  ,GB
+165,Arthur Pemberton,HNW,LU
+166,Thomas Vaughan,Retail,LU
+167,Hannah Keller,Retail,CH
+168,Beatrice Sinclair,Retail,US
+169,Beatrice Barrington,  Retail  ,GB
+170,Olivia Fairfax,UHNW,US
+171,Mei Lee,Retail,HK
+172,James Merrick,Retail,US
+173,  Olivia Vaughan  ,Retail,US
+174,James Barrington,HNW,SG
+175,James Merrick,Retail,US
+176,Hassan Al-Maktoum,Retail,AE
+177,Charlotte Aldous,Retail,GB
+178,Yuto Yamamoto,UHNW,JP
+179,Thomas Ashworth,HNW,US
+180,Thomas Thorne,Retail,US
+181,Maryam Al-Maktoum,HNW,AE
+182,Sophie Carrington,HNW,US
+183,Mia Baumann,Retail,CH
+184,  Tsz Ng  ,Retail,HK
+185,Emily Aldous,  HNW  ,US
+186,Hannah Baumann,Retail,CH
+187,Oliver Ashworth,Retail,GB
+188,Olivia Aldous,Retail,GB
+189,Gabriel Girard,Retail,FR
+190,Mia Vogel,  Retail  ,DE
+191,Henry Wexford,Retail,US
+192,Edward Pemberton,UHNW,LU
+193,Ka Cheung,Retail,HK
+194,Mia Schreiber,Retail,DE
+195,Alice Pemberton,Retail,US
+196,Edward Carrington,Retail,LU
+197,James Goodwin,HNW,GB
+198,Beatrice Thorne,Retail,US
+199,Sophie Hollis,Retail,US
+200,Niklas Wagner,Retail,CH
+201, Yuto Nakamura ,Retail,JP
+202,Sophie Vaughan,Retail,SG
+203,William Fairfax,Retail,GB
+204,Ling Lam,Retail,HK
+205,Jonas Richter,Retail,CH
+206,Arthur Goodwin,Retail,LU
+207,George Fairfax,UHNW,US
+208,Noor Saleh,Retail,AE
+209,Thomas Aldous,Retail,US
+210,Charlotte Whitfield,HNW,GB
+211,George Fairfax,HNW,US
+212,Charlotte Whitfield,Retail,US
+213,Arthur Aldous,Retail,GB
+214,Sophie Pemberton, HNW ,US
+215,Mei Ng,Retail, HK
+216,Stratford Pension Fund,Institutional,CH
+217,Clara Baumann,HNW,DE
+218,Lukas Baumann,HNW,CH
+219,Beatrice Sinclair,HNW,GB
+220,Sakura Watanabe,  Retail  ,JP
+221,Eleanor Thorne,Retail,SG
+222,Hannah Schreiber,Retail,DE
+223,Emma Brandt,HNW,DE
+224,William Carrington,HNW,LU
+225,Sophie Ashworth,Retail,LU
+226,Jonas Richter,Retail,DE
+227,Hannah Wagner,Retail,DE
+228,Hannah Richter,Retail,DE
+229,Léa Lemaire,Retail,FR
+230,Oliver Hollis,HNW,US
+231,Emily Carrington,  Retail  ,GB
+232,Clara Wagner, Retail ,DE
+233,Ho Chan,Retail,HK
+234,Oliver Carrington,Retail,SG
+235,Kaito Sato,HNW,JP
+236, Mei Lee ,Retail,HK
+237,James Aldous,HNW,US
+238,Alice Whitfield,UHNW,US
+239,Northcrest Endowment,Institutional,DE
+240,Inès Girard,HNW,FR
+241,Tindall Endowment,Institutional,HK
+242,William Thorne,UHNW,GB
+243,Inès Dubois,HNW,FR
+244,Clara Keller,Retail,CH
+245,George Vaughan,Retail,GB
+246,Julien Moreau,Retail,FR
+247,Mei Lam,Retail,HK
+248,Henry Pemberton,Retail,SG
+249,Gabriel Dubois,Retail,FR
+250,Inès Roux,Retail,FR
+251,Emily Vaughan,Retail,LU
+252,Wai Chan,Retail,HK
+253, Eleanor Fairfax ,Retail,GB
+254,Grace Pemberton,Retail,GB
+255,Eleanor Merrick,Retail,US
+256,Thomas Whitfield,HNW,US
+257,Oliver Ashworth,Retail,US
+258,Jonas Wagner,Retail,CH
+259,Julien Moreau,Retail,FR
+260,William Whitfield,UHNW,US
+261,Alice Pemberton,HNW,US
+262,William Wexford,HNW,GB
+263,Henry Goodwin,Retail,GB
+264,Beatrice Aldous,HNW,GB
+265,Yan Lee,HNW,HK
+266,Niklas Keller,UHNW,DE
+267,Yan Lam,Retail,HK
+268,Henry Barrington,Retail,US
+269,Oliver Barrington,Retail,SG
+270,Olivia Aldous,Retail,US
+271,Edward Merrick,Retail,LU
+272,Gabriel Moreau,Retail, fr
+273,Hassan Saleh,Retail,AE
+274,Chi Chan,Retail,HK
+275,Edward Goodwin,Retail,SG
+276,Alice Thorne,HNW,US
+277,Charlotte Carrington,Retail,GB
+278,Chloé Girard,UHNW,FR
+279,Arthur Goodwin,Retail,SG
+280,Mia Vogel,Retail,CH
+281,Ling Cheung,Retail,HK
+282,Maryam Saleh,UHNW,AE
+283,Eleanor Goodwin,Retail,LU
+284,Manon Laurent,Retail,FR
+285,William Carrington, Retail ,US
+286,Arthur Ashworth,Retail,LU
+287,Lena Richter,Retail,DE
+288,James Fairfax,Retail,SG
+289,Thomas Hollis,UHNW,GB
+290,Niklas Keller,Retail,CH
+291,Emma Vogel,UHNW,CH
+292,Emily Fairfax,Retail,GB
+293,Alice Carrington,Retail,LU
+294,  Alice Fairfax  ,HNW,  US
+295,Alice Hollis,Retail,US
+296,Julien Lemaire,HNW,FR
+297, Emma Brandt ,Retail,DE
+298,Arthur Carrington,Retail,US
+299,Yusuf Nasser,  Retail  ,AE
+300,William Barrington,Retail,SG
+301,Niklas Schreiber,HNW,CH
+302,Beatrice Ashworth,Retail,GB
+303,Louis Laurent,HNW,FR
+304,Lukas Hofmann,Retail,DE
+305,George Merrick,Retail,US
+306,Tsz Wong,Retail,HK
+307,Emily Thorne,Retail,GB
+308,Grace Barrington,HNW,GB
+309,Niklas Vogel,HNW,DE
+310,Grace Pemberton,HNW,GB
+311,Yusuf Hassan,Retail,AE
+312,Hannah Brandt,Retail,CH
+313,Grace Barrington,Retail,US
+314,Antoine Girard,Retail,FR
+315,Eleanor Ashworth,Retail,US
+316,Olivia Hollis,Retail,SG
+317,Halcyon Pension Fund,Institutional,CH
+318,Redstone Insurance Group,Institutional,GB
+319,Chloé Lemaire,Retail,FR
+320,Felix Schreiber,Retail,CH
+321,Yarrow Pension Fund,Institutional,US
+322,Emily Whitfield,Retail,US
+323,Arthur Ashworth,Retail,GB
+324,Eleanor Goodwin,Retail,US
+325,Kwok Lee,Retail,HK
+326,Arthur Aldous,HNW,SG
+327,Alice Ashworth,Retail,GB
+328,Hannah Wagner,Retail,CH
+329,William Ashworth,UHNW,US
+330,Crestline Family Office,Institutional,HK
+331,Sophie Vaughan,Retail,US
+332,Aisha Habib,Retail,AE
+333,Alice Carrington,Retail,US
+334,Emma Richter,UHNW,CH
+335,Chi Chan,Retail,HK
+336,George Vaughan,Retail,US
+337,Clara Keller,Retail,CH
+338,Arthur Barrington,Retail,  LU
+339,Emily Carrington,UHNW,US
+340,Aisha Nasser,Retail,AE
+341,Eleanor Vaughan,UHNW,US
+342,Clara Schreiber,UHNW,CH
+343,Charlotte Ashworth,Retail,US
+344,Grace Carrington,Retail,GB
+345,Eleanor Thorne,Retail,SG
+346,  Hugo Lefebvre  ,Retail,FR
+347, James Vaughan ,Retail,GB
+348,Eleanor Whitfield,Retail,US
+349,Grace Hollis,Retail,GB
+350,Beatrice Barrington,HNW,US
+351,Arthur Goodwin,HNW,US
+352,Hannah Hofmann,Retail,CH
+353,George Hollis,Retail,US
+354,Ren Yamamoto,HNW,JP
+355,Grace Vaughan,Retail,US
+356,George Goodwin,Retail,GB
+357,Oliver Sinclair,Retail,  GB
+358,Kwok Ho,Retail,HK
+359,Kaito Takahashi,Retail,JP
+360,Mei Chan,Retail,HK
+361,Oliver Merrick,Retail,US
+362,Tariq Nasser,Retail,AE
+363,Charlotte Carrington,Retail,US
+364,Antoine Lefebvre,HNW,FR
+365,Arthur Whitfield,HNW,  US
+366,Edward Vaughan,UHNW, us
+367,Henry Merrick,Retail,LU
+368,Tsz Cheung,Retail,HK
+369,Noor Mansour,Retail,AE
+370,Gabriel Roux,HNW,FR
+371,Mei Lam,Retail, HK
+372,Henry Wexford,Retail,US
+373,Chloé Girard,Retail,FR
+374,Beatrice Fairfax,Retail,US
+375,Henry Merrick,Retail,GB
+376,Hassan Nasser,Retail,AE
+377,William Carrington,Retail,US
+378,Thomas Barrington,Retail,US
+379,Eleanor Fairfax,UHNW,LU
+380,William Thorne,UHNW,GB
+381,Ka Ng,HNW, HK
+382,Henry Fairfax,UHNW,US
+383,Grace Pemberton,Retail,GB
+384,Ravenswood Asset Management,Institutional,HK
+385,Ren Yamamoto,Retail,JP
+386,  Hei Lam  ,Retail,HK
+387,Antoine Dubois,Retail,FR
+388,James Merrick,HNW,US
+389,Maximilian Richter,Retail,CH
+390,Wai Cheung,Retail,HK
+391,  Eleanor Hollis  ,HNW,SG
+392,Alice Pemberton,Retail,GB
+393,Sophie Ashworth,Retail,SG
+394,Kaito Yamamoto,HNW,JP
+395,Clara Baumann,UHNW,CH
+396,Marisol Insurance Group,Institutional,AE
+397,Alice Pemberton,Retail, us
+398,William Barrington,Retail,LU
+399,Wai Chan,HNW,HK
+400,Oakhaven Endowment,Institutional, gb
+401,Mia Keller,HNW,DE
+402,Alice Vaughan,HNW,GB
+403,Henry Goodwin,  Retail  ,GB
+404,Henry Fairfax,HNW,LU
+405,Beatrice Goodwin,UHNW,GB
+406,Hugo Fontaine,Retail,FR
+407,Eleanor Fairfax,HNW,SG
+408,William Goodwin,  Retail  ,US
+409,Felix Vogel,Retail,DE
+410,Zephyr Pension Fund,Institutional,US
+411,Alice Fairfax,UHNW,LU
+412,Wai Lam,HNW,HK
+413,Marisol Insurance Group,Institutional,FR
+414,Louis Lefebvre,HNW,FR
+415,James Barrington,Retail,US
+416,Grace Fairfax,Retail,GB
+417,Beatrice Ashworth,Retail,GB
+418,Sophie Fairfax,Retail,US
+419,Charlotte Merrick,Retail,US
+420,Sophie Aldous,Retail,LU
+421,Arthur Merrick,Retail,GB
+422,Oliver Ashworth,Retail,US
+423,James Merrick,HNW,GB
+424,Charlotte Barrington,Retail,LU
+425,Ravenswood Endowment,Institutional,FR
+426,Khalid Khoury,HNW,AE
+427,Arthur Vaughan,Retail,US
+428,Charlotte Thorne,HNW,US
+429,Olivia Merrick,Retail,US
+430,Arthur Hollis,Retail,GB
+431,Alice Pemberton,UHNW,LU
+432,Emily Ashworth,Retail,US
+433,Sophie Sinclair,Retail,SG
+434,Lukas Brandt,Retail,DE
+435,Antoine Lefebvre,HNW,FR
+436,Léa Dubois,HNW,FR
+437, Arthur Carrington ,HNW,LU
+438,Oliver Ashworth,Retail,US
+439,Arthur Ashworth,Retail,SG
+440,Henry Wexford,Retail,  GB
+441,Oliver Goodwin,Retail,US
+442,Arthur Pemberton,UHNW,US
+443,Hannah Vogel,HNW,CH
+444,Sakura Yamamoto,Retail,JP
+445,Henry Whitfield,Retail,SG
+446,Henry Hollis,HNW,US
+447,Felix Brandt, Retail ,CH
+448,  William Barrington  ,Retail,US
+449,Henry Wexford,Retail,LU
+450,Olivia Carrington,Retail,SG
+451,Beatrice Fairfax,HNW,US
+452,Eleanor Whitfield,Retail,US
+453,George Hollis,UHNW,GB
+454,Sophie Aldous,HNW,LU
+455,Halcyon Insurance Group,Institutional,FR
+456,Ka Lam,Retail,HK
+457,Eleanor Whitfield,UHNW,US
+458,Grace Wexford,  Retail  ,GB
+459,Chloé Dubois,Retail,FR
+460,Ling Lee,Retail,HK
+461,Lumen Asset Management,Institutional,GB
+462,George Whitfield,UHNW,SG
+463,Thomas Wexford,HNW,SG
+464,Charlotte Ashworth,Retail,LU
+465,Jonas Baumann,Retail,DE
+466,Hugo Lefebvre,Retail,FR
+467,Niklas Schreiber,Retail,CH
+468,  Charlotte Goodwin  ,HNW,GB
+469,Yan Tsang,Retail,HK
+470,Charlotte Ashworth,HNW,US
+471,Oliver Merrick,Retail,GB
+472,Sakura Ito,Retail,JP
+473,Manon Moreau,Retail,FR
+474,George Fairfax,Retail,SG
+475,Mia Schreiber,Retail,CH
+476,Eleanor Barrington,UHNW,US
+477,Mei Chan,Retail,HK
+478,Emily Wexford,Retail,US
+479,Hugo Girard,  HNW  ,FR
+480,George Ashworth,Retail,SG
+481,William Hollis,HNW,GB
+482,Camille Dubois,Retail,FR
+483,Chi Lee,Retail,HK
+484,Beatrice Thorne,Retail,GB
+485,Ling Cheung,Retail,HK
+486,Noor Hassan,HNW,AE
+487,Olivia Carrington,Retail,US
+488,Sota Watanabe,Retail,JP
+489,Aisha Al-Rashid,HNW,AE
+490,Felix Baumann,  Retail  ,CH
+491,Sophie Ashworth,HNW,GB
+492,Beatrice Aldous,Retail,LU
+493,Sophie Hollis,Retail,SG
+494,Edward Aldous,Retail,GB
+495,Charlotte Whitfield,  HNW  ,US
+496,Noor Nasser,Retail,AE
+497,Haruto Tanaka,Retail,JP
+498,Grace Carrington,Retail,SG
+499,Yui Watanabe,Retail,JP
+500,Sophie Merrick,Retail,SG
+501,George Aldous,HNW,LU
+502,James Aldous,Retail,LU
+503,Edward Pemberton,Retail,LU
+504,Khalid Saleh,HNW,AE
+505,Manon Fontaine,HNW,FR
+506,Sophie Barrington,Retail,US
+507,Hannah Wagner,HNW,DE
+508,Chi Ng,Retail,HK
+509,George Thorne,Retail,US
+510,Aldridge Endowment,Institutional,DE
+511,Beatrice Thorne,HNW,GB
+512,Evermore Pension Fund,Institutional, SG
+513,Niklas Schreiber,UHNW,CH
+514,Charlotte Whitfield,HNW,LU
+515,Mia Baumann,UHNW,CH
+516,Edward Ashworth,Retail,US
+517,Henry Merrick,Retail,GB
+518,Wai Tsang,UHNW,HK
+519,Olivia Aldous,HNW,GB
+520,Lukas Hofmann,Retail,CH
+521,Charlotte Thorne,UHNW, gb
+522,Sakura Suzuki,Retail,JP
+523,Ka Chan,Retail,HK
+524,Edward Carrington,Retail,GB
+525,Oakhaven Investment Trust,Institutional,  gb
+526,Clara Vogel,Retail,CH
+527,Maximilian Hofmann,Retail,DE
+528,Oliver Vaughan,UHNW,US
+529,Beatrice Ashworth,UHNW,US
+530,Lena Hofmann,HNW,CH
+531,Tindall Asset Management,Institutional,US
+532,Kwok Lam,HNW,HK
+533,Henry Fairfax,Retail, us
+534,Hei Wong,Retail,HK
+535,Emily Thorne,Retail,US
+536,Maximilian Vogel,Retail,CH
+537,Felix Wagner,Retail,DE
+538,Tsz Lee,Retail,HK
+539,Grace Fairfax,Retail,GB
+540,Clara Keller,Retail,CH
+541,Arthur Barrington,HNW,US
+542,Léa Moreau,HNW,FR
+543,Fatima Saleh,UHNW,AE
+544,  Mia Keller  ,HNW,DE
+545,Eleanor Whitfield,HNW,SG
+546,Eleanor Barrington,Retail,US
+547,Maximilian Wagner,HNW,CH
+548,Hei Wong,Retail,HK
+549,Hannah Brandt,Retail,  CH
+550,Oliver Barrington,Retail,US
+551,Sakura Takahashi,Retail,JP
+552,Arthur Vaughan,  Retail  ,SG
+553,Aisha Habib,Retail,AE
+554,Maximilian Wagner,Retail,DE
+555,Alice Pemberton, Retail ,GB
+556,Maximilian Keller,HNW,CH
+557,Lena Baumann,Retail,CH
+558,Thomas Whitfield,Retail,GB
+559,Lena Wagner,Retail,DE
+560,Mia Brandt,Retail,DE
+561,Sophie Goodwin,Retail,SG
+562,Olivia Wexford,HNW,GB
+563,Hassan Habib,UHNW,AE
+564,Oliver Wexford,Retail,US
+565,Mei Takahashi,Retail, jp
+566,Khalid Khoury,Retail,AE
+567,Olivia Carrington,HNW,LU
+568, Jonas Richter ,Retail,CH
+569,Layla Al-Rashid,Retail,AE
+570,James Merrick,HNW,LU
+571,Emily Merrick, UHNW ,LU
+572,Thomas Wexford,Retail,LU
+573,James Carrington,Retail,US
+574,Ren Nakamura,Retail,JP
+575,Olivia Goodwin,Retail,US
+576,Haruto Sato,UHNW,JP
+577,Felix Wagner,Retail,CH
+578, Yan Chan ,HNW,HK
+579,Maximilian Baumann,Retail,CH
+580,Dunmore Family Office,Institutional,DE
+581,Charlotte Goodwin,HNW,GB
+582,Mia Schreiber,Retail,CH
+583,James Wexford,Retail,GB
+584,Sophie Wexford,Retail,LU
+585,Edward Whitfield,Retail,SG
+586,Emily Thorne,Retail,US
+587, Emma Vogel , Retail ,DE
+588,Emma Brandt,Retail,DE
+589,Emily Barrington,Retail,US
+590,Mia Brandt,Retail,CH
+591,  Ka Ng  ,HNW,HK
+592,Inès Fontaine,Retail,FR
+593,Thomas Pemberton,Retail,SG
+594,George Sinclair,Retail,LU
+595,Chloé Girard,Retail,FR
+596,Maximilian Richter,Retail,DE
+597,Manon Lefebvre,Retail,FR
+598,Grace Aldous,HNW,  sg
+599,Alice Hollis,Retail,GB
+600,Ka Lee,Retail,HK
+601,Hana Sato,Retail,JP
+602,Arthur Aldous,Retail,SG
+603,Charlotte Ashworth,Retail,GB
+604,Hei Chan,UHNW,HK
+605,Oliver Fairfax,Retail,US
+606,Belmont Sovereign Fund,  Institutional  ,HK
+607,Beatrice Thorne,Retail,SG
+608,Emma Baumann,HNW,CH
+609,Khalid Hassan,Retail,AE
+610,Ho Ng,Retail,HK
+611,Arthur Carrington, Retail ,US
+612,Eleanor Barrington,HNW,US
+613,Thomas Wexford,  Retail  ,GB
+614,Mia Wagner,Retail,DE
+615,Emily Hollis,Retail,  GB
+616, William Ashworth ,Retail,GB
+617,Wai Chan,Retail,HK
+618,Omar Saleh,Retail,AE
+619,Emily Hollis,Retail,GB
+620,Arthur Merrick,HNW,US
+621,Haruto Ito,Retail,JP
+622,Olivia Ashworth,  Retail  ,GB
+623,Kwok Tsang,UHNW,HK
+624,George Hollis,HNW,US
+625,Mia Keller,Retail,DE
+626,Edward Merrick,Retail,LU
+627,Thomas Vaughan,  Retail  ,GB
+628,Niklas Baumann,Retail,DE
+629,Henry Barrington,Retail,US
+630, Camille Fontaine ,HNW,FR
+631,Beatrice Thorne,HNW,LU
+632,Ling Wong,HNW,HK
+633,Khalid Khoury,Retail,AE
+634,Sophie Hollis,Retail,LU
+635,Grace Barrington,HNW,SG
+636,Charlotte Whitfield,UHNW,SG
+637,Olivia Fairfax,Retail,US
+638,Alice Pemberton,Retail,US
+639,Maximilian Keller,Retail,DE
+640,Aisha Hassan,Retail,AE
+641,Hugo Lefebvre,Retail,FR
+642,Sophie Ashworth,Retail,LU
+643,Sota Nakamura,HNW,JP
+644,Inès Dubois,HNW,FR
+645,Haruto Watanabe,Retail,JP
+646,Layla Khoury, Retail ,  AE
+647,Sophie Sinclair,HNW,US
+648,Alice Hollis, Retail ,GB
+649,Aldridge Asset Management,Institutional,JP
+650,Ling Tsang,Retail,HK
+651,Emma Hofmann,HNW,DE
+652,Olivia Fairfax, Retail ,LU
+653,Tindall Investment Trust,Institutional,GB
+654,Arthur Carrington,HNW,US
+655,Eleanor Goodwin,Retail,US
+656,Thomas Fairfax,Retail,US
+657,Charlotte Whitfield,HNW,US
+658,Mia Hofmann,UHNW,CH
+659,Thomas Fairfax,Retail,US
+660,Maximilian Keller, Retail ,CH
+661,Felix Keller,HNW,CH
+662,Maximilian Wagner,UHNW,CH
+663,William Vaughan,Retail,US
+664,Aisha Al-Rashid,  Retail  ,AE
+665,Yuto Suzuki,UHNW,JP
+666,James Merrick,Retail,SG
+667,Henry Barrington,Retail,US
+668,Thomas Goodwin,Retail,GB
+669,Yui Tanaka,HNW,JP
+670,Sophie Fairfax,Retail,US
+671,Arthur Thorne,Retail,US
+672,Clara Richter,HNW,DE
+673,Arthur Carrington,Retail,GB
+674,Maximilian Brandt,Retail,CH
+675,Belcour Investment Trust,Institutional,FR
+676,Eleanor Whitfield,Retail,LU
+677,Hassan Mansour,Retail,AE
+678,Felix Richter,Retail,DE
+679,Alice Thorne,UHNW,GB
+680,Manon Girard,Retail,FR
+681,Yui Tanaka,Retail,JP
+682,James Goodwin, Retail ,US
+683,Layla Khoury,Retail,AE
+684,Louis Fontaine,Retail,FR
+685,Emily Hollis,Retail,US
+686,William Carrington,HNW,SG
+687,Mia Wagner,UHNW,CH
+688,Beatrice Ashworth,UHNW,SG
+689,Sophie Sinclair,UHNW,US
+690,Olivia Whitfield,  Retail  ,US
+691,Olivia Thorne,Retail,US
+692,Yui Takahashi,Retail,JP
+693,Oliver Barrington,UHNW,US
+694,James Ashworth,HNW,GB
+695,Eleanor Merrick,Retail,US
+696,Oliver Ashworth, UHNW ,US
+697,Alice Fairfax,Retail,US
+698, Tsz Wong ,Retail,HK
+699,George Ashworth,Retail,US
+700,Sophie Wexford,Retail,SG
+701,Felix Hofmann,Retail,DE
+702,Lukas Brandt,Retail,CH
+703,Henry Pemberton,UHNW,GB
+704,Sophie Aldous,Retail,US
+705,Clara Brandt,Retail,CH
+706,Lena Hofmann,Retail,CH
+707,Drakemoor Family Office,Institutional,GB
+708,James Pemberton,Retail,US
+709,Jonas Vogel,Retail,CH
+710,Edward Hollis,Retail,SG
+711,Alice Whitfield,Retail,US
+712,Oliver Whitfield,Retail,US
+713,Clara Schreiber,  HNW  ,CH
+714,Henry Thorne,Retail,SG
+715,Sophie Thorne,Retail,SG
+716,  George Hollis  ,Retail,US
+717,Mei Ng,Retail,HK
+718,Olivia Vaughan,UHNW,GB
+719,Felix Hofmann,Retail,  de
+720,Hannah Richter,Retail,CH
+721,Sophie Sinclair,Retail,GB
+722,Edward Goodwin,Retail,LU
+723,Thomas Sinclair,HNW,SG
+724,James Goodwin,Retail,GB
+725,Hannah Keller,Retail,CH
+726,Clara Brandt,Retail,  ch
+727,Layla Al-Maktoum,Retail,AE
+728,Edward Aldous,Retail,SG
+729,Alice Aldous,Retail,GB
+730,Alice Goodwin,Retail,US
+731,Oliver Aldous,Retail,SG
+732,Edward Wexford,Retail,GB
+733,Jonas Wagner,Retail,CH
+734,Engadin Insurance Group,Institutional,  ch
+735,Tsz Tsang,Retail,HK
+736,William Thorne,Retail,US
+737,Olivia Carrington,Retail,US
+738,Thomas Sinclair,Retail,SG
+739,Hugo Lefebvre,Retail,FR
+740,Hannah Schreiber,HNW,CH
+741,Charlotte Barrington,Retail,LU
+742,Charlotte Hollis,UHNW,US
+743,Arthur Whitfield,Retail,US
+744,Arthur Hollis,Retail,US
+745,Grace Sinclair,HNW,SG
+746,Ka Lam,Retail,HK
+747,Kwok Wong,HNW,HK
+748,Eleanor Goodwin,Retail,US
+749,Wai Ng,HNW,HK
+750,Niklas Schreiber,HNW, CH
+751,Camille Lemaire,Retail,FR
+752,Eleanor Whitfield,  Retail  ,LU
+753,Maximilian Schreiber,Retail,CH
+754,Léman Family Office,Institutional,CH
+755,Kwok Lam,Retail,HK
+756,Felix Wagner,Retail,DE
+757,Henry Thorne,UHNW,GB
+758,Thomas Wexford, Retail ,SG
+759,Thomas Vaughan,Retail,US
+760,Lena Vogel,Retail,DE
+761,Niklas Hofmann,HNW,CH
+762,Haruto Nakamura,Retail,JP
+763,Emily Carrington,Retail,US
+764,Gabriel Lefebvre,Retail,FR
+765,Hannah Schreiber,Retail,DE
+766,Tsz Chan,Retail,HK
+767,Lena Brandt,Retail,CH
+768,Olivia Merrick,Retail,US
+769,Arthur Barrington,Retail,GB
+770, Noor Mansour ,Retail,AE
+771,Sophie Barrington,Retail,US
+772,Hannah Richter,UHNW,CH
+773,Thomas Merrick,Retail,LU
+774,Olivia Goodwin,Retail,LU
+775,Emily Sinclair,Retail,GB
+776,Sophie Carrington,Retail,US
+777,  Thomas Fairfax  ,Retail,LU
+778,Jonas Baumann,Retail,DE
+779,Charlotte Fairfax, Retail ,SG
+780,Tariq Al-Rashid,Retail,AE
+781,Ling Chan,Retail,HK
+782,George Pemberton,Retail,GB
+783,Oliver Goodwin,Retail,US
+784,Eleanor Carrington,Retail,US
+785,Jonas Vogel,Retail,CH
+786,Layla Saleh,Retail,AE
+787,  Tsz Lee  , HNW ,HK
+788,Niklas Wagner, Retail ,CH
+789,Léa Lemaire,UHNW,FR
+790,William Aldous,Retail,  SG
+791,William Goodwin,UHNW,US
+792,Henry Barrington,UHNW,SG
+793,Eleanor Sinclair,Retail,US
+794,Tariq Habib,Retail,AE
+795,Sophie Thorne,HNW,US
+796,Arthur Hollis,Retail,SG
+797,Eleanor Sinclair, HNW ,GB
+798,Inverness Insurance Group,Institutional,SG
+799,Yan Lam,Retail,HK
+800,Larchmont Investment Trust,Institutional,CH
+801,Edward Wexford,Retail,LU
+802,Sakura Tanaka,Retail,JP
+803,Grace Aldous,Retail,SG
+804,Charlotte Sinclair,Retail,SG
+805,Chi Ng,Retail,HK
+806,Eleanor Vaughan,Retail,US
+807,Felix Keller,HNW,CH
+808,Thomas Barrington,Retail,LU
+809,Niklas Schreiber,HNW,DE
+810,Wai Cheung, Retail ,HK
+811,Tariq Saleh,  Retail  ,AE
+812,Maximilian Keller,HNW,CH
+813,Kwok Chan,Retail,HK
+814,Hannah Richter,Retail,CH
+815,Kwok Lee,HNW,HK
+816,Arthur Sinclair,Retail,US
+817,Olivia Merrick,Retail,GB
+818,Louis Dubois,Retail,FR
+819,Emily Goodwin,Retail,SG
+820,Sophie Barrington,Retail,GB
+821,Beatrice Fairfax,Retail,US
+822,Gabriel Moreau,Retail,  fr
+823,Beatrice Barrington,Retail, US
+824,Edward Hollis,Retail,SG
+825,George Whitfield,HNW,GB
+826,Camille Lefebvre,Retail,FR
+827,Khalid Khoury,Retail,AE
+828,Edward Merrick,UHNW,GB
+829,Hugo Fontaine,Retail,FR
+830,Yan Lam,Retail, hk
+831,Sophie Carrington,Retail,LU
+832,Emily Carrington,Retail,SG
+833,Charlotte Vaughan,Retail,SG
+834,Maximilian Richter,Retail,DE
+835,Maryam Hassan,Retail,AE
+836,Emily Vaughan,Retail,SG
+837,Omar Al-Maktoum,UHNW,AE
+838,George Ashworth,UHNW,US
+839,Emily Ashworth,Retail,SG
+840,William Goodwin,HNW,LU
+841,William Vaughan,Retail,SG
+842,Emily Pemberton, Retail ,SG
+843,Oliver Hollis,Retail,GB
+844,Edward Wexford,HNW,US
+845,Thomas Wexford,Retail,SG
+846,Tsz Ng,Retail,HK
+847,Arthur Goodwin,Retail,US
+848,Antoine Lemaire,Retail,FR
+849,Henry Vaughan,Retail,SG
+850,Felix Brandt,Retail,CH
+851,Grace Goodwin,UHNW,GB
+852,Eleanor Hollis,Retail,US
+853,Niklas Hofmann,Retail,DE
+854,Maximilian Keller,Retail,CH
+855,Oliver Fairfax,Retail,US
+856,Beatrice Carrington,UHNW,US
+857,Hannah Wagner,Retail,CH
+858,Olivia Thorne,HNW,LU
+859,George Vaughan,Retail,SG
+860,Yuto Ito,Retail,JP
+861,Grace Merrick,HNW,US
+862,Stonebridge Endowment,Institutional,SG
+863,Eleanor Fairfax,HNW,SG
+864,Mia Wagner,Retail,CH
+865,Felix Brandt,Retail,CH
+866,George Pemberton,Retail,GB
+867,Ka Lam,Retail,HK
+868,Thomas Sinclair,Retail,GB
+869,Edward Thorne,HNW,US
+870,Olivia Fairfax,Retail,US
+871,Mia Richter,Retail,DE
+872,Maximilian Schreiber,Retail,DE
+873,Lena Schreiber,HNW,CH
+874, Henry Merrick ,HNW,GB
+875,Niklas Wagner, Retail ,DE
+876, Mei Watanabe ,Retail,JP
+877,Ren Takahashi,Retail,JP
+878,Thomas Pemberton,HNW,SG
+879,Lukas Hofmann,HNW,CH
+880,Sakura Ito,Retail,JP
+881,Maximilian Vogel,Retail,CH
+882,Edward Carrington,Retail,  LU
+883,Tsz Tsang,Retail, hk
+884,Lukas Keller,Retail,CH
+885,Henry Barrington,Retail,GB
+886,Emily Goodwin,Retail,GB
+887,Edward Wexford,Retail,SG
+888,Mia Keller,HNW,DE
+889,Ling Wong,Retail,HK
+890,Aoi Yamamoto,HNW,JP
+891,Eleanor Vaughan,Retail,US
+892,George Vaughan, Retail ,SG
+893,Thomas Carrington,Retail,GB
+894,Jardine Investment Trust,Institutional, de
+895,Charlotte Merrick,Retail,US
+896,Hei Ng,HNW, hk
+897,Charlotte Hollis,Retail,SG
+898,George Barrington,Retail,US
+899,Antoine Laurent,Retail,FR
+900,Hei Ho,Retail,HK
+901,Khalid Hassan,Retail,AE
+902,Thomas Vaughan,Retail,US
+903,Hana Sato,Retail,JP
+904,Hannah Hofmann,HNW,CH
+905,Olivia Merrick,Retail,SG
+906,Sophie Aldous,Retail,US
+907,Mia Schreiber,Retail,CH
+908,Jonas Wagner,Retail,DE
+909,Lukas Vogel,Retail,DE
+910,Yan Lee,Retail,HK
+911,Noor Habib,Retail,AE
+912,Mei Tanaka,HNW,JP
+913, George Hollis ,UHNW,US
+914,Emily Whitfield,Retail,US
+915,Julien Lemaire,Retail,FR
+916,  Louis Roux  ,Retail,FR
+917,James Wexford,HNW,GB
+918,Charlotte Aldous,Retail,US
+919,Emma Vogel,HNW,CH
+920,Gabriel Girard,Retail,FR
+921,Thomas Goodwin,HNW,US
+922,Thomas Sinclair,Retail,GB
+923,William Carrington,HNW,US
+924,Thomas Wexford,Retail,US
+925, Hana Ito ,Retail,JP
+926,Beatrice Barrington,Retail,SG
+927,Camille Fontaine,HNW,FR
+928,Oliver Thorne,Retail,  US
+929,Olivia Merrick,Retail,US
+930,Grace Ashworth,Retail,SG
+931,Ren Takahashi,Retail,JP
+932,Charlotte Sinclair,Retail,US
+933,Kwok Cheung,HNW,HK
+934,Emily Fairfax,Retail,GB
+935,Sophie Aldous,Retail,US
+936,  James Whitfield  ,UHNW,SG
+937,Edward Thorne,UHNW,LU
+938,Jardine Pension Fund,Institutional,LU
+939,Hei Ho,HNW,HK
+940, William Ashworth ,Retail,US
+941,Emily Wexford, HNW ,US
+942,Grace Wexford,HNW,GB
+943,Cheung Wah Asset Management,Institutional,HK
+944,Emma Brandt,UHNW,DE
+945,Olivia Ashworth,Retail,GB
+946,Emily Wexford,Retail,GB
+947,Henry Hollis,Retail,US
+948,Oliver Wexford,Retail,LU
+949,Hei Tsang,Retail,HK
+950,Ren Takahashi,Retail,JP
+951,Eleanor Wexford,UHNW,SG
+952,Eleanor Fairfax,HNW,US
+953,Layla Hassan,Retail,AE
+954,George Aldous,Retail,US
+955,Niklas Keller,Retail,CH
+956,Felix Richter,Retail,CH
+957, Yusuf Hassan ,  Retail  ,AE
+958,Ka Ho,Retail,HK
+959,Emily Barrington,Retail,US
+960,Thomas Vaughan,Retail,US
+961,Fatima Mansour,  UHNW  ,AE
+962,Henry Fairfax,Retail,LU
+963,  Olivia Pemberton  ,Retail,US
+964,James Wexford,Retail,US
+965,Niklas Richter,Retail,CH
+966,Maximilian Brandt,HNW,CH
+967,Maryam Mansour,Retail,AE
+968,Sophie Whitfield,Retail,GB
+969,Emily Barrington,Retail,US
+970,Omar Habib,  Retail  ,  ae
+971,Hei Lam,Retail,HK
+972,Haruto Yamamoto,Retail,JP
+973,Emma Keller,Retail,DE
+974,Arthur Fairfax,Retail,US
+975,Yuto Yamamoto,HNW,JP
+976,Grace Goodwin,  Retail  ,GB
+977,Niklas Richter,UHNW,CH
+978,James Merrick,Retail,US
+979,Emily Pemberton,Retail,US
+980,Oliver Whitfield,Retail,SG
+981,Tsz Tsang,Retail,HK
+982,Emily Wexford,UHNW,GB
+983,Emily Merrick,Retail,SG
+984,Mei Ng,HNW,HK
+985,George Hollis,Retail,GB
+986,Thomas Wexford,Retail,US
+987,Edward Sinclair,Retail,US
+988,Khalid Nasser, Retail ,AE
+989,Grace Vaughan,Retail,GB
+990,Henry Pemberton,Retail,SG
+991,Olivia Hollis,Retail,LU
+992,Mei Takahashi,Retail,JP
+993,Sophie Pemberton,Retail,LU
+994,Antoine Fontaine,Retail,  FR
+995,Niklas Wagner,Retail,DE
+996,Emily Sinclair,Retail,US
+997,George Aldous,Retail,LU
+998,Lukas Vogel,Retail,DE
+999,Emily Carrington,Retail,US
+1000,Layla Nasser,UHNW,AE
+1001,Edward Barrington,Retail,GB
+1002,Sophie Merrick,HNW,US
+1003,Wai Chan,Retail,HK
+1004,Camille Fontaine,HNW,FR
+1005,Mei Tsang,Retail,HK
+1006,Yusuf Hassan,Retail,AE
+1007,Manon Fontaine,Retail,FR
+1008,Emily Aldous,Retail,LU
+1009,Fatima Mansour,Retail,AE
+1010,Beatrice Fairfax,Retail,US
+1011,Ka Ng,Retail,HK
+1012,Henry Ashworth,HNW,  SG
+1013,Yan Lam,Retail,HK
+1014,James Pemberton,Retail,US
+1015,Yan Lee,UHNW,HK
+1016,Antoine Laurent,HNW,FR
+1017,Kwok Cheung,Retail,HK
+1018,Ho Lee,  Retail  ,HK
+1019,Ling Chan,Retail, HK
+1020,Clara Vogel,Retail,CH
+1021,Mia Richter,HNW,CH
+1022,Beatrice Hollis,  Retail  ,GB
+1023,Sophie Ashworth,Retail,US
+1024,Henry Fairfax,HNW,US
+1025,Charlotte Wexford,Retail,LU
+1026,Beatrice Aldous,Retail,US
+1027,Edward Vaughan,UHNW,US
+1028,Henry Merrick,Retail,US
+1029,Brightwater Sovereign Fund,Institutional,LU
+1030,Yarrow Pension Fund,Institutional,AE
+1031,Maximilian Keller,HNW,CH
+1032,George Goodwin,HNW,US
+1033,Mia Hofmann,HNW,DE
+1034,Arthur Merrick,Retail,US
+1035,Mia Hofmann,Retail,DE
+1036,Sophie Pemberton,Retail,SG
+1037,George Sinclair,Retail,  GB
+1038,Beatrice Goodwin,UHNW,LU
+1039,Chi Wong,Retail,HK
+1040,Grace Barrington,Retail,US
+1041,Grace Merrick,Retail,GB
+1042,Noor Mansour,Retail,AE
+1043,William Whitfield,  Retail  ,GB
+1044,William Sinclair,Retail,US
+1045,Arthur Aldous,Retail,GB
+1046,Arthur Carrington,UHNW,GB
+1047,Maryam Hassan,Retail,AE
+1048,Beatrice Fairfax,Retail,US
+1049,Charlotte Fairfax,UHNW,SG
+1050,Edward Vaughan,Retail,GB
+1051,Charlotte Goodwin,Retail,SG
+1052,Mia Brandt,  Retail  ,CH
+1053, Sophie Aldous ,HNW,SG
+1054,Mei Takahashi,HNW,JP
+1055,Tariq Habib,HNW,AE
+1056,Emily Aldous,Retail,US
+1057,Gabriel Lefebvre,Retail,FR
+1058,Tariq Al-Maktoum,HNW,AE
+1059,Maximilian Brandt,Retail,DE
+1060,Hei Wong,Retail,HK
+1061,Lena Hofmann,Retail,DE
+1062,  Henry Vaughan  ,Retail,SG
+1063,Jonas Baumann,HNW,CH
+1064,Aldridge Investment Trust,Institutional,US
+1065,William Barrington,Retail,US
+1066,James Barrington,Retail,US
+1067,Thornbury Endowment,Institutional,LU
+1068,Grace Hollis,Retail,US
+1069,Emily Barrington,Retail,US
+1070,Emily Goodwin,Retail,LU
+1071,Edward Sinclair,Retail,US
+1072,Henry Goodwin,Retail,LU
+1073,Manon Laurent,UHNW,FR
+1074,Edward Ashworth,HNW,LU
+1075,Mia Hofmann,Retail,CH
+1076,James Merrick,Retail, SG
+1077,Mia Wagner,Retail,CH
+1078,Hannah Wagner,Retail,CH
+1079,Mia Richter,Retail,CH
+1080,Niklas Keller,Retail,CH
+1081,Lukas Keller,HNW,DE
+1082,George Barrington,Retail,SG
+1083,Maximilian Baumann,HNW, DE
+1084,Arthur Wexford,UHNW,US
+1085,Grace Fairfax,Retail,US
+1086,Ka Chan,HNW,  HK
+1087,Charlotte Carrington,Retail,LU
+1088,Hannah Schreiber,Retail,DE
+1089,Henry Hollis,Retail,SG
+1090,James Whitfield,UHNW,LU
+1091,Ho Ho,Retail,HK
+1092,Thomas Sinclair,Retail,US
+1093,Clara Schreiber,HNW,DE
+1094,Henry Merrick,HNW,GB
+1095,William Barrington,Retail,US
+1096,Arthur Pemberton,Retail,  LU
+1097,Oliver Carrington,HNW,SG
+1098, Sophie Ashworth ,Retail,  GB
+1099,William Aldous,HNW,US
+1100, Julien Lefebvre ,UHNW,FR
+1101,Maximilian Wagner,UHNW,  de
+1102,Eleanor Vaughan,Retail,US
+1103,Felix Richter,Retail,DE
+1104,William Aldous,Retail,GB
+1105,Clara Richter,Retail,CH
+1106,Oliver Sinclair,Retail,US
+1107,William Barrington,HNW,GB
+1108,Thomas Ashworth,HNW,SG
+1109,Henry Ashworth,UHNW,US
+1110,Ka Ho,Retail,HK
+1111,Zephyr Investment Trust,Institutional,AE
+1112,Beatrice Aldous,  Retail  ,US
+1113,Hugo Moreau,UHNW,FR
+1114,Mei Lee,Retail,HK
+1115,Chi Ho,Retail,HK
+1116,Eleanor Wexford,Retail,US
+1117,Charlotte Sinclair,HNW,SG
+1118,Gabriel Dubois,  HNW  ,FR
+1119,Hassan Al-Rashid,Retail,AE
+1120,Niklas Vogel,HNW,CH
+1121,Mei Tsang,UHNW,HK
+1122,Tsz Ng,HNW,HK
+1123,Edward Hollis,  Retail  ,US
+1124,George Whitfield,UHNW,SG
+1125,Beatrice Goodwin,HNW,GB
+1126,Hang Cheong Insurance Group,Institutional,HK
+1127,Felix Vogel,HNW,CH
+1128,Beatrice Merrick,Retail,GB
+1129,Edward Hollis,Retail,SG
+1130,Emily Ashworth,Retail,SG
+1131,Charlotte Merrick,Retail,  us
+1132,Emma Schreiber,  Retail  ,CH
+1133,Edward Hollis,Retail,LU
+1134,Oliver Aldous,Retail,LU
+1135,William Merrick,Retail,US
+1136,  George Ashworth  ,Retail,US
+1137,Charlotte Wexford,Retail,US
+1138,  Olivia Vaughan  ,Retail,GB
+1139,Norwood Sovereign Fund,Institutional,US
+1140,Henry Vaughan,Retail,LU
+1141,Emma Vogel, Retail ,CH
+1142,Grace Fairfax,Retail,US
+1143,Arthur Whitfield,HNW,US
+1144,Emma Keller,HNW,CH
+1145,Emma Richter,Retail,DE
+1146,Niklas Richter,Retail,CH
+1147,Edward Thorne,Retail,GB
+1148,Emily Merrick,Retail,GB
+1149,Arthur Vaughan,Retail,GB
+1150,Haruto Ito,Retail,JP
+1151,Yan Tsang,Retail,HK
+1152,Olivia Hollis,UHNW,US
+1153,Mei Suzuki,Retail,JP
+1154,Felix Baumann,HNW,CH
+1155,Emma Wagner,UHNW,DE
+1156,Lena Schreiber,UHNW,CH
+1157,Edward Hollis,UHNW,US
+1158,Arthur Carrington,HNW,GB
+1159,Tariq Saleh,HNW,AE
+1160,Beatrice Hollis,UHNW,SG
+1161,Stratford Insurance Group,Institutional,US
+1162,Beatrice Thorne,Retail,US
+1163,Alice Barrington, HNW ,LU
+1164,Henry Ashworth,UHNW,US
+1165,Hannah Keller,HNW,DE
+1166,Thomas Merrick,Retail,US
+1167,Emily Whitfield,Retail,LU
+1168,Niklas Wagner,Retail,DE
+1169,Louis Lemaire,HNW,FR
+1170,Thomas Hollis,Retail,US
+1171,Edward Hollis,Retail,GB
+1172,Olivia Ashworth,Retail,GB
+1173,Larchmont Endowment,Institutional,FR
+1174,Charlotte Aldous,Retail,LU
+1175,Jonas Baumann,HNW,CH
+1176,Hana Nakamura,UHNW,JP
+1177,  Lukas Schreiber  ,Retail,CH
+1178,Eleanor Merrick,HNW,US
+1179,Arthur Carrington,Retail,US
+1180,Mia Vogel,Retail,DE
+1181,Olivia Aldous,Retail,US
+1182,Yuto Suzuki,HNW,JP
+1183,Khalid Hassan,Retail,  AE
+1184,George Merrick,HNW,LU
+1185,Alice Sinclair,HNW,US
+1186,Fatima Habib,HNW, ae
+1187,Louis Dubois,Retail,FR
+1188,Ka Ho,Retail,HK
+1189,Hannah Vogel,Retail,DE
+1190,Chi Ng,Retail,HK
+1191,Olivia Wexford,Retail,SG
+1192,Mia Baumann,Retail,DE
+1193,Charlotte Goodwin,Retail,  GB
+1194,Clara Baumann, Retail , CH
+1195,Clara Richter,Retail,DE
+1196,Emma Baumann,Retail,CH
+1197,Thomas Aldous,Retail,US
+1198,Lena Baumann,  HNW  ,CH
+1199,Ellesmere Family Office,  Institutional  ,US
+1200,Oliver Wexford,Retail,US
+1201,  Arthur Merrick  ,Retail,SG
+1202, Hannah Keller ,Retail,DE
+1203,William Barrington,Retail,US
+1204,Olivia Sinclair,Retail,LU
+1205,Thomas Fairfax,Retail,LU
+1206,  Sophie Pemberton  ,Retail,LU
+1207,Emily Sinclair,UHNW,GB
+1208,Emily Sinclair,HNW,SG
+1209,Khalid Nasser,HNW,AE
+1210,Alice Goodwin,UHNW,US
+1211,Maximilian Keller,UHNW,CH
+1212,Haruto Tanaka,Retail,JP
+1213,Sophie Merrick,Retail,US
+1214,Edward Wexford,Retail,US
+1215,Gabriel Dubois,Retail,FR
+1216,Khalid Al-Maktoum,Retail,AE
+1217,George Whitfield,Retail,SG
+1218,Tsz Ho,Retail,HK
+1219,Yuto Tanaka,HNW,JP
+1220,Lukas Vogel,Retail,DE
+1221,Olivia Goodwin,HNW,US
+1222,Emily Merrick,UHNW,US
+1223,Mia Hofmann,HNW,DE
+1224,Sophie Sinclair,Retail,GB
+1225,Arthur Hollis,UHNW,LU
+1226,Antoine Dubois,Retail,FR
+1227,Beatrice Aldous,Retail,LU
+1228,Julien Laurent,Retail,FR
+1229,Grace Vaughan,Retail,  lu
+1230,George Vaughan,Retail,LU
+1231,Emma Baumann,Retail,DE
+1232,James Ashworth,HNW,US
+1233,Henry Sinclair,Retail,US
+1234,Mia Vogel,Retail,DE
+1235,Omar Khoury,Retail,AE
+1236,Beatrice Pemberton,HNW,US
+1237,Clara Keller,Retail,DE
+1238,Eleanor Sinclair,Retail,GB
+1239,Thomas Pemberton,HNW,GB
+1240,Emily Aldous,UHNW,SG
+1241,Oliver Whitfield,Retail,US
+1242,Emma Brandt,Retail, DE
+1243,Hannah Vogel,Retail,DE
+1244,Sophie Sinclair,Retail,SG
+1245,Alice Goodwin,Retail,SG
+1246,James Aldous,Retail,GB
+1247,Alice Whitfield,Retail,US
+1248,Thomas Ashworth,HNW,US
+1249,Edward Whitfield,Retail,US
+1250,Tariq Al-Maktoum,HNW,AE
+1251,Sophie Goodwin,UHNW,SG
+1252,Emily Whitfield,HNW,US
+1253,George Barrington,Retail,  US
+1254,James Hollis,Retail,US
+1255,Eleanor Thorne,Retail,SG
+1256,Alice Wexford,Retail,US
+1257,James Thorne,Retail,GB
+1258,Arthur Merrick,Retail,SG
+1259,Wycombe Investment Trust,Institutional,AE
+1260,Ling Wong,HNW,HK
+1261,Eleanor Goodwin,Retail,LU
+1262,Jonas Brandt,Retail,CH
+1263,Aoi Tanaka,  Retail  ,JP
+1264,Arthur Goodwin,Retail,LU
+1265,Emily Hollis,UHNW, GB
+1266,Fatima Khoury,Retail,AE
+1267,Alice Hollis,HNW,US
+1268,Hannah Keller,UHNW,CH
+1269,Kaito Sato,HNW,JP
+1270,Beatrice Pemberton,Retail,US
+1271,Olivia Vaughan,Retail,GB
+1272,Mia Schreiber,HNW,CH
+1273,Wai Ho,Retail,HK
+1274,Oliver Sinclair,HNW,US
+1275,Emma Brandt,Retail,CH
+1276,James Aldous,Retail,US
+1277,Henry Barrington,UHNW,US
+1278,Arthur Fairfax,HNW,US
+1279,Hei Wong,UHNW,HK
+1280,Omar Mansour,HNW,AE
+1281,Arthur Aldous,HNW,US
+1282,Eleanor Whitfield,Retail,GB
+1283,Charlotte Ashworth,Retail,GB
+1284,Oliver Thorne,Retail,GB
+1285,James Barrington,Retail,US
+1286,Olivia Vaughan,Retail,SG
+1287,Edward Carrington,Retail,GB
+1288,Eleanor Whitfield,Retail,GB
+1289,Charlotte Sinclair,Retail,US
+1290,Emily Wexford,HNW,LU
+1291,  Ho Ng  ,Retail, HK
+1292,Oliver Hollis,Retail,LU
+1293,Arthur Aldous,HNW,  us
+1294,Mia Vogel,Retail,DE
+1295,Edward Pemberton,Retail,SG
+1296,Charlotte Aldous,HNW,US
+1297,Grace Pemberton,Retail,US
+1298,Oliver Wexford,HNW,GB
+1299,Henry Hollis,Retail,GB
+1300,Cardinal Asset Management, Institutional ,US
+1301,Omar Mansour,Retail,AE
+1302,Niklas Schreiber,Retail, DE
+1303,Sophie Ashworth,UHNW,US
+1304,Sophie Hollis,Retail,US
+1305,Inès Girard,UHNW,FR
+1306,Hannah Vogel,Retail,CH
+1307,Edward Aldous,HNW,GB
+1308,Lena Baumann,  HNW  ,CH
+1309,Henry Pemberton,Retail,GB
+1310,Sophie Wexford,Retail,GB
+1311,Arthur Barrington,Retail,GB
+1312,Grace Ashworth,Retail,GB
+1313,Chi Wong, Retail ,HK
+1314,Clara Richter,Retail,CH
+1315,Beatrice Thorne,HNW,US
+1316,Emma Wagner,Retail,  de
+1317,Grace Fairfax,Retail,SG
+1318,Henry Carrington,HNW,US
+1319,Beatrice Carrington,Retail,SG
+1320,Grace Whitfield,Retail,GB
+1321,James Goodwin,Retail,  us
+1322,Khalid Saleh,HNW,AE
+1323,James Barrington,Retail,GB
+1324,Emma Wagner,Retail,CH
+1325,Manon Fontaine,HNW,FR
+1326,  Thomas Goodwin  ,Retail,SG
+1327,Emily Whitfield,Retail,LU
+1328,William Wexford,Retail,GB
+1329,Maximilian Wagner,HNW,CH
+1330,Niklas Schreiber,Retail,CH
+1331,Jonas Hofmann,Retail, ch
+1332,Gabriel Moreau,Retail,FR
+1333,Emma Baumann,  Retail  ,CH
+1334, Beatrice Sinclair ,Retail,GB
+1335,Emily Barrington,HNW,US
+1336,Sophie Barrington,HNW,GB
+1337,Niklas Keller,Retail,DE
+1338,Charlotte Merrick, HNW ,SG
+1339,James Wexford,Retail,LU
+1340,Hannah Brandt,Retail,DE
+1341,Edward Merrick,Retail,US
+1342,Oliver Wexford,Retail,SG
+1343,Clara Baumann,UHNW,DE
+1344,Grace Whitfield,Retail,GB
+1345,George Vaughan,Retail,LU
+1346,  George Fairfax  ,HNW,SG
+1347,George Hollis,Retail,GB
+1348,Grace Ashworth,Retail,US
+1349,Arthur Vaughan,Retail, SG
+1350,Gabriel Girard,Retail,FR
+1351,Manon Dubois,Retail,FR
+1352,Mei Ito,Retail,JP
+1353,Gabriel Dubois,Retail,FR
+1354,Sophie Sinclair,Retail,US
+1355,Julien Roux,HNW,FR
+1356,Oliver Merrick,HNW,US
+1357,Thomas Sinclair,HNW,GB
+1358,Sophie Ashworth,Retail,GB
+1359,Yui Ito,Retail,JP
+1360,William Aldous,UHNW,US
+1361,Mei Lam,HNW,HK
+1362,Hannah Vogel,Retail,CH
+1363,Chi Cheung,Retail,HK
+1364,Manon Girard,HNW,FR
+1365,Lena Brandt,Retail,DE
+1366,Tsz Cheung,Retail,HK
+1367,Charlotte Ashworth,HNW,US
+1368,Emily Fairfax,Retail,US
+1369,Layla Khoury,Retail,AE
+1370,Pemberton Endowment,Institutional,US
+1371,Wai Ho,Retail,HK
+1372,Maximilian Baumann,Retail,CH
+1373,Mia Keller,Retail,CH
+1374,Beatrice Thorne,Retail,US
+1375,Alice Thorne,HNW,GB
+1376,James Whitfield,Retail,US
+1377,Charlotte Whitfield,Retail,GB
+1378,George Thorne,Retail,GB
+1379,William Carrington,HNW,US
+1380,James Merrick,Retail,US
+1381,Mia Hofmann,Retail,CH
+1382,Thomas Ashworth,Retail,US
+1383,Eleanor Wexford,Retail,SG
+1384,Thomas Thorne,Retail,GB
+1385,James Aldous,HNW,LU
+1386,Arthur Goodwin,Retail,US
+1387,Charlotte Barrington,Retail, lu
+1388,Lena Vogel,Retail,DE
+1389,Hassan Saleh,HNW,AE
+1390,George Fairfax,Retail,US
+1391,Maximilian Hofmann,HNW,CH
+1392, Camille Fontaine ,HNW,FR
+1393,Tariq Khoury,HNW,AE
+1394,Inès Lemaire,Retail,FR
+1395,Ho Lee,Retail,HK
+1396,Hana Takahashi,HNW,JP
+1397,Julien Dubois,Retail,FR
+1398,Sakura Tanaka,Retail,JP
+1399,Niklas Keller,HNW,CH
+1400,Hassan Khoury,Retail,AE
+1401,Inverness Sovereign Fund,Institutional,US
+1402,Emily Carrington,Retail,LU
+1403,Chloé Lefebvre,UHNW,  fr
+1404, Louis Lefebvre ,UHNW,FR
+1405,Sophie Aldous,HNW,US
+1406,Henry Thorne,Retail,LU
+1407,Grace Carrington,HNW,US
+1408,  George Merrick  ,  Retail  ,US
+1409,Olivia Ashworth,Retail,GB
+1410,Hannah Wagner,Retail,DE
+1411,Sota Nakamura,Retail,JP
+1412,Hannah Baumann,HNW,CH
+1413,Olivia Barrington,Retail,GB
+1414,Aisha Khoury,Retail,AE
+1415,Inès Roux,Retail,FR
+1416,Chloé Lemaire, HNW ,FR
+1417,Chi Ng,Retail,HK
+1418,Felix Baumann,Retail,DE
+1419,Antoine Girard,Retail,FR
+1420,James Hollis,HNW,LU
+1421,  Eleanor Vaughan  ,Retail,  LU
+1422,Fatima Nasser,HNW,AE
+1423,James Thorne,Retail,US
+1424,Felix Richter,UHNW,CH
+1425,Hugo Laurent,Retail,  FR
+1426,Niklas Vogel,HNW,DE
+1427,William Wexford,Retail,US
+1428,George Carrington,Retail,SG
+1429,Chi Ng,Retail,HK
+1430,William Hollis,Retail,US
+1431,Mei Chan,HNW,HK
+1432,Ho Ng,Retail,HK
+1433,Olivia Merrick,Retail,US
+1434,Noor Nasser,Retail,AE
+1435,Yusuf Al-Rashid,Retail,AE
+1436,Henry Carrington,Retail,SG
+1437,Oliver Thorne,Retail,SG
+1438,Camille Laurent,HNW,FR
+1439,Alice Thorne,Retail,LU
+1440,Emily Carrington,Retail,US
+1441,Grace Ashworth,Retail,US
+1442,Alice Fairfax,Retail,US
+1443,Camille Laurent,HNW,FR
+1444,Mei Cheung,HNW,HK
+1445,Aisha Mansour, Retail ,AE
+1446,  Alice Merrick  ,HNW,LU
+1447,Oliver Merrick,Retail,SG
+1448,George Wexford,Retail,US
+1449,Kaito Watanabe,HNW,JP
+1450,Olivia Hollis,Retail,GB
+1451,  Yui Takahashi  ,Retail,JP
+1452,Mia Richter,Retail, CH
+1453,Clara Schreiber,HNW,DE
+1454,Alice Pemberton,  Retail  ,US
+1455,  Thomas Goodwin  ,Retail, US
+1456,Beatrice Hollis,HNW,SG
+1457,Olivia Fairfax,Retail,SG
+1458,Felix Wagner,Retail,DE
+1459,Louis Lefebvre,HNW,FR
+1460,Tsz Wong,Retail,HK
+1461,Kaito Nakamura, Retail ,JP
+1462,Lukas Keller,HNW,CH
+1463,Hei Tsang,UHNW,HK
+1464,Khalid Hassan,Retail,AE
+1465,Charlotte Hollis,Retail,US
+1466,Ho Ng,UHNW,HK
+1467, James Fairfax ,Retail,US
+1468,Pinnacle Endowment,Institutional,CH
+1469,Léa Girard,UHNW,FR
+1470,  Omar Al-Rashid  ,Retail,AE
+1471,Emily Whitfield, Retail ,SG
+1472,Olivia Vaughan,Retail,LU
+1473,Mia Wagner,UHNW,DE
+1474,Oliver Vaughan,Retail,GB
+1475,Emma Richter,Retail,CH
+1476,Felix Richter,Retail,DE
+1477,Chi Cheung,Retail,HK
+1478,Maryam Al-Maktoum,Retail,AE
+1479,Pinnacle Insurance Group,Institutional,HK
+1480,Aoi Nakamura,Retail, jp
+1481,Edward Carrington,UHNW,US
+1482,Emma Richter,Retail,DE
+1483,Manon Fontaine,Retail,FR
+1484,Hugo Dubois,Retail,FR
+1485,Maximilian Brandt,Retail,CH
+1486,Gabriel Dubois,Retail,FR
+1487,Maximilian Brandt,Retail,DE
+1488,Eleanor Merrick,Retail,SG
+1489,Quillon Insurance Group,Institutional,FR
+1490,  Eleanor Vaughan  , HNW ,GB
+1491,Olivia Ashworth,Retail,US
+1492, Grace Pemberton ,UHNW,SG
+1493,Aisha Al-Maktoum,UHNW,AE
+1494,Hannah Keller,Retail,DE
+1495,Hei Wong,HNW,HK
+1496,Yusuf Nasser,HNW,AE
+1497,Grace Barrington,Retail,LU
+1498,Ellesmere Foundation,Institutional,JP
+1499,Emily Merrick,Retail,  lu
+1500,Lukas Schreiber,Retail,CH
+1501,Jonas Keller,Retail,CH
+1502, Julien Dubois ,HNW,FR
+1503,Eleanor Aldous,Retail,US
+1504,William Wexford,Retail,SG
+1505,Emma Keller,Retail,DE
+1506,Emily Pemberton,HNW,GB
+1507,Eleanor Aldous,Retail,US
+1508,Alice Sinclair,Retail,US
+1509,Arthur Ashworth,Retail,  US
+1510,Maximilian Brandt,Retail,DE
+1511,Chloé Roux,Retail,FR
+1512,Gabriel Fontaine,Retail,FR
+1513,Alice Hollis,Retail,SG
+1514,Hana Tanaka,Retail,JP
+1515,Sophie Sinclair,Retail,LU
+1516,Grace Sinclair,Retail,US
+1517,Lukas Wagner,HNW,CH
+1518,James Vaughan,HNW,GB
+1519,Kwok Wong,Retail,HK
+1520,Arthur Aldous,HNW,US
+1521,Emily Hollis,HNW,US
+1522,Olivia Pemberton,HNW,GB
+1523,Jonas Keller,UHNW,DE
+1524,Wai Ho,Retail,HK
+1525,Lena Keller,UHNW,CH
+1526,Olivia Aldous,Retail,LU
+1527,Niklas Richter,UHNW,CH
+1528,Arthur Ashworth,Retail,LU
+1529,Hana Watanabe,Retail,JP
+1530,Eleanor Ashworth,HNW,LU
+1531,James Sinclair,Retail,SG
+1532, Thomas Vaughan ,Retail, GB
+1533,  Wai Ng  ,HNW,HK
+1534,Julien Dubois,Retail,FR
+1535,Khalid Hassan,Retail,  AE
+1536,Sophie Carrington,HNW,SG
+1537,William Fairfax,UHNW,GB
+1538,Grace Thorne,Retail,  sg
+1539,Henry Whitfield,Retail,  GB
+1540,Maximilian Vogel,Retail,DE
+1541,Hana Watanabe,Retail,JP
+1542,Louis Dubois,Retail,FR
+1543,Oliver Vaughan,Retail,US
+1544,Jonas Wagner,Retail,CH
+1545,Charlotte Barrington,Retail,GB
+1546,Beatrice Goodwin,Retail,GB
+1547,James Merrick,Retail,US
+1548,Olivia Thorne,Retail,US
+1549,Yui Suzuki,Retail,JP
+1550,Thomas Aldous,HNW,LU
+1551,Mei Lam,Retail,HK
+1552,William Thorne,HNW,SG
+1553,Chi Lee,Retail,HK
+1554,Pemberton Investment Trust,Institutional,US
+1555,Sophie Goodwin,Retail,LU
+1556,Emma Brandt,Retail,CH
+1557,Edward Sinclair,Retail,US
+1558,Henry Merrick,Retail,US
+1559,Arthur Thorne,Retail,SG
+1560,Thomas Aldous,HNW,US
+1561,Clara Baumann,HNW,DE
+1562,Charlotte Ashworth,HNW,LU
+1563,  Oliver Merrick  ,Retail,SG
+1564,Omar Khoury,Retail,AE
+1565,Hannah Hofmann, Retail ,DE
+1566,Felix Hofmann,HNW,DE
+1567,Niklas Baumann,Retail,CH
+1568,George Sinclair,Retail,SG
+1569,Eleanor Hollis,HNW,SG
+1570,Wai Cheung,Retail,HK
+1571,Grace Merrick,Retail,US
+1572,Beatrice Barrington,Retail,LU
+1573,Inès Fontaine,Retail,FR
+1574,Beatrice Pemberton,Retail,US
+1575, Yui Sato ,Retail,JP
+1576,Charlotte Goodwin,Retail,US
+1577,Clara Keller,Retail,CH
+1578,Emma Schreiber,HNW,CH
+1579,Yuto Takahashi,Retail,JP
+1580,Noor Mansour,HNW,AE
+1581,Emily Barrington,Retail,US
+1582,Maximilian Schreiber,Retail,CH
+1583,Ho Tsang,Retail,  HK
+1584,Sakura Tanaka,Retail,JP
+1585,Omar Habib,Retail,AE
+1586,Hana Tanaka,Retail,JP
+1587,Arthur Fairfax,Retail,LU
+1588,Hassan Nasser,Retail,  AE
+1589,Beatrice Whitfield,Retail,US
+1590,Chloé Lemaire,Retail,FR
+1591, Yuto Yamamoto ,Retail,JP
+1592,Grace Merrick,Retail,SG
+1593,Thomas Hollis,Retail,SG
+1594,Felix Keller, Retail , ch
+1595,Mei Lam,Retail,HK
+1596,Pinnacle Endowment,Institutional,LU
+1597,Tsz Tsang,UHNW,HK
+1598,Arthur Fairfax,HNW,US
+1599,Noor Khoury,Retail,AE
+1600,Jonas Schreiber,HNW,DE
+1601,Alice Merrick,Retail,US
+1602,Niklas Keller,Retail,DE
+1603,George Pemberton, Retail ,US
+1604,Edward Barrington,Retail,US
+1605,Charlotte Pemberton,Retail,SG
+1606,Clara Richter,HNW,DE
+1607,Edward Vaughan,Retail,US
+1608,Yuto Watanabe, HNW ,JP
+1609,Henry Sinclair,Retail,GB
+1610,Maximilian Schreiber,Retail,CH
+1611,Clara Wagner,UHNW,CH
+1612,Emma Wagner,HNW,CH
+1613,Thomas Whitfield,HNW,LU
+1614,Olivia Whitfield,HNW,GB
+1615,Mia Baumann,HNW,DE
+1616,Alice Merrick,Retail,GB
+1617,Yan Cheung,Retail,HK
+1618,Léa Lemaire,Retail,FR
+1619,Niklas Brandt,UHNW,CH
+1620,Edward Fairfax,Retail,US
+1621,Chi Wong,HNW,HK
+1622,Arthur Whitfield,Retail,SG
+1623,Arthur Pemberton,Retail,GB
+1624,Wai Lam,Retail,HK
+1625,  Chloé Roux  ,Retail,FR
+1626, William Wexford ,Retail,SG
+1627,Thomas Sinclair,Retail,  US
+1628,William Hollis,HNW,GB
+1629,Beatrice Vaughan,Retail,US
+1630,Lena Baumann,Retail,DE
+1631,George Vaughan,Retail,GB
+1632,Henry Goodwin,Retail,GB
+1633,Mia Wagner,Retail,CH
+1634,Tariq Al-Rashid,Retail,AE
+1635,Tariq Al-Maktoum,HNW,AE
+1636,Aisha Al-Maktoum,UHNW,AE
+1637,Hannah Baumann,HNW,CH
+1638,Khalid Nasser,HNW,AE
+1639,Mei Lee,Retail,HK
+1640,William Goodwin,Retail,US
+1641,Hannah Vogel,Retail,CH
+1642,Emily Carrington,Retail,US
+1643,Maximilian Hofmann,Retail,CH
+1644,Jonas Hofmann,Retail,CH
+1645,Wai Lam,Retail,HK
+1646,Maximilian Baumann,Retail,CH
+1647,Hei Ng,Retail,HK
+1648,Ravenswood Foundation,Institutional,  DE
+1649,Maximilian Richter,Retail,DE
+1650,Aisha Habib,Retail,AE
+1651,Emma Brandt,Retail,CH
+1652,Clara Wagner,Retail,DE
+1653,Olivia Merrick,HNW,SG
+1654,Julien Fontaine,Retail,FR
+1655,James Barrington,Retail,SG
+1656,Yusuf Khoury,HNW,AE
+1657,  Niklas Richter  ,HNW,CH
+1658,Yusuf Habib,Retail,AE
+1659,Beatrice Sinclair,Retail,GB
+1660,Mei Lee,Retail,HK
+1661,Louis Dubois,Retail,FR
+1662,Eleanor Vaughan,Retail,SG
+1663,Grace Carrington,Retail,US
+1664,Charlotte Aldous,Retail,LU
+1665,Louis Roux,Retail,FR
+1666,Edward Vaughan,HNW,GB
+1667,Arthur Carrington,Retail,US
+1668,Ho Wong,Retail,HK
+1669,  Charlotte Whitfield  ,HNW,LU
+1670,Thomas Whitfield,Retail,GB
+1671,Mia Richter,Retail,CH
+1672,Aisha Al-Maktoum,HNW,AE
+1673,William Sinclair, HNW ,SG
+1674,Mia Schreiber,Retail,CH
+1675,Charlotte Thorne,Retail,SG
+1676,Thomas Barrington,Retail,US
+1677,Maximilian Richter,HNW,CH
+1678,Oliver Carrington,Retail,SG
+1679,Beatrice Goodwin,Retail,US
+1680,Olivia Barrington,HNW,SG
+1681,Chi Tsang,HNW,HK
+1682,Lena Brandt,Retail,DE
+1683,Beatrice Sinclair,Retail,US
+1684,Maryam Mansour,  Retail  ,AE
+1685,Camille Laurent,HNW,FR
+1686, Edward Barrington ,HNW,US
+1687,Louis Laurent,Retail,FR
+1688,Charlotte Barrington,Retail,US
+1689,Henry Merrick,Retail,GB
+1690,Clara Keller,Retail,CH
+1691,Oliver Ashworth,Retail,US
+1692,Beatrice Carrington,HNW,SG
+1693,Jonas Vogel,Retail,CH
+1694,Ka Ng,Retail,HK
+1695,Hei Lam,Retail,HK
+1696,Jonas Baumann,Retail,CH
+1697,Olivia Pemberton,Retail,US
+1698,Aisha Habib,Retail,AE
+1699,Hugo Lemaire,UHNW,FR
+1700,Henry Vaughan,Retail,US
+1701,Underwood Insurance Group,Institutional,GB
+1702,Ho Ng,Retail,HK
+1703,Layla Khoury,Retail,  ae
+1704,Hei Cheung,Retail,HK
+1705,Mia Richter,Retail,DE
+1706,  Fatima Hassan  ,HNW,AE
+1707,Antoine Dubois,Retail,FR
+1708,Thomas Whitfield,UHNW,GB
+1709,Ka Lam,Retail,HK
+1710,Jonas Baumann,Retail,DE
+1711,Beatrice Goodwin,Retail,GB
+1712,Aisha Hassan,  Retail  ,AE
+1713,Ho Ho,HNW,HK
+1714,Alice Wexford,HNW,SG
+1715,Hannah Hofmann,Retail,CH
+1716,Beatrice Pemberton, Retail ,SG
+1717,Alice Sinclair,Retail, sg
+1718,Hugo Laurent,Retail,FR
+1719,Sophie Wexford,Retail,US
+1720,Hei Wong,Retail,HK
+1721,Léa Moreau,HNW,FR
+1722,Grace Vaughan,Retail,US
+1723,Charlotte Barrington,Retail,US
+1724,Oliver Vaughan,Retail,US
+1725,Clara Brandt,HNW,DE
+1726,Layla Saleh,Retail,AE
+1727,Hana Suzuki,Retail,JP
+1728,Arthur Goodwin,Retail,LU
+1729,Thomas Hollis,Retail,US
+1730,Emma Wagner,Retail,DE
+1731,Maryam Habib,Retail,AE
+1732,Clara Vogel,Retail,CH
+1733,George Fairfax,Retail,GB
+1734,Maximilian Wagner,Retail,CH
+1735,Jonas Brandt,Retail,CH
+1736,Sophie Whitfield,Retail,SG
+1737,Chi Tsang,HNW,HK
+1738,George Merrick,Retail,US
+1739,Emily Merrick,Retail,US
+1740,Wai Cheung,  UHNW  ,HK
+1741,James Vaughan,HNW,LU
+1742,Camille Fontaine,Retail,FR
+1743,James Goodwin,Retail,LU
+1744,Emily Pemberton,Retail,SG
+1745,Layla Habib,Retail,AE
+1746,Ka Chan,Retail,HK
+1747,Lukas Vogel,Retail,CH
+1748,Edward Fairfax,Retail,SG
+1749,Louis Girard,HNW,FR
+1750,Jonas Richter,Retail,DE
+1751,Edward Merrick,Retail,LU
+1752,Ren Nakamura,Retail,JP
+1753,Emma Schreiber,HNW,DE
+1754, Kwok Cheung ,Retail,HK
+1755,  Aisha Hassan  ,Retail,AE
+1756,Ironwood Endowment,Institutional,US
+1757,Beacon Foundation,Institutional,US
+1758,William Hollis,HNW,US
+1759,Ho Ng,HNW,HK
+1760,Ravenswood Foundation,Institutional,GB
+1761,James Hollis,Retail,SG
+1762,Felix Wagner,Retail, ch
+1763,Arthur Wexford,HNW, sg
+1764,George Merrick,Retail,SG
+1765,Kwok Lee,  Retail  ,HK
+1766,Kaito Watanabe,Retail,JP
+1767,Emily Barrington,HNW,GB
+1768,Inès Moreau,Retail,FR
+1769,Yui Suzuki,Retail,JP
+1770,Henry Sinclair,HNW,US
+1771,Emma Hofmann,HNW,DE
+1772,Montrose Asset Management,Institutional,US
+1773,Thomas Wexford,Retail,US
+1774,Hugo Girard,Retail,FR
+1775,Henry Pemberton,Retail,US
+1776,George Carrington,  Retail  ,SG
+1777,James Goodwin,UHNW,LU
+1778,George Wexford,Retail,US
+1779,Olivia Barrington,Retail,SG
+1780,Khalid Mansour,Retail,AE
+1781,George Barrington,HNW,SG
+1782,Olivia Wexford,Retail,US
+1783,Emily Whitfield,Retail,US
+1784,  Maximilian Richter  ,Retail,CH
+1785,Yarrow Asset Management,Institutional,AE
+1786,Emily Wexford,Retail,US
+1787,  Lena Wagner  ,Retail, CH
+1788,Antoine Moreau,Retail,FR
+1789,Sophie Carrington,Retail,  us
+1790,Charlotte Barrington,Retail,US
+1791,Hei Ng,Retail,HK
+1792,  Mei Chan  ,Retail, HK
+1793,Eleanor Ashworth,Retail,LU
+1794,Niklas Hofmann,Retail,DE
+1795,Niklas Wagner,Retail,CH
+1796,Hei Ng,Retail,HK
+1797, Henry Aldous ,HNW,LU
+1798,Noor Mansour,UHNW,AE
+1799,James Wexford,HNW,SG
+1800,William Ashworth,Retail,US
+1801,George Pemberton,Retail,US
+1802,Maryam Nasser,Retail,AE
+1803,Hana Takahashi,HNW,JP
+1804,Grace Wexford,Retail,GB
+1805,Charlotte Goodwin,Retail,US
+1806,Alice Barrington,Retail,US
+1807,Hana Nakamura,Retail,JP
+1808,James Whitfield,Retail,SG
+1809,Beatrice Hollis,HNW,GB
+1810,Arthur Aldous,Retail,US
+1811,Yui Takahashi,UHNW,  jp
+1812,Lukas Wagner,Retail,DE
+1813,Mia Keller,Retail,DE
+1814,George Fairfax,HNW,US
+1815,Orion Insurance Group,Institutional,GB
+1816,Oliver Goodwin,HNW,US
+1817,Maximilian Hofmann,Retail,CH
+1818,Aoi Ito,UHNW,JP
+1819,Beatrice Merrick,Retail,SG
+1820,James Pemberton,Retail,LU
+1821, Chloé Girard ,Retail,FR
+1822,Sophie Carrington,Retail,GB
+1823,Edward Pemberton,Retail,US
+1824,Arthur Pemberton,Retail,US
+1825,William Pemberton,Retail,GB
+1826,  Beatrice Sinclair  ,Retail,US
+1827,Emma Schreiber,Retail,CH
+1828,Lumen Pension Fund,Institutional,AE
+1829,Julien Lemaire,Retail,FR
+1830,Grace Vaughan,Retail,LU
+1831,Lukas Brandt,Retail,DE
+1832, Ling Lee ,Retail,HK
+1833,Beatrice Barrington,Retail,US
+1834,Sophie Thorne,Retail,SG
+1835,Tariq Saleh,Retail,AE
+1836,Haruto Takahashi,HNW,JP
+1837,Wai Cheung,Retail,HK
+1838,Chi Ho,Retail,HK
+1839,Julien Moreau,Retail,FR
+1840,Olivia Whitfield,Retail,US
+1841,Charlotte Merrick,Retail,GB
+1842,Hassan Hassan,Retail,AE
+1843,Chloé Laurent,HNW,FR
+1844,Niklas Vogel,Retail,DE
+1845,Olivia Barrington,Retail,US
+1846,Eleanor Carrington,Retail,US
+1847,Clara Brandt,Retail,DE
+1848,Felix Wagner,HNW,DE
+1849,Camille Fontaine,Retail,FR
+1850,Chi Chan,Retail,HK
+1851,Eleanor Ashworth,  Retail  ,GB
+1852,Léa Lefebvre, UHNW ,FR
+1853,Chloé Moreau,Retail,FR
+1854,Thomas Ashworth,HNW,US
+1855,Beatrice Thorne,Retail,LU
+1856,William Sinclair,Retail,US
+1857,James Aldous,Retail,GB
+1858,Felix Baumann,  Retail  ,CH
+1859,Gabriel Dubois,Retail,FR
+1860,Yan Lam,Retail,HK
+1861,Chi Lam,HNW,HK
+1862,Ka Tsang,Retail,HK
+1863,Felix Keller,HNW,CH
+1864,  Olivia Vaughan  ,HNW,LU
+1865,Niklas Hofmann,Retail,DE
+1866,Sophie Hollis,UHNW,US
+1867,Alice Barrington,Retail,LU
+1868,Hana Nakamura, Retail ,JP
+1869,Henry Hollis,Retail,SG
+1870,Clara Brandt,UHNW,CH
+1871,Jonas Richter,Retail,DE
+1872,Beatrice Thorne,Retail,LU
+1873,Charlotte Merrick,Retail,US
+1874,Felix Schreiber,Retail,CH
+1875,Henry Ashworth,Retail,US
+1876,Hei Ho,UHNW,HK
+1877,Edward Vaughan,Retail,US
+1878,Manon Fontaine,Retail,FR
+1879,Jonas Wagner,Retail,CH
+1880,Edward Whitfield,Retail,GB
+1881,Arthur Pemberton,  HNW  ,US
+1882,Thomas Whitfield,Retail,SG
+1883,George Barrington,Retail,GB
+1884,Charlotte Fairfax,UHNW,GB
+1885,Sakura Takahashi,UHNW, JP
+1886,Fatima Al-Maktoum,HNW,AE
+1887,Beatrice Ashworth,Retail,US
+1888,Sophie Sinclair,Retail,LU
+1889,Thomas Goodwin,Retail,SG
+1890,Eleanor Merrick,HNW,US
+1891,William Barrington,Retail,LU
+1892,Arthur Vaughan,Retail,US
+1893,Arthur Whitfield,Retail,  US
+1894,Arthur Goodwin,UHNW,GB
+1895,Chloé Lemaire,  Retail  ,FR
+1896,Alice Hollis,Retail,SG
+1897,Alice Fairfax,HNW,US
+1898,Hannah Baumann,Retail,DE
+1899,Ka Ng,Retail,HK
+1900,Alpina Pension Fund,  Institutional  ,CH
+1901,Charlotte Fairfax,Retail,US
+1902,Edward Goodwin,Retail,US
+1903,Larchmont Investment Trust,Institutional,HK
+1904,Henry Whitfield,Retail,  GB
+1905,Arthur Barrington,  Retail  ,GB
+1906,Lukas Schreiber,HNW,CH
+1907,Niklas Brandt,Retail,DE
+1908,  Grace Goodwin  ,Retail,GB
+1909,Emily Whitfield,Retail,US
+1910,Edward Aldous,Retail,US
+1911,Sophie Aldous,Retail,GB
+1912,Grace Carrington,Retail,SG
+1913,Felix Vogel,Retail,CH
+1914,Yuto Takahashi,UHNW,JP
+1915,Arthur Ashworth,Retail,LU
+1916,Oliver Carrington,Retail,US
+1917,Emily Whitfield,Retail,SG
+1918,  James Thorne  ,HNW,LU
+1919,Sophie Whitfield,HNW, gb
+1920,Eleanor Wexford,HNW,GB
+1921,Alice Sinclair,Retail,SG
+1922,Harlow Family Office,Institutional,US
+1923,James Ashworth,  Retail  ,US
+1924,George Barrington,Retail,LU
+1925,George Merrick,Retail,US
+1926,William Wexford,HNW,SG
+1927,Oliver Sinclair,Retail,LU
+1928,Julien Lemaire,HNW,FR
+1929,Yusuf Mansour,  Retail  ,AE
+1930,Lena Brandt,Retail,CH
+1931,Lena Keller,Retail,CH
+1932,  Olivia Pemberton  ,UHNW,GB
+1933,Hugo Lemaire,Retail,FR
+1934,James Ashworth,Retail,SG
+1935,Niklas Baumann,Retail,CH
+1936,Hei Tsang,UHNW,HK
+1937,  Hassan Khoury  ,Retail,AE
+1938,Oliver Carrington,Retail,GB
+1939,Beatrice Wexford,Retail,GB
+1940,Wycombe Pension Fund,Institutional, de
+1941,Grace Fairfax,Retail,GB
+1942,Ren Yamamoto,Retail,JP
+1943,Yui Takahashi,Retail,JP
+1944,Eleanor Fairfax,Retail,  SG
+1945,Stratford Asset Management,Institutional,SG
+1946,Gabriel Laurent,Retail,FR
+1947,Lena Keller,Retail,CH
+1948,Mei Wong,Retail,HK
+1949,Charlotte Wexford,HNW,  SG
+1950,Lena Richter,  HNW  ,CH
+1951,  Clara Wagner  ,Retail,CH
+1952,William Pemberton,HNW,SG
+1953,Emma Hofmann,Retail,CH
+1954,James Whitfield,Retail,US
+1955,Sophie Barrington,Retail,US
+1956,Lukas Baumann,UHNW, CH
+1957,Lena Vogel,  HNW  ,CH
+1958,Greycliff Pension Fund,Institutional,SG
+1959,Camille Moreau,HNW,FR
+1960,Thomas Barrington,Retail,SG
+1961,Olivia Aldous,Retail,US
+1962,Mia Richter,Retail,DE
+1963,Emma Vogel,HNW,CH
+1964,Felix Keller,HNW,CH
+1965,  Olivia Whitfield  ,Retail,US
+1966,James Fairfax,Retail,LU
+1967,Belmont Pension Fund,Institutional,HK
+1968,Grace Goodwin,  HNW  ,GB
+1969,Olivia Hollis,Retail,SG
+1970, Beatrice Whitfield ,HNW,US
+1971,Arthur Aldous,Retail,GB
+1972,Alice Carrington,HNW,US
+1973,  Henry Goodwin  ,HNW,US
+1974,Ren Yamamoto,Retail,JP
+1975,Inès Laurent,Retail,FR
+1976,Henry Sinclair,HNW,US
+1977,Yusuf Al-Rashid,Retail,AE
+1978,Hei Lee,Retail,HK
+1979,Léa Moreau,Retail,FR
+1980,Charlotte Pemberton,Retail,US
+1981,Olivia Pemberton,HNW,US
+1982,Grace Sinclair,Retail,GB
+1983,Layla Saleh,UHNW,AE
+1984,Olivia Hollis,  UHNW  ,  sg
+1985,Clara Schreiber,HNW,CH
+1986,James Vaughan,Retail,GB
+1987,Sophie Carrington,Retail,SG
+1988,Henry Sinclair,Retail,GB
+1989,Edward Hollis,Retail,US
+1990,Oliver Thorne,Retail,US
+1991,Henry Vaughan,Retail,US
+1992,Maximilian Brandt,Retail,CH
+1993,Jonas Richter,HNW,DE
+1994,Antoine Lefebvre,Retail,FR
+1995,Charlotte Thorne,HNW,SG
+1996,Omar Nasser,UHNW,AE
+1997,Sophie Merrick,HNW,LU
+1998,Clara Wagner,Retail,CH
+1999,Beatrice Aldous, Retail ,US
+2000,Niklas Keller,HNW,DE
+0,Unmapped Client,Retail,  us
+-1,Sentinel Account,HNW,gb

@@ -1,0 +1,37 @@
+id: discover-data.case-02-discovery-coverage
+type: artifact
+description: |
+  Same run as case-01-happy-path — relies on the content-addressed cache
+  to share the transcript. Orthogonal evaluation: does the output
+  actually do the *discovery* work (multiple candidate tables, relevance
+  labels, keyword-grounded justifications), independent of whether the
+  format is right (covered by case-01).
+
+run: discover-data.run-01-happy-path
+
+structural_checks:
+  - non_empty_output
+  - has_markdown_table
+
+expected_components:
+  - skills/core/discover.py
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: enumerates_multiple_tables
+      weight: 0.3
+      prompt: |
+        Does the output list at least 3 candidate tables as data rows in
+        a markdown table (not just headers)? Score 0-1.
+    - id: relevance_labeled
+      weight: 0.3
+      prompt: |
+        Does every table row carry a relevance label (HIGH / MEDIUM / LOW
+        or similar)? Score 0-1.
+    - id: keyword_justification
+      weight: 0.4
+      prompt: |
+        For tables flagged HIGH or MEDIUM, is there a justification that
+        ties back to the keywords or the product subject ("employee
+        directory")? Score 0-1.

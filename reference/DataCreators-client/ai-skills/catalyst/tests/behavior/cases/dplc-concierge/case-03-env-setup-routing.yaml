@@ -1,0 +1,14 @@
+id: dplc-concierge.case-03-env-setup-routing
+skill: skills/dplc-concierge
+type: behavior
+description: >-
+  A user asks to set up their environment.  The concierge should route the
+  request to setup-workspace.  We allow_extra since the concierge may greet or
+  scan for artifacts before handing off.
+input:
+  arguments: "Set up my environment and install the prerequisites so I can run Catalyst."
+expected_sequence:
+  - skills/setup-workspace
+strict_order: false
+allow_extra: true
+max_steps: 30

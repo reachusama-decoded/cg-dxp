@@ -1,0 +1,30 @@
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['git', 'ls-files', 'challenges/v1/03-airflow-orchestration/stubs/']' returned non-zero exit status 128.
+
+/usr/lib/python3.13/subprocess.py:578: CalledProcessError
+________ test_changed_phase_title_cannot_leave_instructor_summary_stale ________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_changed_phase_title_canno0')
+
+    def test_changed_phase_title_cannot_leave_instructor_summary_stale(tmp_path):
+     import shutil
+     sandbox=tmp_path/'client';(sandbox/'scripts').mkdir(parents=True)
+     shutil.copy2(ROOT/'scripts/sync-v2-course.py',sandbox/'scripts/sync-v2-course.py')
+     shutil.copytree(ROOT/'challenges/v2',sandbox/'challenges/v2')
+     f=sandbox/'challenges/v2/git/phase-one-certified/README.md'
+     f.write_text(f.read_text().replace('git-p1-01: Inspect the three working states','git-p1-01: A changed learner outcome'))
+     result=subprocess.run([sys.executable,str(sandbox/'scripts/sync-v2-course.py'),'--check'],capture_output=True,text=True)
+     assert result.returncode!=0
+>    assert 'Phase title/manifest drift' in result.stderr
+E    assert 'Phase title/manifest drift' in 'Traceback (most recent call last):\n  File "/tmp/pytest-of-root/pytest-0/test_changed_phase_title_canno0/client/scrip...exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: \'pandoc\'\n'
+E     +  where 'Traceback (most recent call last):\n  File "/tmp/pytest-of-root/pytest-0/test_changed_phase_title_canno0/client/scrip...exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: \'pandoc\'\n' = CompletedProcess(args=['/opt/venv/bin/python3', '/tmp/pytest-of-root/pytest-0/test_changed_phase_title_canno0/client/s...xception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: \'pandoc\'\n').stderr
+
+tests/challenges/offline/test_v2_contracts.py:59: AssertionError
+=========================== short test summary info ============================
+FAILED tests/challenges/offline/test_ch03_stub_sync.py::test_ch03_stubs_match_the_live_product
+FAILED tests/challenges/offline/test_v2_contracts.py::test_changed_phase_title_cannot_leave_instructor_summary_stale
+2 failed, 125 passed in 1.00s

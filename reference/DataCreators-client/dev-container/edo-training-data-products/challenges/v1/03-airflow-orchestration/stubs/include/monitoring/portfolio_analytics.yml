@@ -1,0 +1,68 @@
+# Monitoring config — portfolio_analytics_daily
+#
+# Six panels for the pipeline's operational health. Each names a metric, an
+# alert condition, and the channel it routes to. Channels follow the CG model
+# (Slack-free, PagerDuty-free): "datadog" is the automatic alert sink (support
+# pages the on-call via xMatters from the Datadog payload), "teams" is the
+# Microsoft Teams chat/escalation surface, "ticket" opens a tracking ticket.
+
+dashboard:
+  name: "Portfolio Analytics — pipeline health"
+  refresh_interval: "5m"
+  time_range: "7d"
+
+panels:
+
+  - name: "DAG run status"
+    metric: "dagrun.state (success/failed/running), last 30 days"
+    alert_condition: "3 or more consecutive failures"
+    alert_channel: "datadog, teams"
+    description: >
+      Timeline of run outcomes. Consecutive failures point to a systemic
+      cause (warehouse outage, source outage) rather than a transient blip.
+
+  - name: "Run duration"
+    metric: "dagrun.duration.success (seconds) per run"
+    alert_condition: "duration exceeds 2x the 7-day rolling average"
+    alert_channel: "teams"
+    description: >
+      End-to-end time for successful runs. A sustained increase signals
+      growing volumes, slow queries, or warehouse contention.
+
+  - name: "Task failure rate"
+    metric: "task_instance.state=failed by task_id, 7-day rolling"
+    alert_condition: "any single task exceeds a 10% failure rate over 7 days"
+    alert_channel: "teams, ticket"
+    description: >
+      Per-task failure count. Flags flaky tasks — usually the freshness gate
+      (upstream lateness) or a brittle test.
+
+  - name: "SLA compliance"
+    metric: "percentage of runs publishing before 07:30 UK"
+    alert_condition: "compliance drops below 95% over 30 days"
+    alert_channel: "datadog, teams"
+    description: >
+      Adherence to the business SLA. Below 95% is a systemic risk to the
+      07:30 UK commitment and needs escalation.
+
+  - name: "Source freshness"
+    metric: "time since last _extracted_at per source table"
+    alert_condition: "any source exceeds its warn_after threshold (custodian 4h)"
+    alert_channel: "teams"
+    description: >
+      Upstream delivery health. A warning means a source is approaching
+      staleness; an error means the freshness gate will fail the next run.
+
+  - name: "Source volume anomaly"
+    metric: >
+      landed row count on the current load date for holdings_raw, vs the
+      trailing 7-day average for the same weekday.
+    alert_condition: >
+      fire when today's rows are below 80% of the trailing-7-day average —
+      a likely partial / truncated extract.
+    alert_channel: "datadog, teams"
+    description: >
+      Catches a fresh-but-truncated feed before it reaches the test gate.
+      Freshness watches the clock; this panel watches the volume. Firing
+      here lets the on-call hold publication before exposure is understated,
+      rather than diagnosing a completeness-test failure after the fact.

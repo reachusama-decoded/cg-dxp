@@ -1,0 +1,38 @@
+name: 'portfolio_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'portfolio_analytics'
+
+model-paths:    ["models"]
+seed-paths:     ["seeds"]
+test-paths:     ["tests"]
+macro-paths:    ["macros"]
+
+target-path:    "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Layers are separated by +tags, not +schema: in the training catalog you have
+# exactly one pre-provisioned schema (training_<username>) and cannot create
+# more, so every layer materialises into that one schema and is selected by tag.
+models:
+  portfolio_analytics:
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +tags: ["marts"]
+      # Z-ordering is a Databricks Delta optimisation; the post-hook runs after
+      # each mart is built. It co-locates rows by the columns most queries
+      # filter on, so reads prune faster.
+      +post-hook: "OPTIMIZE {{ this }} ZORDER BY (fund_id, position_date)"
+
+seeds:
+  portfolio_analytics:
+    +quote_columns: false

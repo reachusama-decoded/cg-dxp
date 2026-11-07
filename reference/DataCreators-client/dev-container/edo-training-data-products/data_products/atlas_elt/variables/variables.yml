@@ -1,0 +1,96 @@
+variables:
+  env:
+    description: "Environment Name"
+    default: "local"
+  project_name:
+    description: "Name of the Project"
+    default: edo-training-data-products
+  project_team:
+    description: "Project Team name"
+    default: EDOTRAINING
+  atm_id:
+    description: "ATM_ID"
+    default: AA00002933
+  app_name:
+    description: "Name of the Application"
+    default: training_environment
+  data_product_name:
+    description: "Name of the data product (matches bundle.name and dbt project name). Override per data product."
+    default: atlas_elt
+  root_path:
+    description: "Root workspace path for artifacts deployment"
+    default: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+  dev_cluster_id:
+    description: "Existing Databricks cluster ID for local/dev DAG runs (per-user override in variables_dev.yml)"
+    default: 0723-050014-ofggyaz4
+  shared_init_scripts_location:
+    description: "Shared location for init scripts"
+    default: /Workspace/databricks/shared_init
+  instance_pools:
+    description: "Instance Pools"
+    type: complex
+    default:
+      instance_pool_s: ""
+      instance_pool_m: ""
+      instance_pool_l: ""
+      instance_pool_xl: ""
+  compute_policy_id:
+    description: "Compute Policy"
+    default: ""
+  databricks_runtime_spark_version:
+    description: "Databricks Runtime Spark Version"
+    default: 15.4.x-scala2.12
+  http_path:
+    description: "SQL Warehouse HTTP Connection"
+    default: "/sql/1.0/warehouses/267dd55b7f7395ce"
+  default_catalog:
+    description: "Default Catalog For dbt Task"
+    default: training_dev
+  default_schema:
+    description: "Default Schema For dbt Task"
+    default: ${workspace.current_user.short_name}
+  sql_warehouse_id:
+    description: "SQL Warehouse ID for dbt tasks"
+    default: ""
+  target_schema:
+    description: "Target schema for dbt profile and model writes"
+    default: ""
+  checkpoint_table:
+    description: "Checkpoint table used by Caspian macros"
+    default: "training_dev.${workspace.current_user.short_name}.standard_dataset_checkpoints"
+  dev_test_mode:
+    description: "Testing mode: local_dbt, cluster_user_schema, or cluster_dev_schema"
+    default: "cluster_user_schema"
+  deequ_jar_path:
+    description: "Path to the Deequ JAR library in Unity Catalog Volumes"
+    default: /Volumes/${var.default_catalog}/${var.default_schema}/dqf_libs/deequ-2.0.16-spark-3.5.jar
+  git_branch:
+    description: "Current git branch. Tracked as an environment variable for informational purposes."
+    default: ""
+  zone_bucket:
+    description: "S3 zone bucket for data notify"
+    default: ""
+  data_notify_topic:
+    description: "Kafka topic for data notifications"
+    default: ""
+  kafka_secret_scope:
+    description: "Databricks secret scope for Kafka credentials (MSK user + root CA)"
+    default: ""
+  bootstrap_brokers:
+    description: "MSK bootstrap broker list"
+    default: ""
+  schema_registry_url:
+    description: "Confluent Schema Registry URL"
+    default: ""
+  aws_region:
+    description: "AWS region"
+    default: "us-east-1"
+  caspian_catalog:
+    description: "Application/source catalog for reading source data (e.g. caspian_dev1)"
+    default: caspian_dev1
+  app_catalog:
+    description: "Caspian TRAINING catalog for writing data product output (e.g. training_dev)"
+    default: training_dev
+  domain_catalog:
+    description: "Domain catalog for domain-aligned tables"
+    default: ""

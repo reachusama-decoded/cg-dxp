@@ -1,0 +1,1467 @@
+[
+  {
+    "tool": "git",
+    "phase": "phase-one-certified",
+    "id": "git-p1-01",
+    "title": "Inspect the three working states",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "First commit contains only contract.md; notes remain outside that snapshot",
+    "source": "git/phase-one-certified/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-one-certified",
+    "id": "git-p1-02",
+    "title": "Commit an intentional contract change",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Commit diffs distinguish 09:00 UTC deadline from escalation policy",
+    "source": "git/phase-one-certified/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-one-certified",
+    "id": "git-p1-03",
+    "title": "Branch and combine compatible work",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Both separated facts survive; history explains fast-forward or merge commit",
+    "source": "git/phase-one-certified/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-one-certified",
+    "id": "git-p1-04",
+    "title": "Resolve an ownership conflict",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Expected merge failure; no markers; resolution retains owner and escalation decisions",
+    "source": "git/phase-one-certified/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-one-certified",
+    "id": "git-p1-05",
+    "title": "Restore a mistake and explain the final history",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Clean lab; committed requirements unchanged; explanation distinguishes restore from revert",
+    "source": "git/phase-one-certified/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-two-proficient",
+    "id": "git-p2-01",
+    "title": "Clone and inspect a collaboration boundary",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Designated private sandbox, correct clone root, remote and tracking branch",
+    "source": "git/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-two-proficient",
+    "id": "git-p2-02",
+    "title": "Push and propose a scoped pull request",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "PR URL/head hash and remote diff contain the intended deadline clarification",
+    "source": "git/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-two-proficient",
+    "id": "git-p2-03",
+    "title": "Respond to a review with a second commit",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Other reviewer/comment, second commit and remotely visible response",
+    "source": "git/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-two-proficient",
+    "id": "git-p2-04",
+    "title": "Integrate concurrent upstream work",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Upstream ancestor and retained classification/deadline/escalation facts",
+    "source": "git/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "git",
+    "phase": "phase-two-proficient",
+    "id": "git-p2-05",
+    "title": "Read the final review and merge state",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+      "workspace": ".local/challenges-v2/git/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "git": "measured by git --version",
+        "gh": "instructor-provided for live Phase2"
+      },
+      "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Actual final state, current head and next authorized action",
+    "source": "git/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-one-certified",
+    "id": "docker-p1-01",
+    "title": "Run an image and inspect the lifecycle",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Hello output, actual image/container identity and exit status",
+    "source": "docker/phase-one-certified/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-one-certified",
+    "id": "docker-p1-02",
+    "title": "Explore an interactive shell",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Inside file disappears in a fresh disposable execution; version/OS evidence",
+    "source": "docker/phase-one-certified/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-one-certified",
+    "id": "docker-p1-03",
+    "title": "Use a bounded bind mount",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Actual fixture summary and expected write denial; host input unchanged",
+    "source": "docker/phase-one-certified/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-one-certified",
+    "id": "docker-p1-04",
+    "title": "Author and run a simple holdings image",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Authored image emits independent six-holding result",
+    "source": "docker/phase-one-certified/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-one-certified",
+    "id": "docker-p1-05",
+    "title": "Prove repeatability and clean scoped resources",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Two matching outputs from one image identity; only owned resources removed",
+    "source": "docker/phase-one-certified/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-two-proficient",
+    "id": "docker-p2-01",
+    "title": "Separate named build targets",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Actual target image IDs and expected target outputs",
+    "source": "docker/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-two-proficient",
+    "id": "docker-p2-02",
+    "title": "Gate the runtime on a tested artifact",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Test failure blocks accepted runtime artifact path; repaired test/app succeeds",
+    "source": "docker/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-two-proficient",
+    "id": "docker-p2-03",
+    "title": "Run with a bounded runtime user",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Runtime UID 10001; app reads intended files and still prints expected summary",
+    "source": "docker/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-two-proficient",
+    "id": "docker-p2-04",
+    "title": "Keep runtime contents focused",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Required app/input present; test script absent; expected output preserved",
+    "source": "docker/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "docker",
+    "phase": "phase-two-proficient",
+    "id": "docker-p2-05",
+    "title": "Repair a path assumption and explain the result",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Docker build/run; host Python checks supporting app only.",
+      "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "base_image": "python:3.11-slim",
+        "docker": "instructor-provided; unavailable here"
+      },
+      "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Predicted missing-file failure followed by repaired expected output and explanation",
+    "source": "docker/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-one-certified",
+    "id": "dbt-p1-01",
+    "title": "Inspect the project and source grain",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight holdings, four funds, two business dates; safe identity and seed inventory",
+    "source": "dbt/phase-one-certified/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-one-certified",
+    "id": "dbt-p1-02",
+    "title": "Declare and use sources",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Compiled source relations and manifest dependencies agree with all raw seeds",
+    "source": "dbt/phase-one-certified/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-one-certified",
+    "id": "dbt-p1-03",
+    "title": "Normalize type, unit and key contracts",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight unique dated holding keys and native decimal values; a controlled zero-valued holding retains its key; restoration recovers baseline.",
+    "source": "dbt/phase-one-certified/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-one-certified",
+    "id": "dbt-p1-04",
+    "title": "Build a useful mart through ref",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight fund/date rows; independently derived GBP exposure and teaching NAV",
+    "source": "dbt/phase-one-certified/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-one-certified",
+    "id": "dbt-p1-05",
+    "title": "Add minimum key and relationship proof",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Structural/business tests pass; unknown fund fails membership for its intended reason; restored seed/model/output passes again.",
+    "source": "dbt/phase-one-certified/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-two-proficient",
+    "id": "dbt-p2-01",
+    "title": "Diagnose a join fan-out before repair",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight input keys; date-free price join yields sixteen matches; dated repair retains eight",
+    "source": "dbt/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-two-proficient",
+    "id": "dbt-p2-02",
+    "title": "Repair enrichment at the intended grain",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight enriched keys; explicit matched-price/FX coverage and decimal GBP value",
+    "source": "dbt/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-two-proficient",
+    "id": "dbt-p2-03",
+    "title": "Write reconciliation that detects the negative case",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Coverage and NAV tests fail on copied missing-FX input and pass after restoration",
+    "source": "dbt/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-two-proficient",
+    "id": "dbt-p2-04",
+    "title": "Prove incremental update and replay behavior",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Older-date +1,000 GBP correction retains eight unique keys; +500 GBP unseen holding inserts a ninth; both correction and insertion replay without duplication; restore owned eight-key baseline",
+    "source": "dbt/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "dbt",
+    "phase": "phase-two-proficient",
+    "id": "dbt-p2-05",
+    "title": "Explain dependency impact and hand over",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Declared fund report, meaningful snapshot intervals, lineage and explicit Astro boundary",
+    "source": "dbt/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "databricks-cli",
+    "phase": "phase-one-certified",
+    "id": "databricks-cli-p1-01",
+    "title": "Establish the CLI identity boundary",
+    "estimate_minutes": {
+      "low": 9,
+      "high": 13
+    },
+    "runtime": {
+      "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+      "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "client_source_pin": "0.236.0; live installed version unobserved"
+      },
+      "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Installed version/help and intended authenticated profile without secrets",
+    "source": "databricks-cli/phase-one-certified/README.md"
+  },
+  {
+    "tool": "databricks-cli",
+    "phase": "phase-one-certified",
+    "id": "databricks-cli-p1-02",
+    "title": "Separate workspace and Unity Catalog names",
+    "estimate_minutes": {
+      "low": 9,
+      "high": 13
+    },
+    "runtime": {
+      "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+      "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "client_source_pin": "0.236.0; live installed version unobserved"
+      },
+      "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Correct object types and separate qualified-name/path examples",
+    "source": "databricks-cli/phase-one-certified/README.md"
+  },
+  {
+    "tool": "databricks-cli",
+    "phase": "phase-one-certified",
+    "id": "databricks-cli-p1-03",
+    "title": "Inspect permitted schema and table metadata",
+    "estimate_minutes": {
+      "low": 9,
+      "high": 13
+    },
+    "runtime": {
+      "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+      "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "client_source_pin": "0.236.0; live installed version unobserved"
+      },
+      "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Approved namespace and metadata/type of one qualified table",
+    "source": "databricks-cli/phase-one-certified/README.md"
+  },
+  {
+    "tool": "databricks-cli",
+    "phase": "phase-one-certified",
+    "id": "databricks-cli-p1-04",
+    "title": "Filter JSON and explain a limited result",
+    "estimate_minutes": {
+      "low": 9,
+      "high": 13
+    },
+    "runtime": {
+      "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+      "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "client_source_pin": "0.236.0; live installed version unobserved"
+      },
+      "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Correct structured projection and diagnostic categories",
+    "source": "databricks-cli/phase-one-certified/README.md"
+  },
+  {
+    "tool": "databricks-cli",
+    "phase": "phase-one-certified",
+    "id": "databricks-cli-p1-05",
+    "title": "Produce a bounded discovery handoff",
+    "estimate_minutes": {
+      "low": 9,
+      "high": 13
+    },
+    "runtime": {
+      "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+      "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "client_source_pin": "0.236.0; live installed version unobserved"
+      },
+      "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Identity/object/type/limitation and next consumer question linked to actual probes",
+    "source": "databricks-cli/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-one-certified",
+    "id": "airflow-p1-01",
+    "title": "Inspect a prepared orchestration baseline",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Actual mount/executable identities, owned namespace and supplied-vs-authored inventory",
+    "source": "airflow/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-one-certified",
+    "id": "airflow-p1-02",
+    "title": "Author a small Python DAG with real dbt tasks",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Four meaningful tasks with explicit paths, target and actual warehouse checks",
+    "source": "airflow/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-one-certified",
+    "id": "airflow-p1-03",
+    "title": "Demonstrate the dependency graph and scheduled run",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Readiness \u2192 build \u2192 quality \u2192 evidence; fresh scheduled task identities",
+    "source": "airflow/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-one-certified",
+    "id": "airflow-p1-04",
+    "title": "Inspect a controlled task failure",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Quality failed; evidence upstream_failed; no failed-run receipt; repair succeeds",
+    "source": "airflow/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-one-certified",
+    "id": "airflow-p1-05",
+    "title": "Explain the run and environment boundaries",
+    "estimate_minutes": {
+      "low": 15,
+      "high": 22
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Coherent handoff links run/task IDs, artifacts and independent fund/date output",
+    "source": "airflow/phase-one-certified/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-two-proficient",
+    "id": "airflow-p2-01",
+    "title": "Define bounded replay and input identity",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Supported May partition, explicit schedule interval and reproducible source readiness",
+    "source": "airflow/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-two-proficient",
+    "id": "airflow-p2-02",
+    "title": "Inject failure and observe useful retry behavior",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Known quality/readiness cause, observed attempts and no premature receipt",
+    "source": "airflow/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-two-proficient",
+    "id": "airflow-p2-03",
+    "title": "Prove output correctness after recovery",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Eight unique report keys, four partition rows, stable values across repeated input",
+    "source": "airflow/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-two-proficient",
+    "id": "airflow-p2-04",
+    "title": "Use Astro UI to make an operational decision",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Exact graph/grid/log identities, causal diagnosis and observed repair decision",
+    "source": "airflow/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "airflow",
+    "phase": "phase-two-proficient",
+    "id": "airflow-p2-05",
+    "title": "Write a short incident handoff",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+      "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Current success/failure/repair/replay chain, reviewable diff and explicit pending gates",
+    "source": "airflow/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "kafka",
+    "phase": "phase-one-certified",
+    "id": "kafka-p1-01",
+    "title": "Read the dataset-arrived contract",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+      "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "broker_image": "apache/kafka:4.1.0; not executed",
+        "confluent-kafka": "2.11.1"
+      },
+      "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Valid unique event and predicted small-fixture output without arbitrary path execution",
+    "source": "kafka/phase-one-certified/README.md"
+  },
+  {
+    "tool": "kafka",
+    "phase": "phase-one-certified",
+    "id": "kafka-p1-02",
+    "title": "Start the prepared local broker and inspect a topic",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+      "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "broker_image": "apache/kafka:4.1.0; not executed",
+        "confluent-kafka": "2.11.1"
+      },
+      "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Current intended topic/partition metadata in prepared isolated broker",
+    "source": "kafka/phase-one-certified/README.md"
+  },
+  {
+    "tool": "kafka",
+    "phase": "phase-one-certified",
+    "id": "kafka-p1-03",
+    "title": "Produce and follow a uniquely identified event",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+      "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "broker_image": "apache/kafka:4.1.0; not executed",
+        "confluent-kafka": "2.11.1"
+      },
+      "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Event ID, broker partition/offset and current Airflow run identity",
+    "source": "kafka/phase-one-certified/README.md"
+  },
+  {
+    "tool": "kafka",
+    "phase": "phase-one-certified",
+    "id": "kafka-p1-04",
+    "title": "Verify the dbt output belongs to the event",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+      "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "broker_image": "apache/kafka:4.1.0; not executed",
+        "confluent-kafka": "2.11.1"
+      },
+      "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Matching event/run receipt and independent A 150, B 100, C 0 output",
+    "source": "kafka/phase-one-certified/README.md"
+  },
+  {
+    "tool": "kafka",
+    "phase": "phase-one-certified",
+    "id": "kafka-p1-05",
+    "title": "Replay and explain duplicate policy",
+    "estimate_minutes": {
+      "low": 12,
+      "high": 18
+    },
+    "runtime": {
+      "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+      "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "broker_image": "apache/kafka:4.1.0; not executed",
+        "confluent-kafka": "2.11.1"
+      },
+      "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+      "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+      "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+      "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+    },
+    "evidence": "Completed run reused, output unchanged; conflicting payload rejected without accepted duplicate",
+    "source": "kafka/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-one-certified",
+    "id": "capstone-p1-01",
+    "title": "State the consumer population and grain",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Contract distinguishes 2,500 conformed portfolios from 1,028 trade-active report rows",
+    "source": "capstone/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-one-certified",
+    "id": "capstone-p1-02",
+    "title": "Build the valid-trade domain fact",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "9,880 valid rows from 10,000 raw; retained trade/key identities and correct cents/bps arithmetic",
+    "source": "capstone/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-one-certified",
+    "id": "capstone-p1-03",
+    "title": "Author the active portfolio summary",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "3,717 positions roll up to 1,028 portfolio keys with independent AUM/fee/count values",
+    "source": "capstone/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-one-certified",
+    "id": "capstone-p1-04",
+    "title": "Investigate expected omission and a defective join",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "1,472 expected exclusions identified; deliberate client/advisor key mistake loses population",
+    "source": "capstone/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-one-certified",
+    "id": "capstone-p1-05",
+    "title": "Prove minimum data quality and give a consumer handoff",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Authored slice, independent populations/values, clear limitation and reviewable presentation",
+    "source": "capstone/phase-one-certified/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-two-proficient",
+    "id": "capstone-p2-01",
+    "title": "Build a meaningful performance report",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "1,028 portfolio keys; independent buys/sells/fees; explicit zero-safe basis-point rate",
+    "source": "capstone/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-two-proficient",
+    "id": "capstone-p2-02",
+    "title": "Rank advisor books with explicit ties",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "One row per advisor; dense ties without gaps; independent book totals and counts",
+    "source": "capstone/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-two-proficient",
+    "id": "capstone-p2-03",
+    "title": "Build the regional rollup from its declared dependency",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Region advisor/portfolio counts and nominal totals reconcile independently",
+    "source": "capstone/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-two-proficient",
+    "id": "capstone-p2-04",
+    "title": "Reconcile independently and reject a defect",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Omitted advisor contribution fails reconciliation; repair restores all expected keys/values",
+    "source": "capstone/phase-two-proficient/README.md"
+  },
+  {
+    "tool": "capstone",
+    "phase": "phase-two-proficient",
+    "id": "capstone-p2-05",
+    "title": "Present a fixed completed core and select stretch",
+    "estimate_minutes": {
+      "low": 18,
+      "high": 24
+    },
+    "runtime": {
+      "boundary": "dbt-databricks on the approved Databricks warehouse",
+      "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+      "remote_cleanup": "Not performed by local verification",
+      "versions": {
+        "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+      },
+      "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+      "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+      "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+      "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+    },
+    "evidence": "Three report grains, independent values, defect/repair narrative and optional extension choices",
+    "source": "capstone/phase-two-proficient/README.md"
+  }
+]

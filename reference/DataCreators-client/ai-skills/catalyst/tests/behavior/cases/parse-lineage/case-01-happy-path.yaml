@@ -1,0 +1,31 @@
+id: parse-lineage.case-01-happy-path
+skill: skills/parse-lineage
+type: artifact
+description: 'Bootstrap happy-path case. Trace column-level lineage from SQL files or inline SQL. Trigger
+  phrases: "trace lineage", "where does this column come from", "column lineage", "show lineage for this
+  SQL".'
+input:
+  arguments: 'Run the parse-lineage skill for an employee directory data product. Trace column-level lineage
+    from SQL files or inline SQL. Trigger phrases: "trace lineage", "where does this column come from",
+    "column lineage", "show lineage for this SQL".'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/lineage.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Trace column-level
+      lineage from SQL files or inline SQL. Trigger phrases: "trace lineage", "where does this column
+      come from", "column linea''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

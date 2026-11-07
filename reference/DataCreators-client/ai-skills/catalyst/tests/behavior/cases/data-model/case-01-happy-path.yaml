@@ -1,0 +1,35 @@
+id: data-model.case-01-happy-path
+skill: skills/data-model
+type: artifact
+description: 'Bootstrap happy-path case. Design conceptual, logical, and physical data models with data
+  dictionary.
+
+  Use when the user asks to "create the data model", "design the schema",
+
+  "draw the ER diagram", "define the tables and relationships", or "document
+
+  the physical model".'
+input:
+  arguments: Document the physical data model for an employee directory data product (single dimension
+    table).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/data-model/templates/data-model.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Design conceptual,
+      logical, and physical data models with data dictionary.
+
+      Use when the user asks to "create the data model", "design the sc''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

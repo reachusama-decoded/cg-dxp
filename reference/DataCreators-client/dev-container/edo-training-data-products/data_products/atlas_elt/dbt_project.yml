@@ -1,0 +1,108 @@
+name: 'atlas_elt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'atlas_elt'
+
+model-paths: ["datasets"]
+analysis-paths: ["shared/analyses"]
+test-paths: ["tests", "shared/tests"]
+seed-paths: ["seeds", "shared/seeds"]
+macro-paths:
+  - "macros"
+  - "shared/macros"
+  - "../../shared/macros"
+snapshot-paths: ["shared/snapshots"]
+
+target-path: /Volumes/training_dev/cspn_sys/dbt_state
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+dispatch:
+  - macro_namespace: dbt
+    search_order: ['atlas_elt', 'edo_shared', 'dbt']
+  - macro_namespace: dbt_databricks
+    search_order: ['atlas_elt', 'edo_shared', 'dbt_databricks']
+
+vars:
+  temp_db: []
+  # checkpoint_table: local-dbt fallback; overridden at bundle run time via --vars in *.job.yml.
+  checkpoint_table: "{{ target.database  }}.{{ target.schema  }}.standard_dataset_checkpoints"
+  # Local-dbt fallbacks for catalog vars; overridden at bundle run time via --vars in *.job.yml
+  # (sourced from variables_dev.yml / variables_sqa.yml etc.).
+  caspian_catalog: caspian_dev1
+  app_catalog: training_dev
+  domain_catalog: ""
+models:
+  atlas_elt:
+    +materialized: view
+    # Medallion / data-mesh alignment tags, applied by layer folder so the guide's
+    # `dbt run --select tag:source-aligned|domain-aligned|consumer-aligned` selects each
+    # layer. Tags live here (folder-level), not in the model bodies, so a trainee's
+    # authored SQL inherits its layer tag without having to add any config.
+    advisors:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    clients:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    fund_holdings:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    fund_nav:
+      dbt:
+        prepared:
+          +tags: ["consumer-aligned"]
+    funds:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    instruments:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    market_daily:
+      dbt:
+        integration:
+          +tags: ["domain-aligned"]
+        prepared:
+          +tags: ["consumer-aligned"]
+    portfolio_perf:
+      dbt:
+        prepared:
+          +tags: ["consumer-aligned"]
+    portfolios:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+    segment_aum:
+      dbt:
+        prepared:
+          +tags: ["consumer-aligned"]
+    trades:
+      dbt:
+        staging:
+          +tags: ["source-aligned"]
+        integration:
+          +tags: ["domain-aligned"]
+
+seeds:
+  atlas_elt:
+    +schema: atlas_seeds

@@ -1,0 +1,66 @@
+id: dplc-publish.case-01-behavior
+skill: skills/dplc-publish
+type: artifact
+description: >-
+  Phase 6 (Publish) sub-orchestrator. Drives the Phase 6 gate
+  ("Production validated?") by producing -- directly or by delegating to
+  leaf doc skills -- the required artifacts: deployment-record,
+  consumer-onboarding-guide, and release-notes. Also verifies the
+  marketplace listing (read-only) via marketplace-search. This case
+  judges the orchestrator's combined output for Phase-6 substance, not
+  the specific delegation mechanism.
+  NOTE: Originally drafted as `type: behavior` with `expected_sequence`
+  on sub-skill delegations. Empirically the gold-standard
+  `dplc-discovery.case-01-behavior` also fails that assertion live
+  (orchestrators in this codebase tend to author leaf documents inline
+  via Bash/Write rather than via the Task tool); same rationale applied
+  to dplc-validate.case-01-behavior. Converted to `type: artifact` so
+  the case reflects what these orchestrators actually do. A follow-up
+  will tighten orchestrator skills to delegate explicitly, at which
+  point a behavior-style case can be re-added.
+
+input:
+  arguments: >-
+    Run Phase 6 Publish for the index data product. Phase 5 UAT is
+    signed off and the deployment is staged; data contract, build
+    checklist, uat sign-off, and consumer use case map are already in
+    context. Target environment is prod, version 1.0.0.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: deployment_record_present
+      weight: 0.25
+      prompt: >-
+        Does the output include a Deployment Record -- environment
+        (e.g. prod), version/release identifier, rollback plan, and
+        verification steps for what was deployed? Score 0-1.
+    - id: consumer_onboarding_guide_present
+      weight: 0.20
+      prompt: >-
+        Does the output include a Consumer Onboarding Guide --
+        prerequisites, dataset/schema info, example queries or access
+        steps, and support contacts for downstream consumers? Score 0-1.
+    - id: release_notes_present
+      weight: 0.20
+      prompt: >-
+        Does the output include Release Notes -- a summary of what
+        shipped (what's new, breaking changes, known issues) tied to
+        the deployed version? Score 0-1.
+    - id: gate_determination
+      weight: 0.25
+      prompt: >-
+        Does the output make an explicit Phase 6 gate determination --
+        i.e. clearly state whether "Production validated?" is satisfied
+        (deployment record + onboarding guide + release notes +
+        marketplace listing + consumer access confirmed) and route to
+        Phase 7 Operate vs address-and-retry with reasoning? Score 0-1.
+    - id: grounded_in_phase5
+      weight: 0.10
+      prompt: >-
+        Does the output reference or build on Phase 3/4/5 inputs (data
+        contract, build checklist, uat sign-off, consumer use case map)
+        rather than ignoring them? Score 0-1.

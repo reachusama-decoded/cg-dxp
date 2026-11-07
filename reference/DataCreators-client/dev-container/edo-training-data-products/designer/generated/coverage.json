@@ -1,0 +1,599 @@
+{
+  "challenge_version": "v2",
+  "generator_sha256": "b7a7dca54bd47d17d6605321ffc4c33ae7cc425a62cf387199eba385fe39dcdf",
+  "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+  "readmes": [
+    {
+      "path": "README.md",
+      "sha256": "3abbe2ef7032dc77a6cd8f6436cf4416d04f91569b54faa67dcdb37f6c15fdec",
+      "position": 0,
+      "appendix_anchor": "v2-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/README.md",
+      "sha256": "cd705f3ec8305e9f6fb476fa9d6711b8fe12e6ea2885f3dc827330ba9b575031",
+      "position": 1,
+      "appendix_anchor": "v2-git-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/phase-one-certified/README.md",
+      "sha256": "7f66f1b2f1444cba471c5801e1e10d84084d375e9baf3c011374a984a941fe0a",
+      "position": 2,
+      "appendix_anchor": "v2-git-phase-one-certified-readme-md",
+      "task_ids": [
+        "git-p1-01",
+        "git-p1-02",
+        "git-p1-03",
+        "git-p1-04",
+        "git-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/phase-one-certified/starter/README.md",
+      "sha256": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+      "position": 3,
+      "appendix_anchor": "v2-git-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/phase-two-proficient/README.md",
+      "sha256": "84eac9ebd3c0360f193b1535d7ea8b9693d34b57b38c4b766aa8ff08cea5233a",
+      "position": 4,
+      "appendix_anchor": "v2-git-phase-two-proficient-readme-md",
+      "task_ids": [
+        "git-p2-01",
+        "git-p2-02",
+        "git-p2-03",
+        "git-p2-04",
+        "git-p2-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/phase-two-proficient/starter/README.md",
+      "sha256": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+      "position": 5,
+      "appendix_anchor": "v2-git-phase-two-proficient-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "git/phase-two-proficient/stretch/README.md",
+      "sha256": "d27c6145492c08bb613e62240bac295cedcf91f5901115b89ae3fbef14adeb98",
+      "position": 6,
+      "appendix_anchor": "v2-git-phase-two-proficient-stretch-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/README.md",
+      "sha256": "59d5650c9629fa38941486b22034f617516c10e699b52d20c6535e9dad8fa9fd",
+      "position": 7,
+      "appendix_anchor": "v2-docker-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/phase-one-certified/README.md",
+      "sha256": "696acaab9af2c1f11ce5a32fc3e71d62d693b80d79f7b5e2675468be90d1e9ad",
+      "position": 8,
+      "appendix_anchor": "v2-docker-phase-one-certified-readme-md",
+      "task_ids": [
+        "docker-p1-01",
+        "docker-p1-02",
+        "docker-p1-03",
+        "docker-p1-04",
+        "docker-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/phase-one-certified/starter/README.md",
+      "sha256": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+      "position": 9,
+      "appendix_anchor": "v2-docker-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/phase-two-proficient/README.md",
+      "sha256": "2128c01fc2c4c1a0abed3ae1068c674fb4320be52c3e8296472fd50af4cc9dd2",
+      "position": 10,
+      "appendix_anchor": "v2-docker-phase-two-proficient-readme-md",
+      "task_ids": [
+        "docker-p2-01",
+        "docker-p2-02",
+        "docker-p2-03",
+        "docker-p2-04",
+        "docker-p2-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/phase-two-proficient/starter/README.md",
+      "sha256": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+      "position": 11,
+      "appendix_anchor": "v2-docker-phase-two-proficient-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "docker/phase-two-proficient/stretch/README.md",
+      "sha256": "633f3a7ec2b627d82ce3bdbea6809d28b76f9888d4e040abf689d41944dd1b3a",
+      "position": 12,
+      "appendix_anchor": "v2-docker-phase-two-proficient-stretch-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/README.md",
+      "sha256": "5a3cd845e37b7dc0ea557c265b3042cf6211618bd8f07c6a32bd7001fcba0abb",
+      "position": 13,
+      "appendix_anchor": "v2-dbt-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/phase-one-certified/README.md",
+      "sha256": "8bf60e32facde8627651435e8fb0b1c3e19f5687fb23742907d5d624f1beae6a",
+      "position": 14,
+      "appendix_anchor": "v2-dbt-phase-one-certified-readme-md",
+      "task_ids": [
+        "dbt-p1-01",
+        "dbt-p1-02",
+        "dbt-p1-03",
+        "dbt-p1-04",
+        "dbt-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/phase-one-certified/starter/README.md",
+      "sha256": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+      "position": 15,
+      "appendix_anchor": "v2-dbt-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/phase-two-proficient/README.md",
+      "sha256": "c73287181f61490dfaa6d0d9feabe877a3d5ab20ac06cca436bf000da0a427ee",
+      "position": 16,
+      "appendix_anchor": "v2-dbt-phase-two-proficient-readme-md",
+      "task_ids": [
+        "dbt-p2-01",
+        "dbt-p2-02",
+        "dbt-p2-03",
+        "dbt-p2-04",
+        "dbt-p2-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/phase-two-proficient/starter/README.md",
+      "sha256": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+      "position": 17,
+      "appendix_anchor": "v2-dbt-phase-two-proficient-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "dbt/phase-two-proficient/stretch/README.md",
+      "sha256": "d208339b2dec55e35edb234712682e46e8780c7038b4cf3c8c8b6aaea320b70f",
+      "position": 18,
+      "appendix_anchor": "v2-dbt-phase-two-proficient-stretch-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "databricks-cli/README.md",
+      "sha256": "4beee9e3f84542083df98c215769210d52b5f47e3b3b1464cff9ec29c16c00b5",
+      "position": 19,
+      "appendix_anchor": "v2-databricks-cli-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "databricks-cli/phase-one-certified/README.md",
+      "sha256": "31d8333f27293a73b94c80569a790e8cfb1c9272e58053b5e6ce53df59d02055",
+      "position": 20,
+      "appendix_anchor": "v2-databricks-cli-phase-one-certified-readme-md",
+      "task_ids": [
+        "databricks-cli-p1-01",
+        "databricks-cli-p1-02",
+        "databricks-cli-p1-03",
+        "databricks-cli-p1-04",
+        "databricks-cli-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "databricks-cli/phase-one-certified/starter/README.md",
+      "sha256": "6cfd49f817023616e0bee614b4e8a557c7d3bde2232a5fcb020ac43402ecd3b2",
+      "position": 21,
+      "appendix_anchor": "v2-databricks-cli-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "databricks-cli/phase-two-proficient/README.md",
+      "sha256": "3ce385bb9dacb5e095589155badf7d436efcb63c83c52e5fc2981bff9faa808c",
+      "position": 22,
+      "appendix_anchor": "v2-databricks-cli-phase-two-proficient-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/README.md",
+      "sha256": "32d76957a8aad27fe532a3c49d3b39f7ea9ae9189f56c9f5be9678cf6fc9894c",
+      "position": 23,
+      "appendix_anchor": "v2-airflow-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/phase-one-certified/README.md",
+      "sha256": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+      "position": 24,
+      "appendix_anchor": "v2-airflow-phase-one-certified-readme-md",
+      "task_ids": [
+        "airflow-p1-01",
+        "airflow-p1-02",
+        "airflow-p1-03",
+        "airflow-p1-04",
+        "airflow-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/phase-one-certified/starter/README.md",
+      "sha256": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+      "position": 25,
+      "appendix_anchor": "v2-airflow-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/phase-two-proficient/README.md",
+      "sha256": "7c54d0f2e27dc7fe23d14bcbd66a31bd958c9a675956127ed580d4ec1f043ae3",
+      "position": 26,
+      "appendix_anchor": "v2-airflow-phase-two-proficient-readme-md",
+      "task_ids": [
+        "airflow-p2-01",
+        "airflow-p2-02",
+        "airflow-p2-03",
+        "airflow-p2-04",
+        "airflow-p2-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/phase-two-proficient/starter/README.md",
+      "sha256": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+      "position": 27,
+      "appendix_anchor": "v2-airflow-phase-two-proficient-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "airflow/phase-two-proficient/stretch/README.md",
+      "sha256": "73a81e32b627ff1a862f56f76e4871a01fc32d4f43746decfd64573732eece6b",
+      "position": 28,
+      "appendix_anchor": "v2-airflow-phase-two-proficient-stretch-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "kafka/README.md",
+      "sha256": "b887dea6549621c8705fe171b3228d03f7c6a225230193f6c10080cd4bfe4c01",
+      "position": 29,
+      "appendix_anchor": "v2-kafka-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "kafka/phase-one-certified/README.md",
+      "sha256": "a09c8ed15267114ef80c4de233f2733a07933535f675450f54f863c6397ab8df",
+      "position": 30,
+      "appendix_anchor": "v2-kafka-phase-one-certified-readme-md",
+      "task_ids": [
+        "kafka-p1-01",
+        "kafka-p1-02",
+        "kafka-p1-03",
+        "kafka-p1-04",
+        "kafka-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "kafka/phase-one-certified/starter/README.md",
+      "sha256": "865d5aac7165f47907a3568b61c16f99fd1aadd9b1458da433b1fd9fb7f6b008",
+      "position": 31,
+      "appendix_anchor": "v2-kafka-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "kafka/phase-two-proficient/README.md",
+      "sha256": "4bba8627e9eec33c398130ab843ae78f1a6f3af28f9e84596e70bf8bff86fb99",
+      "position": 32,
+      "appendix_anchor": "v2-kafka-phase-two-proficient-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/README.md",
+      "sha256": "430df71de1bffb5ec9e4a6c321022495f3ebf55bba2e28dbde8297af065cc3f8",
+      "position": 33,
+      "appendix_anchor": "v2-capstone-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/phase-one-certified/README.md",
+      "sha256": "777021807f81752599024cc045fed2f573b12247f46df103bbfdc011506e5c37",
+      "position": 34,
+      "appendix_anchor": "v2-capstone-phase-one-certified-readme-md",
+      "task_ids": [
+        "capstone-p1-01",
+        "capstone-p1-02",
+        "capstone-p1-03",
+        "capstone-p1-04",
+        "capstone-p1-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/phase-one-certified/starter/README.md",
+      "sha256": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+      "position": 35,
+      "appendix_anchor": "v2-capstone-phase-one-certified-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/phase-two-proficient/README.md",
+      "sha256": "f490bcae1da054c88b258f4fd9dcc1caacbff9c8a064885bc0b6152e65993054",
+      "position": 36,
+      "appendix_anchor": "v2-capstone-phase-two-proficient-readme-md",
+      "task_ids": [
+        "capstone-p2-01",
+        "capstone-p2-02",
+        "capstone-p2-03",
+        "capstone-p2-04",
+        "capstone-p2-05"
+      ],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/phase-two-proficient/starter/README.md",
+      "sha256": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+      "position": 37,
+      "appendix_anchor": "v2-capstone-phase-two-proficient-starter-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    },
+    {
+      "path": "capstone/phase-two-proficient/stretch/README.md",
+      "sha256": "c8650f472e75357345dabd3b117e72a1320c83f4626fff38794bfd5b1df55fd3",
+      "position": 38,
+      "appendix_anchor": "v2-capstone-phase-two-proficient-stretch-readme-md",
+      "task_ids": [],
+      "concept_ids": [],
+      "presentation_changes": [
+        "heading depth/unique IDs",
+        "relative file targets packaged",
+        "instructor HTML comments omitted"
+      ]
+    }
+  ],
+  "readme_count": 39,
+  "task_count": 60,
+  "full_content_parity": "Pandoc normalized block parity; no truncation",
+  "solutions_excluded": true,
+  "output_sha256": {
+    "designer/generated/learner-appendix.md": "8578486d048753466017d597cf827421cb59eb52792dd29dbe684d7fea636ce5",
+    "designer/generated/instructor-concepts.md": "38c52ca60cb7271cecfb7e6fbffa3937fe850fc16878e7bf575a1493555d6229",
+    "designer/generated/monday-summaries.md": "9f34d731fb2ab7d735b204f18f66d7ce64c35d51d93ed5857e029d7ffb7217ca",
+    "designer/generated/tuesday-summaries.md": "db89df4c368fff421e0217a638fb513232ac8a86a8560797946f843ab94db0e4",
+    "designer/generated/wednesday-summaries.md": "a5fde00c9e0c201274cd6dcd4e14391dd121df5a068f346799d807f811c91832",
+    "designer/generated/thursday-summaries.md": "ae5aac3e23409e177d2e30457361c6a10f09ad98e597ea962a7dbf3687c0704e",
+    "designer/generated/friday-summaries.md": "c52b22568c5b7f5d9a13defc49dd44c0e99665211497c524dd1b186db1922bd9"
+  }
+}

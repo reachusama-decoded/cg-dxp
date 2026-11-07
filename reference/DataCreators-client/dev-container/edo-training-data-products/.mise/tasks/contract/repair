@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# mise description="Run Flyway repair on your personal schema to clear failed migration records. Usage: mise run contract:repair <path/to/contract.odcs.yaml>"
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then echo "Usage: mise run contract:repair <path/to/contract.odcs.yaml>"; exit 1; fi
+if [ -z "${DATABRICKS_TOKEN:-}" ]; then echo "ERROR: DATABRICKS_TOKEN is not set. Check your .env file."; exit 1; fi
+if [ -z "${DATABRICKS_SCHEMA:-}" ]; then echo "ERROR: DATABRICKS_SCHEMA is not set. Set it in your .env file (e.g. DATABRICKS_SCHEMA=dev_yourname)."; exit 1; fi
+if [ -z "${DATABRICKS_CATALOG:-}" ]; then echo "ERROR: DATABRICKS_CATALOG is not set. Check your .env file."; exit 1; fi
+
+CONTRACT="$1"
+DBX_HOST=$(echo "${DATABRICKS_HOST}" | sed 's|^https://||')
+
+DATA_PRODUCT=$(echo "$CONTRACT" | sed 's|.*data_products/\([^/]*\)/.*|\1|')
+if [ -z "$DATA_PRODUCT" ]; then
+  echo "ERROR: Could not determine data product from contract path: $CONTRACT"
+  echo "       Expected format: data_products/<data_product>/datasets/.../contract/*.odcs.yaml"
+  exit 1
+fi
+
+MIGRATION_DIR=".local/migrations/${DATA_PRODUCT}"
+if [ ! -d "$MIGRATION_DIR" ]; then
+  echo "ERROR: No local migrations found at $MIGRATION_DIR — run contract:migrate first."
+  exit 1
+fi
+
+# Resolve per-data-product location var
+DATA_PRODUCT_UPPER=$(echo "$DATA_PRODUCT" | tr '[:lower:]' '[:upper:]')
+LOCATION_VAR="DATABRICKS_LOCATION_${DATA_PRODUCT_UPPER}"
+PRODUCT_LOCATION="${!LOCATION_VAR:-}"
+
+# Use /opt/venv/bin/python3 explicitly — guaranteed to have pyyaml from .devcontainer/requirements.txt
+PYTHON=/opt/venv/bin/python3
+
+# Single history table per developer personal schema
+HISTORY_TABLE="flyway_schema_history"
+
+LOCATION_FLAG=""
+if [ -n "$PRODUCT_LOCATION" ]; then
+  LOCATION_FLAG="-placeholders.location=${PRODUCT_LOCATION}/${DATABRICKS_SCHEMA}"
+fi
+
+# EMR location: bucket root without the Databricks prefix
+EMR_LOCATION_VAR="EMR_LOCATION_${DATA_PRODUCT_UPPER}"
+EMR_LOCATION="${!EMR_LOCATION_VAR:-}"
+if [ -z "$EMR_LOCATION" ] && [ -n "$PRODUCT_LOCATION" ]; then
+  EMR_LOCATION=$(echo "$PRODUCT_LOCATION" | sed 's|/[^/]*$||')
+fi
+EMR_LOCATION_FLAG=""
+if [ -n "$EMR_LOCATION" ]; then
+  EMR_LOCATION_FLAG="-placeholders.emr_location=${EMR_LOCATION}"
+fi
+
+echo "INFO: Running Flyway repair on ${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA} for $DATA_PRODUCT..."
+echo "      This clears failed migration records from the history table."
+
+flyway repair \
+  -url="jdbc:databricks://${DBX_HOST}:443/${DATABRICKS_CATALOG};transportMode=http;ssl=1;httpPath=${DATABRICKS_HTTP_PATH};AuthMech=3;UID=token;PWD=${DATABRICKS_TOKEN};EnableArrow=0;ConnSchema=${DATABRICKS_SCHEMA}" \
+  -table="${HISTORY_TABLE}" \
+  -locations="filesystem:${MIGRATION_DIR}" \
+  -placeholders.catalog="${DATABRICKS_CATALOG}" \
+  -placeholders.schema="${DATABRICKS_SCHEMA}" \
+  -placeholders.env_grant_prefix="${FLYWAY_ENV_GRANT_PREFIX:-OZ_DEV}" \
+  ${LOCATION_FLAG} \
+  ${EMR_LOCATION_FLAG} \
+  -validateOnMigrate=false \
+  -executeInTransaction=false
+
+echo "INFO: Repair complete. Run contract:migrate to retry the failed migration."
+
+# Print the failed migration SQL so the developer knows what to manually undo
+CONTRACT_VERSION=$($PYTHON -c "import yaml; d=yaml.safe_load(open('$CONTRACT')); print(d['version'])")
+CONTRACT_TABLE=$($PYTHON -c "import yaml; d=yaml.safe_load(open('$CONTRACT')); s=d['schema'][0]; print(s.get('name'))")
+FAILED_FILES=($(ls "${MIGRATION_DIR}/V${CONTRACT_VERSION}"*"__${CONTRACT_TABLE}.sql" 2>/dev/null || true))
+if [ ${#FAILED_FILES[@]} -gt 0 ]; then
+  echo ""
+  echo "WARNING: Databricks does not support transactional DDL. Some statements in the"
+  echo "         failed migration may have already been applied to the table."
+  echo "         Review the SQL below and manually undo any statements that ran:"
+  for FAILED_FILE in "${FAILED_FILES[@]}"; do
+    echo ""
+    echo "--- ${FAILED_FILE} ---"
+    grep -v '^\s*--' "$FAILED_FILE" | grep -v '^\s*$' || true
+    echo "---"
+  done
+  echo ""
+  echo "Example: to undo an ADD COLUMN, run:"
+  echo "  ALTER TABLE ${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA}.${CONTRACT_TABLE} DROP COLUMN <column_name>;"
+  echo ""
+  echo "Once undone, re-run: mise run contract:migrate $CONTRACT"
+fi

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dom_portfolio__portfolio
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: dom_positions__position
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: src_portfolio__portfolios
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

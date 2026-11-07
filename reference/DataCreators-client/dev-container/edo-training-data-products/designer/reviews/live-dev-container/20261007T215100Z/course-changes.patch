@@ -1,0 +1,752 @@
+diff --git a/designer/INSTRUCTOR-DEMO-PUBLISHING-PLAN.md b/designer/INSTRUCTOR-DEMO-PUBLISHING-PLAN.md
+index d1a9664..d0136d4 100644
+--- a/designer/INSTRUCTOR-DEMO-PUBLISHING-PLAN.md
++++ b/designer/INSTRUCTOR-DEMO-PUBLISHING-PLAN.md
+@@ -1,9 +1,8 @@
+ # Instructor-demo book and inline course publishing plan
+ 
+-Status: planned; no demo pages, videos or new course release are produced by this
+-document. Main handoff: [root devc.md](../../../devc.md). Companion
+-[capture plan](../../DataCreators-client/dev-container/edo-training-data-products/designer/INSTRUCTOR-DEMO-PLAN.md)
+-and [catalogue](../../DataCreators-client/dev-container/edo-training-data-products/designer/INSTRUCTOR-DEMO-CATALOGUE.md)
++Status: partially implemented. A reviewed four-story local DuckDB PDF/HTML/video candidate and a native integration pilot/overlay are available; the full library, remaining selected live pilots and main-course acceptance are pending. Main handoff: [root devc.md](../devc.md). Companion
++[capture plan](../reference/DataCreators-client/dev-container/edo-training-data-products/designer/INSTRUCTOR-DEMO-PLAN.md)
++and [catalogue](../reference/DataCreators-client/dev-container/edo-training-data-products/designer/INSTRUCTOR-DEMO-CATALOGUE.md)
+ live beside the runnable client project.
+ 
+ ## Products and shared inputs
+@@ -144,8 +143,8 @@ current source and artifact hashes; older checks are historical after changes.
+ 
+ ## Working with a container-only checkout
+ 
+-Course publishing needs the current v4 sources, project PDF adapters/theme,
+-CwBuilder and rendering prerequisites. Discover these inputs, do not reach for
++Course publishing needs the current course sources, project PDF adapters/theme,
++`./build-pdf` and its rendering prerequisites. Discover these inputs, do not reach for
+ old authoring-host absolute paths or virtualenv symlinks. If unavailable, finish
+ the capture runner, real stories and portable bundle, plus HTML/previews where
+ the available renderer supports them. Deliver a patch and exact remaining build
+diff --git a/devc.md b/devc.md
+index 34bcc4e..bf5ee3f 100644
+--- a/devc.md
++++ b/devc.md
+@@ -1,8 +1,6 @@
+ # Live dev-container work: resume prompt and task list
+ 
+-Written 5 October 2026. This is the main handoff for the next session. The task
+-lists below are pending work, not evidence of live execution. Give this file to
+-the coding agent after opening the actual development container.
++Written 5 October 2026; progress updated 8 October (London), run started 7 October UTC. This is the main handoff for the next session. Checked items below link actual evidence; unchecked items remain pending or partial. The authoring shell is not the approved dev container. Give this file to the coding agent after opening that environment.
+ 
+ ## Prompt
+ 
+@@ -39,14 +37,14 @@ course/build inputs block course publishing, not independent runtime/capture wor
+ 
+ ## 1. Find the roots and establish readiness
+ 
+-- [ ] Identify `CLIENT_ROOT`: the directory containing .mise.toml,
++- [x] Identify `CLIENT_ROOT`: the directory containing .mise.toml,
+   .devcontainer/, scripts/challenge-v2.py and challenges/v2/manifest.json. In the
+   full authoring repository it is
+   `reference/DataCreators-client/dev-container/edo-training-data-products/`.
+-- [ ] Identify `COURSE_ROOT`: the root of the ts-cg-datacreators checkout (formerly Capital/DataCreators-v4), when mounted. Its PDF builds
++- [x] Identify `COURSE_ROOT`: the root of the ts-cg-datacreators checkout (formerly Capital/DataCreators-v4), when mounted. Its PDF builds
+   with `./build-pdf` (`./build-pdf doctor` checks the container); no CwBuilder
+   checkout is needed. Do not assume /home/prox-admin paths or old .build virtualenvs exist here.
+-- [ ] Record a UTC run ID, initial source/script hashes and Git dirty state.
++- [x] Record a UTC run ID, initial source/script hashes and Git dirty state. Evidence: `reference/DataCreators-client/dev-container/edo-training-data-products/designer/reviews/live-dev-container/20261007T215100Z/scope.json`.
+   Discover active phases, optional/stretch tasks and supported routes from the
+   current manifests. Previously there were seven tools and twelve active phases;
+   this is a reference count, not a scope limit.
+@@ -61,7 +59,7 @@ course/build inputs block course publishing, not independent runtime/capture wor
+   training repo, DAG namespace, broker topics and owned ports as required. Inspect
+   current preparation commands before executing them. Authentication takes place
+   outside recording; retain sanitized probes, not credential/environment dumps.
+-- [ ] Create an owned-resource ledger. Prepare fresh run-scoped workspaces;
++- [x] Create an owned-resource ledger for the local work (same audit directory). Prepare fresh run-scoped workspaces;
+   preserve managed environments, canonical starters, solutions and learner work.
+   Use established setup paths and isolated capture dependencies rather than
+   upgrading the client's global Python environment.
+@@ -113,7 +111,7 @@ evidence. Keep raw working data under the project's ignored .local/ directory.
+ 
+ ## 3. Build the demo capture system
+ 
+-- [ ] Implement the capture plan's reusable runner, story schema, state
++- [ ] **Partial:** reusable runner/schema, persistent PTY, browser actions, assertions, recordings, captions, source/asset checks, cleanup and offline export are implemented and locally tested in `CLIENT_ROOT/instructor-demos/README.md`. Complete draft Docker/UI contracts, authenticated browser-state support, full crops and live assertions before closing the capture plan. Implement the capture plan's reusable runner, story schema, state
+   assertions, real interactive terminal adapter, Playwright browser adapter,
+   checkpoint manifest, recordings, captions and cleanup.
+ - [ ] Bind stories to current challenge task IDs and source hashes. Instructor
+@@ -121,15 +119,15 @@ evidence. Keep raw working data under the project's ignored .local/ directory.
+ - [ ] Establish the distinct page style through actual pilot captures: title,
+   learning objective, large numbered frames, action/notice captions, execution
+   context, closing question and optional watch link.
+-- [ ] Complete three pilots: Docker image → container → interactive shell; dbt
++- [ ] **One of three pilots captured:** dbt on DuckDB. Docker and actual Astro UI pilots remain blocked/draft. Complete three pilots: Docker image → container → interactive shell; dbt
+   build → inspect verified output; Airflow trigger → graph/task state → relevant
+   log and independently verified result.
+ - [ ] Capture real state transitions. Preserve raw output and run identifiers.
+   Treat snapshots of authored transcripts or pre-existing green task states as
+   supporting material, not a fresh observed demonstration.
+-- [ ] Implement an intentional failure/repair story. Verify that the expected
++- [x] Implement an intentional failure/repair story on the local dbt route: relationship failure blocks the fresh mart; fan-out fails reconciliation; input/model repair and incremental replay are observed in the final capture bundle. Verify that the expected
+   failure is the right failure, and that downstream publication is blocked.
+-- [ ] Demonstrate re-capture from fresh state, source/config drift detection,
++- [x] Demonstrate local re-capture from fresh state, source/config drift detection,
+   interrupted-run cleanup and missing-prerequisite reporting. A missing tool or
+   service must never produce a success-labelled story.
+ - [ ] Review the pilot pages at final printed size and videos at normal speed.
+@@ -137,11 +135,11 @@ evidence. Keep raw working data under the project's ignored .local/ directory.
+ 
+ ## 4. Publish the demo library and selected course stories
+ 
+-- [ ] Complete the initial twelve-story Docker/dbt/Airflow catalogue, followed
++- [ ] **Four captured, eight blocked draft contracts:** complete the initial twelve-story Docker/dbt/Airflow catalogue, followed
+   by further high-value stories supported by the verified challenge pack. Mark
+   each story captured, failed, blocked or not run; never populate a book with
+   blank/simulated frames to meet a target count.
+-- [ ] Generate the complete **DataCreators-Instructor-Demos.pdf** candidate with
++- [ ] **Partial candidate produced:** a 17-page **DataCreators-Instructor-Demos.pdf** with four actual dbt stories, HTML/WebM/WebVTT/transcripts and a portable media server. The full twelve-story book remains pending. Generate the complete **DataCreators-Instructor-Demos.pdf** candidate with
+   contents, stable story IDs, tool index and task cross-references, plus an HTML
+   player with captioned videos, transcripts and copyable commands.
+ - [ ] Start with three of twelve stories selected for the main course (25% of
+@@ -157,7 +155,7 @@ evidence. Keep raw working data under the project's ignored .local/ directory.
+   PDF a working companion link; add a QR code only when there is a real assigned
+   URL. Captions/commands remain selectable text and exact commands remain available
+   outside screenshots.
+-- [ ] Regenerate challenge session summaries, full instructor concepts and the
++- [x] Regenerate challenge session summaries, full instructor concepts and the
+   complete recursive learner README appendix from final challenge sources. Check
+   coverage and answer separation; respect the owner's current section-placement
+   directions and preserve surrounding substantive teaching.
+@@ -315,3 +313,90 @@ The owner's `TODO.md` presentation items are done. The plans are in `designer/pl
+ ### Text left as found, to judge on review
+ - Some old text inside converted boxes was not reworded: em dashes and colon leads in the `#v2-05-0803` card, a closing line under `#v2-05-0943`, and colon reveals in the `#v2-03-1109-h7` review.
+ - `#v2-03-1109-h3` still mentions PowerShell and OneDrive as room history about Windows laptops.
++
++
++## 8. Local preparation completed — 7 October UTC / 8 October London
++
++The owner explicitly requested advancing what is possible here, with the actual
++live environment to follow later. No release promotion, commit, push, external
++video publication, cloud provisioning or notification was performed. Existing
++course edits were preserved. Canonical starter hashes are unchanged.
++
++Start with the [dated handoff and evidence index](designer/reviews/instructor-demos/20261007T215100Z/README.md)
++and the [exact next-environment instructions](reference/DataCreators-client/dev-container/edo-training-data-products/designer/reviews/live-dev-container/20261007T215100Z/course-handoff.md).
++
++- [x] Inventory: seven tools, twelve active phases, two inactive phase boundaries,
++  sixty core task IDs, thirty-nine learner READMEs. The optional/reference heading
++  inventory is present; those exercises remain unreviewed individually.
++- [x] Existing offline suite: 249 passed, one skipped. New consequential tests:
++  18 passed, including persistent/nested PTYs, drift, wrong failure/workspace,
++  missing prerequisites, interruption/owned cleanup, real-dbt missing-test and
++  hard-coded-output rejection, equivalent alternative SQL and HTTP byte ranges.
++- [x] Final supporting starter/reference suite: 24 runs, 17 local passes and
++  seven supporting-only results, zero failures. Local Airflow now records actual
++  success/failure/repair run IDs, `quality=failed`, `publish=upstream_failed` and
++  receipt identity. This does **not** prove Astro workers/scheduler/API/UI,
++  connected Databricks, Kafka or GitHub collaboration. Task-level three journeys,
++  explanations and individual optional/reference checks remain pending.
++- [x] dbt Phase 1 reconstructed from a fresh learner starter; prior instructor
++  solution exposure is disclosed. Two local DuckDB workspaces seeded/built/queried
++  concurrently; removing A's database leaves B correct. Reconnect uses explicit
++  executable and workspace/profile rather than hidden prior shell activation.
++- [x] Repaired nested Git-index testing, moved Airflow launcher handling, dbt
++  type/grain/test/output verification, source-seed ordering and erroneous profile
++  hints. Moved 33 complete legacy stretch answer bodies into instructor files.
++  Regenerated all client views and the bounded current course Appendix H;
++  current course concepts/summary/answer-key conventions remain preserved.
++- [x] Four actual DuckDB stories: build/inspect, sources/refs/compiled SQL,
++  relationship failure/repair/replay, and fan-out/incremental replay. The initial
++  main-book selection remains three of twelve; only its dbt story is presently
++  eligible (two story pages). No blank/fake frames fill missing catalogue slots.
++- [x] Final demo candidate: PDF text/image bounds, approximately 9.75 pt essential
++  terminal text, actual desktop/mobile HTML, caption tracks, exact command copy,
++  video playback/pause/seek and asset checksums verified. Use its `serve.py`:
++  Python's ordinary file server was found insufficient for reliable WebM seeking.
++  Three commands copied from the rendered PDF execute successfully in a fresh
++  prepared project. Remaining lesson commands and human/projector/pacing review
++  remain pending.
++- [x] Separate challenge learner/instructor archives built, extracted into fresh
++  roots and representative baseline/reference commands checked. Full answers,
++  capture definitions, private runtime and authoring helpers are excluded from
++  learner delivery. Each archive includes a manifest-referenced inventory of its
++  actual selected bytes. The current course learner download was refreshed with
++  the tested verifier fixes using a new review destination.
++- [x] Static native PDF/HTML course adapters and an isolated semantic-anchor
++  overlay are prepared. A small insertion/restoration pilot proves the complete
++  dbt story can sit beside teaching with continuous page numbers and restored body
++  geometry. Current course source gates pass (132,471 substantive words at this
++  run); the full main-course PDF/HTML, page/readability/package acceptance and
++  remaining selected stories are still pending. Existing word/page/figure gates
++  were not relaxed.
++
++Local generated review artifacts (not promoted releases):
++
++- [Final demo PDF](candidates/instructor-demos/20261007T215100Z-delivery/DataCreators-Instructor-Demos.pdf).
++- [Offline HTML library](candidates/instructor-demos/20261007T215100Z-delivery/index.html)
++  and its `serve.py`, WebM, subtitles, transcripts and independent inspection helper.
++- [Prepared course overlay](candidates/instructor-demos/20261007T215100Z-delivery-course-overlay/integration.json)
++  and native integration pilot in that directory.
++- Challenge archives and source inventory: `CLIENT_ROOT/.local/final-packages/`;
++  extracted behavior evidence: the audit's `package-extraction.json`.
++
++The portable demo/source bundles, final source hashes, command-evidence CSV,
++classroom-readiness/troubleshooting sheets, publishing review and source patch
++are linked from the dated index. Older development captures are historical;
++source drift prevents reusing them as fresh published evidence.
++
++### Remaining work in the real environment
++
++Keep sections 1–6 as the full task list. In particular, discover actual startup,
++identity, owned schemas/topics/ports and worker mounts; complete the draft Docker
++and Airflow UI implementations before capture; implement the deliberately
++blocked connected verifier branches; run every offered route's three fresh
++journeys and all optional/reference checks; finish package-only/reconnect/restart
++and Docker/Astro isolation; pilot human teaching/viewing; then build and review the
++complete demo library and main-course candidates against current source hashes.
++The Airflow draft stories currently describe navigation only: they still need
++fresh trigger/API/output assertions and prepared authenticated browser state.
++A local `dag.test()` or a pre-existing green UI run must not close those gates.
++Owner decisions from section 7 remain unresolved. Promotion is a separate action.
+diff --git a/facilitator/practice-client-v2/challenges/v2/dbt/phase-one-certified/README.md b/facilitator/practice-client-v2/challenges/v2/dbt/phase-one-certified/README.md
+index 192bcff..aee475c 100644
+--- a/facilitator/practice-client-v2/challenges/v2/dbt/phase-one-certified/README.md
++++ b/facilitator/practice-client-v2/challenges/v2/dbt/phase-one-certified/README.md
+@@ -160,7 +160,7 @@ The YAML examples use data_tests. Pair relationships with uniqueness on the refe
+ 
+ #### Check
+ 
+-All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, reseed and show a relationship failure; restore it and rebuild. Save the failed-test name, repair and per-fund evidence.
++All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, run `dbt seed --profiles-dir .` followed by `dbt build --profiles-dir .`, and show the relationship failure. Restore the original CSV, seed again, then rebuild and check the per-fund outputs. Changing a CSV does not reload its source table. Save the failed-test name, repair and per-fund evidence.
+ 
+ Record the command or inspection, its observed result, and your explanation in workspace/evidence.md. Mark unavailable runtime checks blocked; retain completed local evidence separately.
+ 
+diff --git a/facilitator/practice-client-v2/designer/reviews/course-v2-source-inventory.json b/facilitator/practice-client-v2/designer/reviews/course-v2-source-inventory.json
+index b27ab90..68c57d8 100644
+--- a/facilitator/practice-client-v2/designer/reviews/course-v2-source-inventory.json
++++ b/facilitator/practice-client-v2/designer/reviews/course-v2-source-inventory.json
+@@ -80,7 +80,7 @@
+     "challenges/v2/databricks-cli/phase-two-proficient/README.md": "3ce385bb9dacb5e095589155badf7d436efcb63c83c52e5fc2981bff9faa808c",
+     "challenges/v2/databricks-cli/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "challenges/v2/dbt/README.md": "5a3cd845e37b7dc0ea557c265b3042cf6211618bd8f07c6a32bd7001fcba0abb",
+-    "challenges/v2/dbt/phase-one-certified/README.md": "90de767c95c2c67cb9392b5b8b3c3bbabacb6713b7d677ccc3357e6ac561206b",
++    "challenges/v2/dbt/phase-one-certified/README.md": "99d2c815f63c6d7808447dc655955538ed81a9d6c8bd953b769c1d5d468dbba5",
+     "challenges/v2/dbt/phase-one-certified/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+     "challenges/v2/dbt/phase-one-certified/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+     "challenges/v2/dbt/phase-one-certified/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+@@ -148,10 +148,10 @@
+     "challenges/v2/kafka/phase-two-proficient/README.md": "4bba8627e9eec33c398130ab843ae78f1a6f3af28f9e84596e70bf8bff86fb99",
+     "challenges/v2/kafka/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "challenges/v2/manifest.json": "d939c2a64e9aae3eb078db136ea9a3938d86bf7222254622d8ecc3e6a270c5a3",
+-    "scripts/challenge-v2.py": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
++    "scripts/challenge-v2.py": "c2af1efb9665c370b50897409aa1dc7e6b0e5b165ed15975c150f5a950f8bf3d",
+     "scripts/docker-build-logs.sh": "bc1dd2450e3e9a966bc5f95c647aa7be68bc066b6aa9fdd00cf6a18701a00f0f",
+     "scripts/setup-v2-tools.sh": "cf29522f638fa8299842ee99c6124fbd478e48ef377ecdcf96376f5f4d90046f",
+-    "scripts/v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
++    "scripts/v2-airflow-check.py": "671d097a5190159b41a30d25264326ee50d9fb97b2f8ba06135193276cfc67dd",
+     "scripts/v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+     "scripts/v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+     "scripts/verify-with-databricks.sh": "893a6b55b79822d5b667c9e604e2b5e902ab07d291f23ac3cf7a20f9d1b1fdaa",
+diff --git a/facilitator/practice-client-v2/scripts/challenge-v2.py b/facilitator/practice-client-v2/scripts/challenge-v2.py
+index b6228b3..71d1f88 100644
+--- a/facilitator/practice-client-v2/scripts/challenge-v2.py
++++ b/facilitator/practice-client-v2/scripts/challenge-v2.py
+@@ -35,8 +35,20 @@ def query(w,sql):
+     return json.loads(result.stdout)
+ 
+ def exposure(w):
++    from decimal import Decimal
++    holdings=list(csv.DictReader((w/'seeds/holdings.csv').open()))
++    funds=list(csv.DictReader((w/'seeds/funds.csv').open()))
++    expected={r['fund_id']:[0,Decimal(0)] for r in funds}
++    assert len(expected)==len(funds),'Duplicate fund keys'
++    assert len({(r['fund_id'],r['instrument_id']) for r in holdings})==len(holdings),'Duplicate holding grain'
++    for r in holdings:
++        assert r['fund_id'] in expected,'Unmatched fund key'
++        expected[r['fund_id']][0]+=1;expected[r['fund_id']][1]+=Decimal(r['market_value'])
+     rows=query(w,'select fund_id,holdings,exposure from fund_exposure order by fund_id')
+-    assert [(a,b,float(c)) for a,b,c in rows]==[('A',2,150.),('B',2,100.),('C',1,0.)],rows
++    assert len(rows)==len(expected) and {f:[n,Decimal(str(v))] for f,n,v in rows}==expected,rows
++    staged=query(w,'select fund_id,instrument_id,market_value from stg_holdings')
++    assert len(staged)==len(holdings) and {(f,i,Decimal(str(v))) for f,i,v in staged}=={(r['fund_id'],r['instrument_id'],Decimal(r['market_value'])) for r in holdings},'Staging grain/value loss'
++    assert query(w,"select data_type from information_schema.columns where table_name='stg_holdings' and column_name='market_value'")==[['DECIMAL(18,2)']],'Money contract must remain decimal(18,2)'
+     return rows
+ 
+ def oracle_atlas(w):
+@@ -117,6 +129,34 @@ def verify_dbt(w,phase,starter,tool):
+ 
+         return out
+     out={'exposure':exposure(w)}
++    if phase=='phase-one-certified':
++        # Structural tests and actual behavior both matter: a hard-coded mart
++        # with missing relationships must not pass on the happy-path fixture.
++        manifest=json.loads((w/'target/manifest.json').read_text())
++        tests=[n for n in manifest['nodes'].values() if n['resource_type']=='test']
++        for model,column,names in [('stg_funds','fund_id',['unique','not_null']),('stg_holdings','fund_id',['relationships','not_null']),('fund_exposure','fund_id',['unique','not_null'])]:
++            for name in names:
++                assert any(n.get('test_metadata',{}).get('name')==name and n.get('column_name')==column and any(x.endswith('.'+model) for x in n['depends_on']['nodes']) for n in tests),f'Missing {name} test for {model}.{column}'
++        assert any(n.get('test_metadata') is None for n in tests),'Missing singular business check'
++        seed=w/'seeds/holdings.csv';original=seed.read_text();seed.write_text(original.replace(',A,',',UNKNOWN,') if ',A,' in original else original.replace('\nA,','\nUNKNOWN,',1))
++        assert seed.read_text()!=original,'Negative fixture failed to change a key'
++        dbt_command(w,'seed','--select','holdings');dbt_command(w,'run','--select','stg_holdings');dbt_command(w,'test','--select','test_type:generic',expected=1)
++        failed=json.loads((w/'target/run_results.json').read_text())['results']
++        assert any(r['status']=='fail' and manifest['nodes'][r['unique_id']].get('test_metadata',{}).get('name')=='relationships' for r in failed),'Wrong failure reason'
++        seed.write_text(original);dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        # Preserve the taught total while moving value between funds. A mart
++        # hard-coded to the supplied happy-path answers must be rejected.
++        import io
++        records=list(csv.DictReader(io.StringIO(original)));fields=list(records[0])
++        records[0]['market_value']=str(__import__('decimal').Decimal(records[0]['market_value'])+10)
++        other=next(r for r in records if r['fund_id']!=records[0]['fund_id'] and __import__('decimal').Decimal(r['market_value'])>=10)
++        other['market_value']=str(__import__('decimal').Decimal(other['market_value'])-10)
++        with seed.open('w',newline='') as f:
++            writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(records)
++        dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        seed.write_text(original);dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        out['negative_case']='Unknown fund rejected by relationship test; restored fixture and per-fund output rechecked'
++        out['input_sensitivity']='Total-preserving per-fund value change checked against independent CSV oracle; original input restored and rebuilt'
+     if phase=='phase-two-proficient':
+         dbt_command(w,'run','--select','arrival_ledger');assert query(w,'select count(*),sum(market_value) from arrival_ledger')==[[2,'180.00']]
+         dbt_command(w,'run','--select','arrival_ledger');assert query(w,'select count(*) from arrival_ledger')==[[2]]
+@@ -195,11 +235,15 @@ def verify_airflow(w,phase,starter):
+     py=executable('airflow-python','.local/v2-airflow/bin/python')
+     dbt=executable('dbt','.local/v2-tools/bin/dbt')
+     env={**os.environ,'AIRFLOW_HOME':str(w/'airflow-home'),'AIRFLOW__CORE__LOAD_EXAMPLES':'false','AIRFLOW__CORE__DAGS_FOLDER':str(w),'V2_DBT_BIN':dbt,'V2_DB_PATH':str(w/'project/training.duckdb'),'DBT_SEND_ANONYMOUS_USAGE_STATS':'false'}
+-    run([str(Path(py).parent/'airflow'),'db','migrate'],w,env)
+-    run([str(Path(py).parent/'airflow'),'dags','reserialize'],w,env)
++    # A relocated venv can retain launcher shebangs pointing at the old root.
++    # Invoke the measured interpreter directly; do not mutate managed launchers.
++    run([py,'-m','airflow','db','migrate'],w,env)
++    run([py,'-m','airflow','dags','reserialize'],w,env)
+     script=ROOT/'scripts/v2-airflow-check.py'
+-    run([py,script,w,'starter' if starter else 'solution'],w,env)
+-    return {'airflow':'actual Dag.test dbt run/quality failure/repair/replay' if not starter else 'actual baseline import','astro_ui':'not assessed','output':exposure(w/'project') if not starter else 'baseline not executed'}
++    output=run([py,script,w,'starter' if starter else 'solution'],w,env)
++    evidence=[json.loads(line.split('=',1)[1]) for line in output.splitlines() if line.startswith('V2_AIRFLOW_EVIDENCE=')]
++    if not starter:assert len(evidence)==1,'Missing fresh Airflow task/run evidence'
++    return {'airflow':'actual Dag.test dbt run/quality failure/repair/replay' if not starter else 'actual baseline import','astro_ui':'not assessed','output':exposure(w/'project') if not starter else 'baseline not executed','run_evidence':evidence[0] if evidence else None}
+ 
+ def main():
+     ap=argparse.ArgumentParser(description=__doc__)
+@@ -249,7 +293,12 @@ def main():
+     if result=='pass' and observations.get('completion') is False and (not starter or a.tool=='docker'): result='supporting-only'
+     assert before==inventory(source),'Verification changed the supplied source'
+     report={'tool':a.tool,'phase':a.phase,'action':a.action,'mode':a.mode,'result':result,'observations':observations,'source_sha256':before,'learner_readme_sha256':digest(V/phase['readme']),'manifest_sha256':digest(V/'manifest.json'),'task_ids':[x['id'] for x in phase['tasks']],'automated_scope':'Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment','verifier_sha256':digest(Path(__file__)),'support_scripts_sha256':{p.name:digest(p) for p in (ROOT/'scripts').glob('v2*') if p.is_file()},'duration_seconds':round(time.monotonic()-start,3),'cleanup':'temporary workspace removed; source hashes unchanged','command':sys.argv,'versions':{}}
+-    for name,path in [('dbt',ROOT/'.local/v2-tools/bin/dbt'),('airflow',ROOT/'.local/v2-airflow/bin/airflow')]:
+-        if path.exists():report['versions'][name]=subprocess.run([str(path),'version' if name=='airflow' else '--version'],capture_output=True,text=True).stdout.strip()
++    for name,local in [('dbt','.local/v2-tools/bin/dbt'),('airflow-python','.local/v2-airflow/bin/python')]:
++        try:
++            exe=executable(name,local)
++            cmd=[exe,'-m','airflow','version'] if name=='airflow-python' else [exe,'--version']
++            measured=subprocess.run(cmd,capture_output=True,text=True,timeout=30)
++            report['versions'][name]={'executable':exe,'exit_code':measured.returncode,'output':measured.stdout.strip()}
++        except (Blocked,OSError,subprocess.TimeoutExpired) as e:report['versions'][name]={'status':'blocked','reason':str(e)}
+     (evidence/f'{a.tool}-{a.phase}-{a.action}-{stamp}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k not in ['source_sha256','versions']},indent=2));raise SystemExit(code)
+ if __name__=='__main__':main()
+diff --git a/facilitator/practice-client-v2/scripts/v2-airflow-check.py b/facilitator/practice-client-v2/scripts/v2-airflow-check.py
+index c1d0558..7a0f6c1 100644
+--- a/facilitator/practice-client-v2/scripts/v2-airflow-check.py
++++ b/facilitator/practice-client-v2/scripts/v2-airflow-check.py
+@@ -16,8 +16,13 @@ first=dag.test(logical_date=datetime(2026,1,1,tzinfo=timezone.utc));assert first
+ receipt=json.loads((w/'receipt.json').read_text());assert receipt['run_id']==first.run_id
+ (w/'receipt.json').unlink();(w/'fail-quality').touch()
+ failed=dag.test(logical_date=datetime(2026,1,2,tzinfo=timezone.utc));assert failed.state==DagRunState.FAILED,failed.state
++failed_states={ti.task_id:ti.state for ti in failed.get_task_instances()}
++assert failed_states['quality']=='failed',failed_states
++assert failed_states['publish']=='upstream_failed',failed_states
++assert failed_states['prepare']=='success' and failed_states['build']=='success',failed_states
+ assert not (w/'receipt.json').exists(),'Failure must block publication'
+ (w/'fail-quality').unlink()
+ repaired=dag.test(logical_date=datetime(2026,1,3,tzinfo=timezone.utc));assert repaired.state==DagRunState.SUCCESS,repaired.state
+ assert json.loads((w/'receipt.json').read_text())['run_id']==repaired.run_id
+ print('Real Airflow execution: success, intentional failure, repaired replay passed')
++print('V2_AIRFLOW_EVIDENCE='+json.dumps({'success_run_id':first.run_id,'quality_failure_run_id':failed.run_id,'repaired_run_id':repaired.run_id,'failed_task_states':failed_states,'receipt_bound_to_repaired_run':True,'logical_dates':'fixed teaching fixture dates; wall duration measured by parent verifier'}))
+diff --git a/learner/14-appendix-h-challenge-reference-v2.md b/learner/14-appendix-h-challenge-reference-v2.md
+index c0ccc70..668bd91 100644
+--- a/learner/14-appendix-h-challenge-reference-v2.md
++++ b/learner/14-appendix-h-challenge-reference-v2.md
+@@ -1442,7 +1442,7 @@ The YAML examples use data_tests. Pair relationships with uniqueness on the refe
+ <a id="v2-dbt-phase-one-certified-readme-md-check-4"></a>
+ 
+ ###### Check
+-All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, reseed and show a relationship failure; restore it and rebuild. Save the failed-test name, repair and per-fund evidence.
++All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, run `dbt seed --profiles-dir .` followed by `dbt build --profiles-dir .`, and show the relationship failure. Restore the original CSV, seed again, then rebuild and check the per-fund outputs. Changing a CSV does not reload its source table. Save the failed-test name, repair and per-fund evidence.
+ 
+ Record the command or inspection, its observed result, and your explanation in workspace/evidence.md. Mark unavailable runtime checks blocked; retain completed local evidence separately.
+ 
+diff --git a/learner/practice/client/challenges/v2/dbt/phase-one-certified/README.md b/learner/practice/client/challenges/v2/dbt/phase-one-certified/README.md
+index 192bcff..aee475c 100644
+--- a/learner/practice/client/challenges/v2/dbt/phase-one-certified/README.md
++++ b/learner/practice/client/challenges/v2/dbt/phase-one-certified/README.md
+@@ -160,7 +160,7 @@ The YAML examples use data_tests. Pair relationships with uniqueness on the refe
+ 
+ #### Check
+ 
+-All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, reseed and show a relationship failure; restore it and rebuild. Save the failed-test name, repair and per-fund evidence.
++All tests must pass on a fresh build. In a copied fixture add an unknown fund ID, run `dbt seed --profiles-dir .` followed by `dbt build --profiles-dir .`, and show the relationship failure. Restore the original CSV, seed again, then rebuild and check the per-fund outputs. Changing a CSV does not reload its source table. Save the failed-test name, repair and per-fund evidence.
+ 
+ Record the command or inspection, its observed result, and your explanation in workspace/evidence.md. Mark unavailable runtime checks blocked; retain completed local evidence separately.
+ 
+diff --git a/learner/practice/client/designer/reviews/course-v2-source-inventory.json b/learner/practice/client/designer/reviews/course-v2-source-inventory.json
+index b27ab90..68c57d8 100644
+--- a/learner/practice/client/designer/reviews/course-v2-source-inventory.json
++++ b/learner/practice/client/designer/reviews/course-v2-source-inventory.json
+@@ -80,7 +80,7 @@
+     "challenges/v2/databricks-cli/phase-two-proficient/README.md": "3ce385bb9dacb5e095589155badf7d436efcb63c83c52e5fc2981bff9faa808c",
+     "challenges/v2/databricks-cli/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "challenges/v2/dbt/README.md": "5a3cd845e37b7dc0ea557c265b3042cf6211618bd8f07c6a32bd7001fcba0abb",
+-    "challenges/v2/dbt/phase-one-certified/README.md": "90de767c95c2c67cb9392b5b8b3c3bbabacb6713b7d677ccc3357e6ac561206b",
++    "challenges/v2/dbt/phase-one-certified/README.md": "99d2c815f63c6d7808447dc655955538ed81a9d6c8bd953b769c1d5d468dbba5",
+     "challenges/v2/dbt/phase-one-certified/starter/README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+     "challenges/v2/dbt/phase-one-certified/starter/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+     "challenges/v2/dbt/phase-one-certified/starter/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+@@ -148,10 +148,10 @@
+     "challenges/v2/kafka/phase-two-proficient/README.md": "4bba8627e9eec33c398130ab843ae78f1a6f3af28f9e84596e70bf8bff86fb99",
+     "challenges/v2/kafka/phase-two-proficient/starter/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "challenges/v2/manifest.json": "d939c2a64e9aae3eb078db136ea9a3938d86bf7222254622d8ecc3e6a270c5a3",
+-    "scripts/challenge-v2.py": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
++    "scripts/challenge-v2.py": "c2af1efb9665c370b50897409aa1dc7e6b0e5b165ed15975c150f5a950f8bf3d",
+     "scripts/docker-build-logs.sh": "bc1dd2450e3e9a966bc5f95c647aa7be68bc066b6aa9fdd00cf6a18701a00f0f",
+     "scripts/setup-v2-tools.sh": "cf29522f638fa8299842ee99c6124fbd478e48ef377ecdcf96376f5f4d90046f",
+-    "scripts/v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
++    "scripts/v2-airflow-check.py": "671d097a5190159b41a30d25264326ee50d9fb97b2f8ba06135193276cfc67dd",
+     "scripts/v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+     "scripts/v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+     "scripts/verify-with-databricks.sh": "893a6b55b79822d5b667c9e604e2b5e902ab07d291f23ac3cf7a20f9d1b1fdaa",
+diff --git a/learner/practice/client/scripts/challenge-v2.py b/learner/practice/client/scripts/challenge-v2.py
+index b6228b3..71d1f88 100644
+--- a/learner/practice/client/scripts/challenge-v2.py
++++ b/learner/practice/client/scripts/challenge-v2.py
+@@ -35,8 +35,20 @@ def query(w,sql):
+     return json.loads(result.stdout)
+ 
+ def exposure(w):
++    from decimal import Decimal
++    holdings=list(csv.DictReader((w/'seeds/holdings.csv').open()))
++    funds=list(csv.DictReader((w/'seeds/funds.csv').open()))
++    expected={r['fund_id']:[0,Decimal(0)] for r in funds}
++    assert len(expected)==len(funds),'Duplicate fund keys'
++    assert len({(r['fund_id'],r['instrument_id']) for r in holdings})==len(holdings),'Duplicate holding grain'
++    for r in holdings:
++        assert r['fund_id'] in expected,'Unmatched fund key'
++        expected[r['fund_id']][0]+=1;expected[r['fund_id']][1]+=Decimal(r['market_value'])
+     rows=query(w,'select fund_id,holdings,exposure from fund_exposure order by fund_id')
+-    assert [(a,b,float(c)) for a,b,c in rows]==[('A',2,150.),('B',2,100.),('C',1,0.)],rows
++    assert len(rows)==len(expected) and {f:[n,Decimal(str(v))] for f,n,v in rows}==expected,rows
++    staged=query(w,'select fund_id,instrument_id,market_value from stg_holdings')
++    assert len(staged)==len(holdings) and {(f,i,Decimal(str(v))) for f,i,v in staged}=={(r['fund_id'],r['instrument_id'],Decimal(r['market_value'])) for r in holdings},'Staging grain/value loss'
++    assert query(w,"select data_type from information_schema.columns where table_name='stg_holdings' and column_name='market_value'")==[['DECIMAL(18,2)']],'Money contract must remain decimal(18,2)'
+     return rows
+ 
+ def oracle_atlas(w):
+@@ -117,6 +129,34 @@ def verify_dbt(w,phase,starter,tool):
+ 
+         return out
+     out={'exposure':exposure(w)}
++    if phase=='phase-one-certified':
++        # Structural tests and actual behavior both matter: a hard-coded mart
++        # with missing relationships must not pass on the happy-path fixture.
++        manifest=json.loads((w/'target/manifest.json').read_text())
++        tests=[n for n in manifest['nodes'].values() if n['resource_type']=='test']
++        for model,column,names in [('stg_funds','fund_id',['unique','not_null']),('stg_holdings','fund_id',['relationships','not_null']),('fund_exposure','fund_id',['unique','not_null'])]:
++            for name in names:
++                assert any(n.get('test_metadata',{}).get('name')==name and n.get('column_name')==column and any(x.endswith('.'+model) for x in n['depends_on']['nodes']) for n in tests),f'Missing {name} test for {model}.{column}'
++        assert any(n.get('test_metadata') is None for n in tests),'Missing singular business check'
++        seed=w/'seeds/holdings.csv';original=seed.read_text();seed.write_text(original.replace(',A,',',UNKNOWN,') if ',A,' in original else original.replace('\nA,','\nUNKNOWN,',1))
++        assert seed.read_text()!=original,'Negative fixture failed to change a key'
++        dbt_command(w,'seed','--select','holdings');dbt_command(w,'run','--select','stg_holdings');dbt_command(w,'test','--select','test_type:generic',expected=1)
++        failed=json.loads((w/'target/run_results.json').read_text())['results']
++        assert any(r['status']=='fail' and manifest['nodes'][r['unique_id']].get('test_metadata',{}).get('name')=='relationships' for r in failed),'Wrong failure reason'
++        seed.write_text(original);dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        # Preserve the taught total while moving value between funds. A mart
++        # hard-coded to the supplied happy-path answers must be rejected.
++        import io
++        records=list(csv.DictReader(io.StringIO(original)));fields=list(records[0])
++        records[0]['market_value']=str(__import__('decimal').Decimal(records[0]['market_value'])+10)
++        other=next(r for r in records if r['fund_id']!=records[0]['fund_id'] and __import__('decimal').Decimal(r['market_value'])>=10)
++        other['market_value']=str(__import__('decimal').Decimal(other['market_value'])-10)
++        with seed.open('w',newline='') as f:
++            writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(records)
++        dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        seed.write_text(original);dbt_command(w,'seed','--select','holdings');dbt_command(w,'build');exposure(w)
++        out['negative_case']='Unknown fund rejected by relationship test; restored fixture and per-fund output rechecked'
++        out['input_sensitivity']='Total-preserving per-fund value change checked against independent CSV oracle; original input restored and rebuilt'
+     if phase=='phase-two-proficient':
+         dbt_command(w,'run','--select','arrival_ledger');assert query(w,'select count(*),sum(market_value) from arrival_ledger')==[[2,'180.00']]
+         dbt_command(w,'run','--select','arrival_ledger');assert query(w,'select count(*) from arrival_ledger')==[[2]]
+@@ -195,11 +235,15 @@ def verify_airflow(w,phase,starter):
+     py=executable('airflow-python','.local/v2-airflow/bin/python')
+     dbt=executable('dbt','.local/v2-tools/bin/dbt')
+     env={**os.environ,'AIRFLOW_HOME':str(w/'airflow-home'),'AIRFLOW__CORE__LOAD_EXAMPLES':'false','AIRFLOW__CORE__DAGS_FOLDER':str(w),'V2_DBT_BIN':dbt,'V2_DB_PATH':str(w/'project/training.duckdb'),'DBT_SEND_ANONYMOUS_USAGE_STATS':'false'}
+-    run([str(Path(py).parent/'airflow'),'db','migrate'],w,env)
+-    run([str(Path(py).parent/'airflow'),'dags','reserialize'],w,env)
++    # A relocated venv can retain launcher shebangs pointing at the old root.
++    # Invoke the measured interpreter directly; do not mutate managed launchers.
++    run([py,'-m','airflow','db','migrate'],w,env)
++    run([py,'-m','airflow','dags','reserialize'],w,env)
+     script=ROOT/'scripts/v2-airflow-check.py'
+-    run([py,script,w,'starter' if starter else 'solution'],w,env)
+-    return {'airflow':'actual Dag.test dbt run/quality failure/repair/replay' if not starter else 'actual baseline import','astro_ui':'not assessed','output':exposure(w/'project') if not starter else 'baseline not executed'}
++    output=run([py,script,w,'starter' if starter else 'solution'],w,env)
++    evidence=[json.loads(line.split('=',1)[1]) for line in output.splitlines() if line.startswith('V2_AIRFLOW_EVIDENCE=')]
++    if not starter:assert len(evidence)==1,'Missing fresh Airflow task/run evidence'
++    return {'airflow':'actual Dag.test dbt run/quality failure/repair/replay' if not starter else 'actual baseline import','astro_ui':'not assessed','output':exposure(w/'project') if not starter else 'baseline not executed','run_evidence':evidence[0] if evidence else None}
+ 
+ def main():
+     ap=argparse.ArgumentParser(description=__doc__)
+@@ -249,7 +293,12 @@ def main():
+     if result=='pass' and observations.get('completion') is False and (not starter or a.tool=='docker'): result='supporting-only'
+     assert before==inventory(source),'Verification changed the supplied source'
+     report={'tool':a.tool,'phase':a.phase,'action':a.action,'mode':a.mode,'result':result,'observations':observations,'source_sha256':before,'learner_readme_sha256':digest(V/phase['readme']),'manifest_sha256':digest(V/'manifest.json'),'task_ids':[x['id'] for x in phase['tasks']],'automated_scope':'Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment','verifier_sha256':digest(Path(__file__)),'support_scripts_sha256':{p.name:digest(p) for p in (ROOT/'scripts').glob('v2*') if p.is_file()},'duration_seconds':round(time.monotonic()-start,3),'cleanup':'temporary workspace removed; source hashes unchanged','command':sys.argv,'versions':{}}
+-    for name,path in [('dbt',ROOT/'.local/v2-tools/bin/dbt'),('airflow',ROOT/'.local/v2-airflow/bin/airflow')]:
+-        if path.exists():report['versions'][name]=subprocess.run([str(path),'version' if name=='airflow' else '--version'],capture_output=True,text=True).stdout.strip()
++    for name,local in [('dbt','.local/v2-tools/bin/dbt'),('airflow-python','.local/v2-airflow/bin/python')]:
++        try:
++            exe=executable(name,local)
++            cmd=[exe,'-m','airflow','version'] if name=='airflow-python' else [exe,'--version']
++            measured=subprocess.run(cmd,capture_output=True,text=True,timeout=30)
++            report['versions'][name]={'executable':exe,'exit_code':measured.returncode,'output':measured.stdout.strip()}
++        except (Blocked,OSError,subprocess.TimeoutExpired) as e:report['versions'][name]={'status':'blocked','reason':str(e)}
+     (evidence/f'{a.tool}-{a.phase}-{a.action}-{stamp}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k not in ['source_sha256','versions']},indent=2));raise SystemExit(code)
+ if __name__=='__main__':main()
+diff --git a/learner/practice/client/scripts/v2-airflow-check.py b/learner/practice/client/scripts/v2-airflow-check.py
+index c1d0558..7a0f6c1 100644
+--- a/learner/practice/client/scripts/v2-airflow-check.py
++++ b/learner/practice/client/scripts/v2-airflow-check.py
+@@ -16,8 +16,13 @@ first=dag.test(logical_date=datetime(2026,1,1,tzinfo=timezone.utc));assert first
+ receipt=json.loads((w/'receipt.json').read_text());assert receipt['run_id']==first.run_id
+ (w/'receipt.json').unlink();(w/'fail-quality').touch()
+ failed=dag.test(logical_date=datetime(2026,1,2,tzinfo=timezone.utc));assert failed.state==DagRunState.FAILED,failed.state
++failed_states={ti.task_id:ti.state for ti in failed.get_task_instances()}
++assert failed_states['quality']=='failed',failed_states
++assert failed_states['publish']=='upstream_failed',failed_states
++assert failed_states['prepare']=='success' and failed_states['build']=='success',failed_states
+ assert not (w/'receipt.json').exists(),'Failure must block publication'
+ (w/'fail-quality').unlink()
+ repaired=dag.test(logical_date=datetime(2026,1,3,tzinfo=timezone.utc));assert repaired.state==DagRunState.SUCCESS,repaired.state
+ assert json.loads((w/'receipt.json').read_text())['run_id']==repaired.run_id
+ print('Real Airflow execution: success, intentional failure, repaired replay passed')
++print('V2_AIRFLOW_EVIDENCE='+json.dumps({'success_run_id':first.run_id,'quality_failure_run_id':failed.run_id,'repaired_run_id':repaired.run_id,'failed_task_states':failed_states,'receipt_bound_to_repaired_run':True,'logical_dates':'fixed teaching fixture dates; wall duration measured by parent verifier'}))
+diff --git a/scripts/instructor-demo-filter.lua b/scripts/instructor-demo-filter.lua
+new file mode 100644
+index 0000000..377c9bf
+--- /dev/null
++++ b/scripts/instructor-demo-filter.lua
+@@ -0,0 +1,35 @@
++-- Reviewed bundle only. Run prepare-instructor-demo-course.py before rendering.
++-- This filter consumes static assets and never executes a capture/workload.
++local bundle = os.getenv('INSTRUCTOR_DEMO_BUNDLE')
++local function read(path)
++  local handle = assert(io.open(path, 'r'), 'Missing reviewed demo asset: ' .. path)
++  local text = handle:read('*a'); handle:close(); return text
++end
++local function pattern(text) return text:gsub('([%(%)%.%%%+%-%*%?%[%]%^%$])', '%%%1') end
++function Div(el)
++  if not el.classes:includes('instructor-demo') then return nil end
++  assert(bundle and bundle ~= '', 'INSTRUCTOR_DEMO_BUNDLE is required')
++  local id = el.attributes.story
++  assert(id and id:match('^[a-z][a-z0-9%-]*$'), 'Invalid instructor story ID')
++  local model = pandoc.json.decode(read(bundle .. '/stories/' .. id .. '/story.json'))
++  assert(model.review and model.review.verdict == 'approved for candidate export', 'Unreviewed story')
++  if FORMAT:match('latex') then
++    local fragment = read(bundle .. '/stories/' .. id .. '/story.tex')
++    -- The wrapper already starts a fresh page. An empty hyperlink anchor before
++    -- a second clearpage otherwise creates an unwanted blank course page.
++    fragment = fragment:gsub('^\\clearpage\n', '', 1)
++    fragment = fragment:gsub('{stories/', '{demos/stories/')
++    fragment = fragment:gsub('run:index.html', 'run:demos/index.html')
++    -- Keep the complete native fragment, continuous page counters and links.
++    return pandoc.RawBlock('latex', '\\clearpage\\begingroup\\pagestyle{plain}\\setlength{\\parskip}{2pt}\\setlength{\\parindent}{0pt}\\savegeometry{beforeinstructordemo}\\newgeometry{margin=12mm}\n\\hypertarget{demo-' .. id .. '}{}\n' .. fragment .. '\n\\clearpage\\loadgeometry{beforeinstructordemo}\\endgroup\n')
++  elseif FORMAT:match('html') then
++    local library = read(bundle .. '/index.html')
++    local article = assert(library:match('(<article id="' .. pattern(id) .. '".->.-</article>)'), 'Missing HTML story')
++    article = article:gsub('src="stories/', 'src="demos/stories/')
++    article = article:gsub('href="stories/', 'href="demos/stories/')
++    local style = '<style>.instructor-demo img,.instructor-demo video{max-width:100%;height:auto}.instructor-demo figure{margin:1rem 0}.instructor-demo figcaption{background:#eef4f5;padding:.7rem}.instructor-demo pre{overflow:auto}.instructor-demo button{padding:.6rem}.instructor-demo a:focus,.instructor-demo button:focus{outline:3px solid #187577}</style>'
++    local script = '<script>for(const b of document.querySelectorAll(".instructor-demo .copy:not([data-wired])")){b.dataset.wired="true";b.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(b.previousElementSibling.textContent);b.textContent="Copied"}catch(e){b.textContent="Select the command above to copy"}})}</script>'
++    return pandoc.RawBlock('html', style .. '<div class="instructor-demo">' .. article .. '</div>' .. script)
++  end
++  error('Instructor demo block needs the HTML or LaTeX adapter')
++end
+diff --git a/scripts/prepare-instructor-demo-course.py b/scripts/prepare-instructor-demo-course.py
+new file mode 100755
+index 0000000..d1c7b7e
+--- /dev/null
++++ b/scripts/prepare-instructor-demo-course.py
+@@ -0,0 +1,49 @@
++#!/usr/bin/env python3
++"""Verify a portable demo bundle and prepare course overlays without editing chapters."""
++import argparse,hashlib,json,re,shutil
++from pathlib import Path
++ROOT=Path(__file__).resolve().parents[1]
++ANCHORS={'docker-images-and-containers':('03-day-3-data-systems.md','v2-03-0113'),'dbt-models-and-tests':('03-day-3-data-systems.md','v2-03-0969'),'airflow-run-and-recovery':('04-day-4-orchestration-systems.md','v2-04-0413')}
++
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def verify(bundle):
++    index=json.loads((bundle/'bundle.json').read_text())
++    for relative,digest in index['files'].items():
++        path=(bundle/relative).resolve()
++        if not path.is_relative_to(bundle.resolve()) or not path.is_file() or sha(path)!=digest:raise ValueError('Missing/corrupt reviewed asset '+relative)
++    models=[]
++    for ident in index['stories']:
++        if not re.fullmatch('[a-z][a-z0-9-]*',ident):raise ValueError('Unsafe story ID')
++        model=json.loads((bundle/'stories'/ident/'story.json').read_text())
++        if model['id']!=ident or model['review']['verdict']!='approved for candidate export':raise ValueError('Unreviewed or mismatched story')
++        for cp in model['checkpoints']:
++            if sha(bundle/cp['frame'])!=cp['frame_sha256']:raise ValueError('Bad frame digest')
++        models.append(model)
++    return models
++
++def main():
++    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--bundle',type=Path,required=True);ap.add_argument('--output',type=Path);ap.add_argument('--check',action='store_true');a=ap.parse_args()
++    models=verify(a.bundle.resolve())
++    if a.check:print('Portable bundle verified:',len(models),'reviewed stories');return
++    if not a.output:ap.error('--output required for an overlay')
++    if a.output.exists():raise ValueError('Overlay destination exists; choose a fresh candidate')
++    out=a.output.resolve();(out/'learner').mkdir(parents=True)
++    chapters={p.name:p.read_text() for p in (ROOT/'learner').glob('[0-9][0-9]-*.md')};source_hashes={p.name:sha(p) for p in (ROOT/'learner').glob('[0-9][0-9]-*.md')}
++    placements=[]
++    for m in models:
++        if not m['main_book']['include']:continue
++        key=m['main_book']['teaching_key'];filename,anchor=ANCHORS[key];text=chapters[filename]
++        match=list(re.finditer(r'^(#{1,6}) .*\{#'+re.escape(anchor)+r'\}\s*$',text,re.M))
++        if len(match)!=1:raise ValueError('Teaching anchor moved/ambiguous; resolve before integration: '+anchor)
++        owner=match[0];level=len(owner[1]);end=re.search(r'^#{1,'+str(level)+r'} (?!#)',text[owner.end():],re.M)
++        position=owner.end()+end.start() if end else len(text)
++        block='\n::: {.instructor-demo story="'+m['id']+'"}\n::: \n\n'
++        chapters[filename]=text[:position]+block+text[position:]
++        placements.append({'story_id':m['id'],'teaching_key':key,'source':filename,'after_section_anchor':anchor,'run_id':m['run_id']})
++    for name,text in chapters.items():(out/'learner'/name).write_text(text)
++    shutil.copytree(a.bundle,out/'demos')
++    for rel in ['scripts/instructor-demo-filter.lua','pdf/headers/instructor-demos.tex']:
++        destination=out/rel;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/rel,destination)
++    (out/'integration.json').write_text(json.dumps({'course_source_hashes':source_hashes,'placements':placements,'selection':json.loads((a.bundle/'selection.json').read_text()),'status':'prepared overlay; full course render/content/HTML/package acceptance pending','builder_additions':{'filters.local':[{'path':'scripts/instructor-demo-filter.lua','before':'extra'}],'headers.extra':['pdf/headers/navigation.tex','pdf/headers/instructor-demos.tex'],'package.copy':[{'from':'demos','to':'demos','name':'instructor_demo_assets_sha256'}]},'build_environment':'INSTRUCTOR_DEMO_BUNDLE points at overlay/demos; copy overlay learner files and adapters into an isolated snapshot of current course before building'},indent=2)+'\n')
++    print(out)
++if __name__=='__main__':main()
+diff --git a/scripts/verify-instructor-demo-bundle.py b/scripts/verify-instructor-demo-bundle.py
+new file mode 100755
+index 0000000..edfbf4f
+--- /dev/null
++++ b/scripts/verify-instructor-demo-bundle.py
+@@ -0,0 +1,81 @@
++#!/usr/bin/env python3
++"""Verify reviewed demo PDF/HTML/media at desktop/mobile sizes in an owned server."""
++import argparse,functools,hashlib,http.server,importlib.util,json,re,socketserver,threading,time
++from pathlib import Path
++import fitz
++from playwright.sync_api import sync_playwright
++ROOT=Path(__file__).resolve().parents[1]
++
++class QuietHandler(http.server.SimpleHTTPRequestHandler):
++    def log_message(self,*args):pass
++
++def main():
++    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--bundle',type=Path,required=True);ap.add_argument('--report',type=Path,required=True);a=ap.parse_args();bundle=a.bundle.resolve();a.report.parent.mkdir(parents=True,exist_ok=True)
++    spec=importlib.util.spec_from_file_location('prepare',ROOT/'scripts/prepare-instructor-demo-course.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);models=module.verify(bundle)
++    report={'bundle_sha256':hashlib.sha256((bundle/'bundle.json').read_bytes()).hexdigest(),'stories':[m['id'] for m in models],'method':'PyMuPDF text/image/link bounds; real Chromium HTTP playback, caption loading, copy and desktop/mobile checks','errors':[],'display_pilot':'Browser emulation only; projector/human viewing still pending'}
++    pdf=bundle/'DataCreators-Instructor-Demos.pdf'
++    if pdf.exists():
++        doc=fitz.open(pdf);bounds=[];sizes=[]
++        for number,page in enumerate(doc,1):
++            for b in page.get_text('dict')['blocks']:
++                box=fitz.Rect(b['bbox'])
++                if box.x0<-1 or box.y0<-1 or box.x1>page.rect.width+1 or box.y1>page.rect.height+1:bounds.append({'page':number,'bbox':list(box)})
++            for image in page.get_images():
++                for box in page.get_image_rects(image[0]):sizes.append({'page':number,'width_pt':round(box.width,2),'height_pt':round(box.height,2),'essential_terminal_type_pt':round(21*box.width/1100,2)})
++        report['pdf']={'pages':len(doc),'outside_page_bounds':bounds,'images':sizes,'links':sum(len(p.get_links()) for p in doc),'selectable_caption_and_command_text':all(m['title'] in ''.join(p.get_text() for p in doc) for m in models)}
++        if bounds:report['errors'].append('PDF content outside page bounds')
++        if not report['pdf']['selectable_caption_and_command_text']:report['errors'].append('Missing PDF story text')
++        (a.report.parent/'demo-pdf-first-story.png').write_bytes(doc[2].get_pixmap(matrix=fitz.Matrix(100/72,100/72)).tobytes('png'))
++    server_spec=importlib.util.spec_from_file_location('demo_server',bundle/'serve.py')
++    if not server_spec.loader:raise ValueError('Missing portable media server')
++    server_module=importlib.util.module_from_spec(server_spec);server_spec.loader.exec_module(server_module)
++    class BundleHandler(server_module.RangeHandler):
++        def log_message(self,*args):pass
++    server=socketserver.ThreadingTCPServer(('127.0.0.1',0),functools.partial(BundleHandler,directory=str(bundle)))
++    thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start();url=f'http://127.0.0.1:{server.server_address[1]}/'
++    report['owned_server']={'address':url,'cleanup':'pending'}
++    try:
++        with sync_playwright() as p:
++            browser=p.chromium.launch();context=browser.new_context(permissions=['clipboard-read','clipboard-write']);page=context.new_page();failures=[];aborted=[]
++            def request_failure(req):
++                item={'url':req.url,'reason':req.failure}
++                # Reloading/seeking media and changing viewport/navigation can
++                # cancel a preload. Retain it separately; playback must pass.
++                (aborted if req.failure=='net::ERR_ABORTED' else failures).append(item)
++            page.on('requestfailed',request_failure);page.on('pageerror',lambda error:failures.append(str(error)))
++            page.on('response',lambda response:failures.append({'url':response.url,'status':response.status}) if response.status>=400 else None)
++            page.goto(url);page.wait_for_load_state('networkidle')
++            report['html']={'article_count':page.locator('article').count(),'request_errors':failures,'cancelled_preloads':aborted,'video_playback':[]}
++            assert page.locator('article').count()==len(models)
++            for index in range(page.locator('video').count()):
++                video=page.locator('video').nth(index)
++                video.evaluate('(v)=>v.load()')
++                page.wait_for_function('(index)=>document.querySelectorAll("video")[index].readyState>=2',arg=index,timeout=20000)
++                video.evaluate('(v)=>v.play()');page.wait_for_timeout(250)
++                evidence=video.evaluate('(v)=>({duration:v.duration,currentTime:v.currentTime,paused:v.paused,captionTracks:v.textTracks.length,cues:v.textTracks[0]?.cues?.length,videoWidth:v.videoWidth,videoHeight:v.videoHeight})')
++                assert evidence['currentTime']>0 and evidence['duration']>0 and evidence['captionTracks']==1 and evidence['cues']>0,evidence
++                video.evaluate('''(v)=>new Promise((resolve,reject)=>{
++                    v.pause();const target=v.duration/2;
++                    const timeout=setTimeout(()=>reject(new Error("Video seek timed out")),15000);
++                    v.addEventListener("seeked",()=>{clearTimeout(timeout);resolve(v.currentTime)}, {once:true});
++                    v.currentTime=target;
++                })''')
++                evidence['seekTime']=video.evaluate('(v)=>v.currentTime')
++                assert abs(evidence['seekTime']-evidence['duration']/2)<.5,evidence
++                report['html']['video_playback'].append(evidence)
++            button=page.locator('.copy').first;expected=button.evaluate('(b)=>b.previousElementSibling.textContent');button.click();assert page.evaluate('navigator.clipboard.readText()')==expected
++            report['html']['copy_exact_command']=True
++            page.keyboard.press('Tab');report['html']['keyboard_focus']=page.evaluate('document.activeElement.tagName')
++            for width,height,label in [(1366,768,'desktop'),(390,844,'mobile')]:
++                page.set_viewport_size({'width':width,'height':height});page.goto(url);page.wait_for_load_state('networkidle')
++                overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth')
++                report['html'][label]={'viewport':[width,height],'horizontal_page_overflow':overflow}
++                assert not overflow
++                page.screenshot(path=str(a.report.parent/f'demo-html-{label}.png'),full_page=False)
++            assert not failures,failures
++            browser.close()
++    except Exception as e:report['errors'].append(str(e))
++    finally:server.shutdown();server.server_close();thread.join();report['owned_server']['cleanup']='stopped owned server'
++    report['passed']=not report['errors'];a.report.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'passed':report['passed'],'report':str(a.report),'errors':report['errors']},indent=2))
++    if report['errors']:raise SystemExit(1)
++if __name__=='__main__':main()
+diff --git a/scripts/requirements-instructor-demo-review.txt b/scripts/requirements-instructor-demo-review.txt
+new file mode 100644
+index 0000000..04281c0
+--- /dev/null
++++ b/scripts/requirements-instructor-demo-review.txt
+@@ -0,0 +1,3 @@
++# Isolated candidate review tools; do not modify the managed client interpreter.
++PyMuPDF==1.26.7
++playwright==1.61.0
+diff --git a/scripts/requirements-instructor-demo-review.lock b/scripts/requirements-instructor-demo-review.lock
+new file mode 100644
+index 0000000..82ee6b1
+--- /dev/null
++++ b/scripts/requirements-instructor-demo-review.lock
+@@ -0,0 +1,12 @@
++# This file was autogenerated by uv via the following command:
++#    uv pip compile scripts/requirements-instructor-demo-review.txt -o scripts/requirements-instructor-demo-review.lock
++greenlet==3.5.6
++    # via playwright
++playwright==1.61.0
++    # via -r scripts/requirements-instructor-demo-review.txt
++pyee==13.0.1
++    # via playwright
++pymupdf==1.26.7
++    # via -r scripts/requirements-instructor-demo-review.txt
++typing-extensions==4.16.0
++    # via pyee
+diff --git a/pdf/headers/instructor-demos.tex b/pdf/headers/instructor-demos.tex
+new file mode 100644
+index 0000000..33cfc47
+--- /dev/null
++++ b/pdf/headers/instructor-demos.tex
+@@ -0,0 +1,6 @@
++% Native story fragments share the demo-book page model. Existing body geometry
++% and page style are restored by the project filter after each complete story.
++\usepackage{fvextra}
++\usepackage{graphicx}
++\definecolor{demoink}{HTML}{142436}
++\providecommand{\demoband}[1]{\noindent\colorbox{demoink}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\large #1}}}

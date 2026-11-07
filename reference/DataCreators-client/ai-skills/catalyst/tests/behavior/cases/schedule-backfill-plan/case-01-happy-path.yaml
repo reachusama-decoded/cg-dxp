@@ -1,0 +1,33 @@
+id: schedule-backfill-plan.case-01-happy-path
+skill: skills/schedule-backfill-plan
+type: artifact
+description: 'Bootstrap happy-path case. Design the ingestion schedule, historical backfill strategy,
+  and rollback
+
+  plan. Use when the user asks to "plan the schedule", "design the backfill",
+
+  "how do we load historical data", or "create the scheduling plan".'
+input:
+  arguments: Plan schedule + backfill for an employee directory data product. Hourly. 12-month backfill
+    from cg_employee_v4 history.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/schedule-backfill-plan/templates/schedule-backfill-plan.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Design the ingestion
+      schedule, historical backfill strategy, and rollback
+
+      plan. Use when the user asks to "plan the schedule", "design the b''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

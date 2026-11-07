@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "run_id": "failure-development",
+  "story": {
+    "schema_version": 1,
+    "id": "dbt-test-failure-and-repair",
+    "title": "A failed relationship blocks the mart",
+    "objective": "Diagnose the intended missing-key failure and prove repair.",
+    "tool": "dbt",
+    "task_ids": [
+      "dbt-p1-05",
+      "dbt-p2-03"
+    ],
+    "route": "local-duckdb",
+    "readiness": "ready",
+    "audience": "Instructor demonstration; completed instructor copy is explicitly identified",
+    "prerequisites": "Prepared runtime and assigned disposable resources; authenticate outside recording",
+    "workspace_source": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+    "source_inputs": [
+      "challenges/v2/dbt/phase-one-certified/README.md",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution",
+      "scripts/demo-checks.py"
+    ],
+    "requires": [
+      "browser",
+      "dbt",
+      "duckdb-python"
+    ],
+    "resources": [
+      "fresh private workspace"
+    ],
+    "cleanup": [],
+    "main_book": {
+      "include": false,
+      "teaching_key": "dbt-models-and-tests"
+    },
+    "steps": [
+      {
+        "id": "baseline",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "Completed successfully"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Establish the valid baseline.",
+          "notice": "The independent CSV oracle agrees with all three fund results."
+        }
+      },
+      {
+        "id": "defect",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cp seeds/holdings.csv holdings.saved.csv\npython3 -c \"from pathlib import Path; p=Path('seeds/holdings.csv'); p.write_text(p.read_text().replace('A,','UNKNOWN,',1))\"\nrm training.duckdb\ncat seeds/holdings.csv"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "UNKNOWN"
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Introduce one unmatched key in a fresh database.",
+          "notice": "The first holding now references UNKNOWN; an old mart cannot mask this attempt."
+        }
+      },
+      {
+        "id": "failure",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 1,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "FAIL"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "relationship-failure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Observe the expected quality failure.",
+          "notice": "The relationship test fails; the dependent mart is skipped and absent."
+        }
+      },
+      {
+        "id": "repair",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cp holdings.saved.csv seeds/holdings.csv && dbt build --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "Completed successfully"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Restore the original input and rebuild.",
+          "notice": "The repaired build and independently calculated fund outputs agree."
+        }
+      },
+      {
+        "id": "replay",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt build --profiles-dir . && python3 inspect-output.py exposure"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "CSV/Decimal"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "exposure"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Replay the repaired build.",
+          "notice": "The same five holdings yield the same three per-fund results."
+        }
+      }
+    ],
+    "closing_question": "Diagnose the intended missing-key failure and prove repair. Which observation supports your explanation?",
+    "workspace_files": [
+      {
+        "source": "scripts/demo-checks.py",
+        "destination": "inspect-output.py"
+      }
+    ]
+  },
+  "status": "failed",
+  "route": "local-duckdb",
+  "runtime": {
+    "browser": {
+      "status": "available",
+      "detail": "149.0.7827.55"
+    },
+    "dbt": {
+      "status": "available",
+      "detail": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation"
+    },
+    "duckdb-python": {
+      "status": "available",
+      "detail": "1.4.1"
+    }
+  },
+  "source_hashes": {
+    "story.yaml": "be619b9488e6c609b60ca0f09336ab4f76e846f8692fbfc7490c9c0ddb86213b",
+    "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/dbt/phase-one-certified/README.md": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+    "scripts/demo-checks.py": "526e1712d0a2f80b8b8239f4109aeed9ed1ffe1e332c76ea4abf86032e480fa2",
+    "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+    "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+    "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+    "scripts/instructor_demos/publish.py": "20fcf9588f2bf497e1427ec7cb935676bfe2ae031f7365156b3239f5c403b5e0",
+    "scripts/instructor_demos/runner.py": "ec2a680743fad64d91343f21d9270292debe14c24c11bde8791b6be88ccb2868",
+    "scripts/instructor_demos/terminal.py": "e6f4ac28cd4f1bc7c4421f1a658d5d382114fe84a1c25bad6cc42c25a458afaf",
+    "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+    "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+    "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+    "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+  },
+  "started_at": "2026-10-07T22:04:06.943285+00:00",
+  "checkpoints": [],
+  "cleanup": [],
+  "review": null,
+  "recording": "raw real-time browser recording; no compressed waits",
+  "reason": "baseline: exit 1 != 0",
+  "videos": [
+    {
+      "path": "video/page@70c78ac4bda56744b6c9501a475ddb0d.webm",
+      "sha256": "3eca81d6eb5be1e76a320f051bfd93912d46ae00ebfc6247e47ca4e3a00b5898"
+    }
+  ],
+  "duration_seconds": 5.527,
+  "finished_at": "2026-10-07T22:04:12.472160+00:00",
+  "private_artifacts": {
+    "path": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/instructor-demos/failure-development/dbt-test-failure-and-repair",
+    "files": {
+      "developer.events.json": "1fff747ad7dcfd8eb1b7188cca6cd3b270633cac36fc7522541d21740f1e2038",
+      "developer.raw.txt": "12a72606519506f9c5f0a3bd7c3cf517c7a9eb2d7929590c23324846b993f1a4",
+      "video/page@70c78ac4bda56744b6c9501a475ddb0d.webm": "3eca81d6eb5be1e76a320f051bfd93912d46ae00ebfc6247e47ca4e3a00b5898",
+      "workspace/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+      "workspace/inspect-output.py": "526e1712d0a2f80b8b8239f4109aeed9ed1ffe1e332c76ea4abf86032e480fa2",
+      "workspace/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+      "workspace/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+      "workspace/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+      "workspace/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+      "workspace/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+      "workspace/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+      "workspace/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+      "workspace/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "workspace/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+    }
+  }
+}

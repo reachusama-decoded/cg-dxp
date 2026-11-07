@@ -1,0 +1,24 @@
+id: discover-data.case-04-offers-connect
+type: artifact
+description: |
+  PR #40, dimension 2 of 3: when Databricks is not configured, does
+  the skill OFFER to set up the connection (connect-databricks skill
+  or .env guidance)? Shares run-03-no-databricks with case-03 and
+  case-05 — same agent transcript, orthogonal dimensions.
+
+run: discover-data.run-03-no-databricks
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: offers_connect_databricks
+      weight: 1.0
+      prompt: |
+        Does the output offer to help configure the Databricks
+        connection — for example, suggesting the `connect-databricks`
+        skill, or guiding the user to update `.env` with
+        DATABRICKS_HOST / DATABRICKS_TOKEN / DATABRICKS_WAREHOUSE_ID?
+        Score 0-1.

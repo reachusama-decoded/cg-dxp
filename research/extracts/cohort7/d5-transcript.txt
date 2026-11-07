@@ -1,0 +1,295 @@
+We've got some additional people today as well.
+Alright, good morning, everyone. I'm gonna see if we've got some merch prizes
+today. I don't know, maybe we do. Maybe we don't. We at least have a single
+large, large decoded t-shirt.
+There you go. Good job at each other. I like eagerness. This I always get
+Americans to be like, you know, eager and demanding and obnoxious. Capital
+group are all different but different, aren't you?
+Yeah. Okay. Global globally minded. Uh-huh. Uh-huh. Southern, yeah, almost like
+Southern British people. Who are my natural enemies, by the way.
+No, my natural enemy is a civil servant. I dislike civil servants. Very high in
+conscientiousness. Follow every rule to the letter. Doesn't matter.
+You write down kill ten people, it'd be done very quickly. That's how the British
+trait works. Very efficient. No thinking. Yes. I'm just waiting for some people to
+arrive and sit down.
+That's why I'm just. No, no, no. I'm just making sure the rules are being done.
+That's okay, that's okay. I'm just letting people sit down. But thank you for subtly
+ushering again.
+Very British implications. This is Long Island. They just say, shut up, let's get
+started. Okay, brilliant. So uh now you um so what is the what is the plan for
+today?
+Well the plan for today is in your uh folder number four in challenges in your dev
+container, yes. It's been um of course mysteriously named capstone, so if you
+haven't noticed that it's the capstone.
+Now um you're all on tables, so those are reasonably good tables, right? You
+have people on the table, right? You've enough people. Um the first part is to
+reverse engineer what the source target mappings are for the project.
+So to have a look at the data, have a look at what tables you are to produce, and
+then reverse engineer from the data you're given to what tables you're going to
+produce, uh what the SETM rules are.
+That makes sense. Now um that's a little bit that can be a little bit confusing for
+
+some people, because the data, all this is chat GPT out with zoo, right?
+That makes sense. Now um that's a little bit that can be a little bit confusing for
+
+some people, because the data, all this is chat GPT out with zoo, right?
+Obviously. Obviously. Um I have spent uh some time trying to um rationalize the
+uh project. However, every time it goes to platforms team to uh to uh to make
+work in the in the repo, uh get another wave of chat GPT over it.
+So um I think it's fine. I think it's fine. However, important to point out is that the
+meaning of things like portfolio and funds and things might uh especially portfolio
+might be fairly different than the CG model of like off early construction, so it's
+not like multi-manding stuff.
+Cool. And um now so you may want to spend like uh five minutes to ten minutes
+potentially reading through at least the first, let's say third, if not 25% of the uh
+markdown file yourself individually.
+Give everyone sort of five to ten minutes, maybe nine fifteen. And then at nine
+fifteen come together as a table and just say, okay, what are we trying to do?
+Now you can stop your group discussions whenever you like. So I would suggest
+that if you start at 9.15, probably you want to think about wrapping up at 10.
+But certainly maybe by 10.15. Right, here you stop enough time to actually work in
+the project. It'd be good if as a result of um the first part of what you did that you
+have PRD documents or a data contract or something somewhere in the
+background that you could show.
+And then you have from about 10.15 or whatever. So whenever you get phase
+whenever uh everyone is done phase one. So the end of the day commences
+when everyone is done phase one.
+Now that means that you some people who are more uh advanced, let's say, we'll
+get phase one done faster, then there's a whole phase two of slightly more open
+questions, slightly harder questions, um, for advanced technical practitioners to
+do.
+Um what else is there to say? Um I'm gonna aim to have the day finish about one
+forty-five. And I'm not going to set strict lunch time. I'm just gonna say go for
+lunch whenever you like.
+Um so maybe ideally if we're all back in the room by 1.30 at the very least. Then
+
+you can have lunch whenever you like. And if we uh if we if if everyone gets
+Um so maybe ideally if we're all back in the room by 1.30 at the very least. Then
+
+you can have lunch whenever you like. And if we uh if we if if everyone gets
+finished phase one by 145, then we can spend the last 15 minutes just having
+some kind of group debrief from each table.
+Um that could just be one person from every table, potentially. Um I don't mind
+that. Um and it could just be for two or three minutes. It could just be something
+like you know, uh debriefing what you did in the in the team discussion, uh any
+kind of thoughts about what was hard, what was easy, where you got to as a
+team, things of that kind.
+Cool. Uh maybe showing off um anything you did with catalyst or um how you
+use the design documentation and stuff like that. Cool? So if there were things
+you needed in the room, and I don't know if there are, probably aren't.
+But if there were, one of the things I advise you to mention would be mentioning
+catalyst, mentioning the paved path, mentioning things about the mission, etc.
+Um I'll ask the call if there are any CD is coming. Um if there are, I suggest you do
+those things to show that you've been properly programmed.
+You might have been EO branded, right? You open the skull and there's a paid
+path there somewhere. Uh but if at least you leaders aren't there, you might want
+to say something exactly with DXP hand.
+You might just want to say something, I don't know, interesting about your
+experience in the day or something, or what you did, or makes sense. Cool.
+Alright, so I'll see everyone back here at 1.30.
+Yeah. So we can do that.
+We just go over here and get my SGT.
+So actually, yeah, but I'm clear because we're covered. I guess after all of them
+are probably just source domain or source line and domain way.
+Yes. Yeah. I don't even know what I'm presenting. Don't worry. It's two minutes.
+Okay. So I think basically you just narrate over. I think the exact time to that's
+great.
+Um it should be that one. Oh no.
+That's good enough. Oh, you have power points to you. You want me to read it?
+
+Yeah, we voted. Great. Yeah. Again. Everyone, it's us again. Um we're here to talk
+That's good enough. Oh, you have power points to you. You want me to read it?
+
+Yeah, we voted. Great. Yeah. Again. Everyone, it's us again. Um we're here to talk
+about our capstone project.
+And as you guys know, we've been working on this capsound project. So this is a
+small PowerPoint. I'm not gonna go through all of it. Because the last parts I don't
+even know what it's saying.
+Um but the first part is here we built our models, you know, phase one model, this
+contained all our staging models, our integration models, the final output, the
+reconciliation passes, these are all like data quality checks that we're using to
+make sure that the job and production looks good.
+Here's our build tests and all our airflow DAGs that are required to run these jobs.
+And we're all experts in Airflow now, so we know what that means.
+Um we have the source data here. We had there's trading data, there's CRM, fun
+references, security, portfolio management. And we here are here in the middle
+where we created this new product, and this new product we created is for uh
+looking at data for advisory leadership, portfolio oversight.
+You know, I'm just reading these words now. Um so let's go to the next page.
+We've created seven models. Um there are seven source aligned tables, so that
+means there's seven sources, and within those sources we've have about nine
+models, nine ETL models to eventually create our output tables.
+And I will switch to a different document to talk about our PRD. And this is a lot of
+words, but we basically tackled what was it, Mimi? Portfolio summary and advisor
+book.
+Portfolio summary and advisor book. So there were several questions that we
+wanted to answer was like um for each portfolio and each advisor. This is
+basically for them to understand the health of their portfolio to see how many
+assets are under management, all those uh good stuff that advisors generally like
+to look at.
+There were some challenges that we ran into in this, and we have a we also have
+a challenge document. We actually looked and went crazy on the data.
+We saw that like some trades were happening before the inception date. And so
+
+we added a data quality rule for that. I um like is that is that in this challenge
+We saw that like some trades were happening before the inception date. And so
+
+we added a data quality rule for that. I um like is that is that in this challenge
+document?
+Or do we do we eventually scratch it out? Uh oh yeah, so like some trade dates
+before the portfolio inception. So that's a little bit weird, right?
+How are you making a trade before the portfolio even existed? Um we weren't
+sure if this was an issue in the data, so we decided, hey, let's let our business
+users know that this is happening, and we will just keep it in there.
+And if it's an issue for them, then we can let them know that we can add a data
+quality check here. Or if it's meant to be and there's an actual business solution
+or some explanation for it, then we let it we let it happen.
+That that tends to happen a lot, so this is a good example of that. Um real world
+example. Uh and yeah, I think that's it. This is we ran we we tackled two jobs and
+we were able to run it, and you can see the airflow jobs and you can see our
+Databricks catalogs and you'll be able to see the data.
+So we got key name. Uh pretty, it's a wonderful team. Oh, is that uh yeah. Now
+once group two. What's your thing? Five. Now group now group two, five.
+Okay. So uh as the as the challenge demanded, so we had the raw C dataset,
+most of it is what my friend just spoke, so technically it is the same thing.
+What we have done, but what we focused on from the business output
+perspective is uh these two aggregates. Like one is the instrument activity, which
+uh like both are very much leadership uh important for the leadership.
+One is it will validate the only trades and it contains an instrument based uh
+classification, like a grouping, and the other segment term, which is uh we know
+which client segments are performing better, and uh she's probably we're just we
+are just doing some transactions to figure that out.
+These are the two main business outputs that we targeted, and uh this is some
+basic uh source to target mapping, uh just some technical stuff. Uh so what could
+make the result wrong?
+These were like as I understand the objective, most of us did AI assisted
+development, but what we learned is some of these business things which made
+
+might make the data go wrong, which is the latest price is the uh latest price fair
+development, but what we learned is some of these business things which made
+
+might make the data go wrong, which is the latest price is the uh latest price fair
+and current, invalid trades, fee calculation, then uh no conversion of currency,
+which I think even the previous one pointed out, and reconsolation.
+These were the main challenges when we think of the data revolving advisor
+portfolio trades and stuff like that. And considering these two business output, uh
+we had some justifications of why this was chosen.
+Um for the questions of importance, like who uses it, like it shows which
+instruments or asset classes are traded the most, and some like as the DPT
+pipeline does it gets the raw seed data, then stages it, then finally gives a uh
+customer aligned uh output.
+So it is the same stuff, but what happens is these these four or five things were
+considered for cleaning, like keep only the valid trades, the price conversion
+calculation and aggregate since both of our uh things uh deal with aggregates,
+and what could potentially make the result unworthy, like okay.
+We created a product, but what what can make things uh what can go wrong? So
+trades pointing to unknown instruments would drop out of the join, so uh that's
+one uh thing which might be basically which we might use as an issue, and the
+same trait could be counted twice depending on how the raw data is, and uh
+value traded mixes.
+So, in case we don't have conversions, then it'll reflect wrong. And in terms of
+the segment ORM, uh again, so the challenges in this aggregate is basically net
+buys again sales for each portfolio instrument to get positions, so uh this is a little
+challenging from the data perspective, and clean segment label.
+So even though we are we are we are trying to group by the segment, we should
+be very clear that the data that we receive as the right segments attached to it.
+Um so this was more like the uh output that we chose, and in terms of the PRD,
+we had a PRD created for it just using the AI catalyst, which pretty much speaks
+about uh why what is the current state and what is the future state and why now?
+So the section was pretty clear why these two outputs made sense now. Of
+course, not capsule and certification, but the quarterly planning and uh the
+
+dashboards and everything.
+course, not capsule and certification, but the quarterly planning and uh the
+
+dashboards and everything.
+Uh see if it has a maybe a technical yeah, this is the funda fundamental of how it
+works internally, maybe all of it at the same time. So we have the seed data, from
+there we have our custom consumer aligned output, which is the fourth one in
+between we stage it and make it domain specific.
+This is pretty standard across technically. So that's about it. I think I covered the
+two differences. Cool. Uh group two, which is five. Now we have group three,
+your team name is.
+I got bully to doing the presentation group three. Thank you.
+Do you want to take this? I gotta rephrase that. We got doing the presentation. I'll
+go to the back. And in both restart required. I'll go to the back.
+Actually, yeah, I'll stay here. Yeah, yeah, yeah. So we did everything you guys
+did. Uh just presenting it kind of in a unique CG way. Um, but our two business
+outcomes that we chose is this is kind of a summary, the trustworthy view of the
+portfolios and advisor books.
+We'll go through in my trusty man, Simon will kind of go through what we did. I
+doubt it's different than what you guys did, which is you know why we've learned
+so much of the same.
+And thanks to our great instructors. Um, but we'll go through at a glance our ERD,
+our data model, um, and then we have a quick summary of our PRD.
+Yes. And then hopefully we get a hat. Yes. I think I've already got hats, but I want
+another one. I want another one for sure. But uh the two business outcomes that
+we chose were the portfolio summary and also the visor book.
+So we really did build very similar things that you guys did, we work backwards,
+you know, have all like the air resolve, but then figure out how we started.
+And um from those outputs, we're able to determine what sources that we work
+with, being um I believe it was advisor, CRM, I believe also trays and also fund
+summary for the portfolio summary, and also we work with uh report advisor
+book, I mean use the sources from CRM, and also additionally the fun report as
+well, I think.
+
+But yeah, that's those are two and sources um with this we're able to define a
+But yeah, that's those are two and sources um with this we're able to define a
+soon uh endpoint solution. We I believe we use Databricks, we propose
+Databricks to do all the DBT work and such like that.
+And yeah. Yeah, he summarized without going through it. You gotta show the
+presentation. Wow, yeah, yeah. Yeah, so pretty much again. This is just a
+showing what Simon kind of described and what you guys all went through as
+well.
+We do have those sources laid out. We use all those seven seeds um to finally
+get to our consumer reports. This is our beautiful ERD that we kind of created to
+kinda help us identify and have those discussions as a team and building um our
+PRD.
+Um and then we went through some of the validation uh caveats that were pulled
+out from the document itself. Um I don't know if there's anything else we'd want
+to highlight there.
+Um we also cross over like definitions that are like unclear throughout the
+requirements, so we gave like central meeting, so people don't get confused, and
+then there's also some so there is something to find something that can be used
+by like either agents or the personnel involved.
+The data, yes. We also have some uh defined data quality as well, so make sure
+that everything is transformed, so it's also transformed, and it can be interpreted
+in the ways.
+Source of it. That's exactly right. He summarizes in last words, and then we have
+just a couple of uh call outs with uh naming those data owners, data approvals, or
+not data approvals.
+Well, yes, data approvals and validation. Um I think that's it. That's all we have.
+Um how did you generate our file? Um all by hand, you know, hard work, they say
+we're just natural.
+Yeah, they say you can't work out or you can't outwork AI as a classes. Thank
+you to I'm the Engole. Least but not last. I don't know. Last least.
+Something like that.
+
+So I use the trick from the first day to create the summary document. And you
+So I use the trick from the first day to create the summary document. And you
+know, uh first we create a PRD. Um you know, which is just showing where the
+data pretty much did uh what everyone else did today.
+Uh so as a team we only decided to do um two uh portfolio summary and uh
+advisor book. Yeah, the first two. But then I almost got to the end of the phase
+two, so there is more in my documents.
+Um so going back, I think this one is summarizing data contract and everything
+this page. So again, you know, just uh following everything it did create some
+nice uh lineage and graphs for me, uh focused on these two today uh for the
+whole team and uh you know some data contracts there uh and then some
+calculations that we had to you know kind of think through.
+Um the basis points was a tricky one because we were oh, do we divide by
+thousand or by ten thousand? So we have to Google that. Um you know, yeah,
+just very cool document that they I was able to to help with.
+They I also gave you know what should the readers not assume? Um some
+points. And moreover, there is just summary of the work. What was the hardest
+part of phase two?
+Um the hardest part uh the imports? Yeah, that's where I got you know that's
+where I stopped. Okay. But yeah, I wouldn't put anything if I can create a bit more
+short and up until that point was anything.
+Anything else? No, I mean yeah, just also created. Um like I ask ID, hey, can you
+also add just summarizing the today's work, everything I did today in one page,
+and AI is pretty good.
+Very good job. Okay, great. Do we do we feel we can create the product and it
+works? Yeah, yes. Whoa, cool. Nice. Okay, then we'll no one. No one can ask for
+more.
+Therefore, you're done.

@@ -1,0 +1,55 @@
+version: 2
+
+# Curated-layer models and their generic tests. Prefix conventions:
+#   fct_*  = fact tables (one row per event / measurement).
+#   agg_*  = pre-aggregated measures grouped by reporting dimensions.
+#
+# This file ships complete: read it and run it (Phase 2, Challenge 5). The
+# capstone mart (agg_fund_daily_exposure) is covered by its own singular
+# reconciliation test, which you author in Challenge 10.
+
+models:
+  - name: fct_portfolio_returns
+    description: >
+      Daily-grain fact: per (fund, date, instrument) position with base-ccy
+      market value and a calculated NAV-per-unit. One row per
+      (fund_id, position_date, instrument_id).
+    columns:
+      - name: fund_id
+        description: "Fund identifier."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_fund_attributes')
+                field: fund_id
+      - name: position_date
+        description: "Calendar date the position is valued on."
+        tests:
+          - not_null
+      - name: instrument_id
+        description: "ISIN, or synthetic CASH_<ccy> for a cash holding."
+        tests:
+          - not_null
+      - name: mv_base_ccy
+        description: "Market value converted to the GBP base currency."
+        tests:
+          - not_null
+
+  - name: agg_fund_exposure
+    description: >
+      Per (fund, date, strategy) exposure aggregate. Pre-computed measures by
+      reporting dimensions, used by compliance for concentration alerts.
+    columns:
+      - name: fund_id
+        tests:
+          - not_null
+      - name: position_date
+        tests:
+          - not_null
+      - name: strategy_code
+        description: "Strategy classification carried from the fund master."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['EQ-LC', 'EQ-EM', 'EQ-GC', 'FI-IG']

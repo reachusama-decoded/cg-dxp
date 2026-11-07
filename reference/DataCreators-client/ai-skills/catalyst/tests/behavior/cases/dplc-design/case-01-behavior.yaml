@@ -1,0 +1,18 @@
+id: dplc-design.case-01-behavior
+skill: skills/dplc-design
+type: behavior
+description: >-
+  Phase 3 (Design) orchestrator. Must run data-modeling and column-lineage
+  first to produce structural facts, then write the data contract, data
+  model, transformation spec, and architecture grounded in those facts.
+input:
+  arguments: "Run Phase 3 Design for the index data product. Discovery artifacts and the source-system SQL transformations are already in context."
+expected_sequence:
+  - skills/data-modeling
+  - skills/column-lineage
+  - skills/data-contract
+  - skills/data-model
+  - skills/transformation-spec
+strict_order: false
+allow_extra: true
+max_steps: 40

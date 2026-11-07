@@ -1,0 +1,78 @@
+id: dplc-publish.case-02-internal-single-team
+skill: skills/dplc-publish
+type: artifact
+description: >-
+  Phase 6 (Publish) -- AICAT-86 conditional-necessity coverage. RFD 0002
+  § Phase 6 marks consumer-onboarding-guide Optional (required only with
+  external consumers) and release-notes Optional (required only if the
+  product is versioned or serves multiple consumer teams). For an
+  internal-only, single-team, unversioned product the orchestrator MUST
+  skip both optional artifacts -- recording the reason in the deployment
+  record -- and still pass the Phase 6 gate on the always-required
+  criteria (marketplace listing validated + a consumer confirmed access +
+  deployment record). This is the negative counterpart to case-01, where
+  all three leaves apply.
+  NOTE: `type: artifact`, not `behavior`, for the same reason as case-01:
+  orchestrators in this codebase author leaf documents inline (Bash/Write)
+  rather than delegating via the Task tool, so an `expected_sequence`
+  assertion that omits the two optionals would fail live for the wrong
+  reason. The rubric below judges the combined output for the
+  skip-with-reason behavior and the gate determination -- which is what
+  AICAT-86 actually requires.
+
+input:
+  arguments: >-
+    Run Phase 6 Publish for the internal-revenue-rollup data product. It
+    is an internal-only product: the sole consumer is our own Finance
+    Analytics team (one team, no external consumers), and it is not
+    versioned -- there is no release/versioning scheme that consumers
+    track. Phase 5 UAT is signed off and the deployment is staged; data
+    contract, build checklist, uat sign-off, and consumer use case map
+    are already in context. Target environment is prod. The product is
+    already registered in Marketplace as "Internal Revenue Rollup" and the
+    listing is validated and healthy, and the Finance Analytics team has
+    confirmed access and validated the product.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: gate_passes_without_optionals
+      weight: 0.30
+      prompt: >-
+        Does the output make an explicit Phase 6 gate determination of
+        "Production validated" (gate satisfied) and route forward to Phase
+        7 Operate, WITHOUT treating the absence of a consumer onboarding
+        guide or release notes as a blocker? Score 1 if the gate passes
+        and the correctly-skipped optional artifacts are not held against
+        it; score 0 if the output forces those artifacts or fails/blocks
+        the gate because they are missing. Score 0-1.
+    - id: onboarding_guide_skipped_with_reason
+      weight: 0.20
+      prompt: >-
+        Does the output SKIP the consumer onboarding guide (rather than
+        producing one) AND state the reason -- that the product is
+        internal-only with no external consumers, so the guide is Optional
+        per RFD 0002 § Phase 6? Score 0 if it produces a full onboarding
+        guide anyway. Score 0-1.
+    - id: release_notes_skipped_with_reason
+      weight: 0.20
+      prompt: >-
+        Does the output SKIP release notes (rather than producing them)
+        AND state the reason -- that the product is unversioned and
+        single-team, so release notes are Optional per RFD 0002 § Phase 6?
+        Score 0 if it produces release notes anyway. Score 0-1.
+    - id: deployment_record_records_skips
+      weight: 0.15
+      prompt: >-
+        Does the output include a Deployment Record (environment, rollback
+        plan, verification steps) that records which optional artifacts
+        were skipped and why? Score 0-1.
+    - id: marketplace_listing_required
+      weight: 0.15
+      prompt: >-
+        Does the output still treat the marketplace / catalog listing as
+        Required and confirm it is verified/validated (the one Phase 6
+        artifact RFD 0002 marks Required)? Score 0-1.

@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: rpt_portfolio_performance
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

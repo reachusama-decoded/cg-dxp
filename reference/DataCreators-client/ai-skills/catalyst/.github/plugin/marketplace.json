@@ -1,0 +1,36 @@
+{
+  "name": "catalyst",
+  "owner": {
+    "name": "Capital Group EDO",
+    "email": "edo-catalyst@capgroup.com"
+  },
+  "metadata": {
+    "description": "AI Catalyst — VS Code Copilot plugin for the Data Product Lifecycle (RFD 0002).",
+    "version": "1.13.0",
+    "documentation": "https://github.com/cg-open-itg/catalyst#install"
+  },
+  "plugins": [
+    {
+      "name": "ai-catalyst",
+      "description": "Data Product Lifecycle skills (RFD 0002) — orchestrators, execution skills, and document skills for building data products at Capital Group. (v1.13.0 · 2026-09-24)",
+      "version": "1.13.0",
+      "author": {
+        "name": "Capital Group EDO",
+        "url": "https://github.com/cg-open-itg"
+      },
+      "homepage": "https://github.com/cg-open-itg/catalyst#ai-catalyst--vs-code-plugin",
+      "repository": "https://github.com/cg-open-itg/catalyst",
+      "license": "UNLICENSED",
+      "keywords": [
+        "data-product-lifecycle",
+        "dplc",
+        "data-engineering",
+        "dbt",
+        "databricks",
+        "unity-catalog",
+        "capital-group"
+      ],
+      "source": "."
+    }
+  ]
+}

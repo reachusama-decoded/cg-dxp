@@ -1,0 +1,23 @@
+astro
+.git
+.env
+airflow_settings.yaml
+logs/
+.venv
+airflow.db
+airflow.cfg
+
+# # Ignore everything
+# **
+
+# !.astro/
+# !dags/
+# !include/
+# !plugins/
+# !tests/
+
+# !packages.txt
+# !pyproject.toml
+# !requirements.txt
+
+# **/__pycache__/

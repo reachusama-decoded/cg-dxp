@@ -1,0 +1,61 @@
+id: generate-dag.case-01-production-dag-factory
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Production mode emission, dag-factory pattern. Caller asks for a DAG
+  for a hypothetical client_positions/daily_positions dataset with all
+  MDS metadata supplied inline. Skill should emit a DAG-factory YAML
+  meeting all 10 RFD 0011 directives.
+
+input:
+  arguments: >-
+    Generate an Airflow DAG for the client_positions/daily_positions dataset
+    in production mode. Use dag-factory pattern. The Databricks bundle has
+    been deployed (job_name pattern is `${var.databricks_job_prefix}daily_positions_job`).
+    MDS tags: owner=data-platform@capgroup.com, business_function=investment_operations,
+    data_domain=client_data, data_classification=restricted, app_id=cap-invest-ops-001.
+    Asset trigger: raw_positions_ready. Resource tier: sm. Data contract has SLA of 60 minutes.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: cites_rfd_0011
+      weight: 0.2
+      prompt: >-
+        Does the response cite multiple RFD 0011 sections inline (e.g.,
+        # RFD 0011 §1, §2, §4, §5)? Score 0-1.
+    - id: mds_tags_present
+      weight: 0.2
+      prompt: >-
+        Does the response include all 5 required MDS tags (owner,
+        business_function, data_domain, data_classification, app_id)? Score 0-1.
+    - id: no_dag_alerting_callback
+      weight: 0.15
+      prompt: >-
+        Does the response AVOID emitting a DAG-level alerting callback (no
+        Datadog on_failure_callback, no PagerDuty) — consistent with Datadog
+        alerting being provided by Astronomer at the platform level? Score 0-1.
+    - id: asset_driven_trigger
+      weight: 0.15
+      prompt: >-
+        Does the response use an Asset-driven schedule (e.g.,
+        schedule: [- dataset: "raw_positions_ready"]) rather than a cron string? Score 0-1.
+    - id: compose_with_bundle
+      weight: 0.1
+      prompt: >-
+        Does the response template the job_name with the bundle variable
+        (e.g., "{{ var.value.databricks_job_prefix }}daily_positions_job")? Score 0-1.
+    - id: dag_factory_format
+      weight: 0.1
+      prompt: >-
+        Is the response in dag-factory YAML format (NOT astro-blueprints
+        .dag.yaml format)? Score 0-1.
+    - id: sla_declared
+      weight: 0.1
+      prompt: >-
+        Does the response declare the contract's 60-minute delivery target via the
+        deliver_by_* tags (the mechanism RFD 0011 monitors per PY-AIRFLOW-008)? A
+        native sla field is allowed but inert and not required. Score 0-1.

@@ -1,0 +1,142 @@
+schema_version: 1
+id: dbt-test-failure-and-repair
+title: A failed relationship blocks the mart
+objective: Diagnose the intended missing-key failure and prove repair.
+tool: dbt
+task_ids:
+- dbt-p1-05
+- dbt-p2-03
+route: local-duckdb
+readiness: ready
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/dbt/phase-one-certified/solution
+source_inputs:
+- challenges/v2/dbt/phase-one-certified/README.md
+- challenges/v2-solutions/dbt/phase-one-certified/solution
+- scripts/demo-checks.py
+requires:
+- browser
+- dbt
+- duckdb-python
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: dbt-models-and-tests
+steps:
+- id: baseline
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --profiles-dir . && dbt build --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Completed successfully
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Establish the valid baseline.
+    notice: The independent CSV oracle agrees with all three fund results.
+- id: defect
+  action:
+    adapter: terminal
+    session: developer
+    command: 'cp seeds/holdings.csv holdings.saved.csv
+
+      python3 -c "from pathlib import Path; p=Path(''seeds/holdings.csv''); p.write_text(p.read_text().replace(''A,'',''UNKNOWN,'',1))"
+
+      rm training.duckdb
+
+      cat seeds/holdings.csv'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: UNKNOWN
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Introduce one unmatched key in a fresh database.
+    notice: The first holding now references UNKNOWN; an old mart cannot mask this
+      attempt.
+- id: failure
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --profiles-dir . && dbt build --profiles-dir .
+  expect:
+    exit_code: 1
+    checks:
+    - kind: output-contains
+      text: FAIL
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - relationship-failure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Observe the expected quality failure.
+    notice: The relationship test fails; the dependent mart is skipped and absent.
+- id: repair
+  action:
+    adapter: terminal
+    session: developer
+    command: cp holdings.saved.csv seeds/holdings.csv && dbt seed --profiles-dir .
+      && dbt build --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Completed successfully
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Restore the original input and rebuild.
+    notice: The repaired build and independently calculated fund outputs agree.
+- id: replay
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt build --profiles-dir . && python3 inspect-output.py exposure
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: CSV/Decimal
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Replay the repaired build.
+    notice: The same five holdings yield the same three per-fund results.
+closing_question: Diagnose the intended missing-key failure and prove repair. Which
+  observation supports your explanation?
+workspace_files:
+- source: scripts/demo-checks.py
+  destination: inspect-output.py

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1400" height="1150" viewBox="0 0 1400 1150" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowProduce" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0068AE"/>
+    </marker>
+    <marker id="arrowConsume" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#008074"/>
+    </marker>
+    <marker id="arrowOps" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0068AE"/>
+    </marker>
+    <marker id="arrowMid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8FADB2"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #083469; }
+      .subtitle { font-size: 13px; fill: #555555; }
+      .colhdr { font-size: 12px; font-weight: 700; fill: #555555; letter-spacing: 1.2px; }
+      .afName { font-size: 15px; font-weight: 700; fill: #083469; }
+      .secLbl { font-size: 12px; font-weight: 700; fill: #1F1F1F; }
+      .item { font-size: 11px; fill: #1F1F1F; }
+      .sub { font-size: 11px; fill: #555555; }
+      .pluginCap { font-size: 11px; font-weight: 600; fill: #841574; }
+      .topicName { font-size: 18px; font-weight: 700; fill: #1F1F1F; }
+      .topicTag { font-size: 11px; font-weight: 700; fill: #083469; }
+      .topicSub { font-size: 12px; fill: #555555; }
+      .note { font-size: 11px; font-style: italic; fill: #555555; }
+      .edgelblProduce { font-size: 12px; font-weight: 700; fill: #0068AE; }
+      .edgelblConsume { font-size: 12px; font-weight: 700; fill: #008074; }
+      .edgelblOps { font-size: 12px; font-weight: 700; fill: #0068AE; }
+      .edgelblMid { font-size: 11px; font-weight: 600; fill: #8FADB2; }
+      .edgeNote { font-size: 11px; font-style: italic; fill: #841574; }
+      .gapHeader { font-size: 12px; font-weight: 700; fill: #1F1F1F; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1400" height="1150" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="700" y="38" text-anchor="middle" class="title">Option B: Two Topics (data-ready + general-notifications)</text>
+  <text x="700" y="60" text-anchor="middle" class="subtitle">Airflow deployments produce/consume on data-ready and publish ops signals to general-notifications</text>
+
+  <!-- Section labels -->
+  <text x="60" y="92" class="colhdr">AIRFLOW DEPLOYMENTS</text>
+  <text x="60" y="528" class="colhdr">KAFKA TOPIC #1 (LEAN)</text>
+  <text x="60" y="778" class="colhdr">KAFKA TOPIC #2 (CATCH-ALL)</text>
+  <text x="60" y="938" class="colhdr">NON-AIRFLOW CONSUMERS</text>
+
+  <!-- =========================== AIRFLOW ROW =========================== -->
+  <!-- Airflow A: data-platform  x=80, w=350 -->
+  <rect x="80" y="100" width="350" height="350" rx="8" ry="8" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="255" y="124" text-anchor="middle" class="afName">airflow: data-platform</text>
+  <!-- DAGs sub-box -->
+  <rect x="100" y="140" width="310" height="80" rx="6" ry="6" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="110" y="158" class="secLbl">DAGs</text>
+  <text x="110" y="176" class="item">- ingest_market_data</text>
+  <text x="110" y="192" class="item">- build_reference_master</text>
+  <text x="110" y="208" class="item">- publish_curated_lake</text>
+  <!-- astro-dependency-plugin -->
+  <rect x="100" y="232" width="310" height="86" rx="6" ry="6" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="255" y="252" text-anchor="middle" class="pluginCap">astro-dependency-plugin</text>
+  <text x="255" y="270" text-anchor="middle" class="item">produces / consumes</text>
+  <text x="255" y="286" text-anchor="middle" class="sub">Kafka bridge embedded in this Airflow</text>
+  <text x="255" y="302" text-anchor="middle" class="sub">filters self-emitted events on consume</text>
+  <!-- Airflow Assets -->
+  <rect x="100" y="330" width="310" height="106" rx="6" ry="6" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="110" y="348" class="secLbl">Airflow Assets</text>
+  <text x="110" y="366" class="item">incoming events update Asset URIs,</text>
+  <text x="110" y="382" class="item">which schedule downstream DAGs in</text>
+  <text x="110" y="398" class="item">this same Airflow deployment</text>
+  <text x="110" y="420" class="sub">(local-only triggering scope)</text>
+
+  <!-- Airflow B: portfolio  x=525, w=350 -->
+  <rect x="525" y="100" width="350" height="350" rx="8" ry="8" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="700" y="124" text-anchor="middle" class="afName">airflow: portfolio</text>
+  <rect x="545" y="140" width="310" height="80" rx="6" ry="6" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="555" y="158" class="secLbl">DAGs</text>
+  <text x="555" y="176" class="item">- portfolio_positions_eod</text>
+  <text x="555" y="192" class="item">- pnl_attribution</text>
+  <text x="555" y="208" class="item">- compliance_checks</text>
+  <rect x="545" y="232" width="310" height="86" rx="6" ry="6" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="700" y="252" text-anchor="middle" class="pluginCap">astro-dependency-plugin</text>
+  <text x="700" y="270" text-anchor="middle" class="item">produces / consumes</text>
+  <text x="700" y="286" text-anchor="middle" class="sub">Kafka bridge embedded in this Airflow</text>
+  <text x="700" y="302" text-anchor="middle" class="sub">filters self-emitted events on consume</text>
+  <rect x="545" y="330" width="310" height="106" rx="6" ry="6" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="555" y="348" class="secLbl">Airflow Assets</text>
+  <text x="555" y="366" class="item">incoming events update Asset URIs,</text>
+  <text x="555" y="382" class="item">which schedule downstream DAGs in</text>
+  <text x="555" y="398" class="item">this same Airflow deployment</text>
+  <text x="555" y="420" class="sub">(local-only triggering scope)</text>
+
+  <!-- Airflow C: risk  x=970, w=350 -->
+  <rect x="970" y="100" width="350" height="350" rx="8" ry="8" fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="1145" y="124" text-anchor="middle" class="afName">airflow: risk</text>
+  <rect x="990" y="140" width="310" height="80" rx="6" ry="6" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="1000" y="158" class="secLbl">DAGs</text>
+  <text x="1000" y="176" class="item">- var_overnight</text>
+  <text x="1000" y="192" class="item">- stress_scenarios</text>
+  <text x="1000" y="208" class="item">- exposure_rollups</text>
+  <rect x="990" y="232" width="310" height="86" rx="6" ry="6" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="1145" y="252" text-anchor="middle" class="pluginCap">astro-dependency-plugin</text>
+  <text x="1145" y="270" text-anchor="middle" class="item">produces / consumes</text>
+  <text x="1145" y="286" text-anchor="middle" class="sub">Kafka bridge embedded in this Airflow</text>
+  <text x="1145" y="302" text-anchor="middle" class="sub">filters self-emitted events on consume</text>
+  <rect x="990" y="330" width="310" height="106" rx="6" ry="6" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="1000" y="348" class="secLbl">Airflow Assets</text>
+  <text x="1000" y="366" class="item">incoming events update Asset URIs,</text>
+  <text x="1000" y="382" class="item">which schedule downstream DAGs in</text>
+  <text x="1000" y="398" class="item">this same Airflow deployment</text>
+  <text x="1000" y="420" class="sub">(local-only triggering scope)</text>
+
+  <!-- =========================== GAP: shared header for produce/consume =========================== -->
+  <text x="700" y="472" text-anchor="middle" class="gapHeader">all 3 Airflows: produce + consume (filter: own deployment)</text>
+
+  <!-- =========================== TOPIC: data-ready =========================== -->
+  <rect x="80" y="540" width="1240" height="130" rx="8" ry="8" fill="#FFFFFF" stroke="#083469" stroke-width="2.5"/>
+  <text x="700" y="572" text-anchor="middle" class="topicName">Topic: data-ready</text>
+  <text x="700" y="594" text-anchor="middle" class="topicTag">LEAN - PURPOSE-BUILT</text>
+  <text x="700" y="616" text-anchor="middle" class="topicSub">"this dataset is available"</text>
+  <text x="700" y="636" text-anchor="middle" class="topicSub">tight schema - fast deserialize - drives event-driven DAG triggers</text>
+  <text x="700" y="658" text-anchor="middle" class="note">subscribed by astro-dependency-plugin in every Airflow above</text>
+
+  <!-- =========================== ARROWS: AIRFLOWS <-> data-ready =========================== -->
+  <!-- Airflow A: produce (down, blue) and consume (up, teal) -->
+  <!-- Airflow A bottom edge y=450; topic top y=540; channel y=450..540 -->
+  <!-- Two arrows per Airflow (one produce, one consume), no labels (label is in gap header) -->
+  <line x1="220" y1="450" x2="220" y2="538" stroke="#0068AE" stroke-width="2" marker-end="url(#arrowProduce)"/>
+  <line x1="290" y1="540" x2="290" y2="452" stroke="#008074" stroke-width="2" marker-end="url(#arrowConsume)"/>
+
+  <!-- Airflow B: produce + consume -->
+  <line x1="665" y1="450" x2="665" y2="538" stroke="#0068AE" stroke-width="2" marker-end="url(#arrowProduce)"/>
+  <line x1="735" y1="540" x2="735" y2="452" stroke="#008074" stroke-width="2" marker-end="url(#arrowConsume)"/>
+
+  <!-- Airflow C: produce + consume -->
+  <line x1="1110" y1="450" x2="1110" y2="538" stroke="#0068AE" stroke-width="2" marker-end="url(#arrowProduce)"/>
+  <line x1="1180" y1="540" x2="1180" y2="452" stroke="#008074" stroke-width="2" marker-end="url(#arrowConsume)"/>
+
+  <!-- =========================== GAP between data-ready and general-notifications =========================== -->
+  <!-- Single shared "ops signals" arrow + label. Routed straight down in the central white channel. -->
+  <text x="700" y="694" text-anchor="middle" class="gapHeader">ops signals (delays, failures, DQ alerts)</text>
+  <text x="700" y="712" text-anchor="middle" class="sub">published by Airflows directly to general-notifications</text>
+
+  <!-- Single collective ops arrow: from bottom of data-ready band to top of general-notifications band.
+       The label clarifies it represents flows from all 3 Airflows. -->
+  <line x1="700" y1="722" x2="700" y2="788" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrowOps)" stroke-dasharray="6,4"/>
+
+  <!-- =========================== TOPIC: general-notifications =========================== -->
+  <rect x="80" y="790" width="1240" height="120" rx="8" ry="8" fill="#E6ECEE" stroke="#083469" stroke-width="2.5"/>
+  <text x="700" y="822" text-anchor="middle" class="topicName">Topic: general-notifications</text>
+  <text x="700" y="844" text-anchor="middle" class="topicTag">BROADER - CATCH-ALL</text>
+  <text x="700" y="866" text-anchor="middle" class="topicSub">delays - failures - DQ alerts - operational signals</text>
+  <text x="700" y="886" text-anchor="middle" class="topicSub">future event types added here without touching data-ready</text>
+
+  <!-- =========================== GAP: client-side filter shared label =========================== -->
+  <text x="700" y="936" text-anchor="middle" class="gapHeader">[client-side filter]</text>
+
+  <!-- =========================== BOTTOM: non-Airflow consumers =========================== -->
+  <rect x="320" y="950" width="360" height="110" rx="8" ry="8" fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+  <text x="500" y="978" text-anchor="middle" class="afName">Dashboards</text>
+  <text x="500" y="998" text-anchor="middle" class="item">refresh / alerting UIs</text>
+  <text x="500" y="1018" text-anchor="middle" class="sub">subscribe to general-notifications</text>
+  <text x="500" y="1038" text-anchor="middle" class="sub">render only filtered event types</text>
+
+  <rect x="720" y="950" width="360" height="110" rx="8" ry="8" fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+  <text x="900" y="978" text-anchor="middle" class="afName">Ops Monitoring</text>
+  <text x="900" y="998" text-anchor="middle" class="item">paging / SLO tracking</text>
+  <text x="900" y="1018" text-anchor="middle" class="sub">subscribe to general-notifications</text>
+  <text x="900" y="1038" text-anchor="middle" class="sub">page on failures and DQ alerts</text>
+
+  <!-- Arrows from general-notifications down to consumers (short straight) -->
+  <line x1="500" y1="910" x2="500" y2="948" stroke="#8FADB2" stroke-width="2" marker-end="url(#arrowMid)"/>
+  <line x1="900" y1="910" x2="900" y2="948" stroke="#8FADB2" stroke-width="2" marker-end="url(#arrowMid)"/>
+
+  <!-- =========================== Footer notes =========================== -->
+  <text x="700" y="1100" text-anchor="middle" class="note">Self-echo filter: each plugin drops events whose source is its own Airflow deployment.</text>
+  <text x="700" y="1120" text-anchor="middle" class="note">Stacked-band layout: collective ops-signal arrow keeps the canvas free of margin-routed paths.</text>
+
+  <!-- drawio editable XML embedded so the file can be re-opened in drawio -->
+  <foreignObject width="0" height="0" style="display:none">
+    <mxfile xmlns="http://www.w3.org/1999/xhtml" host="rfd-0007" modified="2026-05-05T00:00:00.000Z" agent="claude-code" version="22.0.0" type="device">
+      <diagram id="option-b" name="Option B - Two Topics">
+        <mxGraphModel dx="1400" dy="1150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1150" math="0" shadow="0">
+          <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+            <mxCell id="title" value="Option B: Two Topics (data-ready + general-notifications)" style="text;html=1;fontSize=22;fontStyle=1;align=center;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="200" y="20" width="1000" height="30" as="geometry"/>
+            </mxCell>
+
+            <!-- Airflow A -->
+            <mxCell id="af_a" value="airflow: data-platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontSize=15;fontStyle=1;verticalAlign=top;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="80" y="100" width="350" height="350" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_a_dags" value="DAGs&#xa;- ingest_market_data&#xa;- build_reference_master&#xa;- publish_curated_lake" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_a">
+              <mxGeometry x="20" y="40" width="310" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_a_plugin" value="astro-dependency-plugin&#xa;produces / consumes&#xa;Kafka bridge embedded in this Airflow&#xa;filters self-emitted events on consume" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontSize=11;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="af_a">
+              <mxGeometry x="20" y="132" width="310" height="86" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_a_assets" value="Airflow Assets&#xa;incoming events update Asset URIs,&#xa;which schedule downstream DAGs in&#xa;this same Airflow deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_a">
+              <mxGeometry x="20" y="230" width="310" height="106" as="geometry"/>
+            </mxCell>
+
+            <!-- Airflow B -->
+            <mxCell id="af_b" value="airflow: portfolio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontSize=15;fontStyle=1;verticalAlign=top;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="525" y="100" width="350" height="350" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_b_dags" value="DAGs&#xa;- portfolio_positions_eod&#xa;- pnl_attribution&#xa;- compliance_checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_b">
+              <mxGeometry x="20" y="40" width="310" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_b_plugin" value="astro-dependency-plugin&#xa;produces / consumes&#xa;Kafka bridge embedded in this Airflow&#xa;filters self-emitted events on consume" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontSize=11;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="af_b">
+              <mxGeometry x="20" y="132" width="310" height="86" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_b_assets" value="Airflow Assets&#xa;incoming events update Asset URIs,&#xa;which schedule downstream DAGs in&#xa;this same Airflow deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_b">
+              <mxGeometry x="20" y="230" width="310" height="106" as="geometry"/>
+            </mxCell>
+
+            <!-- Airflow C -->
+            <mxCell id="af_c" value="airflow: risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;fontSize=15;fontStyle=1;verticalAlign=top;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="970" y="100" width="350" height="350" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_c_dags" value="DAGs&#xa;- var_overnight&#xa;- stress_scenarios&#xa;- exposure_rollups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_c">
+              <mxGeometry x="20" y="40" width="310" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_c_plugin" value="astro-dependency-plugin&#xa;produces / consumes&#xa;Kafka bridge embedded in this Airflow&#xa;filters self-emitted events on consume" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontSize=11;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="af_c">
+              <mxGeometry x="20" y="132" width="310" height="86" as="geometry"/>
+            </mxCell>
+            <mxCell id="af_c_assets" value="Airflow Assets&#xa;incoming events update Asset URIs,&#xa;which schedule downstream DAGs in&#xa;this same Airflow deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontColor=#1F1F1F;" vertex="1" parent="af_c">
+              <mxGeometry x="20" y="230" width="310" height="106" as="geometry"/>
+            </mxCell>
+
+            <!-- Shared gap label for produce/consume -->
+            <mxCell id="gap_pc" value="all 3 Airflows: produce + consume (filter: own deployment)" style="text;html=1;fontSize=12;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="200" y="465" width="1000" height="20" as="geometry"/>
+            </mxCell>
+
+            <!-- Topic: data-ready -->
+            <mxCell id="topic_dataready" value="Topic: data-ready&#xa;LEAN - PURPOSE-BUILT&#xa;'this dataset is available'&#xa;tight schema - fast deserialize - drives event-driven DAG triggers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#083469;fontSize=14;fontStyle=1;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="80" y="540" width="1240" height="130" as="geometry"/>
+            </mxCell>
+
+            <!-- Edges: each Airflow short produce + consume to data-ready -->
+            <mxCell id="e_a_prod" value="" style="endArrow=classic;html=1;strokeColor=#0068AE;fontColor=#0068AE;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.113;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_a" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_a_cons" value="" style="endArrow=classic;html=1;strokeColor=#008074;fontColor=#008074;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.169;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_a" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_b_prod" value="" style="endArrow=classic;html=1;strokeColor=#0068AE;fontColor=#0068AE;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.472;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_b" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_b_cons" value="" style="endArrow=classic;html=1;strokeColor=#008074;fontColor=#008074;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.528;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_b" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_c_prod" value="" style="endArrow=classic;html=1;strokeColor=#0068AE;fontColor=#0068AE;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.831;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_c" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_c_cons" value="" style="endArrow=classic;html=1;strokeColor=#008074;fontColor=#008074;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.887;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af_c" target="topic_dataready">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+
+            <!-- Shared ops-signals header in gap -->
+            <mxCell id="gap_ops" value="ops signals (delays, failures, DQ alerts) - published by Airflows directly to general-notifications" style="text;html=1;fontSize=12;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="200" y="685" width="1000" height="30" as="geometry"/>
+            </mxCell>
+
+            <!-- Topic: general-notifications -->
+            <mxCell id="topic_general" value="Topic: general-notifications&#xa;BROADER - CATCH-ALL&#xa;delays - failures - DQ alerts - operational signals&#xa;future event types added here without touching data-ready" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#083469;fontSize=14;fontStyle=1;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="80" y="790" width="1240" height="120" as="geometry"/>
+            </mxCell>
+
+            <!-- Single collective ops-signal arrow: data-ready band -> general-notifications -->
+            <mxCell id="e_ops_collective" value="" style="endArrow=classic;html=1;strokeColor=#0068AE;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic_dataready" target="topic_general">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+
+            <!-- Bottom consumers -->
+            <mxCell id="cons_dash" value="Dashboards&#xa;refresh / alerting UIs&#xa;subscribe to general-notifications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#8FADB2;fontSize=12;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="320" y="950" width="360" height="110" as="geometry"/>
+            </mxCell>
+            <mxCell id="cons_ops" value="Ops Monitoring&#xa;paging / SLO tracking&#xa;subscribe to general-notifications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#8FADB2;fontSize=12;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="720" y="950" width="360" height="110" as="geometry"/>
+            </mxCell>
+
+            <!-- Shared client-side filter label -->
+            <mxCell id="gap_filter" value="[client-side filter]" style="text;html=1;fontSize=12;fontStyle=1;align=center;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="500" y="925" width="400" height="20" as="geometry"/>
+            </mxCell>
+
+            <!-- Edges: general -> consumers -->
+            <mxCell id="e_gen_dash" value="" style="endArrow=classic;html=1;strokeColor=#8FADB2;exitX=0.339;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic_general" target="cons_dash">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e_gen_ops" value="" style="endArrow=classic;html=1;strokeColor=#8FADB2;exitX=0.661;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic_general" target="cons_ops">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+          </root>
+        </mxGraphModel>
+      </diagram>
+    </mxfile>
+  </foreignObject>
+</svg>

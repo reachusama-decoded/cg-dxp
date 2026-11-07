@@ -1,0 +1,5 @@
+fund_cd,fund_name,inception_dt,base_ccy,strategy_code,is_active
+PEF-LARGE-CAP,Premier Equity Large Cap,2018-04-01,GBP,EQ-LC,true
+PEF-EM-GROWTH,Premier EM Growth,2019-09-15,USD,EQ-EM,true
+PEF-GLOBAL-CORE,Premier Global Core,2017-01-10,GBP,EQ-GC,true
+PEF-FIXED-INC,Premier Sterling Fixed Income,2016-06-22,GBP,FI-IG,true

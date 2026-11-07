@@ -1,0 +1,25 @@
+id: register-data-contract.case-01-happy-path
+skill: skills/register-data-contract
+type: artifact
+description: |
+  Bootstrap happy-path case. Create an ODCS (Open Data Contract Standard)
+  contract.yaml for a scaffolded data product. Binds RFD 0009. Trigger
+  phrases: "register data contract", "create odcs contract", "write data
+  contract for product".
+input:
+  arguments: Register a new ODCS data contract for the investments/employee_directory product with one published table (cg_employee), owner team investments_data_engineering, and a daily refresh SLA.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address creating/updating an ODCS contract.yaml at data-products/{domain}/datasets/{product}/contract/ per RFD 0009? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the rendered contract include required ODCS fields (domain, product, version, owner, schema, SLA in ISO 8601, freshness)? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

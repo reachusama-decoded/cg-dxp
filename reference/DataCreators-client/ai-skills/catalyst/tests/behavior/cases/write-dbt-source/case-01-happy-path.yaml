@@ -1,0 +1,26 @@
+id: write-dbt-source.case-01-happy-path
+skill: skills/write-dbt-source
+type: artifact
+description: |
+  Bootstrap happy-path case. Render a dbt sources YAML file at
+  data-products/{domain}/datasets/{product}/dbt/{layer}/_{layer}__sources.yml
+  declaring Unity Catalog external source tables. Trigger phrases: "write
+  a dbt source", "scaffold a dbt sources yml", "declare a dbt source",
+  "author dbt sources".
+input:
+  arguments: Write a dbt sources yml for the raw layer of investments/employee_directory declaring two UC external tables (cg_employee, employee_history) with daily freshness.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address rendering a dbt sources YAML for the specified UC external tables under the canonical product layout? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Do the source entries declare loaded_at_field and freshness blocks per the skill's contract, and reference external tables only (SQL-DBSQL-005), with snake_case naming (PY-NAMING-*)? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

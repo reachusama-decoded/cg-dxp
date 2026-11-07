@@ -1,0 +1,26 @@
+id: optimize-databricks-job.case-01-happy-path
+skill: skills/optimize-databricks-job
+type: artifact
+description: |
+  Bootstrap happy-path case. Scan a rendered DAB bundle's resources/*.yml
+  and emit DBX-PERF-* findings covering concurrency, timeouts, cluster
+  sizing, runtime version, and Photon. Trigger phrases: "optimize
+  databricks job", "check job performance", "scan bundle for perf
+  issues".
+input:
+  arguments: Run optimize-databricks-job in report mode against the sample bundle at tests/fixtures/sample-bundle/.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address scanning a DAB bundle for DBX-PERF-* findings? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output emit findings with rule_id (DBX-PERF-*), path, severity, and remediation text per the skill's contract? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

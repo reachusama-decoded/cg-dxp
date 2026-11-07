@@ -1,0 +1,13 @@
+isin,ticker,instrument_name,market,trade_ccy,is_active
+US0378331005,AAPL,Apple Inc,US,USD,true
+US5949181045,MSFT,Microsoft Corp,US,USD,true
+US0231351067,AMZN,Amazon.com Inc,US,USD,true
+US30303M1027,META,Meta Platforms,US,USD,true
+US67066G1040,NVDA,NVIDIA Corp,US,USD,true
+US88160R1014,TSLA,Tesla Inc,US,USD,true
+US46625H1005,JPM,JPMorgan Chase,US,USD,true
+US4781601046,JNJ,Johnson & Johnson,US,USD,false
+GB0005405286,HSBA,HSBC Holdings,GB,GBP,true
+DE0007164600,SAP,SAP SE,DE,EUR,true
+JP3633400001,7203,Toyota Motor,JP,JPY,true
+US9311421039,WMT,Walmart Inc,US,USD,true

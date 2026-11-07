@@ -1,0 +1,35 @@
+id: downstream-impact-assessment.case-01-happy-path
+skill: skills/downstream-impact-assessment
+type: artifact
+description: 'Bootstrap happy-path case. Assess downstream consumer impact from proposed changes, with
+  risk ratings
+
+  and communication plan. Use when the user asks to "assess the impact",
+
+  "who will be affected by this change", "create the impact assessment", or
+
+  "evaluate downstream risk".'
+input:
+  arguments: Assess downstream impact of changing the manager_id column in the employee directory data
+    product.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/downstream-impact-assessment/templates/downstream-impact-assessment.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Assess downstream
+      consumer impact from proposed changes, with risk ratings
+
+      and communication plan. Use when the user asks to "assess the imp''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

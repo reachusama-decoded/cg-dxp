@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://marketplace-service.datalake.aws.capgroup.com/api/v1/marketplace/entities/table-access",
+    "post_data": "[{\"tableName\":\"lasr-sqldwdb-prd.MSS_S_CDM_NS.cdm_party_territory_f1_v1_t1_current\",\"platform\":\"LASR\"},{\"tableName\":\"lasr-sqldwdb-prd.MSS_S_CDM_NS.cdm_party_territory_f1_v1_t1\",\"platform\":\"LASR\"}]"
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+      "pragma": "no-cache",
+      "access-control-allow-credentials": "true",
+      "x-content-type-options": "nosniff",
+      "expires": "0",
+      "access-control-allow-origin": "https://marketplace.capgroup.com",
+      "date": "Thu, 30 Apr 2026 02:51:17 GMT",
+      "x-xss-protection": "0",
+      "content-type": "application/problem+json",
+      "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+      "x-frame-options": "DENY"
+    },
+    "body": "{\"type\":null,\"title\":\"Bad Request\",\"status\":400,\"detail\":\"Table values required\",\"instance\":\"/api/v1/marketplace/entities/table-access\",\"properties\":{\"key\":\"INVALID_VALUES\",\"logId\":\"766b0d82-786b-4cbe-bcc1-bd0d9d0276dd\"}}"
+  }
+}

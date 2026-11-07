@@ -1,0 +1,43 @@
+id: generate-dag.case-05-no-bundle-production-stop
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Production mode gate: no databricks.yml present. The skill must STOP and
+  direct the user to /setup-databricks-asset-bundle (or suggest prototype mode)
+  rather than emitting a placeholder DAG with TODOs — that is prototype-only
+  behavior.
+
+input:
+  arguments: >-
+    Generate a DAG for client_positions/daily_positions in production mode.
+    No databricks.yml exists at data_products/client_positions/.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: refuses_to_emit_dag
+      weight: 0.4
+      prompt: >-
+        Does the response REFUSE to emit a complete DAG? The skill must not
+        produce a finished dag-factory YAML or dag.yaml for production mode when
+        databricks.yml is absent. Score 1 if it clearly stops / declines to emit,
+        0 if it emits any production-complete DAG, 0.5 if it emits a partial DAG
+        with heavy caveats. Score 0-1.
+    - id: directs_to_setup_skill
+      weight: 0.3
+      prompt: >-
+        Does the response point the user to /setup-databricks-asset-bundle as the
+        prerequisite step, OR offer prototype mode as an explicit alternative?
+        Score 1 if either action is clearly stated, 0.5 if vaguely implied, 0 if
+        absent. Score 0-1.
+    - id: no_placeholder_emitted
+      weight: 0.3
+      prompt: >-
+        Does the response AVOID emitting a placeholder DAG that uses TODO comments
+        for the job_name field? Emitting a placeholder with
+        "# TODO: confirm job name when bundle is deployed" is prototype-mode
+        behavior — it is incorrect in production mode. Score 1 if no placeholder
+        DAG is emitted, 0 if a placeholder DAG appears. Score 0-1.

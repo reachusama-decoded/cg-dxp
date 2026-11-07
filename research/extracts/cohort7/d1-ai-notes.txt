@@ -1,0 +1,565 @@
+Training Purpose and Logistics
+Purpose and expectations
+• The five-day Data Excellence Training prepares participants to turn business
+  needs into trusted, reusable data products that support business priorities at
+  scale.
+• The program is hands-on and intended for entry- and intermediate-level
+  participants. Participants were encouraged to stay curious, ask questions,
+  share feedback, and apply learning to real work.
+• The program is evolving; participant feedback is intended to inform
+  improvements.
+• Participants may step out briefly for occasional conflicts if this is not disruptive.
+  Organizers should be notified about extended absences.
+• Lunch voucher information was provided for the week.
+
+
+Schedule and course plan
+• Course hours: 9 a.m. to 3 p.m., with lunch at noon and morning and afternoon
+  breaks.
+• The Friday capstone is expected to finish around 2 p.m. if participants stay
+  focused.
+
+Monday: Data-product design, mindset, soft skills, group discussion, and AI
+practice.
+
+Tuesday: The paved-path technology stack, including Docker and Git.
+
+Wednesday: DBT for building data products.
+
+Thursday: Airflow for orchestration, scheduling, and SLA management.
+
+
+
+
+Friday: Capstone implementation and certification.
+Friday: Capstone implementation and certification.
+• Databricks, harnesses, deployment practices, and related tools may be
+  discussed alongside the main topics.
+
+
+Facilitators
+• Michael Burgess is Head of Technical Consulting at Decoded, an international
+  skills consultancy. His background includes software engineering, defense,
+  work connected to the 2012 Olympics, and education. He works with clients
+  and subject-matter experts on training-program design.
+
+• Sophie McMurray has nine years of experience in data-focused roles, a
+  background in mathematics and statistics, and a master s degree in data
+  science. She works primarily on AI engineering programs and supports this
+  training.
+
+• Hero introduced Capital Group s data-excellence operating model and the
+  reasons for the training.
+
+
+Capstone
+• The capstone involves creating a data product from provided CSV data
+  concerning funds and related information, deploying it to Caspian Databricks,
+  and demonstrating the implementation.
+• The first phase is an observed certification checkpoint.
+
+
+Data Excellence Operating Model
+Why the model is needed
+• The goal is self-service access to trusted firm-wide data that people and AI
+  can discover and use quickly and confidently.
+
+
+
+
+• Access must be governed: users must be authorized, aggregation policies
+                                         ’
+                                (
+               ’
+• Access must be governed: users must be authorized, aggregation policies
+  followed, and personally identifiable information PII) protected.
+• Technologists may know how to query tables without knowing the business
+  context, authoritative sources, or policies required to decide how data should
+  be linked, shared, or used.
+• Leaving business decisions solely to technologists can create inconsistent
+  assumptions and unfair accountability.
+
+
+Four persona archetypes
+• Consumers: Anyone who needs data, including business partners, managers,
+  and technologists.
+
+• Platform providers: Establish approved standards, tools, policies, catalogs, and
+  metadata for creating and managing data.
+
+• Business data owners: Senior business stakeholders accountable for data in
+  their domains and for decisions about its use and sharing.
+
+• Data product creators: Build reusable products by bringing together platform
+  standards, owner priorities, and consumer needs.
+• Business-owner domains mentioned include client data, results, positions,
+  attribution, trades, and research data. The DXP site has a directory of data
+  owners and stewards.
+• Product creators work at the intersection of the other personas: they need to
+  understand consumer needs, owner priorities, and how to use the platform
+  correctly.
+
+
+Paved path and discoverability
+• The platform-provider model is intended to replace uncertainty about which
+  platform or tools to use with a consistent, policy-compliant way to create data.
+
+
+
+
+• Tools mentioned included Laser, Caspian, EMR, Databricks, and Dremio.
+                                (
+• Tools mentioned included Laser, Caspian, EMR, Databricks, and Dremio.
+• Correct catalogs and useful metadata make products easier for people and AI
+  to find.
+• Publishing products with appropriate metadata and access controls lets
+  consumers find data in a catalog rather than relying on an individual to provide
+  it.
+
+
+Data Products
+Definition and perspectives
+• A data product can be understood as a dataset accompanied by promises
+  about its use and quality. Common properties include:
+  ◦ Trusted
+  ◦ Reusable
+  ◦ Business-ready
+  ◦ Accessible
+• Promises can be documented in design materials and contracts, then enforced
+  through automated quality checks and code running on supporting
+  infrastructure.
+• From an engineering perspective, a product includes the data, transformations,
+  code, and infrastructure that implement its promises.
+• From a consumer or product perspective, the focus is on the usefulness of the
+  data and the needs it serves.
+• Merely placing a third-party dataset, such as Morningstar data, in a folder does
+  not by itself make it a Capital Group data product.
+
+
+Consumer alignment and value
+• A data product transforms source-aligned data into consumer-aligned data.
+• Source-aligned data reflects the provider s interests and structure. Consumer-
+
+
+
+
+  aligned data is shaped around the needs and objectives of its intended users.
+                         ’
+• Source-aligned data reflects the provider s interests and structure. Consumer-
+
+
+
+
+  aligned data is shaped around the needs and objectives of its intended users.
+• Alignment is relative to people s goals and needs; it is not a technical property
+  that can be established solely through code or automated tests.
+• Much of a data product s value comes from transforming data to meet
+  consumer needs while making it dependable and accessible.
+• Engineering supports both realignment through transformations and business
+  rules, and the enforcement of promises such as quality standards and SLAs.
+
+
+What a data product is not
+• It is not merely a source dataset.
+• It is not a consumer-aligned dataset left without supporting processes.
+• It is not code and infrastructure without meaningful transformation, consumer
+  alignment, and enforced promises.
+
+
+Early-Stage Data-Product Design
+Initial discovery and triage
+• Clarify who needs the product, its business purpose, whether it already exists,
+  what people do now (including workarounds), and whether it is still needed.
+• Assess whether and how it can be built, including whether the data exists, its
+  sources, required transformations, platform, data grain, sensitivity controls,
+  delivery method, update frequency, adoption, and timing.
+• Consider why consumers would use the product instead of existing options.
+Before deciding to build, consider viability, value, cost, and appropriate
+prioritization. The facilitator described this early decision-making as the triage
+stage.
+
+
+Business case: costs and benefits
+• Costs discussed included:
+
+
+
+
+  ◦ Total cost of ownership and maintenance.
+                         ’
+              ’
+         ’
+  ◦ Total cost of ownership and maintenance.
+  ◦ Development time and team capacity.
+  ◦ Opportunity costs: work that cannot be done while teams build or maintain
+     the product.
+  ◦ Data licensing and acquisition.
+  ◦ Subject-matter expert and data-owner time.
+  ◦ Coordination and alignment time.
+  ◦ Adoption costs, such as training and communications.
+• Benefits discussed included:
+  ◦ Less time spent by downstream consumers.
+  ◦ Greater consistency and less rework or coordination.
+  ◦ New business opportunities and better opportunities for insight when related
+     data is brought together.
+  ◦ Greater trust, reduced friction, and more scalable operations.
+  ◦ Lower transaction costs from shared standards and tools.
+  ◦ Better support for AI workflows and process efficiency.
+• Difficult-to-price benefits can be estimated using proxies, such as meetings,
+  handoffs, or alignment work that a product could reduce.
+• Benefits closer to revenue-generating work can be easier to quantify.
+  Leadership may need to make informed judgments about benefits that are real
+  but difficult to measure precisely.
+
+
+Adoption
+• Lack of adoption can cause a product to fail even if it has technical merit.
+• Barriers discussed included:
+  ◦ Difficulty integrating with existing systems.
+  ◦ Low trust in data quality or expected benefits.
+  ◦ Unclear liability or uncertainty about whether use is authorized.
+  ◦ Lack of awareness, training, or documentation.
+
+
+
+
+  ◦ Competing priorities and the effort of learning a new system.
+      ◦ Competing priorities and the effort of learning a new system.
+      ◦ Resistance to change or preference for familiar practices.
+      ◦ Products that do not support the actual use case.
+      ◦ Rigid API or data contracts that cannot accommodate different consumers.
+    • Leadership can reduce uncertainty, clarify priorities, back experimentation, and
+      communicate responsibility.
+    • Demonstrations, training, documentation, communications, internal
+      announcements, and recorded walkthroughs can help consumers see value
+      and learn to use a product.
+    • Deadlines may help resolve competing priorities. Consistent communication
+      and follow-through help maintain trust.
+
+
+    Interviews and Requirements
+    Ways to understand consumer needs
+    • Methods discussed included interviewing consumers, observing their current
+      work, reviewing past behavior and documentation, using surveys, and
+      examining relevant code or other work artifacts.
+    • Interviews support dynamic follow-up and discovery. Surveys may be less
+      effective when questions reflect the creator s assumptions rather than
+      consumers needs.
+    • Observation can reveal actual workarounds, needs people may not be able to
+      articulate, or differences between what they say and what they do.
+
+
+    Interview prompts
+    • What decision do you make with the data?
+    • How do you make that decision today?
+    • Who uses the result directly?
+    • How is the source generated?
+
+
+
+
+    • What do the relevant terms mean in your work?
+                               ’
+’
+• What do the relevant terms mean in your work?
+• How do you recognize that the result is usable?
+• When do you read the result?
+
+
+Requirements documents
+• A product requirements document PRD) describes the product s purpose and
+  requirements.
+• A data contract gives more specific expectations for data, such as identity,
+  schema, SLAs, data quality, dependencies, glossary, and change management.
+• A glossary is useful in a data contract because teams and sources may use the
+  same terms differently; upstream providers may define their own terminology.
+• Requirements should reflect consumer and producer input. AI-generated
+  documents can help draft artifacts but do not replace stakeholder
+  understanding.
+
+
+Group Examples and Challenges
+Data products mentioned
+• Client data platforms that combine data from different client domains.
+• Positions and transactions, including positions sourced from an accounting
+  book of record.
+• Website and marketing engagement data.
+• Enterprise-search data held on a vendor platform.
+• Investment attribution, product reference data, indexes, and portfolio data.
+• Client and advisor profiles, including matching, mastering, and deduplication.
+• Assets and client sales flows.
+• Advisor data distributed across the enterprise through APIs and files.
+
+
+Common data and coordination issues
+
+
+
+
+• Finding authoritative sources and determining the correct business logic and
+                                                 ’
+                    (
+• Finding authoritative sources and determining the correct business logic and
+  keys for linking datasets.
+• Aligning teams that own different domains and resolving discrepancies
+  between sources.
+• Reconciling multiple profiles for the same person or client.
+• Integrating data held in silos and packaging it for consumers.
+• Assessing the correctness of external data, which may require comparison
+  with other datasets.
+• Examples of data-quality concerns included implausible sales figures that
+  should be compared with assets under management, data-entry errors such as
+  an extra zero, conflicting sources, and uncertainty about whether information
+  came from the appropriate sender.
+• As organizations grow, the number of teams, owners, systems, and data
+  lineages can increase alignment and transaction costs.
+
+
+Advisor data and CDM
+• Advisor data is used by contact centers, digital websites, CRM, marketing,
+  sales, wholesalers, client services, compliance, and sales finance.
+• Sales users use advisor information to build relationships; leaders use
+  dashboards to understand interactions and business development.
+• Consumers may need different dimensions: marketing may focus on names
+  and contact details, while other groups may need affiliations, trading identities,
+  or product information.
+• Rigid API or data contracts can make it difficult to satisfy different consumer
+  requirements.
+• A related CDM discussion focused on maintaining one trusted, current record
+  for every advisor office, including who it is, whether it is active, and how it can
+  be covered.
+• Globalization creates challenges when regional operations have different levels
+
+
+
+
+  of maturity, data standards, structures, and regulatory requirements. These
+• Globalization creates challenges when regional operations have different levels
+
+
+
+
+  of maturity, data standards, structures, and regulatory requirements. These
+  issues can affect feasibility, design, and adoption.
+
+
+Marketing engagement and client data
+• A group discussed personalized marketing data and measuring engagement
+  across channels such as email and search.
+• Relevant data is spread across teams and systems, making integration and
+  packaging into a consumable product difficult.
+• The group identified a need for clear measurement and a feasible integration
+  path.
+• Client-profile discussions included deduplication and determining whether
+  externally sourced data is correct by correlating it with other sources.
+
+
+Catalyst and AI Assisted Work
+Catalyst skills
+• Catalyst was described as a collection of AI skills for work across the data
+  product lifecycle, from design documentation to technical artifacts such as
+  Python and DBT.
+• Skills are reusable instructions, often stored as Markdown prompts, that guide
+  the AI to produce artifacts in consistent structures aligned with company policy
+  and standards.
+• A data-contract skill can generate a structured document covering identity,
+  schema, SLAs, and data quality.
+• Lifecycle skills can call more specific skills in sequence, including requirements
+  and acceptance criteria, feasibility analysis, consumer use cases, and data
+  modeling.
+• Some skills include Python scripts that allow operations such as searching
+  Databricks or running jobs.
+
+
+
+
+• The broader DPLC concierge skill covers the full lifecycle and can take a long
+          -
+• The broader DPLC concierge skill covers the full lifecycle and can take a long
+  time to run; focused skills were recommended when appropriate.
+• Catalyst setup and access are covered by onboarding materials. A missing
+  repository link was identified in discussion as an access issue.
+
+
+Lifecycle phases and build requirements
+• The session elicited this lifecycle sequence: prerequisites, triage, prioritization,
+  discovery, design, build, validate, publish, operate, and evolve.
+• The speaker also referred to the lifecycle as having nine phases, although the
+  spoken sequence contains more than nine labels.
+• Build-phase artifacts mentioned included a PRD, data contract, data model, and
+  transformation specification.
+• Catalyst can be queried about lifecycle phases, phase requirements, and
+  prerequisites for using particular skills.
+
+
+AI-generated documentation
+• Catalyst can draft PRDs and data contracts from a product description,
+  including information gathered in discussions or transcripts.
+• Output varies with the specificity and framing of the input. Comparing
+  independently created documents for the same product can expose missing
+  requirements, differing schemas, and assumptions introduced by the model.
+• A PRD may seem more successful than a data contract because it is broader
+  and less schema-specific.
+• Generated fields and attributes should be checked against authoritative
+  sources and business requirements.
+
+
+AI Concepts and Effective Practice
+Definitions and framing
+
+
+
+
+• The instructor defined artificial intelligence as a human project of building
+    • The instructor defined artificial intelligence as a human project of building
+      systems that perform tasks requiring intelligence in people.
+    • The instructor offered a biological framing of intelligence as a strategy animals
+      use when no known solution is available. This differs from a computer-science
+      framing focused on whether a problem has been solved.
+    The instructor described current generative AI as a proxy model: it can
+    reproduce some properties associated with human capabilities without
+    necessarily possessing those capabilities itself.
+    • In the instructor s framing, an LLM operates in a text domain: it receives and
+      generates text. Text describing a future or a plan is not, by itself, evidence that
+      the model has simulated that future.
+
+
+    Discriminative and generative AI
+    • Discriminative AI assigns labels, classifications, or predictions to inputs; it
+      answers questions such as “What kind of thing is this? or “Yes or no?
+
+    • Generative AI produces new material resembling examples it has seen. LLMs
+      generate text resembling patterns in their training data.
+
+
+    LLM training and refinement
+    • The instructor described LLM training data as including internet text, ebooks,
+      and other digitized text.
+    • Vendor conversation data may provide additional examples of human
+      interactions, depending on vendor practices.
+
+    Instruction fine-tuning uses examples pairing instructions with appropriate
+    responses so the model learns to follow instructions rather than merely continue
+    text.
+
+    Reinforcement learning from human feedback RLHF) uses preference
+
+
+
+
+    judgments from human reviewers to indicate which of several outputs is better.
+                                                            ”
+                                            ”
+                                     (
+’
+Reinforcement learning from human feedback RLHF) uses preference
+
+
+
+
+judgments from human reviewers to indicate which of several outputs is better.
+• Some tasks, especially code, can be evaluated partly through automated
+  checks such as running code. The instructor noted that “it runs is a limited
+  quality signal.
+• The instructor characterized LLMs as compressing patterns from training data
+  and warned that training on model-generated output can degrade quality.
+  These were presented as explanatory framing during the session.
+
+
+Inference, reasoning, tools, and agents
+• Training creates a model; inference is the process of running it.
+• The instructor explained that some modern systems generate hidden
+  intermediate tokens, often called reasoning, before producing a visible
+  response. This can increase inference cost.
+• Output quality may depend on whether training data contains useful examples
+  of the relevant reasoning or steps. Shared explanatory material, such as code
+  examples or technical discussions, can provide such examples.
+• A tool call is structured text, often JSON, that a program can interpret as an
+  instruction to perform an action.
+• A harness interprets model tool calls and performs actions. VS Code and
+  Claude Code were given as examples of interfaces or harnesses; Opus was
+  given as an example of a model.
+• An agent was described as a harness combined with an LLM: the model
+  produces actions and the harness executes them.
+• In this framing, AI skills are prompts that can guide an LLM to generate text or
+  trigger tool calls.
+
+
+Models, context, and effective use
+• Model-selector examples included Opus, Sonnet, and Haiku. The instructor
+  described them as differing in size, compression, capability, and cost.
+
+
+
+
+• Model choice is an empirical question: test a model on the actual task. A more
+                                                ”
+                                (
+• Model choice is an empirical question: test a model on the actual task. A more
+  capable model may matter less when the prompt supplies extensive context; a
+  less specific prompt may rely more on model capability.
+• The “thinking effort control was described as changing the amount of hidden
+  intermediate-token generation, not human-like thinking. More is not always
+  better; excessive intermediate text may reduce performance on simple tasks.
+• Context contains conversation history, including tool calls and hidden
+  reasoning. Performance may degrade as the conversation grows, and systems
+  may compress or summarize older context.
+• The instructor recommended starting a fresh conversation for a new task or
+  summarizing work into a file and carrying that summary into a new
+  conversation, rather than relying on automatic compression.
+• Effective AI use requires skepticism when a task is novel or poorly represented
+  in training examples. For unfamiliar tasks, compare options and observe actual
+  performance rather than assuming the model will work reliably on the first
+  attempt.
+• Cost figures discussed for frontier models were rough instructor estimates, not
+  course commitments: training was described as costing tens of millions of
+  dollars, while running a frontier service was described as costing hundreds of
+  millions per month. The instructor emphasized inference infrastructure and
+  compute as major cost drivers.
+
+
+Voice-Recorded Interview Exercise
+Recording and transcript workflow
+• The facilitator demonstrated Apple Voice Memos on a MacBook: record a
+  conversation, pause and finish the recording, view the transcript, and copy it
+  for use in another tool.
+• The built-in transcript was described as free and adequate for the exercise,
+  though not perfect.
+
+
+
+
+• The facilitator noted that participants could use an approved app available on
+   ”
+• The facilitator noted that participants could use an approved app available on
+  their laptops; details of internal voice tools were not known.
+• Participants using Zoom or Teams could use the meeting transcript instead.
+
+
+Interview structure
+• The exercise used three roles: data producer, data consumer, and data
+  creator.
+• The producer should know the data source well; the consumer should know
+  what they need; the creator asks questions to determine how to shape the
+  product.
+• The interview was intended to establish what should be built after the group
+  had considered whether building the product was worthwhile and feasible.
+• Suggested questions included:
+  ◦ What decision do you make with the data?
+  ◦ How do you make that decision today?
+  ◦ Who uses the result directly?
+  ◦ How is the source generated?
+  ◦ What do these terms mean in your work?
+  ◦ How do you recognize the result is usable?
+  ◦ When do you read the result?
+• The facilitator encouraged participants to add questions relevant to
+  understanding the consumer s needs.
+• Groups were asked to record the discussion and use the transcript with
+  Catalyst to draft a PRD and data contract. Participants were encouraged to stay
+  in role but could help one another if the roleplay stalled.
+
+
+
+
+             ’
+

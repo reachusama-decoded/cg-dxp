@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Catalyst — Getting Started FAQ</title>
+<style>
+:root{
+  --page:          #0f0f17;
+  --surface:       #16161f;
+  --surface-2:     #13131e;
+  --text-primary:  #ffffff;
+  --text-secondary:#c3c2b7;
+  --text-muted:    #898781;
+  --border:        rgba(255, 255, 255, 0.10);
+  --design:        #199e70;
+  --build:         #d95926;
+  --ship:          #3987e5;
+  --cross:         #c98500;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--page);color:var(--text-primary);
+  line-height:1.65;padding:48px 24px;
+  -webkit-font-smoothing:antialiased;
+}
+main{max-width:820px;margin:0 auto}
+a{color:var(--ship);text-decoration:none;border-bottom:1px solid rgba(57,135,229,.35)}
+a:hover{border-bottom-color:var(--ship)}
+.crumb{font-size:12px;color:var(--text-muted);margin-bottom:18px}
+.crumb a{color:var(--text-muted);border-bottom-color:transparent}
+.crumb a:hover{color:var(--text-secondary)}
+h1{font-size:26px;letter-spacing:-.2px;margin-bottom:6px}
+.sub{color:var(--text-secondary);font-size:14px;max-width:68ch}
+.meta{color:var(--text-muted);font-size:12px;margin:10px 0 30px}
+h2{
+  font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);
+  margin:40px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--border);
+}
+h3{font-size:15px;font-weight:600;margin:24px 0 6px;color:var(--text-primary)}
+h3 .q{color:var(--text-muted);font-weight:500;margin-right:6px}
+p{font-size:14px;color:var(--text-secondary);margin-bottom:10px}
+ul,ol{font-size:14px;color:var(--text-secondary);margin:0 0 10px 18px}
+li{padding:3px 0}
+strong{color:var(--text-primary);font-weight:600}
+code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12.5px;
+  background:#1e1e2e;color:#f5c2e7;padding:1px 5px;border-radius:3px;
+}
+pre{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:8px;
+  padding:14px 16px;overflow-x:auto;margin:10px 0 14px;
+}
+pre code{background:none;padding:0;color:var(--text-secondary);font-size:12.5px;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0 16px}
+th{
+  text-align:left;padding:8px 10px;color:var(--text-muted);font-weight:600;
+  font-size:11px;text-transform:uppercase;letter-spacing:.6px;
+  border-bottom:1px solid var(--border);
+}
+td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.05);
+   color:var(--text-secondary);vertical-align:top}
+td:first-child{color:var(--text-primary)}
+.note{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--c,var(--cross));border-radius:8px;
+  padding:14px 16px;margin:16px 0;
+}
+.note .t{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;
+         color:var(--c,var(--cross));margin-bottom:5px}
+.note p:last-child{margin-bottom:0}
+.pending{
+  display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.4px;
+  text-transform:uppercase;color:var(--cross);
+  border:1px solid rgba(201,133,0,.4);border-radius:4px;
+  padding:0 5px;margin-left:5px;vertical-align:1px;white-space:nowrap;
+}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);
+       font-size:12px;color:var(--text-muted);line-height:1.75}
+footer a{color:var(--text-muted);border-bottom-color:transparent}
+footer a:hover{color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<main>
+
+  <div class="crumb"><a href="./">AI Catalyst Docs</a> &rsaquo; Getting Started FAQ</div>
+
+  <h1>Getting Started FAQ</h1>
+  <p class="sub">For anyone who wants to use AI Catalyst — <strong>Data Product Creators
+     (DPCs)</strong> walking the <strong>Data Product Lifecycle (DPLC)</strong>, and the growing
+     number of people applying Catalyst skills to other work.</p>
+  <p class="sub">This FAQ gets you to the <em>front door</em>. Once you can invoke a Catalyst
+     skill, stop reading and ask the <strong>concierge</strong> — it routes you from there.</p>
+  <p class="meta">Owner: Ryan Ferrell (RYQF) · Setup budget: <strong>30–45 minutes</strong>
+     hands-on, plus <strong>1–2 business days</strong> waiting on access approval.</p>
+
+  <div class="note" style="--c:var(--design)">
+    <div class="t">The two other places to look</div>
+    <p><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404951408/AI+Catalyst+Onboarding"><strong>AI
+       Catalyst Onboarding</strong></a> (Confluence, ENTDATA) is the onboarding tree —
+       prerequisites, installation, tool connections, updating.</p>
+    <p><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404261510/AI+Catalyst+Living+FAQ"><strong>AI
+       Catalyst: Living FAQ</strong></a> answers the <em>conceptual</em> questions this page
+       doesn't: what Catalyst is and isn't, how it differs from using Copilot directly, and who
+       it's for. Read that one for orientation, this one to get running.</p>
+    <p style="color:var(--text-muted);font-size:13px">One destination below is still tagged
+       <span class="pending">link pending</span> — a named document with no URL anyone has
+       recorded yet. Ask in
+       <a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe">Catalyst
+       Launchpad</a>, or open a PR against <code>docs/getting-started-faq.html</code> if you
+       have one.</p>
+  </div>
+
+  <div class="note" style="--c:var(--ship)">
+    <div class="t">Two sources cover the same ground — which one is current?</div>
+    <p>Several links here and in Confluence point at the same subject, so it is worth saying
+       plainly which to trust. <strong>For the mechanics of installing, updating and connecting
+       — trust this page and <code>docs/install.md</code>.</strong> They ship with the plugin, so
+       they move when the plugin moves. The Confluence onboarding tree was written in
+       <strong>late April to May 2026</strong> and has not been revised since:</p>
+    <table>
+      <thead><tr><th>Confluence page</th><th>Last updated</th></tr></thead>
+      <tbody>
+        <tr><td>AI Catalyst: Living FAQ</td><td>30 Apr 2026</td></tr>
+        <tr><td>Installation: AI Catalyst Skills</td><td>1 May 2026</td></tr>
+        <tr><td>Tool Connection Guides</td><td>1 May 2026</td></tr>
+        <tr><td>AI Catalyst Onboarding</td><td>4 May 2026</td></tr>
+        <tr><td>Updating AI Catalyst Plugin</td><td>6 May 2026</td></tr>
+        <tr><td>0 Pre-Req: Setting Up VS Code GitHub Copilot</td><td>21 May 2026</td></tr>
+      </tbody>
+    </table>
+    <p>That is not a reason to ignore them. Confluence remains the right source for the things
+       that live outside this repository — <strong>access requests, approvals, training, and who
+       owns what</strong> — and <em>0 Pre-Req</em> is still the best walkthrough for someone who
+       has never opened VS Code. But where the two disagree about a command, a setting or a
+       version, this page is the newer one. The one known conflict is called out where it
+       occurs: the claim that the plugin self-updates 24 hours after a release.</p>
+    <p style="color:var(--text-muted);font-size:13px">Four of those pages were authored by an
+       account that is now deactivated, so they have no active owner. If you spot a contradiction,
+       raise it in
+       <a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe">Catalyst
+       Launchpad</a> rather than guessing which page is right.</p>
+  </div>
+
+  <div class="note" style="--c:var(--build)">
+    <div class="t">On this page</div>
+    <ol style="margin:0;padding-left:20px;line-height:1.9">
+      <li><a href="#what-is">What is AI Catalyst?</a></li>
+      <li><a href="#what-can-it-do">What can AI Catalyst do?</a></li>
+      <li><a href="#who-is-it-for">Who is it for?</a></li>
+      <li><a href="#get-started">How do I get started?</a> — prerequisites, in order</li>
+      <li><a href="#installing">Installing and updating the plugin</a></li>
+      <li><a href="#first-five">Your first five minutes</a></li>
+      <li><a href="#help">Who do I contact if I need help?</a></li>
+    </ol>
+  </div>
+
+  <!-- ─────────────────────────────  1. START HERE  ───────────────────────────── -->
+  <h2 id="what-is">1 · What is AI Catalyst?</h2>
+
+  <p>Catalyst is the unified AI layer across Capital Group's data platform stack: purpose-built
+     agents and skills, the standard
+     <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/rfd/0002/README.md">Data Product
+     Lifecycle (RFD 0002)</a>, and a set of architectural defaults, delivered as a plugin inside
+     your coding agent.</p>
+  <p>By <em>architectural defaults</em> we mean this: Capital Group's data architecture standards
+     and the Enterprise Data Office's (EDO) practices are packaged into the skills themselves, so
+     two teams building two data products arrive at the same shape without having to negotiate it
+     each time. The plugin is the interface; the value is the operating model — governed by
+     default, instrumented from day one.</p>
+  <p>Three pillars: <strong>AI Catalyst</strong> (agents, skills, playbooks),
+     <strong>Marketplace</strong> (governed discovery and publishing), and the
+     <strong>Paved Path</strong> (Databricks, dbt/PySpark, Harness CI/CD, Airflow, repo
+     templates).</p>
+  <p>Official landing page:
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011/AI+Catalyst"><strong>AI
+     Catalyst</strong> in the ENTDATA Confluence space</a> — onboarding, release notes, roadmap,
+     and the calendar all hang off it. For the wider program context, see the
+     <a href="https://capgroup.sharepoint.com/sites/DXPteam/SitePages/DxP-Home.aspx"><strong>Data
+     Excellence Platform (DxP)</strong> SharePoint site</a>. In this repo, start with the
+     <a href="skills-graph/">skills graph</a> (all 103 skills and how they connect) or the
+     <a href="dplc-skill-architecture.html">DPLC skill architecture</a>.</p>
+
+  <!-- ─────────────────────────────  2. WHAT CAN IT DO  ───────────────────────────── -->
+  <h2 id="what-can-it-do">2 · What can AI Catalyst do?</h2>
+  <h3>Which AI tool should I be using?</h3>
+  <table>
+    <thead><tr><th>Use…</th><th>When you need to…</th></tr></thead>
+    <tbody>
+      <tr><td>Microsoft 365 Copilot</td><td>Draft, summarize, or analyze inside Outlook, Teams, Word, PowerPoint — quick tasks in a familiar chat</td></tr>
+      <tr><td>GitHub Copilot + VS Code</td><td>Work across multiple files, run multi-step workflows, produce reusable files, prototypes, or structured knowledge</td></tr>
+      <tr><td>AI Catalyst (plugin)</td><td>Do any of the above <strong>following the DPLC and the paved path</strong>, with governed artifacts as the output</td></tr>
+    </tbody>
+  </table>
+  <p>Catalyst runs <em>on top of</em> a coding agent. It is not a replacement for M365 Copilot.</p>
+
+  <!-- ─────────────────────────────  3. WHO IS IT FOR  ───────────────────────────── -->
+  <h2 id="who-is-it-for">3 · Who is it for?</h2>
+  <h3>Do I have to be a Data Product Creator (DPC) to use it?</h3>
+  <p>No. Catalyst is <em>designed around</em> the DPLC and is aimed at practitioners certified
+     through the <strong>Data Product Creator Program</strong>, but many people use the skills
+     for adjacent work — document generation, research synthesis, planning, dashboards, and
+     prototypes. If you are not building a data product, you can still install the plugin and
+     use the document and capability skills.</p>
+  <p>If you <em>are</em> building a data product, get certified — certification is how teams
+     stay aligned on the same lifecycle and quality bar. Contact
+     <a href="mailto:DxP_Data_Creator_General@capgroup.com">DxP_Data_Creator_General@capgroup.com</a>
+     to join the training program.</p>
+
+  <h3>I'm not technical. Is this going to work for me?</h3>
+  <p>Yes, with a caveat: the setup is more technical than Microsoft 365 Copilot, even though
+     using it afterwards is mostly conversational. Budget roughly <strong>30–45 minutes</strong>
+     for first-time setup, plus <strong>1–2 business days</strong> waiting on access approval.</p>
+  <p>If you have never used VS Code or GitHub, start with
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot"><strong>0
+     Pre-Req: Setting Up VS Code GitHub Copilot</strong></a> in Confluence. It starts where you
+     need to start — requesting the <em>GitHub EMU All Users</em> role in Access Central, which
+     needs manager approval and takes 1–2 business days — and walks the rest of the setup from
+     there. Pair it with the
+     <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service">GitHub
+     Copilot Self-Service</a> guide on DevHub for the install and sign-in steps.</p>
+
+  <!-- ─────────────────────────────  4. GET STARTED  ───────────────────────────── -->
+
+  <h2 id="get-started">4 · How do I get started? — prerequisites</h2>
+  <p>Work through these <strong>in order</strong>. Skipping a prerequisite is the single most
+     common cause of "the skills don't show up."</p>
+
+  <div class="note" style="--c:var(--ship)">
+    <div class="t">Once the plugin is running, let it check the rest for you</div>
+    <p>From step 5 onward you don't have to audit your own machine. Ask for
+       <code>dplc-preflight</code> — or just say <em>"am I set up?"</em>, <em>"which workspace am
+       I in?"</em>, or <em>"nothing works"</em>. It reports whether you can run Catalyst at all,
+       <strong>every</strong> Databricks workspace configured on your machine (not just the one
+       you think you're using), whether you actually have access, and which catalogs you can see
+       — then points at the skill that fixes whatever is missing. It is read-only and degrades
+       rather than crashing, so it still works on a half-configured machine.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>#</th><th>Prerequisite</th><th>Where the official doc lives</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td><strong>Access Central role: "GitHub EMU All Users"</strong></td>
+        <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0
+            Pre-Req: Setting Up VS Code GitHub Copilot</a> → <em>Before You Start</em></td>
+        <td>1–2 business days</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><strong>VS Code 1.90+, Git, Python 3.10+</strong> <span style="color:var(--text-muted)">(+ Developer Tooling Network Certificates on Windows)</span></td>
+        <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0
+            Pre-Req</a> → <em>Install pre-requisite tools</em></td>
+        <td>~10 min</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>GitHub Copilot Chat extension + sign-in</strong></td>
+        <td><a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service">GitHub Copilot Self-Service</a> on DevHub</td>
+        <td>~10 min</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Git configured over HTTPS with a PAT</strong></td>
+        <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0
+            Pre-Req</a> → <em>Git HTTPS Setup</em></td>
+        <td>~10 min</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Credentials — only if a skill needs them</strong></td>
+        <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404922470/Tool+Connection+Guides">Tool
+            Connection Guides</a>, or
+            <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#credentials-optional--unlocks-live-integrations"><code>docs/install.md</code> → Credentials</a></td>
+        <td>5–15 min</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>AI Catalyst plugin</strong></td>
+        <td><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md"><code>docs/install.md</code></a>,
+            or <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056032/Installation+AI+Catalyst+Skills">Installation:
+            AI Catalyst Skills</a> on Confluence</td>
+        <td>~5 min</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3><span class="q">Q:</span> Where do I start if I have nothing installed?</h3>
+  <p><strong>Access Central first.</strong> You need the <strong>GitHub EMU All Users</strong>
+     role before GitHub Copilot can be provisioned for you, and it requires manager approval
+     (1–2 business days). Request it, then keep going — you can install VS Code, Git, and
+     Python and configure Git while you wait. Only the Copilot step is blocked.</p>
+
+  <h3><span class="q">Q:</span> How do I install VS Code, Git, and Python?</h3>
+  <p>Follow
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot"><strong>0
+     Pre-Req: Setting Up VS Code GitHub Copilot</strong></a> — the maintained setup page in the
+     AI Catalyst onboarding path, covering both platforms.</p>
+  <ul>
+    <li><strong>macOS:</strong> VS Code and Python from <strong>Self Service</strong>.
+        Git ships with macOS; if it's missing, typing <code>git</code> in Terminal prompts the
+        install.</li>
+    <li><strong>Windows:</strong> VS Code, Git, and Python from the <strong>CG App Store</strong>
+        — plus the <strong>Developer Tooling Network Certificates</strong> package, which is
+        <strong>Windows-only and required</strong> for <code>pip</code> installs and API calls to
+        work behind the corporate proxy. Skip it and installs fail in ways that look like network
+        errors. Budget a few hours for App Store installs to land before you continue.</li>
+    <li><strong>Python version:</strong> <strong>3.10 is the minimum</strong> and
+        <strong>3.13 is recommended</strong> — 3.13 is the only Python currently receiving both
+        bug-fix and security backports. <strong>Python 3.9 will not work:</strong> it is past
+        end-of-life, and <code>pip install -r skills/requirements.txt</code> fails on it because
+        <code>markitdown</code> no longer ships 3.9 wheels.</li>
+    <li><strong>VS Code version:</strong> 1.90 or newer.</li>
+  </ul>
+  <p>Verify in the VS Code terminal (<code>Ctrl</code> + <code>`</code>):
+     <code>git --version</code> and <code>python --version</code> should both print a version.
+     For VS Code itself use <strong>Help → About</strong> — running <code>code --version</code> in
+     the integrated terminal can open a new VS Code window instead of printing the version. If
+     anything says "not found," redo that install.</p>
+
+  <h3><span class="q">Q:</span> How do I get GitHub Copilot?</h3>
+  <p>Follow the official
+     <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service">GitHub
+     Copilot Self-Service</a> guide on DevHub. It covers requesting access, installing the
+     extension, and signing in.</p>
+  <p>Your GitHub username is <code>&lt;your-initials&gt;_capgroup</code> (e.g.
+     <code>jsnt_capgroup</code>). Use it when signing in.</p>
+  <p><strong>Verify:</strong> click the Copilot icon in the sidebar, type "Hello." If it
+     responds, you're set. If it doesn't, DevHub has dedicated
+     <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service/troubleshooting/">troubleshooting</a>,
+     <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service/ide-installations/">IDE
+     configuration</a>, and
+     <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service/pem-config/">certificate
+     configuration</a> pages.</p>
+  <p>New to VS Code or GitHub? Work through
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0
+     Pre-Req: Setting Up VS Code GitHub Copilot</a> first — it covers the access request that
+     gates everything else.</p>
+
+  <h3><span class="q">Q:</span> Why do I need a GitHub Personal Access Token?</h3>
+  <p>SSH is blocked on the corporate network, so Git must authenticate over HTTPS. Two ways, both
+     in
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0
+     Pre-Req → <em>Git HTTPS Setup</em></a>:</p>
+  <ul>
+    <li><strong>Recommended — let the GitHub CLI do it.</strong> Install <code>gh</code>
+        (<code>brew install gh</code> on macOS; on Windows <code>winget</code> often fails on the
+        corporate network, so the setup page gives you a Copilot Chat prompt to walk it through),
+        then run <code>gh auth login</code> → GitHub.com → HTTPS → browser. Git is configured and
+        your credentials are stored for you.</li>
+    <li><strong>Manual.</strong> Set <code>user.name</code> / <code>user.email</code>, enable a
+        credential helper (<code>osxkeychain</code> on macOS, <code>manager</code> on Windows),
+        then create a token at
+        <a href="https://github.com/settings/personal-access-tokens/new">github.com/settings/personal-access-tokens/new</a>.
+        For a <strong>fine-grained</strong> token, grant <strong>Contents: Read and write</strong>
+        and limit it to the repos you need; a <strong>classic</strong> token needs
+        the <code>repo</code> scope — that is all HTTPS clone and push needs. Do <em>not</em>
+        add <code>write:org</code>: it grants organisation management this setup never uses.
+        Set a 90-day expiry, and
+        <strong>copy the token before you leave the page</strong> — it is shown once. On the first
+        push or pull, enter your GitHub username and paste the token as the password.</li>
+  </ul>
+  <p>Your GitHub username is <code>INITIALS_capgroup</code> and your email is
+     <code>initials@capgroup.com</code>. PATs expire every 90 days — when Git suddenly stops
+     working, this is usually why.</p>
+
+  <h3><span class="q">Q:</span> Which tool connections do I need?</h3>
+  <p><strong>Only the ones a skill actually needs.</strong> Most document-generation and planning
+     skills work with no connection at all — they still run, they just ask you for context that
+     would otherwise come from a live system. Set a connection up when you hit a skill that
+     queries Unity Catalog, or reads and writes Confluence/Jira.</p>
+  <p><strong>Easiest route:</strong> paste this into Copilot Chat and be walked through it —
+     no terminal experience needed (per the
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404922470/Tool+Connection+Guides">Tool
+     Connection Guides</a>):</p>
+  <pre><code>Help me set up my tool connections. Walk me through it step by step.</code></pre>
+  <p>Or do it by hand. Each system has its own guide in Confluence:</p>
+  <table>
+    <thead><tr><th>Connection</th><th>Configure with</th><th>Guide</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Databricks</strong></td>
+          <td><code>databricks auth login --host &lt;workspace&gt;</code> — <em>preferred</em>,
+              interactive OAuth, no secret in a file; or OAuth service-principal
+              credentials (<code>DATABRICKS_CLIENT_ID</code> +
+              <code>DATABRICKS_CLIENT_SECRET</code>) for non-interactive use</td>
+          <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404889380/Databricks+CLI">Databricks CLI</a>,
+              <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/405809567/Databricks+Extension+Windows">Extension (Windows)</a></td></tr>
+      <tr><td><strong>Confluence</strong></td>
+          <td><code>CONFLUENCE_URL</code>, <code>CONFLUENCE_USERNAME</code>,
+              <code>CONFLUENCE_API_TOKEN</code></td>
+          <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404922031/Confluence">Confluence</a></td></tr>
+      <tr><td><strong>Jira</strong></td>
+          <td><code>JIRA_URL</code>, <code>JIRA_USERNAME</code>, <code>JIRA_API_TOKEN</code></td>
+          <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404987416/Jira">Jira</a></td></tr>
+      <tr><td><strong>GitHub repos</strong></td>
+          <td>Covered by the PAT / <code>gh auth login</code> step above</td>
+          <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404922091/GitHub+Repos">GitHub Repos</a></td></tr>
+    </tbody>
+  </table>
+  <p><strong>Which Databricks setup you need depends on what you're doing.</strong> Catalyst
+     reaches Databricks three ways, and they are not interchangeable:</p>
+  <ul>
+    <li><strong>The Databricks SDK</strong> — the default for workspace API calls. It reads
+        credentials from, in priority order, OAuth service-principal env vars, an explicit
+        host/token, <code>DATABRICKS_HOST</code>/<code>DATABRICKS_TOKEN</code>, then a
+        <code>~/.databrickscfg</code> profile.</li>
+    <li><strong>The Databricks CLI</strong> — a hard requirement for roughly ten Build and Ship
+        skills (bundles, jobs, deployments), not merely a convenience. It is also the easiest way
+        to populate the credential store the SDK then reads. Note it is a <strong>Go
+        binary</strong>: install it from the official release, not from PyPI, where the old
+        <code>databricks-cli</code> package stops at 0.18.0 and is a different tool.</li>
+    <li><strong>A SQL warehouse endpoint</strong> — separate from credentials, and identified by
+        <code>DATABRICKS_WAREHOUSE_ID</code> (or an <code>http_path</code>). Being authenticated
+        does not give you somewhere to run SQL. <code>discover-data</code> needs a warehouse id
+        for schema verification, alongside OAuth service-principal credentials;
+        <code>connect-databricks</code> sets it up, and
+        <code>configure-sql-warehouse</code> provisions a serverless warehouse and wires
+        <code>http_path</code> and <code>warehouse_id</code> into <code>profiles.yml</code> when
+        you are pointing dbt at Databricks.</li>
+  </ul>
+  <p>So "I have a token in <code>.env</code>" is enough for some exploration, and not enough for
+     building, shipping, or dbt.</p>
+  <table>
+    <thead><tr><th>If you are…</th><th>You need</th></tr></thead>
+    <tbody>
+      <tr><td>Exploring and profiling data, or generating documents — <code>discover-data</code>,
+              <code>data-profiling</code>, <code>query-table</code>, <code>query-catalog</code>,
+              <code>profile-columns</code></td>
+          <td><code>.env</code> with <code>DATABRICKS_HOST</code> and
+              <code>DATABRICKS_TOKEN</code> is enough</td></tr>
+      <tr><td>Building or shipping — anything touching Asset Bundles, jobs, SQL warehouses, or
+              dbt-on-Databricks: <code>deploy-dab</code>, <code>databricks-bundles</code>,
+              <code>databricks-jobs</code>, <code>configure-sql-warehouse</code>,
+              <code>run-dbt-on-databricks</code>, <code>setup-databricks-asset-bundle</code></td>
+          <td><strong>The CLI binary, installed.</strong> These shell out to
+              <code>databricks bundle …</code>; <code>.env</code> credentials alone will not
+              satisfy them</td></tr>
+    </tbody>
+  </table>
+  <p>So if you are walking the full lifecycle, install the CLI and authenticate with
+     <code>databricks auth login --host &lt;your-workspace&gt;</code>. That writes a profile to
+     <code>~/.databrickscfg</code>, which the SDK, the VS Code extension, dbt, and the CLI itself
+     all read — one setup covers every route. Verify with <code>databricks catalogs list</code>.
+     <strong>Prefer OAuth over a Personal Access Token:</strong> DBX-SEC-002 asks for it, and
+     <code>/connect-databricks</code> <em>refuses</em> a <code>DATABRICKS_TOKEN</code> outright, so
+     the PAT route will stop you at the first skill that checks.
+     Catalyst targets the <strong>Databricks CLI 0.218 or newer</strong> — the Go binary, installed
+     with <code>brew install databricks</code> or
+     <code>winget install Databricks.DatabricksCLI</code>. <strong>Not a pip install:</strong> the
+     PyPI package called <code>databricks-cli</code> is the deprecated legacy Python CLI and stops
+     at 0.18.0.</p>
+  <p style="color:var(--text-muted);font-size:13px">The <code>.env</code> route stays useful where
+     the CLI cannot be installed, and is the right answer for non-interactive contexts — CI, or a
+     Databricks App using OAuth service-principal credentials. Note that
+     <code>docs/install.md</code> and <code>README.md</code> now document the CLI and the OAuth
+     login alongside <code>.env</code>, which is what closes the gap where a user got discovery
+     working and then hit a wall at the first bundle deploy (AICAT-322).</p>
+  <p>The variable-by-variable walkthrough for the <code>.env</code> route is in
+     <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#credentials-optional--unlocks-live-integrations"><code>docs/install.md</code></a>.</p>
+  <p style="color:var(--text-muted);font-size:13px"><strong>Dremio is not supported by
+     Catalyst.</strong> Confluence still carries a Dremio connection guide under Tool Connection
+     Guides; it describes legacy infrastructure that this project does not support, and it
+     promises a <code>dremio-query</code> skill that does not exist here. Ignore it. Databricks
+     and Unity Catalog are the supported platform surface.</p>
+
+  <div class="note" style="--c:var(--build)">
+    <div class="t">Python installs must go through the internal mirror</div>
+    <p>Public PyPI is <strong>blocked on the corporate network</strong> to mitigate supply-chain
+       attacks. <code>skills/requirements.txt</code> already pins the internal Nexus mirror via
+       <code>--index-url</code>. If <code>pip</code> returns a 404 or a timeout against
+       <code>pypi.org</code>, that is the network block firing — not a missing package. Re-point
+       pip at
+       <code>https://cgrepo-aws.capgroup.com/repository/cgpypi/simple/</code>. The same applies
+       to npm, Docker, Maven, conda, and NuGet — see
+       <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#internal-artifact-registries-required">Internal
+       artifact registries</a>.</p>
+  </div>
+
+  <h3><span class="q">Q:</span> What about Claude Code and DevNext/Coder?</h3>
+  <p>These are a <strong>parallel path</strong>, not a replacement.</p>
+  <ul>
+    <li><strong>Claude Code</strong> is the Anthropic coding agent. Catalyst skills are authored
+        in a format that works across both the Copilot and Claude Code harnesses. <strong>On a
+        DevNext/Coder workspace it is already installed</strong> — it ships in the image, so there
+        is nothing to install and no npm command to run. Confirm with:
+        <pre><code>claude --version</code></pre>
+        Then install the Catalyst plugin into it via
+        <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#path-c--claude-code">Path
+        C</a>.</li>
+    <li><strong>DevNext / Coder</strong> is the managed cloud development workspace where dev
+        tools and AI agents run — reachable from VS Code, JetBrains, browsers, terminals, and
+        SSH. Workspaces are <strong>disposable by design</strong>: your home folder persists,
+        everything else is rebuilt. Source of truth lives in GitHub, not in your workspace.</li>
+    <li>Access to Coder and Claude is provisioned by <strong>DevNext in waves</strong>, not
+        self-service. If your team hasn't been deployed yet, use the local VS Code + Copilot
+        path.</li>
+  </ul>
+  <p><strong>Rule of thumb:</strong> if you already have VS Code + Copilot working locally, that
+     is the fastest route to Catalyst today. Catalyst runs on Claude Code as well, so if you
+     already have a Coder workspace you can use it now — the gating factor is DevNext access, not
+     Catalyst support.</p>
+
+  <div class="note" style="--c:var(--build)">
+    <div class="t">You don't install Claude Code — GT does</div>
+    <p>Claude Code is available <strong>only on DevNext/Coder workspaces</strong>, where it ships
+       in the image and the GT team manages it end to end: installing it, upgrading it, and
+       keeping the version consistent across workspaces. There is no self-service route and no
+       supported way to add it to a personal machine.</p>
+    <p>So there is nothing for you to install, and installing your own copy would actively hurt:
+       Coder persists your <em>home</em> directory and rebuilds everything else, so a private copy
+       there would take precedence on <code>PATH</code> and keep <strong>shadowing the managed
+       version after every rebuild</strong>. If <code>claude --version</code> answers, you are
+       done. If it doesn't, that is a DevNext question, not a setup step.</p>
+  </div>
+
+  <!-- ─────────────────────────────  3. INSTALL  ───────────────────────────── -->
+  <h2 id="installing">5 · Installing and updating the Catalyst plugin</h2>
+
+  <h3><span class="q">Q:</span> How do I install it?</h3>
+  <p>The canonical, maintained steps are in
+     <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md"><code>docs/install.md</code></a>
+     — follow that, or the Confluence
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056032/Installation+AI+Catalyst+Skills">Installation:
+     AI Catalyst Skills</a> page, rather than reusing an older set of instructions. The short
+     version, for most users: add the marketplace to your VS Code <strong>user</strong> settings
+     (<code>Ctrl+Shift+P</code> / <code>⌘⇧P</code> → <em>Preferences: Open User Settings
+     (JSON)</em>):</p>
+  <pre><code>{
+  "chat.plugins.enabled": true,
+  "chat.useAgentSkills": true,
+  "chat.plugins.marketplaces": [
+    "https://github.com/cg-open-itg/catalyst.git"
+  ]
+}</code></pre>
+  <p>Reload VS Code, open Copilot Chat (<code>Ctrl+Shift+I</code> / <code>⌘⇧I</code>) →
+     <code>/plugins</code> → enable <strong>AI Catalyst</strong>. No clone required.
+     Contributors who want to edit skills should use Path B in the install guide instead.</p>
+
+  <h3><span class="q">Q:</span> How do I install it on Claude Code?</h3>
+  <p>The same repo is also a Claude Code plugin marketplace
+     (<a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#path-c--claude-code">Path
+     C</a>). Register it once, then install the plugin:</p>
+  <pre><code>claude plugin marketplace add cg-open-itg/catalyst
+claude plugin install ai-catalyst@catalyst</code></pre>
+  <p>Or from inside a session: <code>/plugin marketplace add cg-open-itg/catalyst</code> then
+     <code>/plugin install ai-catalyst@catalyst</code>. Nothing to configure in
+     <code>settings.json</code> — Claude Code discovers <code>skills/&lt;name&gt;/SKILL.md</code>
+     on its own, which is why there is no marketplace block to paste here.</p>
+  <p>Opening <strong>this repo</strong> in Claude Code registers and enables the plugin for you,
+     because it ships that registration in its own <code>.claude/settings.json</code> — the Claude
+     Code counterpart of Path B. One caveat worth knowing: that resolves from published
+     <code>main</code>, <strong>not</strong> your working tree. If you are editing a skill locally,
+     point the marketplace at your checkout instead
+     (<code>claude plugin marketplace add /path/to/catalyst</code>) or you will be testing
+     published code rather than your edits.</p>
+
+  <h3><span class="q">Q:</span> I installed it but no skills appear.</h3>
+  <ul>
+    <li>Reload the window first: <code>Ctrl+Shift+P</code> / <code>⌘⇧P</code> →
+        <em>Developer: Reload Window</em>.</li>
+    <li>Confirm <code>chat.plugins.enabled</code> is in your <strong>user</strong> settings, not
+        workspace settings.</li>
+    <li>Confirm you are signed in to your GitHub account inside VS Code — authentication
+        failures surface as missing or broken skills.</li>
+    <li>Getting an SSO redirect or a 403 when the marketplace tries to clone? Your GitHub
+        credentials need to be authorized for the <code>cg-open-itg</code> org. The
+        <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#troubleshooting">install
+        guide's troubleshooting section</a> has the three commands that fix it.</li>
+    <li>Still nothing? <strong>Reinstall.</strong> An early defect caused skills not to load
+        after install; it has since been fixed.</li>
+    <li><strong>On Claude Code</strong> the checks are different — none of the
+        <code>chat.*</code> settings apply. Confirm the marketplace is registered
+        (<code>claude plugin marketplace list</code>) and the plugin is installed and enabled
+        (<code>claude plugin list</code>), then see
+        <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#plugin-doesnt-appear-in-claude-code">Plugin
+        doesn't appear in Claude Code</a>.</li>
+  </ul>
+
+  <h3><span class="q">Q:</span> How do I get the latest version?</h3>
+  <p><strong>No reinstall needed, and no version pinning</strong> — you track <code>main</code>.
+     Do any one of these:</p>
+  <ul>
+    <li><strong>Reload the window</strong> — <code>Ctrl+Shift+P</code> / <code>⌘⇧P</code> →
+        <em>Developer: Reload Window</em></li>
+    <li><strong>Click the refresh icon</strong> (circular arrow) in the Agent Plugins panel</li>
+    <li><strong>Restart VS Code</strong> — quit and reopen</li>
+  </ul>
+  <p>If a release you expect still isn't there, force it from Extensions: the <code>[…]</code>
+     menu → <em>Check for Extension Updates</em>. You should see an "updated plugins…" message.</p>
+  <p>On <strong>Claude Code</strong> updating is explicit rather than reload-triggered — refresh
+     the registry, then update the plugin:</p>
+  <pre><code>claude plugin marketplace update catalyst
+claude plugin update ai-catalyst@catalyst</code></pre>
+  <p>To pin a release instead of tracking <code>main</code>, append the tag to the marketplace ref
+     (<code>claude plugin marketplace add cg-open-itg/catalyst@1.12.0</code>). Tags here are
+     <strong>unprefixed</strong> — <code>1.12.0</code>, not <code>v1.12.0</code>.</p>
+  <p style="color:var(--text-muted);font-size:13px">You may also see the claim that the plugin
+     self-updates about <strong>24 hours after a release</strong>, on
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/405693782/Updating+AI+Catalyst+Plugin">Updating
+     AI Catalyst Plugin</a>. Treat that page as the outlier: three other sources — Confluence
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/405693119/How+To+Give+Feedback">How
+     To: Give Feedback</a>,
+     <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#upgrading"><code>docs/install.md</code></a>,
+     and the boilerplate on every release comms page — all describe a reload-triggered refresh
+     with no waiting period. Don't wait a day; reload.</p>
+
+  <h3><span class="q">Q:</span> Where are the release notes?</h3>
+  <p>Three places, same content at different depths:</p>
+  <ul>
+    <li><a href="release-comms/releases/v1.12.0.html">Release comms</a> — the per-release
+        written-for-humans summary. Latest: <strong>v1.12.0</strong>. Start here.</li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/releases">GitHub Releases</a> and
+        <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/CHANGELOG.md"><code>CHANGELOG.md</code></a>
+        — the full history.</li>
+    <li><a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404229132/AI+Catalyst+Release+Notes">AI
+        Catalyst Release Notes</a> on Confluence — a page per release, v1.0.0 through v1.12.0.</li>
+  </ul>
+  <p>Releases have shipped roughly weekly. Per-release skill quality results are published to
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/408919330/AI+Catalyst+Skill+Quality+Reports">AI
+     Catalyst Skill Quality Reports</a>, and what's coming is on the
+     <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/408365976/AI+Catalyst+Roadmap">roadmap</a>.</p>
+
+  <!-- ─────────────────────────────  4. FIRST FIVE MINUTES  ───────────────────────────── -->
+  <h2 id="first-five">6 · Your first five minutes with Catalyst</h2>
+
+  <h3><span class="q">Q:</span> I'm in. What do I run first?</h3>
+  <p><strong>Run the concierge.</strong> If you don't know which skill to invoke, start with
+     <code>dplc-concierge</code> — the entry-point router that detects your intent and points
+     you at the right phase orchestrator. This is the answer to almost every "which skill do I
+     need?" question, and it's why this FAQ stops here.</p>
+  <p>You don't have to name skills. Type what you need and Copilot matches it. To confirm the
+     install works, try:</p>
+  <pre><code>I need to plan a new data product</code></pre>
+  <p>Copilot should route to <code>dplc-concierge</code> and reply with orienting questions.</p>
+
+  <h3><span class="q">Q:</span> What if I'm not doing DPLC work?</h3>
+  <p>Browse the <a href="skills-graph/">skills graph</a> or
+     <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/skills/README.md"><code>skills/README.md</code></a>.
+     Skills come in four tiers, and two of them are useful whether or not you're building a data
+     product:</p>
+  <table>
+    <thead><tr><th>Tier</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Orchestrators</td><td>Guide you through a whole lifecycle stage or phase, calling other skills as needed</td></tr>
+      <tr><td>Workflow skills</td><td>Walk you through a multi-step process — discovering data sources, setting up a project</td></tr>
+      <tr><td><strong>Document skills</strong></td><td>Generate one specific deliverable from a template — data contract, runbook, architecture diagram, requirements doc</td></tr>
+      <tr><td><strong>Capability skills</strong></td><td>Do one specific thing — connect to Databricks, profile a table, query a catalog</td></tr>
+    </tbody>
+  </table>
+  <p>Ask the concierge what's available and describe your task in plain language.</p>
+
+  <h3><span class="q">Q:</span> What's a good first task if I'm brand new?</h3>
+  <p>Point it at a small set of approved files with a clear output. A good starter prompt:</p>
+  <pre><code>Review the files in this workspace. Summarize the main themes, key facts,
+decisions, risks, and open questions. Identify the source file for each key
+point, do not make assumptions when information is missing, and recommend one
+useful output that could be created from these files.</code></pre>
+  <p>Then check the result against the original files before attempting anything more complex.</p>
+
+  <h3><span class="q">Q:</span> Catalyst told me something about the DPLC I don't understand. Where do I go?</h3>
+  <p>Catalyst is an <strong>accelerator, not a replacement for fundamentals.</strong> The layers:</p>
+  <table>
+    <thead><tr><th>Question</th><th>Go to</th></tr></thead>
+    <tbody>
+      <tr><td>Governance, ownership, process, "what phase am I in?"</td>
+          <td><a href="https://devhub.capgroup.com/docs/default/component/dxp-data-creator/#what-is-the-paved-path"><strong>The
+              Paved Path</strong></a> on DevHub — the guided, standardized way to reach platforms
+              and supported capabilities, and the curated toolkit Data Product Creators are
+              expected to build with. It is the practical face of the <strong>Data Excellence
+              Platform (DxP)</strong>. Useful framing from that page: the <em>lifecycle is the
+              journey</em> (phases, gates, checkpoints) and the <em>Paved Path is the road</em> —
+              which tools to use at each phase, which standards apply, and where to get help. It
+              also covers requesting a training environment, what is provisioned, feature
+              availability, and the roadmap.</td></tr>
+      <tr><td>Technical standards, implementation patterns, production readiness, troubleshooting</td>
+          <td><strong>Causeway</strong> — the implementation layer<span class="pending">link pending</span></td></tr>
+      <tr><td>"Why does this part of the ecosystem exist?"</td>
+          <td><a href="https://capitalgroup.atlassian.net/wiki/spaces/IntegrationArchitecture/pages/287625136/Federated+Data+Ecosystem">Federated
+              Data Ecosystem</a> — the architectural glossary and ARB proposal</td></tr>
+      <tr><td>What the lifecycle phases and gates actually are</td>
+          <td><a href="https://capgroup-my.sharepoint.com/:w:/p/ncag/IQDIWGTlPoqFSrVlovBJGMJ-AeuErvyhCLTpnFMx4cIBEyo"><strong>Data
+              Product Lifecycle — All Phases, Plain-Language Guide</strong></a> is the readable
+              one: all eight phases (0 Pre-requisite through 7 Evolve), what good looks like, the
+              gate question for each, and which artifacts are Required, Recommended or Optional —
+              written for technical and non-technical readers alike. Start there if you are asking
+              "what phase am I in, and what do I owe?".<br>
+              <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/rfd/0002/README.md">RFD
+              0002</a> is the version Catalyst implements, and is what the skills enforce. The
+              plain-language guide describes <strong>RFD 0009</strong>, which is not held in this
+              repo — if the two ever disagree on a gate, raise it rather than guessing. Note the
+              lifecycle is <strong>not strictly linear</strong>: a failed gate routes back to the
+              phase that can fix it — a feature request to Phase 1, a breaking change to Phase 2 —
+              rather than back to the start.</td></tr>
+      <tr><td>"What is Catalyst <em>not</em>?"</td>
+          <td>It is not a data platform, a governance authority, or a replacement for the
+              fundamentals. Catalyst is a <strong>plugin that runs on top of a coding agent</strong>
+              and encodes the DPLC and the Paved Path as skills — it can draft the artifact a gate
+              expects and tell you what the gate expects, but it does not <em>grant</em> the gate.
+              Approvals, ownership, and sign-off stay with the Data Owner and the governance
+              process. It also does not replace M365 Copilot for everyday drafting, and it will not
+              turn an unclear business need into a good data product.
+              <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404261510/AI+Catalyst+Living+FAQ">AI
+              Catalyst: Living FAQ</a> goes deeper.</td></tr>
+      <tr><td>How to use the skills themselves</td>
+          <td><a href="./">AI Catalyst documentation</a> — this site</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ─────────────────────────────  5. HELP  ───────────────────────────── -->
+  <h2 id="help">7 · Who do I contact if I need help?</h2>
+  <table>
+    <thead><tr><th>Need</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>Community Q&amp;A, share outputs, see what others are building</td>
+          <td><a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe"><strong>Catalyst Launchpad</strong></a> — the AI Catalyst Teams channel</td></tr>
+      <tr><td>Live help with your use case or blockers</td>
+          <td>Sessions are listed on the <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/403847234/AI+Catalyst+Calendar">AI Catalyst Calendar</a></td></tr>
+      <tr><td>Setup problems (VS Code, Git, Python, credentials)</td>
+          <td>Your Engineering or Tech Lead; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404983785/0+Pre-Req+Setting+Up+VS+Code+GitHub+Copilot">0 Pre-Req</a>, DevHub <a href="https://devhub.capgroup.com/docs/default/Template/github-copilot-self-service/troubleshooting/">troubleshooting</a>, and <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md#troubleshooting"><code>docs/install.md</code></a></td></tr>
+      <tr><td>DPC training / certification</td>
+          <td><a href="mailto:DxP_Data_Creator_General@capgroup.com">DxP_Data_Creator_General@capgroup.com</a></td></tr>
+      <tr><td>Hands-on help getting to production</td>
+          <td><strong>AI Catalyst Jump Start</strong> — kick-off, a one-day sprint, then a week with an EDO <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/406832939/AI+Catalyst+Success+Teams">Success Team</a></td></tr>
+      <tr><td>Feedback on a skill</td>
+          <td>Say <em>"I have feedback"</em> in Copilot Chat — the <code>catalyst-feedback</code> skill captures your session context, shows you a preview, and files a GitHub issue only after you approve. See <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/405693119/How+To+Give+Feedback">How To: Give Feedback</a> and <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/feedback.md"><code>docs/feedback.md</code></a>.</td></tr>
+      <tr><td>A bug, or a link on this page that's wrong</td>
+          <td><a href="https://github.com/cg-open-itg/catalyst/issues">Open an issue</a> or a PR against <code>docs/getting-started-faq.html</code></td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Maintained in <code>docs/getting-started-faq.html</code> on <code>main</code> and served
+    from <code>docs/</code>. Repo-internal facts on this page — Python and VS Code minimums,
+    the marketplace settings, the credential variables, the skill tiers, the update procedure —
+    are taken from
+    <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md">install.md</a>,
+    <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/README.md">README.md</a>, and
+    <a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/skills/README.md">skills/README.md</a>,
+    which stay canonical if they and this page ever disagree.
+    <br>
+    Prerequisite and setup steps are cross-referenced against the
+    <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/404951408/AI+Catalyst+Onboarding">AI
+    Catalyst Onboarding</a> tree in Confluence (ENTDATA), which stays canonical for anything
+    outside this repo. Skill count (103) reflects <code>docs/skills-graph/graph.json</code>.
+  </footer>
+
+</main>
+</body>
+</html>

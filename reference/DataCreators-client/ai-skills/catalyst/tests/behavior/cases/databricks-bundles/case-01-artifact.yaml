@@ -1,0 +1,42 @@
+id: databricks-bundles.case-01-artifact
+skill: skills/databricks-bundles
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "Set up a Databricks Asset Bundle for a multi-environment ETL pipeline"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: emits_bundle_yaml
+      weight: 0.35
+      prompt: >-
+        Does the response produce `databricks.yml` content containing all
+        three required top-level blocks: `bundle:`, `targets:`, and
+        `resources:`? Score 1.0 if all three blocks are present and
+        structurally correct; 0.5 if only one or two are present; 0 if
+        none appear or the YAML is fabricated nonsense. Score 0-1.
+    - id: references_real_dab_keys
+      weight: 0.35
+      prompt: >-
+        Does the response use real Databricks Asset Bundle (DAB) syntax
+        such as `include:`, `targets.<env>.workspace.host`,
+        `resources.jobs.<key>`, or `resources.pipelines.<key>` — and
+        avoid invented keys that do not exist in the DAB spec (e.g.,
+        `bundle_config:`, `workflow:`, `dag:`)? Score 1.0 if only real
+        DAB keys are used; 0.5 if mostly real with minor invented keys;
+        0 if the structure is primarily invented or MCP-style. Score 0-1.

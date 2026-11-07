@@ -1,0 +1,47 @@
+id: build-preflight.case-01-artifact
+skill: skills/build-preflight
+type: artifact
+description: >-
+  Verifies /build-preflight asks the mode question, the product-type question,
+  inventories DPLC artifacts, and emits a build-state report. Simulates a
+  prototype DAP build with partial DPLC coverage.
+
+input:
+  arguments: >-
+    Run build preflight for the employee investment allocation data product.
+    We are in prototype mode. This is a DAP in the investments business group.
+    We have data-contract.md and data-model.md in .dplc/ but no
+    transformation-spec.md. No dbt_project.yml exists yet.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: mode_selection
+      weight: 0.25
+      prompt: >-
+        Does the response ask the user about or acknowledge the build mode
+        (prototype / production / lift-and-shift)? It may do this as a
+        question, a confirmation of the supplied mode, or a mode summary
+        in a table or report. Score 0-1.
+    - id: product_type_question
+      weight: 0.25
+      prompt: >-
+        Does the response ask about or acknowledge the product type
+        (SAP / DAP / CAP / Sandbox) and mention catalog placement (app catalog,
+        domain catalog, or sandbox TTL warning)? Score 0-1.
+    - id: artifact_inventory
+      weight: 0.25
+      prompt: >-
+        Does the response list DPLC Phase 3 artifacts (data-contract,
+        data-model, transformation-spec at minimum) and report which are
+        present vs. absent, using checkmarks, status labels, or a table?
+        Score 0-1.
+    - id: build_state_report
+      weight: 0.25
+      prompt: >-
+        Does the response report a build-state value (fresh, infra-only, or
+        models-exist) and recommend a next step such as running
+        /setup-dbt-project or a model-authoring skill? Score 0-1.

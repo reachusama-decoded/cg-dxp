@@ -1,0 +1,43 @@
+CREATE TABLE caspian_dev1.stnd_cdm_mfi.cdm_party_office_f1_v1_t0 (
+  partyid INT,
+  createdby STRING,
+  createddate TIMESTAMP,
+  updatedby STRING,
+  lastupdatedate TIMESTAMP,
+  deletedindicator STRING,
+  deletedby STRING,
+  deleteddate TIMESTAMP,
+  partytypeid INT,
+  partytypenm STRING,
+  partystatustypeid INT,
+  partystatustypenm STRING,
+  partyinactivationdate TIMESTAMP,
+  officetypeid INT,
+  officetypenm STRING,
+  partytaxid INT,
+  riacoveragetypeid INT,
+  riacoveragetypename STRING,
+  officecorrespondentfirm STRING,
+  reserved_field4 STRING,
+  reserved_field5 STRING,
+  reserved_field6 STRING,
+  reserved_field7 STRING,
+  reserved_field8 STRING,
+  reserved_field9 STRING,
+  reserved_field10 STRING,
+  year__ INT,
+  month__ INT,
+  day__ INT,
+  time__ STRING)
+USING parquet
+PARTITIONED BY (year__, month__, day__, time__)
+LOCATION 's3://datalake-standard-dev1-us-east-1/cdm/cdm_party_office_f1_v1_t0'
+-- TBLPROPERTIES (
+--   'CASE_SENSITIVE_LOG' = 'false',
+--   'delta.checkpoint.writeStatsAsJson' = 'false',
+--   'delta.checkpoint.writeStatsAsStruct' = 'true',
+--   'delta.enableExpiredLogCleanup' = 'true',
+--   'delta.lastCommitTimestamp' = '1726488124000',
+--   'delta.lastUpdateVersion' = '0',
+--   'delta.minReaderVersion' = '1',
+--   'delta.minWriterVersion' = '2')

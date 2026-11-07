@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Catalyst v1.10.0 Release Notes</title>
+</head>
+<body style="margin:0;padding:32px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Avenir Next',Avenir,sans-serif;color:#333333;">
+
+<div style="max-width:600px;margin:0 auto;">
+
+  <!-- Header -->
+  <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#009CDC;">AI Catalyst</p>
+  <h1 style="margin:0 0 4px 0;font-size:22px;font-weight:700;color:#00294B;">v1.10.0 &mdash; Local Airflow Orchestration + Pipeline Standards</h1>
+  <p style="margin:0 0 20px 0;font-size:13px;color:#888888;">July 13, 2026</p>
+
+  <!-- Blurb -->
+  <p style="margin:0 0 12px 0;font-size:15px;line-height:1.7;">This release extends the Phase 4 build inner loop from Databricks bundles to <strong>Airflow</strong>. The new <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/deploy-airflow-local</code> skill stands up your DAG locally so you can iterate on orchestration without leaving Copilot Chat &mdash; and two ratified standards give data-pipeline builders clearer guidance on testing and containerization.</p>
+
+  <!-- What's new -->
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">What&rsquo;s new in v1.10.0:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>/deploy-airflow-local</strong> &mdash; new skill that runs your data product&rsquo;s DAG locally, closing the Phase 4 loop for Airflow orchestration</li>
+    <li style="margin-bottom:4px;"><strong>Testing strategy, ratified</strong> &mdash; a tiered testing standard for data pipelines, mapping each layer of coverage to the skill that produces it</li>
+    <li style="margin-bottom:4px;"><strong>Containerization guidance</strong> &mdash; a new language guide for building containers the right way on the corporate network</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 1 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">1. /deploy-airflow-local &mdash; Run Your DAG Locally</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    The Airflow counterpart to <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/deploy-dab</code>. Once your data product has a DAG, <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/deploy-airflow-local</code> spins up a local Airflow runtime and triggers it in <strong>your own environment</strong> &mdash; so you can validate orchestration end-to-end before anything ships to a shared environment.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">This is your personal dev iteration loop for orchestration. Shared and remote Airflow deploys remain a separate, in-progress capability.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 2 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">2. Testing &amp; Containerization Standards</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Two standards are now ratified. The <strong>testing strategy</strong> lays out a tiered model &mdash; unit, integration, and data-quality &mdash; and points you to the Catalyst skill that produces each layer, so you know what to test and where. The <strong>containerization guide</strong> adds concrete rules for building images, including sourcing base images and packages from the internal mirrors rather than public registries.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">If you build or review data pipelines, these give you a single reference to point to instead of tribal knowledge.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- What's next -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#00294B;">What&rsquo;s next</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>Remote Airflow deploy</strong> &mdash; extending the local orchestration loop to shared Astronomer environments</li>
+    <li style="margin-bottom:4px;"><strong>Operate &amp; Evolve phases</strong> &mdash; promoting today&rsquo;s leaf skills (runbooks, incident logs, deprecation notices, usage analytics) into full phase orchestrators</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Platform note -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">A note on platforms</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;">Catalyst is validated primarily on <strong>macOS</strong>. Windows users can use it, but may hit gaps in the technical prerequisites for some skills &mdash; local tooling setup, available compute, and environment configuration. If you&rsquo;re on Windows and something doesn&rsquo;t work, please tell us via <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code>.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Also shipped -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">Also shipped</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>rfd-authoring</strong> &mdash; a contributor skill that scaffolds new RFDs with the right structure and metadata (Catalyst dev team)</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Keeping up to date + Feedback -->
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;"><strong>Keeping Your Plugin Up to Date</strong> &mdash; No reinstall needed. <strong>Cmd+Shift+P</strong> &rarr; &ldquo;Developer: Reload Window&rdquo;, or click the refresh icon in the Agent Plugins panel.</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;"><strong>Share Your Feedback</strong> &mdash; Type <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> in Copilot Chat to share what worked, what didn&rsquo;t, or what could be better. The more specific you are (&ldquo;expected X, got Y&rdquo;), the faster we can act.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 16px 0;" />
+
+  <!-- Footer -->
+  <p style="margin:0 0 6px 0;font-size:13px;">Full release notes &rarr; <a href="https://github.com/cg-open-itg/catalyst/releases/tag/1.10.0" style="color:#005F9E;font-weight:600;">Read Release Notes</a></p>
+  <p style="margin:0 0 20px 0;font-size:13px;">Still new to Catalyst? &rarr; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011" style="color:#005F9E;font-weight:600;">Get Started</a></p>
+
+  <p style="margin:0;font-size:13px;color:#aaaaaa;">===</p>
+
+</div>
+
+</body>
+</html>

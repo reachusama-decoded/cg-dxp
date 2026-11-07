@@ -1,0 +1,97 @@
+inputSet:
+  name: main_inputset
+  identifier: maininputset
+  orgIdentifier: capgroupedo
+  projectIdentifier: datacreatoracademyaa00003661
+  pipeline:
+    identifier: edo_training_data_products_pipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.targetBranch>
+
+    stages:
+    - stage:
+        identifier: TF_Deploy_dev
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: TFE_OVERRIDE_image_version
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_airflow_image_tag
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_set_appomni_password
+              type: String
+              value: <+input>
+    - stage:
+        identifier: build_image
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: BUILD_ARGS
+              type: String
+              value: <+input>
+    - stage:
+        identifier: astrodeploy_dev
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: WORKSPACE_ID
+              type: String
+              value: cmgberf690zil01p3w8633rak
+    - stage:
+        identifier: TF_Deploy_SQA
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: TFE_OVERRIDE_image_version
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_airflow_image_tag
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_set_appomni_password
+              type: String
+              value: <+input>
+    - stage:
+        identifier: astrodeploy_sqa
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: WORKSPACE_ID
+              type: String
+              value: cmml8wlxf071301mcxgypdtpv
+    - stage:
+        identifier: TF_Deploy_PRD
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: TFE_OVERRIDE_image_version
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_airflow_image_tag
+              type: String
+              value: <+input>
+            - name: TFE_OVERRIDE_set_appomni_password
+              type: String
+              value: <+input>
+    - stage:
+        identifier: astrodeploy_prd
+        template:
+          templateInputs:
+            type: CI
+            variables:
+            - name: WORKSPACE_ID
+              type: String
+              value: cmnqdru6w07ee01l0l9h2uaw8

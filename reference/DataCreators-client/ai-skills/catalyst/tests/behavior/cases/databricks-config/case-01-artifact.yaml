@@ -1,0 +1,44 @@
+id: databricks-config.case-01-artifact
+skill: skills/databricks-config
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "Configure databricks profile and set up workspace config"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: cites_databricks_cli_auth
+      weight: 0.35
+      prompt: >-
+        Does the response reference real Databricks CLI authentication
+        commands — specifically one or more of `databricks auth login`,
+        `databricks auth env`, or `databricks auth profiles` — rather
+        than fabricated or generic CLI patterns? Score 1.0 if at least
+        one real auth command is used correctly; 0.5 if the concept of
+        CLI auth is covered but the command syntax is incorrect or
+        vague; 0 if CLI auth is absent or only non-CLI methods are
+        described. Score 0-1.
+    - id: references_configfile_or_sdk
+      weight: 0.35
+      prompt: >-
+        Does the response cover either (a) the `~/.databrickscfg` profile
+        file with `[DEFAULT]` or named profiles, or (b) the SDK pattern
+        `WorkspaceClient(profile="<name>")` or
+        `WorkspaceClient(host=..., token=...)`? Score 1.0 if either
+        pattern is shown correctly with real field names; 0.5 if
+        mentioned but details are wrong; 0 if absent. Score 0-1.

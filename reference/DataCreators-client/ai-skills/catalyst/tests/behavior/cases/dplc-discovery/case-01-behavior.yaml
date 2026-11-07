@@ -1,0 +1,17 @@
+id: dplc-discovery.case-01-behavior
+skill: skills/dplc-discovery
+type: behavior
+description: >-
+  Phase 2 (Discovery) orchestrator. Must run data discovery + profiling
+  before generating documents (feasibility, requirements, business case,
+  etc.) so artifacts are grounded in real schema/profile facts.
+input:
+  arguments: "Run Phase 2 Discovery for the index data product (sources in cspn_dev1)."
+expected_sequence:
+  - skills/discover-data
+  - skills/data-profiling
+  - skills/feasibility-report
+  - skills/requirements-acceptance-criteria
+strict_order: true
+allow_extra: true
+max_steps: 40

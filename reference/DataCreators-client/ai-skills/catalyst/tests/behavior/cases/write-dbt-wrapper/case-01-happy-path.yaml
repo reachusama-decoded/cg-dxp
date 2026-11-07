@@ -1,0 +1,90 @@
+id: write-dbt-wrapper.case-01-happy-path
+skill: skills/write-dbt-wrapper
+type: artifact
+description: >-
+  Happy-path verification of /write-dbt-wrapper after AICAT-137 + AICAT-138.
+  The emitted wrapper must live at the repo root, use ambient Databricks
+  job-context auth (no required SP secrets), guard against missing __file__,
+  scrub sys.path before invoking dbt, configure --target-path so artifacts
+  persist, and order dbt CLI flags subcommand-first (dbt 1.10+).
+
+input:
+  arguments: >-
+    Write the dbt wrapper for the pricing data product. We're scaffolding a fresh
+    Catalyst-shaped repo and want the wrapper at the canonical location so the
+    product bundle can pull it into its sync set.
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: file_defensive_guard
+      weight: 0.15
+      prompt: >-
+        Does the emitted wrapper include a defensive guard around `__file__`
+        — i.e., an `if "__file__" in globals()` check (or equivalent) with a
+        fallback to `os.environ.get("PROJECT_HOME", ...)` or `os.getcwd()` —
+        so the script loads even when a Databricks spark_python_task execs the
+        content without defining `__file__`?  Score 1 if both the guard and the
+        PROJECT_HOME-or-getcwd fallback are present, 0.5 if only one is, 0 if
+        the wrapper unconditionally references `__file__`.
+
+    - id: sys_path_scrub
+      weight: 0.15
+      prompt: >-
+        Does the wrapper remove its own directory (and/or the dbt project root)
+        from `sys.path` before invoking dbt as a subprocess, to defend against
+        dbt 1.11+ plugin auto-discovery picking up the wrapper file as a plugin
+        module? Score 1 if there is explicit sys.path filtering tied to the
+        wrapper/project directory before the dbt subprocess call, 0.5 if there
+        is a comment-level acknowledgement but no code, 0 if absent.
+
+    - id: target_path_configured
+      weight: 0.15
+      prompt: >-
+        Does the wrapper configure dbt's `--target-path` (or set a
+        `DBT_TARGET_PATH` env var that is then passed through) so that dbt
+        artifacts (`run_results.json`, `manifest.json`, `logs/`) land at a
+        stable, project-relative location instead of ephemeral storage? Score 1
+        if `--target-path` is wired into every dbt invocation, 0.5 if mentioned
+        but not in the invocation, 0 if absent.
+
+    - id: subcommand_first_argv
+      weight: 0.15
+      prompt: >-
+        Are dbt CLI invocations ordered subcommand-first per dbt 1.10+ — i.e.
+        `dbt run --project-dir ...` rather than `dbt --project-dir ... run`?
+        Look at the `run_dbt`/dispatcher code AND any documentation/example
+        invocations in the same emitted output. Score 1 if every invocation
+        puts the subcommand immediately after `dbt`, 0.5 if mixed, 0 if any
+        example uses the pre-1.10 ordering with `--project-dir` ahead of the
+        subcommand.
+
+    - id: ambient_auth_no_required_sp
+      weight: 0.20
+      prompt: >-
+        Does the wrapper hydrate Databricks credentials from the **ambient**
+        job-context API (i.e.,
+        `dbutils.notebook.entry_point.getDbutils().notebook().getContext()`
+        with `apiToken()` / `apiUrl()`) rather than requiring a pre-provisioned
+        secrets scope with `client_id`/`client_secret`?  The secrets-scope path
+        may still be present as a documented opt-in, but it must NOT be the
+        default required path. Score 1 if ambient is the default and no SP
+        credentials are required for the wrapper to run, 0.5 if both paths are
+        offered without a clear default, 0 if SP secrets-scope lookup is the
+        only auth path.
+
+    - id: repo_root_location_and_sync
+      weight: 0.20
+      prompt: >-
+        Does the output (a) place `dbt_wrapper.py` at the **repo root** as the
+        single shared dispatcher for all data products, and (b) explain that
+        each product bundle pulls it in via `sync.paths: ../../dbt_wrapper.py`?
+        The filename must be exactly `dbt_wrapper.py` (not `main.py`, not
+        product-scoped). Score 1 if both location AND the sync-paths mechanism
+        are clearly stated, 0.5 if one but not both, 0 if the wrapper is placed
+        under `data_products/<product>/python/` or
+        `data-products/<domain>/datasets/<product>/`.

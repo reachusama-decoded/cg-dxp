@@ -1,0 +1,39 @@
+id: behavior-test-triage.case-01-happy-path
+skill: skills/behavior-test-triage
+type: artifact
+description: >-
+  Happy-path case. Run behavior-test triage for a release, create a Jira epic
+  and per-finding tickets in AICAT, back-link GitHub issues, and update the
+  Confluence triage page. Verifies the skill orchestrates the full workflow and
+  produces a structured summary. Requires JIRA_URL, JIRA_USERNAME,
+  JIRA_API_TOKEN, CONFLUENCE_URL, CONFLUENCE_USERNAME, CONFLUENCE_API_TOKEN,
+  and TEST_CONFLUENCE_PAGE_ID env vars for live integration.
+input:
+  arguments: >-
+    Run behavior-test triage for version ai-catalyst-1.7.0.
+    Confluence page ID: ${TEST_CONFLUENCE_PAGE_ID}.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: triage_steps_present
+    weight: 0.4
+    prompt: >-
+      Does the output show evidence of key triage steps: running bin/bt triage,
+      creating a Jira epic, creating per-finding tickets, back-linking GitHub
+      issues, and updating Confluence? The output must contain at least one
+      real AICAT ticket key matching the pattern "AICAT-" followed by digits
+      (not a placeholder like AICAT-XXX). Score 0-1.
+  - id: summary_complete
+    weight: 0.4
+    prompt: >-
+      Does the output include a triage summary with: version, an epic key
+      matching "Epic: AICAT-" followed by digits, ticket count, and a
+      breakdown by failure type? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: >-
+      Output free of [TBD], [fill in], lorem-ipsum stubs, or placeholder
+      ticket keys like AICAT-XXX? Score 0-1.

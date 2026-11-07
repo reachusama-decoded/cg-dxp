@@ -1,0 +1,36 @@
+.git
+.DS_Store
+airflow_settings.yaml
+__pycache__/
+astro
+.venv
+airflow-webserver.pid
+webserver_config.py
+airflow.cfg
+airflow.db
+*.env
+.worktrees/
+
+# Generated runtime outputs
+**/logs/
+**/dbt_packages/
+data_products/**/target/
+challenges/**/target/
+# Authoring-only links into the course (.devcontainer/authoring/link-courseware.sh)
+challenges/courseware/
+# dbt writes an anonymous-usage id file into the project dir; it is per-machine.
+**/.user.yml
+.databricks
+.devcontainer/verify/
+
+# Local test shim(s)
+.local_bin/
+
+# Isolated v2 learner/verification workspaces and local tool environments
+.local/
+# CG capstone products are learner work with their own Git repositories
+data_products/cg_public_products_*/
+data_products/.cg_public_products_*.preparing/
+.pytest_cache/
+**/*.duckdb
+**/*.duckdb.wal

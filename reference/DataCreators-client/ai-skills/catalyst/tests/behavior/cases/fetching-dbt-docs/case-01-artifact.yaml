@@ -1,0 +1,43 @@
+id: fetching-dbt-docs.case-01-artifact
+skill: skills/fetching-dbt-docs
+type: artifact
+description: >-
+  Smoke test for vendored dbt-labs skill. Verifies the skill loads and
+  produces non-empty Catalyst-shaped output (dbt Core only, no Cloud /
+  Fusion / MCP references).
+
+input:
+  arguments: "fetch dbt docs"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: returns_dbt_doc_url
+      weight: 0.35
+      prompt: >-
+        Does the response return a real dbt documentation URL
+        (`docs.getdbt.com/...`) rather than fabricating documentation
+        content as if it were the authoritative source? Score 1.0 if
+        a `docs.getdbt.com` URL is provided and the user is directed
+        there; 0.5 if the dbt docs site is referenced by name but
+        without a specific URL; 0 if the response invents content that
+        impersonates official dbt docs, or returns a URL from a
+        different domain. Score 0-1.
+    - id: scoped_to_dbt_core
+      weight: 0.35
+      prompt: >-
+        Does the response stay scoped to dbt Core CLI documentation
+        and avoid referencing dbt Cloud-specific features (dbt Cloud
+        IDE, dbt Explorer, dbt Fusion, Cloud Scheduler, or dbt Cloud
+        API endpoints)? Score 1.0 if there are no dbt Cloud-specific
+        references; 0 if any dbt Cloud-specific feature is presented
+        as part of the documented workflow. Score 0-1.

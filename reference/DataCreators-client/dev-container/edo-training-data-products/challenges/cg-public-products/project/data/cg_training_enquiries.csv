@@ -1,0 +1,8 @@
+enquiry_id,product_id,metric,business_date,knowledge_cutoff
+oct_before,cusip:14020G101,training_fee_bps,2026-10-02,2026-10-10T09:30:00Z
+oct_after,cusip:14020G101,training_fee_bps,2026-10-02,2026-10-10T10:30:00Z
+sep_before,cusip:14020G101,training_fee_bps,2026-09-20,2026-10-10T10:30:00Z
+sep_after,cusip:14020G101,training_fee_bps,2026-09-20,2026-10-10T11:30:00Z
+sep_boundary,cusip:14020G101,training_fee_bps,2026-09-15,2026-10-10T11:00:00Z
+oct_boundary,cusip:14020G101,training_fee_bps,2026-10-01,2026-10-10T11:30:00Z
+before_coverage,cusip:14020G101,training_fee_bps,2026-08-31,2026-10-10T11:30:00Z

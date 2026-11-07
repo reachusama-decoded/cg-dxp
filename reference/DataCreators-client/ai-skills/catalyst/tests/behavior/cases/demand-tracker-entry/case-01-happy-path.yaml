@@ -1,0 +1,34 @@
+id: demand-tracker-entry.case-01-happy-path
+skill: skills/demand-tracker-entry
+type: artifact
+description: 'Bootstrap happy-path case. Create a demand tracker entry capturing requestor, classification,
+  priority,
+
+  and lifecycle state. Use when the user asks to "log new demand", "create a
+
+  demand entry", "register this request", "add to the demand tracker", or
+
+  "triage this data product request".'
+input:
+  arguments: 'Log demand for an employee directory data product. Requesting team: HR Analytics.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/demand-tracker-entry/templates/demand-tracker-entry.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Create a demand
+      tracker entry capturing requestor, classification, priority,
+
+      and lifecycle state. Use when the user asks to "log new demand"''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

@@ -1,0 +1,28 @@
+id: dplc-build.case-02-prototype-mode
+skill: skills/dplc-build
+type: behavior
+description: >-
+  Phase 4 (Build) orchestrator in prototype mode. /build-preflight
+  detects no .dplc/ artifacts and routes to a lite flow: scaffold + one
+  file-driven model + skip artifact skills + emit promote-to-production
+  checklist.
+
+input:
+  arguments: "Run Phase 4 Build in prototype mode for a fresh CSV file at workspace/samples/index.csv. No DPLC artifacts yet."
+
+expected_sequence:
+  - skills/build-preflight
+  - skills/setup-dbt-project
+  - skills/configure-sql-warehouse
+  - skills/write-dbt-wrapper
+  - skills/setup-databricks-asset-bundle
+  - skills/dbt-best-practices
+  - skills/source-aligned                # existing — handles CSV-driven authoring
+  - skills/run-dbt-on-databricks
+
+strict_order: false
+allow_extra: true
+max_steps: 40
+# Note: in prototype mode, artifact skills (unit-test-report,
+# integration-test-report, code-review-sign-off, build-checklist)
+# are NOT invoked. The expected_sequence intentionally omits them.

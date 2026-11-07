@@ -1,0 +1,111 @@
+<!-- Catalyst product release comms template — for Catalyst platform releases (new skills, fixes, improvements). Not for data product releases. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Catalyst v1.13.0 Release Notes</title>
+</head>
+<body style="margin:0;padding:32px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Avenir Next',Avenir,sans-serif;color:#333333;">
+
+<div style="max-width:600px;margin:0 auto;">
+
+  <!-- Header -->
+  <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#009CDC;">AI Catalyst</p>
+  <h1 style="margin:0 0 4px 0;font-size:22px;font-weight:700;color:#00294B;">v1.13.0 &mdash; Check You Can Build Before You Start</h1>
+  <p style="margin:0 0 20px 0;font-size:13px;color:#888888;">September 23, 2026</p>
+
+  <!-- Intro -->
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">Four things in v1.13.0, aimed squarely at the first hour with Catalyst:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>/dplc-preflight</strong> &mdash; find out whether you can actually build, before you author anything</li>
+    <li style="margin-bottom:4px;"><strong>Guided onboarding</strong> &mdash; the concierge now walks you in if you are new or unsure</li>
+    <li style="margin-bottom:4px;"><strong>/setup-workspace</strong> &mdash; get your machine ready without guesswork</li>
+    <li style="margin-bottom:4px;"><strong>Usage reporting</strong> &mdash; set up for you, so we can see which skills are worth investing in</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 1 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">1. /dplc-preflight &mdash; Can I actually build here?</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Catalyst can now answer the four questions people most often cannot answer about their own setup, by checking rather than asking: can you run Catalyst at all, which Databricks workspace are you pointed at (and which others do you have), do you genuinely have access, and where would your data product go.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    It works on a machine where nothing is installed yet &mdash; that is the point of a pre-flight. When something is missing it tells you which skill fixes it and hands you there. When you are authenticated but cannot see any catalogs, it says plainly that this is an access grant you do not have, rather than sending you round the setup skills for something no local change will fix.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;color:#555555;">Read-only by design: it looks and reports, never installs, authenticates, or edits your Databricks config, and it never prints a secret. Run <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/dplc-preflight</code> any time, or let the concierge run it for you.</p>
+
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>NKV</strong> for originating this and the guided onboarding below.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 2 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">2. Guided onboarding &mdash; Two ways in, not one</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    If you know what you want, the concierge stays as direct as it was. If you are new or unsure, it now asks in plain words what you are trying to build &mdash; never &ldquo;which lifecycle phase are you in&rdquo; &mdash; offers a short orientation without insisting on it, checks your environment before handing you off, and moves one step at a time.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;color:#555555;">It also knows the platform exists now. Ask it which workspace you should use, or say that nothing works, and it routes you somewhere useful instead of to a lifecycle question.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 3 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">3. /setup-workspace &mdash; Get the machine ready</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Prepares a local machine to run Catalyst: a supported Python, pip pointed at the internal package mirror, the dependencies installed, and <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">git</code>/<code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">gh</code> if you want them.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;color:#555555;">It works through a package manager you already have and will guide you rather than install one. It never runs an installer piped from the internet, and it backs up your pip config before touching it &mdash; and only ever changes the one line it needs to.</p>
+
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>SMRDLP</strong> for this contribution &mdash; hopefully someone can DM you on LinkedIn and let you know. Good luck with your school year.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 4 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">4. Usage reporting &mdash; Set up for you</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Catalyst reports how it is being used, so the EDO team can see which skills are earning their keep and where people get stuck. For most people there is nothing to do &mdash; the concierge sets it up and checks it, and <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/dplc-preflight</code> will tell you whether yours is working.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    <strong>What is reported:</strong> which skills you used, which model answered, and any errors &mdash; enough to keep Catalyst healthy and to know what is worth investing in.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;">
+    <strong>What is not reported:</strong> what you typed, what came back, or your code.
+  </p>
+
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>KXY</strong> and <strong>RBLW</strong> for the telemetry work this builds on.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Also shipped -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">Also shipped</p>
+  <ul style="margin:0 0 12px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>Install as a plugin</strong> &mdash; Catalyst can now be added in Claude Code as a plugin marketplace rather than by copying files around.</li>
+    <li style="margin-bottom:4px;"><strong>/astronomer-update-base-deployment</strong> &mdash; update an Astronomer base deployment, with applying changes an explicit choice rather than the default.</li>
+    <li style="margin-bottom:4px;"><strong>Getting Started FAQ</strong> &mdash; the questions new users actually ask, published to the docs site and mirrored to Confluence.</li>
+  </ul>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>AGGB</strong> and <strong>MSTP</strong> for contributing these, and to <strong>CONNMS</strong> and <strong>NKV</strong> for the review work across this release.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Boilerplate: do not change -->
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;"><strong>Keeping Your Plugin Up to Date</strong> &mdash; No reinstall needed either way.</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>VS Code</strong> &mdash; <strong>Cmd+Shift+P</strong> &rarr; &ldquo;Developer: Reload Window&rdquo;, or click the refresh icon in the Agent Plugins panel.</li>
+    <li style="margin-bottom:4px;"><strong>Claude Code</strong> &mdash; <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/plugin marketplace update catalyst</code>, then <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/plugin update ai-catalyst@catalyst</code>. Updates apply when you start a new session, not mid-session.</li>
+  </ul>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;"><strong>Share Your Feedback</strong> &mdash; Type <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> in Copilot Chat to share what worked, what didn&rsquo;t, or what could be better. The more specific you are (&ldquo;expected X, got Y&rdquo;), the faster we can act.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 16px 0;" />
+
+  <!-- Footer: update release link each time -->
+  <!-- NOTE: release tag is unprefixed (e.g. 1.8.0, not v1.8.0) — different token from vX.Y.Z used in the title/body above; don't sweep it into a version find-replace -->
+  <p style="margin:0 0 6px 0;font-size:13px;">Full release notes &rarr; <a href="https://github.com/cg-open-itg/catalyst/releases/tag/1.13.0" style="color:#005F9E;font-weight:600;">Read Release Notes</a></p>
+  <p style="margin:0 0 6px 0;font-size:13px;">Still new to Catalyst? &rarr; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011" style="color:#005F9E;font-weight:600;">Get Started</a></p>
+  <p style="margin:0 0 6px 0;font-size:13px;">Getting Started FAQ &rarr; <a href="https://cg-open-itg.github.io/catalyst/getting-started-faq.html" style="color:#005F9E;font-weight:600;">Read the FAQ</a></p>
+  <p style="margin:0 0 20px 0;font-size:13px;">Questions or need a hand? &rarr; <a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe" style="color:#005F9E;font-weight:600;">Join Catalyst Launchpad</a></p>
+  <p style="margin:0;font-size:13px;color:#aaaaaa;">===</p>
+
+</div>
+
+</body>
+</html>

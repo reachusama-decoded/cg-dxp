@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://marketplace-service.datalake.aws.capgroup.com/api/v1/marketplace/table/view-access",
+    "post_data": "{\"items\":[{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_audit\"],\"platform\":\"CASPIAN\"},{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_current\"],\"platform\":\"CASPIAN\"},{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_audit\"],\"platform\":\"CASPIAN\"},{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_current\"],\"platform\":\"CASPIAN\"}]}"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+      "pragma": "no-cache",
+      "access-control-allow-credentials": "true",
+      "x-content-type-options": "nosniff",
+      "expires": "0",
+      "access-control-allow-origin": "https://marketplace.capgroup.com",
+      "date": "Thu, 30 Apr 2026 00:41:41 GMT",
+      "x-xss-protection": "0",
+      "content-type": "application/json",
+      "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+      "x-frame-options": "DENY"
+    },
+    "body": "{\"items\":[{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_current\"],\"access\":true,\"entitlements\":[{\"name\":\"CPZ_PRD_AA00002933_IM_MGRTRANSPOS_READ\",\"displayName\":null}]},{\"viewPath\":[\"investment_management\",\"investment_transaction_position\",\"portfolio_position\",\"cg_positions_gp_v4_audit\"],\"access\":true,\"entitlements\":[{\"name\":\"CPZ_PRD_AA00002933_IM_MGRTRANSPOS_READ\",\"displayName\":null}]}]}"
+  }
+}

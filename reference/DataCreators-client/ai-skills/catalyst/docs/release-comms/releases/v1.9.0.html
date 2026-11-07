@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Catalyst v1.9.0 Release Notes</title>
+</head>
+<body style="margin:0;padding:32px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Avenir Next',Avenir,sans-serif;color:#333333;">
+
+<div style="max-width:600px;margin:0 auto;">
+
+  <!-- Header -->
+  <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#009CDC;">AI Catalyst</p>
+  <h1 style="margin:0 0 4px 0;font-size:22px;font-weight:700;color:#00294B;">v1.9.0 &mdash; GA: End-to-End Data Product Lifecycle</h1>
+  <p style="margin:0 0 20px 0;font-size:13px;color:#888888;">June 29, 2026</p>
+
+  <!-- GA blurb -->
+  <p style="margin:0 0 12px 0;font-size:15px;line-height:1.7;"><strong>This is the AI Catalyst GA release.</strong> Every required phase to take a data product end-to-end through the Data Product Lifecycle &mdash; from intake and discovery, through design, build, validate, and publish &mdash; is now supported by a live orchestrator. With the new <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/deploy-dab</code> skill closing the build inner loop, you can now create, validate, <strong>and</strong> deploy a data product without leaving Copilot Chat.</p>
+
+  <!-- What's new -->
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">What&rsquo;s new in v1.9.0:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>/deploy-dab</strong> &mdash; new skill that deploys your Databricks Asset Bundle to your own dev space, closing the Phase 4 build-and-deploy inner loop</li>
+    <li style="margin-bottom:4px;"><strong>DAG standards, ratified</strong> &mdash; <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/generate-dag</code> and <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/validate-dag</code> now align to the published RFD 0011 Airflow DAG standard</li>
+    <li style="margin-bottom:4px;"><strong>Reliability fixes</strong> &mdash; Confluence publishing and the behavior-test harness are more dependable</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 1 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">1. /deploy-dab &mdash; Deploy Your Bundle to Your Dev Space</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    After <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/setup-databricks-asset-bundle</code> authors your bundle and <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/validate-dbt</code> gives it the green light, <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/deploy-dab</code> pushes it to your <strong>own dev space</strong> &mdash; one data product per run. It validates the bundle, deploys it, and hands you direct links to the deployed job and pipeline. It can also tear a local deploy back down on request, behind an explicit confirmation.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">This closes the Phase 4 inner loop: build &rarr; validate &rarr; deploy, all in Copilot Chat. Shared and production deploys remain CI/CD&rsquo;s job &mdash; this is your personal dev iteration loop.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 2 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">2. DAG Standards, Ratified (RFD 0011)</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    The Airflow DAG standard is now published, and both <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/generate-dag</code> and <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/validate-dag</code> are aligned to it. DAGs you generate and the compliance reports you get back now cite the same ratified rule set, so what you build and what you audit against stay in lockstep.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">If you author or review Airflow DAGs, your generated scaffolding and audit findings are now grounded in the published standard.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- What's next -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#00294B;">What&rsquo;s next</p>
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;">With the core create-to-publish path now GA, our focus shifts to maturing the back half of the lifecycle and sharpening what&rsquo;s already shipped:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>Operate &amp; Evolve phases</strong> &mdash; promoting today&rsquo;s leaf skills (runbooks, incident logs, deprecation notices, usage analytics) into full phase orchestrators, so the last two lifecycle phases match the rest</li>
+    <li style="margin-bottom:4px;"><strong>Feedback-driven refinement</strong> &mdash; folding your <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> into improvements on the skills you already use every day</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Platform note -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">A note on platforms</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;">This GA release is validated primarily on <strong>macOS</strong>. Windows users can use Catalyst, but may hit gaps in the technical prerequisites for some skills &mdash; for example, available laptop memory and compute, local tooling setup, and environment configuration. We&rsquo;re actively closing those gaps &mdash; if you&rsquo;re on Windows and something doesn&rsquo;t work, please tell us via <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code>.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Also shipped -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">Also shipped</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>Confluence publishing fix</strong> &mdash; corrected the page-update URL so automated Confluence updates (e.g. triage pages) publish reliably</li>
+    <li style="margin-bottom:4px;"><strong>Behavior-test harness</strong> &mdash; added the <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">stdout_contains</code> structural check for more precise skill testing (Catalyst dev team)</li>
+    <li style="margin-bottom:4px;"><strong>Standards &amp; docs</strong> &mdash; RFD 0006 marked published, plus <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/validate-dbt</code> documentation polish (Catalyst dev team)</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Keeping up to date + Feedback -->
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;"><strong>Keeping Your Plugin Up to Date</strong> &mdash; No reinstall needed. <strong>Cmd+Shift+P</strong> &rarr; &ldquo;Developer: Reload Window&rdquo;, or click the refresh icon in the Agent Plugins panel.</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;"><strong>Share Your Feedback</strong> &mdash; Type <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> in Copilot Chat to share what worked, what didn&rsquo;t, or what could be better. The more specific you are (&ldquo;expected X, got Y&rdquo;), the faster we can act &mdash; and it now lands in a tracked ticket.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 16px 0;" />
+
+  <!-- Footer -->
+  <p style="margin:0 0 6px 0;font-size:13px;">Full release notes &rarr; <a href="https://github.com/cg-open-itg/catalyst/releases/tag/1.9.0" style="color:#005F9E;font-weight:600;">Read Release Notes</a></p>
+  <p style="margin:0 0 20px 0;font-size:13px;">Still new to Catalyst? &rarr; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011" style="color:#005F9E;font-weight:600;">Get Started</a></p>
+
+  <p style="margin:0;font-size:13px;color:#aaaaaa;">===</p>
+
+</div>
+
+</body>
+</html>

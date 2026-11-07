@@ -1,0 +1,37 @@
+id: data-quality-controls-plan.case-01-happy-path
+skill: skills/data-quality-controls-plan
+type: artifact
+description: 'Bootstrap happy-path case. Propose a focused, prioritised set of DQ
+  controls from data-profiling findings + business requirements, each mapped to a
+  named EDGC rule pattern with a DQ dimension, a monitoring action (STOP/WARN/At-Rest)
+  and rationale, and a DQ Next (DQF) check; hands off to the data contract''s Data
+  Quality Rules table.'
+input:
+  arguments: 'Plan DQ controls for a client master data product. Target table:
+    ${TEST_CATALOG}.${TEST_SCHEMA}.client_master. Profiling found client_id null_rate 0%
+    and distinct == row_count; email null_rate 3.2%; country_code has 12 distinct values;
+    updated_at is a daily timestamp. Business requirement: client_id must never be null.
+    Keep the rule set focused - do not create a rule for every column.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/data-quality-controls-plan/templates/data-quality-controls-plan.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output propose a focused, prioritised set of DQ controls justified by
+      the profiling signals and the business requirement (a Proposed DQ Controls table), rather
+      than one rule per column? Score 0-1.'
+  - id: format_conformant
+    weight: 0.3
+    prompt: 'Does the output follow the template structure (Scope, Profiling Evidence, Proposed
+      DQ Controls with EDGC Rule Pattern / Granularity / DQ Next Check / Action / Rationale /
+      Severity columns, Handoff)? Score 0-1.'
+  - id: edgc_alignment_and_action
+    weight: 0.3
+    prompt: 'Is every control mapped to a named EDGC rule pattern and exactly one EDGC dimension
+      {Accuracy, Completeness, Conformity, Consistency, Duplication, Integrity, Timeliness},
+      and does every control carry a monitoring action (STOP/WARN/At-Rest) AND a rationale, with
+      the client_id rule set to Critical + STOP per the business requirement? Score 0-1.'

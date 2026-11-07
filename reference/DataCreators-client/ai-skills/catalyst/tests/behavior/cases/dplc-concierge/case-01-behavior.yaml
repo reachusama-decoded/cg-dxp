@@ -1,0 +1,14 @@
+id: dplc-concierge.case-01-behavior
+skill: skills/dplc-concierge
+type: behavior
+description: >-
+  Concierge entry point. Given a "start a new data product" intent, the
+  concierge should route to dplc-design-stage. We allow_extra so the
+  concierge may also invoke dplc-prereq, etc., as part of the route.
+input:
+  arguments: "I need to start a new data product from scratch."
+expected_sequence:
+  - skills/dplc-design-stage
+strict_order: false
+allow_extra: true
+max_steps: 30

@@ -1,0 +1,37 @@
+id: troubleshoot-dbt-on-databricks.case-01-artifact
+skill: skills/troubleshoot-dbt-on-databricks
+type: artifact
+description: 'SSL cert / CA cert failure case. Diagnose a dbt deps SSL error and
+  prescribe the fix. Use when the user says "my dbt deps failed", "dbt deps ssl error",
+  "dbt task timed out", "bitemporal_load_v2 not found", or "warehouse not running".'
+input:
+  arguments: >
+    My dbt deps task is failing with an SSL cert error. What do I check first?
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: requests_ca_bundle_cited
+    weight: 0.35
+    prompt: >
+      Does the output explicitly mention REQUESTS_CA_BUNDLE as the environment
+      variable to check or set? Score 0-1.
+  - id: cgrepo_cited
+    weight: 0.35
+    prompt: >
+      Does the output reference cgrepo-aws.capgroup.com (or cgrepo.capgroup.com)
+      as the internal pip mirror that must be used instead of public PyPI?
+      Score 0-1.
+  - id: diagnostic_step_present
+    weight: 0.2
+    prompt: >
+      Does the output include a concrete diagnostic step (e.g., grep dbt_wrapper.py
+      for REQUESTS_CA_BUNDLE, inspect task logs, check ssl.SSLCertVerificationError)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.1
+    prompt: >
+      Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where
+      data was expected? Score 0-1.

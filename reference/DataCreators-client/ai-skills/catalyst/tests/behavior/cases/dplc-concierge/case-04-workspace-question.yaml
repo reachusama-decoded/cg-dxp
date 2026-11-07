@@ -1,0 +1,17 @@
+id: dplc-concierge.case-04-workspace-question
+skill: skills/dplc-concierge
+type: behavior
+description: >-
+  The core "zero-to-one" ask: a user does not know which Databricks workspace
+  they should use. The concierge must route to dplc-preflight, which detects the
+  configured workspaces rather than assuming the user already knows theirs.
+  Before this case existed the concierge never mentioned Databricks at all and
+  had no route for this question. allow_extra since the concierge may greet or
+  scan for artifacts before handing off.
+input:
+  arguments: "I don't know which Databricks workspace I'm supposed to use, or whether I even have access. Where do I start?"
+expected_sequence:
+  - skills/dplc-preflight
+strict_order: false
+allow_extra: true
+max_steps: 30

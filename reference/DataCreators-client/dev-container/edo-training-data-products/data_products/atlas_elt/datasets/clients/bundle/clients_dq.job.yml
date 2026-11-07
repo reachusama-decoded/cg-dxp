@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    clients_dq_job:
+      name: clients_dq_job
+      email_notifications:
+        on_failure:
+          - "Insert distribution list email address here"
+      tasks:
+        - task_key: deequ_verify_task
+          notebook_task:
+            notebook_path: ${workspace.root_path}/files/data_products/${var.data_product_name}/datasets/clients/runtime/dq_verify
+            base_parameters:
+              application_name: edo-training-data-products
+              dataset_name: atlas_clients_base
+              ruleset_name: atlas_clients_base
+              rule_group: Daily
+              schema: "${var.app_catalog}.${var.target_schema}"
+              table: "clients"
+              env: ${var.env}
+              default_catalog: ${var.default_catalog}
+              default_schema: ${var.default_schema}
+          libraries:
+            - jar: ${var.deequ_jar_path}
+          existing_cluster_id: ${var.dev_cluster_id}

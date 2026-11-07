@@ -1,0 +1,34 @@
+id: product-requirements-document.case-01-happy-path
+skill: skills/product-requirements-document
+type: artifact
+description: 'Bootstrap happy-path case. Create a comprehensive product requirements document covering
+  business context,
+
+  functional requirements, data requirements, and acceptance criteria. Use when
+
+  the user asks to "write the PRD", "document the requirements", "create the
+
+  product spec", or "define what we are building".'
+input:
+  arguments: 'Produce the PRD for an employee directory data product. Audience: HR analytics + workforce
+    planning.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Create a comprehensive
+      product requirements document covering business context,
+
+      functional requirements, data requirements, and acceptance c''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

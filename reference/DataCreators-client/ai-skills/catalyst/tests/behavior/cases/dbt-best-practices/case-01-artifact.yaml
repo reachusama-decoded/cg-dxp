@@ -1,0 +1,35 @@
+id: dbt-best-practices.case-01-artifact
+skill: skills/dbt-best-practices
+type: artifact
+description: >-
+  Verifies /dbt-best-practices loads and produces guidance citing RFD 0008
+  rules + pattern references. Caller asks "what materialization should I use
+  for a staging model?" and expects guidance referencing both RFD 0008 and
+  the prototype-grounded patterns.
+
+input:
+  arguments: "What materialization should I use for a staging model on Databricks?"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: cites_rfd_0008
+      weight: 0.4
+      prompt: >-
+        Does the response cite or reference RFD 0008 SQL rules (e.g.,
+        SQL-NAMING-001, SQL-MODEL-004, or by category like SQL-INCR)?
+        Score 0-1.
+    - id: pattern_aware
+      weight: 0.3
+      prompt: >-
+        Does the response reference the pattern abstraction (source-wrapper,
+        bitemporal-incremental, audit columns, etc.) or the .catalyst-build.yml
+        pattern binding? Score 0-1.
+    - id: mode_aware
+      weight: 0.3
+      prompt: >-
+        Does the response distinguish between prototype-mode and
+        production-mode severity (or recommendations)? Score 0-1.

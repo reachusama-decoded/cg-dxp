@@ -1,0 +1,29 @@
+id: dplc-build.case-01-production
+skill: skills/dplc-build
+type: behavior
+description: >-
+  Phase 4 (Build) orchestrator in production mode. Must invoke
+  build-preflight, then (if fresh) infrastructure-setup leaves, then
+  per-model authoring leaves + run-dbt-on-databricks + artifact skills,
+  and finally check the Phase 4 gate.
+
+input:
+  arguments: "Run Phase 4 Build for the index data product in production mode. Phase 1-3 artifacts are present at .dplc/."
+
+expected_sequence:
+  - skills/build-preflight
+  - skills/setup-dbt-project
+  - skills/configure-sql-warehouse
+  - skills/write-dbt-wrapper
+  - skills/setup-databricks-asset-bundle
+  - skills/setup-monitoring-and-logging
+  - skills/dbt-best-practices
+  - skills/run-dbt-on-databricks
+  - skills/unit-test-report
+  - skills/integration-test-report
+  - skills/code-review-sign-off
+  - skills/build-checklist
+
+strict_order: false
+allow_extra: true
+max_steps: 60

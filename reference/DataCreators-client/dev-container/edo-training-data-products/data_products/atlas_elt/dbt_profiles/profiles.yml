@@ -1,0 +1,45 @@
+atlas_elt:
+  target: local
+  outputs:
+    local:
+      type: databricks
+      method: http
+      catalog: "{{ var('app_catalog', 'training_dev') }}"
+      schema: "{{ env_var('DATABRICKS_SCHEMA', var('target_schema', env_var('USER', 'dbt_user'))) }}"
+      http_path: "{{ env_var('DBT_HTTP_PATH', var('http_path', '/sql/1.0/warehouses/a0e57263293aee36')) }}"
+      host: "{{ env_var('DBT_HOST', env_var('DATABRICKS_HOST', 'https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com')) }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', env_var('DATABRICKS_TOKEN', 'MISSING_run__mise_run_setup_databricks')) }}"
+      # Why: dbt-databricks converts result sets through pandas by default. On this
+      # image (Python 3.13 + databricks-sql-connector + pyarrow) that conversion
+      # segfaults the interpreter (exit 139) on the first query that returns rows,
+      # with no error message. Every other profile in this repo already disables it.
+      connection_parameters:
+        _disable_pandas: true
+    dev:
+      type: databricks
+      method: http
+      catalog: "{{ var('app_catalog', 'training_dev') }}"
+      schema: "{{ env_var('DATABRICKS_SCHEMA', var('target_schema', env_var('USER', 'dbt_user'))) }}"
+      http_path: "{{ env_var('DBT_HTTP_PATH', var('http_path', '/sql/1.0/warehouses/a0e57263293aee36')) }}"
+      host: "{{ env_var('DBT_HOST', env_var('DATABRICKS_HOST', 'https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com')) }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', env_var('DATABRICKS_TOKEN', 'MISSING_run__mise_run_setup_databricks')) }}"
+      # Why: dbt-databricks converts result sets through pandas by default. On this
+      # image (Python 3.13 + databricks-sql-connector + pyarrow) that conversion
+      # segfaults the interpreter (exit 139) on the first query that returns rows,
+      # with no error message. Every other profile in this repo already disables it.
+      connection_parameters:
+        _disable_pandas: true
+    dev7:
+      type: databricks
+      method: http
+      catalog: "{{ var('app_catalog', 'training_dev') }}"
+      schema: "{{ env_var('DATABRICKS_SCHEMA', var('target_schema', env_var('USER', 'dbt_user'))) }}"
+      http_path: "{{ env_var('DBT_HTTP_PATH', var('http_path', '/sql/1.0/warehouses/a0e57263293aee36')) }}"
+      host: "{{ env_var('DBT_HOST', env_var('DATABRICKS_HOST', 'https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com')) }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', env_var('DATABRICKS_TOKEN', 'MISSING_run__mise_run_setup_databricks')) }}"
+      # Why: dbt-databricks converts result sets through pandas by default. On this
+      # image (Python 3.13 + databricks-sql-connector + pyarrow) that conversion
+      # segfaults the interpreter (exit 139) on the first query that returns rows,
+      # with no error message. Every other profile in this repo already disables it.
+      connection_parameters:
+        _disable_pandas: true

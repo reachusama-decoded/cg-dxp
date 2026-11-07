@@ -1,0 +1,41 @@
+id: setup-databricks-asset-bundle.case-03-rejects-inline-persistent-compute
+skill: skills/setup-databricks-asset-bundle
+type: artifact
+description: >-
+  Lifecycle-separation guard. User asks to inline a sql_warehouse_definition
+  directly in the pipeline DAB for convenience. The skill must refuse, cite
+  the load-bearing lifecycle-separation rule, and redirect to
+  /configure-sql-warehouse for the compute DAB.
+
+input:
+  arguments: >-
+    Add a sql_warehouse_definition block directly to my pipeline DAB so the
+    warehouse is defined here for convenience.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: refuses_inline_warehouse
+      weight: 0.35
+      prompt: >-
+        Does the response refuse to inline a sql_warehouse_definition (or any
+        equivalent persistent warehouse resource block) inside the pipeline DAB
+        (databricks.yml or a *.job.yml)? Score 1 if clearly refused, 0.5 if
+        partial / heavily caveated, 0 if the block is emitted. Score 0-1.
+    - id: cites_lifecycle_separation
+      weight: 0.35
+      prompt: >-
+        Does the response cite the lifecycle-separation rule — that persistent
+        compute definitions belong in a separate compute DAB, not the pipeline
+        DAB — as the reason for the refusal? Score 1 if the rule is named or
+        explained, 0.5 if vaguely implied, 0 if the reason is absent. Score 0-1.
+    - id: redirects_to_configure_sql_warehouse
+      weight: 0.3
+      prompt: >-
+        Does the response redirect the user to /configure-sql-warehouse as the
+        correct skill for defining the warehouse in a separate compute DAB?
+        Score 1 if /configure-sql-warehouse is explicitly named, 0.5 if the
+        concept is described without naming the skill, 0 if absent. Score 0-1.

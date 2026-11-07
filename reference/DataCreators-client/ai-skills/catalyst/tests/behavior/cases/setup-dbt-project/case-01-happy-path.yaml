@@ -1,0 +1,87 @@
+id: setup-dbt-project.case-01-happy-path
+skill: skills/setup-dbt-project
+type: artifact
+description: >-
+  Happy-path test covering AICAT-140 (Catalyst datasets/+shared/ directory
+  layout, mode-aware target-path and per-layer schemas) and AICAT-141
+  (OAuth U2M dev target for prototype-mode local iteration; M2M prod
+  target for production; DBX-SEC-002 governs the executing identity for
+  production paths, not the token type). Triggered when a user scaffolds
+  a new dbt project in prototype mode.
+
+input:
+  arguments: >-
+    Scaffold a dbt project for the bloomberg-corp-pfd-asia data product.
+    Build mode is prototype against my personal Databricks sandbox — I have
+    already run `databricks auth login` and I do NOT have a service
+    principal client_id/client_secret yet. App catalog: rbap-sandbox.
+    Product name: bloomberg-corp-pfd-asia. Source system: bloomberg.
+    Show the emitted dbt_project.yml and profiles.yml in full and explain
+    which target I should use for prototype iteration and which one for
+    eventual production promotion.
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: catalyst_directory_layout
+      weight: 0.25
+      prompt: >-
+        Does the emitted dbt_project.yml use the Catalyst data-product layout
+        with model-paths: ["datasets"] (NOT ["models"]) and the shared/<dir>
+        structure — seed-paths: ["shared/seeds"], test-paths: ["shared/tests"],
+        snapshot-paths: ["shared/snapshots"], analysis-paths: ["shared/analyses"],
+        and macro-paths that includes both "macros" and "shared/macros"?
+        Score 1 if all six entries match, 0.5 if half are present, 0 if the
+        old flat layout (models/, seeds/, tests/, ...) is emitted instead.
+
+    - id: prototype_mode_defaults
+      weight: 0.20
+      prompt: >-
+        For prototype mode against a developer sandbox, does the emitted
+        dbt_project.yml use a local target-path (e.g., target-path: "target")
+        rather than a UC Volume path, AND omit per-layer +schema: overrides
+        (raw_*/stnd_*) so a single sandbox schema is used? Score 1 if both
+        conditions hold, 0.5 if one is met, 0 if neither.
+
+    - id: profiles_u2m_dev_target
+      weight: 0.25
+      prompt: >-
+        Does the emitted profiles.yml include a `dev` target with
+        `auth_type: oauth` AND no `client_id` or `client_secret` fields
+        (so dbt-databricks falls through to the developer's cached
+        `databricks auth login` U2M token)? Score 1 if both conditions hold,
+        0.5 if auth_type: oauth is present but client_id/client_secret are
+        still in the dev target, 0 if no U2M target exists.
+
+    - id: profiles_m2m_prod_target
+      weight: 0.15
+      prompt: >-
+        Does the emitted profiles.yml retain a service-principal M2M target
+        for production (a `prod` or `prd` target with `auth_type: oauth`
+        plus `client_id: "{{ env_var('DBX_CLIENT_ID') }}"` and
+        `client_secret: "{{ env_var('DBX_CLIENT_SECRET') }}"`)? Score 1 if
+        present, 0 if removed.
+
+    - id: mode_aware_default_target
+      weight: 0.10
+      prompt: >-
+        Does the response explain that the default `target:` is mode-aware —
+        prototype mode picks `dev` (U2M), production mode picks `prod` (M2M),
+        driven by `.catalyst-build.yml#mode`? Score 1 if explicit, 0.5 if
+        implied, 0 if absent.
+
+    - id: identity_vs_auth_method_distinction
+      weight: 0.05
+      prompt: >-
+        Does the response distinguish *identity* (which principal owns the
+        objects dbt creates) from *auth method* (PAT vs OAuth) — i.e., make
+        clear that production paths must execute as a service principal
+        regardless of token type, while the developer's own identity (via
+        U2M, or even user-PAT) is acceptable for iteration bounded by their
+        grants? Score 1 if the distinction is explicit, 0.5 if hinted, 0 if
+        the response conflates the two axes by treating user-PAT as
+        categorically banned and OAuth as categorically required.

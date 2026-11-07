@@ -1,0 +1,53 @@
+﻿Decoded UK decoded_round_RGB_gdocs.jpg   
+SME Peer Reviews
+Document Authorisation
+	AI Portfolio Director
+	Document Owner
+	Sophie McMurray
+	Programme
+	L6 AI Engineer
+AI Accelerator
+	SME Role Purpose
+As the Subject Matter Expert, your role is to ensure the technical accuracy, clarity, and overall quality of the learning materials. Please complete each step thoroughly.
+Role Responsibilities
+Verify technical accuracy
+* Carefully check that all concepts, explanations, workflows, and claims are technically correct.
+* Do not skim, if anything is unclear or feels unfamiliar, pause and verify it through reliable sources.
+* Confirm that terminology is used consistently and appropriately.
+* Ensure examples align with industry best practice and reflect real-world usage.
+Execute all code examples
+* Run every code block in the intended learner environment
+* Confirm:
+   * All code executes without errors
+   * Output matches what the lesson describes
+   * Dependencies, data-access paths, and libraries are correct and up to date
+* Flag any code that is fragile, unclear, overly complex or inconsistent with what learners have been taught so far.
+Check pedagogical clarity
+* Ensure instructions are clear, concise, and logically sequenced.
+* Make sure explanations match the learners' expected skill level.
+* Identify any gaps where additional guidance, examples or context may be needed.
+* Highlight opportunities to simplify text, improve flow or reduce cognitive load.
+Review spelling, grammar and readability
+* Correct spelling, punctuation, grammar and formatting errors.
+* Ensure consistent use of terminology, capitalisation and style.
+* Improve readability where needed (e.g., shorter sentences, clearer headings, better variable names).
+Validate alignment with lesson plan and learning outcomes
+* Confirm that content, examples, and challenges align with the lesson plan learning objectives and intended learning journey.
+* Ensure tasks are achievable with the skills learners have at that stage of the programme.
+* Check for unnecessary complexity or missing prerequisite knowledge.
+Identify risks and potential learner pitfalls
+* Highlight areas where learners are likely to get confused or stuck.
+* Suggest where additional hints, warnings, or notes might help.
+* Flag any data issues, ambiguity, or assumptions that need clarifying.
+Recommend improvements
+* Suggest enhancements to examples, diagrams, challenges, or explanations.
+* Propose alternative approaches if something could be taught more effectively.
+* Identify opportunities to align more closely with best practice in data science/ML engineering.
+As the SME, your review is essential for ensuring technical fidelity and learner success. Please capture any feedback, uncertainties, or revision requests clearly so the content team can action them efficiently.
+
+
+DECODED
+ 
++44 (0)20 3583 0972  |  info@decoded.com  |  decoded.com
+        
+Policy Name                                        Internal and/or External                                                     Version number

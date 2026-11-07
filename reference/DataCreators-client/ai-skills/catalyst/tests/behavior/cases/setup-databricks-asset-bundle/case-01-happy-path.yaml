@@ -1,0 +1,56 @@
+id: setup-databricks-asset-bundle.case-01-happy-path
+skill: skills/setup-databricks-asset-bundle
+type: artifact
+description: >
+  Happy-path scaffold of the pipeline DAB. Verifies the current bundle shape
+  is present in the emission: per-env variables inlined under
+  targets.<env>.variables: (no top-level variables: block, no variables_*.yml
+  glob); no cluster_log_conf anywhere in the emitted *.job.yml; and the full
+  local/dev/sqa/prd + DR target matrix used by the real repo today.
+
+input:
+  arguments: >
+    Scaffold the pipeline DAB for the bloomberg-corp-pfd-asia data product.
+    Single dataset: corp_pfd_asia (hourly schedule, production-style multi-
+    environment deployment). Product root:
+    data-products/bloomberg/datasets/bloomberg-corp-pfd-asia.
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: per_env_variables_inlined
+      weight: 0.3
+      prompt: >
+        Does the emitted databricks.yml inline per-env variable values under
+        `targets.<env>.variables:` AND avoid both (a) a `variables_*.yml` entry
+        in the top-level `include:` list and (b) a top-level file-scope
+        `variables:` block redeclaring the same names that are inlined per
+        target? Score 1 if inlined-per-target and no glob/duplicate, 0.5 if
+        partial (e.g., inlined but glob still present), 0 if a
+        `variables_*.yml` include glob is emitted.
+
+    - id: no_cluster_log_conf
+      weight: 0.3
+      prompt: >
+        Is the emitted *.job.yml free of any `cluster_log_conf` block at the
+        job level OR within any task? Serverless tasks reject the field. Score
+        1 if no `cluster_log_conf` appears anywhere in the job template, 0 if
+        it appears at job or task scope.
+
+    - id: target_matrix_complete
+      weight: 0.3
+      prompt: >
+        Does the output include the full target matrix used by the current
+        bundle: local, dev, sqa, prd, dev_dr, sqa_dr, and prd_dr? Score 1 if
+        all seven targets are present, 0.5 if 5-6 are present, 0 if fewer.
+
+    - id: no_placeholders
+      weight: 0.1
+      prompt: >
+        Does the output avoid leaving unresolved placeholders like `<TODO>`,
+        `<FILL_ME>`, or `{{ unresolved }}` in the emitted YAML? Score 1 if
+        clean, 0 if placeholders leak through.

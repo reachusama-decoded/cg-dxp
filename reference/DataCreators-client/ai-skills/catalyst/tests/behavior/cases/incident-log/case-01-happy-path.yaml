@@ -1,0 +1,33 @@
+id: incident-log.case-01-happy-path
+skill: skills/incident-log
+type: artifact
+description: 'Bootstrap happy-path case. Record production incidents with severity, resolution, duration,
+  trends, and
+
+  action items. Use when the user asks to "log an incident", "document what
+
+  happened", "create the incident report", or "record the outage".'
+input:
+  arguments: Log a sample incident for the employee directory data product (hourly refresh missed at 02:00
+    UTC).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/incident-log/templates/incident-log.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Record production
+      incidents with severity, resolution, duration, trends, and
+
+      action items. Use when the user asks to "log an incident", "doc''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

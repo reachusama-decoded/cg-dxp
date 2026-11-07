@@ -1,0 +1,34 @@
+id: build-checklist.case-01-happy-path
+skill: skills/build-checklist
+type: artifact
+description: 'Bootstrap happy-path case. Generate a build checklist tracking infrastructure, pipeline
+  code, tests, DQ
+
+  rules, and documentation completeness. Use when the user asks to "create the
+
+  build checklist", "track build progress", "what needs to be done before
+
+  we ship", or "check build readiness".'
+input:
+  arguments: Produce a build checklist for the employee directory data product (medallion DLT pipeline).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/build-checklist/templates/build-checklist.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Generate a build
+      checklist tracking infrastructure, pipeline code, tests, DQ
+
+      rules, and documentation completeness. Use when the user asks t''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

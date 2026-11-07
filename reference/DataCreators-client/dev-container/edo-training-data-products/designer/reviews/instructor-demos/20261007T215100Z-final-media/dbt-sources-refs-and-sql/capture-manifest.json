@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "run_id": "20261007T215100Z-final-media",
+  "story": {
+    "schema_version": 1,
+    "id": "dbt-sources-refs-and-sql",
+    "title": "Trace sources and refs into compiled SQL",
+    "objective": "Distinguish an external source from a dependency on another model.",
+    "tool": "dbt",
+    "task_ids": [
+      "dbt-p1-02",
+      "dbt-p1-03",
+      "dbt-p1-04"
+    ],
+    "route": "local-duckdb",
+    "readiness": "ready",
+    "audience": "Instructor demonstration; completed instructor copy is explicitly identified",
+    "prerequisites": "Prepared runtime and assigned disposable resources; authenticate outside recording",
+    "workspace_source": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+    "source_inputs": [
+      "challenges/v2/dbt/phase-one-certified/README.md",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution",
+      "scripts/demo-checks.py"
+    ],
+    "requires": [
+      "browser",
+      "dbt",
+      "duckdb-python"
+    ],
+    "resources": [
+      "fresh private workspace"
+    ],
+    "cleanup": [],
+    "main_book": {
+      "include": false,
+      "teaching_key": "dbt-models-and-tests"
+    },
+    "steps": [
+      {
+        "id": "sources",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cat models/sources.yml models/stg_holdings.sql"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "source("
+            },
+            {
+              "kind": "output-contains",
+              "text": "decimal(18,2)"
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Read the source boundary and staging cast.",
+          "notice": "The source resolves the input relation; staging normalizes the money type."
+        }
+      },
+      {
+        "id": "refs",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cat models/fund_exposure.sql"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "ref("
+            },
+            {
+              "kind": "output-contains",
+              "text": "left join"
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Read the mart dependencies.",
+          "notice": "The fund-driven left join preserves the fund population."
+        }
+      },
+      {
+        "id": "compile",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "dbt seed --profiles-dir . && dbt compile --profiles-dir ."
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "Concurrency"
+            },
+            {
+              "kind": "command",
+              "argv": [
+                "{{dbt_python}}",
+                "inspect-output.py",
+                "lineage"
+              ]
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Compile the real source and ref calls.",
+          "notice": "Compilation resolves relations without claiming a completed business output."
+        }
+      },
+      {
+        "id": "sql",
+        "action": {
+          "adapter": "terminal",
+          "session": "developer",
+          "command": "cat target/compiled/v2_portfolio/models/fund_exposure.sql"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "stg_funds"
+            },
+            {
+              "kind": "output-contains",
+              "text": "stg_holdings"
+            }
+          ]
+        },
+        "capture": {
+          "context": "LOCAL DUCKDB TERMINAL",
+          "hold_seconds": 2
+        },
+        "caption": {
+          "action": "Inspect the resolved relation names.",
+          "notice": "Logical dependencies have become concrete local relations."
+        }
+      }
+    ],
+    "closing_question": "Distinguish an external source from a dependency on another model. Which observation supports your explanation?",
+    "workspace_files": [
+      {
+        "source": "scripts/demo-checks.py",
+        "destination": "inspect-output.py"
+      }
+    ]
+  },
+  "status": "captured",
+  "route": "local-duckdb",
+  "runtime": {
+    "browser": {
+      "status": "available",
+      "detail": "149.0.7827.55"
+    },
+    "dbt": {
+      "status": "available",
+      "detail": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation"
+    },
+    "duckdb-python": {
+      "status": "available",
+      "detail": "1.4.1"
+    }
+  },
+  "source_hashes": {
+    "story.yaml": "eeb9afb555557c90bad659e68bf8d6a24efd9e1ba5f93c086dc4a0bbb9fa908c",
+    "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/dbt/phase-one-certified/README.md": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+    "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+    "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+    "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+    "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+    "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+    "scripts/instructor_demos/publish.py": "32adbcace983affe209cfabeb01971c5fd72c1fe50dfa74f09c09b78d88e1f6f",
+    "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+    "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+    "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+    "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+    "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+    "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+  },
+  "started_at": "2026-10-07T22:32:45.794935+00:00",
+  "checkpoints": [
+    {
+      "story_id": "dbt-sources-refs-and-sql",
+      "step_id": "sources",
+      "action_time": "2026-10-07T22:32:46.048893+00:00",
+      "observation_time": "2026-10-07T22:32:48.169553+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat models/sources.yml models/stg_holdings.sql"
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat models/sources.yml models/stg_holdings.sql"
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004hdemo $ \u001b[?2004l\r\r\nversion: 2\r\nsources:\r\n  - name: training\r\n    schema: \"{{ target.schema }}\"\r\n    tables:\r\n      - name: holdings\r\n      - name: funds\r\nselect fund_id, instrument_id, cast(market_value as decimal(18,2)) as market_value\r\nfrom {{ source('training', 'holdings') }}\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "source(",
+          "passed": true
+        },
+        {
+          "kind": "output-contains",
+          "text": "decimal(18,2)",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Read the source boundary and staging cast.",
+        "notice": "The source resolves the input relation; staging normalizes the money type."
+      },
+      "frame": "sources.png",
+      "frame_sha256": "170a5d413e2c4c0872e3df791e2a55a581ddc2dc65585f224923fcba8dd2c0e8",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        0.0,
+        2.121
+      ]
+    },
+    {
+      "story_id": "dbt-sources-refs-and-sql",
+      "step_id": "refs",
+      "action_time": "2026-10-07T22:32:48.170240+00:00",
+      "observation_time": "2026-10-07T22:32:50.250239+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat models/fund_exposure.sql"
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat models/fund_exposure.sql"
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\nselect f.fund_id, f.fund_name, count(h.instrument_id) as holdings, coalesce(sum(h.market_value),0) as exposure\r\nfrom {{ ref('stg_funds') }} f left join {{ ref('stg_holdings') }} h using(fund_id)\r\ngroup by f.fund_id, f.fund_name\r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "ref(",
+          "passed": true
+        },
+        {
+          "kind": "output-contains",
+          "text": "left join",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Read the mart dependencies.",
+        "notice": "The fund-driven left join preserves the fund population."
+      },
+      "frame": "refs.png",
+      "frame_sha256": "1d2539c00ec3063843d29b25519ff20b2c0bff77204b215c015611f414a1232f",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        2.121,
+        4.202
+      ]
+    },
+    {
+      "story_id": "dbt-sources-refs-and-sql",
+      "step_id": "compile",
+      "action_time": "2026-10-07T22:32:50.252265+00:00",
+      "observation_time": "2026-10-07T22:32:55.538561+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt compile --profiles-dir ."
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "dbt seed --profiles-dir . && dbt compile --profiles-dir ."
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\n22:32:50  Running with dbt=1.10.13\r\n22:32:51  Registered adapter: duckdb=1.9.6\r\n22:32:51  Unable to do partial parsing because saved manifest not found. Starting full parse.\r\n22:32:51  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:32:51  \r\n22:32:51  Concurrency: 1 threads (target='local')\r\n22:32:51  \r\n22:32:51  1 of 2 START seed file main.funds .............................................. [RUN]\r\n22:32:51  1 of 2 OK loaded seed file main.funds .......................................... [INSERT 3 in 0.04s]\r\n22:32:51  2 of 2 START seed file main.holdings ........................................... [RUN]\r\n22:32:51  2 of 2 OK loaded seed file main.holdings ....................................... [INSERT 5 in 0.01s]\r\n22:32:51  \r\n22:32:51  Finished running 2 seeds in 0 hours 0 minutes and 0.16 seconds (0.16s).\r\n22:32:51  \r\n22:32:51  Completed successfully\r\n22:32:51  \r\n22:32:51  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2\r\n22:32:52  Running with dbt=1.10.13\r\n22:32:52  Registered adapter: duckdb=1.9.6\r\n22:32:53  Found 3 models, 7 data tests, 2 seeds, 2 sources, 472 macros\r\n22:32:53  \r\n22:32:53  Concurrency: 1 threads (target='local')\r\n22:32:53  \r\n\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "Concurrency",
+          "passed": true
+        },
+        {
+          "kind": "command",
+          "argv": [
+            "{{dbt_python}}",
+            "inspect-output.py",
+            "lineage"
+          ],
+          "exit_code": 0,
+          "output": "Observed lineage: sources \u2192 typed staging \u2192 fund_exposure",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Compile the real source and ref calls.",
+        "notice": "Compilation resolves relations without claiming a completed business output."
+      },
+      "frame": "compile.png",
+      "frame_sha256": "dbed5fa2264b4ebc88c5378ba8ebd8f044edeb8979a3942851348de4a78917bb",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        4.203,
+        9.49
+      ]
+    },
+    {
+      "story_id": "dbt-sources-refs-and-sql",
+      "step_id": "sql",
+      "action_time": "2026-10-07T22:32:55.539287+00:00",
+      "observation_time": "2026-10-07T22:32:57.619987+00:00",
+      "action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat target/compiled/v2_portfolio/models/fund_exposure.sql"
+      },
+      "executed_action": {
+        "adapter": "terminal",
+        "session": "developer",
+        "command": "cat target/compiled/v2_portfolio/models/fund_exposure.sql"
+      },
+      "observation": {
+        "exit_code": 0,
+        "output": "\u001b[?2004l\r\r\nselect f.fund_id, f.fund_name, count(h.instrument_id) as holdings, coalesce(sum(h.market_value),0) as exposure\r\nfrom \"training\".\"main\".\"stg_funds\" f left join \"training\".\"main\".\"stg_holdings\" h using(fund_id)\r\ngroup by f.fund_id, f.fund_name\u001b[?2004hdemo $ \u001b[?2004l\r\r\n\r\n\r\n\u001b[?2004hdemo $ "
+      },
+      "assertions": [
+        {
+          "kind": "output-contains",
+          "text": "stg_funds",
+          "passed": true
+        },
+        {
+          "kind": "output-contains",
+          "text": "stg_holdings",
+          "passed": true
+        }
+      ],
+      "context": "LOCAL DUCKDB TERMINAL",
+      "caption": {
+        "action": "Inspect the resolved relation names.",
+        "notice": "Logical dependencies have become concrete local relations."
+      },
+      "frame": "sql.png",
+      "frame_sha256": "096b5cc7bfc096be030baa93376dd68814ed4f3afca68d6af0029a7e57eba3ee",
+      "dimensions": {
+        "viewport": [
+          1100,
+          600
+        ],
+        "device_scale_factor": 2
+      },
+      "focus": null,
+      "time_range": [
+        9.491,
+        11.571
+      ]
+    }
+  ],
+  "cleanup": [],
+  "review": {
+    "reviewer": "Codex technical candidate review",
+    "notes": "Technical candidate review: all real commands/exits, independent assertions and artifact hashes checked; key frames inspected. Fresh re-capture after layout calibration. Candidate PDF/HTML/media checks follow export; human pacing, projector and connected-route reviews remain pending.",
+    "source_hashes": {
+      "story.yaml": "eeb9afb555557c90bad659e68bf8d6a24efd9e1ba5f93c086dc4a0bbb9fa908c",
+      "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "challenges/v2-solutions/dbt/phase-one-certified/solution/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+      "challenges/v2/dbt/phase-one-certified/README.md": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+      "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+      "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+      "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+      "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+      "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+      "scripts/instructor_demos/publish.py": "32adbcace983affe209cfabeb01971c5fd72c1fe50dfa74f09c09b78d88e1f6f",
+      "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+      "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+      "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+      "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+      "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+      "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+    },
+    "frames": {
+      "sources.png": "170a5d413e2c4c0872e3df791e2a55a581ddc2dc65585f224923fcba8dd2c0e8",
+      "refs.png": "1d2539c00ec3063843d29b25519ff20b2c0bff77204b215c015611f414a1232f",
+      "compile.png": "dbed5fa2264b4ebc88c5378ba8ebd8f044edeb8979a3942851348de4a78917bb",
+      "sql.png": "096b5cc7bfc096be030baa93376dd68814ed4f3afca68d6af0029a7e57eba3ee"
+    },
+    "videos": [
+      {
+        "path": "video/page@fee86405e88885945482689017fa5297.webm",
+        "sha256": "f0dd615e48d7f2374033dffaaeca2c567a2ff4be2e4a2d1f39c0b1422b700ceb"
+      }
+    ],
+    "verdict": "approved for candidate export"
+  },
+  "recording": "raw real-time browser recording; no compressed waits",
+  "videos": [
+    {
+      "path": "video/page@fee86405e88885945482689017fa5297.webm",
+      "sha256": "f0dd615e48d7f2374033dffaaeca2c567a2ff4be2e4a2d1f39c0b1422b700ceb"
+    }
+  ],
+  "duration_seconds": 14.725,
+  "finished_at": "2026-10-07T22:33:00.773757+00:00",
+  "private_artifacts": {
+    "path": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/instructor-demos/20261007T215100Z-final-media/dbt-sources-refs-and-sql",
+    "files": {
+      "compile.png": "dbed5fa2264b4ebc88c5378ba8ebd8f044edeb8979a3942851348de4a78917bb",
+      "developer.events.json": "f8acc5f9c53ea463da4b6f96a3c301ae705f7fa9367e0695b6343f08179e7aa3",
+      "developer.raw.txt": "39289b81498066509a693c0a17314350ce0c28c1726260ef3efb2e91e5e1dcbb",
+      "refs.png": "1d2539c00ec3063843d29b25519ff20b2c0bff77204b215c015611f414a1232f",
+      "sources.png": "170a5d413e2c4c0872e3df791e2a55a581ddc2dc65585f224923fcba8dd2c0e8",
+      "sql.png": "096b5cc7bfc096be030baa93376dd68814ed4f3afca68d6af0029a7e57eba3ee",
+      "video/page@fee86405e88885945482689017fa5297.webm": "f0dd615e48d7f2374033dffaaeca2c567a2ff4be2e4a2d1f39c0b1422b700ceb",
+      "workspace/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+      "workspace/inspect-output.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+      "workspace/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+      "workspace/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+      "workspace/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+      "workspace/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+      "workspace/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+      "workspace/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+      "workspace/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+      "workspace/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+      "workspace/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+    }
+  }
+}

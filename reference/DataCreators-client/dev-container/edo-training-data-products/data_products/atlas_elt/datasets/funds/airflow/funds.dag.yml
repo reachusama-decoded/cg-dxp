@@ -1,0 +1,35 @@
+dag_id: atlas_elt_funds
+description: Run the Atlas ELT funds dataset pipeline.
+schedule: "@daily"
+start_date: "2024-01-01"
+catchup: false
+tags:
+  - atlas_elt
+default_args:
+  owner: EDO TRAINING
+
+steps:
+  run_funds_dbt:
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}funds_job"
+    databricks_conn_id: caspian-training-databricks
+
+  run_funds_dq:
+    depends_on: [run_funds_dbt]
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}funds_dq_job"
+    databricks_conn_id: caspian-training-databricks
+
+  mock_xcom_generator:
+    depends_on: [run_funds_dq]
+    blueprint: mock_xcom
+    domain: atlas_elt
+    model: funds
+
+  notify_funds:
+    depends_on: [mock_xcom_generator]
+    blueprint: kafka_notify
+    xcom_pull_task: mock_xcom_generator
+    model: funds
+    cluster_id: "{{ var.value.dev_cluster_id }}"
+    python_file: "{{ var.value.root_path }}/files/data_products/{{ var.value.data_product_name }}/python/run_data_notify.py"

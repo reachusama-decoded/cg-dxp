@@ -1,0 +1,45 @@
+# data_products/client_positions/datasets/daily_positions/bundle/resources/daily_positions.job.yml
+# Databricks job resource referenced by databricks.yml. The Airflow DAG
+# invokes this job by name via DatabricksRunNowOperator with
+# job_name: "{{ var.value.databricks_job_prefix }}daily_positions_job"
+# DBX-DAB-001/-002/-003/-004 — separate pipeline DAB; bundle owns
+# system-signal notifications, Airflow owns DAG-level alerting.
+
+resources:
+  jobs:
+    daily_positions_job:
+      name: "${var.databricks_job_prefix}daily_positions_job"  # Renders to "edo_prd_daily_positions_job" in prd
+
+      tasks:
+        - task_key: deps
+          spark_python_task:
+            python_file: "../python/daily_positions/main.py"
+            parameters: ["deps"]
+
+        - task_key: run
+          depends_on:
+            - task_key: deps
+          spark_python_task:
+            python_file: "../python/daily_positions/main.py"
+            parameters: ["run", "--partition-key", "{{job.parameters.partition_key}}"]
+
+        - task_key: test
+          depends_on:
+            - task_key: run
+          spark_python_task:
+            python_file: "../python/daily_positions/main.py"
+            parameters: ["test"]
+
+      parameters:
+        # Both parameters MUST be supplied by the caller. Airflow passes
+        # them via notebook_params keyed on `{{ ds }}` (the partition the
+        # logical-date window writes into). We intentionally do NOT default
+        # to `{{job.start_time}}` — that defaulting silently makes manual
+        # Databricks-UI reruns target the wall-clock partition instead of
+        # the logical-date partition, which is the same idempotency-leak
+        # RFD 0011 §1 / PY-AIRFLOW-001 prohibits in the DAG itself. Force
+        # the caller to be explicit.
+        - name: execution_date
+        - name: partition_key
+
+      max_concurrent_runs: 1                             # Aligns with Airflow max_active_runs=1

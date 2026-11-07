@@ -1,0 +1,2922 @@
+{
+  "date": "2026-10-05",
+  "scope": "Pre-existing dev-container project files; excludes newly created designer planning files and sibling Catalyst source",
+  "project_root": "Capital/DataCreators-client/dev-container/edo-training-data-products",
+  "file_count": 728,
+  "files": [
+    {
+      "path": ".airflow/airflow_settings.yaml.example",
+      "sha256": "2bc02b763b013ac367a474f293827e83f4e76085e2e75aee5879c958bf344faa"
+    },
+    {
+      "path": ".astro/config.yaml",
+      "sha256": "6a7ee0d3cf228ad1f47f5c2af2a650ca5b9a1f296f6e2b626352d9228bed4615"
+    },
+    {
+      "path": ".astro/dag_integrity_exceptions.txt",
+      "sha256": "6d95d16994d414f934deab60c1f35a95bc21a7989e97ed5084153f9081799b58"
+    },
+    {
+      "path": ".astro/test_dag_integrity_default.py",
+      "sha256": "b1c4cd80dfa696b1994c31439bd7312ece0b5fafcc68c0d7242684599281eda3"
+    },
+    {
+      "path": ".dbtignore",
+      "sha256": "34f731ae59b4a94d3172407c3e12dc5d237f8932e8ab0307beb2cfb15af65a07"
+    },
+    {
+      "path": ".devcontainer/Dockerfile",
+      "sha256": "1dbf326001caacecae879a6dc69d45323eba2ccd36b4c07db90429ceb310eb96"
+    },
+    {
+      "path": ".devcontainer/README.md",
+      "sha256": "178d212e9c4adafcf946641bce19ab1013375110ebdd29799b230f508d23c328"
+    },
+    {
+      "path": ".devcontainer/TROUBLESHOOTING.md",
+      "sha256": "e66c4b58ef28136cbf54347549179862c576b8bbd35d5692b0fdca3413da37af"
+    },
+    {
+      "path": ".devcontainer/check.sh",
+      "sha256": "504fd197e75804ed842c6551f6f01af55c8665f916d930bc8ec5c065df654b72"
+    },
+    {
+      "path": ".devcontainer/clone_tools/clone_sources_engine.py",
+      "sha256": "1d7422e15decaa2ef2769db1f2ec24aee697055c644c5db18f9001e4c71a8207"
+    },
+    {
+      "path": ".devcontainer/devcontainer.json",
+      "sha256": "fa8cec57cf818ece793cf341884252ad391942726190961fccf88f91fd0ba1b2"
+    },
+    {
+      "path": ".devcontainer/ensure-dockerd.sh",
+      "sha256": "5b538fbc65596e77aac8b218576e11a2c2365407768cd013688fdbf798a92e90"
+    },
+    {
+      "path": ".devcontainer/post-start.sh",
+      "sha256": "84b25f552ba66707f3d7a2e2f3916436b97e93da7abd3807953733d17cceeeac"
+    },
+    {
+      "path": ".devcontainer/requirements.txt",
+      "sha256": "581193ebbb76884b9ebd93aee06ecb192cc7e07de76947d7e60c2eee0f74b53e"
+    },
+    {
+      "path": ".devcontainer/setup-databricks-dbt.sh",
+      "sha256": "410fc603f59ac45bc1c5cce4191fbc6b7cf7997cc99b84c9a57b3103db034e4e"
+    },
+    {
+      "path": ".devcontainer/sitecustomize.py",
+      "sha256": "5c5d9e42dd828ff7652082c471a85d9bc6023351307d0b3133ecc9c2db833794"
+    },
+    {
+      "path": ".devcontainer/start-dockerd.sh",
+      "sha256": "c3a31ec769fe24cd83da4df358c3dd50f870d2fd859dd6a54b4a0d3738597f67"
+    },
+    {
+      "path": ".devcontainer/utils/.env.example",
+      "sha256": "f38c5780ebb4783f736d58f809f7108e84fb85cd002a834f91da1ca6dd3f9c88"
+    },
+    {
+      "path": ".devcontainer/utils/bashrc",
+      "sha256": "22b5508eb72da6077ea3f0c36363f32e98be46855f9fb6997cf1d12942fc26d8"
+    },
+    {
+      "path": ".devcontainer/utils/databricks-oauth-refresh.sh",
+      "sha256": "5bda15a663afd428f831e5c79db5358bf419c369ac2f255eede3de5432a7910e"
+    },
+    {
+      "path": ".devcontainer/utils/normalize-env.sh",
+      "sha256": "78b56424f5b3590db863620468769e51af3102d3a315cc75729320c78ddd90f2"
+    },
+    {
+      "path": ".devcontainer/utils/pip.conf",
+      "sha256": "6031ae4dfc7f43f7ddac29dc8de9a7e40886f6520976e692458d4aa9765aa263"
+    },
+    {
+      "path": ".devcontainer/utils/setup-airflow-settings.sh",
+      "sha256": "164c4d98a87db4131e64a41ec3048ac33ee0882f78e69fa062900beeb68c4869"
+    },
+    {
+      "path": ".devcontainer/utils/setup-databricks-config.sh",
+      "sha256": "122e68fd15991941690ccea685ee597a698118727d5236e8306f43a60e20a053"
+    },
+    {
+      "path": ".devcontainer/utils/setup-gh-auth.sh",
+      "sha256": "924fbfc9edcb0837441dd81e1210bf0025b30769f301b0a3d61730f2a77c05ac"
+    },
+    {
+      "path": ".devcontainer/utils/setup-mise.sh",
+      "sha256": "d7bb5117ffcec99ba1c9e186dc0d32c4cb946d62da0249a08c1f99202a1f6f7f"
+    },
+    {
+      "path": ".devcontainer/utils/setup-python-deps.sh",
+      "sha256": "452a43d60d6e34a2751a015423240c57112ba1401a3ec8986d781343df612df2"
+    },
+    {
+      "path": ".devcontainer/utils/starship.toml",
+      "sha256": "3eeecc6c7eb6a62b27345b0ab0dab6f338d1b32a0f184b78ff5726afc85b68aa"
+    },
+    {
+      "path": ".dockerignore",
+      "sha256": "b5bfde4c21a7ecdf0b63f33abbfdd32c388b47e890e08e5ff480cc48e48e32cb"
+    },
+    {
+      "path": ".editorconfig",
+      "sha256": "81a9b6780f29396d77e1b602250678db1ee96682179507c5b1fe61386f3d94d4"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "ea07c96e60d5eb730bb89c0601fe5f58367371b1e50f817973712a43b6c62203"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "sha256": "df054f5a5fa7ce29d74666ee30219a5f3fcbb44d57f4a163a4fce75ee124941c"
+    },
+    {
+      "path": ".github/skills/challenge-trainee-runs/SKILL.md",
+      "sha256": "0cf550ad6a62db5234a29c7105ca3391793210fedfebb86446f5662daa8a295c"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "8638cf27804055fd43221f67d04d14f2d748506a7b6bb2709e21739f76869b0b"
+    },
+    {
+      "path": ".harness/edo-training-data-products-pipeline.yaml",
+      "sha256": "796904d57e6709d15c3e3c2f96ce9b0e5cdf4ddd127a60bc37dce51ed61cf9e1"
+    },
+    {
+      "path": ".harness/input-sets/maininputset.yaml",
+      "sha256": "02c231dccd042731c338c94c4060d7202c009adf01469c3d3383aa961077e315"
+    },
+    {
+      "path": ".mise.toml",
+      "sha256": "9d100c22ae2146eb68858d0149c019b5b91afa5c587740d97b12cfdb09847015"
+    },
+    {
+      "path": ".mise/env.sh",
+      "sha256": "59e70037ede1667f95eba023bcffc8d1618755024ccea12d7453c38eb334e4c9"
+    },
+    {
+      "path": ".mise/tasks/contract/generate",
+      "sha256": "a12d7944c2d1b0aa987ca1eae831869de4c3530aeb27265d1a6441dac60d69a0"
+    },
+    {
+      "path": ".mise/tasks/contract/init",
+      "sha256": "b555bc7886bf7b5526d5e1d1859cb78f0f5309e3eb78d4c516972e08b5a0acf4"
+    },
+    {
+      "path": ".mise/tasks/contract/migrate",
+      "sha256": "02c6d46094be8ebf522182484d159548311660a9799c91400f4c3c6a9ac6f442"
+    },
+    {
+      "path": ".mise/tasks/contract/repair",
+      "sha256": "d12900282a973a1981f7cf7f1d7f7fc8bdda4cc496a0caa7fdd13b217d292627"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "ed36b796b871030197b7d7e01230ed65bf6f6fd2cff788571d1ac82a17a41e63"
+    },
+    {
+      "path": ".sqlfluff",
+      "sha256": "9af76d57d80f305ac47f3ceb2107b35bc432e23ea946737d69de70852acb0947"
+    },
+    {
+      "path": ".sqlfluffignore",
+      "sha256": "3d7721b98dec694fd39620e70c9d86b3b34ce69d54e0a5db5131bc900a210fdc"
+    },
+    {
+      "path": ".superpowers/sdd/final-review-adjudication.md",
+      "sha256": "e065f07c181f2ff47203c88427bf349abab7a6bc7b6be1081857964cc81bcda0"
+    },
+    {
+      "path": ".superpowers/sdd/final-review-fix-report.md",
+      "sha256": "549ed2a63ecc95cb49b8ac063c818169e70b8cf8abf69c09e5d045484b8690f8"
+    },
+    {
+      "path": ".superpowers/sdd/postplan-fix-report.md",
+      "sha256": "2a7372bb8234ffa52e0593296cb3a9af8ea7d6bccd5906c81eb39e79c5239a8a"
+    },
+    {
+      "path": ".superpowers/sdd/task-1-report.md",
+      "sha256": "7db93aa31b098dec9984e6ec07cdeba960aff342e4724199f5a8773148534021"
+    },
+    {
+      "path": ".superpowers/sdd/task-2-report.md",
+      "sha256": "a56a64a21864efaf9c666f49f7eb2c557c7dd750379f4c2854e00b0684d49038"
+    },
+    {
+      "path": ".superpowers/sdd/task-3-report.md",
+      "sha256": "75100e14be52ab557168aa1aa552d18ce74af0f3ae035c8941fde02d670c5a1b"
+    },
+    {
+      "path": ".superpowers/sdd/task-4-report.md",
+      "sha256": "584bb68db1e631ef0179298fe31f5d2f9428742e9c2ea6f35f7d7ca131d8a96a"
+    },
+    {
+      "path": ".superpowers/sdd/task-5-report.md",
+      "sha256": "ca64a198352ddd07fc67a01f23363a2d515211667fe79237f6eafe095b284ccc"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "35bb665b1f463edd5c87ad5364528ca743eb2539f8e6bef34ddcd65524cb0e7f"
+    },
+    {
+      "path": "GETTING_STARTED.md",
+      "sha256": "80cb209caace65bc33b4b3ac33e9f5829b10cee0c78f96e8d1e143084a9b9290"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0372c1487ec20c48b2d5f48f146f6a5ca8554cbcf4bccb3e42f3c915295e2bcf"
+    },
+    {
+      "path": "VERSION",
+      "sha256": "14be4b45f18e0d8c67b4f719b5144eee88497e413709d11d85b096d8e2346310"
+    },
+    {
+      "path": "airflow_local_settings.py",
+      "sha256": "7c5cb16ed04774c37c840f97ad149a95ec3e38de7685e5e1339a4ca1c1381550"
+    },
+    {
+      "path": "cgsec.json",
+      "sha256": "e4f2f8a190911e7c43cae156d220cd9a2b083638907328150490110eb65bcb4a"
+    },
+    {
+      "path": "challenges/00-environment-check/AGENTIC_CAPSTONE_CHECK.md",
+      "sha256": "e5ab563c6d40334875ab5ecbd9af759aa84e221ab78e4cd66b79b6d88c55d3d0"
+    },
+    {
+      "path": "challenges/00-environment-check/README.md",
+      "sha256": "6e68cf75b45e81bbc79ed7ff8e757397509b7e17034fc13b581c14ed242af575"
+    },
+    {
+      "path": "challenges/00-environment-check/verify.sh",
+      "sha256": "109f6f529431c6760489c743cc9bb43a138cb08bf4dd8103c6a4bf48d6c821e2"
+    },
+    {
+      "path": "challenges/01-docker-intro/README.md",
+      "sha256": "a1826a5270ace35d983e3b1303ffbff85a3a29fabf5054cb8499a6b0eedf65f3"
+    },
+    {
+      "path": "challenges/01-docker-intro/solution/.dockerignore",
+      "sha256": "84f266f4433d17c2744ca25c6c71f675e5b93d652b3b2828b02dad6b806baeee"
+    },
+    {
+      "path": "challenges/01-docker-intro/solution/Dockerfile",
+      "sha256": "5f36965f8727946c563bdaddf958e66b644e6eec494134ea3c2f7c6f2e2f5114"
+    },
+    {
+      "path": "challenges/01-docker-intro/solution/app/holdings.csv",
+      "sha256": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18"
+    },
+    {
+      "path": "challenges/01-docker-intro/solution/app/summarize.py",
+      "sha256": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3"
+    },
+    {
+      "path": "challenges/01-docker-intro/starter/.dockerignore",
+      "sha256": "84f266f4433d17c2744ca25c6c71f675e5b93d652b3b2828b02dad6b806baeee"
+    },
+    {
+      "path": "challenges/01-docker-intro/starter/Dockerfile",
+      "sha256": "aaedb29d1dc0a4ca6da3b83db190c967afd3ec6ff202d94c7628d3d7a5374df8"
+    },
+    {
+      "path": "challenges/01-docker-intro/starter/app/holdings.csv",
+      "sha256": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18"
+    },
+    {
+      "path": "challenges/01-docker-intro/starter/app/summarize.py",
+      "sha256": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3"
+    },
+    {
+      "path": "challenges/01-docker-intro/verify.sh",
+      "sha256": "73363bc7f4d0aea0d6c44e93234d371c7db4eef395df9999be4b9838115efe9f"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/README.md",
+      "sha256": "c4535a2aef2097e118eb4178a56ad4b9a34bdde29d30aebfd3dcaa626b72168c"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/dbt_project.yml",
+      "sha256": "6cec4b8985de00e1870fe547cc9f83d3d5b5f9c60b0c53c21e7474f8da05a5c3"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/intermediate/int_fund_attributes.sql",
+      "sha256": "5cba2cbe5c32a6349e28d76c5c57c499489b11a7460ddb84208b8553388f7b29"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "bf8068bff6703f3734f20f55f9578d3677557b1f2a47062115799c6e8507e668"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/intermediate/int_positions_dated.sql",
+      "sha256": "93a68426a0babbc2eba7ef0a9d885f89fd9f1cd93a4184573aa19e4d8c5f9c3e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/marts/agg_fund_exposure.sql",
+      "sha256": "a5e9039e8858fe065c0db6b7e42655769ddb26b688af57be4c390cdfd60fd22e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/marts/fct_portfolio_returns.sql",
+      "sha256": "32fd0da1ac953b5abe7451b4cd5b1171273963142639ff7ba6ea323acc320058"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/marts/schema.yml",
+      "sha256": "87f33e416c1a933869a37316a9535ea21281da61332452839b29c9f5aaa73854"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/sources.yml",
+      "sha256": "5d1d31407cdd516126f81a74b050147c7c62c0ff0c468b3ac16f71223a8e9e6a"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/staging/stg_funds.sql",
+      "sha256": "e992ff9740c1bcd5aaf04203fd842bb52a68f653164a2e02218d0d1805e4e372"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/staging/stg_fx_rates.sql",
+      "sha256": "6553bebffbf1e17cd61f8f3c338ea4fccd33d33a43b17b76146d808b169bafe7"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/staging/stg_holdings.sql",
+      "sha256": "811e9d114a2876e306988fabf4cf9da3fc4a76f1a3e6dd49165a8254b6d2a3eb"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/staging/stg_positions.sql",
+      "sha256": "a0569d52b35f7cbcf270846b0662f5b1db41fa302de720427bca5e9f8fcd4a01"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/models/staging/stg_prices.sql",
+      "sha256": "91dd6019efde75c24f1cb779a9c72af846f984b3373f1627d8906c215d3159a7"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/profiles.yml",
+      "sha256": "534d695e9aa2979c56a900b8215e4c8e2824774aba689d346ff77e81303b3836"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/fund_master_raw.csv",
+      "sha256": "26be711160f3a479d8ce11e30747ada091b3cc97855e958a702be7d664f281d8"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/fx_rates_raw.csv",
+      "sha256": "b7958b8c052f59fa2a1d17e36979a4ca2dac9c056af51fb9c23a2f83f1ca746a"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/holdings_raw.csv",
+      "sha256": "083a4822b553229ce0e1c4bca71c594a64e9810846f87128ffb562be89a0f170"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/positions_raw.csv",
+      "sha256": "78eec51d50760aa743874d2a41ed82d05f324a7b71f6b450414983b4010e8ee3"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/prices_raw.csv",
+      "sha256": "741bf814134578770b051dbda4f2979140a5691221a9cd10fa365a675cb6c69e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/refdata_raw.csv",
+      "sha256": "fc6cf8e9b196fffa7b120797b16f05a8247d909889f564327ccdb015018b95f1"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/seed_custodian_nav.csv",
+      "sha256": "3ea53db46d6eb5f521ec41c0f512c9c66bc3f9cd01d7fb0947555eb05deac80e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/seeds/seed_funds.csv",
+      "sha256": "2a2a260caa545bdb8eda99a953cc28fe0e2a099be22826297b1141717490772d"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt/tests/assert_nav_within_tolerance.sql",
+      "sha256": "5ba525539f3189956b6ef4ff1857d0f92ed4c187b45055e3b9cef5632bf4b5bd"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/dbt_profiles/profiles.yml",
+      "sha256": "534d695e9aa2979c56a900b8215e4c8e2824774aba689d346ff77e81303b3836"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/intermediate/int_fund_attributes.sql",
+      "sha256": "266c5862f270b66718902e1adc01a356e2509df93b4412c8d6df10ee77d0da37"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "29d1f42289169ae18156490d2a167b253cc1ef72bbc38888b500fd3acdf7d1e7"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/intermediate/int_positions_dated.sql",
+      "sha256": "1abd3aeabe6c5a0fa279fc0f2172340f730eaa8dc97098e5019410c1b06a2427"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/marts/agg_fund_daily_exposure.sql",
+      "sha256": "8354362aa05010d73846c260bb73f12515f7bd4687bf1db60633b57cfb388a46"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/marts/agg_fund_exposure.sql",
+      "sha256": "497749e73955be5a75443397406026511331589082f589fd816136288938a9bb"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/marts/fct_portfolio_returns.sql",
+      "sha256": "e8c4ef301cae8b924cb912bd547abab36df76dec6d12ac01b62a00a6c083e516"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/marts/schema.yml",
+      "sha256": "80335a8189094022f6dc81d9d65784ae8ae256d6250909a94e77d4b75affbd15"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/schema.yml",
+      "sha256": "6655887490109b0768cee1c4ad57a63a948c77c39f05c0a7f6141dbd7c251048"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/stg_funds.sql",
+      "sha256": "026cace75438d342a68988adf21018266f3e0b0c710721a5dc425609b6c15530"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/stg_fx_rates.sql",
+      "sha256": "a57bc994b73d1c4b8a8089d35f81fd24912ad7cd4907d0c3ffa11a538ac336ca"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/stg_holdings.sql",
+      "sha256": "2caa2fd306c515bf335e04a23407010a71cd22ce46f036238952412471ca23b0"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/stg_positions.sql",
+      "sha256": "cd34f52eeff447af166db74cd4aa521c13f80b48067010f155c9f212331ca455"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/models/staging/stg_prices.sql",
+      "sha256": "b3f115c0e35d33311f3bd5000aedebc2f58afc05b71bcba236b31fa4e16068dd"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/tests/assert_nav_within_tolerance.sql",
+      "sha256": "4eeb44fd4937d82cd338d715352ba364010c2b7efcda731a027b0d461af12f10"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/solution/tests/reconcile_daily_exposure.sql",
+      "sha256": "797e61f97af35317fe32027e4b2d7bb7b696cf1a70acc5116a14fd793dcfb979"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/dbt_project.yml",
+      "sha256": "6cec4b8985de00e1870fe547cc9f83d3d5b5f9c60b0c53c21e7474f8da05a5c3"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/intermediate/int_fund_attributes.sql",
+      "sha256": "5cba2cbe5c32a6349e28d76c5c57c499489b11a7460ddb84208b8553388f7b29"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "bf8068bff6703f3734f20f55f9578d3677557b1f2a47062115799c6e8507e668"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/intermediate/int_positions_dated.sql",
+      "sha256": "93a68426a0babbc2eba7ef0a9d885f89fd9f1cd93a4184573aa19e4d8c5f9c3e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/marts/agg_fund_exposure.sql",
+      "sha256": "a5e9039e8858fe065c0db6b7e42655769ddb26b688af57be4c390cdfd60fd22e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/marts/fct_portfolio_returns.sql",
+      "sha256": "32fd0da1ac953b5abe7451b4cd5b1171273963142639ff7ba6ea323acc320058"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/marts/schema.yml",
+      "sha256": "87f33e416c1a933869a37316a9535ea21281da61332452839b29c9f5aaa73854"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/sources.yml",
+      "sha256": "5d1d31407cdd516126f81a74b050147c7c62c0ff0c468b3ac16f71223a8e9e6a"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/staging/stg_funds.sql",
+      "sha256": "e992ff9740c1bcd5aaf04203fd842bb52a68f653164a2e02218d0d1805e4e372"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/staging/stg_fx_rates.sql",
+      "sha256": "6553bebffbf1e17cd61f8f3c338ea4fccd33d33a43b17b76146d808b169bafe7"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/staging/stg_holdings.sql",
+      "sha256": "811e9d114a2876e306988fabf4cf9da3fc4a76f1a3e6dd49165a8254b6d2a3eb"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/staging/stg_positions.sql",
+      "sha256": "a0569d52b35f7cbcf270846b0662f5b1db41fa302de720427bca5e9f8fcd4a01"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/models/staging/stg_prices.sql",
+      "sha256": "91dd6019efde75c24f1cb779a9c72af846f984b3373f1627d8906c215d3159a7"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/fund_master_raw.csv",
+      "sha256": "26be711160f3a479d8ce11e30747ada091b3cc97855e958a702be7d664f281d8"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/fx_rates_raw.csv",
+      "sha256": "b7958b8c052f59fa2a1d17e36979a4ca2dac9c056af51fb9c23a2f83f1ca746a"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/holdings_raw.csv",
+      "sha256": "083a4822b553229ce0e1c4bca71c594a64e9810846f87128ffb562be89a0f170"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/positions_raw.csv",
+      "sha256": "78eec51d50760aa743874d2a41ed82d05f324a7b71f6b450414983b4010e8ee3"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/prices_raw.csv",
+      "sha256": "741bf814134578770b051dbda4f2979140a5691221a9cd10fa365a675cb6c69e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/refdata_raw.csv",
+      "sha256": "fc6cf8e9b196fffa7b120797b16f05a8247d909889f564327ccdb015018b95f1"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/seed_custodian_nav.csv",
+      "sha256": "3ea53db46d6eb5f521ec41c0f512c9c66bc3f9cd01d7fb0947555eb05deac80e"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/seeds/seed_funds.csv",
+      "sha256": "2a2a260caa545bdb8eda99a953cc28fe0e2a099be22826297b1141717490772d"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/stubs/tests/assert_nav_within_tolerance.sql",
+      "sha256": "5ba525539f3189956b6ef4ff1857d0f92ed4c187b45055e3b9cef5632bf4b5bd"
+    },
+    {
+      "path": "challenges/02-dbt-pipeline/verify.sh",
+      "sha256": "e726b7e625f8fa54003b1e0a0973219335aad843d842eab6b5f3a6933142031a"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/README.md",
+      "sha256": "f2dafc8702a4066e8b8f25d09e3707f8f4484111a40f37fb9a2295c8da6d6e55"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/README.md",
+      "sha256": "a66bb4b2a2c24291698129464ce0b20d8892103ad54f72c7e791cdfe4b4420ec"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/check-dag-load.sh",
+      "sha256": "e0894ee240b860d0afd679c473f0030c9ef94eebca494fb8073cdd191149c7ef"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dags/callbacks.py",
+      "sha256": "06afde2f8cbef04ac5958fce9ba53f5e776e0d5133644cb5f0205122e5088728"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dags/databricks_submit_run_dag.py",
+      "sha256": "258f91079c8c0f5b7d5647662f278e66f7aafe2089718e33d7bf152d5ca71e5c"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dags/portfolio_analytics_daily.py",
+      "sha256": "e921650fd8c7f5afbb0fb55f03cdd7d8671c662e71a8e6e605f08e97de3ec939"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/dbt_project.yml",
+      "sha256": "b9466c3e062ec4cbd74eecec4c38175c937be84907e6cc2963e630639a2cf2f1"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/intermediate/int_fund_attributes.sql",
+      "sha256": "266c5862f270b66718902e1adc01a356e2509df93b4412c8d6df10ee77d0da37"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "29d1f42289169ae18156490d2a167b253cc1ef72bbc38888b500fd3acdf7d1e7"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/intermediate/int_positions_dated.sql",
+      "sha256": "1abd3aeabe6c5a0fa279fc0f2172340f730eaa8dc97098e5019410c1b06a2427"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/marts/agg_fund_daily_exposure.sql",
+      "sha256": "8354362aa05010d73846c260bb73f12515f7bd4687bf1db60633b57cfb388a46"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/marts/agg_fund_exposure.sql",
+      "sha256": "497749e73955be5a75443397406026511331589082f589fd816136288938a9bb"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/marts/fct_portfolio_returns.sql",
+      "sha256": "e8c4ef301cae8b924cb912bd547abab36df76dec6d12ac01b62a00a6c083e516"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/marts/schema.yml",
+      "sha256": "7f4b2c119a9928945a6d2636997bc2ffe05dbe12f094b7be27e5b6e775490066"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/sources.yml",
+      "sha256": "b9772b8bc3f35bfa5d4c673695c5c12d276f2d12257fc10b0b7b4097f7ac9659"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/schema.yml",
+      "sha256": "6655887490109b0768cee1c4ad57a63a948c77c39f05c0a7f6141dbd7c251048"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/stg_funds.sql",
+      "sha256": "026cace75438d342a68988adf21018266f3e0b0c710721a5dc425609b6c15530"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/stg_fx_rates.sql",
+      "sha256": "a57bc994b73d1c4b8a8089d35f81fd24912ad7cd4907d0c3ffa11a538ac336ca"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/stg_holdings.sql",
+      "sha256": "2caa2fd306c515bf335e04a23407010a71cd22ce46f036238952412471ca23b0"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/stg_positions.sql",
+      "sha256": "cd34f52eeff447af166db74cd4aa521c13f80b48067010f155c9f212331ca455"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/models/staging/stg_prices.sql",
+      "sha256": "b3f115c0e35d33311f3bd5000aedebc2f58afc05b71bcba236b31fa4e16068dd"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/profiles.yml",
+      "sha256": "9a62506d944484785cd8dbb23d49236020937380643a8e83bc3f2526c1de3968"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/seeds/seed_custodian_nav.csv",
+      "sha256": "3ea53db46d6eb5f521ec41c0f512c9c66bc3f9cd01d7fb0947555eb05deac80e"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/seeds/seed_funds.csv",
+      "sha256": "2a2a260caa545bdb8eda99a953cc28fe0e2a099be22826297b1141717490772d"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/tests/assert_nav_within_tolerance.sql",
+      "sha256": "4eeb44fd4937d82cd338d715352ba364010c2b7efcda731a027b0d461af12f10"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/dbt/tests/reconcile_daily_exposure.sql",
+      "sha256": "797e61f97af35317fe32027e4b2d7bb7b696cf1a70acc5116a14fd793dcfb979"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/include/alerting/notifications.py",
+      "sha256": "763120fb243f3a9611ed93f6ae5a7e761784268d8481c0de08dd0d3e3fc09299"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/include/launch/consumer-guide.md",
+      "sha256": "1b3fbf393270fe911ac71b037cbc72f04026c3fb9245a0c449e7d81856f0f0ec"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/include/monitoring/portfolio_analytics.yml",
+      "sha256": "b614b76658303bb281c22544432f07f004984179f3f980e6b6f0d98ef885f13c"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/include/runbooks/portfolio_analytics.md",
+      "sha256": "23dbe3ecc54577aad82e9e74458e727eb7c35b5c02d67837d9fc1d5fc0846517"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/tests/test_dag_structure.py",
+      "sha256": "1b7df86e297e1077b0cadb083a2f98dcff6c15816c382e98968f5a3bc7916bfa"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/solution/verify-with-databricks.sh",
+      "sha256": "78aab4825a14a91b2e7b50b8b766348e10ad04df4ea0b5faec37e286fce4bff2"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/README.md",
+      "sha256": "bf4050feed8029d5cee569670e2e9b9848df0f9101acbb3084961122ca8d3d33"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/check-dag-load.sh",
+      "sha256": "e0894ee240b860d0afd679c473f0030c9ef94eebca494fb8073cdd191149c7ef"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dags/callbacks.py",
+      "sha256": "06afde2f8cbef04ac5958fce9ba53f5e776e0d5133644cb5f0205122e5088728"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dags/databricks_submit_run_dag.py",
+      "sha256": "258f91079c8c0f5b7d5647662f278e66f7aafe2089718e33d7bf152d5ca71e5c"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dags/portfolio_analytics_daily.py",
+      "sha256": "779ec42073405be3d8551e07980f1350e3c860ae4b9de81ed13522cb408d5c62"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/dbt_project.yml",
+      "sha256": "b9466c3e062ec4cbd74eecec4c38175c937be84907e6cc2963e630639a2cf2f1"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/intermediate/int_fund_attributes.sql",
+      "sha256": "266c5862f270b66718902e1adc01a356e2509df93b4412c8d6df10ee77d0da37"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "29d1f42289169ae18156490d2a167b253cc1ef72bbc38888b500fd3acdf7d1e7"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/intermediate/int_positions_dated.sql",
+      "sha256": "1abd3aeabe6c5a0fa279fc0f2172340f730eaa8dc97098e5019410c1b06a2427"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/marts/agg_fund_daily_exposure.sql",
+      "sha256": "8354362aa05010d73846c260bb73f12515f7bd4687bf1db60633b57cfb388a46"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/marts/agg_fund_exposure.sql",
+      "sha256": "497749e73955be5a75443397406026511331589082f589fd816136288938a9bb"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/marts/fct_portfolio_returns.sql",
+      "sha256": "e8c4ef301cae8b924cb912bd547abab36df76dec6d12ac01b62a00a6c083e516"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/marts/schema.yml",
+      "sha256": "7f4b2c119a9928945a6d2636997bc2ffe05dbe12f094b7be27e5b6e775490066"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/sources.yml",
+      "sha256": "b9772b8bc3f35bfa5d4c673695c5c12d276f2d12257fc10b0b7b4097f7ac9659"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/schema.yml",
+      "sha256": "6655887490109b0768cee1c4ad57a63a948c77c39f05c0a7f6141dbd7c251048"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/stg_funds.sql",
+      "sha256": "026cace75438d342a68988adf21018266f3e0b0c710721a5dc425609b6c15530"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/stg_fx_rates.sql",
+      "sha256": "a57bc994b73d1c4b8a8089d35f81fd24912ad7cd4907d0c3ffa11a538ac336ca"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/stg_holdings.sql",
+      "sha256": "2caa2fd306c515bf335e04a23407010a71cd22ce46f036238952412471ca23b0"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/stg_positions.sql",
+      "sha256": "cd34f52eeff447af166db74cd4aa521c13f80b48067010f155c9f212331ca455"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/models/staging/stg_prices.sql",
+      "sha256": "b3f115c0e35d33311f3bd5000aedebc2f58afc05b71bcba236b31fa4e16068dd"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/profiles.yml",
+      "sha256": "9a62506d944484785cd8dbb23d49236020937380643a8e83bc3f2526c1de3968"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/seeds/seed_custodian_nav.csv",
+      "sha256": "3ea53db46d6eb5f521ec41c0f512c9c66bc3f9cd01d7fb0947555eb05deac80e"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/seeds/seed_funds.csv",
+      "sha256": "2a2a260caa545bdb8eda99a953cc28fe0e2a099be22826297b1141717490772d"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/tests/assert_nav_within_tolerance.sql",
+      "sha256": "4eeb44fd4937d82cd338d715352ba364010c2b7efcda731a027b0d461af12f10"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/dbt/tests/reconcile_daily_exposure.sql",
+      "sha256": "797e61f97af35317fe32027e4b2d7bb7b696cf1a70acc5116a14fd793dcfb979"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/include/alerting/notifications.py",
+      "sha256": "763120fb243f3a9611ed93f6ae5a7e761784268d8481c0de08dd0d3e3fc09299"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/include/launch/consumer-guide.md",
+      "sha256": "1b3fbf393270fe911ac71b037cbc72f04026c3fb9245a0c449e7d81856f0f0ec"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/include/monitoring/portfolio_analytics.yml",
+      "sha256": "b614b76658303bb281c22544432f07f004984179f3f980e6b6f0d98ef885f13c"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/include/runbooks/portfolio_analytics.md",
+      "sha256": "23dbe3ecc54577aad82e9e74458e727eb7c35b5c02d67837d9fc1d5fc0846517"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/tests/test_dag_structure.py",
+      "sha256": "1b7df86e297e1077b0cadb083a2f98dcff6c15816c382e98968f5a3bc7916bfa"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/stubs/verify-with-databricks.sh",
+      "sha256": "78aab4825a14a91b2e7b50b8b766348e10ad04df4ea0b5faec37e286fce4bff2"
+    },
+    {
+      "path": "challenges/03-airflow-orchestration/verify.sh",
+      "sha256": "b7c1c10b4f5e7a3452eab151955aac2e8a27eb49ee8bc1745ee26259093dd048"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/README.md",
+      "sha256": "f7c3051924d68a510000dcd0fa4cdd2cdde53ae8ab80fe90a1329159df6245ab"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/advisors.yml",
+      "sha256": "76dec4721b7084ffd0ec8753bdd28982a16dde725d84ce6e644c062154b95d30"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/dom_party__advisor.sql",
+      "sha256": "adf69effd6ae320d0951710df67eb76871db076a1a49216591a85a2e4ea218a4"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/rpt_advisor_book.sql",
+      "sha256": "64b94c5cc490615710fd6538cca98b2d19e8e62b7de61c19ac7564c7682503fa"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/rpt_advisor_leaderboard.sql",
+      "sha256": "8bb3fb0bb9573b5be713f89effdc141893a3f1dccc2fcf6e57b0b7a3c7ef745c"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/rpt_portfolio_summary.sql",
+      "sha256": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/rpt_region_report.sql",
+      "sha256": "a9cfbb373bd1e3a1f76fa4334e275aac54e1ebe81ea0f911df8c3c1813a9f4a2"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/staging/src_crm__advisors.sql",
+      "sha256": "14d9e668da2e83c19d9035b78b89a473dc4a9f469f5bb1a0518333726c4c95b5"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/clients/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/clients/dbt/clients.yml",
+      "sha256": "884c1f0263b75861def046e8ca694065dfc1a644acfee17ab9703a48609db4d0"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/clients/dbt/integration/dom_party__client.sql",
+      "sha256": "fc63fbf949fe570a35add3f90272168d732f67f3112cce06fbbbd1f1be2dc1fd"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/clients/dbt/staging/src_crm__clients.sql",
+      "sha256": "9383cc18ca431ca4bbd93ec456be7163aef41302a8df124457f337dac7651b1f"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/exposures.yml",
+      "sha256": "4f558e9874acfa7fb47fb250b0299f917232558040e4c27085f5b3fb3ffb6a99"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_holdings/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_holdings/dbt/fund_holdings.yml",
+      "sha256": "98cae36e99672cedf412afe349b4255b61094cf79a11fd78d9b82bc2e625619b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_holdings/dbt/integration/dom_fund__holding.sql",
+      "sha256": "9aacfa5bf920651f24b087b179301d4d4d8546429e5c04def34ff1cbf2f968d1"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_holdings/dbt/staging/src_fundref__fund_holdings.sql",
+      "sha256": "f4c54a3d31b7818072fc341614a9882608a03064184134b1bc2d4c7c1d523d4d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_nav/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_nav/dbt/fund_nav.yml",
+      "sha256": "523c51b0a9dfe0fcdfecc3a0496b65e42b94e9c67b31b92736368eaec4803c4d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/fund_nav/dbt/prepared/agg_fund_nav.sql",
+      "sha256": "d4bfea3a658928e56ad8a92afb26797c3362e9daed53b610234f6abd85c87032"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/funds/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/funds/dbt/funds.yml",
+      "sha256": "e4bdd2cdee334d2b49a0c422fb53f9ee4eef461a58f0bd2277d1b6ec191a826b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/funds/dbt/integration/dom_fund__fund.sql",
+      "sha256": "cf69d6090cd186b5248b330385ea885ad5ca0d05ba3f8f413982ef54fb5b2309"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/funds/dbt/staging/src_fundref__funds.sql",
+      "sha256": "9e12b5c833bf76462b1fafbc35214542e2add32ce9d635602a3f86f266737938"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/instruments/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/instruments/dbt/instruments.yml",
+      "sha256": "5c8c0b5a875bb87a5c7201bb131a01eff4562490366a02dbaf21b45e34db73d9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/instruments/dbt/integration/dom_instrument__instrument.sql",
+      "sha256": "318cd4d85a6e5bb79a535fe1aeb70655e8f9201cc8c26cc6197f95ef1b6185d1"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/instruments/dbt/staging/src_secmaster__instruments.sql",
+      "sha256": "d41ce67e574f22537c61f7a8c205879f1999b4780081e55dece6d074a6591220"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/integration/dom_trading__latest_price.sql",
+      "sha256": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/market_daily.yml",
+      "sha256": "d1567e67b50c5c311ba2d705f61728cc154529b594e6b4263ae4e6dbbb42689f"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/prepared/agg_instrument_activity.sql",
+      "sha256": "62a454bc578cb093362a66749adb667a4684772e13fc1f9edbeb7d75907cee89"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/prepared/api_latest_price.sql",
+      "sha256": "b33d053606e235b73a693f3a683ad201075d59ab38d8c415e5062088fde91e36"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/prepared/ts_daily_asset_class.sql",
+      "sha256": "c6b70e1f660a3ba02f454eda06fea44175e3e3f0d9f47f09d9d6375b908e761f"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/prepared/ts_daily_market.sql",
+      "sha256": "3d1cde5f2914c6e7e25bf8e18f84f2b53968d2514ef18298f571c4ab9ed6b71b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/prepared/ts_daily_market_incremental.sql",
+      "sha256": "46034ec42ee094c2cdda2426506d7d42ca8d71c0fc8046fb8b7cbe06b28131c9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolio_perf/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolio_perf/dbt/portfolio_perf.yml",
+      "sha256": "6c34a169a46fb3b7fd3c55876e55db025a7e0db97335c413e964233086c511f9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolio_perf/dbt/prepared/rpt_portfolio_performance.sql",
+      "sha256": "daee35093070a9d49ba66003b40bc1e40a48e3a3773cc526d98dc76f19331e7c"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/integration/dom_portfolio__portfolio.sql",
+      "sha256": "74cc0d7d94b63867e4bd944f2df15c4cf9a8b83de33cd1e073c058315b108f18"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/integration/dom_positions__position.sql",
+      "sha256": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/portfolios.yml",
+      "sha256": "2d675e83f94aeb6ae2d0ae0657df8eec9528c8091e4777c5bf393f2eda08ebbb"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/staging/src_portfolio__portfolios.sql",
+      "sha256": "f5438f4ca6549d28472f9b9055300994f18da1bc6b31bd719e4d18dfed08e845"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/segment_aum/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/segment_aum/dbt/prepared/agg_segment_aum.sql",
+      "sha256": "f9d24aaab3d3accf3f56318c336888fa610b6e335c457a2d8970b57bf21a7259"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/segment_aum/dbt/segment_aum.yml",
+      "sha256": "dd8583bf90de3a570938d27077f5f96739f7c10495fd0063c464f1126ed19544"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/trades/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/trades/dbt/integration/dom_trading__trade.sql",
+      "sha256": "f627e0eae70917146a744f47586c4733cd5f6ffb1d92c8e53d254f13bda3685f"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/trades/dbt/staging/src_trading__trades.sql",
+      "sha256": "f51cb6ac693992b9d9a7f74b1f8d8e01b720f07468a0a3eed01b4b3003df23e9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/solution/datasets/trades/dbt/trades.yml",
+      "sha256": "fddb6d18fa776f66d221514622926689b7e75920fd93cd8a68d662631c79473e"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/advisors.yml",
+      "sha256": "79b37655b2cff728d94e6b171f6ec303182e3711e4fb6889de25f3d412b9dff0"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/integration/dom_party__advisor.sql",
+      "sha256": "ad67cddddee9d251a7d50baf00f2fabe4577dcc1beeac08ed73fc6c309790993"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/integration/rpt_advisor_book.sql",
+      "sha256": "7d0bd22760d801cb7110f7c0d865abad05972bccc6333a208ac2dad22c003825"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/integration/rpt_advisor_leaderboard.sql",
+      "sha256": "0d849e8b90d016cc24b2c14119b5d58961cc17c17c1229ebe60c4b4c1739b1a2"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/integration/rpt_portfolio_summary.sql",
+      "sha256": "0abc8c3fec674a24f74a0d6c44ee90e0e7cc1598e0980db0c9d61f1724558488"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/integration/rpt_region_report.sql",
+      "sha256": "0d8e2a500bd1a602bb1c2884d60dbfc203cf819d278235e49e59882474fb3c0b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/advisors/dbt/staging/src_crm__advisors.sql",
+      "sha256": "78e12e7bab6c6b60a9cc7d298a54c19c9261ea9a8fa1da2fecf3d75913cb804c"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/clients/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/clients/dbt/clients.yml",
+      "sha256": "884c1f0263b75861def046e8ca694065dfc1a644acfee17ab9703a48609db4d0"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/clients/dbt/integration/dom_party__client.sql",
+      "sha256": "396fd0507178e92bed049d6c57c1c7b4b9b0851c4d8757b4da0cd3fcd65d4147"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/clients/dbt/staging/src_crm__clients.sql",
+      "sha256": "fda1569a7f6befdda7588ea4fbe5e4598f9f40e43dcf2ab8099ee6cadc0a9d09"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_holdings/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_holdings/dbt/fund_holdings.yml",
+      "sha256": "98cae36e99672cedf412afe349b4255b61094cf79a11fd78d9b82bc2e625619b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_holdings/dbt/integration/dom_fund__holding.sql",
+      "sha256": "f17e75178ce629d644ec33d2680eae797fe3f765644befc7c09e64c038206de5"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_holdings/dbt/staging/src_fundref__fund_holdings.sql",
+      "sha256": "43dc11f5afd7c146f63a1ca748488188f47076d9a71447f45cc01867e45fab5d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_nav/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_nav/dbt/fund_nav.yml",
+      "sha256": "523c51b0a9dfe0fcdfecc3a0496b65e42b94e9c67b31b92736368eaec4803c4d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/fund_nav/dbt/prepared/agg_fund_nav.sql",
+      "sha256": "902f125a297659cd03c8af5429f9e892984b5d939f75d43741c20a8d65fd1b35"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/funds/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/funds/dbt/funds.yml",
+      "sha256": "e4bdd2cdee334d2b49a0c422fb53f9ee4eef461a58f0bd2277d1b6ec191a826b"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/funds/dbt/integration/dom_fund__fund.sql",
+      "sha256": "da24e4198dae3cfa0762f6180a4912fc066aea7ee86ebe56db6eb332d051ecad"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/funds/dbt/staging/src_fundref__funds.sql",
+      "sha256": "380d70797d2c2a0da6b6e5ab3322e21bf9f68a56c8992eaaddedd662101c99b4"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/instruments/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/instruments/dbt/instruments.yml",
+      "sha256": "5c8c0b5a875bb87a5c7201bb131a01eff4562490366a02dbaf21b45e34db73d9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/instruments/dbt/integration/dom_instrument__instrument.sql",
+      "sha256": "042b29eb680651fd004f349052fea6bc2c418b8deae7db901d519bcfd64cae04"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/instruments/dbt/staging/src_secmaster__instruments.sql",
+      "sha256": "9d68bb95abbd3bc3add94f9f576a01f8dc88bb63f41fda2c35c11755eeeab16e"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/integration/dom_trading__latest_price.sql",
+      "sha256": "2c315bee5c09808fde2ffce07be56e7e3f42dc792d4bf6d73e5adf3ba494ca0e"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/market_daily.yml",
+      "sha256": "d1567e67b50c5c311ba2d705f61728cc154529b594e6b4263ae4e6dbbb42689f"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/prepared/agg_instrument_activity.sql",
+      "sha256": "74e881339a6ad4d84c24b9a95777cd85ae1487bcbfd82e598678990d64bfd3da"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/prepared/api_latest_price.sql",
+      "sha256": "a48c2e7b0801871b4759dca4196a7583a978ccd62f06c5b1f148da99c0722282"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/prepared/ts_daily_asset_class.sql",
+      "sha256": "1e778fb0f7ee5783ba853236687ce4393c0a30fa2e2ab87e16e20e798401b89d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/prepared/ts_daily_market.sql",
+      "sha256": "80dd9ca55ae353fbafa0993be22759892896221bcb8c57b95ec9b7c4c07e6deb"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/market_daily/dbt/prepared/ts_daily_market_incremental.sql",
+      "sha256": "6b737ee21a589b75300c80a9a83f33c00cad83b72227c85f637649e67c8afcd0"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolio_perf/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolio_perf/dbt/portfolio_perf.yml",
+      "sha256": "6c34a169a46fb3b7fd3c55876e55db025a7e0db97335c413e964233086c511f9"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolio_perf/dbt/prepared/rpt_portfolio_performance.sql",
+      "sha256": "4a55a705344ea4bed1b60041a88c7d4dba3ffc142d79aa9cd9dfaca55b523362"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolios/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolios/dbt/integration/dom_portfolio__portfolio.sql",
+      "sha256": "b79332fa55fb2f2e765680ab01078af71d61c021b02c04291ccbb7a08c030ca8"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolios/dbt/integration/dom_positions__position.sql",
+      "sha256": "20536b25b926be47ef1635676aa9e118e0177de8e5a11a4e3b87901a2b9650f8"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolios/dbt/portfolios.yml",
+      "sha256": "2d675e83f94aeb6ae2d0ae0657df8eec9528c8091e4777c5bf393f2eda08ebbb"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/portfolios/dbt/staging/src_portfolio__portfolios.sql",
+      "sha256": "3242bf06f1e00e9c2c0aaba13453a38b535c98f9ac6142df2992716f001ed44d"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/segment_aum/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/segment_aum/dbt/prepared/agg_segment_aum.sql",
+      "sha256": "cef7e65d10f0dc7d35105bbfc63b180750087fdf47b00666e49f086f737bd820"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/segment_aum/dbt/segment_aum.yml",
+      "sha256": "dd8583bf90de3a570938d27077f5f96739f7c10495fd0063c464f1126ed19544"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/trades/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/trades/dbt/integration/dom_trading__trade.sql",
+      "sha256": "0f04fe87710e447eca484c7fcebfc3d1b53ed438dbdad9e8826152d58a30264a"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/trades/dbt/staging/src_trading__trades.sql",
+      "sha256": "475ec3d8804384624bfc325babe3c65438940c69e7eda06c19f49b4cd6e3f8fd"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/stubs/datasets/trades/dbt/trades.yml",
+      "sha256": "5710d80a021e5923f3da89c8878f71d20c20bdb3ee5d79b3be24e8d3fe47f79c"
+    },
+    {
+      "path": "challenges/04-atlas-capstone/verify.sh",
+      "sha256": "538fd6d3ca2a52579d1693bd69aeee17760879ca5231d264c663482d82580932"
+    },
+    {
+      "path": "challenges/CHANGES.md",
+      "sha256": "8daa9da538c24584143a2f57de50a54f2bbb7d5f8dfd11ad4dc3321dbf403290"
+    },
+    {
+      "path": "challenges/README.md",
+      "sha256": "bab6b6dc9477a425a933d6a5a70106d7574958a725090f378221b5ce73cee1d8"
+    },
+    {
+      "path": "data_products/.airflowignore",
+      "sha256": "21a53480518d8396329e927e017302ecf926ce37a394f2550ad6b5e379ad87a5"
+    },
+    {
+      "path": "data_products/.blueprints/dag_args.py",
+      "sha256": "0d78ca1b1f23948547e9bed1650412b62023aee9d5ded4c66e9dbb1f56606056"
+    },
+    {
+      "path": "data_products/.blueprints/dag_exec_check.py",
+      "sha256": "a0e55e88339b735596d05869af5c95666b3771d36db01da882d36732371a9bd2"
+    },
+    {
+      "path": "data_products/.blueprints/databricks_run_now.py",
+      "sha256": "5e537fd0c65062734e6320427ef0bef6a68c66aaea75a2d54b9eb4b8aa17aa2c"
+    },
+    {
+      "path": "data_products/.blueprints/kafka_notify.py",
+      "sha256": "b106c10d30f9428c1523b27d326eb897603e4c4cdef9653d6c9f5cfe17461a5e"
+    },
+    {
+      "path": "data_products/.blueprints/mock_xcom.py",
+      "sha256": "e0193407979ccd953defc69e38d28697cc50cf308b759c842290dc6dd57659fc"
+    },
+    {
+      "path": "data_products/.blueprints/src/dag_run_id_notify_v2.py",
+      "sha256": "198ebf2827d92f79bd12a8da6051ba7b1ae5fdb8ae560058a49a1dcfa062adb4"
+    },
+    {
+      "path": "data_products/.blueprints/src/data_notify.py",
+      "sha256": "7c4e7e02162dd129cc81ce2921cf2ac653261316c74a5088cc7197c68d8bc072"
+    },
+    {
+      "path": "data_products/.blueprints/src/mock_xcom_generator.py",
+      "sha256": "2c2817b0d59187165d8c6f8dbdf678306059aeef0edcc28074b58c042550d4f8"
+    },
+    {
+      "path": "data_products/.shared/mysamplemacro.sql",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/.copier-answers.yml",
+      "sha256": "861e3ede6f5f8e280940e27aaf3a57864b0b8e921097fe0cb7dd703c789bd7f3"
+    },
+    {
+      "path": "data_products/atlas_elt/.dbtignore",
+      "sha256": "068f1ecf3534c8720fffd5a371f48436f44829d1fd2c70282d7b87779e7c33d3"
+    },
+    {
+      "path": "data_products/atlas_elt/DATABRICKS_RUNTIME_VERSION",
+      "sha256": "203f3244dc32924714da3148a9ca920ecb06aeb4d78d7ab1f6602c6a4c923064"
+    },
+    {
+      "path": "data_products/atlas_elt/README.md",
+      "sha256": "1bcca0c531df833b0ada60d132700f80d20cb1e2b6b7f93f0954d31397d74747"
+    },
+    {
+      "path": "data_products/atlas_elt/databricks.yml",
+      "sha256": "48352e5e52211c7a42689d73a00038c1329bea56345a530d2c3cc1ba62b74551"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/airflow/advisors.dag.yml",
+      "sha256": "1bdd5aaebfbd2b75e77568906152e36abb77dd98bd1bb09dd4c1fb9e99263648"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/bundle/advisors.job.yml",
+      "sha256": "b49fb30886c2183043b82b6f1f4f94f1338f071b3402b1ca59b09ff369621531"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/bundle/advisors_dq.job.yml",
+      "sha256": "c4fd436b5a1a090bcb6ad2bbc6a82d8a554546356e854a19eafffc8542525892"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/contract/advisors.odcs.yaml",
+      "sha256": "b603f0c13b97d690f1ef5bedd8c48ffe10b0ae44bd9074e93e73a5cdcfae6644"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/cspn_migration.md",
+      "sha256": "ae4c0bb8f32dbc8c9762783d1cf8322b63fdda1e8c7cc877b20cc94ac261c4bc"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/advisors.yml",
+      "sha256": "79b37655b2cff728d94e6b171f6ec303182e3711e4fb6889de25f3d412b9dff0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/integration/dom_party__advisor.sql",
+      "sha256": "ad67cddddee9d251a7d50baf00f2fabe4577dcc1beeac08ed73fc6c309790993"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/integration/rpt_advisor_book.sql",
+      "sha256": "7d0bd22760d801cb7110f7c0d865abad05972bccc6333a208ac2dad22c003825"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/integration/rpt_advisor_leaderboard.sql",
+      "sha256": "0d849e8b90d016cc24b2c14119b5d58961cc17c17c1229ebe60c4b4c1739b1a2"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/integration/rpt_portfolio_summary.sql",
+      "sha256": "0abc8c3fec674a24f74a0d6c44ee90e0e7cc1598e0980db0c9d61f1724558488"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/integration/rpt_region_report.sql",
+      "sha256": "0d8e2a500bd1a602bb1c2884d60dbfc203cf819d278235e49e59882474fb3c0b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/dbt/staging/src_crm__advisors.sql",
+      "sha256": "78e12e7bab6c6b60a9cc7d298a54c19c9261ea9a8fa1da2fecf3d75913cb804c"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/advisors/runtime/dq_verify.py",
+      "sha256": "3c5e62bee9956cad8d17162b6ca25d5cb294f9f9866c1b2d6e3b0f30729c03bb"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/airflow/clients.dag.yml",
+      "sha256": "a54d3f277b3945f56fc452af47d15aebca08e079dd5c53ae82f6861bcef5c492"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/bundle/clients.job.yml",
+      "sha256": "a6babe99cfdf0d7fb4973b2b3956693b3e80ced01592126f84ec3ea0d1035af4"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/bundle/clients_dq.job.yml",
+      "sha256": "8c6af7aeae152deedbc7bb71905d3e3c01160b09ce81668adb96590f29e006c8"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/contract/clients.odcs.yaml",
+      "sha256": "dc5ce8e3237c95d6dd587d2caa2233cc267ee6eca1013c0af6ba9cf4342744d6"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/cspn_migration.md",
+      "sha256": "0f33ad1b6029d9f9572d75c6f8b8051b99e1fd00977bf56d6f877e99991f2a66"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/dbt/clients.yml",
+      "sha256": "884c1f0263b75861def046e8ca694065dfc1a644acfee17ab9703a48609db4d0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/dbt/integration/dom_party__client.sql",
+      "sha256": "396fd0507178e92bed049d6c57c1c7b4b9b0851c4d8757b4da0cd3fcd65d4147"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/dbt/staging/src_crm__clients.sql",
+      "sha256": "fda1569a7f6befdda7588ea4fbe5e4598f9f40e43dcf2ab8099ee6cadc0a9d09"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/clients/runtime/dq_verify.py",
+      "sha256": "a746800106022f2ebc46d4de835bb820052b2beb952dc3473608f7956290a1aa"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/airflow/fund_holdings.dag.yml",
+      "sha256": "75663d52532649f0a9d5951eaacbd4747e2a1a4b319183aa320968246f8d8eea"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/bundle/fund_holdings.job.yml",
+      "sha256": "75e3318a90e8e8ec64951d2916238abdbc096688f88b6091570a048e647bd5ac"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/bundle/fund_holdings_dq.job.yml",
+      "sha256": "292915edbee6e72968e3f3b924b4f6c9db3469d22f3e5e974e14650e2f3d397b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/contract/fund_holdings.odcs.yaml",
+      "sha256": "26b0ca843f985e6d229658958f367ad1e7682483eac510d843f6ce6037822c0e"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/cspn_migration.md",
+      "sha256": "8e43d6ee85e32111b3ef481b139224d76b58d27b4376533572262ae180498a20"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/dbt/fund_holdings.yml",
+      "sha256": "98cae36e99672cedf412afe349b4255b61094cf79a11fd78d9b82bc2e625619b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/dbt/integration/dom_fund__holding.sql",
+      "sha256": "f17e75178ce629d644ec33d2680eae797fe3f765644befc7c09e64c038206de5"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/dbt/staging/src_fundref__fund_holdings.sql",
+      "sha256": "43dc11f5afd7c146f63a1ca748488188f47076d9a71447f45cc01867e45fab5d"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_holdings/runtime/dq_verify.py",
+      "sha256": "85f36a1d8198eac4de77961334fe65d6d965264fd7e420bc55731546dd238fa7"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/airflow/fund_nav.dag.yml",
+      "sha256": "531d434f4c3d20ad94730ea33b4c4aabf4a057445651f4538db78855bdbfb0d0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/bundle/fund_nav.job.yml",
+      "sha256": "06e5328c575e5bb8a205de54dfc0fb19f338672b5178074f829e5161c57bc4ac"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/bundle/fund_nav_dq.job.yml",
+      "sha256": "898e01319ae10125ebb4440f0fbf4b5fef79412889742261bd8da776bb633dd9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/contract/fund_nav.odcs.yaml",
+      "sha256": "0f1f8661080cc5a3537c56ec6966b81fd2bd0cf7fa8b322eefc789c11310d601"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/cspn_migration.md",
+      "sha256": "ad023789a1fb83a6fa2b517fe8c6bdb20835ea92aed2f3639f48ce0ae8491551"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/dbt/fund_nav.yml",
+      "sha256": "523c51b0a9dfe0fcdfecc3a0496b65e42b94e9c67b31b92736368eaec4803c4d"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/dbt/prepared/agg_fund_nav.sql",
+      "sha256": "902f125a297659cd03c8af5429f9e892984b5d939f75d43741c20a8d65fd1b35"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/fund_nav/runtime/dq_verify.py",
+      "sha256": "9626f48e1aa75751fe822d7ebf3ac7ea5fef32b6d4358daad740878e62d09fe5"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/airflow/funds.dag.yml",
+      "sha256": "4f18c9204aef043423d5f7d2af37b1051b1a58dbb12a06a4eb0e6dc6a9671f1e"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/bundle/funds.job.yml",
+      "sha256": "3b0e1bbf58b140db27d7dc9c173a0323030a10054a77e899701dee640c33bca9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/bundle/funds_dq.job.yml",
+      "sha256": "b8ff6be34075314ca1b22a0a97f7688f17b004c18d665b9e92e9987350ffe0be"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/contract/funds.odcs.yaml",
+      "sha256": "6f5d883cb3f6020a5f15b799025d6144c672dedb8348fdaebb8430b65c5fd1e6"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/cspn_migration.md",
+      "sha256": "a793ef8d351916e4422f2c9de953a4de50561251446bd314eb98baebc9da7fc7"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/dbt/funds.yml",
+      "sha256": "e4bdd2cdee334d2b49a0c422fb53f9ee4eef461a58f0bd2277d1b6ec191a826b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/dbt/integration/dom_fund__fund.sql",
+      "sha256": "da24e4198dae3cfa0762f6180a4912fc066aea7ee86ebe56db6eb332d051ecad"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/dbt/staging/src_fundref__funds.sql",
+      "sha256": "380d70797d2c2a0da6b6e5ab3322e21bf9f68a56c8992eaaddedd662101c99b4"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/funds/runtime/dq_verify.py",
+      "sha256": "ef8927a285d58ca924b5f76268793af26fdae31e9e5d3cb1304e65f8b8b43c34"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/airflow/instruments.dag.yml",
+      "sha256": "09bfc6f2dd3be84710a1366be11173f2c91726def6cbeed8ca27abb83d7e0da2"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/bundle/instruments.job.yml",
+      "sha256": "4c4309ad3653fe7aa890f79b9ad55dbca4e06fa5845f4f641f7a849238e4407b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/bundle/instruments_dq.job.yml",
+      "sha256": "6c2d62d39de15af204d4cbf012b491aa8f7b27d3e74bd880b4e5f70016dd9f59"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/contract/instruments.odcs.yaml",
+      "sha256": "f8cae24586b17522da7e964691be636ad3dbcd1d4fa3dccce5792f0d778406b9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/cspn_migration.md",
+      "sha256": "fbdfaaf3ac1ddcf68d4cd0011ba456389004587e921286304ebd567bc1714027"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/dbt/instruments.yml",
+      "sha256": "5c8c0b5a875bb87a5c7201bb131a01eff4562490366a02dbaf21b45e34db73d9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/dbt/integration/dom_instrument__instrument.sql",
+      "sha256": "042b29eb680651fd004f349052fea6bc2c418b8deae7db901d519bcfd64cae04"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/dbt/staging/src_secmaster__instruments.sql",
+      "sha256": "9d68bb95abbd3bc3add94f9f576a01f8dc88bb63f41fda2c35c11755eeeab16e"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/instruments/runtime/dq_verify.py",
+      "sha256": "5bec7f62a16a35f58a2d98e8a960bcd3297cdf2ff2c87e11abfe4b3246bce62e"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/airflow/market_daily.dag.yml",
+      "sha256": "4574599d1422292016c157d4f5d803ccc3f782609c41b9ad50658e068a60493f"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/bundle/market_daily.job.yml",
+      "sha256": "5969927ed22d9d1df73693c657279f7836d41f3d326cc2f1995aef0055462eac"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/bundle/market_daily_dq.job.yml",
+      "sha256": "93c2df76124471e4685d4897de2235a930c562e4cec210fdf01d396088cc20ef"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/contract/market_daily.odcs.yaml",
+      "sha256": "f43a3cd9b2d0ec091f75601f2dd93e9751f640da1d5887274443f816914c6a4d"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/cspn_migration.md",
+      "sha256": "880a53eb9412c46c18cb5d25b747932747a27910e80a39ca4780d901e9938f2b"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/integration/dom_trading__latest_price.sql",
+      "sha256": "2c315bee5c09808fde2ffce07be56e7e3f42dc792d4bf6d73e5adf3ba494ca0e"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/market_daily.yml",
+      "sha256": "d1567e67b50c5c311ba2d705f61728cc154529b594e6b4263ae4e6dbbb42689f"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/prepared/agg_instrument_activity.sql",
+      "sha256": "74e881339a6ad4d84c24b9a95777cd85ae1487bcbfd82e598678990d64bfd3da"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/prepared/api_latest_price.sql",
+      "sha256": "a48c2e7b0801871b4759dca4196a7583a978ccd62f06c5b1f148da99c0722282"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/prepared/ts_daily_asset_class.sql",
+      "sha256": "1e778fb0f7ee5783ba853236687ce4393c0a30fa2e2ab87e16e20e798401b89d"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/prepared/ts_daily_market.sql",
+      "sha256": "80dd9ca55ae353fbafa0993be22759892896221bcb8c57b95ec9b7c4c07e6deb"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/dbt/prepared/ts_daily_market_incremental.sql",
+      "sha256": "6b737ee21a589b75300c80a9a83f33c00cad83b72227c85f637649e67c8afcd0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/market_daily/runtime/dq_verify.py",
+      "sha256": "373af3ae7490d0802c88fc19e7c08d4488b1058c4a227c49386b423fc40c25b5"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/airflow/portfolio_perf.dag.yml",
+      "sha256": "64eb6742653eb8270305cb034ec8c23a04713babe4f792d35ff21d2eec5847ec"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/bundle/portfolio_perf.job.yml",
+      "sha256": "be535fa9adff2ee063b7ef9cfb2ef54b6e73595f8a82fa2b0cd234d284600418"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/bundle/portfolio_perf_dq.job.yml",
+      "sha256": "c9b3004bb8dbea8ee445a5fd95d286722bf1bddaf8ed6d6f658e13e2f183d1ed"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/contract/portfolio_perf.odcs.yaml",
+      "sha256": "d4658ee24fca3f4d1bd37c9e73a58c0b9520373e85f2bf33a3b2fe4b45d9eeb5"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/cspn_migration.md",
+      "sha256": "d10384a98291b310e0c15752d33f9115eaec85c497eca338bf3370c94fdaeac2"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/dbt/portfolio_perf.yml",
+      "sha256": "6c34a169a46fb3b7fd3c55876e55db025a7e0db97335c413e964233086c511f9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/dbt/prepared/rpt_portfolio_performance.sql",
+      "sha256": "4a55a705344ea4bed1b60041a88c7d4dba3ffc142d79aa9cd9dfaca55b523362"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolio_perf/runtime/dq_verify.py",
+      "sha256": "3cf523a8b3c4b2c9ddb7f5e34fe16eb0756e0d4c24802918cce70b52f3ee3fb6"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/airflow/portfolios.dag.yml",
+      "sha256": "c96bcd017f84e71c9ee6cbaeebf1c7fb376d1081fe4522221da582c41619ce53"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/bundle/portfolios.job.yml",
+      "sha256": "7fb35e31fb8d0787016118fe893e3cc4ff36fc523d14342a4ceabb6fc12035d0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/bundle/portfolios_dq.job.yml",
+      "sha256": "814f719324c722d2bd1a6b7af8614925a91fbd108fec1ef9d5b8516317c72ad9"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/contract/portfolios.odcs.yaml",
+      "sha256": "521d12d82a2147854f44febeb8620b1986da9fcb85d4c6f331f45d68cc8b389f"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/cspn_migration.md",
+      "sha256": "f408e4a5c0b460cf797c8096b013dd5551d63dbbd0561f820fb462be587a07a5"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/dbt/integration/dom_portfolio__portfolio.sql",
+      "sha256": "b79332fa55fb2f2e765680ab01078af71d61c021b02c04291ccbb7a08c030ca8"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/dbt/integration/dom_positions__position.sql",
+      "sha256": "20536b25b926be47ef1635676aa9e118e0177de8e5a11a4e3b87901a2b9650f8"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/dbt/portfolios.yml",
+      "sha256": "2d675e83f94aeb6ae2d0ae0657df8eec9528c8091e4777c5bf393f2eda08ebbb"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/dbt/staging/src_portfolio__portfolios.sql",
+      "sha256": "3242bf06f1e00e9c2c0aaba13453a38b535c98f9ac6142df2992716f001ed44d"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/portfolios/runtime/dq_verify.py",
+      "sha256": "1cef6e073ce544977b026ca1b59f76a5e7f41b094f6cd0af482a79b038441a74"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/airflow/segment_aum.dag.yml",
+      "sha256": "fe0f1b95e9c7c270bd7d769ff10ff261eaaf50d93cccf27d60a5ad0da1f099e4"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/bundle/segment_aum.job.yml",
+      "sha256": "c8a2b6c009dd7d374faaef18e61b99fa673dd53abba461e1fd342c3270f13ab7"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/bundle/segment_aum_dq.job.yml",
+      "sha256": "0a5fb14a0360d2864ce0ef5249d49a436447ae755fde51ca8655fe23825adad6"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/contract/segment_aum.odcs.yaml",
+      "sha256": "5f30708ecdfa220a03a5d7c1c1a9657ced5fe539f93dfcb8b02aef3bc00483c0"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/cspn_migration.md",
+      "sha256": "3c200b481ef9c4aaef6eaa9025dafe6f794343eb1deb68d7f92b364c5024cbbe"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/dbt/prepared/agg_segment_aum.sql",
+      "sha256": "cef7e65d10f0dc7d35105bbfc63b180750087fdf47b00666e49f086f737bd820"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/dbt/segment_aum.yml",
+      "sha256": "dd8583bf90de3a570938d27077f5f96739f7c10495fd0063c464f1126ed19544"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/segment_aum/runtime/dq_verify.py",
+      "sha256": "3b001270adce5ec4138cbff1cfeacf8b3c50edfee8edf9c7b2fc5c82678dc473"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/sources.yml",
+      "sha256": "4faad186c7a01e496094503da5d378a0663b42a7fb17646cf6ad093c7017e600"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/airflow/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/airflow/trades.dag.yml",
+      "sha256": "c9953607d818b00d5f37468b790e5f55f66044b5da4398973c35b64edad08bd2"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/bundle/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/bundle/trades.job.yml",
+      "sha256": "f9aa98bdee13499032a1dd9088253ca9e2d716b0add9c316d77fd50e4432e718"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/bundle/trades_dq.job.yml",
+      "sha256": "7d26d211d90701b5b3be0a0009e7ea5c476c3adeb0b242b1a22afdd7beaae544"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/contract/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/contract/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/contract/trades.odcs.yaml",
+      "sha256": "4e50ebfbd06994970d006a8914fc39a14a65d3852f53b4eb4135fe4dca53570f"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/cspn_migration.md",
+      "sha256": "e9a63a700a79b9ccec563c6ac0cba46de0e1ef485f7355a4b8ea6d3011c4d888"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/dbt/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/dbt/integration/dom_trading__trade.sql",
+      "sha256": "0f04fe87710e447eca484c7fcebfc3d1b53ed438dbdad9e8826152d58a30264a"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/dbt/staging/src_trading__trades.sql",
+      "sha256": "475ec3d8804384624bfc325babe3c65438940c69e7eda06c19f49b4cd6e3f8fd"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/dbt/trades.yml",
+      "sha256": "5710d80a021e5923f3da89c8878f71d20c20bdb3ee5d79b3be24e8d3fe47f79c"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/runtime/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/datasets/trades/runtime/dq_verify.py",
+      "sha256": "fd1c9fd1f2b3e26e6ca0d295630fddd495f7bc42d5e6cc1e39a3064e7900d6e2"
+    },
+    {
+      "path": "data_products/atlas_elt/dbt_profiles/profiles.yml",
+      "sha256": "55e79c00de65ce609a43d309751a787d30a2b2993c9d7628be104c0059249418"
+    },
+    {
+      "path": "data_products/atlas_elt/dbt_project.yml",
+      "sha256": "2dcaa2263f002c2434bd2a3addd1450beb960f2081f4dab7a7e4d3dde28b3274"
+    },
+    {
+      "path": "data_products/atlas_elt/dqf_requirements.txt",
+      "sha256": "e20660175074463e9d89266b62f1467c674951c1b5cf5da509ffebc7a765b188"
+    },
+    {
+      "path": "data_products/atlas_elt/init_scripts/certs/cacert.pem",
+      "sha256": "06b1cdcabbb70010fff4430b5ae3a825bf267edb06f6c18e2ac72f8535156ea5"
+    },
+    {
+      "path": "data_products/atlas_elt/init_scripts/install_dqf_requirements.sh",
+      "sha256": "543c01a084b685570b696ecc05227f1af88f1a91fa4c8930f432981d7ab0d897"
+    },
+    {
+      "path": "data_products/atlas_elt/init_scripts/install_requirements.sh",
+      "sha256": "26d0d0356d54e70c5ec5c7a833361f9a0745d69e4413880ad23103a61fca9c35"
+    },
+    {
+      "path": "data_products/atlas_elt/package-lock.yml",
+      "sha256": "a0c66de27af0d8e0e0fae696a222768964919650f2e78f47b51f61e344c74b19"
+    },
+    {
+      "path": "data_products/atlas_elt/packages.yml",
+      "sha256": "21614805f4e043cba70419f9af8b2ef8661c095bee18b3e07b08c51cc4660cec"
+    },
+    {
+      "path": "data_products/atlas_elt/profiles.yml",
+      "sha256": "55e79c00de65ce609a43d309751a787d30a2b2993c9d7628be104c0059249418"
+    },
+    {
+      "path": "data_products/atlas_elt/python/kafka_utils.py",
+      "sha256": "6d4cf4d7d470e601acee05ed2c8ddd27db7ccba4aa8d7f87ac84a0bb840e2727"
+    },
+    {
+      "path": "data_products/atlas_elt/python/main.py",
+      "sha256": "ab4f438f61793cfbe52e8509a2dff15488910222bc36450c519791c91acd557c"
+    },
+    {
+      "path": "data_products/atlas_elt/python/read_kafka_message.py",
+      "sha256": "932069c8a0dc36ac9bec151c6ccc9d1c6a0a3cd0aa5462470345f147490b1234"
+    },
+    {
+      "path": "data_products/atlas_elt/python/run_data_notify.py",
+      "sha256": "c3432764e68d87a96c086744fbcfef9b46fcda0670ad3a0d6cca8a2fe4910f6b"
+    },
+    {
+      "path": "data_products/atlas_elt/requirements.txt",
+      "sha256": "b193186d52aae39a58bff8c38ab7c0b43b83d0b21e93ae7f44c3dff6bbce095c"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/advisors.csv",
+      "sha256": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/clients.csv",
+      "sha256": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/fund_holdings.csv",
+      "sha256": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/funds.csv",
+      "sha256": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/instruments.csv",
+      "sha256": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/portfolios.csv",
+      "sha256": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca"
+    },
+    {
+      "path": "data_products/atlas_elt/seeds/trades.csv",
+      "sha256": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/analyses/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/macros/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/macros/epoch_date.sql",
+      "sha256": "5030366600035f03a934d0a73b3bbd30e7a427d119258628b785818ccdffc741"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/macros/money.sql",
+      "sha256": "970b7a5bf6dc133cbe69c385961dc8f6449abd37397e6217a21d57d810a9eff8"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/seeds/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/snapshots/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/snapshots/portfolios_snapshot.sql",
+      "sha256": "aa4a82fa28b57a6fd8a48811c6d67c9c01f127a622a699143577f180fe5c62d2"
+    },
+    {
+      "path": "data_products/atlas_elt/shared/tests/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/atlas_elt/tests/generic/non_negative.sql",
+      "sha256": "f89e2e5326ba469f86abb014bec840b4b3340927b2534819ad73a20b565d729a"
+    },
+    {
+      "path": "data_products/atlas_elt/tests/reconcile_advisor_book_aum.sql",
+      "sha256": "7510379dab06ef8cc2dfaea46f0c67d188808c94ae7eec1fd6af4d587a8e4a87"
+    },
+    {
+      "path": "data_products/atlas_elt/tests/reconcile_region_aum.sql",
+      "sha256": "9105201228af1d0e5cf3b958c5f89bff7f575e24598deeded1c1839feceeda0c"
+    },
+    {
+      "path": "data_products/atlas_elt/tests/reconcile_segment_aum.sql",
+      "sha256": "f9d75249fd4bbcbfb2c8550b989bc063e3d879dfdb4dbd31384cb3487f6a81dd"
+    },
+    {
+      "path": "data_products/atlas_elt/tests/reconcile_trade_counts.sql",
+      "sha256": "56bc58a687387049489a2921805ea9f3fe3c2a7849dbb6ea33c3fbb7f70fc14a"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/clusters.yml",
+      "sha256": "3fba9bc7592cd2cd07cc980ac0d984489ae9f80f5e99cfc43b14074814c1e6e1"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables.yml",
+      "sha256": "75b8cda24964918696344c6127296ba7c6cfe2a244d861a2b987a4fda27c634a"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_dev.yml",
+      "sha256": "1f28f4966465d7e550484bdea04dfa5f4ab8d593414c7b6497165e2c01f424ef"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_dev7.yml",
+      "sha256": "4a749917e592a684c319a54ef920a76af71ebdc0a75a41e6927756cf936e2d11"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_dev_dr.yml",
+      "sha256": "4b7d84f96ec1a2ac25165c066c0d14dccd89f990085b8c1b370ba15dbe9ca0d1"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_prd.yml",
+      "sha256": "4b7d84f96ec1a2ac25165c066c0d14dccd89f990085b8c1b370ba15dbe9ca0d1"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_prd_dr.yml",
+      "sha256": "4b7d84f96ec1a2ac25165c066c0d14dccd89f990085b8c1b370ba15dbe9ca0d1"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_sqa.yml",
+      "sha256": "4b7d84f96ec1a2ac25165c066c0d14dccd89f990085b8c1b370ba15dbe9ca0d1"
+    },
+    {
+      "path": "data_products/atlas_elt/variables/variables_sqa_dr.yml",
+      "sha256": "4b7d84f96ec1a2ac25165c066c0d14dccd89f990085b8c1b370ba15dbe9ca0d1"
+    },
+    {
+      "path": "data_products/blueprints_loader.py",
+      "sha256": "18ad8cfe1c0c7f14785b7545b359ea20042780834774ede24cc1b62b1c698900"
+    },
+    {
+      "path": "data_products/dag_exec_check_blueprint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data_products/dags_loader.py",
+      "sha256": "c23853290335fa79f2fcf8cc711421975a22a09a0cb460cb4c5c155a93ea9d77"
+    },
+    {
+      "path": "data_products/portfolio_analytics/README.md",
+      "sha256": "bf4050feed8029d5cee569670e2e9b9848df0f9101acbb3084961122ca8d3d33"
+    },
+    {
+      "path": "data_products/portfolio_analytics/check-dag-load.sh",
+      "sha256": "e0894ee240b860d0afd679c473f0030c9ef94eebca494fb8073cdd191149c7ef"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dags/callbacks.py",
+      "sha256": "06afde2f8cbef04ac5958fce9ba53f5e776e0d5133644cb5f0205122e5088728"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dags/databricks_submit_run_dag.py",
+      "sha256": "258f91079c8c0f5b7d5647662f278e66f7aafe2089718e33d7bf152d5ca71e5c"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dags/portfolio_analytics_daily.py",
+      "sha256": "779ec42073405be3d8551e07980f1350e3c860ae4b9de81ed13522cb408d5c62"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/dbt_project.yml",
+      "sha256": "b9466c3e062ec4cbd74eecec4c38175c937be84907e6cc2963e630639a2cf2f1"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/intermediate/int_fund_attributes.sql",
+      "sha256": "266c5862f270b66718902e1adc01a356e2509df93b4412c8d6df10ee77d0da37"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/intermediate/int_holdings_enriched.sql",
+      "sha256": "29d1f42289169ae18156490d2a167b253cc1ef72bbc38888b500fd3acdf7d1e7"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/intermediate/int_positions_dated.sql",
+      "sha256": "1abd3aeabe6c5a0fa279fc0f2172340f730eaa8dc97098e5019410c1b06a2427"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/marts/agg_fund_daily_exposure.sql",
+      "sha256": "8354362aa05010d73846c260bb73f12515f7bd4687bf1db60633b57cfb388a46"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/marts/agg_fund_exposure.sql",
+      "sha256": "497749e73955be5a75443397406026511331589082f589fd816136288938a9bb"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/marts/fct_portfolio_returns.sql",
+      "sha256": "e8c4ef301cae8b924cb912bd547abab36df76dec6d12ac01b62a00a6c083e516"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/marts/schema.yml",
+      "sha256": "7f4b2c119a9928945a6d2636997bc2ffe05dbe12f094b7be27e5b6e775490066"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/sources.yml",
+      "sha256": "b9772b8bc3f35bfa5d4c673695c5c12d276f2d12257fc10b0b7b4097f7ac9659"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/schema.yml",
+      "sha256": "6655887490109b0768cee1c4ad57a63a948c77c39f05c0a7f6141dbd7c251048"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/stg_funds.sql",
+      "sha256": "026cace75438d342a68988adf21018266f3e0b0c710721a5dc425609b6c15530"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/stg_fx_rates.sql",
+      "sha256": "a57bc994b73d1c4b8a8089d35f81fd24912ad7cd4907d0c3ffa11a538ac336ca"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/stg_holdings.sql",
+      "sha256": "2caa2fd306c515bf335e04a23407010a71cd22ce46f036238952412471ca23b0"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/stg_positions.sql",
+      "sha256": "cd34f52eeff447af166db74cd4aa521c13f80b48067010f155c9f212331ca455"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/models/staging/stg_prices.sql",
+      "sha256": "b3f115c0e35d33311f3bd5000aedebc2f58afc05b71bcba236b31fa4e16068dd"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/profiles.yml",
+      "sha256": "9a62506d944484785cd8dbb23d49236020937380643a8e83bc3f2526c1de3968"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/seeds/seed_custodian_nav.csv",
+      "sha256": "3ea53db46d6eb5f521ec41c0f512c9c66bc3f9cd01d7fb0947555eb05deac80e"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/seeds/seed_funds.csv",
+      "sha256": "2a2a260caa545bdb8eda99a953cc28fe0e2a099be22826297b1141717490772d"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/tests/assert_nav_within_tolerance.sql",
+      "sha256": "4eeb44fd4937d82cd338d715352ba364010c2b7efcda731a027b0d461af12f10"
+    },
+    {
+      "path": "data_products/portfolio_analytics/dbt/tests/reconcile_daily_exposure.sql",
+      "sha256": "797e61f97af35317fe32027e4b2d7bb7b696cf1a70acc5116a14fd793dcfb979"
+    },
+    {
+      "path": "data_products/portfolio_analytics/include/alerting/notifications.py",
+      "sha256": "763120fb243f3a9611ed93f6ae5a7e761784268d8481c0de08dd0d3e3fc09299"
+    },
+    {
+      "path": "data_products/portfolio_analytics/include/launch/consumer-guide.md",
+      "sha256": "1b3fbf393270fe911ac71b037cbc72f04026c3fb9245a0c449e7d81856f0f0ec"
+    },
+    {
+      "path": "data_products/portfolio_analytics/include/monitoring/portfolio_analytics.yml",
+      "sha256": "b614b76658303bb281c22544432f07f004984179f3f980e6b6f0d98ef885f13c"
+    },
+    {
+      "path": "data_products/portfolio_analytics/include/runbooks/portfolio_analytics.md",
+      "sha256": "23dbe3ecc54577aad82e9e74458e727eb7c35b5c02d67837d9fc1d5fc0846517"
+    },
+    {
+      "path": "data_products/portfolio_analytics/tests/test_dag_structure.py",
+      "sha256": "1b7df86e297e1077b0cadb083a2f98dcff6c15816c382e98968f5a3bc7916bfa"
+    },
+    {
+      "path": "data_products/portfolio_analytics/verify-with-databricks.sh",
+      "sha256": "78aab4825a14a91b2e7b50b8b766348e10ad04df4ea0b5faec37e286fce4bff2"
+    },
+    {
+      "path": "data_products/test_atlas_local_runtime_contract.py",
+      "sha256": "4e0a187732e39500e6aa1728c82f1663bc0c3aecaea2ab16cec35b683bdde97c"
+    },
+    {
+      "path": "data_products/test_clone_sources_engine.py",
+      "sha256": "3e9139583455408d22c98a5a53835b1cb83efe72bde811d74c6773587fee0b07"
+    },
+    {
+      "path": "data_products/test_devcontainer_dind_wiring.py",
+      "sha256": "02b817f56e2f1ad5a97941c18b80d5fc34d98c85d162ad3c463545b7ede1d024"
+    },
+    {
+      "path": "datacounsel/README.md",
+      "sha256": "c031c5f1d1987bcb7ff44490724fb741c8740b195819ecd8714db6c0f28278cd"
+    },
+    {
+      "path": "datacounsel/databricks_jdbc.log.0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "datacounsel/input/caspian_dev1.stnd_cdm_mfi.cdm_party_office_f1_v1_t0.sql",
+      "sha256": "a00c594ddde01cf3cfd4af8fb856dcdca1ebb14f327f2de0f723fd6e36f273ff"
+    },
+    {
+      "path": "datacounsel/pyproject.toml",
+      "sha256": "12a8ae27cfae4ffb359c19041469784d4b19ed91958c51d6457ce9dfc1a8c619"
+    },
+    {
+      "path": "datacounsel/src/datacounsel/_version.py",
+      "sha256": "4f6226fa3bc647fbaaf498ba011c579a39b51dad8408ce3b06b22d6dbe0dac82"
+    },
+    {
+      "path": "datacounsel/src/datacounsel/export/__init__.py",
+      "sha256": "2817404f16c80647b36ea0f04c301a565bf84b57c3c9fcfe978c851c942945ca"
+    },
+    {
+      "path": "datacounsel/src/datacounsel/export/dbsql_exporter.py",
+      "sha256": "f250a99f6862c0b5e4e535f3f87d10763c12b3ebc9182ecf17fe17d40e76bb84"
+    },
+    {
+      "path": "datacounsel/src/datacounsel/main.py",
+      "sha256": "933b8f11c34b3c299d4e2d847a187564c9b9ce17d39f7e24ab068f3702721096"
+    },
+    {
+      "path": "datacounsel/src/datacounsel/migration_generator.py",
+      "sha256": "0d15a9b0e7c9179013de67c21f8ec7fd709383a5c87ef0e9b58bd92724162ab2"
+    },
+    {
+      "path": "datacounsel/uv.lock",
+      "sha256": "f672f0bbac7768fa5a43e8d013c4f608c6bb79b34f7ca4721a0650e5ecc29dd9"
+    },
+    {
+      "path": "dbt_local.py",
+      "sha256": "eeeb6ad60e12feabd59e91e3321d1331df8038d196568b16b7931ff8673809c6"
+    },
+    {
+      "path": "dbt_wrapper.py",
+      "sha256": "86efa4fe56b4fc72b3dbe267341a8404ed672e8dfe0fe9b2a00f4e107708320f"
+    },
+    {
+      "path": "docker-compose.override.yml",
+      "sha256": "4788a94afdf931cecc15c4974d64fe79ccb28377d7841bcd36ec34bb7fca9d8e"
+    },
+    {
+      "path": "docs/agent-runbook.md",
+      "sha256": "02cfb7e4bc77d4d033eed77b79c23bccd0639db0c2e95ab617930a05d2940939"
+    },
+    {
+      "path": "docs/challenge-run-brief.md",
+      "sha256": "6c6b14085138810147db91b440911b88471f8ac29f0a487ded4b7c56386d6d1e"
+    },
+    {
+      "path": "docs/challenge-runs.md",
+      "sha256": "2685423670877a59fce580741b0c70688b9045afa43c6bc1068a864e10bfd4ed"
+    },
+    {
+      "path": "docs/rca/2026-08-03-airflow-blank-databricks-env-at-boot.md",
+      "sha256": "aba1a15b8a7239aa16424adf079008c8ae3544a37edc1de1781cb8aac0ccc44a"
+    },
+    {
+      "path": "docs/rca/2026-08-03-challenge-02-raw-dbt-walkthrough.md",
+      "sha256": "583e89f53700c6b5bf04238d28203a7bbecbdbcd7c82e667c80ff42211be8638"
+    },
+    {
+      "path": "docs/rca/2026-08-03-challenge-04-dbt-segfault.md",
+      "sha256": "3aa377c87fa0865b66e4fb4bb306692c1cd64bfcc2ac733ce5d51dde168eda92"
+    },
+    {
+      "path": "docs/rca/2026-08-03-dbt-databricks-auth-hang.md",
+      "sha256": "83e2a5a0e6ec47efac47bd135160d1862be4a54274e9bb1705fd754f56cf521c"
+    },
+    {
+      "path": "docs/rca/2026-08-03-profiles-symlink-windows.md",
+      "sha256": "274c68f888cf98b47f5bfe692735275963824e93a8a5c3570d1bb2c1a0d18b89"
+    },
+    {
+      "path": "docs/rca/2026-08-04-challenge-02-eager-indirect-selection.md",
+      "sha256": "6708e9947cb602a6e13f4e8192a41e6e1331cb55125d23b4b45a7afc6e2d09fb"
+    },
+    {
+      "path": "docs/rca/2026-08-04-challenge-02-guide-data-claims-and-deprecated-yaml.md",
+      "sha256": "bda05612ecd3f9cf6d2f72fbac3e821297f33e7c158efe24e4bdeb0779c3e6d7"
+    },
+    {
+      "path": "docs/rca/2026-08-04-challenge-02-oauth-token-refresh-gap.md",
+      "sha256": "56bf5130cf353834dadbbe097be77e37b871c9759d677479237ab432d8fbe8cb"
+    },
+    {
+      "path": "docs/rca/2026-08-04-challenge-reset-leaves-authored-files.md",
+      "sha256": "68de72315cfcbe02d7cba304cb2915970e5e8ac007258c6a0c9fd170f48ab8d8"
+    },
+    {
+      "path": "docs/rca/2026-08-04-databricks-env-not-propagated-to-shells.md",
+      "sha256": "2cd8b2b4908e0c0364cca974535dc9a383114b81669a9fd0c80865794809e419"
+    },
+    {
+      "path": "docs/rca/2026-08-05-challenge-03-unscoped-tasks-clear.md",
+      "sha256": "2acfc637d3fac98f6735c38f276eaacc90c5561f16be9a1cab9efc66999df061"
+    },
+    {
+      "path": "docs/rca/2026-08-05-challenge-04-verify-rewrites-package-lock.md",
+      "sha256": "f251114529a434b41ac99329aa15d5b14dafed990704a45bd1ff34fcee956bce"
+    },
+    {
+      "path": "docs/rca/2026-08-31-challenge-04-from-scratch-gaps.md",
+      "sha256": "59d23d11ec324bea7f2204e45a04043a327febd65e96b9897b29744e91dc8a27"
+    },
+    {
+      "path": "docs/session-context-2026-07-17.md",
+      "sha256": "347f0b7cdd4a8b05712275512badb00b809fedc969261958ea5b46476468bdd7"
+    },
+    {
+      "path": "docs/session-notes/2026-07-24-atlas-reliability-handoff.md",
+      "sha256": "306bf42b3a55e2f18f3e4b52dedcb28d859c45855fcee7995d27e66242d02c9e"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-16-astro-tls-writeup.md",
+      "sha256": "c7cdb0342511e96c4539e6d68e15a786cf0e59dc4c1d3bb9f5f56ea3244cfa1a"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-16-devcontainer-setup-deprecations.md",
+      "sha256": "518f89aa16ce9e28ea805830014ecc9c30280863b8d90c498c5b586fbb8f1506"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-20-atlas-elt-demo-selector-alignment.md",
+      "sha256": "0f24c938db35a710e32756ab142280f229db8db1f39b2bd81119572d8d76a290"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-20-atlas-elt-demo-structure-parity.md",
+      "sha256": "4a6156ef8a7bb2b0ca4f1dfca704994569f82b0588eb7ad03249c02a296847c9"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-21-databricks-auth-strategy.md",
+      "sha256": "0c843d2f07a89ac7b490d51c8f158135f96c0d6d2110aca4c6ebedbfbe646f8a"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-22-local-dev-test-organization-implementation.md",
+      "sha256": "864b45e210e511198ab06b84fb5aebc56ae669d07cc85de47faa9cd5cfe90034"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-22-uv-migration-certificate-handling.md",
+      "sha256": "fb0f2902e60ccc2ca05067e26430766261364e12e2f28af53c3fb394ca5b5b7b"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-23-agent-runbook-docs-organization.md",
+      "sha256": "7c2cd259fc7186b57a0e6e80aeaf6d7a7261433d0cf0ec2a86694fe38d728286"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-23-airflow-oauth-token-drift-prevention.md",
+      "sha256": "200de3871b31684beb4087159872f69b3368d155f38c10c8cc1e2307dc96040f"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-28-training-challenges-and-atlas-capstone-port.md",
+      "sha256": "9ef544086a1f0316b828fffee74b60a1f31a500a8318f7e0d46370a75771b33a"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-31-challenge-03-redundant-command-cleanup.md",
+      "sha256": "5b29af1308eb823acc6e6dfa8fe719f5eb3a81e16a5b54adada17e0524f4fc0b"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-31-challenge-raw-dbt-commands.md",
+      "sha256": "fed7a5a4a19d72a663efe3f9f2556c24c1264f46d5865b2c833d53eb8962996e"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-07-31-portfolio-airflow3-dag-stability-remediation.md",
+      "sha256": "4ac89ede72b1519b3ce4787b7d3318ec4feb931f7ede20ede517104987be0ada"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-16-astro-tls-writeup-design.md",
+      "sha256": "8869327076043afccb2e77ab6f88a1090b454031677a3131374b5ebfeae417b4"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-16-devcontainer-setup-deprecations-design.md",
+      "sha256": "eef3a33b0e633071963bf81331d91ccde6049f1a7dd3e16bfe7bafeb4d2f444a"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-20-atlas-elt-demo-design.md",
+      "sha256": "acbee34a032c118a7b3e87935e331ec0e8f1ccfd91a4e30b8c41997149c39ab1"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-20-atlas-elt-demo-selector-alignment-design.md",
+      "sha256": "e760fc0085c94da8d06e4c3a09dd852b24f072b4001e64b2c71a9bea49968af7"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-21-airflow-databricks-oauth-multi-workspace-design.md",
+      "sha256": "e7f6ecce6931a33a347692b8feacd481679a1bf548211ff7c83c9def77e9543c"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-21-databricks-auth-strategy-design.md",
+      "sha256": "c9a3671774d1e0df1d2f664db14889c9ebea6ee6bf64d45ff324d66da90f2ec9"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-22-local-dev-test-organization-design.md",
+      "sha256": "d9427f8ffca9e7513c9a6ad79c7216904e05af819ae7ce892c80ef72dc3a0832"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-22-uv-migration-certificate-handling-design.md",
+      "sha256": "21e5856105896091d4ecab59d4b264f576ef27fee07d9204153761ed738f3c97"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-23-agent-runbook-docs-organization-design.md",
+      "sha256": "1002d84d5ec9d4eb634e3b7981d42ca515c1a447346d7ac03a2c34b66b172604"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-23-airflow-oauth-token-drift-prevention-design.md",
+      "sha256": "a786ad4c215336414cf59d123279de4f520c2addbedf890717decce8fa1f54ec"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-24-atlas-reliability-guardrails-design.md",
+      "sha256": "042b96fed8ee413e50e7e6bb43b3cbae77655b35825c523704ce2d5c0268af55"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-27-training-challenges-and-atlas-capstone-design.md",
+      "sha256": "b94da48cd417c8df8bc2976c1ea15ac0afc75e902ac0e653e9316790d96c25fa"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-29-training-challenge-testing-framework-design.md",
+      "sha256": "53e40b7d776432ddce9beb07d085c77fdf8f284185619b3138d565b94c005a1b"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-31-challenge-03-redundant-command-cleanup-design.md",
+      "sha256": "1785afdfcc54148c6720a4428a7ad506d864e194a02711d2c5aaba75ad3bde43"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-31-challenge-raw-dbt-commands-design.md",
+      "sha256": "29051c7cc4904d60a865dab867eae05512edbec7d259abc145284a45878c43d5"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-07-31-portfolio-airflow3-dag-stability-review-design.md",
+      "sha256": "15b3bae6585165b6b00230494f6f16926d446e64204c333aa6c1f855129c88a9"
+    },
+    {
+      "path": "iac/.gitignore",
+      "sha256": "5a98f0a2ca0bef8d625ff95ffbc486a6d6d38fe28ddc02c57fdfef2db2c8fa10"
+    },
+    {
+      "path": "iac/README.md",
+      "sha256": "07c4a872ef4617bc128a35e2e4070196f56f5554828d2fd14215e754242be8a6"
+    },
+    {
+      "path": "iac/airflow_connections.tf",
+      "sha256": "e69586aa6a6bc74370db80729a0f33f485e91b081c606e919aa940935a8609cf"
+    },
+    {
+      "path": "iac/airflow_variables.tf",
+      "sha256": "3f5c5843626ecb262d23a5a58c35b7196a2f9a81e69db910d124ae48c1f79c55"
+    },
+    {
+      "path": "iac/config/deployment/dev1/backend.tf",
+      "sha256": "4f89773804258b01e07d881832853e225f5860d56bb8a0d304835d468e61e821"
+    },
+    {
+      "path": "iac/config/deployment/dev1/dev1_tfe_backend.config",
+      "sha256": "0dd66a4166006ee901162bbe8874a4fd22dfefc514da091ac02f602d086118c7"
+    },
+    {
+      "path": "iac/config/deployment/dev1/terraform.auto.tfvars",
+      "sha256": "21793eb6b36d16c09741a7df048a75c68a0c26aa8677f7d3047d7fa94b077d07"
+    },
+    {
+      "path": "iac/config/deployment/prd1/backend.tf",
+      "sha256": "9cf9f1d0f27f4d02e04139be607e026eed12ddfe6023f61497f82fd5f6ea29ea"
+    },
+    {
+      "path": "iac/config/deployment/prd1/prd1_tfe_backend.config",
+      "sha256": "8dd345db748195476242c7adb09782d0874687982dfcff5bbaf12ca340ed519a"
+    },
+    {
+      "path": "iac/config/deployment/prd1/terraform.auto.tfvars",
+      "sha256": "ef5223402755ff145267630094d69421c7c5584ad34396c74f1fa972b396c1dc"
+    },
+    {
+      "path": "iac/config/deployment/sqa1/backend.tf",
+      "sha256": "98663f158773633efcc6678b32ded22795fcb04003d25bf2fba648917508c980"
+    },
+    {
+      "path": "iac/config/deployment/sqa1/sqa1_tfe_backend.config",
+      "sha256": "5aab2948741166b465dd0aba655102756a01db6ff9dbef1513a975322117072c"
+    },
+    {
+      "path": "iac/config/deployment/sqa1/terraform.auto.tfvars",
+      "sha256": "c0183f949a387a19aae443b37a2977725bbe320c95cdd3677a1014568dfc80fa"
+    },
+    {
+      "path": "iac/datadog_dashboard.tf",
+      "sha256": "fff01a679f9ba4659a1fe89116e91fc4a1fef56aacaa736d214f6f49f2fc4623"
+    },
+    {
+      "path": "iac/iam.tf",
+      "sha256": "d351533a2b090f4dc4c8458aae7686bf4af95ce2d50f5906ce7045b0bc41b434"
+    },
+    {
+      "path": "iac/locals.tf",
+      "sha256": "4a688801db24b81af07933b785c5ef91b95daa41b4537e888c4fea7d57462109"
+    },
+    {
+      "path": "iac/lookup.tf",
+      "sha256": "8e782989bd77948eb383989d7ed670d674273879897fed532b83a2cbf92e2988"
+    },
+    {
+      "path": "iac/main.tf",
+      "sha256": "cfdc94c888d7ce333d35e13a0b6738ae75624d97e4dc05ca1852e3d92a55d804"
+    },
+    {
+      "path": "iac/outputs.tf",
+      "sha256": "3db625eee4666b6abd856faab8325c2aa67a313cb3ce29ba875acb81ce8fa3e6"
+    },
+    {
+      "path": "iac/providers.tf",
+      "sha256": "438cc7e80f051f7878a70ad577d7354c7263e20d2743c4cca2f422bae4826dbe"
+    },
+    {
+      "path": "iac/variables.tf",
+      "sha256": "9ff4c8ccc60c8fc3e81655c2f6cf7dcebfe83f3b580da7d0e88a5c9de07604e1"
+    },
+    {
+      "path": "justfile",
+      "sha256": "289df1826cb11fde2e6370bdeb966d09eed5d02b44e406e2232b68f73509b713"
+    },
+    {
+      "path": "mise.lock",
+      "sha256": "7ebf978f68dedd1a5770214de655d0ddf52e5b19b2b5a4841edfa9ad00bf22ec"
+    },
+    {
+      "path": "os-packages.txt",
+      "sha256": "7a15621b62e9c33ae1cad07cf8c796e92ac56bfc292e9a44f8c8eccb668e6160"
+    },
+    {
+      "path": "packages.txt",
+      "sha256": "3781ef83d527de19ae7a9b74ca2edc4080994c77b20cc59322d08510d6693cc4"
+    },
+    {
+      "path": "plugins/README.md",
+      "sha256": "b0a354936e77f490c659862b3a931e9e14d6db3436aaf2cf3bde571b09cee5b0"
+    },
+    {
+      "path": "pre-commit-config.yaml",
+      "sha256": "5cb667cf22bdfb22558919879d8387f3de3ac26a4dabd1ff43992ddd3b725854"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "d0fded04de3116fec5964a9d3aa673e7f50bf526909c2b48b242f0a089781398"
+    },
+    {
+      "path": "pytest.ini",
+      "sha256": "b90d7580a690797257918c3f54350bea07bb54298655e5b2d4c6c82036825843"
+    },
+    {
+      "path": "requirements-pypi.txt",
+      "sha256": "1007ee2d60524a9e58fdb5943cb2a579c77d0717458df538d3006e635bbdf0d6"
+    },
+    {
+      "path": "requirements-venv-cosmos.txt",
+      "sha256": "b183e05cdc7a5eeb363daf7a406109b6c28150218a88a4ca2a1167ac1e6cbcb8"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "3392a501f89ba476fa6052cb50802eff3f3c7d474e4be14acbced6f46b5d0c7a"
+    },
+    {
+      "path": "scripts/docker-build-logs.sh",
+      "sha256": "bc1dd2450e3e9a966bc5f95c647aa7be68bc066b6aa9fdd00cf6a18701a00f0f"
+    },
+    {
+      "path": "scripts/verify-with-databricks.sh",
+      "sha256": "893a6b55b79822d5b667c9e604e2b5e902ab07d291f23ac3cf7a20f9d1b1fdaa"
+    },
+    {
+      "path": "shared/caspian/__init__.py",
+      "sha256": "a517c3a350daa909504edb8efbb5221c29bc21c86fa594badc82441615bc6dfd"
+    },
+    {
+      "path": "shared/caspian/curation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "shared/caspian/curation/auditing.py",
+      "sha256": "b952e73789be3550f39d3d4f7cf97f91da89764a4e0260db6484ceb0fa171ddf"
+    },
+    {
+      "path": "shared/caspian/curation/checkpoints.py",
+      "sha256": "f91186d9ee46d3a51815e885f6eb418c5eb27e907b4aafb84afb387cf3d95285"
+    },
+    {
+      "path": "shared/caspian/curation/constants.py",
+      "sha256": "91ed9f36bf874e13906ed362f19288126ae215da5a8e5ca03a179c68bc9c7417"
+    },
+    {
+      "path": "shared/caspian/curation/exceptions.py",
+      "sha256": "76b3eb1c0caa0da42f7002109a959136a1e7d4f921d0c54937976029e1db5f3f"
+    },
+    {
+      "path": "shared/caspian/curation/miscutils.py",
+      "sha256": "454ad9cd06d96de2427d1a2de1d055cb45d315fa36a4cc1e06a61f9280479a84"
+    },
+    {
+      "path": "shared/caspian/curation/source_datasets.py",
+      "sha256": "1cb803e3336dc497012aa8447f2c87ae8b15c20168941d09c45e338bfd8eae09"
+    },
+    {
+      "path": "shared/caspian/curation/spark/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "shared/caspian/curation/spark/spark_helpers.py",
+      "sha256": "f191cad5ff3fb4486b6410fc74bbb7aacd849c012740ad41a30aca3ccb240d88"
+    },
+    {
+      "path": "shared/caspian/curation/spark/spark_sql_catalog.py",
+      "sha256": "747f1ad10d5d648782730c2ea29dc4eff90d3c08a644e871333bf504b8c3ef11"
+    },
+    {
+      "path": "shared/caspian/custom_module.py",
+      "sha256": "dc9f2768fc4d2ead3c4927034678b73e048467296fe63cc02885f16b8e6e0fdf"
+    },
+    {
+      "path": "shared/caspian/dbt/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "shared/caspian/dbt/dbt_extn.py",
+      "sha256": "fa80d87b9503960c7df4d4ce521b6b885e7a416998298bd60d64e309f1fd6758"
+    },
+    {
+      "path": "shared/caspian/dbt/dbt_modules.py",
+      "sha256": "e0590ded9bec987be6c96566709642713a5ec67d96156d3b988b46a38ef0cdc2"
+    },
+    {
+      "path": "shared/dbt_project.yml",
+      "sha256": "cac24b938d10f4eaf71e9ddfbfd20838bf4f6322bd4ea37b78a291c9d77b6134"
+    },
+    {
+      "path": "shared/macros/cspn_utils.sql",
+      "sha256": "cd8be319d5828c913f19fff6aa85786d4ff52e7320d9e808751da37d56a8e0b2"
+    },
+    {
+      "path": "shared/macros/spark_utils/cspn_materialization_overrides.sql",
+      "sha256": "79c5793495ac201b861cc560d205c298aeb5281d48012255f838c8557aaaef31"
+    },
+    {
+      "path": "shared/macros/spark_utils/cspn_overrides.sql",
+      "sha256": "dfa0d1f7f252d1f08d05ffac1d767207ae71ed52b0936cfa7d930d1ca4d03aca"
+    },
+    {
+      "path": "shared/macros/spark_utils/cspn_strategy_overrides.sql",
+      "sha256": "9309adf838fa718303cc1a32532ddb6880d125a377c8ffa6828333b2784695ce"
+    },
+    {
+      "path": "shared/macros/spark_utils/cspn_validate_overrides.sql",
+      "sha256": "b2664e82aa8b47419d66bb914e708ebc1ed01aff4d4e5739659d0d486d012826"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/challenges/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/challenges/conftest.py",
+      "sha256": "4c3020a6b0474d4bac9b9f9a8ef4e4f8be273bc175ae515d7d6abd96413890b5"
+    },
+    {
+      "path": "tests/challenges/live/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/challenges/live/test_ch01_docker.py",
+      "sha256": "1639776494ffb5b3c79a2951eee867b70d17d7b855ad41444888b4fef01f4153"
+    },
+    {
+      "path": "tests/challenges/live/test_ch02_dbt.py",
+      "sha256": "b23f37d57b93c22300476ad16e251d693cfa4d1c258652150a99b29aff196da3"
+    },
+    {
+      "path": "tests/challenges/live/test_ch03_airflow.py",
+      "sha256": "0f23e25d05d1500343a9f5639b97f0814189a247cbd39eceefe1104624d523e6"
+    },
+    {
+      "path": "tests/challenges/live/test_ch04_capstone.py",
+      "sha256": "bb4bae17ce478eea25a84c37179c3dcb4b732725e3be7174b06c651a21706813"
+    },
+    {
+      "path": "tests/challenges/live/test_smoke.py",
+      "sha256": "7ed23a91d5598ab9bcfdc1f10dd345df33343a27cb27f574ab41d8b1852cb465"
+    },
+    {
+      "path": "tests/challenges/offline/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch00.py",
+      "sha256": "ab4bc239e2a6363bcc0a725cd2d6bffb6b5066a1c2d87c23f35ee7f328a891ce"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch01.py",
+      "sha256": "d6b00b06ad78ba7b4ba2081a7cd27af488b129db071d0b04f5af67091c879663"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch02.py",
+      "sha256": "8b2279c9db3c8dce59fccf942a991661df8f976f6435cb2311c3b46bfc16c528"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch03.py",
+      "sha256": "9a37a345d92e293e4795cfce3bf6759e867e786af630dc5f714a3191a9c5fc9d"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch03_stub_sync.py",
+      "sha256": "ad0c91c07c0ccc19f44847e6e53099b8edbd7eb24780b0c002c0fd0360f0b679"
+    },
+    {
+      "path": "tests/challenges/offline/test_ch04_structure.py",
+      "sha256": "d702d3c1dfe394b780e7877f8927724cb2cc8fb0065a53bb65e35665da07493e"
+    },
+    {
+      "path": "tests/challenges/offline/test_guides.py",
+      "sha256": "3807c7cb170a8d67a617e995c680265d4aec6d49ec1c4411fed90c46a0afea9c"
+    },
+    {
+      "path": "tests/challenges/offline/test_home.py",
+      "sha256": "c98f098fb14f029df4490919e83fad7fb59a5c51063f272384824ed2bf2e0712"
+    },
+    {
+      "path": "tests/challenges/offline/test_mise_tasks.py",
+      "sha256": "1f730c0bf62119ce6299a8e34cb42ab69281770d870fe4d5d8eba7276808fa59"
+    },
+    {
+      "path": "tests/challenges/offline/test_verify_scripts.py",
+      "sha256": "97be151f59d88f111f180a8c1770f02225569a0ffd524a9c8f703a1a61c5fa83"
+    },
+    {
+      "path": "tests/challenges/offline/test_wiring.py",
+      "sha256": "a50298a71feb44dc6c86db898ce0aa48b03e5670a3ec952bed769262479976e4"
+    },
+    {
+      "path": "tests/local_env/live/cli_integration/test_cert_tool_integration.py",
+      "sha256": "382f2024902a62ef55f910bd2fb0b770354db9b1811fd6a4dbbc03a987bae2ad"
+    },
+    {
+      "path": "tests/local_env/offline/airflow/test_airflow_local_settings_guard.py",
+      "sha256": "b3c79444500546d7a55246b03c6174e2eae3855187151ed1b1d2950bfdddf495"
+    },
+    {
+      "path": "tests/local_env/offline/airflow/test_dag_integrity.py",
+      "sha256": "e0b5009da2de3ab6da79d1c98a44e11b0974011f1ef28773df8b6becdcabf707"
+    },
+    {
+      "path": "tests/local_env/offline/airflow/test_dag_integrity_location_contract.py",
+      "sha256": "f3b69c58e2792c58657531144b553672e2883340553f63c65fe92b66c797de7f"
+    },
+    {
+      "path": "tests/local_env/offline/airflow/test_local_airflow_contracts.py",
+      "sha256": "4eaffb0afffe96f11e67dd7db4b6365805cfabca2768c2d238f9630cf15b830b"
+    },
+    {
+      "path": "tests/local_env/offline/auth/test_auth_contracts.py",
+      "sha256": "a9cf06591c025c7be6e215610082c1d6ff18a2e0ca433a9e3c9dfb67fcbdf1a0"
+    },
+    {
+      "path": "tests/local_env/offline/auth/test_databricks_auth_contracts.py",
+      "sha256": "bf49c4c7f7821603cbaeb8b242d00f1ed993d8207b372eff00f9e3d516099d77"
+    },
+    {
+      "path": "tests/local_env/offline/devcontainer/test_devcontainer_contracts.py",
+      "sha256": "a60e9cfca723d0b9cde8bfd880b9d84aeaf412c0f6d392be39b04611a8638c8b"
+    },
+    {
+      "path": "tests/local_env/offline/devcontainer/test_dind_runtime_contracts.py",
+      "sha256": "485145648ad0733402eab8b3298cb6ce7efbddcc3c7509ceeaa31c0d6fad9398"
+    },
+    {
+      "path": "tests/local_env/offline/tls/test_tls_contracts.py",
+      "sha256": "6b6d8b4297a30ad486dbf5c5f7759de9700317bb51ca9905dd0b3d6cfd476526"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_dbt_profiles_disable_pandas.py",
+      "sha256": "4cbd1eb6659b719d121dd610a3db1a93c64dfbf80468e8b608cfbf592f8ef049"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_dind_split_contract.py",
+      "sha256": "a6dac0091100f960328a9806e2492daeb6937161fd48f9075a69afa9d297addb"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_docs_and_build_contracts.py",
+      "sha256": "457e02faffa227edb64c5928a6deb6d52f83f5c6305a165aaec656f090b83800"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_live_suite_marker_contract.py",
+      "sha256": "3dd9a16e552b75b9c61f61e61ed38e0ac548aa05cd057aa1b5bb249100e62e71"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_local_dev_verify_task_contract.py",
+      "sha256": "13a66d7496c23a706d6e9bce3f34e504c6e938687cb4c000bd446c5eb3404c40"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_local_env_collection_contract.py",
+      "sha256": "bb5a03f85a80acd74d494a4241f97a4e9f36d3845a9b33ccbdc79a91f7142d2b"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_no_tracked_symlinks.py",
+      "sha256": "95b907abce5a5cd0c204a44e0ce74587632b1d478f9ea887d2b846988faf1d0e"
+    },
+    {
+      "path": "tests/local_env/offline/tooling/test_python_target_contracts.py",
+      "sha256": "c6b4c4b6a0ffb09338cf9e890b025002701a3c3a662647f7ef634f6a08e694f4"
+    }
+  ],
+  "workspace_revision": "c4099ca8b9c11872b5a2ec2364a338b518c113d4",
+  "upstream_client_revision": "not inferred from workspace revision"
+}

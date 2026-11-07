@@ -1,0 +1,16 @@
+id: dplc-ship-stage.case-01-behavior
+skill: skills/dplc-ship-stage
+type: behavior
+description: >-
+  Sustain stage orchestrator (Phase 7 Operate first-time setup). On a fresh
+  go-live the orchestrator should establish the operational baseline:
+  runbook, SLA dashboard spec, then warranty handoff sign-off.
+input:
+  arguments: "Set up Phase 7 Operate baseline for a newly-published data product."
+expected_sequence:
+  - skills/runbook
+  - skills/sla-dashboard-spec
+  - skills/warranty-handoff-sign-off
+strict_order: true
+allow_extra: true
+max_steps: 30

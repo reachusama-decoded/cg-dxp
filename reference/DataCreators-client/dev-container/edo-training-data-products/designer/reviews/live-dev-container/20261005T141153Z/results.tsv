@@ -1,0 +1,113 @@
+# Final suite, run 20261005T141153Z, 2026-10-06. journey: baseline = verify-starter/verify-solution on canonical sources; starter = verify on an untouched starter copy (must not pass completion); solution = verify on the shipped solution copied into a prepared workspace; reconstruction = learner-authored work (fresh-context subagent for dbt/docker/git/airflow p1 and dbt/docker p2; this agent for git p2). Evidence JSON in CLIENT_ROOT/.local/v2-evidence.
+journey	tool	phase	action	mode	exit	result	seconds	evidence	note
+baseline	git	phase-one-certified	verify-starter	offline	0	pass	3	git-phase-one-certified-verify-starter-1791311252752474468.json	
+baseline	git	phase-one-certified	verify-solution	offline	0	pass	3	git-phase-one-certified-verify-solution-1791311255553828678.json	
+starter	git	phase-one-certified	verify	offline	1	fail	3	git-phase-one-certified-verify-1791311258222119429.json	Expected one learner Git repository in the workspace or its immediate lab folder
+baseline	git	phase-one-certified	verify-starter	live	0	pass	3	git-phase-one-certified-verify-starter-1791311260728306014.json	
+baseline	git	phase-one-certified	verify-solution	live	0	pass	3	git-phase-one-certified-verify-solution-1791311263284145334.json	
+starter	git	phase-one-certified	verify	live	1	fail	3	git-phase-one-certified-verify-1791311265922807585.json	Expected one learner Git repository in the workspace or its immediate lab folder
+solution	git	phase-one-certified	verify	offline	0	pass	3	git-phase-one-certified-verify-1791311268530064878.json	
+solution	git	phase-one-certified	verify	live	0	pass	3	git-phase-one-certified-verify-1791311271141511088.json	
+baseline	git	phase-two-proficient	verify-starter	offline	0	pass	2	git-phase-two-proficient-verify-starter-1791311273720474256.json	
+baseline	git	phase-two-proficient	verify-solution	offline	0	supporting-only	3	git-phase-two-proficient-verify-solution-1791311276134881923.json	
+starter	git	phase-two-proficient	verify	offline	1	fail	3	git-phase-two-proficient-verify-1791311278735510258.json	Expected one learner Git repository in the workspace or its immediate lab folder
+baseline	git	phase-two-proficient	verify-starter	live	0	pass	2	git-phase-two-proficient-verify-starter-1791311281361430093.json	
+baseline	git	phase-two-proficient	verify-solution	live	77	blocked	3	git-phase-two-proficient-verify-solution-1791311283771063927.json	V2_GITHUB_REPO and V2_GITHUB_PR required for read-only real PR evidence
+starter	git	phase-two-proficient	verify	live	1	fail	2	git-phase-two-proficient-verify-1791311286820549220.json	Expected one learner Git repository in the workspace or its immediate lab folder
+solution	git	phase-two-proficient	verify	offline	0	supporting-only	3	git-phase-two-proficient-verify-1791311289207402971.json	
+solution	git	phase-two-proficient	verify	live	77	blocked	3	git-phase-two-proficient-verify-1791311291739126792.json	V2_GITHUB_REPO and V2_GITHUB_PR required for read-only real PR evidence
+baseline	docker	phase-one-certified	verify-starter	offline	0	supporting-only	3	docker-phase-one-certified-verify-starter-1791311295116647793.json	
+baseline	docker	phase-one-certified	verify-solution	offline	0	supporting-only	3	docker-phase-one-certified-verify-solution-1791311297683475003.json	
+starter	docker	phase-one-certified	verify	offline	0	supporting-only	3	docker-phase-one-certified-verify-1791311300244076879.json	
+baseline	docker	phase-one-certified	verify-starter	live	0	pass	3	docker-phase-one-certified-verify-starter-1791311303205850755.json	
+baseline	docker	phase-one-certified	verify-solution	live	0	pass	4	docker-phase-one-certified-verify-solution-1791311305980093548.json	
+starter	docker	phase-one-certified	verify	live	1	fail	3	docker-phase-one-certified-verify-1791311309524092092.json	AssertionError
+solution	docker	phase-one-certified	verify	offline	0	supporting-only	3	docker-phase-one-certified-verify-1791311312741788510.json	
+solution	docker	phase-one-certified	verify	live	0	pass	3	docker-phase-one-certified-verify-1791311315268369761.json	
+baseline	docker	phase-two-proficient	verify-starter	offline	0	supporting-only	3	docker-phase-two-proficient-verify-starter-1791311318126869387.json	
+baseline	docker	phase-two-proficient	verify-solution	offline	0	supporting-only	2	docker-phase-two-proficient-verify-solution-1791311320639449639.json	
+starter	docker	phase-two-proficient	verify	offline	0	supporting-only	3	docker-phase-two-proficient-verify-1791311323111197292.json	
+baseline	docker	phase-two-proficient	verify-starter	live	0	pass	3	docker-phase-two-proficient-verify-starter-1791311325901402252.json	
+baseline	docker	phase-two-proficient	verify-solution	live	0	pass	3	docker-phase-two-proficient-verify-solution-1791311328617769878.json	
+starter	docker	phase-two-proficient	verify	live	1	fail	3	docker-phase-two-proficient-verify-1791311331999180046.json	/usr/bin/docker returned 1, expected 0
+solution	docker	phase-two-proficient	verify	offline	0	supporting-only	3	docker-phase-two-proficient-verify-1791311334730200214.json	
+solution	docker	phase-two-proficient	verify	live	0	pass	4	docker-phase-two-proficient-verify-1791311337240833382.json	
+baseline	dbt	phase-one-certified	verify-starter	offline	0	pass	6	dbt-phase-one-certified-verify-starter-1791311340810231301.json	
+baseline	dbt	phase-one-certified	verify-solution	offline	0	pass	6	dbt-phase-one-certified-verify-solution-1791311346720209803.json	
+starter	dbt	phase-one-certified	verify	offline	1	fail	6	dbt-phase-one-certified-verify-1791311352528439334.json	Command '['/workspaces/edo-training-data-products/.local/v2-tools/bin/python', '-c', 'import duckdb,json,sys; c=duckdb.connect(sys.argv[1],read_only=True); print(json.dumps(c.execute(sys.argv[2]).fetc
+baseline	dbt	phase-one-certified	verify-starter	live	0	pass	39	dbt-phase-one-certified-verify-starter-1791311358337517295.json	
+baseline	dbt	phase-one-certified	verify-solution	live	0	pass	59	dbt-phase-one-certified-verify-solution-1791311397611699382.json	
+starter	dbt	phase-one-certified	verify	live	1	fail	31	dbt-phase-one-certified-verify-1791311456663292299.json	{'error': {'error_code': 'BAD_REQUEST', 'message': '[TABLE_OR_VIEW_NOT_FOUND] The table or view `fund_exposure` cannot be found. Verify the spelling and correctness of the schema and catalog.\nSearch 
+solution	dbt	phase-one-certified	verify	offline	0	pass	7	dbt-phase-one-certified-verify-1791311487295407299.json	
+solution	dbt	phase-one-certified	verify	live	0	pass	47	dbt-phase-one-certified-verify-1791311493980454177.json	
+baseline	dbt	phase-two-proficient	verify-starter	offline	0	pass	6	dbt-phase-two-proficient-verify-starter-1791311540706071879.json	
+baseline	dbt	phase-two-proficient	verify-solution	offline	0	pass	21	dbt-phase-two-proficient-verify-solution-1791311546964771549.json	
+starter	dbt	phase-two-proficient	verify	offline	1	fail	6	dbt-phase-two-proficient-verify-1791311567771251336.json	Command '['/workspaces/edo-training-data-products/.local/v2-tools/bin/python', '-c', 'import duckdb,json,sys; c=duckdb.connect(sys.argv[1],read_only=True); print(json.dumps(c.execute(sys.argv[2]).fetc
+baseline	dbt	phase-two-proficient	verify-starter	live	0	pass	50	dbt-phase-two-proficient-verify-starter-1791311573525509005.json	
+baseline	dbt	phase-two-proficient	verify-solution	live	0	pass	180	dbt-phase-two-proficient-verify-solution-1791311624024602543.json	
+starter	dbt	phase-two-proficient	verify	live	1	fail	51	dbt-phase-two-proficient-verify-1791311804222342751.json	{'error': {'error_code': 'BAD_REQUEST', 'message': '[UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `fund_id` cannot be resolved. Did you mean one of the follow
+solution	dbt	phase-two-proficient	verify	offline	0	pass	20	dbt-phase-two-proficient-verify-1791311855496994428.json	
+solution	dbt	phase-two-proficient	verify	live	1	fail	89	dbt-phase-two-proficient-verify-1791311875794210548.json	/opt/venv/bin/dbt returned 1, expected 0
+baseline	databricks-cli	phase-one-certified	verify-starter	offline	0	pass	3	databricks-cli-phase-one-certified-verify-starter-1791311965266051631.json	
+baseline	databricks-cli	phase-one-certified	verify-solution	offline	0	supporting-only	4	databricks-cli-phase-one-certified-verify-solution-1791311967970637966.json	
+starter	databricks-cli	phase-one-certified	verify	offline	0	supporting-only	4	databricks-cli-phase-one-certified-verify-1791311971925386301.json	
+baseline	databricks-cli	phase-one-certified	verify-starter	live	0	pass	4	databricks-cli-phase-one-certified-verify-starter-1791311975766955220.json	
+baseline	databricks-cli	phase-one-certified	verify-solution	live	0	pass	4	databricks-cli-phase-one-certified-verify-solution-1791311979823967055.json	
+starter	databricks-cli	phase-one-certified	verify	live	0	pass	4	databricks-cli-phase-one-certified-verify-1791311983646945042.json	
+solution	databricks-cli	phase-one-certified	verify	offline	0	supporting-only	3	databricks-cli-phase-one-certified-verify-1791311987485300503.json	
+solution	databricks-cli	phase-one-certified	verify	live	0	pass	4	databricks-cli-phase-one-certified-verify-1791311990148238754.json	
+baseline	airflow	phase-one-certified	verify-starter	offline	0	pass	3	airflow-phase-one-certified-verify-starter-1791311993750323256.json	
+baseline	airflow	phase-one-certified	verify-solution	offline	0	pass	25	airflow-phase-one-certified-verify-solution-1791311996311710257.json	
+starter	airflow	phase-one-certified	verify	offline	1	fail	6	airflow-phase-one-certified-verify-1791312020815277671.json	/workspaces/edo-training-data-products/.local/v2-airflow/bin/python returned 1, expected 0
+baseline	airflow	phase-one-certified	verify-starter	live	77	blocked	3	airflow-phase-one-certified-verify-starter-1791312026908421090.json	The Phase 1 starter has no DAG yet; the Astro route applies to authored work
+baseline	airflow	phase-one-certified	verify-solution	live	0	pass	169	airflow-phase-one-certified-verify-solution-1791312030236725467.json	
+starter	airflow	phase-one-certified	verify	live	1	fail	4	airflow-phase-one-certified-verify-1791312198879864045.json	Expected exactly one v2_training_pipeline DAG ID to bind a unique Astro DAG ID
+solution	airflow	phase-one-certified	verify	offline	0	pass	25	airflow-phase-one-certified-verify-1791312202743193588.json	
+solution	airflow	phase-one-certified	verify	live	0	pass	169	airflow-phase-one-certified-verify-1791312227942977586.json	
+baseline	airflow	phase-two-proficient	verify-starter	offline	0	pass	6	airflow-phase-two-proficient-verify-starter-1791312396479246428.json	
+baseline	airflow	phase-two-proficient	verify-solution	offline	0	pass	24	airflow-phase-two-proficient-verify-solution-1791312402676958792.json	
+starter	airflow	phase-two-proficient	verify	offline	0	pass	25	airflow-phase-two-proficient-verify-1791312426729830720.json	
+baseline	airflow	phase-two-proficient	verify-starter	live	0	pass	13	airflow-phase-two-proficient-verify-starter-1791312451261149592.json	
+baseline	airflow	phase-two-proficient	verify-solution	live	0	pass	157	airflow-phase-two-proficient-verify-solution-1791312464365559626.json	
+starter	airflow	phase-two-proficient	verify	live	0	pass	156	airflow-phase-two-proficient-verify-1791312621105564421.json	
+solution	airflow	phase-two-proficient	verify	offline	0	pass	24	airflow-phase-two-proficient-verify-1791312776785199090.json	
+solution	airflow	phase-two-proficient	verify	live	0	pass	155	airflow-phase-two-proficient-verify-1791312800887137004.json	
+baseline	kafka	phase-one-certified	verify-starter	offline	0	pass	2	kafka-phase-one-certified-verify-starter-1791312955462591965.json	
+baseline	kafka	phase-one-certified	verify-solution	offline	0	supporting-only	2	kafka-phase-one-certified-verify-solution-1791312957939368507.json	
+starter	kafka	phase-one-certified	verify	offline	0	supporting-only	2	kafka-phase-one-certified-verify-1791312960321814675.json	
+baseline	kafka	phase-one-certified	verify-starter	live	77	blocked	3	kafka-phase-one-certified-verify-starter-1791312962763629635.json	The starter event chain is authored in the learner journey; live mode verifies completed work
+baseline	kafka	phase-one-certified	verify-solution	live	0	pass	41	kafka-phase-one-certified-verify-solution-1791312965267174136.json	
+starter	kafka	phase-one-certified	verify	live	0	pass	44	kafka-phase-one-certified-verify-1791313006160100835.json	
+solution	kafka	phase-one-certified	verify	offline	0	supporting-only	2	kafka-phase-one-certified-verify-1791313050116554758.json	
+solution	kafka	phase-one-certified	verify	live	0	pass	46	kafka-phase-one-certified-verify-1791313052571007468.json	
+baseline	capstone	phase-one-certified	verify-starter	offline	0	pass	7	capstone-phase-one-certified-verify-starter-1791313098182790044.json	
+baseline	capstone	phase-one-certified	verify-solution	offline	0	pass	7	capstone-phase-one-certified-verify-solution-1791313104870010089.json	
+starter	capstone	phase-one-certified	verify	offline	1	fail	6	capstone-phase-one-certified-verify-1791313112031306218.json	Command '['/workspaces/edo-training-data-products/.local/v2-tools/bin/python', '-c', 'import duckdb,json,sys; c=duckdb.connect(sys.argv[1],read_only=True); print(json.dumps(c.execute(sys.argv[2]).fetc
+baseline	capstone	phase-one-certified	verify-starter	live	0	pass	110	capstone-phase-one-certified-verify-starter-1791313118338724887.json	
+baseline	capstone	phase-one-certified	verify-solution	live	0	pass	122	capstone-phase-one-certified-verify-solution-1791313228379251424.json	
+starter	capstone	phase-one-certified	verify	live	1	fail	101	capstone-phase-one-certified-verify-1791313350188066883.json	{'error': {'error_code': 'BAD_REQUEST', 'message': '[TABLE_OR_VIEW_NOT_FOUND] The table or view `rpt_portfolio_summary` cannot be found. Verify the spelling and correctness of the schema and catalog.\
+solution	capstone	phase-one-certified	verify	offline	0	pass	7	capstone-phase-one-certified-verify-1791313450925738180.json	
+solution	capstone	phase-one-certified	verify	live	0	pass	128	capstone-phase-one-certified-verify-1791313457569841377.json	
+baseline	capstone	phase-two-proficient	verify-starter	offline	0	pass	6	capstone-phase-two-proficient-verify-starter-1791313585654050590.json	
+baseline	capstone	phase-two-proficient	verify-solution	offline	0	pass	13	capstone-phase-two-proficient-verify-solution-1791313592015671593.json	
+starter	capstone	phase-two-proficient	verify	offline	1	fail	7	capstone-phase-two-proficient-verify-1791313605458623793.json	Command '['/workspaces/edo-training-data-products/.local/v2-tools/bin/python', '-c', 'import duckdb,json,sys; c=duckdb.connect(sys.argv[1],read_only=True); print(json.dumps(c.execute(sys.argv[2]).fetc
+baseline	capstone	phase-two-proficient	verify-starter	live	0	pass	110	capstone-phase-two-proficient-verify-starter-1791313612287186338.json	
+baseline	capstone	phase-two-proficient	verify-solution	live	0	pass	232	capstone-phase-two-proficient-verify-solution-1791313721806170083.json	
+starter	capstone	phase-two-proficient	verify	live	1	fail	117	capstone-phase-two-proficient-verify-1791313953488057093.json	{'error': {'error_code': 'BAD_REQUEST', 'message': '[TABLE_OR_VIEW_NOT_FOUND] The table or view `rpt_portfolio_performance` cannot be found. Verify the spelling and correctness of the schema and catal
+solution	capstone	phase-two-proficient	verify	offline	0	pass	12	capstone-phase-two-proficient-verify-1791314070613033592.json	
+solution	capstone	phase-two-proficient	verify	live	0	pass	233	capstone-phase-two-proficient-verify-1791314082920447459.json	
+solution	dbt	phase-two-proficient	verify	live	0	pass	176	dbt-phase-two-proficient-verify-1791314409465925763.json	rerun: 
+reconstruction	dbt	phase-one-certified	verify	offline	0	pass	6	dbt-phase-one-certified-verify-1791314900949439087.json	
+reconstruction	docker	phase-one-certified	verify	offline	0	supporting-only	3	docker-phase-one-certified-verify-1791314906931080298.json	
+reconstruction	git	phase-one-certified	verify	offline	0	pass	3	git-phase-one-certified-verify-1791314909675620008.json	
+reconstruction	airflow	phase-one-certified	verify	offline	0	pass	32	airflow-phase-one-certified-verify-1791314912199825009.json	
+reconstruction	dbt	phase-two-proficient	verify	offline	1	fail	6	dbt-phase-two-proficient-verify-1791314943755568177.json	Command '['/workspaces/edo-training-data-products/.local/v2-tools/bin/python', '-c', 'import duckdb,json,sys; c=duckdb.connect(sys.argv[1],read_only=True); print(json.dumps(c.execu
+reconstruction	docker	phase-two-proficient	verify	offline	0	supporting-only	3	docker-phase-two-proficient-verify-1791314950134759596.json	
+reconstruction	dbt	phase-one-certified	verify	live	0	pass	48	dbt-phase-one-certified-verify-1791314953083834834.json	
+reconstruction	docker	phase-one-certified	verify	live	0	pass	3	docker-phase-one-certified-verify-1791315000886566384.json	
+reconstruction	git	phase-one-certified	verify	live	0	pass	2	git-phase-one-certified-verify-1791315003941956010.json	
+reconstruction	airflow	phase-one-certified	verify	live	1	fail	4	airflow-phase-one-certified-verify-1791315006393145845.json	Expected exactly one v2_training_pipeline DAG ID to bind a unique Astro DAG ID
+reconstruction	dbt	phase-two-proficient	verify	live	1	fail	62	dbt-phase-two-proficient-verify-1791315010234113846.json	{'error': {'error_code': 'BAD_REQUEST', 'message': '[UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `holdings` cannot be resolved. Did you m
+reconstruction	docker	phase-two-proficient	verify	live	0	pass	3	docker-phase-two-proficient-verify-1791315071995067041.json	
+reconstruction	git	phase-two-proficient	verify	offline	0	supporting-only	2	git-phase-two-proficient-verify-1791315075385140460.json	
+reconstruction	git	phase-two-proficient	verify	live	77	blocked	4	git-phase-two-proficient-verify-1791315077858527294.json	https://github.com/CONMHAB_capgroup/dc-git-training/pull/1 has no review from another account; git-p2-03/05 need a real reviewer

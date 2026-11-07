@@ -1,0 +1,13 @@
+# Bitemporal loading demo: a custom incremental strategy, in the spirit of the paved path's
+# `incremental_strategy = bitemporal_load_v2` (full-file load type), small enough to read.
+name: 'bitemporal_demo'
+version: '1.0'
+profile: 'bitemporal_demo'
+config-version: 2
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+vars:
+  batch: D1

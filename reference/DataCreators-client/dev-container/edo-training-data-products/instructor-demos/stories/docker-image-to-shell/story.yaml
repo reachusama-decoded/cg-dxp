@@ -1,0 +1,123 @@
+schema_version: 1
+id: docker-image-to-shell
+title: From an image to an interactive container shell
+objective: Distinguish image, writable container state and removal.
+tool: docker
+task_ids:
+- docker-p1-01
+- docker-p1-02
+route: devcontainer-docker
+readiness: draft
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/docker/phase-one-certified/solution
+source_inputs:
+- challenges/v2/docker/phase-one-certified/README.md
+- challenges/v2-solutions/docker/phase-one-certified/solution
+requires:
+- browser
+- docker-client
+- docker-server
+resources:
+- fresh private workspace
+- run-scoped container {{resource}}
+cleanup:
+- if docker container inspect {{resource}} >/dev/null 2>&1; then docker rm -f {{resource}};
+  fi
+main_book:
+  include: true
+  teaching_key: docker-images-and-containers
+steps:
+- id: image
+  action:
+    adapter: terminal
+    session: developer
+    command: docker pull python:3.11-slim && docker image inspect python:3.11-slim
+      --format '{{.Id}} {{json .RepoDigests}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 'sha256:'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Pull and inspect the actual image.
+    notice: The immutable image ID and registry digest identify this capture.
+- id: enter
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm -it --name {{resource}} python:3.11-slim bash
+    complete: false
+    wait_for: root@
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: root@
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Enter a real interactive demo container.
+    notice: The next commands run in the container writable filesystem.
+- id: inside
+  action:
+    adapter: terminal
+    session: developer
+    command: pwd; python --version; cat /etc/os-release; touch /tmp/inside.txt
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Python 3.11
+  capture:
+    context: DEMO CONTAINER
+    hold_seconds: 2
+  caption:
+    action: Inspect and create state inside the container.
+    notice: The Python image supplies user-space tools; the container shares the Docker
+      host kernel.
+- id: leave
+  action:
+    adapter: terminal
+    session: developer
+    command: exit
+    complete: false
+    wait_for: exit
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - bash
+      - -c
+      - '! docker container inspect {{resource}} >/dev/null 2>&1'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Exit the interactive container.
+    notice: The declared --rm lifecycle removes this named container.
+- id: fresh
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm python:3.11-slim test ! -e /tmp/inside.txt && docker
+      image inspect python:3.11-slim --format '{{.Id}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 'sha256:'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Check a new container and the retained image.
+    notice: The new container lacks inside.txt while the downloaded image remains.
+closing_question: Distinguish image, writable container state and removal. Which observation
+  supports your explanation?

@@ -1,0 +1,32 @@
+id: dplc-discovery.case-02-no-pii
+skill: skills/dplc-discovery
+type: behavior
+description: >-
+  Phase 2 (Discovery) — negative coverage for the AICAT-58 acceptance
+  criterion that conditional sub-skills must remain conditional. The
+  input explicitly states the sources contain no PII and are classified
+  Internal (non-regulated, non-sensitive analytics-only fields), so the
+  orchestrator MUST skip `privacy-impact-assessment` per SKILL.md
+  Step 9. The harness has no `forbidden_sequence` field, so this case
+  uses `allow_extra: false` plus an exhaustive list of the sub-skills
+  that are expected to fire — `privacy-impact-assessment` is deliberately
+  absent from that list, so a regression that flattens PIA to
+  always-invoke will be caught as an "unexpected sub-skills present"
+  failure.
+input:
+  arguments: >-
+    Run Phase 2 Discovery for the equity-trading-volume analytics product
+    (sources in cspn_dev1). The tables hold daily aggregated trade counts
+    and notional volumes keyed by instrument and venue — no PII, Internal
+    classification, no regulated scope.
+expected_sequence:
+  - skills/discover-data
+  - skills/data-profiling
+  - skills/feasibility-report
+  - skills/requirements-acceptance-criteria
+  - skills/outcome-kpi-statement
+  - skills/effort-estimate
+  - skills/product-requirements-document
+strict_order: true
+allow_extra: false
+max_steps: 40

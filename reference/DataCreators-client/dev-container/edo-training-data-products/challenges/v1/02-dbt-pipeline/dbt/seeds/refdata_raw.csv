@@ -1,0 +1,5 @@
+isin,instrument_name,asset_class,_extracted_at
+GB00B3M9JJ78,Example UK Equity,Equity,2026-05-20 17:00:00
+US0378331005,Example US Equity,Equity,2026-05-20 17:00:00
+IE00B4L5Y983,Example Global ETF,Equity,2026-05-20 17:00:00
+GB00B1YW4409,Example Sterling Bond,Fixed Income,2026-05-20 17:00:00

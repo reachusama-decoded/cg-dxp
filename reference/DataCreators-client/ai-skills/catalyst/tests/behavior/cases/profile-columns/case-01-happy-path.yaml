@@ -1,0 +1,29 @@
+id: profile-columns.case-01-happy-path
+skill: skills/profile-columns
+type: artifact
+description: 'Bootstrap happy-path case. Compute column-level statistics from table data. Trigger phrases:
+  "profile this table", "what''s the data quality", "show column stats", "assess data fitness".'
+input:
+  arguments: Profile columns of ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/profile.py
+- skills/clients/databricks.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Compute column-level
+      statistics from table data. Trigger phrases: "profile this table", "what''s the data quality", "show
+      column stats", "ass''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

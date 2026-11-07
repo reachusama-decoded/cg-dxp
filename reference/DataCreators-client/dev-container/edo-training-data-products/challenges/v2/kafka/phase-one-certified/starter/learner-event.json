@@ -1,0 +1,8 @@
+{
+  "event_id": "learner-001",
+  "type": "dataset_arrived",
+  "dataset_id": "holdings",
+  "dataset_version": "fixture-v1",
+  "location": "fixture://holdings-v1",
+  "arrived_at": "2026-10-05T09:00:00Z"
+}

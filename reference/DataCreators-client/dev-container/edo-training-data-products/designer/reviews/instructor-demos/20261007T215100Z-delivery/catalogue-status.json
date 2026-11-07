@@ -1,0 +1,18 @@
+[
+  {
+    "story": "dbt-build-and-inspect",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-sources-refs-and-sql",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-test-failure-and-repair",
+    "exit_code": 0
+  },
+  {
+    "story": "dbt-fanout-and-replay",
+    "exit_code": 0
+  }
+]

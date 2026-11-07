@@ -1,0 +1,37 @@
+{
+  "skill_name": "lesson-plan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've got an old-style lesson plan block for S01 Module 1 (old_m1_block.md, from before we moved to the Decoded template). Convert it to our current lesson plan format and save it as converted.md. Don't lose any of the facts: instructors rely on the numbers and outputs in there.",
+      "expected_output": "A Module 1 section in the lean format (lesson-plan/references/format.md): a section row opening with **Module outcomes.** (Module 1's outcomes, word for word) and with a one- or two-sentence summary, its key questions moved to Module 1's part of the Question bank; from 0:20 to 1:20 the demo as one Instructor-led demo row per demo `### ` heading in 2.5-minute steps, ending at 0:37:30, each On screen naming the demo file and its heading with a note and a Say for every row, each row's title its heading word for word, and each note and Say opening with its heading in bold, a 2.5-minute Questioning row straight after the demo's last beat, two Independent or pairs work challenge rows (15 and 7.5: a brief, then learners still working) with a 2.5-minute Questioning mid-challenge check-in between them, each Questioning row holding Purpose, On screen, Ask (one or two questions that make learners think), Listen for, If stuck, Transition and Assessment, the brief naming the demo's closing alone in its On screen (`demo/day01_demo.ipynb`, Module 1: <last heading>, and the Challenge time box), every On screen naming the file first with a note and a Say line of its own, a 5-minute Feedback and discussion debrief and a 10-minute Break; fields in order (Purpose, On screen, Instructor notes, Ask, Listen for, If stuck, Say, Transition, Assessment, Adapt only where it matters) with at most three note bullets and two Say lines per row; Assessment on every row, in two parts, `Outcome N · <evidence>`, or —; a short Module 1 reference (a line per tier of a finished challenge, the three likeliest stalls, two or three fallbacks, the facts to have ready) with no points for each visual or demo walk-through; every number and output an instructor needs kept; all times in 2.5-minute steps; the old block's `<!-- sensitive: clear -->` markers gone; Copilot presented by pros and cons (CG rule 2), never by its limitations, and the planted-fault script described as a first draft to review, never as Copilot's mistakes; no reading-time phrases such as \"for after the session\" (the handbook is the concepts in depth); module-audit raises no lesson-plan warning on the converted block's rows.",
+      "files": [
+        "evals/files/old_m1_block.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "CG changed the timetable for session 1: the welcome is now 15 minutes, so open challenge time drops to 30 minutes and we still finish at 4:00. Can you retime the lesson plan (lesson_plan.md) and save it as retimed.md?",
+      "expected_output": "The same plan with the welcome at 15 minutes, the three modules at 0:15–3:15 (each row shifted by 5 minutes, in-text and Question bank times moved with them), open challenge time at 3:15–3:45 in rows of 15 and 15 (or 20 and 10), the closing debrief at 3:45 and the wrap-up at 3:50, ending at 4:00: every row 5 to 20 minutes and a multiple of five, start times continuous, nothing else changed; the answer notes that the start and end now take 30 minutes, still within the 20 to 30 minutes the lesson-plan rules expect, and that Put it together stays the optional stretch in open challenge time.",
+      "files": [
+        "evals/files/lesson_plan.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Make the Word version of the S01 lesson plan for our instructors (lesson_plan.md is the source) and check it looks right before you hand it over. Put the .docx in outputs.",
+      "expected_output": "A .docx built with the repo's house builder (node scripts/docx/build_lesson_plan.js), not hand-made: A4 landscape, logo and breadcrumb on page 1, the timeline as one table with coloured activity labels, section bands and a narrow Assessment column, the checklist as ☐ items with spacing; no lesson-plan PDF; checked by rendering it (scripts/docx/preview_docx.py or Quick Look) and saying what was checked; nothing written into the repo's release/latest/ folders.",
+      "files": [
+        "evals/files/lesson_plan.md"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We now want questions to the room in every module and a proper ending. Add the Questioning rows and the new ending to the S01 lesson plan (lesson_plan.md) and save it as questioning.md. Keep the day to 4:00.",
+      "expected_output": "The same plan with, in each module, a 2.5-minute Questioning row straight after the demo's last beat (its minutes taken by shortening one demo row by 2.5) and a 2.5-minute Questioning row between the two challenge rows (the second shortened by 2.5); each Questioning row has Purpose, On screen, Ask (one or two questions that make learners think about the module's idea, not recall a word, in Decoded's voice), Listen for (what a good answer contains), If stuck (a simpler prompt), Transition and Assessment, and no notes or Say; the transitions either side lead into and out of the question; the single wrap-up row replaced by Feedback and discussion — Key takeaways (5, three Say lines, one per module) then Intro/Outro — Thank you for participating (5, the thanks, the feedback form and the next session, Assessment —), ending at 4:00; each module still an hour, start times continuous, Question bank 'Ask after' times moved with their rows; module-audit raises no Questioning or ending error.",
+      "files": [
+        "evals/files/lesson_plan.md"
+      ]
+    }
+  ]
+}

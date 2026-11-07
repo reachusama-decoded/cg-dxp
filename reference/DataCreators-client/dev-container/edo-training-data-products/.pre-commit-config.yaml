@@ -1,0 +1,34 @@
+repos:
+    - repo: https://github.com/Yelp/detect-secrets
+      rev: v1.5.0
+      hooks:
+          - id: detect-secrets
+            # args: ['--baseline', '.secrets.baseline']
+            exclude: package.lock.json
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.3.0 # Use the ref you want to point at
+      hooks:
+          - id: end-of-file-fixer #Makes sure files end in a newline and only a newline
+            exclude: ^\.harness/
+    - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+      rev: v2.14.0
+      hooks:
+        - id: pretty-format-yaml
+          files: ^\.airflow/.*\.(yml|yaml)$
+          args: [--autofix, --indent, "2"]
+    - repo: https://github.com/sqlfluff/sqlfluff
+      rev: 3.3.0
+      hooks:
+          - id: sqlfluff-lint
+            # For dbt projects, this installs the dbt "extras".
+            # You will need to select the relevant dbt adapter for your dialect
+            # (https://docs.getdbt.com/docs/available-adapters):
+            additional_dependencies:
+                ["dbt-databricks", "sqlfluff-templater-dbt"]
+            args: [--dialect, databricks, --templater, dbt]  # Specify the dialect here
+          - id: sqlfluff-fix
+            # Arbitrary arguments to show an example
+            args: [--rules, "LT02,CP02", --dialect, databricks, --templater, dbt]  # Specify the dialect here
+            additional_dependencies:
+                ["dbt-databricks", "sqlfluff-templater-dbt"]
+    

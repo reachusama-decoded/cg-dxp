@@ -1,0 +1,114 @@
+schema_version: 1
+id: dbt-build-and-inspect
+title: Build and independently inspect fund exposure
+objective: Explain input grain, staging types and per-fund output.
+tool: dbt
+task_ids:
+- dbt-p1-01
+- dbt-p1-02
+- dbt-p1-03
+- dbt-p1-04
+- dbt-p1-05
+route: local-duckdb
+readiness: ready
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/dbt/phase-one-certified/solution
+source_inputs:
+- challenges/v2/dbt/phase-one-certified/README.md
+- challenges/v2-solutions/dbt/phase-one-certified/solution
+- scripts/demo-checks.py
+requires:
+- browser
+- dbt
+- duckdb-python
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: true
+  teaching_key: dbt-models-and-tests
+steps:
+- id: inputs
+  action:
+    adapter: terminal
+    session: developer
+    command: cat seeds/holdings.csv seeds/funds.csv
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: market_value
+    - kind: output-contains
+      text: instrument_id
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect the declared input grains.
+    notice: Five holdings reference three funds; values are whole money units.
+- id: seed
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Completed successfully
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Load the supplied CSV inputs.
+    notice: Seeding creates inputs; it has not built the consumer mart.
+- id: build
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt build --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Completed successfully
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Build this instructor-completed project.
+    notice: Models and structural tests run in dependency order.
+- id: inspect
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 inspect-output.py exposure
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: CSV/Decimal
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect an independent per-fund calculation.
+    notice: A has two holdings and exposure 150; B has two and 100; C retains one
+      zero-valued holding.
+closing_question: Explain input grain, staging types and per-fund output. Which observation
+  supports your explanation?
+workspace_files:
+- source: scripts/demo-checks.py
+  destination: inspect-output.py

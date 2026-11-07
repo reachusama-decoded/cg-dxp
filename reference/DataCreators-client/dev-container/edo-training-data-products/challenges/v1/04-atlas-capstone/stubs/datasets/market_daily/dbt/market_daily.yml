@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: agg_instrument_activity
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: api_latest_price
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: dom_trading__latest_price
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: ts_daily_asset_class
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: ts_daily_market
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: ts_daily_market_incremental
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

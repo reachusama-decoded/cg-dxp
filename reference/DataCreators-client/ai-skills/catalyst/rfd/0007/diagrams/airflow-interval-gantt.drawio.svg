@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1320" height="660" viewBox="0 0 1320 660"
+     font-family="Helvetica, Arial, sans-serif">
+  <title>Airflow execution_date, data_interval_start, data_interval_end across days</title>
+  <desc>RFD 0007 — Gantt-style timeline showing how an @daily Airflow DAG's execution_date (logical_date), data_interval_start, and data_interval_end relate over four consecutive days. The data-ready event emitted after each run carries data_interval_start and data_interval_end, replacing the checkpoint tables in curation-libs and caspian-im-foundation.</desc>
+
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1F2A2E; }
+    .subtitle { font-size: 13px; fill: #5B6B70; }
+    .axis { stroke: #5B6B70; stroke-width: 1.5; }
+    .gridline { stroke: #D7DEE0; stroke-width: 1; stroke-dasharray: 3 3; }
+    .gridline-strong { stroke: #B8C3C7; stroke-width: 1; }
+    .day-label { font-size: 12px; fill: #1F2A2E; font-weight: 600; text-anchor: middle; }
+    .hour-label { font-size: 10px; fill: #5B6B70; text-anchor: middle; }
+    .row-label { font-size: 12px; fill: #1F2A2E; font-weight: 600; }
+    .row-sub { font-size: 11px; fill: #5B6B70; }
+    .interval-bar { fill: #BFD9E8; stroke: #0068AE; stroke-width: 1.5; }
+    .interval-text { font-size: 11px; fill: #0A3F66; font-weight: 600; text-anchor: middle; }
+    .exec-line { stroke: #B8541A; stroke-width: 2; }
+    .run-line { stroke: #2E7D32; stroke-width: 2; stroke-dasharray: 4 3; }
+    .event-line { stroke: #6A1B9A; stroke-width: 2; }
+    .marker-label { font-size: 10px; fill: #1F2A2E; }
+    .legend-text { font-size: 11px; fill: #1F2A2E; }
+    .legend-title { font-size: 12px; font-weight: 700; fill: #1F2A2E; }
+    .note { font-size: 11px; fill: #5B6B70; font-style: italic; }
+  </style>
+
+  <!-- Title -->
+  <text class="title" x="40" y="36">Airflow @daily DAG: execution_date, data_interval_start, data_interval_end</text>
+  <text class="subtitle" x="40" y="56">Each row is one scheduled DAG run. The event payload carries the interval window — replacing the checkpoint table.</text>
+
+  <!-- Day boundary gridlines -->
+  <line class="gridline-strong" x1="200" y1="100" x2="200" y2="500"/>
+  <line class="gridline-strong" x1="465" y1="100" x2="465" y2="500"/>
+  <line class="gridline-strong" x1="730" y1="100" x2="730" y2="500"/>
+  <line class="gridline-strong" x1="995" y1="100" x2="995" y2="500"/>
+  <line class="gridline-strong" x1="1260" y1="100" x2="1260" y2="500"/>
+
+  <!-- Mid-day gridlines -->
+  <line class="gridline" x1="332.5" y1="120" x2="332.5" y2="500"/>
+  <line class="gridline" x1="597.5" y1="120" x2="597.5" y2="500"/>
+  <line class="gridline" x1="862.5" y1="120" x2="862.5" y2="500"/>
+  <line class="gridline" x1="1127.5" y1="120" x2="1127.5" y2="500"/>
+
+  <!-- Top axis & day labels -->
+  <line class="axis" x1="200" y1="100" x2="1260" y2="100"/>
+  <text class="day-label" x="200" y="86">2026-04-27</text><text class="hour-label" x="200" y="74">00:00 UTC</text>
+  <text class="day-label" x="465" y="86">2026-04-28</text><text class="hour-label" x="465" y="74">00:00 UTC</text>
+  <text class="day-label" x="730" y="86">2026-04-29</text><text class="hour-label" x="730" y="74">00:00 UTC</text>
+  <text class="day-label" x="995" y="86">2026-04-30</text><text class="hour-label" x="995" y="74">00:00 UTC</text>
+  <text class="day-label" x="1260" y="86">2026-05-01</text><text class="hour-label" x="1260" y="74">00:00 UTC</text>
+
+  <!-- Row 1 -->
+  <text class="row-label" x="40" y="160">DAG run #1</text>
+  <text class="row-sub"   x="40" y="176">logical_date</text>
+  <text class="row-sub"   x="40" y="190">2026-04-27</text>
+  <rect class="interval-bar" x="200" y="150" width="265" height="36" rx="3"/>
+  <text class="interval-text" x="332.5" y="173">data_interval: [04-27 00:00, 04-28 00:00)</text>
+  <line class="exec-line" x1="200" y1="140" x2="200" y2="196"/>
+  <polygon points="200,138 196,132 204,132" fill="#B8541A"/>
+  <text class="marker-label" x="206" y="138">execution_date / logical_date</text>
+  <line class="run-line" x1="465" y1="140" x2="465" y2="196"/>
+  <circle cx="465" cy="138" r="4" fill="#2E7D32"/>
+  <text class="marker-label" x="471" y="138">run starts</text>
+  <line class="event-line" x1="487" y1="148" x2="487" y2="188"/>
+  <polygon points="483,148 491,148 487,140" fill="#6A1B9A"/>
+  <text class="marker-label" x="493" y="153">data-ready event emitted</text>
+
+  <!-- Row 2 -->
+  <text class="row-label" x="40" y="250">DAG run #2</text>
+  <text class="row-sub"   x="40" y="266">logical_date</text>
+  <text class="row-sub"   x="40" y="280">2026-04-28</text>
+  <rect class="interval-bar" x="465" y="240" width="265" height="36" rx="3"/>
+  <text class="interval-text" x="597.5" y="263">data_interval: [04-28 00:00, 04-29 00:00)</text>
+  <line class="exec-line" x1="465" y1="230" x2="465" y2="286"/>
+  <polygon points="465,228 461,222 469,222" fill="#B8541A"/>
+  <line class="run-line" x1="730" y1="230" x2="730" y2="286"/>
+  <circle cx="730" cy="228" r="4" fill="#2E7D32"/>
+  <line class="event-line" x1="752" y1="238" x2="752" y2="278"/>
+  <polygon points="748,238 756,238 752,230" fill="#6A1B9A"/>
+
+  <!-- Row 3 -->
+  <text class="row-label" x="40" y="340">DAG run #3</text>
+  <text class="row-sub"   x="40" y="356">logical_date</text>
+  <text class="row-sub"   x="40" y="370">2026-04-29</text>
+  <rect class="interval-bar" x="730" y="330" width="265" height="36" rx="3"/>
+  <text class="interval-text" x="862.5" y="353">data_interval: [04-29 00:00, 04-30 00:00)</text>
+  <line class="exec-line" x1="730" y1="320" x2="730" y2="376"/>
+  <polygon points="730,318 726,312 734,312" fill="#B8541A"/>
+  <line class="run-line" x1="995" y1="320" x2="995" y2="376"/>
+  <circle cx="995" cy="318" r="4" fill="#2E7D32"/>
+  <line class="event-line" x1="1017" y1="328" x2="1017" y2="368"/>
+  <polygon points="1013,328 1021,328 1017,320" fill="#6A1B9A"/>
+
+  <!-- Row 4 -->
+  <text class="row-label" x="40" y="430">DAG run #4</text>
+  <text class="row-sub"   x="40" y="446">logical_date</text>
+  <text class="row-sub"   x="40" y="460">2026-04-30</text>
+  <rect class="interval-bar" x="995" y="420" width="265" height="36" rx="3"/>
+  <text class="interval-text" x="1127.5" y="443">data_interval: [04-30 00:00, 05-01 00:00)</text>
+  <line class="exec-line" x1="995" y1="410" x2="995" y2="466"/>
+  <polygon points="995,408 991,402 999,402" fill="#B8541A"/>
+  <line class="run-line" x1="1260" y1="410" x2="1260" y2="466"/>
+  <circle cx="1260" cy="408" r="4" fill="#2E7D32"/>
+
+  <!-- Bottom axis -->
+  <line class="axis" x1="200" y1="500" x2="1260" y2="500"/>
+
+  <!-- Legend -->
+  <g>
+    <rect x="40" y="525" width="1240" height="105" fill="#F4F7F8" stroke="#D7DEE0" stroke-width="1" rx="4"/>
+    <text class="legend-title" x="54" y="545">Legend</text>
+    <rect class="interval-bar" x="54" y="558" width="28" height="14" rx="2"/>
+    <text class="legend-text" x="90" y="569">data_interval_start → data_interval_end (the business window the run processes)</text>
+    <line class="exec-line" x1="54" y1="586" x2="82" y2="586"/>
+    <polygon points="68,580 64,574 72,574" fill="#B8541A"/>
+    <text class="legend-text" x="90" y="590">execution_date / logical_date — same instant as data_interval_start for @daily</text>
+    <line class="run-line" x1="54" y1="608" x2="82" y2="608"/>
+    <circle cx="82" cy="608" r="4" fill="#2E7D32"/>
+    <text class="legend-text" x="90" y="612">DAG run actually starts at data_interval_end (interval is closed before scheduling)</text>
+    <line class="event-line" x1="680" y1="586" x2="708" y2="586"/>
+    <polygon points="690,580 698,580 694,572" fill="#6A1B9A"/>
+    <text class="legend-text" x="716" y="590">data-ready event emitted after the run; payload carries data_interval_start and data_interval_end</text>
+    <text class="note" x="680" y="612">Replaces the checkpoint table: the next consumer's high-water mark is the event's data_interval_end.</text>
+  </g>
+
+  <!-- Embedded mxfile so drawio can re-open this SVG for editing -->
+  <foreignObject width="0" height="0" x="0" y="0" overflow="hidden">
+    <mxfile xmlns="http://www.w3.org/1999/xhtml" host="rfd-0007" modified="2026-05-07T00:00:00.000Z" agent="claude-code" version="24.0.0">
+      <diagram id="airflow-interval-gantt" name="Airflow interval gantt">
+        <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1320" pageHeight="660" math="0" shadow="0">
+          <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+
+            <mxCell id="title" value="Airflow @daily DAG: execution_date, data_interval_start, data_interval_end" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1">
+              <mxGeometry x="40" y="20" width="1240" height="28" as="geometry"/>
+            </mxCell>
+            <mxCell id="subtitle" value="Each row is one scheduled DAG run. The event payload carries the interval window — replacing the checkpoint table." style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#5B6B70;" vertex="1" parent="1">
+              <mxGeometry x="40" y="48" width="1240" height="20" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="grid-d0" value="" style="endArrow=none;html=1;strokeColor=#B8C3C7;strokeWidth=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="200" y="100" as="sourcePoint"/><mxPoint x="200" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-d1" value="" style="endArrow=none;html=1;strokeColor=#B8C3C7;strokeWidth=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="465" y="100" as="sourcePoint"/><mxPoint x="465" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-d2" value="" style="endArrow=none;html=1;strokeColor=#B8C3C7;strokeWidth=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="730" y="100" as="sourcePoint"/><mxPoint x="730" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-d3" value="" style="endArrow=none;html=1;strokeColor=#B8C3C7;strokeWidth=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="995" y="100" as="sourcePoint"/><mxPoint x="995" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-d4" value="" style="endArrow=none;html=1;strokeColor=#B8C3C7;strokeWidth=1;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1260" y="100" as="sourcePoint"/><mxPoint x="1260" y="500" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="grid-m0" value="" style="endArrow=none;html=1;strokeColor=#D7DEE0;strokeWidth=1;dashed=1;dashPattern=3 3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="332.5" y="120" as="sourcePoint"/><mxPoint x="332.5" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-m1" value="" style="endArrow=none;html=1;strokeColor=#D7DEE0;strokeWidth=1;dashed=1;dashPattern=3 3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="597.5" y="120" as="sourcePoint"/><mxPoint x="597.5" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-m2" value="" style="endArrow=none;html=1;strokeColor=#D7DEE0;strokeWidth=1;dashed=1;dashPattern=3 3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="862.5" y="120" as="sourcePoint"/><mxPoint x="862.5" y="500" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="grid-m3" value="" style="endArrow=none;html=1;strokeColor=#D7DEE0;strokeWidth=1;dashed=1;dashPattern=3 3;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1127.5" y="120" as="sourcePoint"/><mxPoint x="1127.5" y="500" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="top-axis" value="" style="endArrow=none;html=1;strokeColor=#5B6B70;strokeWidth=1.5;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="200" y="100" as="sourcePoint"/><mxPoint x="1260" y="100" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="day0" value="2026-04-27&#10;00:00 UTC" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="150" y="65" width="100" height="32" as="geometry"/></mxCell>
+            <mxCell id="day1" value="2026-04-28&#10;00:00 UTC" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="415" y="65" width="100" height="32" as="geometry"/></mxCell>
+            <mxCell id="day2" value="2026-04-29&#10;00:00 UTC" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="680" y="65" width="100" height="32" as="geometry"/></mxCell>
+            <mxCell id="day3" value="2026-04-30&#10;00:00 UTC" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="945" y="65" width="100" height="32" as="geometry"/></mxCell>
+            <mxCell id="day4" value="2026-05-01&#10;00:00 UTC" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="1210" y="65" width="100" height="32" as="geometry"/></mxCell>
+
+            <mxCell id="r1-label" value="DAG run #1&#10;logical_date&#10;2026-04-27" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="40" y="150" width="150" height="46" as="geometry"/></mxCell>
+            <mxCell id="r1-bar" value="data_interval: [04-27 00:00, 04-28 00:00)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFD9E8;strokeColor=#0068AE;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#0A3F66;" vertex="1" parent="1"><mxGeometry x="200" y="150" width="265" height="36" as="geometry"/></mxCell>
+            <mxCell id="r1-exec" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#B8541A;strokeWidth=2;endSize=8;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="200" y="196" as="sourcePoint"/><mxPoint x="200" y="138" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r1-exec-lbl" value="execution_date / logical_date" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="206" y="128" width="200" height="16" as="geometry"/></mxCell>
+            <mxCell id="r1-run" value="" style="endArrow=oval;html=1;startArrow=none;strokeColor=#2E7D32;strokeWidth=2;dashed=1;dashPattern=4 3;endFill=1;endSize=4;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="465" y="196" as="sourcePoint"/><mxPoint x="465" y="138" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r1-run-lbl" value="run starts" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="471" y="128" width="120" height="16" as="geometry"/></mxCell>
+            <mxCell id="r1-evt" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#6A1B9A;strokeWidth=2;endSize=6;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="487" y="188" as="sourcePoint"/><mxPoint x="487" y="140" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r1-evt-lbl" value="data-ready event emitted" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="493" y="143" width="180" height="16" as="geometry"/></mxCell>
+
+            <mxCell id="r2-label" value="DAG run #2&#10;logical_date&#10;2026-04-28" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="40" y="240" width="150" height="46" as="geometry"/></mxCell>
+            <mxCell id="r2-bar" value="data_interval: [04-28 00:00, 04-29 00:00)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFD9E8;strokeColor=#0068AE;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#0A3F66;" vertex="1" parent="1"><mxGeometry x="465" y="240" width="265" height="36" as="geometry"/></mxCell>
+            <mxCell id="r2-exec" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#B8541A;strokeWidth=2;endSize=8;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="465" y="286" as="sourcePoint"/><mxPoint x="465" y="228" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r2-run" value="" style="endArrow=oval;html=1;startArrow=none;strokeColor=#2E7D32;strokeWidth=2;dashed=1;dashPattern=4 3;endFill=1;endSize=4;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="730" y="286" as="sourcePoint"/><mxPoint x="730" y="228" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r2-evt" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#6A1B9A;strokeWidth=2;endSize=6;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="752" y="278" as="sourcePoint"/><mxPoint x="752" y="230" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="r3-label" value="DAG run #3&#10;logical_date&#10;2026-04-29" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="40" y="330" width="150" height="46" as="geometry"/></mxCell>
+            <mxCell id="r3-bar" value="data_interval: [04-29 00:00, 04-30 00:00)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFD9E8;strokeColor=#0068AE;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#0A3F66;" vertex="1" parent="1"><mxGeometry x="730" y="330" width="265" height="36" as="geometry"/></mxCell>
+            <mxCell id="r3-exec" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#B8541A;strokeWidth=2;endSize=8;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="730" y="376" as="sourcePoint"/><mxPoint x="730" y="318" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r3-run" value="" style="endArrow=oval;html=1;startArrow=none;strokeColor=#2E7D32;strokeWidth=2;dashed=1;dashPattern=4 3;endFill=1;endSize=4;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="995" y="376" as="sourcePoint"/><mxPoint x="995" y="318" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r3-evt" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#6A1B9A;strokeWidth=2;endSize=6;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1017" y="368" as="sourcePoint"/><mxPoint x="1017" y="320" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="r4-label" value="DAG run #4&#10;logical_date&#10;2026-04-30" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="40" y="420" width="150" height="46" as="geometry"/></mxCell>
+            <mxCell id="r4-bar" value="data_interval: [04-30 00:00, 05-01 00:00)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFD9E8;strokeColor=#0068AE;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#0A3F66;" vertex="1" parent="1"><mxGeometry x="995" y="420" width="265" height="36" as="geometry"/></mxCell>
+            <mxCell id="r4-exec" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#B8541A;strokeWidth=2;endSize=8;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="995" y="466" as="sourcePoint"/><mxPoint x="995" y="408" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="r4-run" value="" style="endArrow=oval;html=1;startArrow=none;strokeColor=#2E7D32;strokeWidth=2;dashed=1;dashPattern=4 3;endFill=1;endSize=4;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="1260" y="466" as="sourcePoint"/><mxPoint x="1260" y="408" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="bot-axis" value="" style="endArrow=none;html=1;strokeColor=#5B6B70;strokeWidth=1.5;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="200" y="500" as="sourcePoint"/><mxPoint x="1260" y="500" as="targetPoint"/></mxGeometry></mxCell>
+
+            <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F7F8;strokeColor=#D7DEE0;strokeWidth=1;" vertex="1" parent="1"><mxGeometry x="40" y="525" width="1240" height="105" as="geometry"/></mxCell>
+            <mxCell id="legend-title" value="Legend" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="54" y="532" width="200" height="20" as="geometry"/></mxCell>
+            <mxCell id="leg-bar" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFD9E8;strokeColor=#0068AE;strokeWidth=1.5;" vertex="1" parent="1"><mxGeometry x="54" y="558" width="28" height="14" as="geometry"/></mxCell>
+            <mxCell id="leg-bar-lbl" value="data_interval_start → data_interval_end (the business window the run processes)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="90" y="556" width="560" height="18" as="geometry"/></mxCell>
+            <mxCell id="leg-exec" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#B8541A;strokeWidth=2;endSize=8;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="54" y="586" as="sourcePoint"/><mxPoint x="82" y="586" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="leg-exec-lbl" value="execution_date / logical_date — same instant as data_interval_start for @daily" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="90" y="578" width="560" height="18" as="geometry"/></mxCell>
+            <mxCell id="leg-run" value="" style="endArrow=oval;html=1;startArrow=none;strokeColor=#2E7D32;strokeWidth=2;dashed=1;dashPattern=4 3;endFill=1;endSize=4;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="54" y="608" as="sourcePoint"/><mxPoint x="82" y="608" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="leg-run-lbl" value="DAG run actually starts at data_interval_end (interval is closed before scheduling)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="90" y="600" width="560" height="18" as="geometry"/></mxCell>
+            <mxCell id="leg-evt" value="" style="endArrow=classicThin;html=1;startArrow=none;strokeColor=#6A1B9A;strokeWidth=2;endSize=6;" edge="1" parent="1"><mxGeometry relative="1" as="geometry"><mxPoint x="680" y="586" as="sourcePoint"/><mxPoint x="708" y="586" as="targetPoint"/></mxGeometry></mxCell>
+            <mxCell id="leg-evt-lbl" value="data-ready event emitted after the run; payload carries data_interval_start and data_interval_end" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#1F2A2E;" vertex="1" parent="1"><mxGeometry x="716" y="578" width="560" height="18" as="geometry"/></mxCell>
+            <mxCell id="leg-note" value="Replaces the checkpoint table: the next consumer's high-water mark is the event's data_interval_end." style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#5B6B70;" vertex="1" parent="1"><mxGeometry x="680" y="600" width="600" height="18" as="geometry"/></mxCell>
+
+          </root>
+        </mxGraphModel>
+      </diagram>
+    </mxfile>
+  </foreignObject>
+</svg>

@@ -1,0 +1,1042 @@
+{
+  "schema_version": 1,
+  "challenge_version": "v2",
+  "generator_version": "1.0",
+  "tool_order": [
+    "git",
+    "docker",
+    "dbt",
+    "databricks-cli",
+    "airflow",
+    "kafka",
+    "capstone"
+  ],
+  "tools": [
+    {
+      "id": "dbt",
+      "title": "dbt",
+      "readme": "dbt/README.md",
+      "course_destination": "Optional small-fixture follow-up; assigned Portfolio Analytics guide owns the overlapping core outcomes",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "dbt/phase-one-certified/README.md",
+          "starter": "dbt/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "dbt-p1-01",
+              "title": "Inspect the project and source grain",
+              "concept_ids": [
+                "dbt-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Show five holdings, three distinct funds and total 250. The status model is intentionally a valid scaffold. Record adapter/version and distinguish the local rehearsal from a connected run."
+            },
+            {
+              "id": "dbt-p1-02",
+              "title": "Declare and use sources",
+              "concept_ids": [
+                "dbt-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Run dbt run --select stg_holdings stg_funds --profiles-dir .. Inspect compiled SQL and explain the difference between the logical source name and physical table name."
+            },
+            {
+              "id": "dbt-p1-03",
+              "title": "Normalize type, unit and key contracts",
+              "concept_ids": [
+                "dbt-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "The staged row count remains five, its total remains 250, and the zero-value C holding is retained. Explain why filtering that zero would alter the holdings-count meaning."
+            },
+            {
+              "id": "dbt-p1-04",
+              "title": "Build a useful mart through ref",
+              "concept_ids": [
+                "dbt-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Compare against A:2 holdings/150, B:2/100, C:1/0. There must be three rows and total 250. Explain why a shared grand total alone would not prove each fund is correct."
+            },
+            {
+              "id": "dbt-p1-05",
+              "title": "Add minimum key and relationship proof",
+              "concept_ids": [
+                "dbt-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "All tests must pass on a fresh build: dbt seed, then dbt build, against an empty database. In a copied fixture add an unknown fund ID, reseed and show a relationship failure; restore it and rebuild. Save the failed-test name, repair and per-fund evidence."
+            }
+          ],
+          "prerequisites": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+          "runtime": {
+            "boundary": "Local DuckDB dbt; optional Databricks rehearsal remains separately measured.",
+            "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "dbt-core": "1.10.13",
+              "dbt-duckdb": "1.9.6",
+              "duckdb": "1.4.1"
+            },
+            "preparation": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "course_route": "optional small fixture",
+          "assigned_guide_ids": [
+            "dbt-guide-01",
+            "dbt-guide-02",
+            "dbt-guide-03",
+            "dbt-guide-04",
+            "dbt-guide-05",
+            "dbt-guide-06",
+            "dbt-guide-07",
+            "dbt-guide-08",
+            "dbt-guide-09",
+            "dbt-guide-10",
+            "dbt-guide-11",
+            "dbt-guide-12"
+          ]
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "dbt/phase-two-proficient/README.md",
+          "starter": "dbt/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "dbt-p2-01",
+              "title": "Diagnose a join fan-out before repair",
+              "concept_ids": [
+                "dbt-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "The defective join has seven rows and total 400 instead of five/250. This fixture is intentional; it is not a broken starter. Explain why an ordinary foreign-key relationship test would miss the multiplicity."
+            },
+            {
+              "id": "dbt-p2-02",
+              "title": "Repair enrichment at the intended grain",
+              "concept_ids": [
+                "dbt-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Repaired output must have A: 150 / B: 100 / C: 0, three distinct fund IDs and total250. A reviewer must be able to connect the chosen grain rule to the corrected join."
+            },
+            {
+              "id": "dbt-p2-03",
+              "title": "Write reconciliation that detects the negative case",
+              "concept_ids": [
+                "dbt-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Record the expected failed test/result and repaired pass. Show that a400 total or an inflated A: 300 fails even if another derived total repeats the same mistake."
+            },
+            {
+              "id": "dbt-p2-04",
+              "title": "Prove incremental update and replay behavior",
+              "concept_ids": [
+                "dbt-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "First run:2 rows/180. Replay:2/180. Corrected+new input:3 rows/225, with e1=125. Rerun again and prove it remains3/225. Record adapter semantics; recheck the chosen strategy before connected Databricks use."
+            },
+            {
+              "id": "dbt-p2-05",
+              "title": "Explain dependency impact and hand over",
+              "concept_ids": [
+                "dbt-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "evidence.md"
+              ],
+              "success_evidence": "Show the dependency path and saved per-run row totals. Core completion requires repair, negative-case and replay evidence. Optional stretch: port and measure the adapter-specific OPTIMIZE/ZORDER hook from v1, or author the legacy returns mart."
+            }
+          ],
+          "prerequisites": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+          "runtime": {
+            "boundary": "Local DuckDB dbt; optional Databricks rehearsal remains separately measured.",
+            "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "dbt-core": "1.10.13",
+              "dbt-duckdb": "1.9.6",
+              "duckdb": "1.4.1"
+            },
+            "preparation": "Prepared dbt-core1.10.13,dbt-duckdb1.9.6,DuckDB1.4.1 local environment. Optional connected profile needs Databricks adapter and isolated provisioned V2_DB_SCHEMA.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/dbt/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "course_route": "optional small fixture",
+          "assigned_guide_ids": [
+            "dbt-guide-01",
+            "dbt-guide-02",
+            "dbt-guide-03",
+            "dbt-guide-04",
+            "dbt-guide-05",
+            "dbt-guide-06",
+            "dbt-guide-07",
+            "dbt-guide-08",
+            "dbt-guide-09",
+            "dbt-guide-10",
+            "dbt-guide-11",
+            "dbt-guide-12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "airflow",
+      "title": "airflow",
+      "readme": "airflow/README.md",
+      "course_destination": "Optional small-fixture follow-up; assigned Portfolio Analytics guide owns the overlapping core outcomes",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "airflow/phase-one-certified/README.md",
+          "starter": "airflow/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "airflow-p1-01",
+              "title": "Inspect a prepared orchestration baseline",
+              "concept_ids": [
+                "airflow-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Show the prepared project result A: 150 / B: 100 / C: 0. Explain which graph orders tasks and which graph orders SQL models. The scaffold message is not an Airflow run."
+            },
+            {
+              "id": "airflow-p1-02",
+              "title": "Author a small Python DAG with real dbt tasks",
+              "concept_ids": [
+                "airflow-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Import the actual DAG using DagBag and inspect task IDs and edges. Syntax-only checks are supporting evidence. Record any import error before trying a live run."
+            },
+            {
+              "id": "airflow-p1-03",
+              "title": "Demonstrate the dependency graph and manual run",
+              "concept_ids": [
+                "airflow-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "The run must execute dbt and finish success. Independently inspect fund_exposure in the workspace database and match A: 150 / B: 100 / C: 0. A parsed DAG alone cannot pass this live/local execution gate."
+            },
+            {
+              "id": "airflow-p1-04",
+              "title": "Inspect a controlled task failure",
+              "concept_ids": [
+                "airflow-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Intentional failure: the quality drill raises Intentional quality drill and publish must not create a receipt. After removing the marker, quality and publish succeed and a new receipt exists."
+            },
+            {
+              "id": "airflow-p1-05",
+              "title": "Explain the run and environment boundaries",
+              "concept_ids": [
+                "airflow-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Core evidence includes the executed run and business output. Record Astro UI/connected verification separately if unavailable. Phase2 starts from this supplied solved DAG, so it can be entered independently."
+            }
+          ],
+          "prerequisites": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+          "runtime": {
+            "boundary": "Airflow local Dag.test execution; Astro UI and connected adapter gates separate.",
+            "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "apache-airflow": "3.1.0",
+              "standard-provider": "1.8.0",
+              "astro": "client container not measured"
+            },
+            "preparation": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/airflow/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "course_route": "optional small fixture",
+          "assigned_guide_ids": [
+            "airflow-guide-01",
+            "airflow-guide-02",
+            "airflow-guide-03",
+            "airflow-guide-04",
+            "airflow-guide-05",
+            "airflow-guide-06",
+            "airflow-guide-07",
+            "airflow-guide-08",
+            "airflow-guide-09",
+            "airflow-guide-10",
+            "airflow-guide-11",
+            "airflow-guide-12"
+          ]
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "airflow/phase-two-proficient/README.md",
+          "starter": "airflow/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "airflow-p2-01",
+              "title": "Define bounded replay and input identity",
+              "concept_ids": [
+                "airflow-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Both runs must produce three fund rows/250 and matching per-fund values. Record run IDs and explain which state is replaced by dbt materialization."
+            },
+            {
+              "id": "airflow-p2-02",
+              "title": "Inject failure and observe useful retry behavior",
+              "concept_ids": [
+                "airflow-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Show the failed task and blocked publication, then repaired quality and published receipt. Record attempts/run identity. Do not mark the task successful manually as a substitute for rerunning the test."
+            },
+            {
+              "id": "airflow-p2-03",
+              "title": "Prove output correctness after recovery",
+              "concept_ids": [
+                "airflow-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Correct final state is A: 150 / B: 100 / C: 0, one row per fund, successful quality and a receipt for the repaired run. Show unchanged output after another replay."
+            },
+            {
+              "id": "airflow-p2-04",
+              "title": "Use Astro UI to make an operational decision",
+              "concept_ids": [
+                "airflow-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Retain run/task identifiers and a description of the relevant log/state evidence. A hosted Astronomer route is optional and requires prepared access."
+            },
+            {
+              "id": "airflow-p2-05",
+              "title": "Write a short incident handoff",
+              "concept_ids": [
+                "airflow-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "pipeline.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "The handoff must explain blocked publication and correct recovered output. Optional stretch: connect an existing neutral alert transport or prepared Datadog monitor and demonstrate an actionable observation; configuration text alone is insufficient."
+            }
+          ],
+          "prerequisites": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+          "runtime": {
+            "boundary": "Airflow local Dag.test execution; Astro UI and connected adapter gates separate.",
+            "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "apache-airflow": "3.1.0",
+              "standard-provider": "1.8.0",
+              "astro": "client container not measured"
+            },
+            "preparation": "Prepared Airflow3.1.0/standard provider1.8.0 runtime and a separate dbt executable selected with V2_DBT_BIN. Astro UI route needs instructor-bound isolated workspace.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/airflow/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "course_route": "optional small fixture",
+          "assigned_guide_ids": [
+            "airflow-guide-01",
+            "airflow-guide-02",
+            "airflow-guide-03",
+            "airflow-guide-04",
+            "airflow-guide-05",
+            "airflow-guide-06",
+            "airflow-guide-07",
+            "airflow-guide-08",
+            "airflow-guide-09",
+            "airflow-guide-10",
+            "airflow-guide-11",
+            "airflow-guide-12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "capstone",
+      "title": "capstone",
+      "readme": "capstone/README.md",
+      "course_destination": "Friday capstone / advanced reporting clinic",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "capstone/phase-one-certified/README.md",
+          "starter": "capstone/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "capstone-p1-01",
+              "title": "State the consumer population and grain",
+              "concept_ids": [
+                "capstone-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Record 10,000rawtrades, 2,500conformedportfolios and 1,028activeportfolios. Explain why a1472 portfolio gap is not proof of a missing ID column."
+            },
+            {
+              "id": "capstone-p1-02",
+              "title": "Build the valid-trade domain fact",
+              "concept_ids": [
+                "capstone-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Build and inspect 9,880validtrades; explain the 120 excluded rows. Check trade_id uniqueness/non-null and money/sign conversions on representative buy/sell examples."
+            },
+            {
+              "id": "capstone-p1-03",
+              "title": "Author the active portfolio summary",
+              "concept_ids": [
+                "capstone-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "There must be3,717 positions and 1,028summaryportfolios. Check that every position portfolio is represented once in the summary. Explain the retained identifiers and native-currency valuation limit."
+            },
+            {
+              "id": "capstone-p1-04",
+              "title": "Investigate expected omission and a defective join",
+              "concept_ids": [
+                "capstone-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "The defective query is an intentional teaching fixture, not a starter defect. Show its lost membership and repair on pf.advisor_id=a.advisor_id. Explain why blindly changing every join to LEFT JOIN would not define a correct all-portfolio report."
+            },
+            {
+              "id": "capstone-p1-05",
+              "title": "Prove minimum data quality and give a consumer handoff",
+              "concept_ids": [
+                "capstone-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "All minimum tests pass with known counts. Hand over contract, authored files, representative rows, anti-join evidence and native-currency limitation. Use the supplied orchestration baseline to explain where this slice would execute; connected Atlas execution is a separate gate."
+            }
+          ],
+          "prerequisites": "Prepared dbt-databricks environment, approved pre-provisioned namespace and seven supplied Atlas CSVs; managed runtime versions recorded before practice.",
+          "runtime": {
+            "boundary": "Assigned Databricks raw-to-consumer slice; scheduled Astro evidence and human handoff checked separately. Historical local fixture is optional supporting practice.",
+            "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "dbt-core": "1.10.13",
+              "duckdb": "1.4.1"
+            },
+            "preparation": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/capstone/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "current_instructor_companion": "facilitator/practice-atlas/README.md"
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "capstone/phase-two-proficient/README.md",
+          "starter": "capstone/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "capstone-p2-01",
+              "title": "Build a meaningful performance report",
+              "concept_ids": [
+                "capstone-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "One row per activeportfolio, 1,028 rows. Independently compare sample values and show a zero-volume example yields NULL rate. The output is a training report, not FX-converted economic AUM."
+            },
+            {
+              "id": "capstone-p2-02",
+              "title": "Rank advisor books with explicit ties",
+              "concept_ids": [
+                "capstone-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Show one row per representedadvisor, correct count/sums and equal rank for ties in the demonstration fixture. Explain why advisors with no active portfolio are outside this report population."
+            },
+            {
+              "id": "capstone-p2-03",
+              "title": "Build the regional rollup from its declared dependency",
+              "concept_ids": [
+                "capstone-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Inspect every regionalrow and verify the sum of portfolio counts is1,028. All represented advisors must belong to exactly one region in this fixture."
+            },
+            {
+              "id": "capstone-p2-04",
+              "title": "Reconcile independently and reject a defect",
+              "concept_ids": [
+                "capstone-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "The wrong-key experiment must fail. Restored reports must agree perkey within declared numeric tolerance, have correct grains and retain the 1,028activepopulation. Save the failed assertion and repaired evidence."
+            },
+            {
+              "id": "capstone-p2-05",
+              "title": "Present a fixed completed core and select stretch",
+              "concept_ids": [
+                "capstone-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Core is complete only when the four output/proof themes are demonstrated. Optional stretch has separate estimates and never supplies missing minutes to this phase."
+            }
+          ],
+          "prerequisites": "Prepared dbt-databricks environment, approved pre-provisioned namespace and seven supplied Atlas CSVs; managed runtime versions recorded before practice.",
+          "runtime": {
+            "boundary": "Assigned Databricks raw-to-consumer slice; scheduled Astro evidence and human handoff checked separately. Historical local fixture is optional supporting practice.",
+            "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "dbt-core": "1.10.13",
+              "duckdb": "1.4.1"
+            },
+            "preparation": "Prepared local dbt environment and seven supplied Atlas seed CSVs; no cloud access needed for this focused core. Connected Atlas rehearsal remains a separate instructor gate.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/capstone/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "current_instructor_companion": "facilitator/practice-atlas/README.md"
+        }
+      ]
+    }
+  ],
+  "readme_order": [
+    "README.md",
+    "airflow/README.md",
+    "airflow/phase-one-certified/README.md",
+    "airflow/phase-one-certified/starter/README.md",
+    "airflow/phase-two-proficient/README.md",
+    "airflow/phase-two-proficient/starter/README.md",
+    "airflow/phase-two-proficient/stretch/README.md",
+    "capstone/README.md",
+    "capstone/phase-one-certified/README.md",
+    "capstone/phase-one-certified/starter/README.md",
+    "capstone/phase-two-proficient/README.md",
+    "capstone/phase-two-proficient/starter/README.md",
+    "capstone/phase-two-proficient/stretch/README.md",
+    "dbt/README.md",
+    "dbt/phase-one-certified/README.md",
+    "dbt/phase-one-certified/starter/README.md",
+    "dbt/phase-two-proficient/README.md",
+    "dbt/phase-two-proficient/starter/README.md",
+    "dbt/phase-two-proficient/stretch/README.md"
+  ],
+  "source_revision": "working-tree; see designer/reviews/implementation-inputs.json",
+  "source_inventory": "designer/reviews/v2-source-inventory.json",
+  "course_alignment": {
+    "date": "2026-10-08",
+    "contract_sha256": "cfd655c6f35bf1df6cb3d80e74ad36eab905b9a11588428f38e615908285d615",
+    "assigned": {
+      "dbt": "dbt-guide-01..12: Portfolio Analytics / dbt-databricks",
+      "airflow": "airflow-guide-01..12: same Portfolio Analytics / scheduled Astro",
+      "capstone": "supplied seven Atlas CSVs / Databricks adaptation"
+    },
+    "small_v2_fixtures": "preserved optional follow-up, not assigned baseline",
+    "destinations": "named Projects and Capstone chapters; detailed reference and historical optional collections",
+    "legacy_appendix_destination": "superseded on 2026-10-08; stable task/answer anchors retained"
+  },
+  "assigned_guide_task_ids": [
+    "dbt-guide-01",
+    "dbt-guide-02",
+    "dbt-guide-03",
+    "dbt-guide-04",
+    "dbt-guide-05",
+    "dbt-guide-06",
+    "dbt-guide-07",
+    "dbt-guide-08",
+    "dbt-guide-09",
+    "dbt-guide-10",
+    "dbt-guide-11",
+    "dbt-guide-12",
+    "airflow-guide-01",
+    "airflow-guide-02",
+    "airflow-guide-03",
+    "airflow-guide-04",
+    "airflow-guide-05",
+    "airflow-guide-06",
+    "airflow-guide-07",
+    "airflow-guide-08",
+    "airflow-guide-09",
+    "airflow-guide-10",
+    "airflow-guide-11",
+    "airflow-guide-12"
+  ],
+  "historical_scope": "Original small-fixture data routes only; canonical current assignments use challenges/v2 and supplied Portfolio/Atlas datasets. No current connected acceptance."
+}

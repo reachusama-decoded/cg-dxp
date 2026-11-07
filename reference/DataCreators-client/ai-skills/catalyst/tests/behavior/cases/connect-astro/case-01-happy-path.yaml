@@ -1,0 +1,27 @@
+id: connect-astro.case-01-happy-path
+skill: skills/connect-astro
+type: artifact
+description: |
+  Bootstrap happy-path case. Authenticate to Astronomer Cloud using an API
+  token sourced from a platform secrets backend. Trigger phrases:
+  "connect to astronomer", "set up astro connection", "authenticate
+  astronomer workspace", "log in to astro".
+input:
+  arguments: Connect to Astronomer using the ASTRO_API_TOKEN environment variable and confirm the active workspace.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/connect-astro/scripts/astro_connect.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address authenticating to Astronomer Cloud via the astro CLI? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (env-var sourcing, no plaintext token persistence, workspace/deployment metadata captured)? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

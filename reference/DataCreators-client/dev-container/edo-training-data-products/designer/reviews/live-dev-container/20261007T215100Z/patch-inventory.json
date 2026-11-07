@@ -1,0 +1,11 @@
+{
+  "client_patch": "changes.patch",
+  "apply_client": "git apply changes.patch from the runnable project root after matching initial source hashes; regenerate client views afterward",
+  "course_patch": "course-changes.patch",
+  "apply_course": "Review and git apply from the course root; regenerate bounded course views after matching current source. Avoid overwriting ongoing edits.",
+  "excluded": "Unrelated owner edits, private logs/databases, generated media and accepted release artifacts",
+  "patch_sha256": {
+    "changes.patch": "df5ab5a5e1687b577b52a6a32325debd2bfb49e94b5b3c71ec2980f050c7eb7e",
+    "course-changes.patch": "c740546e28a940b8d9305b7369af73f6f996c3162ea04d457e876cc1710a0c45"
+  }
+}

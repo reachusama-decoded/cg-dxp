@@ -1,0 +1,68 @@
+# https://www.astronomer.io/docs/software/customize-image#docker-compose-override
+# data_products/ at repo root is mounted as the Airflow dags folder.
+x-airflow-common: &airflow-common
+  volumes:
+    - ./data_products:/usr/local/airflow/dags
+    # Make each data product's sibling modules (its dags/ package and include/
+    # package) importable in the astro runtime — see airflow_local_settings.py.
+    - ./airflow_local_settings.py:/usr/local/airflow/airflow_local_settings.py
+    - $HOME/.aws:/home/astro/.aws
+    - $HOME/.databrickscfg:/home/astro/.databrickscfg
+  environment:
+    AIRFLOW__LOGGING__REMOTE_LOGGING: "False"
+    AIRFLOW__ASTRO_SECONDARY_LOGS__S3_BUCKET_ENABLED: "False"
+    # Why: These are baked into the image for deploy environments. Force-disable
+    # them locally so astro dev does not emit telemetry to Datadog.
+    ASTRO_DATADOG_TASK_LOGS_ENABLED: "false"
+    AIRFLOW__METRICS__STATSD_DATADOG_ENABLED: "false"
+    # Enable the local Airflow 3.1 supervisor patches from airflow_local_settings.py.
+    TRAINING_AIRFLOW3_SUPERVISOR_PATCHES: "1"
+    # Local secrets backend: the Astro image defaults to AWS Secrets Manager and
+    # the rendered dev1 `.env` supplies its kwargs. For local dev we override to the
+    # metastore so DB-stored connections (imported from airflow_settings.yaml, or
+    # written by `airflow connections add`) actually resolve for Databricks
+    # operators/hooks. Do NOT use EnvironmentVariablesBackend here: it drops the
+    # metastore from the search path, so DB connections become invisible (verified:
+    # hook -> "conn isn't defined"). MetastoreBackend is fully local and wins over
+    # the `.env` AWS Secrets Manager default (verified via astro dev restart).
+    AIRFLOW__SECRETS__BACKEND: "airflow.secrets.metastore.MetastoreBackend"
+    AIRFLOW__SECRETS__BACKEND_KWARGS: "{}"
+    # Keep connection testing enabled locally so dpc-check can verify
+    # Databricks connection health from the scheduler container.
+    AIRFLOW__CORE__TEST_CONNECTION: "Enabled"
+    # Keep local XComs in Airflow metadata DB so local task completion does not
+    # depend on external S3 TLS trust chain setup.
+    AIRFLOW__CORE__XCOM_BACKEND: "airflow.sdk.execution_time.xcom.BaseXCom"
+    # Default local DAG compute: "Training Shared Compute".
+    AIRFLOW_VAR_DEV_CLUSTER_ID: "${AIRFLOW_VAR_DEV_CLUSTER_ID:-0723-050014-ofggyaz4}"
+    AIRFLOW_VAR_ROOT_PATH: "${AIRFLOW_VAR_ROOT_PATH:-/usr/local/airflow}"
+    AIRFLOW_VAR_DATA_PRODUCT_NAME: "${AIRFLOW_VAR_DATA_PRODUCT_NAME:-atlas_elt}"
+    AIRFLOW_VAR_DATABRICKS_JOB_PREFIX: "${AIRFLOW_VAR_DATABRICKS_JOB_PREFIX:-}"
+    # Why: kafka_notify templates read these Airflow Variables; defaults avoid local DAG render failures.
+    AIRFLOW_VAR_DATA_NOTIFY_TOPIC: "${AIRFLOW_VAR_DATA_NOTIFY_TOPIC:-caspian.notification.data-ready-r}"
+    AIRFLOW_VAR_KAFKA_SECRET_SCOPE: "${AIRFLOW_VAR_KAFKA_SECRET_SCOPE:-msk-test-manw}"
+    AIRFLOW_VAR_BOOTSTRAP_BROKERS: "${AIRFLOW_VAR_BOOTSTRAP_BROKERS:-b-1.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096,b-2.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096,b-3.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096}"
+    AIRFLOW_VAR_SCHEMA_REGISTRY_URL: "${AIRFLOW_VAR_SCHEMA_REGISTRY_URL:-https://caspian-kafka-schema-registry.datalakefoundation.aws-dev.capgroup.com}"
+    AIRFLOW_VAR_AWS_REGION: "${AIRFLOW_VAR_AWS_REGION:-us-east-1}"
+    AIRFLOW_VAR_CGREGISTRY_HOST: "${AIRFLOW_VAR_CGREGISTRY_HOST:-localhost}"
+    AIRFLOW_VAR_CGREGISTRY_IMAGE: "${AIRFLOW_VAR_CGREGISTRY_IMAGE:-local-image}"
+    DATABRICKS_HOST: "${DATABRICKS_HOST:-}"
+    DATABRICKS_HTTP_PATH: "${DATABRICKS_HTTP_PATH:-}"
+    # Forward the trainee's dbt target schema/catalog into the containers so the DAG
+    # (Cosmos + the source-freshness gate) resolves the same schema the CLI seeds into
+    # (training_dev.training_<user>). Without these the DAG falls back to training_student.
+    DBT_SCHEMA: "${DBT_SCHEMA:-}"
+    DBT_CATALOG: "${DBT_CATALOG:-}"
+    DATABRICKS_CONFIG_FILE: /home/astro/.databrickscfg
+
+services:
+  db-migration:
+    <<: *airflow-common
+  dag-processor:
+    <<: *airflow-common
+  scheduler:
+    <<: *airflow-common
+  triggerer:
+    <<: *airflow-common
+  api-server:
+    <<: *airflow-common

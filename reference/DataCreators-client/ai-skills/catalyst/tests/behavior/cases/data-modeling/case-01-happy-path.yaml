@@ -1,0 +1,30 @@
+id: data-modeling.case-01-happy-path
+skill: skills/data-modeling
+type: artifact
+description: "Bootstrap happy-path case. Design the conceptual data model \u2014 entities, grain,\
+  \ SCD strategy, and an ER diagram \u2014 from business requirements. Use during Phase 3 Design before\
+  \ build begins. Field-level transformations are owned by dbt SQL; target schema is owned by the data\
+  \ contract (RFD 0009)."
+input:
+  arguments: Produce a logical + physical model for an employee directory data product, sourced from ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/lineage.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: "Does the output meaningfully address the request described by the skill: 'Design the\
+      \ conceptual data model \u2014 entities, grain, SCD strategy, and an ER diagram \u2014 from business\
+      \ requirements'? Score 0-1."
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

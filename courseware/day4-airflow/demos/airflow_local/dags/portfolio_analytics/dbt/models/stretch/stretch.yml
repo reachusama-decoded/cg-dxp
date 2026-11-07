@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: agg_fund_daily_exposure_incremental
+    description: "Incremental twin of agg_fund_daily_exposure (stretch demo)."
+    columns:
+      - name: fund_id
+        tests: [not_null]
+      - name: position_date
+        tests: [not_null]
+      - name: total_exposure_base_ccy
+        tests:
+          - non_negative
+
+# A dbt unit test: run the model's SQL on rows you make up, compare with rows you expect.
+# No warehouse data involved, so it checks the transformation logic itself.
+unit_tests:
+  - name: stg_holdings_cash_fallback_and_cleaning
+    description: "A null ISIN becomes CASH_<ccy>; fund codes are trimmed and upper-cased."
+    model: stg_holdings
+    given:
+      - input: source('custodian', 'holdings_raw')
+        rows:
+          - {fund_cd: ' pef-large-cap ', pos_dt: '2026-05-20', isin: null, qty: 1, mkt_val_lc: 100.00, ccy_cd: 'gbp', _extracted_at: '2026-05-20 18:00:00'}
+          - {fund_cd: 'PEF-LARGE-CAP', pos_dt: null, isin: 'GB00B3M9JJ78', qty: 1, mkt_val_lc: 100.00, ccy_cd: 'GBP', _extracted_at: '2026-05-20 18:00:00'}
+    expect:
+      rows:
+        - {fund_id: 'PEF-LARGE-CAP', instrument_id: 'CASH_GBP', local_ccy: 'GBP'}

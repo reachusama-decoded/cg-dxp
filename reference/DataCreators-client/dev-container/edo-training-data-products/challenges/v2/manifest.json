@@ -1,0 +1,2145 @@
+{
+  "schema_version": 1,
+  "challenge_version": "v2",
+  "generator_version": "1.0",
+  "tool_order": [
+    "git",
+    "docker",
+    "dbt",
+    "databricks-cli",
+    "airflow",
+    "kafka",
+    "capstone"
+  ],
+  "tools": [
+    {
+      "id": "git",
+      "title": "git",
+      "readme": "git/README.md",
+      "course_destination": "Monday preparation / advanced collaboration clinic",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "git/phase-one-certified/README.md",
+          "starter": "git/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "git-p1-01",
+              "title": "Inspect the three working states",
+              "concept_ids": [
+                "git-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "git/phase-one-certified/README.md",
+              "anchor": "git-p1-01",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "First commit contains only contract.md; notes remain outside that snapshot"
+            },
+            {
+              "id": "git-p1-02",
+              "title": "Commit an intentional contract change",
+              "concept_ids": [
+                "git-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "git/phase-one-certified/README.md",
+              "anchor": "git-p1-02",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Commit diffs distinguish 09:00 UTC deadline from escalation policy"
+            },
+            {
+              "id": "git-p1-03",
+              "title": "Branch and combine compatible work",
+              "concept_ids": [
+                "git-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "git/phase-one-certified/README.md",
+              "anchor": "git-p1-03",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Both separated facts survive; history explains fast-forward or merge commit"
+            },
+            {
+              "id": "git-p1-04",
+              "title": "Resolve an ownership conflict",
+              "concept_ids": [
+                "git-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "git/phase-one-certified/README.md",
+              "anchor": "git-p1-04",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Expected merge failure; no markers; resolution retains owner and escalation decisions"
+            },
+            {
+              "id": "git-p1-05",
+              "title": "Restore a mistake and explain the final history",
+              "concept_ids": [
+                "git-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "git/phase-one-certified/README.md",
+              "anchor": "git-p1-05",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Clean lab; committed requirements unchanged; explanation distinguishes restore from revert"
+            }
+          ],
+          "prerequisites": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+          "runtime": {
+            "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+            "workspace": ".local/challenges-v2/git/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "git": "measured by git --version",
+              "gh": "instructor-provided for live Phase2"
+            },
+            "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 60,
+            "high": 90
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/git/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/git/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+            "evidence_state": "local behavior verified; connected/pilot gates separate"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          }
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "git/phase-two-proficient/README.md",
+          "starter": "git/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "git-p2-01",
+              "title": "Clone and inspect a collaboration boundary",
+              "concept_ids": [
+                "git-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "git/phase-two-proficient/README.md",
+              "anchor": "git-p2-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Designated private sandbox, correct clone root, remote and tracking branch"
+            },
+            {
+              "id": "git-p2-02",
+              "title": "Push and propose a scoped pull request",
+              "concept_ids": [
+                "git-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "git/phase-two-proficient/README.md",
+              "anchor": "git-p2-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "PR URL/head hash and remote diff contain the intended deadline clarification"
+            },
+            {
+              "id": "git-p2-03",
+              "title": "Respond to a review with a second commit",
+              "concept_ids": [
+                "git-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "git/phase-two-proficient/README.md",
+              "anchor": "git-p2-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Other reviewer/comment, second commit and remotely visible response"
+            },
+            {
+              "id": "git-p2-04",
+              "title": "Integrate concurrent upstream work",
+              "concept_ids": [
+                "git-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "git/phase-two-proficient/README.md",
+              "anchor": "git-p2-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Upstream ancestor and retained classification/deadline/escalation facts"
+            },
+            {
+              "id": "git-p2-05",
+              "title": "Read the final review and merge state",
+              "concept_ids": [
+                "git-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "git/phase-two-proficient/README.md",
+              "anchor": "git-p2-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "lab/contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Actual final state, current head and next authorized action"
+            }
+          ],
+          "prerequisites": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+          "runtime": {
+            "boundary": "Local Git; Phase2 additionally uses an authorized remote.",
+            "workspace": ".local/challenges-v2/git/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "git": "measured by git --version",
+              "gh": "instructor-provided for live Phase2"
+            },
+            "preparation": "Local Git forPhase1; authorized private GitHub sandbox,gh,and arranged reviewer forPhase2.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/git/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/git/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "supporting-local-checks; live boundary blocked"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "stretch_tasks": [
+            {
+              "id": "git-stretch-01",
+              "title": "Compare merge and rebase on disposable local history",
+              "status": "optional",
+              "concept_ids": [
+                "git-stretch-01-concept"
+              ],
+              "source_readme": "git/phase-two-proficient/stretch/README.md",
+              "anchor": "git-stretch-01",
+              "estimate_minutes": {
+                "low": 20,
+                "high": 40
+              }
+            },
+            {
+              "id": "git-stretch-02",
+              "title": "Recover a lost local branch reference through reflog",
+              "status": "optional",
+              "concept_ids": [
+                "git-stretch-02-concept"
+              ],
+              "source_readme": "git/phase-two-proficient/stretch/README.md",
+              "anchor": "git-stretch-02",
+              "estimate_minutes": {
+                "low": 20,
+                "high": 40
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "docker",
+      "title": "docker",
+      "readme": "docker/README.md",
+      "course_destination": "Wednesday Docker practical / advanced image clinic",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "docker/phase-one-certified/README.md",
+          "starter": "docker/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "docker-p1-01",
+              "title": "Run an image and inspect the lifecycle",
+              "concept_ids": [
+                "docker-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "docker/phase-one-certified/README.md",
+              "anchor": "docker-p1-01",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Hello output, actual image/container identity and exit status"
+            },
+            {
+              "id": "docker-p1-02",
+              "title": "Explore an interactive shell",
+              "concept_ids": [
+                "docker-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "docker/phase-one-certified/README.md",
+              "anchor": "docker-p1-02",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Inside file disappears in a fresh disposable execution; version/OS evidence"
+            },
+            {
+              "id": "docker-p1-03",
+              "title": "Use a bounded bind mount",
+              "concept_ids": [
+                "docker-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "docker/phase-one-certified/README.md",
+              "anchor": "docker-p1-03",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Actual fixture summary and expected write denial; host input unchanged"
+            },
+            {
+              "id": "docker-p1-04",
+              "title": "Author and run a simple holdings image",
+              "concept_ids": [
+                "docker-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "docker/phase-one-certified/README.md",
+              "anchor": "docker-p1-04",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Authored image emits independent six-holding result"
+            },
+            {
+              "id": "docker-p1-05",
+              "title": "Prove repeatability and clean scoped resources",
+              "concept_ids": [
+                "docker-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "docker/phase-one-certified/README.md",
+              "anchor": "docker-p1-05",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Two matching outputs from one image identity; only owned resources removed"
+            }
+          ],
+          "prerequisites": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+          "runtime": {
+            "boundary": "Docker build/run; host Python checks supporting app only.",
+            "workspace": ".local/challenges-v2/docker/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "base_image": "python:3.11-slim",
+              "docker": "instructor-provided; unavailable here"
+            },
+            "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 60,
+            "high": 90
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/docker/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/docker/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+            "evidence_state": "supporting-local-checks; live boundary blocked"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          }
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "docker/phase-two-proficient/README.md",
+          "starter": "docker/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "docker-p2-01",
+              "title": "Separate named build targets",
+              "concept_ids": [
+                "docker-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "docker/phase-two-proficient/README.md",
+              "anchor": "docker-p2-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Actual target image IDs and expected target outputs"
+            },
+            {
+              "id": "docker-p2-02",
+              "title": "Gate the runtime on a tested artifact",
+              "concept_ids": [
+                "docker-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "docker/phase-two-proficient/README.md",
+              "anchor": "docker-p2-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Test failure blocks accepted runtime artifact path; repaired test/app succeeds"
+            },
+            {
+              "id": "docker-p2-03",
+              "title": "Run with a bounded runtime user",
+              "concept_ids": [
+                "docker-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "docker/phase-two-proficient/README.md",
+              "anchor": "docker-p2-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Runtime UID 10001; app reads intended files and still prints expected summary"
+            },
+            {
+              "id": "docker-p2-04",
+              "title": "Keep runtime contents focused",
+              "concept_ids": [
+                "docker-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "docker/phase-two-proficient/README.md",
+              "anchor": "docker-p2-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Required app/input present; test script absent; expected output preserved"
+            },
+            {
+              "id": "docker-p2-05",
+              "title": "Repair a path assumption and explain the result",
+              "concept_ids": [
+                "docker-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "docker/phase-two-proficient/README.md",
+              "anchor": "docker-p2-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "Dockerfile",
+                "evidence.md"
+              ],
+              "success_evidence": "Predicted missing-file failure followed by repaired expected output and explanation"
+            }
+          ],
+          "prerequisites": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+          "runtime": {
+            "boundary": "Docker build/run; host Python checks supporting app only.",
+            "workspace": ".local/challenges-v2/docker/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "base_image": "python:3.11-slim",
+              "docker": "instructor-provided; unavailable here"
+            },
+            "preparation": "Docker daemon plus pulled python:3.11-slim image. No remote data account.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/docker/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "supporting-local-checks; live boundary blocked"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          },
+          "stretch_tasks": [
+            {
+              "id": "docker-stretch-01",
+              "title": "Explain cache reuse and a controlled input rebuild",
+              "status": "optional",
+              "concept_ids": [
+                "docker-stretch-01-concept"
+              ],
+              "source_readme": "docker/phase-two-proficient/stretch/README.md",
+              "anchor": "docker-stretch-01",
+              "estimate_minutes": {
+                "low": 20,
+                "high": 40
+              }
+            },
+            {
+              "id": "docker-stretch-02",
+              "title": "Run the prepared app through bounded Compose configuration",
+              "status": "optional",
+              "concept_ids": [
+                "docker-stretch-02-concept"
+              ],
+              "source_readme": "docker/phase-two-proficient/stretch/README.md",
+              "anchor": "docker-stretch-02",
+              "estimate_minutes": {
+                "low": 20,
+                "high": 40
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dbt",
+      "title": "dbt",
+      "readme": "dbt/README.md",
+      "course_destination": "Optional small-fixture follow-up; assigned Portfolio Analytics guide owns the overlapping core outcomes",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "dbt/phase-one-certified/README.md",
+          "starter": "dbt/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "dbt-p1-01",
+              "title": "Inspect the project and source grain",
+              "concept_ids": [
+                "dbt-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Eight holdings, four funds, two business dates; safe identity and seed inventory"
+            },
+            {
+              "id": "dbt-p1-02",
+              "title": "Declare and use sources",
+              "concept_ids": [
+                "dbt-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/sources.yml",
+                "models/staging/stg_holdings.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Compiled source relations and manifest dependencies agree with all raw seeds"
+            },
+            {
+              "id": "dbt-p1-03",
+              "title": "Normalize type, unit and key contracts",
+              "concept_ids": [
+                "dbt-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/staging/stg_holdings.sql",
+                "tests/holdings_grain.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Eight unique dated holding keys and native decimal values; a controlled zero-valued holding retains its key; restoration recovers baseline."
+            },
+            {
+              "id": "dbt-p1-04",
+              "title": "Build a useful mart through ref",
+              "concept_ids": [
+                "dbt-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/marts/fund_nav_report.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Eight fund/date rows; independently derived GBP exposure and teaching NAV"
+            },
+            {
+              "id": "dbt-p1-05",
+              "title": "Add minimum key and relationship proof",
+              "concept_ids": [
+                "dbt-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "dbt/phase-one-certified/README.md",
+              "anchor": "dbt-p1-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "models/schema.yml",
+                "tests/holdings_grain.sql",
+                "tests/matched_funds.sql",
+                "tests/matched_enrichment.sql",
+                "tests/nav_reconciliation.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Structural/business tests pass; unknown fund fails membership for its intended reason; restored seed/model/output passes again."
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "dbt-databricks on the approved Databricks warehouse",
+            "workspace": ".local/challenges-v2/dbt/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "models/staging/stg_holdings.sql",
+              "models/marts/fund_nav_report.sql"
+            ]
+          },
+          "course_route": "assigned supplied-data route",
+          "assigned_guide_ids": [
+            "dbt-guide-01",
+            "dbt-guide-02",
+            "dbt-guide-03",
+            "dbt-guide-04",
+            "dbt-guide-05",
+            "dbt-guide-06",
+            "dbt-guide-07",
+            "dbt-guide-08",
+            "dbt-guide-09",
+            "dbt-guide-10",
+            "dbt-guide-11",
+            "dbt-guide-12"
+          ]
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "dbt/phase-two-proficient/README.md",
+          "starter": "dbt/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "dbt-p2-01",
+              "title": "Diagnose a join fan-out before repair",
+              "concept_ids": [
+                "dbt-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/intermediate/int_holdings_enriched.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Eight input keys; date-free price join yields sixteen matches; dated repair retains eight"
+            },
+            {
+              "id": "dbt-p2-02",
+              "title": "Repair enrichment at the intended grain",
+              "concept_ids": [
+                "dbt-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/intermediate/int_holdings_enriched.sql",
+                "macros/native_value.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Eight enriched keys; explicit matched-price/FX coverage and decimal GBP value"
+            },
+            {
+              "id": "dbt-p2-03",
+              "title": "Write reconciliation that detects the negative case",
+              "concept_ids": [
+                "dbt-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "tests/matched_enrichment.sql",
+                "tests/nav_reconciliation.sql",
+                "models/schema.yml",
+                "evidence.md"
+              ],
+              "success_evidence": "Coverage and NAV tests fail on copied missing-FX input and pass after restoration"
+            },
+            {
+              "id": "dbt-p2-04",
+              "title": "Prove incremental update and replay behavior",
+              "concept_ids": [
+                "dbt-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/marts/holdings_replay.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Older-date +1,000 GBP correction retains eight unique keys; +500 GBP unseen holding inserts a ninth; both correction and insertion replay without duplication; restore owned eight-key baseline"
+            },
+            {
+              "id": "dbt-p2-05",
+              "title": "Explain dependency impact and hand over",
+              "concept_ids": [
+                "dbt-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "dbt/phase-two-proficient/README.md",
+              "anchor": "dbt-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/marts/fund_nav_report.sql",
+                "snapshots/fund_history.sql",
+                "models/schema.yml",
+                "evidence.md"
+              ],
+              "success_evidence": "Declared fund report, meaningful snapshot intervals, lineage and explicit Astro boundary"
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "dbt-databricks on the approved Databricks warehouse",
+            "workspace": ".local/challenges-v2/dbt/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/dbt/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "macros/native_value.sql",
+              "models/marts/holdings_replay.sql",
+              "snapshots/fund_history.sql",
+              "models/marts/fund_nav_report.sql",
+              "models/intermediate/int_holdings_enriched.sql",
+              "tests/matched_enrichment.sql",
+              "tests/nav_reconciliation.sql"
+            ]
+          },
+          "course_route": "independent advanced supplied-data route",
+          "assigned_guide_ids": [
+            "dbt-guide-01",
+            "dbt-guide-02",
+            "dbt-guide-03",
+            "dbt-guide-04",
+            "dbt-guide-05",
+            "dbt-guide-06",
+            "dbt-guide-07",
+            "dbt-guide-08",
+            "dbt-guide-09",
+            "dbt-guide-10",
+            "dbt-guide-11",
+            "dbt-guide-12"
+          ]
+        }
+      ],
+      "guide_questions": [
+        {
+          "id": "dbt-guide-q01",
+          "question": "What problem does dbt solve, and where does it fit in a data pipeline?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q02",
+          "question": "What does a dbt project contain, and how do we connect it to our data?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q03",
+          "question": "How does a SQL query become a dbt model?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q04",
+          "question": "How do we connect models using source() and ref()?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q05",
+          "question": "How should we split a large query into understandable, reusable models?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q06",
+          "question": "When should a model be a view or a table?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q07",
+          "question": "How do we know our models produce trustworthy data?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q08",
+          "question": "How do we make a change confidently and explain the result?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "dbt-guide-q09",
+          "question": "When does Jinja help, and when should we keep the logic in SQL?",
+          "placement": "Further study"
+        },
+        {
+          "id": "dbt-guide-q10",
+          "question": "How can we process less data without producing incorrect results?",
+          "placement": "Further study"
+        },
+        {
+          "id": "dbt-guide-q11",
+          "question": "How do we preserve history when source records change?",
+          "placement": "Further study"
+        },
+        {
+          "id": "dbt-guide-q12",
+          "question": "How does a dbt project move into reliable team delivery?",
+          "placement": "Further study"
+        },
+        {
+          "id": "dbt-guide-q13",
+          "question": "Can we independently deliver a documented, tested model?",
+          "placement": "Further study"
+        }
+      ]
+    },
+    {
+      "id": "databricks-cli",
+      "title": "databricks-cli",
+      "readme": "databricks-cli/README.md",
+      "course_destination": "Tuesday platform discovery / Wednesday readiness",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "databricks-cli/phase-one-certified/README.md",
+          "starter": "databricks-cli/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "databricks-cli-p1-01",
+              "title": "Establish the CLI identity boundary",
+              "concept_ids": [
+                "databricks-cli-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "databricks-cli/phase-one-certified/README.md",
+              "anchor": "databricks-cli-p1-01",
+              "estimate_minutes": {
+                "low": 9,
+                "high": 13
+              },
+              "authored_paths": [
+                "discovery.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Installed version/help and intended authenticated profile without secrets"
+            },
+            {
+              "id": "databricks-cli-p1-02",
+              "title": "Separate workspace and Unity Catalog names",
+              "concept_ids": [
+                "databricks-cli-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "databricks-cli/phase-one-certified/README.md",
+              "anchor": "databricks-cli-p1-02",
+              "estimate_minutes": {
+                "low": 9,
+                "high": 13
+              },
+              "authored_paths": [
+                "discovery.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Correct object types and separate qualified-name/path examples"
+            },
+            {
+              "id": "databricks-cli-p1-03",
+              "title": "Inspect permitted schema and table metadata",
+              "concept_ids": [
+                "databricks-cli-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "databricks-cli/phase-one-certified/README.md",
+              "anchor": "databricks-cli-p1-03",
+              "estimate_minutes": {
+                "low": 9,
+                "high": 13
+              },
+              "authored_paths": [
+                "discovery.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Approved namespace and metadata/type of one qualified table"
+            },
+            {
+              "id": "databricks-cli-p1-04",
+              "title": "Filter JSON and explain a limited result",
+              "concept_ids": [
+                "databricks-cli-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "databricks-cli/phase-one-certified/README.md",
+              "anchor": "databricks-cli-p1-04",
+              "estimate_minutes": {
+                "low": 9,
+                "high": 13
+              },
+              "authored_paths": [
+                "discovery.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Correct structured projection and diagnostic categories"
+            },
+            {
+              "id": "databricks-cli-p1-05",
+              "title": "Produce a bounded discovery handoff",
+              "concept_ids": [
+                "databricks-cli-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "databricks-cli/phase-one-certified/README.md",
+              "anchor": "databricks-cli-p1-05",
+              "estimate_minutes": {
+                "low": 9,
+                "high": 13
+              },
+              "authored_paths": [
+                "discovery.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Identity/object/type/limitation and next consumer question linked to actual probes"
+            }
+          ],
+          "prerequisites": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+          "runtime": {
+            "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+            "workspace": ".local/challenges-v2/databricks-cli/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "client_source_pin": "0.236.0; live installed version unobserved"
+            },
+            "preparation": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 45,
+            "high": 65
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/databricks-cli/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+            "evidence_state": "supporting-local-checks; live boundary blocked"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          }
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": false,
+          "optional": false,
+          "readme": "databricks-cli/phase-two-proficient/README.md",
+          "starter": "databricks-cli/phase-two-proficient/starter",
+          "tasks": [],
+          "prerequisites": "Databricks CLI0.236.0 in the supplied client container; DEFAULT profile and metadata permissions. Offline fixtures provide parsing practice only.",
+          "runtime": {
+            "boundary": "Read-only Databricks CLI or explicitly labelled metadata fixture.",
+            "workspace": ".local/challenges-v2/databricks-cli/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification"
+          },
+          "timing_audit_status": "not-offered"
+        }
+      ]
+    },
+    {
+      "id": "airflow",
+      "title": "airflow",
+      "readme": "airflow/README.md",
+      "course_destination": "Optional small-fixture follow-up; assigned Portfolio Analytics guide owns the overlapping core outcomes",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "airflow/phase-one-certified/README.md",
+          "starter": "airflow/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "airflow-p1-01",
+              "title": "Inspect a prepared orchestration baseline",
+              "concept_ids": [
+                "airflow-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-01",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "evidence.md"
+              ],
+              "success_evidence": "Actual mount/executable identities, owned namespace and supplied-vs-authored inventory"
+            },
+            {
+              "id": "airflow-p1-02",
+              "title": "Author a small Python DAG with real dbt tasks",
+              "concept_ids": [
+                "airflow-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-02",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "evidence.md"
+              ],
+              "success_evidence": "Four meaningful tasks with explicit paths, target and actual warehouse checks"
+            },
+            {
+              "id": "airflow-p1-03",
+              "title": "Demonstrate the dependency graph and scheduled run",
+              "concept_ids": [
+                "airflow-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-03",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "evidence.md"
+              ],
+              "success_evidence": "Readiness \u2192 build \u2192 quality \u2192 evidence; fresh scheduled task identities"
+            },
+            {
+              "id": "airflow-p1-04",
+              "title": "Inspect a controlled task failure",
+              "concept_ids": [
+                "airflow-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-04",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "evidence.md"
+              ],
+              "success_evidence": "Quality failed; evidence upstream_failed; no failed-run receipt; repair succeeds"
+            },
+            {
+              "id": "airflow-p1-05",
+              "title": "Explain the run and environment boundaries",
+              "concept_ids": [
+                "airflow-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "airflow/phase-one-certified/README.md",
+              "anchor": "airflow-p1-05",
+              "estimate_minutes": {
+                "low": 15,
+                "high": 22
+              },
+              "authored_paths": [
+                "evidence.md",
+                "incident.md"
+              ],
+              "success_evidence": "Coherent handoff links run/task IDs, artifacts and independent fund/date output"
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+            "workspace": ".local/challenges-v2/airflow/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 75,
+            "high": 110
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/airflow/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "dags/portfolio_daily.py"
+            ]
+          },
+          "course_route": "assigned supplied-data route",
+          "assigned_guide_ids": [
+            "airflow-guide-01",
+            "airflow-guide-02",
+            "airflow-guide-03",
+            "airflow-guide-04",
+            "airflow-guide-05",
+            "airflow-guide-06",
+            "airflow-guide-07",
+            "airflow-guide-08",
+            "airflow-guide-09",
+            "airflow-guide-10",
+            "airflow-guide-11",
+            "airflow-guide-12"
+          ]
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "airflow/phase-two-proficient/README.md",
+          "starter": "airflow/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "airflow-p2-01",
+              "title": "Define bounded replay and input identity",
+              "concept_ids": [
+                "airflow-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "evidence.md"
+              ],
+              "success_evidence": "Supported May partition, explicit schedule interval and reproducible source readiness"
+            },
+            {
+              "id": "airflow-p2-02",
+              "title": "Inject failure and observe useful retry behavior",
+              "concept_ids": [
+                "airflow-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Known quality/readiness cause, observed attempts and no premature receipt"
+            },
+            {
+              "id": "airflow-p2-03",
+              "title": "Prove output correctness after recovery",
+              "concept_ids": [
+                "airflow-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "dags/portfolio_daily.py",
+                "evidence.md"
+              ],
+              "success_evidence": "Eight unique report keys, four partition rows, stable values across repeated input"
+            },
+            {
+              "id": "airflow-p2-04",
+              "title": "Use Astro UI to make an operational decision",
+              "concept_ids": [
+                "airflow-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "incident.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Exact graph/grid/log identities, causal diagnosis and observed repair decision"
+            },
+            {
+              "id": "airflow-p2-05",
+              "title": "Write a short incident handoff",
+              "concept_ids": [
+                "airflow-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "airflow/phase-two-proficient/README.md",
+              "anchor": "airflow-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "incident.md",
+                "evidence.md",
+                "dags/portfolio_daily.py"
+              ],
+              "success_evidence": "Current success/failure/repair/replay chain, reviewable diff and explicit pending gates"
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "Scheduled Astro workers invoking dbt-databricks on the approved warehouse",
+            "workspace": ".local/challenges-v2/airflow/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/airflow/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "dags/portfolio_daily.py"
+            ]
+          },
+          "course_route": "independent advanced supplied-data route",
+          "assigned_guide_ids": [
+            "airflow-guide-01",
+            "airflow-guide-02",
+            "airflow-guide-03",
+            "airflow-guide-04",
+            "airflow-guide-05",
+            "airflow-guide-06",
+            "airflow-guide-07",
+            "airflow-guide-08",
+            "airflow-guide-09",
+            "airflow-guide-10",
+            "airflow-guide-11",
+            "airflow-guide-12"
+          ]
+        }
+      ],
+      "guide_questions": [
+        {
+          "id": "airflow-guide-q01",
+          "question": "What problem does Airflow solve alongside dbt?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q02",
+          "question": "What are a DAG, task, operator, run and task instance?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q03",
+          "question": "Which components parse, schedule, execute and record the work?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q04",
+          "question": "How do we define dependencies and pass information?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q05",
+          "question": "What do schedules, logical dates, intervals and catchup mean?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q06",
+          "question": "What should happen when a task fails or retries?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q07",
+          "question": "How do reruns and backfills produce correct results?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q08",
+          "question": "How do we inspect a run and prove completion?",
+          "placement": "core teaching"
+        },
+        {
+          "id": "airflow-guide-q09",
+          "question": "How do readiness and freshness differ?",
+          "placement": "Further study"
+        },
+        {
+          "id": "airflow-guide-q10",
+          "question": "How should Airflow orchestrate dbt, and when does Cosmos help?",
+          "placement": "Further study"
+        },
+        {
+          "id": "airflow-guide-q11",
+          "question": "What do Astro Runtime and the CLI add?",
+          "placement": "Further study"
+        },
+        {
+          "id": "airflow-guide-q12",
+          "question": "How do we test and operate a workflow as a team?",
+          "placement": "Further study"
+        },
+        {
+          "id": "airflow-guide-q13",
+          "question": "Can we deliver a workflow and demonstrate recovery?",
+          "placement": "Further study"
+        }
+      ]
+    },
+    {
+      "id": "kafka",
+      "title": "kafka",
+      "readme": "kafka/README.md",
+      "course_destination": "Optional event-driven clinic, outside mandatory course route",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": true,
+          "readme": "kafka/phase-one-certified/README.md",
+          "starter": "kafka/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "kafka-p1-01",
+              "title": "Read the dataset-arrived contract",
+              "concept_ids": [
+                "kafka-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "kafka/phase-one-certified/README.md",
+              "anchor": "kafka-p1-01",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "learner-event.json",
+                "evidence.md"
+              ],
+              "success_evidence": "Valid unique event and predicted small-fixture output without arbitrary path execution"
+            },
+            {
+              "id": "kafka-p1-02",
+              "title": "Start the prepared local broker and inspect a topic",
+              "concept_ids": [
+                "kafka-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "kafka/phase-one-certified/README.md",
+              "anchor": "kafka-p1-02",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "learner-event.json",
+                "evidence.md"
+              ],
+              "success_evidence": "Current intended topic/partition metadata in prepared isolated broker"
+            },
+            {
+              "id": "kafka-p1-03",
+              "title": "Produce and follow a uniquely identified event",
+              "concept_ids": [
+                "kafka-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "kafka/phase-one-certified/README.md",
+              "anchor": "kafka-p1-03",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "learner-event.json",
+                "evidence.md"
+              ],
+              "success_evidence": "Event ID, broker partition/offset and current Airflow run identity"
+            },
+            {
+              "id": "kafka-p1-04",
+              "title": "Verify the dbt output belongs to the event",
+              "concept_ids": [
+                "kafka-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "kafka/phase-one-certified/README.md",
+              "anchor": "kafka-p1-04",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "learner-event.json",
+                "evidence.md"
+              ],
+              "success_evidence": "Matching event/run receipt and independent A 150, B 100, C 0 output"
+            },
+            {
+              "id": "kafka-p1-05",
+              "title": "Replay and explain duplicate policy",
+              "concept_ids": [
+                "kafka-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "kafka/phase-one-certified/README.md",
+              "anchor": "kafka-p1-05",
+              "estimate_minutes": {
+                "low": 12,
+                "high": 18
+              },
+              "authored_paths": [
+                "learner-event.json",
+                "evidence.md"
+              ],
+              "success_evidence": "Completed run reused, output unchanged; conflicting payload rejected without accepted duplicate"
+            }
+          ],
+          "prerequisites": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+          "runtime": {
+            "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+            "workspace": ".local/challenges-v2/kafka/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "broker_image": "apache/kafka:4.1.0; not executed",
+              "confluent-kafka": "2.11.1"
+            },
+            "preparation": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+            "identity_access": "Instructor-provided training scope for live checks; local workspaces require no cloud identity",
+            "ownership": "Only the selected copied workspace; remote schemas/topic/groups/DAG IDs assigned by instructor",
+            "cleanup": "Verifier temporary copy removed; canonical starters/data_products unaffected; remote resources never automatically dropped"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 60,
+            "high": 90
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/kafka/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+            "evidence_state": "supporting-local-checks; live boundary blocked"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+            "success": "Observed baseline state, distinct from challenge completion",
+            "intentional_defects": "Negative-case fixtures/marker experiments are documented in task Check text; none is an unexplained baseline failure"
+          }
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": false,
+          "optional": true,
+          "readme": "kafka/phase-two-proficient/README.md",
+          "starter": "kafka/phase-two-proficient/starter",
+          "tasks": [],
+          "prerequisites": "Optional route. Prepared apache/kafka4.1.0 broker,confluent-kafka2.11.1 bridge and isolated Airflow3.1.0 runtime. Instructor supplies topic/group/runtime boundaries.",
+          "runtime": {
+            "boundary": "Kafka broker\u2192consumer\u2192Airflow\u2192dbt; offline payload checks are supporting evidence.",
+            "workspace": ".local/challenges-v2/kafka/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification"
+          },
+          "timing_audit_status": "not-offered"
+        }
+      ]
+    },
+    {
+      "id": "capstone",
+      "title": "capstone",
+      "readme": "capstone/README.md",
+      "course_destination": "Friday capstone / advanced reporting clinic",
+      "phases": [
+        {
+          "id": "phase-one-certified",
+          "offered": true,
+          "optional": false,
+          "readme": "capstone/phase-one-certified/README.md",
+          "starter": "capstone/phase-one-certified/starter",
+          "tasks": [
+            {
+              "id": "capstone-p1-01",
+              "title": "State the consumer population and grain",
+              "concept_ids": [
+                "capstone-p1-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Contract distinguishes 2,500 conformed portfolios from 1,028 trade-active report rows"
+            },
+            {
+              "id": "capstone-p1-02",
+              "title": "Build the valid-trade domain fact",
+              "concept_ids": [
+                "capstone-p1-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/dom_trading__trade.sql",
+                "tests/valid_trade_population.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "9,880 valid rows from 10,000 raw; retained trade/key identities and correct cents/bps arithmetic"
+            },
+            {
+              "id": "capstone-p1-03",
+              "title": "Author the active portfolio summary",
+              "concept_ids": [
+                "capstone-p1-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/rpt_portfolio_summary.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "3,717 positions roll up to 1,028 portfolio keys with independent AUM/fee/count values"
+            },
+            {
+              "id": "capstone-p1-04",
+              "title": "Investigate expected omission and a defective join",
+              "concept_ids": [
+                "capstone-p1-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "1,472 expected exclusions identified; deliberate client/advisor key mistake loses population"
+            },
+            {
+              "id": "capstone-p1-05",
+              "title": "Prove minimum data quality and give a consumer handoff",
+              "concept_ids": [
+                "capstone-p1-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "capstone/phase-one-certified/README.md",
+              "anchor": "capstone-p1-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/schema.yml",
+                "tests/",
+                "contract.md",
+                "evidence.md"
+              ],
+              "success_evidence": "Authored slice, independent populations/values, clear limitation and reviewable presentation"
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "dbt-databricks on the approved Databricks warehouse",
+            "workspace": ".local/challenges-v2/capstone/phase-one-certified",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/capstone/phase-one-certified/solution",
+            "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "models/dom_trading__trade.sql",
+              "models/rpt_portfolio_summary.sql"
+            ]
+          },
+          "current_instructor_companion": "facilitator/practice-atlas/README.md",
+          "course_route": "assigned supplied-data route"
+        },
+        {
+          "id": "phase-two-proficient",
+          "offered": true,
+          "optional": false,
+          "readme": "capstone/phase-two-proficient/README.md",
+          "starter": "capstone/phase-two-proficient/starter",
+          "tasks": [
+            {
+              "id": "capstone-p2-01",
+              "title": "Build a meaningful performance report",
+              "concept_ids": [
+                "capstone-p2-01-concept"
+              ],
+              "status": "core",
+              "order": 1,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-01",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/rpt_portfolio_performance.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "1,028 portfolio keys; independent buys/sells/fees; explicit zero-safe basis-point rate"
+            },
+            {
+              "id": "capstone-p2-02",
+              "title": "Rank advisor books with explicit ties",
+              "concept_ids": [
+                "capstone-p2-02-concept"
+              ],
+              "status": "core",
+              "order": 2,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-02",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/rpt_advisor_leaderboard.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "One row per advisor; dense ties without gaps; independent book totals and counts"
+            },
+            {
+              "id": "capstone-p2-03",
+              "title": "Build the regional rollup from its declared dependency",
+              "concept_ids": [
+                "capstone-p2-03-concept"
+              ],
+              "status": "core",
+              "order": 3,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-03",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "models/rpt_region_report.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Region advisor/portfolio counts and nominal totals reconcile independently"
+            },
+            {
+              "id": "capstone-p2-04",
+              "title": "Reconcile independently and reject a defect",
+              "concept_ids": [
+                "capstone-p2-04-concept"
+              ],
+              "status": "core",
+              "order": 4,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-04",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "tests/reconcile_region.sql",
+                "evidence.md"
+              ],
+              "success_evidence": "Omitted advisor contribution fails reconciliation; repair restores all expected keys/values"
+            },
+            {
+              "id": "capstone-p2-05",
+              "title": "Present a fixed completed core and select stretch",
+              "concept_ids": [
+                "capstone-p2-05-concept"
+              ],
+              "status": "core",
+              "order": 5,
+              "source_readme": "capstone/phase-two-proficient/README.md",
+              "anchor": "capstone-p2-05",
+              "estimate_minutes": {
+                "low": 18,
+                "high": 24
+              },
+              "authored_paths": [
+                "contract.md",
+                "evidence.md",
+                "models/schema.yml"
+              ],
+              "success_evidence": "Three report grains, independent values, defect/repair narrative and optional extension choices"
+            }
+          ],
+          "prerequisites": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+          "runtime": {
+            "boundary": "dbt-databricks on the approved Databricks warehouse",
+            "workspace": ".local/challenges-v2/capstone/phase-two-proficient",
+            "remote_cleanup": "Not performed by local verification",
+            "versions": {
+              "status": "Probe actual terminal/worker managed versions; source pins are not a measurement"
+            },
+            "preparation": "Delivered Databricks identity, approved catalog/schema, owned relation prefix and measured adapter/runtime; Astro worker mount and connection additionally required for Airflow.",
+            "identity_access": "Delivered OAuth setup outside recording; task-time worker token delivery; pre-provisioned namespace",
+            "ownership": "Unique DC_RELATION_PREFIX and matching owned Astro DAG/stage; single approved catalog/schema",
+            "cleanup": "Temporary verification copy removed; print/review only owned relation cleanup; no automatic broad drop"
+          },
+          "timing_audit_status": "estimated-unpiloted",
+          "estimate_minutes": {
+            "low": 90,
+            "high": 120
+          },
+          "solution": {
+            "path": "challenges/v2-solutions/capstone/phase-two-proficient/solution",
+            "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+            "starter_verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+            "evidence_state": "Current static/supporting checks; actual connected reconstruction, scheduler/merge/history and human acceptance pending"
+          },
+          "starter_contract": {
+            "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+            "success": "Declared starter baseline is parseable/inspectable and must be rejected as completed work",
+            "intentional_defects": "Named unfinished outcomes and task-specific copied failure drills; see phase Starter behavior and Check sections",
+            "unfinished_paths": [
+              "models/rpt_portfolio_performance.sql",
+              "models/rpt_advisor_leaderboard.sql",
+              "models/rpt_region_report.sql"
+            ]
+          },
+          "current_instructor_companion": "facilitator/practice-atlas/README.md",
+          "course_route": "independent advanced supplied-data route"
+        }
+      ]
+    }
+  ],
+  "readme_order": [
+    "README.md",
+    "runtime/portfolio/README.md",
+    "git/README.md",
+    "git/phase-one-certified/README.md",
+    "git/phase-one-certified/starter/README.md",
+    "git/phase-two-proficient/README.md",
+    "git/phase-two-proficient/starter/README.md",
+    "git/phase-two-proficient/stretch/README.md",
+    "docker/README.md",
+    "docker/phase-one-certified/README.md",
+    "docker/phase-one-certified/starter/README.md",
+    "docker/phase-two-proficient/README.md",
+    "docker/phase-two-proficient/starter/README.md",
+    "docker/phase-two-proficient/stretch/README.md",
+    "dbt/README.md",
+    "dbt/phase-one-certified/README.md",
+    "dbt/phase-one-certified/starter/README.md",
+    "dbt/phase-two-proficient/README.md",
+    "dbt/phase-two-proficient/starter/README.md",
+    "dbt/phase-two-proficient/stretch/README.md",
+    "databricks-cli/README.md",
+    "databricks-cli/phase-one-certified/README.md",
+    "databricks-cli/phase-one-certified/starter/README.md",
+    "databricks-cli/phase-two-proficient/README.md",
+    "airflow/README.md",
+    "airflow/phase-one-certified/README.md",
+    "airflow/phase-one-certified/starter/README.md",
+    "airflow/phase-two-proficient/README.md",
+    "airflow/phase-two-proficient/starter/README.md",
+    "airflow/phase-two-proficient/stretch/README.md",
+    "kafka/README.md",
+    "kafka/phase-one-certified/README.md",
+    "kafka/phase-one-certified/starter/README.md",
+    "kafka/phase-two-proficient/README.md",
+    "capstone/README.md",
+    "capstone/phase-one-certified/README.md",
+    "capstone/phase-one-certified/starter/README.md",
+    "capstone/phase-two-proficient/README.md",
+    "capstone/phase-two-proficient/starter/README.md",
+    "capstone/phase-two-proficient/stretch/README.md"
+  ],
+  "source_revision": "working-tree; see designer/reviews/implementation-inputs.json",
+  "source_inventory": "designer/reviews/v2-source-inventory.json",
+  "course_alignment": {
+    "date": "2026-10-08",
+    "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+    "assigned": {
+      "dbt": "canonical v2 dbt phases; guide IDs are compatibility outcome aliases",
+      "airflow": "canonical v2 Airflow phases; same Portfolio product on scheduled Astro",
+      "capstone": "canonical supplied Atlas phases on Databricks"
+    },
+    "small_v2_fixtures": "Historical optional route: scripts/challenge-v2-legacy.py; never the assigned default",
+    "destinations": "named Projects and Capstone chapters; detailed reference and historical optional collections",
+    "legacy_appendix_destination": "superseded on 2026-10-08; stable task/answer anchors retained"
+  },
+  "assigned_guide_task_ids": [
+    "dbt-guide-01",
+    "dbt-guide-02",
+    "dbt-guide-03",
+    "dbt-guide-04",
+    "dbt-guide-05",
+    "dbt-guide-06",
+    "dbt-guide-07",
+    "dbt-guide-08",
+    "dbt-guide-09",
+    "dbt-guide-10",
+    "dbt-guide-11",
+    "dbt-guide-12",
+    "airflow-guide-01",
+    "airflow-guide-02",
+    "airflow-guide-03",
+    "airflow-guide-04",
+    "airflow-guide-05",
+    "airflow-guide-06",
+    "airflow-guide-07",
+    "airflow-guide-08",
+    "airflow-guide-09",
+    "airflow-guide-10",
+    "airflow-guide-11",
+    "airflow-guide-12"
+  ],
+  "runtime_readme_dispositions": {
+    "runtime/portfolio/README.md": "Assigned runtime/setup support; complete learner delivery, no tasks of its own"
+  }
+}

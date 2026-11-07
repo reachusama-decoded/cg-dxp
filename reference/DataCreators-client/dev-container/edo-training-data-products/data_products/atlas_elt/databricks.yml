@@ -1,0 +1,70 @@
+bundle:
+  name: atlas_elt
+  databricks_cli_version: ">= 0.218.0, <= 1.0.0"
+
+include:
+  - "datasets/**/bundle/*.yml"
+  - "**/bundle/*.yml"
+  - variables/variables.yml
+  - variables/variables_dev.yml
+  - variables/clusters.yml
+
+sync:
+  paths:
+    - .
+    - ../../dbt_wrapper.py
+    - ../../shared
+    - ./dbt_profiles
+    - ./dbt_project.yml
+    - ./packages.yml
+    - ./package-lock.yml
+    - ./requirements.txt
+    - ./init_scripts
+    - ./dbt_packages
+    - ../.blueprints/src
+  exclude:
+    - "**/airflow/**"
+    - "**/contract/**"
+
+targets:
+  local:
+    default: true
+    mode: development
+    workspace:
+      # profile: training-dev
+      host: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+      # Why: the previous warehouse ID was deleted; this live training warehouse exists.
+      http_path: /sql/1.0/warehouses/267dd55b7f7395ce
+      sql_warehouse_id: 267dd55b7f7395ce
+      app_catalog: training_dev
+      # Why: schemas are pre-provisioned as training_<user>; dbt cannot auto-create schemas.
+      target_schema: training_${workspace.current_user.short_name}
+      checkpoint_table: training_dev.training_${workspace.current_user.short_name}.standard_dataset_checkpoints
+
+  dev:
+    workspace:
+      host: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+      root_path: /Workspace/${var.project_name}/${var.app_name}/.bundle/${bundle.name}/${bundle.target}
+      # profile: training-dev
+    variables:
+      root_path: /Workspace/${var.project_name}/${var.app_name}/.bundle/${bundle.name}/${bundle.target}
+      http_path: /sql/1.0/warehouses/267dd55b7f7395ce
+      app_catalog: training_dev
+      target_schema: ${workspace.current_user.short_name}
+      checkpoint_table: training_dev.cspn_sys.standard_dataset_checkpoints
+
+  dev7:
+    presets:
+      name_prefix: "dev7_"
+    workspace:
+      host: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+      root_path: /Workspace/${var.project_name}/${var.app_name}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      root_path: /Workspace/${var.project_name}/${var.app_name}/.bundle/${bundle.name}/${bundle.target}
+      http_path: /sql/1.0/warehouses/267dd55b7f7395ce
+      sql_warehouse_id: 267dd55b7f7395ce
+      app_catalog: training_dev
+      target_schema: ${var.process_schema}

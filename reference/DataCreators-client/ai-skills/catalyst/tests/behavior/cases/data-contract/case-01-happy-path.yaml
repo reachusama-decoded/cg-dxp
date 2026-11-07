@@ -1,0 +1,35 @@
+id: data-contract.case-01-happy-path
+skill: skills/data-contract
+type: artifact
+description: 'Bootstrap happy-path case. Define the producer-consumer contract: schema, SLAs, quality
+  rules, access
+
+  control, and versioning. Use when the user asks to "create the data contract",
+
+  "define the SLAs", "write the schema agreement", "document the quality
+
+  rules", or "set up the contract for this product".'
+input:
+  arguments: 'Draft the data contract for an employee directory data product. Source: ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4.
+    SLAs: hourly refresh, 99.5% completeness.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/data-contract/templates/data-contract.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Define the producer-consumer
+      contract: schema, SLAs, quality rules, access
+
+      control, and versioning. Use when the user asks to "create the da''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

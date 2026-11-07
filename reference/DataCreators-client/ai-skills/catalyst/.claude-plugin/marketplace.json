@@ -1,0 +1,34 @@
+{
+  "name": "catalyst",
+  "owner": {
+    "name": "Capital Group EDO",
+    "email": "edo-catalyst@capgroup.com",
+    "url": "https://github.com/cg-open-itg"
+  },
+  "description": "AI Catalyst — Data Product Lifecycle skills (RFD 0002) for Claude Code.",
+  "plugins": [
+    {
+      "name": "ai-catalyst",
+      "displayName": "AI Catalyst",
+      "description": "Data Product Lifecycle skills (RFD 0002) — orchestrators, execution skills, and document skills for building data products at Capital Group.",
+      "author": {
+        "name": "Capital Group EDO",
+        "email": "edo-catalyst@capgroup.com",
+        "url": "https://github.com/cg-open-itg"
+      },
+      "homepage": "https://github.com/cg-open-itg/catalyst/blob/main/docs/install.md",
+      "repository": "https://github.com/cg-open-itg/catalyst",
+      "license": "UNLICENSED",
+      "keywords": [
+        "data-product-lifecycle",
+        "dplc",
+        "data-engineering",
+        "dbt",
+        "databricks",
+        "unity-catalog",
+        "capital-group"
+      ],
+      "source": "."
+    }
+  ]
+}

@@ -1,0 +1,1372 @@
+pipeline:
+  name: edo-training-data-products-pipeline
+  identifier: edo_training_data_products_pipeline
+  projectIdentifier: datacreatoracademyaa00003661
+  orgIdentifier: capgroupedo
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.cgopenitggithubemuconnector
+        repoName: edo-training-data-products
+        build: <+input>
+  stages:
+  - stage:
+      name: Detect Changes
+      identifier: Detect_Changes
+      description: Detect changes in IAC and data_products directories to enable conditional stage execution
+      type: CI
+      spec:
+        cloneCodebase: true
+        infrastructure:
+          type: KubernetesDirect
+          spec:
+            connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+            namespace: datacreatoracademyaa00003661-delegate-oz-dev
+            automountServiceAccountToken: true
+            nodeSelector: {}
+            os: Linux
+            delegateSelectors:
+            - datacreatoracademyaa00003661-delegate-oz-dev
+        execution:
+          steps:
+          - step:
+              name: Gauntlet Scan
+              identifier: Gauntlet_Scan
+              template:
+                templateRef: account.cggauntletscansteptemplate
+                versionLabel: v.04
+                gitBranch: main
+                templateInputs:
+                  type: Run
+                  spec:
+                    envVariables:
+                      ENV_GATE: OZ-DEV
+          - step:
+              type: Run
+              name: Check Directory Changes
+              identifier: check_directory_changes
+              spec:
+                connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                image: alpine/git:latest
+                shell: Sh
+                command: |-
+                  #!/bin/sh
+                  set -e
+
+                  echo "=== Detect Directory Changes ==="
+
+                  # Detect current branch from Harness/Drone env vars
+                  CURRENT_BRANCH="${DRONE_SOURCE_BRANCH:-${DRONE_BRANCH:-}}"
+                  if [ -z "$CURRENT_BRANCH" ]; then
+                    CURRENT_BRANCH=$(git branch --show-current 2>/dev/null || echo "")
+                  fi
+                  echo "Branch: ${CURRENT_BRANCH:-detached HEAD}"
+                  echo "Current Commit: $(git rev-parse --short HEAD)"
+
+                  IAC_CHANGED="false"
+                  IMAGE_CHANGED="false"
+                  DAGS_CHANGED="false"
+                  DABS_CHANGED="false"
+
+                  BASE_REF=""
+
+                  # Step 1: Use DRONE_COMMIT_BEFORE if available (webhook triggers provide this)
+                  if [ -n "${DRONE_COMMIT_BEFORE:-}" ] && [ "$DRONE_COMMIT_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+                    BASE_REF="$DRONE_COMMIT_BEFORE"
+                    echo "Using previous commit from trigger: $(echo $BASE_REF | cut -c1-7)"
+                  fi
+
+                  # Step 2: Try HEAD~1 - deepen shallow clone if needed
+                  if [ -z "$BASE_REF" ]; then
+                    if ! git rev-parse HEAD~1 >/dev/null 2>&1; then
+                      echo "Shallow clone detected, fetching more history..."
+                      git fetch --deepen=2 2>/dev/null || true
+                    fi
+                    if git rev-parse HEAD~1 >/dev/null 2>&1; then
+                      BASE_REF="HEAD~1"
+                      echo "Comparing against previous commit: $(git rev-parse --short HEAD~1)"
+                    fi
+                  fi
+
+                  # Step 3: No base found (first commit) - mark all as changed
+                  if [ -z "$BASE_REF" ]; then
+                    echo "First commit or cannot find previous - marking ALL as changed"
+                    IAC_CHANGED="true"
+                    IMAGE_CHANGED="true"
+                    DAGS_CHANGED="true"
+                    DABS_CHANGED="true"
+
+                    echo ""
+                    echo "=== RESULTS ==="
+                    echo "IAC_CHANGED=$IAC_CHANGED"
+                    echo "IMAGE_CHANGED=$IMAGE_CHANGED"
+                    echo "DAGS_CHANGED=$DAGS_CHANGED"
+                    echo "DABS_CHANGED=$DABS_CHANGED"
+                    exit 0
+                  fi
+
+                  echo ""
+                  echo "Comparing: $(git rev-parse --short $BASE_REF)..$(git rev-parse --short HEAD)"
+                  echo ""
+
+                  CHANGED_FILES=$(git diff --name-only "$BASE_REF" HEAD 2>&1)
+                  EXIT_CODE=$?
+
+                  if [ $EXIT_CODE -ne 0 ]; then
+                    echo "ERROR: git diff failed:"
+                    echo "$CHANGED_FILES"
+                    echo ""
+                    echo "Falling back to marking ALL as changed"
+                    IAC_CHANGED="true"
+                    IMAGE_CHANGED="true"
+                    DAGS_CHANGED="true"
+                  elif [ -z "$CHANGED_FILES" ]; then
+                    echo "No files changed between commits"
+                  else
+                    FILE_COUNT=$(echo "$CHANGED_FILES" | wc -l | tr -d ' ')
+                    echo "Total files changed: $FILE_COUNT"
+                    echo ""
+
+                    if [ $FILE_COUNT -le 20 ]; then
+                      echo "Changed files:"
+                      echo "$CHANGED_FILES"
+                    else
+                      echo "First 20 changed files:"
+                      echo "$CHANGED_FILES" | head -20
+                      echo "... and $((FILE_COUNT - 20)) more"
+                    fi
+
+                    echo ""
+                    echo "Analyzing changes by directory..."
+
+                    IAC_FILES=$(echo "$CHANGED_FILES" | grep "^iac/" || true)
+                    if [ -n "$IAC_FILES" ]; then
+                      IAC_CHANGED="true"
+                      IAC_COUNT=$(echo "$IAC_FILES" | wc -l | tr -d ' ')
+                      echo "  [IAC] ✓ $IAC_COUNT file(s) changed in iac/"
+                    else
+                      echo "  [IAC] ✗ No changes"
+                    fi
+
+                    IMAGE_FILES=$(echo "$CHANGED_FILES" | grep -E "^(plugins/|Dockerfile|requirements\.txt|packages\.txt|VERSION)" || true)
+                    if [ -n "$IMAGE_FILES" ]; then
+                      IMAGE_CHANGED="true"
+                      IMAGE_COUNT=$(echo "$IMAGE_FILES" | wc -l | tr -d ' ')
+                      echo "  [IMAGE] ✓ $IMAGE_COUNT file(s) changed (plugins/Dockerfile/dependencies)"
+                    else
+                      echo "  [IMAGE] ✗ No changes"
+                    fi
+
+                    DAGS_FILES=$(echo "$CHANGED_FILES" | grep -E "^(data_products|airflow/dags)/" || true)
+                    if [ -n "$DAGS_FILES" ]; then
+                      DAGS_CHANGED="true"
+                      DAGS_COUNT=$(echo "$DAGS_FILES" | wc -l | tr -d ' ')
+                      echo "  [DAGS] ✓ $DAGS_COUNT file(s) changed in data_products/ or airflow/dags/"
+                    else
+                      echo "  [DAGS] ✗ No changes"
+                    fi
+
+                    DABS_FILES=$(echo "$CHANGED_FILES" | grep -E "^(data_products|airflow/dags)/.*/databricks\.yml" || true)
+                    if [ -n "$DABS_FILES" ]; then
+                      DABS_CHANGED="true"
+                      DABS_COUNT=$(echo "$DABS_FILES" | wc -l | tr -d ' ')
+                      echo "  [DABS] ✓ $DABS_COUNT databricks.yml file(s) changed"
+                    else
+                      echo "  [DABS] ✗ No changes"
+                    fi
+                  fi
+
+                  echo ""
+                  echo "=== RESULTS ==="
+                  echo "IAC Changed: $IAC_CHANGED"
+                  echo "Image Changed: $IMAGE_CHANGED"
+                  echo "DAGs Changed: $DAGS_CHANGED"
+                  echo "DABs Changed: $DABS_CHANGED"
+                  echo ""
+                  echo "IAC_CHANGED=$IAC_CHANGED"
+                  echo "IMAGE_CHANGED=$IMAGE_CHANGED"
+                  echo "DAGS_CHANGED=$DAGS_CHANGED"
+                  echo "DABS_CHANGED=$DABS_CHANGED"
+                outputVariables:
+                - name: IAC_CHANGED
+                - name: IMAGE_CHANGED
+                - name: DAGS_CHANGED
+                - name: DABS_CHANGED
+      delegateSelectors:
+      - datacreatoracademyaa00003661-delegate-oz-dev
+  - stage:
+      name: Generate Git Tag
+      identifier: Generate_Git_Tag
+      template:
+        templateRef: account.caspian_generate_git_tag
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: VERSION_FILE_PATH
+            type: String
+            value: VERSION
+          - name: IMAGE_CHANGED
+            type: String
+            value: <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IMAGE_CHANGED>
+          - name: ECR_REGISTRY
+            type: String
+            value: <+input>
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+          when: <+input>
+      delegateSelectors:
+      - datacreatoracademyaa00003661-delegate-oz-dev
+  - stage:
+      name: TF_Deploy_dev
+      identifier: TF_Deploy_dev
+      template:
+        templateRef: account.caspian_tf_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_oz_dev_996099992154
+          - name: WORKDIR
+            type: String
+            value: ./iac
+          - name: ENVIRONMENT
+            type: String
+            value: dev1
+          - name: TF_ACTION
+            type: String
+            value: <+pipeline.variables.TF_ACTION>
+          - name: CONFIG_PATH
+            type: String
+            value: iac/config/deployment
+          - name: TFE_OVERRIDE_image_version
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_airflow_image_tag
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_set_appomni_password
+            type: String
+            value: <+input>
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+          failureStrategies: []
+          when:
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IAC_CHANGED> == "true"
+  - stage:
+      name: build_image
+      identifier: build_image
+      template:
+        templateRef: account.caspian_build_image
+        versionLabel: 1.0.0
+        gitBranch: main
+        templateInputs:
+          type: CI
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IMAGE_CHANGED> == "true"
+          variables:
+          - name: APP_VERSION
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: DOCKERFILE
+            type: String
+            value: Dockerfile
+          - name: CONTEXT
+            type: String
+            value: /harness
+          - name: LIMIT_MEMORY
+            type: String
+            value: 8Gi
+          - name: LIMIT_CPU
+            type: String
+            value: "4"
+          - name: BUILD_ARM_ARCH
+            type: String
+            value: "false"
+          - name: BUILD_AMD_ARCH
+            type: String
+            value: "true"
+          - name: BUILD_ARGS
+            type: String
+            value: <+input>
+          - name: ENVIRONMENT
+            type: String
+            value: Dev
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+  - parallel:
+    - stage:
+        name: Deploy_Databricks_dev
+        identifier: Deploy_Databricks_dev
+        description: Deploy Databricks Asset Bundles to DEV
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-oz-dev
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-oz-dev
+          execution:
+            steps:
+            - step:
+                type: Run
+                name: Deploy DAB
+                identifier: deploy_dab_dev
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy (dev1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle: $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target dev1
+                        databricks bundle deploy --target dev1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_oz_dev_996099992154
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-oz-dev
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+    - stage:
+        name: Deploy_Databricks_DR_dev
+        identifier: Deploy_Databricks_DR_dev
+        description: Deploy Databricks Asset Bundles to DEV DR
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-oz-dev
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-oz-dev
+          execution:
+            steps:
+            - step:
+                type: Run
+                name: Deploy DAB DR
+                identifier: deploy_dab_dr_dev
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy DR (dev1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle (DR): $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target dev1
+                        databricks bundle deploy --target dev1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-dev-us-west-2.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_oz_dev_dr_996099992154
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-oz-dev
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+  - stage:
+      name: astrodeploy_dev
+      identifier: astrodeploy_dev
+      template:
+        templateRef: account.caspian_astro_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: DEPLOYMENT_NAME
+            type: String
+            value: edo-training
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_oz_dev_996099992154
+          - name: ENVIRONMENT
+            type: String
+            value: dev1
+          - name: OVERRIDE_DEPLOYMENT_ID
+            type: String
+            value: <+input>.default()
+          - name: OVERRIDE_ASTRO_API_TOKEN
+            type: String
+            value: <+input>.default()
+          - name: WORKSPACE_ID
+            type: String
+            value: cmgberf690zil01p3w8633rak
+          - name: IMAGE_REGISTRY
+            type: String
+            value: cgdevregistry-aws.capgroup.com
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: IMAGE_TAG
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: DEPLOY_FLAGS
+            type: String
+            value: "-f"
+          - name: DOCKERFILE_CHANGED
+            type: String
+            value: <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IMAGE_CHANGED>
+          - name: AWS_ACCOUNT_ID
+            type: String
+            value: "996099992154"
+          - name: PROJECT_DIR
+            type: String
+            value: data_products
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: approval_sqa
+      identifier: approval_sqa
+      description: Manual approval gate for SQA deployment
+      type: Approval
+      delegateSelectors:
+      - datacreatoracademyaa00003661-delegate-snp-qa
+      spec:
+        execution:
+          steps:
+          - step:
+              name: Approve SQA Deploy
+              identifier: approve_sqa_deploy
+              type: HarnessApproval
+              timeout: 7d
+              spec:
+                approvalMessage: "Please review and approve deployment to SQA environment."
+                includePipelineExecutionHistory: true
+                approvers:
+                  minimumCount: 1
+                  disallowPipelineExecutor: false
+                  userGroups:
+                  - account._account_all_users
+                approverInputs: []
+      tags: {}
+      when:
+        pipelineStatus: Success
+  - stage:
+      name: Promote_Image_QA
+      identifier: Promote_Image_QA
+      template:
+        templateRef: account.caspian_promote_image
+        versionLabel: 1.0.0
+        # TODO: flip back to 'main' once feature-cache-layeres is
+        # merged.  Pinned here so OPA gauntlet policies see the version with
+        # the Guardrails_Verification_Build first-step that lives on the
+        # feature branch.
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: SOURCE_IMAGE_TAG
+            type: String
+            # Trunk-based: Find_Dev_Tag is disabled; source and target are the same tag
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: TARGET_IMAGE_TAG
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: TARGET_ENVIRONMENT
+            type: String
+            value: SQA
+          - name: IMAGE_REGION
+            type: String
+            default: us-east-1
+            value: us-east-1
+          - name: PROMOTE_TO_ECR
+            type: String
+            default: "true"
+            value: "false"
+          - name: TAG_WITH_COMMIT_HASH
+            type: String
+            default: "true"
+            value: "false"
+          - name: AWS_ACCOUNT_ID
+            type: String
+            value: "419445949256"
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-snp-qa
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: TF_Deploy_SQA
+      identifier: TF_Deploy_SQA
+      template:
+        templateRef: account.caspian_tf_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_snp_qa_undefined
+          - name: WORKDIR
+            type: String
+            value: ./iac
+          - name: ENVIRONMENT
+            type: String
+            value: sqa1
+          - name: TF_ACTION
+            type: String
+            value: <+pipeline.variables.TF_ACTION>
+          - name: CONFIG_PATH
+            type: String
+            value: iac/config/deployment
+          - name: TFE_OVERRIDE_image_version
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_airflow_image_tag
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_set_appomni_password
+            type: String
+            value: <+input>
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-snp-qa
+          failureStrategies: []
+          when:
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: Get_Deployment_Id_SQA
+      identifier: Get_Deployment_Id_SQA
+      description: |
+        Fetch the Astronomer deployment id from SQA TFE on the SQA delegate.
+      type: CI
+      spec:
+        cloneCodebase: true
+        infrastructure:
+          type: KubernetesDirect
+          spec:
+            connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+            namespace: datacreatoracademyaa00003661-delegate-snp-qa
+            automountServiceAccountToken: true
+            nodeSelector: {}
+            os: Linux
+            delegateSelectors:
+            - datacreatoracademyaa00003661-delegate-snp-qa
+        execution:
+          steps:
+          - step:
+              type: Run
+              name: Get Deployment Info from TFE
+              identifier: get_deployment_info
+              spec:
+                connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                image: harness/delegate:tf-1.6.5
+                shell: Bash
+                command: |-
+                  #!/bin/bash
+                  set -euo pipefail
+
+                  ENV="sqa1"
+                  TFE_ORG="banzai-qa"
+                  echo "Using TFE Organization: $TFE_ORG"
+
+                  TFE_CONFIG_FILE="iac/config/deployment/${ENV}/${ENV}_tfe_backend.config"
+                  echo "Reading config from: $TFE_CONFIG_FILE"
+                  if [ ! -f "$TFE_CONFIG_FILE" ]; then
+                    echo "Config file not found: $TFE_CONFIG_FILE"
+                    exit 1
+                  fi
+                  . "$TFE_CONFIG_FILE"
+                  echo "TFE Workspace: $tf_workspace_name"
+
+                  TFE_API="https://tfe.cguser.capgroup.com/api/v2"
+                  WORKSPACE_RESPONSE=$(curl -s -H "Authorization: Bearer <+stage.variables.TFE_TOKEN>" \
+                    "${TFE_API}/organizations/${TFE_ORG}/workspaces/${tf_workspace_name}")
+                  STATE_VERSION_ID=$(echo "$WORKSPACE_RESPONSE" | jq -r '.data.relationships."current-state-version".data.id')
+                  echo "State Version ID: $STATE_VERSION_ID"
+
+                  OUTPUTS_RESPONSE=$(curl -s -H "Authorization: Bearer <+stage.variables.TFE_TOKEN>" \
+                    "${TFE_API}/state-versions/${STATE_VERSION_ID}/outputs")
+                  DEPLOYMENT_ID=$(echo "$OUTPUTS_RESPONSE" | jq -r '.data[] | select(.attributes.name=="deployments") | .attributes.value.id')
+                  if [ -z "$DEPLOYMENT_ID" ] || [ "$DEPLOYMENT_ID" = "null" ]; then
+                    echo "Failed to extract deployment ID from TFE outputs"
+                    exit 1
+                  fi
+                  echo "Deployment ID: $DEPLOYMENT_ID"
+                  if [ -n "${HARNESS_ENV:-}" ]; then
+                    echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> "$HARNESS_ENV"
+                  else
+                    export DEPLOYMENT_ID
+                  fi
+                outputVariables:
+                - name: DEPLOYMENT_ID
+          - step:
+              type: Run
+              name: Get Astro API Token
+              identifier: get_astro_api_token
+              spec:
+                connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                image: harness/delegate:tf-1.6.5
+                shell: Bash
+                command: |-
+                  #!/bin/bash
+                  set -euo pipefail
+                  ATM_ID=$(echo -n "<+project.identifier>" | rev | cut -c 1-10 | rev)
+                  ATM_ID=$(echo "$ATM_ID" | tr '[:lower:]' '[:upper:]')
+                  IAM_ROLE="arn:aws:iam:::role/${ATM_ID}_Harness_Pipeline_Role"
+                  CREDS_LINE=$(aws sts assume-role \
+                    --role-arn "$IAM_ROLE" \
+                    --role-session-name harness-get-astro-token-sqa \
+                    --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+                    --output text)
+                  export AWS_ACCESS_KEY_ID=$(echo "$CREDS_LINE" | cut -f1)
+                  export AWS_SECRET_ACCESS_KEY=$(echo "$CREDS_LINE" | cut -f2)
+                  export AWS_SESSION_TOKEN=$(echo "$CREDS_LINE" | cut -f3)
+                  { set +x; } 2>/dev/null
+                  ASTRO_API_TOKEN=$(aws secretsmanager get-secret-value \
+                    --secret-id "astronomer/sqa/edo-training/deployment_admin_token" \
+                    --region us-east-1 \
+                    --query SecretString \
+                    --output text | grep -o '"api_token":[ ]*"[^"]*"' | cut -d'"' -f4)
+                  if [ -z "$ASTRO_API_TOKEN" ] || [ "$ASTRO_API_TOKEN" = "null" ]; then
+                    echo "Failed to fetch Astro API token from SQA Secrets Manager"
+                    exit 1
+                  fi
+                  echo "Astro API token fetched (length: ${#ASTRO_API_TOKEN})"
+                  if [ -n "${HARNESS_ENV:-}" ]; then
+                    printf 'ASTRO_API_TOKEN=%s\n' "$ASTRO_API_TOKEN" >> "$HARNESS_ENV"
+                  else
+                    export ASTRO_API_TOKEN
+                  fi
+                outputVariables:
+                - name: ASTRO_API_TOKEN
+      variables:
+      - name: TFE_TOKEN
+        type: Secret
+        description: SQA Terraform Enterprise token
+        value: datacreatoracademyaa00003661_tfe_snp_qa_undefined
+      delegateSelectors:
+      - datacreatoracademyaa00003661-delegate-snp-qa
+      when:
+        pipelineStatus: Success
+        condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - parallel:
+    - stage:
+        name: Deploy_Databricks_sqa
+        identifier: Deploy_Databricks_sqa
+        description: Deploy Databricks Asset Bundles to SQA
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-snp-qa
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-snp-qa
+          execution:
+            steps:
+            - step:
+                type: Run
+                name: Deploy DAB
+                identifier: deploy_dab_sqa
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy (sqa1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle: $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target sqa1
+                        databricks bundle deploy --target sqa1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-sqa-us-east-1.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_snp_qa_undefined
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-snp-qa
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+    - stage:
+        name: Deploy_Databricks_DR_sqa
+        identifier: Deploy_Databricks_DR_sqa
+        description: Deploy Databricks Asset Bundles to SQA DR
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-snp-qa
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-snp-qa
+          execution:
+            steps:
+            - step:
+                type: Run
+                name: Deploy DAB DR
+                identifier: deploy_dab_dr_sqa
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy DR (sqa1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle (DR): $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target sqa1
+                        databricks bundle deploy --target sqa1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-sqa-us-west-2.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_snp_qa_dr_undefined
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-snp-qa
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+  - stage:
+      name: astrodeploy_sqa
+      identifier: astrodeploy_sqa
+      template:
+        templateRef: account.caspian_astro_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: DEPLOYMENT_NAME
+            type: String
+            value: edo-training
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_oz_dev_996099992154
+          - name: ENVIRONMENT
+            type: String
+            value: sqa1
+          - name: OVERRIDE_DEPLOYMENT_ID
+            type: String
+            value: <+pipeline.stages.Get_Deployment_Id_SQA.spec.execution.steps.get_deployment_info.output.outputVariables.DEPLOYMENT_ID>
+          - name: OVERRIDE_ASTRO_API_TOKEN
+            type: String
+            value: <+pipeline.stages.Get_Deployment_Id_SQA.spec.execution.steps.get_astro_api_token.output.outputVariables.ASTRO_API_TOKEN>
+          - name: WORKSPACE_ID
+            type: String
+            value: cmml8wlxf071301mcxgypdtpv
+          - name: IMAGE_REGISTRY
+            type: String
+            value: cgdevregistry-aws.capgroup.com
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: IMAGE_TAG
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: DEPLOY_FLAGS
+            type: String
+            value: "-f"
+          - name: DOCKERFILE_CHANGED
+            type: String
+            value: <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IMAGE_CHANGED>
+          - name: AWS_ACCOUNT_ID
+            type: String
+            value: ""
+          - name: PROJECT_DIR
+            type: String
+            value: data_products
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: servicenow_prd
+      identifier: servicenow_prd
+      description: |
+        ServiceNow change-request approval gate.  All downstream prod stages
+        are blocked until a valid CR is supplied and approved.  Runs on the
+        prod delegate so the approval result is visible from the prod side.
+      template:
+        templateRef: account.cgservicenowapprovalcheckstagetemplate
+        versionLabel: v.01
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: Approval
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-cpz-prod
+          variables:
+          - name: Change_Request_Number
+            type: String
+            value: <+input>.executionInput().default(change-request-goes-here)
+      when:
+        pipelineStatus: Success
+  - stage:
+      name: Promote_Image_PRD
+      identifier: Promote_Image_PRD
+      template:
+        templateRef: account.caspian_promote_image
+        versionLabel: 1.0.0
+        # TODO: flip back to 'main' once feature-cache-layeres is
+        # merged.  Pinned here so OPA gauntlet-prod-env policy sees the
+        # version with the Guardrails_Verification_Build first-step that
+        # lives on the feature branch (otherwise pipeline save is denied).
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: SOURCE_IMAGE_TAG
+            type: String
+            # Trunk-based: Find_SQA_Tag is disabled; source and target are the same tag
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: TARGET_IMAGE_TAG
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: TARGET_ENVIRONMENT
+            type: String
+            value: PRD
+          - name: IMAGE_REGION
+            type: String
+            default: us-east-1
+            value: us-east-1
+          - name: PROMOTE_TO_ECR
+            type: String
+            default: "true"
+            value: "false"
+          - name: TAG_WITH_COMMIT_HASH
+            type: String
+            default: "true"
+            value: "false"
+          - name: AWS_ACCOUNT_ID
+            type: String
+            value: "755054044232"
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-cpz-prod
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: TF_Deploy_PRD
+      identifier: TF_Deploy_PRD
+      template:
+        templateRef: account.caspian_tf_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_cpz_prod_undefined
+          - name: WORKDIR
+            type: String
+            value: ./iac
+          - name: ENVIRONMENT
+            type: String
+            value: prd1
+          - name: TF_ACTION
+            type: String
+            value: <+pipeline.variables.TF_ACTION>
+          - name: CONFIG_PATH
+            type: String
+            value: iac/config/deployment
+          - name: TFE_OVERRIDE_image_version
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_airflow_image_tag
+            type: String
+            value: <+input>
+          - name: TFE_OVERRIDE_set_appomni_password
+            type: String
+            value: <+input>
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-cpz-prod
+          failureStrategies: []
+          when:
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - stage:
+      name: Get_Deployment_Id_PRD
+      identifier: Get_Deployment_Id_PRD
+      description: |
+        Same split-lookup pattern as Get_Deployment_Id_SQA.  Runs on the prod
+        delegate (which has prod TFE access); astrodeploy_prd then runs on
+        the dev delegate (DinD) and consumes this id via OVERRIDE_DEPLOYMENT_ID.
+      type: CI
+      spec:
+        cloneCodebase: true
+        infrastructure:
+          type: KubernetesDirect
+          spec:
+            connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+            namespace: datacreatoracademyaa00003661-delegate-cpz-prod
+            automountServiceAccountToken: true
+            nodeSelector: {}
+            os: Linux
+            delegateSelectors:
+            - datacreatoracademyaa00003661-delegate-cpz-prod
+        execution:
+          steps:
+          # Required by OPA gauntlet-prod-env policy: prod-delegate stages
+          # must have a Guardrails scan template as their first step.
+          - stepGroup:
+              name: Guardrail Repository Check
+              identifier: Guardrail_Repository_Check
+              template:
+                templateRef: account.Guardrails_Verification_Build
+                versionLabel: github_repo_check:1.0
+                gitBranch: main
+                templateInputs:
+                  variables:
+                  - name: Environment
+                    type: String
+                    value: CPZ-PRD
+          - step:
+              type: Run
+              name: Get Deployment Info from TFE
+              identifier: get_deployment_info
+              spec:
+                connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                image: harness/delegate:tf-1.6.5
+                shell: Bash
+                command: |-
+                  #!/bin/bash
+                  set -euo pipefail
+
+                  ENV="prd1"
+                  TFE_ORG="banzai-prd"
+                  echo "Using TFE Organization: $TFE_ORG"
+
+                  TFE_CONFIG_FILE="iac/config/deployment/${ENV}/${ENV}_tfe_backend.config"
+                  echo "Reading config from: $TFE_CONFIG_FILE"
+                  if [ ! -f "$TFE_CONFIG_FILE" ]; then
+                    echo "Config file not found: $TFE_CONFIG_FILE"
+                    exit 1
+                  fi
+                  . "$TFE_CONFIG_FILE"
+                  echo "TFE Workspace: $tf_workspace_name"
+
+                  TFE_API="https://tfe.cguser.capgroup.com/api/v2"
+                  WORKSPACE_RESPONSE=$(curl -s -H "Authorization: Bearer <+stage.variables.TFE_TOKEN>" \
+                    "${TFE_API}/organizations/${TFE_ORG}/workspaces/${tf_workspace_name}")
+                  STATE_VERSION_ID=$(echo "$WORKSPACE_RESPONSE" | jq -r '.data.relationships."current-state-version".data.id')
+                  echo "State Version ID: $STATE_VERSION_ID"
+
+                  OUTPUTS_RESPONSE=$(curl -s -H "Authorization: Bearer <+stage.variables.TFE_TOKEN>" \
+                    "${TFE_API}/state-versions/${STATE_VERSION_ID}/outputs")
+                  DEPLOYMENT_ID=$(echo "$OUTPUTS_RESPONSE" | jq -r '.data[] | select(.attributes.name=="deployments") | .attributes.value.id')
+                  if [ -z "$DEPLOYMENT_ID" ] || [ "$DEPLOYMENT_ID" = "null" ]; then
+                    echo "Failed to extract deployment ID from TFE outputs"
+                    exit 1
+                  fi
+                  echo "Deployment ID: $DEPLOYMENT_ID"
+                  if [ -n "${HARNESS_ENV:-}" ]; then
+                    echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> "$HARNESS_ENV"
+                  else
+                    export DEPLOYMENT_ID
+                  fi
+                outputVariables:
+                - name: DEPLOYMENT_ID
+          - step:
+              type: Run
+              name: Get Astro API Token
+              identifier: get_astro_api_token
+              spec:
+                connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                image: harness/delegate:tf-1.6.5
+                shell: Bash
+                command: |-
+                  #!/bin/bash
+                  set -euo pipefail
+                  ATM_ID=$(echo -n "<+project.identifier>" | rev | cut -c 1-10 | rev)
+                  ATM_ID=$(echo "$ATM_ID" | tr '[:lower:]' '[:upper:]')
+                  IAM_ROLE="arn:aws:iam:::role/${ATM_ID}_Harness_Pipeline_Role"
+                  CREDS_LINE=$(aws sts assume-role \
+                    --role-arn "$IAM_ROLE" \
+                    --role-session-name harness-get-astro-token-prd \
+                    --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+                    --output text)
+                  export AWS_ACCESS_KEY_ID=$(echo "$CREDS_LINE" | cut -f1)
+                  export AWS_SECRET_ACCESS_KEY=$(echo "$CREDS_LINE" | cut -f2)
+                  export AWS_SESSION_TOKEN=$(echo "$CREDS_LINE" | cut -f3)
+                  { set +x; } 2>/dev/null
+                  ASTRO_API_TOKEN=$(aws secretsmanager get-secret-value \
+                    --secret-id "astronomer/prd/edo-training/deployment_admin_token" \
+                    --region us-east-1 \
+                    --query SecretString \
+                    --output text | grep -o '"api_token":[ ]*"[^"]*"' | cut -d'"' -f4)
+                  if [ -z "$ASTRO_API_TOKEN" ] || [ "$ASTRO_API_TOKEN" = "null" ]; then
+                    echo "Failed to fetch Astro API token from PRD Secrets Manager"
+                    exit 1
+                  fi
+                  echo "Astro API token fetched (length: ${#ASTRO_API_TOKEN})"
+                  if [ -n "${HARNESS_ENV:-}" ]; then
+                    printf 'ASTRO_API_TOKEN=%s\n' "$ASTRO_API_TOKEN" >> "$HARNESS_ENV"
+                  else
+                    export ASTRO_API_TOKEN
+                  fi
+                outputVariables:
+                - name: ASTRO_API_TOKEN
+      variables:
+      - name: TFE_TOKEN
+        type: Secret
+        description: PRD Terraform Enterprise token
+        value: datacreatoracademyaa00003661_tfe_cpz_prod_undefined
+      delegateSelectors:
+      - datacreatoracademyaa00003661-delegate-cpz-prod
+      when:
+        pipelineStatus: Success
+        condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  - parallel:
+    - stage:
+        name: Deploy_Databricks_prd
+        identifier: Deploy_Databricks_prd
+        description: Deploy Databricks Asset Bundles to PRD
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-cpz-prod
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-cpz-prod
+          execution:
+            steps:
+            # Required by OPA gauntlet-prod-env policy
+            - stepGroup:
+                name: Guardrail Repository Check
+                identifier: Guardrail_Repository_Check_DAB
+                template:
+                  templateRef: account.Guardrails_Verification_Build
+                  versionLabel: github_repo_check:1.0
+                  gitBranch: main
+                  templateInputs:
+                    variables:
+                    - name: Environment
+                      type: String
+                      value: CPZ-PRD
+            - step:
+                type: Run
+                name: Deploy DAB
+                identifier: deploy_dab_prd
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy (prd1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle: $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target prd1
+                        databricks bundle deploy --target prd1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-prd-us-east-1.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_cpz_prd_undefined
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-cpz-prod
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+    - stage:
+        name: Deploy_Databricks_DR_prd
+        identifier: Deploy_Databricks_DR_prd
+        description: Deploy Databricks Asset Bundles to PRD DR
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: datacreatoracademyaa00003661_kubernetes_shared
+              namespace: datacreatoracademyaa00003661-delegate-cpz-prod
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+              delegateSelectors:
+              - datacreatoracademyaa00003661-delegate-cpz-prod
+          execution:
+            steps:
+            # Required by OPA gauntlet-prod-env policy
+            - stepGroup:
+                name: Guardrail Repository Check
+                identifier: Guardrail_Repository_Check_DAB_DR
+                template:
+                  templateRef: account.Guardrails_Verification_Build
+                  versionLabel: github_repo_check:1.0
+                  gitBranch: main
+                  templateInputs:
+                    variables:
+                    - name: Environment
+                      type: String
+                      value: CPZ-PRD
+            - step:
+                type: Run
+                name: Deploy DAB DR
+                identifier: deploy_dab_dr_prd
+                spec:
+                  connectorRef: account.acct_cgdevregistry_aws_nexus_publish
+                  image: ghcr.io/astral-sh/uv:python3.12-bookworm
+                  shell: Bash
+                  command: |-
+                    #!/bin/bash
+                    set -euo pipefail
+
+                    echo "=== Databricks Bundle Deploy DR (prd1) ==="
+                    pip install --quiet databricks-cli
+
+                    for BUNDLE_FILE in data_products/*/databricks.yml airflow/dags/*/databricks.yml; do
+                      if [ -f "$BUNDLE_FILE" ]; then
+                        PRODUCT_DIR=$(dirname "$BUNDLE_FILE")
+                        echo "Deploying bundle (DR): $PRODUCT_DIR"
+
+                        # Read DBR version if present
+                        VERSION_FILE="${PRODUCT_DIR}/DATABRICKS_RUNTIME_VERSION"
+                        if [ -f "$VERSION_FILE" ]; then
+                          export DBR_VERSION=$(cat "$VERSION_FILE")
+                          echo "Using Databricks Runtime: $DBR_VERSION"
+                        fi
+
+                        cd "$PRODUCT_DIR"
+                        databricks bundle validate --target prd1
+                        databricks bundle deploy --target prd1
+                        cd /harness
+                      fi
+                    done
+                  envVariables:
+                    DATABRICKS_HOST: https://cg-db-aa00003661-prd-us-west-2.cloud.databricks.com
+                    DATABRICKS_TOKEN: <+stage.variables.DATABRICKS_TOKEN>
+        variables:
+        - name: DATABRICKS_TOKEN
+          type: Secret
+          value: databricks_token_cpz_prd_dr_undefined
+        delegateSelectors:
+        - datacreatoracademyaa00003661-delegate-cpz-prod
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.PIPELINE_MODE> != "astro" && <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.DABS_CHANGED> == "true"
+  - stage:
+      name: astrodeploy_prd
+      identifier: astrodeploy_prd
+      template:
+        templateRef: account.caspian_astro_deploy
+        versionLabel: 1.0.0
+        gitBranch: feature/caspian-template-rename
+        templateInputs:
+          type: CI
+          variables:
+          - name: DEPLOYMENT_NAME
+            type: String
+            value: edo-training
+          - name: TFE_TOKEN
+            type: Secret
+            value: datacreatoracademyaa00003661_tfe_oz_dev_996099992154
+          - name: ENVIRONMENT
+            type: String
+            value: prd1
+          - name: OVERRIDE_DEPLOYMENT_ID
+            type: String
+            value: <+pipeline.stages.Get_Deployment_Id_PRD.spec.execution.steps.get_deployment_info.output.outputVariables.DEPLOYMENT_ID>
+          - name: OVERRIDE_ASTRO_API_TOKEN
+            type: String
+            value: <+pipeline.stages.Get_Deployment_Id_PRD.spec.execution.steps.get_astro_api_token.output.outputVariables.ASTRO_API_TOKEN>
+          - name: WORKSPACE_ID
+            type: String
+            value: cmnqdru6w07ee01l0l9h2uaw8
+          - name: IMAGE_REGISTRY
+            type: String
+            value: cgprdregistry-aws.capgroup.com
+          - name: IMAGE_NAME
+            type: String
+            value: <+pipeline.properties.ci.codebase.repoName>
+          - name: IMAGE_TAG
+            type: String
+            value: <+pipeline.stages.Generate_Git_Tag.spec.execution.steps.Generate_Tag.output.outputVariables.GIT_TAG>
+          - name: DEPLOY_FLAGS
+            type: String
+            value: "-f"
+          - name: DOCKERFILE_CHANGED
+            type: String
+            value: <+pipeline.stages.Detect_Changes.spec.execution.steps.check_directory_changes.output.outputVariables.IMAGE_CHANGED>
+          - name: AWS_ACCOUNT_ID
+            type: String
+            value: ""
+          - name: PROJECT_DIR
+            type: String
+            value: data_products
+          delegateSelectors:
+          - datacreatoracademyaa00003661-delegate-oz-dev
+          when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.PIPELINE_MODE> != "dab"
+  variables:
+  - name: ENVIRONMENT
+    type: String
+    description: |
+      Environment override for manual runs. In trunk-based mode, each lane
+      hardcodes its own environment (dev1, sqa1, prd1). This variable is
+      retained for backward compatibility with manual pipeline executions.
+    required: false
+    value: <+input>.default(dev1)
+  - name: TF_ACTION
+    type: String
+    description: The TF action that should be performed (ie plan, apply, etc)
+    required: false
+    value: <+input>.default(apply)
+  - name: PIPELINE_MODE
+    type: String
+    description: |
+      Execution mode for unified pipeline.
+      - astro: run astro/IAC/image stages only
+      - dab: run Databricks stages only
+      - both: run all applicable stages (Databricks before astro deploy)
+    required: false
+    value: <+input>.default(both)
+  allowStageExecutions: true

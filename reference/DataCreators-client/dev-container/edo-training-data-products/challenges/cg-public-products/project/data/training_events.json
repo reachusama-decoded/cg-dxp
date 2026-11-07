@@ -1,0 +1,42 @@
+[
+  {
+    "event_id": "T1",
+    "product_id": "cusip:14020G101",
+    "metric": "training_fee_bps",
+    "business_valid_from": "2026-09-01",
+    "business_valid_to": null,
+    "value": 40,
+    "knowledge_time": "2026-10-10T09:00:00Z",
+    "attempt_time": "2026-10-10T09:00:00Z"
+  },
+  {
+    "event_id": "T2",
+    "product_id": "cusip:14020G101",
+    "metric": "training_fee_bps",
+    "business_valid_from": "2026-10-01",
+    "business_valid_to": null,
+    "value": 38,
+    "knowledge_time": "2026-10-10T10:00:00Z",
+    "attempt_time": "2026-10-10T10:00:00Z"
+  },
+  {
+    "event_id": "T2",
+    "product_id": "cusip:14020G101",
+    "metric": "training_fee_bps",
+    "business_valid_from": "2026-10-01",
+    "business_valid_to": null,
+    "value": 38,
+    "knowledge_time": "2026-10-10T10:00:00Z",
+    "attempt_time": "2026-10-10T10:05:00Z"
+  },
+  {
+    "event_id": "T3",
+    "product_id": "cusip:14020G101",
+    "metric": "training_fee_bps",
+    "business_valid_from": "2026-09-15",
+    "business_valid_to": "2026-10-01",
+    "value": 39,
+    "knowledge_time": "2026-10-10T11:00:00Z",
+    "attempt_time": "2026-10-10T11:00:00Z"
+  }
+]

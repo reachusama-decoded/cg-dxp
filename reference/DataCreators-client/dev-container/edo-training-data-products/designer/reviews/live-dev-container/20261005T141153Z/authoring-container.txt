@@ -1,0 +1,37 @@
+# Authoring-container confirmations, 2026-10-05T15:12:06Z
+## new login shell pwd
+/workspaces/edo-training-data-products
+## git toplevel
+/workspaces/ts-cg-datacreators
+## courseware links
+CLAUDE.md
+Makefile
+README.md
+build
+build-pdf
+builder.toml
+designer
+devc.md
+facilitator
+learner
+mkdocs.yml
+scripts
+00-before-you-start.md
+01-day-1-design-skills.md
+02-day-2-platforms-in-practise.md
+## mounts
+/workspaces/ts-cg-datacreators virtiofs
+/workspaces/ts-builder virtiofs
+/workspaces/edo-training-data-products virtiofs
+## pre-push dry-run (course)
+Owner only: ALLOW_PUSH=1 git push ...
+error: failed to push some refs to 'https://github.com/DecodedCo/ts-cg-datacreators.git'
+exit=0
+## pre-push dry-run (ts-builder)
+Owner only: ALLOW_PUSH=1 git push ...
+error: failed to push some refs to 'https://github.com/DecodedCo/ts-builder.git'
+## docker
+29.8.2 overlayfs Chainguard
+Hello from Docker!
+## listening ports
+127.0.0.1:27334 127.0.0.1:33739 127.0.0.1:35301 127.0.0.1:36479 127.0.0.1:36875 127.0.0.1:40347 

@@ -1,0 +1,1503 @@
+instrument_id,ticker,name,asset_class,sector,ccy
+1,XZB,Belmont Engineering Group,Equity,Industrials,USD
+2,XFEQ,Helvetia Materials ETF,ETF,Materials,USD
+3,1730.HK,Vantage Total Market ETF,ETF,Broad,HKD
+4,QXTX,Cardinal Aerospace Inc,Equity,Industrials,USD
+5,HJNM,Corn Spot,Commodity,  Agriculture  ,  usd
+6,2439.HK,Granite Microsystems Ltd,Equity,InfoTech,HKD
+7,MUK,Stratford Hospitality Inc,Equity,ConsumerDisc,USD
+8,JP8BJZVTNF85,JGB 5.00% 2027,Bond,Government, JPY
+9,FWA,Wycombe Capital Group,Equity,Financials,USD
+10,HKC3770LK5N7,Jadeport 2.75% 2042 Sr Notes,Bond,Corporate,HKD
+11,BQJK,Evermore Software Corp,Equity,InfoTech,USD
+12,SJO,Montrose Engineering Group,Equity,Industrials,USD
+13,3718.T,Pemberton Microsystems KK,Equity,InfoTech,JPY
+14,GBVPHF2MR9P4,Wycombe 4.25% 2042 Sr Notes,Bond,Corporate,GBP
+15,CMAA,Beacon Trust Corp,Equity,Financials,USD
+16,PTG.PA,Saint-Cyr Utilities SA,Equity,Utilities,EUR
+17,GBMVBFXLGTV1,UK Gilt 5.75% 2039,Bond,Government,GBP
+18,LQVF,Kingsley Entertainment Inc,  Equity  ,CommServices,USD
+19,DUV.L,Yarrow Beverages plc,Equity,ConsumerStaples,GBP
+20,7371.HK,Drakemoor Bancorp Ltd,Equity,Financials,HKD
+21,MQT,Underwood Apparel Inc,Equity,ConsumerDisc,USD
+22,4425.HK,Northcrest Water Ltd,Equity,Utilities,HKD
+23,ZBP,Beacon Technologies Inc,Equity,  InfoTech  ,USD
+24,JUYI,Crestline Industries Inc,Equity,Industrials,USD
+25,LJS,Zinc Spot,Commodity,BaseMetals,USD
+26,7428.T,Harlow Hospitality KK,Equity,ConsumerDisc,JPY
+27,WWA.PA,Lumen Microsystems SE,  Equity  ,InfoTech,EUR
+28,JCX,Crestline Foods Group,Equity, ConsumerStaples ,USD
+29,HSI,Larchmont Developments Group,Equity,RealEstate,USD
+30,4765.T,Larchmont Biosciences Corporation,Equity,HealthCare,JPY
+31,KZE,Granite Aerospace Corp,Equity,Industrials,  USD
+32,RDDU,Evermore Financial Inc,Equity,Financials,USD
+33,9641.T,Tindall Electric Corporation,Equity,Utilities,JPY
+34,UICY.L,Stonebridge Industries plc,Equity,Industrials,GBP
+35,ELB,Sugar Spot,Commodity,Agriculture,USD
+36,OFVR,Larchmont Semiconductor Corp,Equity,InfoTech,USD
+37,UCDW,Norwood Software Inc,Equity,InfoTech,USD
+38,VUJV,Soybeans Spot,Commodity,Agriculture,USD
+39,LXT,Stonebridge Networks Corp,Equity,InfoTech,USD
+40,OPX,Halcyon Communications Inc,Equity,CommServices,USD
+41,WEGB,Cardinal Telecom Corp,Equity, CommServices ,USD
+42,DEP5HKNH10B5,Vantage 3.25% 2043 Sr Notes,Bond,Securitized,EUR
+43,PXOU.PA,Drakemoor Nutrition SA,Equity,ConsumerStaples,EUR
+44,8597.HK,Cheung Wah Health Holdings,Equity,HealthCare,HKD
+45,3236.HK,Cheung Wah Retail Ltd,Equity,ConsumerDisc,HKD
+46,JCFZ.L,Ironwood Hospitality plc, Equity ,  ConsumerDisc  ,GBP
+47,HKJ79PKD4187,HK Government 4.00% 2039,Bond,Government,HKD
+48,NPBZ,Crestline Systems Group,Equity,InfoTech,USD
+49,IAD.SW,Jardine Capital AG,Equity,Financials,CHF
+50, WJB.L ,Montrose Media plc,Equity,CommServices,GBP
+51,KTWN.L,Pemberton Data plc,Equity,InfoTech,GBP
+52,7628.T,Evermore Diagnostics Corporation,Equity,HealthCare,JPY
+53,YST,Ironwood Biosciences Corp,Equity,HealthCare,USD
+54,TVEO,Verity Engineering Inc,Equity,Industrials,USD
+55,NKM.SW,Drakemoor Media SA,Equity,CommServices,CHF
+56,LLAK.SW,Helvetia Total Market ETF,ETF,Broad, CHF
+57,VYR,Jardine Telecom Corp,Equity,CommServices,USD
+58,PXBW,Ellesmere Holdings Group,Equity,  Financials  ,USD
+59,7672.T, Cardinal Leisure Corporation ,Equity,ConsumerDisc,JPY
+60,TPT,Juniper Power Corp, Equity ,Utilities,USD
+61,FKXY,Kestrel Consumer Inc,Equity,ConsumerStaples,USD
+62,GBWDPZQM0J88,UK Gilt 3.00% 2029,Bond,Government,GBP
+63,OTJ,Halcyon Developments Inc,Equity, RealEstate ,USD
+64,OWIX.SW,Orion Metals AG,Equity,Materials,CHF
+65,RFZK.SW, Northcrest Total Market ETF ,ETF,Broad,CHF
+66,PAF,Ellesmere Leisure Inc,  Equity  ,ConsumerDisc, USD
+67,QDQE.DE,Ardent Engineering AG,Equity,Industrials,EUR
+68,FTPI,Westbrook Data Inc,Equity,InfoTech,USD
+69,IBP,Pemberton Financial Inc,Equity,Financials,USD
+70,USGDJDKRF5P9,Ironwood 4.00% 2030 Sr Notes,Bond, Corporate ,USD
+71,0340.HK,Foxglove Biosciences Holdings,Equity,HealthCare,HKD
+72,ZNZ.SW,Cardinal Logistics AG,Equity,Industrials,CHF
+73,DEVSWPSVA2W3,Norwood 3.75% 2044 HY Notes,Bond,HighYield,EUR
+74,FRQE4J5QUC31,French OAT 2.25% 2035,Bond,Government,EUR
+75,HKUHL6JYYH49,Granite 3.50% 2027 Sr Notes,Bond,Corporate,HKD
+76,HKW46ZW2SGR0,Orion 5.25% 2043 Sr Notes,Bond,Corporate,HKD
+77,IYV.SW,Crestline Chemicals AG,Equity,Materials,CHF
+78,PSA,Lumen Systems Inc,Equity,InfoTech,  usd
+79,2965.HK,Orion Aggregate Bond ETF,ETF,FixedIncome,HKD
+80,UCO.SW,Cardinal Brands AG,  Equity  ,ConsumerDisc, chf
+81,UDQ.SW,Beacon Aggregate Bond ETF,  ETF  ,FixedIncome,CHF
+82,DDRW.SW,Lumen Logistics SA,Equity,Industrials,CHF
+83,XRK,Sugar Spot,Commodity,Agriculture,USD
+84,0295.HK,Westbrook Industries Holdings,Equity,Industrials,HKD
+85,QBK,Northcrest Aggregate Bond ETF,ETF,FixedIncome,USD
+86,7511.HK,Ironwood Capital Ltd,Equity,Financials,HKD
+87,8010.HK,Marisol Industries Ltd,Equity,Materials,HKD
+88,EPPS,Beacon Energy Inc,Equity,Energy,USD
+89,PBE,Coffee Spot,Commodity,Agriculture,USD
+90,FTZH,Orion Total Market ETF,  ETF  ,Broad,USD
+91,FWC.DE,Kestrel Energy SE,Equity,Energy,EUR
+92,DETU6MCXE4L6, Kestrel 5.50% 2042 Sr Notes ,Bond,Corporate,EUR
+93, gmtv ,Foxglove Motors Inc,  Equity  ,ConsumerDisc,USD
+94,NJS,Sugar Spot,Commodity,Agriculture,USD
+95,HKFWJU4YRBH5,Verity 4.00% 2036 Sr Notes,Bond,Municipal,HKD
+96,VFF,Beacon Total Market ETF,ETF,Broad,USD
+97,SCIB,Beacon Microsystems Inc,Equity,InfoTech,USD
+98,HZOP.SW,Montreux Retail SA,Equity,ConsumerDisc,CHF
+99,BTS,Halcyon Biosciences Inc,Equity,HealthCare,USD
+100,4506.HK,Beacon Semiconductor Holdings,  Equity  ,InfoTech,HKD
+101,YOX.PA,Belmont Engineering SA,Equity,Industrials,EUR
+102,OPF.SW,Ardent Motors SA,  Equity  ,ConsumerDisc,CHF
+103, TSGY.PA ,Saint-Cyr Developments SA, Equity ,RealEstate,EUR
+104,CHP265UKF4A3,Swiss Confederation 5.50% 2034,Bond,Government,CHF
+105,HZPS.DE,Stonebridge Microsystems SE,Equity,InfoTech,EUR
+106,RHAG.DE,Norwood Bancorp SE,Equity,Financials,EUR
+107,FRFY65SSQ3C4,Dufour 4.00% 2040 Sr Notes,Bond,Securitized,  EUR
+108,IKAD,Oakhaven Engineering Corp,Equity,Industrials,USD
+109,MGV.DE,Adlerstein Industries SE, Equity ,Industrials,EUR
+110,UMN.L,Vantage Industrials ETF,ETF,Industrials,GBP
+111,HCKD,Dunmore Semiconductor Corp,Equity,InfoTech,USD
+112,USEBP2RSF5V4, Stratford 6.50% 2035 HY Notes ,Bond,HighYield,USD
+113,2710.T,Aldridge Estates KK,Equity, RealEstate ,JPY
+114,MKXU.L,Dunmore Systems plc,Equity,InfoTech,GBP
+115,FPT.SW,Fairmont Partners AG,Equity,Financials,CHF
+116, 1451.hk ,Lumen Medical Ltd,Equity,HealthCare,HKD
+117,VKN.PA,Foxglove Health SA,Equity,HealthCare,  eur
+118,6937.HK,Cardinal Resources Ltd,Equity,Energy,HKD
+119,2766.T,Pinnacle Aerospace Corporation,Equity,Industrials,JPY
+120,  obdo.pa  ,Foxglove Machinery SE,Equity,  Industrials  ,EUR
+121,IZX.DE,Jardine Financial AG,Equity,Financials,EUR
+122,FDS,Brightwater Medical Inc,Equity,HealthCare,USD
+123,9195.T,Ironwood Medical KK,Equity,HealthCare,JPY
+124,PZXQ,Aldridge Logistics Inc,Equity,Industrials,USD
+125,KWM.L,Larchmont Electric plc,Equity,Utilities,GBP
+126,US1U9TSCVAJ2,Greycliff 2.75% 2038 Sr Notes,Bond,Securitized,USD
+127,XBZ.SW,Helvetia Total Market ETF,ETF,Broad,CHF
+128,OYR,  Harlow Logistics Corp  ,Equity,Industrials,USD
+129,DZL.PA,Halcyon Microsystems SA,Equity,InfoTech,EUR
+130,USUW6884QYB5,Marisol 2.75% 2030 Sr Notes,Bond,Securitized,USD
+131,JOY.PA,Ironwood Entertainment SE,Equity,CommServices,EUR
+132,VVU.L,Pemberton Holdings plc,Equity,Financials,GBP
+133,DEE824VC42L6,German Bund 3.25% 2037,Bond,Government,EUR
+134,TJW.PA,Lumen Innovation ETF,ETF,Thematic,EUR
+135,YPG.DE, Northcrest Grid AG ,Equity,Utilities,EUR
+136,PXS.L,Lumen Data plc,Equity,InfoTech,GBP
+137,HKHQV01ZBWW8,Norwood 5.25% 2045 Sr Notes,Bond,Corporate,HKD
+138,CVN,Belmont Diagnostics Group,Equity,HealthCare,USD
+139,9943.T,Jardine Oil & Gas Corporation,Equity,Energy, jpy
+140,8157.T,Drakemoor Power Corporation,Equity,Utilities,JPY
+141,FPMW,Kestrel Industries Inc,Equity,Industrials, usd
+142,BLB,Calder Biosciences Group,Equity,HealthCare,USD
+143,RSBQ.L,Ardent Oil & Gas plc,Equity,Energy,  gbp
+144,  USZBN51MD321  ,Vantage 3.00% 2028 Sr Notes,Bond,Corporate,USD
+145,UNEE.PA,Calder Brands SE,Equity,ConsumerDisc,EUR
+146,XJD,Redstone Systems Inc,Equity,InfoTech,USD
+147,CXQB,Foxglove Networks Corp,Equity,InfoTech,USD
+148,YFT.DE,Vantage Pharmaceuticals AG,Equity,HealthCare,EUR
+149,DKU.SW,Kingsley Bancorp AG,Equity,Financials,CHF
+150,VJQ.SW,Cardinal Communications SA,Equity,CommServices,CHF
+151,FRA8ADH96PT4,Ironwood 4.25% 2034 Sr Notes,Bond,Corporate,EUR
+152,US7ZW980SW64,US Treasury 2.00% 2030,Bond,Government,USD
+153,MHGC.PA,Yarrow Resources SE,Equity,Energy,EUR
+154,CEH.L,Aldridge Developments plc,Equity,RealEstate, GBP
+155, url.pa , Orion Commodity ETF ,ETF,Commodity,EUR
+156,MZT.PA,Orion Utilities SE,Equity,Utilities,EUR
+157,USFN7WEZ0589,Ardent 5.00% 2035 Sr Notes,Bond,Corporate,USD
+158,UGUI.L,Ellesmere Entertainment plc,Equity,CommServices,GBP
+159,US094SFFAXV8, US Treasury 5.50% 2033 ,Bond,Government,  usd
+160,HKNM22GGV2J7,HK Government 6.25% 2028,Bond,Government,HKD
+161,EIN,Corn Spot,Commodity,Agriculture,USD
+162,SUH.L,Larchmont Media plc,Equity,CommServices,  gbp
+163,MHD.DE,Lumen Aggregate Bond ETF,ETF,FixedIncome,EUR
+164,CHJ8F8Q471N9,Westbrook 2.50% 2027 Sr Notes,Bond,Securitized,CHF
+165,5367.HK,Inverness Networks Holdings,Equity,InfoTech,HKD
+166,RAST.SW, Alpina Capital SA ,Equity, Financials ,CHF
+167,4933.HK,Ravenswood Engineering Holdings,Equity,Industrials,HKD
+168,0801.HK,Northcrest Innovation ETF,ETF,Thematic,HKD
+169,2394.T,  Northcrest RealEstate ETF  , ETF ,RealEstate, jpy
+170,RHY,Verity Biosciences Group,Equity,HealthCare,USD
+171,CH9DQDUN2M68,Swiss Confederation 3.75% 2044,Bond,Government,CHF
+172, isu ,Ravenswood Software Group,Equity,InfoTech,USD
+173,QBZ,Kingsley Logistics Inc,Equity,Industrials,USD
+174,SJWA,Aluminium Spot,Commodity,BaseMetals,USD
+175,1777.T,Helvetia Aggregate Bond ETF,ETF,FixedIncome, JPY
+176,ZYR,Pinnacle Estates Inc,Equity,RealEstate,USD
+177,4670.T,Vantage Networks KK,Equity,CommServices,JPY
+178,US0A48E4GX89,Aldridge 2.50% 2039 Sr Notes,Bond,Corporate,USD
+179, US2X0F6S7MW5 ,Harlow 6.50% 2042 Sr Notes,Bond,Municipal,USD
+180,GMOH.L,Thornbury Capital plc,Equity,Financials,GBP
+181,SGEO,Cardinal Networks Inc,Equity,InfoTech,USD
+182,ECZ.DE,Norwood Bancorp SE,Equity,Financials,EUR
+183,  RPK  ,Stratford Pharmaceuticals Group,Equity,HealthCare,USD
+184,LVOT,Marisol Communications Group,Equity,CommServices,USD
+185,VKZ.DE,Ashford Holdings SE,Equity,Financials,EUR
+186,US2JKX7QEJP1,Belmont 3.75% 2033 Sr Notes,Bond,Corporate,USD
+187,NOPA,Beacon Innovation ETF,ETF,Thematic,USD
+188,RBO,Lumen Total Market ETF,ETF,Broad,USD
+189,CH1BT2KHGZM7,Swiss Confederation 5.75% 2035,Bond,Government,CHF
+190,CHG8JUY5E0R8,Crestline 5.00% 2040 Sr Notes,Bond,Municipal,CHF
+191,OYWM,Cardinal Biosciences Inc,Equity,HealthCare,USD
+192,TKYZ,Kestrel Retail Group,Equity,  ConsumerDisc  ,USD
+193,EPK, Westbrook Household Inc ,Equity,ConsumerStaples,USD
+194,ZQZ.L,Umbra Electric plc,Equity,Utilities,GBP
+195,DLFS,Beacon Software Inc,Equity,InfoTech,USD
+196,IAV.SW,Alpina Utilities AG,Equity,Utilities,CHF
+197,MPT,Crestline Holdings Inc, Equity ,Financials,USD
+198,SCIH,Quillon Biosciences Group,Equity,HealthCare,  USD
+199,ENB,Vantage Holdings Inc,Equity,  Financials  ,USD
+200,NOA,Lumen Pharmaceuticals Corp,Equity,HealthCare,USD
+201,BPDX,Underwood Machinery Corp,Equity,Industrials,USD
+202,VDMN,Kingsley Entertainment Group,Equity,CommServices,USD
+203,USXCPPLPP344,US Treasury 3.00% 2027,Bond,Government,USD
+204,YTFS,Thornbury Machinery Inc,Equity,Industrials,USD
+205,SOF,Fairmont Brands Inc,Equity,ConsumerDisc,USD
+206,RRF,Brightwater Pharmaceuticals Group,Equity,HealthCare,USD
+207,YKR,Redstone Technologies Group,Equity,InfoTech,USD
+208,USGD6337ALA6,US Treasury 4.00% 2041,Bond,Government,USD
+209,2438.HK,Kestrel Biosciences Holdings,Equity,HealthCare,HKD
+210,GSBP,Pinnacle Health Group,Equity,HealthCare,USD
+211,JEOS,Ravenswood Software Group,Equity,InfoTech,USD
+212,JVYG,Zinc Spot,Commodity,BaseMetals,USD
+213,KLVE.DE,Fairmont Holdings SE,Equity,Financials,EUR
+214,MPBU,Fairmont Leisure Inc,Equity,ConsumerDisc,USD
+215,RND,Beacon Logistics Inc,Equity,Industrials,  usd
+216,DNUJ.L,Drakemoor Logistics plc,Equity, Industrials ,GBP
+217,UJF.SW,  Jardine Power SA  ,  Equity  ,Energy,CHF
+218,LUX,Jardine Holdings Group,Equity,Financials,USD
+219,YRG,Umbra Industries Corp,Equity,Industrials,USD
+220,HSC,Ironwood Telecom Corp,Equity,CommServices,USD
+221,OVQU.DE,Drakemoor Holdings SE,Equity,Financials,EUR
+222,8601.T,Pemberton Entertainment KK,Equity,CommServices,JPY
+223,ZIN,Ardent Technologies Inc,Equity,InfoTech, USD
+224, usqdd2sy4a12 ,US Treasury 3.75% 2027,Bond, Government ,USD
+225,RWL.SW,Oakhaven Data SA,Equity,InfoTech,CHF
+226,XFV.L,Tindall Diagnostics plc,Equity,HealthCare,GBP
+227,SZB.SW,Montrose Chemicals AG,Equity,Materials, chf
+228,5607.HK,Montrose Microsystems Holdings,Equity,InfoTech,HKD
+229,3612.HK,Lumen Power Holdings,  Equity  ,Utilities,HKD
+230,5903.HK,Fairmont Software Holdings,  Equity  ,InfoTech,HKD
+231,WZNN.PA,Oakhaven Systems SE,Equity,InfoTech,EUR
+232,MBT.L,Tindall Utilities plc,Equity,Utilities,GBP
+233,YBP,Orion Total Market ETF,  ETF  ,Broad,USD
+234,FRGT6YV61DC7,Larchmont 6.25% 2027 Sr Notes,Bond,Securitized,  EUR
+235,INXW,Copper Spot,Commodity,BaseMetals,USD
+236, YCPY ,Underwood Nutrition Corp,Equity,ConsumerStaples,USD
+237,9291.HK,Northcrest Hospitality Holdings,Equity,ConsumerDisc,HKD
+238,JNJB,Halcyon Health Group,Equity,HealthCare,USD
+239,HHCR.PA,  Cardinal Foods SE  ,Equity,ConsumerStaples,EUR
+240,FR2DCVSK6QM9,French OAT 2.25% 2038,Bond,Government,EUR
+241,ISK,Helvetia Total Market ETF,ETF,Broad,USD
+242,SGTQ.L,Halcyon Energy plc,Equity,Energy,GBP
+243,USMEDJQF0YZ9,Inverness 6.00% 2036 Sr Notes,Bond,Securitized,USD
+244,VHI.L,Dunmore Software plc,Equity,InfoTech,GBP
+245,AZO,Vantage Medical Group, Equity ,HealthCare,USD
+246,GBU,Aldridge Apparel Inc,Equity,ConsumerDisc,USD
+247,FVIE,Tindall Financial Group,Equity,Financials,USD
+248,EZMR.L,Wycombe Power plc,Equity,Utilities,GBP
+249,3017.HK,Jadeport Power Holdings,Equity,Energy,HKD
+250,ICA,Northcrest Aggregate Bond ETF,ETF,FixedIncome,USD
+251,KCS.SW,Wycombe Software SA,Equity,InfoTech,CHF
+252,VPP,Fairmont Motors Group,Equity,ConsumerDisc,USD
+253,PZQW,Ironwood Diagnostics Inc,Equity,HealthCare,USD
+254,WETH.SW,Stratford Diagnostics SA,Equity,HealthCare,CHF
+255,USHENECCTTC5,US Treasury 5.00% 2045,Bond,Government,USD
+256,8877.HK,Stratford Microsystems Ltd,Equity,InfoTech,HKD
+257,HWH,Pemberton REIT Inc,Equity,RealEstate,USD
+258,LPE,Drakemoor Industries Corp,Equity,Industrials,USD
+259,BKY.L,Kestrel Biosciences plc,Equity,HealthCare,GBP
+260,UEZ.SW,Stonebridge Engineering SA, Equity ,Industrials,CHF
+261, GDA.SW ,Oakhaven Foods SA,Equity,ConsumerStaples,CHF
+262,JPZW52Q32Y68,Aldridge 2.00% 2032 Sr Notes,Bond,Securitized,JPY
+263,ROS,Greycliff Engineering Group,Equity,Industrials,USD
+264,GMHQ,Dunmore Electric Inc,  Equity  ,Utilities,USD
+265,  fngv  ,Yarrow Media Inc,Equity,CommServices,USD
+266,ULVG,Vantage Partners Inc,Equity,Financials,USD
+267,WEGQ,Norwood Health Group,Equity,HealthCare,USD
+268,UQTA,Brightwater Realty Group,Equity,RealEstate,USD
+269,CH0W4ML7VPJ1,Halcyon 4.25% 2029 HY Notes,Bond,HighYield,CHF
+270,  jp5kntjz9g06  ,JGB 3.75% 2042,Bond,Government,JPY
+271,JCQH,Montrose Aerospace Group,Equity,Industrials,USD
+272,9252.HK,Cardinal Motors Ltd,Equity,ConsumerDisc,HKD
+273,TQVH.SW,Zephyr Semiconductor AG,Equity,InfoTech,CHF
+274,DEM1UT2WA696,German Bund 3.25% 2045,Bond,Government,EUR
+275,TGX,Montrose Realty Corp,Equity,RealEstate,USD
+276,QHR.L,Lumen Total Market ETF,ETF,Broad,GBP
+277,1359.T,Lumen Commodity ETF,ETF,Commodity,JPY
+278,JVF.SW,Ardent Capital AG,Equity,Financials,CHF
+279,UKN.DE,Adlerstein Diagnostics AG,Equity,HealthCare,EUR
+280,CWO.L,Norwood Resources plc,Equity,Energy,GBP
+281,GBWY9Q6S63W9, UK Gilt 2.25% 2038 ,Bond,Government,GBP
+282,DKG.L,Vantage InfoTech ETF,ETF, InfoTech ,GBP
+283,CMF,Gold Spot,Commodity,PreciousMetals,USD
+284,SMVK.PA,Tindall Partners SE,Equity,Financials,EUR
+285,7694.T,Tindall Logistics Corporation,Equity,Industrials,JPY
+286,RBBF.SW,Umbra Developments AG,Equity,RealEstate,CHF
+287,FRKJ1BHSDGP3,Orion 4.75% 2034 Sr Notes,Bond,Corporate,  EUR
+288,BJQI,Harlow Hospitality Group,Equity,ConsumerDisc,USD
+289,ATC,Marisol Software Group,Equity,InfoTech,USD
+290,NGFZ,Stratford Resources Inc,Equity,Energy,USD
+291,KHQ.L,Helvetia Total Market ETF,ETF,Broad,GBP
+292,KWSU.SW,Stonebridge Technologies SA,Equity,InfoTech,CHF
+293,MJVR.PA,Northcrest Total Market ETF,ETF,Broad,EUR
+294,2247.T,Ellesmere Diagnostics Corporation,Equity,HealthCare,JPY
+295,VFGB.PA,Ellesmere Capital SE,Equity,Financials,EUR
+296,  hmca.l  ,Evermore Systems plc,Equity,InfoTech,GBP
+297,LHN.DE,Ardent Logistics SE,Equity,Industrials,EUR
+298,7334.T,Foxglove Industries KK,Equity, Materials ,JPY
+299,EQSB,Pemberton Technologies Inc,Equity,InfoTech,USD
+300,UJTG,Ellesmere Media Corp,Equity,CommServices,USD
+301,BTPT.DE,Belmont Engineering SE,Equity,Industrials,EUR
+302,KPS,Nickel Spot,Commodity, BaseMetals ,USD
+303,UJK,Marisol Petroleum Corp,Equity,Energy,USD
+304,WDXX.L,Northcrest Total Market ETF,ETF,Broad,GBP
+305,UST6XNWYQBM6,US Treasury 5.50% 2031,Bond,Government,USD
+306,UJO.DE,Hohenzoll Microsystems SE,Equity,InfoTech,EUR
+307,LPQ.DE,Orion Total Market ETF,ETF,Broad,EUR
+308,STM.DE,Cardinal Consumer SE,Equity,ConsumerStaples,EUR
+309,GOA.SW,Inverness Mining AG,Equity,Materials,CHF
+310,8024.T,Lumen Aggregate Bond ETF,ETF,FixedIncome,JPY
+311,8720.HK,Stratford Entertainment Holdings,Equity,CommServices,HKD
+312,WHLY,  Underwood Partners Inc  ,Equity,Financials,USD
+313,  zoky.l  ,Ravenswood Systems plc,Equity,InfoTech,GBP
+314,NYV,Crestline Financial Group,Equity,Financials,USD
+315,FXL,Foxglove Foods Group,Equity,ConsumerStaples,USD
+316,9439.HK,Victoria Peak Media Holdings,Equity,CommServices,HKD
+317,SLQ.SW,Zephyr Telecom AG,Equity,CommServices,CHF
+318,FRHTU784L6P4,Zephyr 4.00% 2039 HY Notes,Bond,HighYield,EUR
+319,7346.T,Juniper Energy Corporation,Equity,Energy,JPY
+320,SIKW,Stratford Foods Inc,Equity,ConsumerStaples,USD
+321,DYTE,Orion Leisure Corp,Equity,ConsumerDisc,USD
+322,  BKC  ,Norwood Data Inc,Equity,InfoTech,USD
+323,4245.T,Vantage ConsumerDisc ETF,ETF,ConsumerDisc,JPY
+324,6223.T,Beacon Total Market ETF,ETF,Broad,JPY
+325,HYS,Pemberton REIT Inc,Equity,RealEstate,USD
+326,TXT.PA,Lumen Total Market ETF,ETF,Broad,EUR
+327,DEP0GBSKS3H7,German Bund 5.00% 2035,Bond,Government,EUR
+328,1809.T,Orion Financial KK,Equity,Financials,JPY
+329,GBQQSDJGD7T0,Norwood 4.75% 2043 Sr Notes,Bond,Municipal,GBP
+330,VTM,Orion Innovation ETF,ETF,Thematic,  USD
+331,4924.HK,Jadeport Industries Holdings,Equity,Materials, hkd
+332,PMBV.PA,Zephyr Systems SE,Equity,InfoTech,EUR
+333,TLGI,Lumen Motors Group,Equity,ConsumerDisc,USD
+334,MFI.PA,Wycombe Entertainment SA,Equity,CommServices,EUR
+335,  TYBG.PA  ,Orion Commodity ETF,ETF,Commodity,EUR
+336,8610.T,Belmont Systems Corporation,Equity,InfoTech, jpy
+337,IIE.L,Greycliff Financial plc,Equity,Financials,GBP
+338,USDS8TZQJQN4,Ravenswood 3.00% 2032 Sr Notes,Bond,Corporate,USD
+339,SGYK,Drakemoor Microsystems Group,Equity,InfoTech,USD
+340,1855.HK,Beacon Trust Holdings,Equity,Financials,HKD
+341,RKY.SW,Greycliff Telecom SA,Equity,CommServices,CHF
+342,WBH.DE,Dunmore Engineering AG,Equity,Industrials,EUR
+343,CWXO.SW,Lumen Commodity ETF,ETF,Commodity,CHF
+344,USJC239G6L75,Pinnacle 4.00% 2045 Sr Notes,Bond,Municipal,USD
+345,7646.T,Ardent Power Corporation,Equity,Energy,JPY
+346,7721.T,Northcrest Total Market ETF,ETF,Broad,JPY
+347,OAG.DE,Orion Total Market ETF,ETF,Broad,EUR
+348,KQN,Palladium Spot,Commodity,PreciousMetals,USD
+349,WBV.L,Montrose Data plc,Equity,InfoTech,GBP
+350,HKLMHFXDZL71,Larchmont 6.00% 2029 Sr Notes,Bond,Municipal,HKD
+351,WKY.DE,Quillon Foods AG,Equity,ConsumerStaples,EUR
+352,9998.HK,  Lumen Total Market ETF  ,ETF,Broad,HKD
+353,US13SG8VJRF8,Harlow 4.00% 2038 Sr Notes,Bond,Securitized,USD
+354,HKENLFP8AFL3,HK Government 3.25% 2042,Bond,Government,HKD
+355,UHII, Thornbury Bancorp Inc ,Equity,Financials,USD
+356,DMBL.L,Lumen Innovation ETF,ETF,Thematic,GBP
+357,FRMV232FW9Y6,Jardine 3.00% 2043 Sr Notes,Bond,Corporate,EUR
+358,  GUW  ,Underwood Household Group,Equity,ConsumerStaples,USD
+359,YMMH,Silver Spot,  Commodity  ,PreciousMetals,USD
+360,CHX1TRT4D5B3,Larchmont 2.00% 2043 Sr Notes,Bond,Securitized,CHF
+361,LTM.DE,Crestline Realty AG,Equity,RealEstate,EUR
+362,SKGD.PA,Foxglove Media SA,Equity,CommServices,EUR
+363,RGHE,Palladium Spot,Commodity, PreciousMetals ,USD
+364,2367.T,Tindall Semiconductor KK,Equity,InfoTech,JPY
+365,NFUO,Wycombe Electric Group,Equity,Utilities,USD
+366,IPJC,Westbrook Technologies Inc,Equity,InfoTech,USD
+367,BGD,Kestrel Trust Inc,Equity,Financials,USD
+368,WDLO,Stratford Systems Inc,Equity,InfoTech,USD
+369,USNF7T0TDF23,Umbra 4.25% 2041 Sr Notes, Bond ,Securitized,USD
+370,UMBW,Dunmore Systems Group,Equity,InfoTech,USD
+371,WOW,Vantage Semiconductor Corp,Equity,InfoTech,USD
+372,4379.T,Juniper Industries Corporation,Equity,Industrials,JPY
+373,9839.T,Akatsuki Mining KK,Equity,Materials, jpy
+374,JP3QK205EC83,Larchmont 3.50% 2043 Sr Notes,Bond,Corporate, JPY
+375,POHR,Redstone Developments Inc,Equity,RealEstate,USD
+376,SEKG,Pemberton Data Inc,Equity,InfoTech,USD
+377,XHP.DE,Fairmont Nutrition SE,Equity,ConsumerStaples,EUR
+378,BUP,Granite Data Inc,Equity,InfoTech,USD
+379,GBYUW79DDML3,UK Gilt 2.50% 2040, Bond ,Government,GBP
+380,US2THXYP0V80,Aldridge 4.75% 2028 HY Notes,Bond,  HighYield  ,USD
+381,1594.T,Calder Chemicals KK,Equity,Materials,JPY
+382,YXWA.PA,Orion Total Market ETF,ETF,Broad,EUR
+383,8803.T,Ashford Financial Corporation,Equity,Financials,JPY
+384,HKF0EF1E4368,Hang Cheong 3.00% 2039 Sr Notes,Bond,Corporate,HKD
+385,ENVI.DE,Inverness Estates SE,Equity,RealEstate,EUR
+386,US1AZPZKSHT9,US Treasury 2.75% 2037,Bond,Government,USD
+387,WQD.DE,Lumen Total Market ETF,ETF,Broad,EUR
+388,SDNO,Orion Telecom Corp,Equity,CommServices,USD
+389,HFJ,Umbra Logistics Corp,Equity,Industrials,USD
+390,GRCM.L,Vantage Innovation ETF,ETF,Thematic,GBP
+391,  FR681KZR8NQ8  ,French OAT 4.00% 2038,Bond,Government,EUR
+392,3953.T,Crestline Retail KK,Equity,ConsumerDisc,JPY
+393,ZBDC.DE,Tindall Nutrition SE, Equity ,ConsumerStaples,EUR
+394,SXQ.L,Brightwater Retail plc,Equity,ConsumerDisc,GBP
+395,ERH.L,Pinnacle Telecom plc,Equity,CommServices,GBP
+396,NPRH,Oakhaven Consumer Corp,Equity,ConsumerStaples,USD
+397,FRSXGLNQY2Q2,Dufour 3.25% 2040 Sr Notes,Bond,Municipal,EUR
+398,ZEN,Pemberton Hospitality Corp,Equity,ConsumerDisc,  USD
+399,7931.T,Granite Engineering Corporation,Equity,Industrials,JPY
+400,APV,Beacon Logistics Inc,Equity,Industrials,USD
+401,JKG,Wycombe Bancorp Group,Equity,Financials,USD
+402,CHH36SUQEWC8,Pinnacle 3.75% 2037 Sr Notes,Bond,Securitized,CHF
+403,WWRD.L,Pemberton Trust plc,Equity,Financials,GBP
+404,AHK,Cardinal Technologies Inc,Equity,  InfoTech  ,USD
+405,BORB.L,Ellesmere Power plc,Equity,Utilities,GBP
+406,6228.HK,Montrose Machinery Ltd,Equity,Industrials,HKD
+407,9382.HK,Orion Total Market ETF,ETF,Broad,HKD
+408,YGQ,Tindall Media Group,Equity,CommServices,USD
+409,ZTS,Brightwater Semiconductor Inc,Equity, InfoTech ,USD
+410,BYI.L,Northcrest Technologies plc,Equity,InfoTech,GBP
+411,AQH,Zinc Spot,Commodity,BaseMetals,USD
+412,KLV.SW,Larchmont REIT SA,  Equity  ,RealEstate,CHF
+413,DEJQ4PCK3YQ0,German Bund 6.50% 2045, Bond ,Government,EUR
+414,YNR,Greycliff Holdings Inc,Equity,Financials,USD
+415, bauy.pa ,Northcrest Nutrition SA,Equity,ConsumerStaples,EUR
+416,PVS,Beacon Total Market ETF,ETF,Broad,USD
+417,VGSM,Vantage Total Market ETF,ETF,Broad,USD
+418,ZXO,Helvetia Utilities ETF,ETF,Utilities,USD
+419,1766.T,Yamato Machinery Corporation,Equity,Industrials,JPY
+420,EIP,Foxglove Microsystems Group,Equity,InfoTech,USD
+421,XNV,Ironwood Therapeutics Group,Equity,HealthCare,USD
+422,DDW.PA,Kestrel Materials SE,Equity,Materials,  EUR
+423,JPOV,  Northcrest Industries Corp  ,Equity,Materials,USD
+424,6517.T,Marisol Microsystems KK,Equity,InfoTech,JPY
+425,6615.HK,Quillon Household Ltd,Equity,ConsumerStaples,HKD
+426,AKOI.DE,Crestline Capital SE,Equity,Financials,EUR
+427,PBUU.L,Aldridge Engineering plc,Equity,Industrials,GBP
+428,CHC9A54J1E55,Drakemoor 6.50% 2028 HY Notes,Bond,HighYield,CHF
+429,UDGO,Yarrow Chemicals Inc,Equity, Materials ,USD
+430,SWF.SW,Northcrest Total Market ETF,ETF,Broad,CHF
+431,CMKM,Brent Crude Spot,Commodity,Energy,USD
+432,CNQ,Jardine Technologies Corp,Equity,InfoTech,USD
+433,TPJ,Marisol Microsystems Corp,Equity,InfoTech,USD
+434,RDRA,Juniper Systems Group,Equity,InfoTech,USD
+435,SAM,Pinnacle Beverages Group,Equity,ConsumerStaples,USD
+436,  leim  ,Norwood Resources Corp,Equity,Energy,USD
+437,GQEU.PA,Norwood Medical SE,Equity,HealthCare,EUR
+438,US5CCL1S7SP2,Kingsley 5.50% 2029 Sr Notes,Bond,Corporate,USD
+439,CHND3HXEL1B1,Stratford 3.75% 2033 Sr Notes,Bond,Corporate,CHF
+440,NUI.PA,Zephyr Communications SA,Equity,CommServices,EUR
+441,XXAR.L,Granite Software plc,Equity,InfoTech,GBP
+442,JPQZU9F6QP91,JGB 6.25% 2042,Bond,Government,JPY
+443,FRL6UN6GMSW8,French OAT 3.75% 2044,Bond,Government,  EUR
+444,NFNF.L,Larchmont Foods plc,Equity,ConsumerStaples,GBP
+445,OIQJ,Copper Spot,Commodity,BaseMetals,USD
+446,YGQZ.L,Fairmont Technologies plc,Equity,InfoTech,GBP
+447,1912.T,Quillon Beverages KK,Equity,ConsumerStaples,JPY
+448,5084.T,Ravenswood Hospitality Corporation,Equity,ConsumerDisc, JPY
+449, HCW ,Vantage Energy ETF,ETF,Energy,USD
+450, elbt.de ,Stratford Leisure AG,Equity,ConsumerDisc,EUR
+451,QOK.DE,Northcrest Aggregate Bond ETF,ETF,FixedIncome,EUR
+452,  4518.HK  , Drakemoor Software Holdings ,Equity,InfoTech,HKD
+453,BMBO.L,Orion Total Market ETF,ETF,Broad,GBP
+454,TEF.DE,Beacon Commodity ETF,ETF,Commodity,EUR
+455,YCLR,Kestrel Household Group,Equity,ConsumerStaples,USD
+456,OBY,Redstone Diagnostics Corp,Equity,HealthCare,USD
+457,JXN.DE, Halcyon Pharmaceuticals SE ,Equity,HealthCare,EUR
+458,EDBX.L,Pinnacle Software plc,Equity,InfoTech,GBP
+459,FSL.L,Ashford Health plc,Equity, HealthCare ,GBP
+460,JPF6EPBP5N07,Norwood 4.50% 2031 Sr Notes,Bond,Securitized,JPY
+461,USMNEGNT17Z7,US Treasury 2.50% 2036,Bond,Government,USD
+462,SBLM,Redstone Engineering Group,Equity,Industrials,USD
+463,TZQ,Foxglove REIT Corp,Equity,RealEstate,USD
+464,5430.HK,Beacon Total Market ETF,ETF,Broad,HKD
+465,GRGI.SW,Orion Biosciences SA,Equity,HealthCare,CHF
+466,IWD,Brightwater Financial Corp,Equity,Financials,USD
+467,KQAA.PA,Quillon Pharmaceuticals SA,Equity,HealthCare,EUR
+468,PRS,Wycombe Trust Group,Equity,Financials,USD
+469,SCF.DE,Jardine Technologies AG,Equity,InfoTech,EUR
+470,NUX,Belmont Software Inc,Equity,InfoTech,USD
+471,UXEP,Fairmont Therapeutics Group,Equity,HealthCare,USD
+472,JRL,Redstone Capital Group,Equity,Financials,USD
+473,4268.T,Helvetia Aggregate Bond ETF,ETF,FixedIncome,JPY
+474,9147.T,Montrose Apparel KK,Equity,ConsumerDisc,JPY
+475,9629.HK,Orion Total Market ETF,ETF,Broad,HKD
+476,2931.HK,Beacon Commodity ETF,ETF,Commodity,HKD
+477,DEZMX2GDUHP2,Inverness 1.50% 2045 Sr Notes,Bond,Corporate,EUR
+478,US8Z6F44RQY5,Aldridge 5.75% 2039 Sr Notes,Bond,Corporate,USD
+479,BAC.L,Aldridge Properties plc,Equity,RealEstate,GBP
+480,GBCAJ5ZCBPX1,UK Gilt 4.50% 2038,Bond,Government,GBP
+481, FNZY.SW ,Stratford Aerospace AG,Equity,Industrials,CHF
+482,1262.HK,Jardine Oil & Gas Holdings,Equity,Energy,HKD
+483, 3372.t ,Sakura Networks KK,Equity,CommServices,JPY
+484,8453.HK,Verity Media Ltd,Equity,CommServices,HKD
+485,MKBE,Halcyon Telecom Inc,Equity,CommServices,USD
+486, SKKS.L ,Ironwood Systems plc,Equity,InfoTech,GBP
+487,CUR,Zephyr Holdings Inc,Equity,Financials,USD
+488,WCI.DE,Quillon Bancorp SE,Equity,Financials,EUR
+489,DYIN,Kingsley Semiconductor Inc,Equity,InfoTech,USD
+490,DTOE,Beacon Total Market ETF,ETF,Broad,USD
+491,GBSDF6XDP9V3,Stratford 2.75% 2036 Sr Notes,Bond,Corporate,GBP
+492,ERUM.PA,Orion Total Market ETF, ETF ,  Broad  ,EUR
+493,2441.T,Norwood Utilities Corporation,Equity,Utilities,JPY
+494,DJH,Fairmont Machinery Inc,Equity,Industrials,USD
+495,8729.T,Crestline Software KK,Equity,InfoTech,JPY
+496,CQIF.L,Thornbury Retail plc,Equity,ConsumerDisc,GBP
+497,GEY,Pinnacle Industries Corp,Equity,Industrials,USD
+498,LDCQ.DE,Ashford Grid AG,Equity,Utilities,EUR
+499,FTU.SW,Yarrow Retail SA,Equity,ConsumerDisc,CHF
+500,MBIT.L,Orion Logistics plc,Equity,Industrials,GBP
+501,FAX,Montrose Pharmaceuticals Inc,Equity,HealthCare,USD
+502,6462.HK,Orion Communications Holdings,Equity, CommServices ,HKD
+503,NHVE.SW,Stratford Brands SA,Equity,ConsumerDisc,CHF
+504,HLJH.SW,Vantage Aggregate Bond ETF,ETF,FixedIncome,CHF
+505,CEL,Pemberton Capital Corp,Equity,Financials,USD
+506,4102.HK,Orion Aggregate Bond ETF,ETF,FixedIncome,HKD
+507,YBZ.L,Cardinal Semiconductor plc,Equity,InfoTech,GBP
+508,GVDH,Umbra Partners Inc,Equity,Financials,USD
+509,0136.HK,Beacon Systems Holdings,Equity,InfoTech,HKD
+510,8128.T,Fairmont Chemicals Corporation,Equity,Materials,JPY
+511,BDS,Beacon Petroleum Corp,Equity,Energy,USD
+512,7298.HK,Brightwater Microsystems Holdings,Equity,InfoTech,HKD
+513,9281.T,Lumen Materials ETF,ETF,Materials,JPY
+514,RCH.SW,Alpina Consumer AG,Equity,ConsumerStaples,CHF
+515, 8031.hk ,Orion Apparel Holdings,Equity,ConsumerDisc,HKD
+516,5557.T,Beacon Total Market ETF, ETF ,Broad,JPY
+517,PWB,Verity Networks Inc,Equity,CommServices,USD
+518,6643.T,Quillon Health KK,Equity,HealthCare,JPY
+519,GMJ.SW,Léman Partners AG,Equity,Financials,CHF
+520,XNM,Juniper Partners Inc,Equity,Financials,USD
+521,FBAD.PA,Beacon Motors SA,Equity,ConsumerDisc,EUR
+522,WLE.SW,Stonebridge Entertainment AG,Equity,CommServices,CHF
+523,CHGCYZ5FVPG9,Engadin 5.25% 2027 Sr Notes,Bond,Corporate,CHF
+524,LKTF.L,Ravenswood Software plc,Equity,InfoTech,GBP
+525,USQ4Q048D9L3,Yarrow 3.75% 2045 Sr Notes,Bond,Securitized,USD
+526,USFAC122U861,US Treasury 5.50% 2031,Bond,Government,USD
+527, SMA.DE ,Harlow Partners AG,Equity,Financials, EUR
+528,USJV3TMTT3U8,US Treasury 3.25% 2038,Bond,Government,USD
+529,SOUL,Tindall Therapeutics Corp,Equity,HealthCare,  usd
+530,JFA.L,  Kestrel Leisure plc  ,Equity,ConsumerDisc,GBP
+531,UPR.DE,Adlerstein Microsystems SE,Equity,InfoTech,EUR
+532,TXS,Juniper Leisure Group,Equity,ConsumerDisc,USD
+533,YAV,Wycombe Leisure Group,Equity,ConsumerDisc, usd
+534, GBS4EGS1MYG6 ,UK Gilt 5.75% 2031,Bond,Government,GBP
+535,NPS.PA,Harlow Trust SE,Equity,Financials,EUR
+536,0877.HK,Stonebridge Hospitality Ltd,Equity,ConsumerDisc,HKD
+537,KFUS.L,Northcrest Networks plc,Equity,InfoTech,GBP
+538,5081.T,Lumen Total Market ETF,ETF,Broad,JPY
+539,FR88VA93D4Y9,French OAT 2.75% 2039,Bond,Government,EUR
+540,  hkhqctbvjsm2  ,Ravenswood 3.50% 2034 Sr Notes,Bond,Corporate,HKD
+541,UHY.PA,Stonebridge Mining SA,Equity,Materials,EUR
+542,HCHG,Wheat Spot,Commodity,Agriculture,USD
+543,US2KFC56KGT8,Ashford 3.00% 2044 Sr Notes,Bond,Corporate,USD
+544,CIE.L,Foxglove Financial plc,Equity,Financials,GBP
+545,DULF, Ironwood Systems Corp ,Equity,InfoTech,USD
+546,MYHK,Northcrest Trust Inc,Equity,Financials,USD
+547,2048.HK,Ravenswood Consumer Holdings,Equity,ConsumerStaples,HKD
+548,IAI.L,Northcrest Diagnostics plc,Equity, HealthCare ,GBP
+549,KIXV.DE,Foxglove Diagnostics SE,Equity,HealthCare,EUR
+550,BBWU.L,Stratford Household plc,Equity,ConsumerStaples, GBP
+551,1982.HK,Helvetia Total Market ETF,ETF, Broad ,HKD
+552,5210.HK,Harlow Nutrition Holdings,Equity,ConsumerStaples,HKD
+553,CMZ.SW,Orion Motors AG,Equity,ConsumerDisc,CHF
+554,5891.HK,Wycombe Data Holdings,Equity,InfoTech,HKD
+555,ZEGX.DE,Juniper Capital SE,Equity,Financials,EUR
+556,KRFU.SW,Lumen Materials ETF,ETF,Materials,CHF
+557,ZIBJ.L,Norwood Holdings plc,Equity,Financials,GBP
+558,CHA9BE4FHUW1,Swiss Confederation 5.00% 2035,Bond,Government,CHF
+559,USJCW7DKZEL3,Norwood 3.75% 2036 Sr Notes,Bond, Municipal ,USD
+560,8188.T,Stonebridge Leisure Corporation,Equity,ConsumerDisc,JPY
+561,IUC,Lumen Holdings Corp,Equity,  Financials  ,USD
+562,5310.T,Verity Industries KK,Equity,Industrials,JPY
+563,6670.T,Juniper Engineering Corporation,Equity,Industrials,JPY
+564,DEN7ENACVV55,Pemberton 4.00% 2045 Sr Notes,Bond,Municipal,EUR
+565,DASD,Calder Energy Inc,Equity,Energy,USD
+566,VVOD,Beacon Microsystems Inc,Equity,InfoTech,USD
+567,5932.T,Thornbury Data KK,Equity,InfoTech,JPY
+568,JKSS.L,Stratford Bancorp plc,Equity,Financials,GBP
+569,DBD,Jardine Biosciences Inc,Equity,HealthCare,USD
+570,SSYI.PA,Aldridge Semiconductor SA,Equity,InfoTech,EUR
+571, rcl.pa ,Belcour Foods SE,Equity,ConsumerStaples,EUR
+572,KJJR.PA,Evermore Utilities SA,Equity,Utilities,EUR
+573,PCKX.L,Crestline Financial plc,Equity,Financials,GBP
+574,JIFV.DE,Kingsley Motors SE,Equity,ConsumerDisc,EUR
+575, CH3F00SJCBA3 ,Drakemoor 2.50% 2030 HY Notes,Bond,HighYield,CHF
+576,NNE,Tindall Aerospace Inc,Equity,Industrials,USD
+577,RHCR.L,Belmont Medical plc,Equity,HealthCare,GBP
+578,LJT.L,Beacon Total Market ETF,ETF,Broad,GBP
+579,GBV509A4CBN7,Ironwood 1.75% 2035 Sr Notes,Bond,Corporate,GBP
+580,JHJJ.DE,Kestrel Consumer SE,Equity,ConsumerStaples,EUR
+581,NVR.L,  Ironwood Biosciences plc  ,Equity,HealthCare,GBP
+582,EMY,Vantage Innovation ETF,ETF,Thematic,USD
+583,PEBB,Silver Spot,Commodity,PreciousMetals,USD
+584,RLA,Fairmont Partners Inc,Equity,Financials,USD
+585,5819.T,Stratford Chemicals KK,Equity,Materials,JPY
+586,2034.HK,Wycombe Semiconductor Holdings,Equity,InfoTech,HKD
+587,JICN,Marisol Entertainment Inc,Equity,CommServices,USD
+588,KHG.DE,Brightwater Entertainment SE,Equity,CommServices,EUR
+589,USYEL8CS2Z52,Stonebridge 4.50% 2043 Sr Notes,Bond,Securitized,USD
+590,ZQB,Calder Brands Group,Equity,ConsumerDisc,USD
+591,YSFF.L,Pemberton Hospitality plc,Equity,ConsumerDisc,GBP
+592,EDQ.PA,Belcour Apparel SA,Equity,ConsumerDisc,EUR
+593,4032.HK,Calder Therapeutics Ltd,Equity,HealthCare,HKD
+594,UIV,Wycombe Industries Corp,Equity,Materials,USD
+595,XKS,Foxglove Therapeutics Inc,Equity,HealthCare,USD
+596,DIXR.DE,Halcyon Brands AG,Equity,ConsumerDisc,EUR
+597,BTAK,Ellesmere Media Inc,Equity,CommServices,USD
+598,CNH.SW,Beacon Health SA,Equity,HealthCare,CHF
+599,YFD.DE,Northcrest Aggregate Bond ETF,ETF,FixedIncome,EUR
+600,GJA.SW,Evermore Industries SA,Equity, Materials , chf
+601,PGT.L,Verity Power plc,Equity,Energy,GBP
+602,LHIL.PA,Jardine Entertainment SE,Equity,CommServices,EUR
+603,AFQ,Northcrest Therapeutics Inc,Equity,HealthCare,USD
+604,LMTZ.DE,Harlow Health SE,Equity,HealthCare,EUR
+605,VKP,Kestrel Electric Group,Equity,  Utilities  ,USD
+606,XPQN,Greycliff Microsystems Group,Equity,InfoTech,USD
+607,MFL.PA,Greycliff Household SA,Equity,ConsumerStaples,EUR
+608,CDMN.DE,Beacon Total Market ETF,ETF,Broad,EUR
+609,OHJD,Calder Logistics Group,Equity,Industrials, usd
+610,CHNGP3CSJF82,Léman 5.50% 2042 Sr Notes,Bond,Securitized,CHF
+611,8678.HK,Hang Cheong Communications Holdings,Equity,  CommServices  ,HKD
+612,UUK,Vantage Financials ETF,ETF,Financials,USD
+613,1957.T,Lumen Commodity ETF,ETF,Commodity,JPY
+614,EIDG.L,Lumen Total Market ETF,ETF,Broad,GBP
+615, 8895.hk ,Greycliff Machinery Ltd,Equity,Industrials,HKD
+616,RVJ.PA,Juniper Technologies SA,Equity,InfoTech,EUR
+617,7923.T,Thornbury Household KK,Equity,ConsumerStaples,JPY
+618,CDS,Ashford Oil & Gas Group,Equity,Energy,USD
+619,JRHX.DE,Drakemoor Communications SE,Equity,CommServices,EUR
+620,GB7DDAUSN0G8,UK Gilt 5.50% 2044, Bond , Government ,GBP
+621,US1YRETKWZZ3,Cardinal 2.25% 2043 HY Notes,Bond,  HighYield  ,USD
+622,0594.HK,Calder Data Ltd,Equity,InfoTech,HKD
+623,QCGG,Vantage Innovation ETF,ETF,Thematic,USD
+624,DUH.SW, Ashford Power SA ,Equity,Energy,CHF
+625,USN8ZJH92644,US Treasury 2.75% 2035,Bond,Government,USD
+626,8201.T,Orion Total Market ETF,ETF,Broad,JPY
+627,ZHG.DE,Redstone Microsystems SE,Equity,InfoTech,EUR
+628,FMVR,  Northcrest Aggregate Bond ETF  ,ETF,FixedIncome,USD
+629,ALG,Orion Commodity ETF,ETF,Commodity,USD
+630,4623.T,Hoshino Networks Corporation,Equity,InfoTech,JPY
+631,CKO.SW,Aldridge Machinery AG,Equity,Industrials,CHF
+632,TMAW.L,Crestline Health plc,Equity,HealthCare,  gbp
+633,SDH.DE,Quillon Foods AG,Equity,ConsumerStaples,EUR
+634,UMYS,Thornbury Microsystems Group,Equity,InfoTech,USD
+635,FSPW.SW,Ellesmere Logistics AG,Equity,Industrials,CHF
+636,FRYF7T1SW165,Foxglove 2.25% 2043 Sr Notes,Bond,Securitized,EUR
+637,AWC,Palladium Spot,Commodity,PreciousMetals,USD
+638,ZZLP.SW,  Marisol Communications SA  ,Equity, CommServices ,CHF
+639,FPUC,Thornbury Oil & Gas Corp,Equity,Energy,USD
+640,ZTK.DE,Tindall Capital SE,Equity,Financials,EUR
+641,VHJX,Vantage Systems Inc,Equity,InfoTech,USD
+642,EHN.SW,Engadin Diagnostics AG,Equity,HealthCare,CHF
+643,US3RWEBT96T3,US Treasury 1.75% 2031,Bond,  Government  ,USD
+644,9545.T,Fairmont Capital KK,Equity,Financials,JPY
+645,ZKNB.PA,Belcour Machinery SE,Equity,Industrials, EUR
+646,US5FAYDCMNN8,Cardinal 5.75% 2034 Sr Notes,Bond,Corporate,USD
+647,RAH,Juniper Data Corp,Equity,InfoTech,USD
+648,4155.HK,Kowloon Diagnostics Holdings,Equity,HealthCare,HKD
+649,  icc  ,Beacon Innovation ETF,ETF,Thematic,USD
+650,CBP.DE,Jardine Networks AG,Equity,InfoTech,EUR
+651,TFAR,Vantage Total Market ETF,ETF,Broad,USD
+652,KWE,WTI Crude Spot,Commodity,Energy,USD
+653,9619.T,Aldridge Bancorp Corporation,Equity,Financials,JPY
+654,BYEC.L,Pemberton Health plc,Equity,HealthCare,GBP
+655, vyn ,Evermore Entertainment Corp,Equity,CommServices,USD
+656,7004.T,Underwood Machinery Corporation,Equity,Industrials,JPY
+657,LYAT.L,Orion Aggregate Bond ETF,ETF,FixedIncome,GBP
+658,WVWO,Lumen Logistics Inc,Equity,Industrials,USD
+659,CH9MTXFE8EB9,Fairmont 3.25% 2029 Sr Notes,Bond,Securitized,CHF
+660,CDG,Fairmont Beverages Group,Equity,ConsumerStaples,USD
+661,JPB4GKGPE6D5,JGB 6.00% 2031,Bond,Government,JPY
+662,HBUJ,Platinum Spot,Commodity,PreciousMetals,USD
+663,FXI,Norwood Partners Inc,Equity,Financials,USD
+664,QINW,Orion Total Market ETF,ETF,Broad,USD
+665,ITJ,Northcrest Aggregate Bond ETF,ETF, FixedIncome ,USD
+666,US08S6XEMC60,Foxglove 4.50% 2042 Sr Notes,Bond,Securitized,USD
+667,NAQ,  Foxglove Utilities Inc  ,Equity,Utilities,USD
+668,VVIY,Calder Machinery Corp,Equity,Industrials,USD
+669,HKCM4A32MD94,Fairmont 2.25% 2033 Sr Notes,Bond,Corporate,HKD
+670,HKDM3GZB2LH3,Redstone 6.25% 2028 Sr Notes,Bond,Corporate,HKD
+671,HK3MCWLZYZE7,Underwood 2.75% 2041 Sr Notes,Bond,Municipal,HKD
+672,SQSW,Greycliff Retail Inc,Equity,ConsumerDisc,  usd
+673,  USSLD793RFJ0  ,Drakemoor 4.50% 2037 Sr Notes,Bond,Corporate,USD
+674,RFRR.DE,Helvetia Commodity ETF,ETF,Commodity,EUR
+675,8454.T,Beacon Total Market ETF,ETF,Broad,JPY
+676,9583.HK,Stonebridge Data Holdings,Equity,InfoTech,HKD
+677,SUEA,Ravenswood Trust Corp,Equity,Financials,USD
+678,ZZK.L,Greycliff Communications plc,Equity,CommServices,GBP
+679,TFAN.PA,Redstone Leisure SA,Equity,ConsumerDisc,EUR
+680,USNAAAJUFWR9,Halcyon 5.75% 2042 Sr Notes,Bond,Securitized,USD
+681, xgr.sw ,Juniper Pharmaceuticals SA,Equity,HealthCare,CHF
+682,HKXQ69D2EW48,HK Government 4.50% 2039,Bond,Government,HKD
+683,1795.HK,Westbrook Energy Ltd,Equity, Energy ,HKD
+684,3898.T,Kestrel Bancorp Corporation,Equity,Financials,JPY
+685,TVA.SW,Tindall Motors SA,Equity,ConsumerDisc,CHF
+686,UZPM.L,Redstone Partners plc,Equity,Financials,GBP
+687,DEKYQW6KBHH3,Jardine 6.25% 2031 Sr Notes,Bond,Corporate,EUR
+688,LOZL.L,Zephyr Bancorp plc,Equity,Financials,GBP
+689,NLIH,Evermore Realty Inc,Equity,RealEstate,USD
+690,UATT.L,Brightwater Software plc,Equity,InfoTech,GBP
+691,MMD,Thornbury Electric Group,Equity,Utilities,USD
+692,OUPW.L,Ellesmere Retail plc,Equity,ConsumerDisc,GBP
+693,JLBD.DE,Orion Networks SE,Equity,InfoTech,EUR
+694,VYQY.L,Dunmore Industries plc,Equity,Industrials,GBP
+695,QEV,Tindall Grid Corp,Equity,Utilities,USD
+696,6956.HK,Quillon Media Holdings,Equity,CommServices,HKD
+697,UTA,Granite Data Corp,Equity,InfoTech,USD
+698,8889.HK,Goldhill Software Holdings,Equity,InfoTech,HKD
+699,BKB,Cardinal Industries Corp,Equity, Industrials ,USD
+700,JPUN287H7R78,JGB 2.25% 2029,  Bond  ,Government,JPY
+701,DEGDLGQPXQA6,German Bund 3.25% 2037,Bond,Government,EUR
+702,EDE,Larchmont Networks Inc,Equity,CommServices,USD
+703,  mopa.de  ,Evermore Nutrition AG,Equity,ConsumerStaples,  eur
+704,JP7UPM0MYMR9,JGB 1.50% 2045,Bond,Government,JPY
+705,BZKD.PA,Brightwater Networks SE,Equity,InfoTech,EUR
+706,8951.T,Northcrest Total Market ETF,ETF,  Broad  ,JPY
+707,HOLA.L,Vantage ConsumerDisc ETF,ETF,ConsumerDisc,  gbp
+708,CGYS.SW,Lumen Leisure AG,Equity,ConsumerDisc,CHF
+709,POAT,Nickel Spot,Commodity,BaseMetals,USD
+710,ZZV.L,Crestline Systems plc,Equity,  InfoTech  ,GBP
+711,USGN,Juniper Medical Inc,Equity,HealthCare,USD
+712,PPB.L,Cardinal Materials plc,Equity,Materials,GBP
+713,ZZL,Yarrow Machinery Corp,Equity, Industrials ,USD
+714,XTTC.L,Stratford Technologies plc,Equity,InfoTech,GBP
+715,DEFMFQ581M02,Tindall 5.75% 2045 HY Notes,Bond,HighYield,EUR
+716,1796.HK,Beacon Total Market ETF,ETF,Broad,HKD
+717,KNW,Kingsley Data Inc,Equity,InfoTech,USD
+718,LTRW.PA,Pemberton Microsystems SA,Equity,InfoTech,EUR
+719,CBC,Stonebridge Household Inc,Equity,ConsumerStaples,USD
+720,UFI, Brightwater Networks Corp ,Equity,InfoTech,USD
+721,NCQ,Vantage Capital Group, Equity ,Financials,USD
+722,  NBYL.DE  ,Granite Medical SE,Equity,HealthCare,EUR
+723,PFCP,Evermore Telecom Inc,Equity,CommServices,USD
+724,9456.T,Norwood Telecom KK,Equity,CommServices,JPY
+725,LMV.DE,Ardent Networks SE,Equity,InfoTech,EUR
+726,US94J1D01X73,Cardinal 6.00% 2030 Sr Notes,Bond,Corporate,USD
+727,GSWM.DE,Königsberg Beverages SE,Equity, ConsumerStaples ,EUR
+728,CZHV.PA,Dunmore Systems SE,Equity,InfoTech,EUR
+729,SQH.SW,Brightwater Microsystems AG,Equity,InfoTech,CHF
+730,LQZO.PA,Beacon Total Market ETF,ETF,Broad,EUR
+731,ZLBT.L,Lumen Total Market ETF,ETF,Broad,GBP
+732, KIO.SW ,Harlow Motors SA,Equity,ConsumerDisc,CHF
+733,TCKN,Ellesmere Technologies Inc,Equity,InfoTech,USD
+734,NTTE.L,Lumen Data plc,Equity,InfoTech,GBP
+735,ACE,Beacon ConsumerStaples ETF,ETF, ConsumerStaples ,USD
+736,VMPP.L,Foxglove Bancorp plc,Equity,Financials,GBP
+737,FR9TVYF5BP71,Zephyr 1.75% 2034 Sr Notes,Bond,Corporate,EUR
+738,RBV.PA,  Ashford Hospitality SE  ,Equity,ConsumerDisc,EUR
+739,KVH.PA,Ardent Systems SE,Equity,InfoTech,EUR
+740,USN996KHUT38, Halcyon 2.00% 2033 Sr Notes ,Bond,Corporate,USD
+741,FIVR.DE,Zephyr Logistics SE,Equity,Industrials,EUR
+742,UIJW.PA,Ironwood Systems SE,Equity,InfoTech,EUR
+743,EZJG,Northcrest Semiconductor Inc,Equity,InfoTech,USD
+744,DEJMBX0DGGZ6,Greycliff 1.50% 2041 Sr Notes,Bond,Municipal,EUR
+745,IGC,Lumen Total Market ETF,ETF,Broad,USD
+746,US1QD4PA0KL0,Westbrook 1.50% 2039 Sr Notes,Bond,Corporate,USD
+747,LBC,Yarrow Systems Group,Equity,InfoTech,USD
+748, fru36z4c76t8 ,French OAT 2.00% 2041,  Bond  ,Government,EUR
+749,BPJV,Aldridge Foods Inc,Equity,ConsumerStaples,USD
+750,CHMC9VSFQ7Y8,Pinnacle 5.75% 2041 Sr Notes,Bond, Corporate ,CHF
+751,DGTO.DE,Stonebridge Water AG,Equity,Utilities,EUR
+752,3406.HK,Marisol Chemicals Holdings,Equity,Materials,HKD
+753,PPR,Orion Bancorp Inc,Equity,Financials,USD
+754,FUK.SW,Lumen Commodity ETF,ETF,Commodity,CHF
+755,PVR.SW,Northcrest Aerospace AG,Equity,Industrials,CHF
+756,PUAP.SW,Brightwater Microsystems AG,Equity,InfoTech,CHF
+757,RHFV.PA,  Calder Therapeutics SA  ,Equity,HealthCare,EUR
+758,RGLW.SW,Westbrook Brands AG,Equity,ConsumerDisc,CHF
+759,FFI,Sugar Spot,Commodity,Agriculture,USD
+760,XXOP.L,Ravenswood Therapeutics plc,Equity,HealthCare,GBP
+761,MJB,Kingsley Diagnostics Inc,Equity,HealthCare,USD
+762,XLD,Juniper Software Inc,Equity,InfoTech,USD
+763,9876.HK,Yarrow Machinery Holdings,Equity,Industrials,HKD
+764,ZKWE,Halcyon Beverages Group,Equity,  ConsumerStaples  ,USD
+765,CAO.L,Tindall Systems plc,Equity,InfoTech,GBP
+766,9295.T,Tokai Networks KK,Equity,InfoTech,JPY
+767,CLGN,Brent Crude Spot,Commodity,Energy,USD
+768,WPS.PA,Saint-Cyr Retail SE,Equity,ConsumerDisc,EUR
+769,6209.HK,Foxglove Therapeutics Holdings,Equity,  HealthCare  ,HKD
+770,USV1SG5K9SW6,US Treasury 3.25% 2033,Bond,Government,USD
+771,0438.HK,Crestline Chemicals Holdings,Equity,Materials,HKD
+772,UJC.SW,Jungfrau Industries AG,Equity,Materials, CHF
+773,HKVX2LAF5P01,Beacon 2.25% 2027 HY Notes,Bond,HighYield,HKD
+774,OSA,Inverness Telecom Inc,Equity,CommServices,USD
+775, VKH.SW ,  Northcrest Total Market ETF  ,ETF,Broad,CHF
+776,DPTN,Greycliff Software Inc,Equity,InfoTech,USD
+777,KASV.L,Marisol Resources plc,Equity,Energy,GBP
+778,AVDQ,Drakemoor Brands Group,Equity,ConsumerDisc,USD
+779,VXL,Crestline Consumer Group,Equity,ConsumerStaples,USD
+780,CHLMCQXCWP45,Swiss Confederation 2.75% 2027,Bond,Government,CHF
+781,  xyvj  ,Halcyon Resources Group,Equity,Energy,  USD
+782,OMBX.L,Beacon Capital plc,Equity,  Financials  ,  GBP
+783,TYKS,Kestrel Pharmaceuticals Inc,Equity,HealthCare, USD
+784,ERCM.DE,Granite Trust SE,Equity,Financials,EUR
+785,  7877.T  ,Westbrook Microsystems Corporation,Equity,InfoTech,JPY
+786,NID,Crestline Medical Group,Equity,HealthCare,USD
+787,FRZLB3XTRBR3,  Dufour 5.50% 2040 Sr Notes  ,Bond,Corporate,EUR
+788,EHP.SW,Lumen Commodity ETF, ETF ,Commodity,CHF
+789,LBOA.SW,Vantage Petroleum SA,Equity,Energy,  CHF
+790,LTSS.PA,Tindall Partners SA,Equity,Financials,EUR
+791, PZPB.DE ,Northcrest Aggregate Bond ETF,ETF,FixedIncome,EUR
+792,9348.HK,Marisol Energy Ltd,Equity,Energy,HKD
+793,9047.HK,Jadeport Pharmaceuticals Ltd,Equity,HealthCare,HKD
+794,USFLWGPTPZ41,Umbra 1.75% 2032 Sr Notes,Bond,Municipal,USD
+795,NON,Kestrel Capital Inc,Equity,Financials, USD
+796,2382.T,Orion Networks KK,Equity,CommServices,JPY
+797,XERP.DE,Belmont Networks AG,Equity,CommServices,EUR
+798,FQDN,Northcrest HealthCare ETF,ETF,HealthCare,USD
+799,RCDC.PA,Umbra Medical SE,Equity,HealthCare,EUR
+800,BUC.DE,Königsberg Logistics AG,Equity,  Industrials  ,EUR
+801,ITAX,Oakhaven Data Corp,Equity,  InfoTech  ,USD
+802,UOH.L,Northcrest Total Market ETF,ETF,Broad,GBP
+803,MWO,Tindall Partners Corp,Equity,Financials,USD
+804,PAS,Northcrest Aggregate Bond ETF,ETF,FixedIncome,USD
+805,FRJRLKGAVG61,French OAT 4.50% 2045,Bond,Government,EUR
+806,GBL58JJWY665,UK Gilt 1.75% 2043,Bond,Government,GBP
+807,4864.HK,Zephyr Brands Holdings,Equity,ConsumerDisc,HKD
+808,KSCT,Drakemoor Machinery Group, Equity ,Industrials,USD
+809,RHA,Underwood Power Corp,Equity,Utilities,USD
+810, wgnm.l ,Larchmont Chemicals plc,Equity,Materials,GBP
+811,  VGB.L  ,Orion Aggregate Bond ETF,ETF,FixedIncome,GBP
+812,  kibq  ,Oakhaven Technologies Corp,Equity,InfoTech,USD
+813,CZO,Umbra Semiconductor Inc,Equity,InfoTech,USD
+814,KOOJ.L,Umbra Developments plc, Equity ,RealEstate,GBP
+815,CSIF.PA,Greycliff Medical SE,Equity,HealthCare,  EUR
+816,MWGA,Vantage Industries Group,Equity,Industrials,USD
+817,5959.HK,Beacon Systems Holdings,Equity,InfoTech,HKD
+818,UIA.L,Underwood Entertainment plc,Equity,CommServices,GBP
+819,0659.HK,Granite Semiconductor Ltd,Equity,InfoTech,HKD
+820,  9394.t  ,Beacon Household KK,Equity,ConsumerStaples,JPY
+821,EMJ,Ellesmere Data Inc,Equity,InfoTech,USD
+822,FRNM0L21SPZ2,  Umbra 5.25% 2037 HY Notes  ,Bond,HighYield,EUR
+823,7270.HK,Underwood Data Holdings,Equity,InfoTech,HKD
+824,JUXH,Copper Spot,Commodity,BaseMetals,USD
+825,NHJG.SW,Crestline Capital AG,Equity,Financials,  CHF
+826,BOQ.DE,Adlerstein Apparel AG,Equity,ConsumerDisc,EUR
+827,SJD.SW,Zephyr Diagnostics AG,Equity,HealthCare,CHF
+828,4415.HK,Redstone Semiconductor Holdings,Equity,InfoTech,HKD
+829,EKS.DE,Thornbury Engineering AG,Equity,Industrials,EUR
+830,JIU.PA,Pemberton Logistics SA,Equity,Industrials,EUR
+831,BVF.L,Vantage Communications plc,Equity,CommServices,GBP
+832,TUHC.PA,Northcrest Semiconductor SE,Equity,InfoTech,EUR
+833,NXFI,Belmont Microsystems Group,Equity,InfoTech,USD
+834,ZSRF,Jardine Nutrition Inc,Equity,ConsumerStaples,USD
+835,HKR98ZCXQ362,HK Government 1.50% 2034,Bond,Government,HKD
+836,KQL,Natural Gas Spot,Commodity,Energy,USD
+837,SMR.L,Beacon Total Market ETF,ETF,Broad,GBP
+838,GBE7YWA6YVF4,Foxglove 4.75% 2032 Sr Notes,Bond,Securitized,GBP
+839,IXVY,Marisol Aerospace Group,Equity,Industrials,USD
+840,QRI.SW,Thornbury Machinery AG,Equity,Industrials,  CHF
+841,SRC,Fairmont Data Corp,Equity,InfoTech,USD
+842,USDZBHBG4ZZ8,Wycombe 4.00% 2044 HY Notes,Bond,HighYield,USD
+843,WMR.L,Norwood Retail plc,Equity,ConsumerDisc,GBP
+844,WIHV,Aluminium Spot,Commodity,BaseMetals,  USD
+845,4682.HK,Ashford Pharmaceuticals Holdings,Equity,HealthCare,HKD
+846,USTQA8GDXC53,US Treasury 3.00% 2037,Bond,Government,USD
+847,EUL.SW,Northcrest Aggregate Bond ETF,ETF,FixedIncome,CHF
+848,2262.T,Jardine Retail KK,Equity,ConsumerDisc,JPY
+849,JIKJ,Vantage Household Corp,Equity,ConsumerStaples,USD
+850,8734.HK,Helvetia Total Market ETF,ETF,Broad,HKD
+851,RXNF.DE,Ashford Industries AG,Equity,Materials,EUR
+852,KZQF.PA,Halcyon Software SA,Equity,InfoTech,EUR
+853,XFZ,Yarrow Therapeutics Group,Equity,HealthCare,USD
+854,IHGU.PA, Halcyon Retail SE ,Equity,ConsumerDisc,EUR
+855,USAM8D6VNSG2,Jardine 5.00% 2044 Sr Notes,Bond,Municipal,USD
+856,VED.L,Dunmore Leisure plc,Equity,ConsumerDisc,GBP
+857,CGNY.PA,Montrose Networks SA, Equity ,  InfoTech  ,EUR
+858,HKEGE3RKLBE0,HK Government 3.25% 2032,  Bond  ,Government,HKD
+859,8113.T,Dunmore Communications KK,Equity,CommServices,JPY
+860,MIB,Ravenswood Systems Corp,Equity,InfoTech,USD
+861,1028.HK,Vantage Total Market ETF,ETF,Broad,HKD
+862,2642.T,Ashford Telecom KK,Equity,CommServices,JPY
+863,JPE7HZRMNMP8,Kaisei 2.00% 2027 Sr Notes,Bond,Municipal,JPY
+864,QDU.SW,Ravenswood Technologies SA,Equity,InfoTech,CHF
+865,DURI,Northcrest Power Corp,Equity,Energy,USD
+866,LRTH.DE,Juniper Media AG,Equity,CommServices,EUR
+867,US7RWX8LETN5,US Treasury 2.75% 2043,Bond,  Government  ,USD
+868,7909.T,Oakhaven Mining Corporation,Equity,Materials,JPY
+869,4451.T,Pemberton REIT Corporation,Equity,RealEstate,JPY
+870,DGQ,Helvetia Total Market ETF,ETF,Broad,USD
+871,LWOB,Vantage Entertainment Group,Equity,CommServices,USD
+872,TNG.DE,Umbra Beverages AG,Equity,ConsumerStaples,EUR
+873,4188.HK,Marisol Systems Holdings,Equity,InfoTech,HKD
+874,PDP.L,Halcyon Beverages plc,Equity,ConsumerStaples,  GBP
+875,ANN.DE,Tindall Oil & Gas AG,Equity,Energy,EUR
+876,  lvw  ,Oakhaven Machinery Corp,Equity,Industrials,USD
+877, mqr.sw ,Ravenswood Machinery SA,Equity,Industrials,CHF
+878,KFT,Jardine Bancorp Group,Equity,Financials,USD
+879,KZQP.SW,Vantage InfoTech ETF,ETF,InfoTech,CHF
+880,USWJT6HDQTQ5,Pinnacle 2.00% 2030 Sr Notes,Bond,Corporate,USD
+881,HQKR.L,Lumen Logistics plc,Equity,Industrials, gbp
+882,TAFO.L,Marisol Realty plc,Equity,RealEstate, GBP
+883,BRZ,Ardent Holdings Group,Equity, Financials ,USD
+884,GBW,Kingsley Networks Inc,Equity,InfoTech,USD
+885,XMND.DE,Orion Aggregate Bond ETF,ETF,FixedIncome,EUR
+886,RNH,Belmont Communications Corp,Equity,CommServices,USD
+887,HK49S7H0GUR2,Calder 2.00% 2042 Sr Notes,Bond,Corporate,HKD
+888,YITT.L,Oakhaven Entertainment plc,Equity,CommServices,GBP
+889,NMR.L,Brightwater Diagnostics plc,Equity,HealthCare,  GBP
+890,2476.HK,Orion Innovation ETF,ETF,Thematic,HKD
+891,USZ7ELWXLW33,Quillon 3.75% 2040 Sr Notes,Bond,Corporate,USD
+892,FRVKRT9FVH12, French OAT 2.50% 2040 ,Bond,  Government  , eur
+893,3237.T,Pinnacle Engineering Corporation,  Equity  ,Industrials,JPY
+894,  IPZB  ,Pemberton Medical Inc,Equity,HealthCare,USD
+895,VCNI,Beacon Innovation ETF,  ETF  ,Thematic,USD
+896,TII.SW,Stonebridge Therapeutics AG,Equity,HealthCare,CHF
+897,ZQTY,Underwood Bancorp Inc,Equity,Financials,USD
+898,OZF.L,Verity Beverages plc,Equity,ConsumerStaples,GBP
+899,HKVLCTS0Y443,Ravenswood 4.25% 2035 Sr Notes,Bond,Municipal,HKD
+900,BGAF,Drakemoor Household Corp,Equity,ConsumerStaples,USD
+901,IYMG.L,Oakhaven Holdings plc,Equity,Financials,GBP
+902,AWBQ.DE,Westfalen Nutrition AG,Equity,ConsumerStaples,EUR
+903,UWE,Wycombe Logistics Corp,Equity,Industrials,USD
+904,KNVE,Stratford Semiconductor Group,Equity,InfoTech,USD
+905,JPFKCEHARXV2,Fairmont 2.00% 2039 Sr Notes,Bond,Corporate,JPY
+906,6703.HK,Halcyon Retail Ltd,Equity,ConsumerDisc,HKD
+907,4180.HK,  Ellesmere Therapeutics Ltd  ,Equity,HealthCare,HKD
+908,ZEA.SW,Fairmont Diagnostics AG,Equity,HealthCare,CHF
+909,ILP, Redstone Health Group ,Equity,HealthCare,USD
+910,TDA.L,Kingsley Hospitality plc, Equity ,ConsumerDisc,GBP
+911,QKRZ.L,Northcrest Leisure plc,Equity,ConsumerDisc,GBP
+912,OBO,Wheat Spot,Commodity,Agriculture,USD
+913, weuq.pa ,Belcour Microsystems SA,Equity,InfoTech,EUR
+914,MOE.L,  Montrose Brands plc  ,Equity,ConsumerDisc,GBP
+915,FRCFRHF2H077,Tindall 3.25% 2036 Sr Notes,Bond,Corporate,EUR
+916,US308MTQQZD2,US Treasury 4.25% 2036,Bond,Government,USD
+917,NOZT.PA,Dunmore Logistics SE,Equity,Industrials, eur
+918,AEA.PA,Ravenswood Aerospace SE,Equity,Industrials,EUR
+919, 7340.t ,Ardent Nutrition Corporation,Equity, ConsumerStaples ,JPY
+920,XUIZ.L,Tindall Data plc,Equity,InfoTech,GBP
+921,CH7HSPWS3MS6,Swiss Confederation 6.50% 2045,Bond, Government ,CHF
+922,HMV,Vantage Apparel Inc,Equity,ConsumerDisc,USD
+923,ZBE,  Wycombe Entertainment Inc  ,Equity,CommServices,USD
+924,ZCG.L,Zephyr Household plc,Equity,ConsumerStaples,GBP
+925,RPP,Montrose Communications Group,Equity,CommServices,USD
+926,IOE,Larchmont Industries Group,Equity, Industrials ,USD
+927,7575.T,Ardent Pharmaceuticals KK,Equity,HealthCare,JPY
+928,HKVTQCB7QZ97,Montrose 3.75% 2045 Sr Notes,Bond,Corporate,HKD
+929,YRQW,Kingsley Data Corp,Equity, InfoTech ,USD
+930,OUPP.SW,Ashford Health SA,Equity,HealthCare,CHF
+931, hkfs1q630f95 ,Foxglove 3.75% 2040 Sr Notes,Bond,Corporate,HKD
+932,GB3JQ9EWBQR0,Halcyon 3.00% 2043 Sr Notes,Bond,Corporate,GBP
+933,4847.T,Kestrel Media Corporation,Equity,CommServices,JPY
+934,  rqc.de  ,Westfalen Metals SE,Equity,Materials,EUR
+935,JZE.L,Ashford Power plc,Equity, Utilities ,GBP
+936,9892.T,Orion Logistics KK,Equity,Industrials,  jpy
+937,YHMO.L,Halcyon Networks plc,Equity,InfoTech,GBP
+938,WMW.SW,Calder Networks AG,Equity,InfoTech,CHF
+939,FRWZH1KRXWE0,Norwood 5.75% 2036 Sr Notes,Bond,Securitized,EUR
+940,VWMR.PA,Brightwater Systems SE,Equity,InfoTech,EUR
+941,WSJM,Dunmore Holdings Corp,Equity,Financials,USD
+942,XLEV.L,Redstone Petroleum plc,Equity,Energy,GBP
+943,CHCA3S9TB3M2,Aldridge 4.75% 2044 Sr Notes,Bond,Securitized,CHF
+944,QPS,Larchmont Systems Corp,Equity,InfoTech,USD
+945,FRTACYAKYTA8,Ashford 4.25% 2041 Sr Notes,Bond,Corporate,EUR
+946,WYEM,Stratford Bancorp Corp,Equity,Financials,USD
+947, 8867.T ,Dunmore Health KK,Equity,HealthCare,JPY
+948,EUV,Harlow Motors Group,Equity,ConsumerDisc,USD
+949,KIP.L,Ravenswood Diagnostics plc,Equity,HealthCare,GBP
+950,OPH.SW,Fairmont Trust SA,Equity,Financials,CHF
+951,PRL.SW,Greycliff Health AG,Equity,HealthCare,CHF
+952,GBCJLHM1R5F4,UK Gilt 4.00% 2041,Bond,Government,GBP
+953,UWVF,Granite Communications Inc,Equity,CommServices,USD
+954,BAB.PA,Beacon Technologies SA,Equity,InfoTech,EUR
+955,FYWE.DE,Montrose Financial AG,Equity,Financials,EUR
+956,1997.T,Fujimoto Electric KK,Equity,Utilities,  jpy
+957,AID,Brightwater REIT Group,Equity,RealEstate,USD
+958,VDCL,Ravenswood Machinery Corp,Equity,Industrials,USD
+959,4433.T,Fujimoto Networks KK,Equity,InfoTech,JPY
+960,  9235.HK  ,Victoria Peak Power Ltd,Equity,Energy,HKD
+961,JPSJCHD3RN47,Quillon 5.00% 2032 Sr Notes,Bond,Corporate,JPY
+962,USATD0RLLWC9,Kingsley 3.00% 2044 Sr Notes,Bond,Corporate,USD
+963,MXFL,Ellesmere Logistics Group,Equity, Industrials ,USD
+964, mdu.l ,Orion Networks plc,Equity,InfoTech,GBP
+965,XFK,Ravenswood Apparel Inc,Equity,ConsumerDisc,USD
+966,9306.HK,Kowloon Hospitality Holdings,Equity,ConsumerDisc,HKD
+967,JP7EL6Y74YA9,Sakura 2.75% 2030 Sr Notes,Bond,Corporate,JPY
+968,WARG.PA,Larchmont Medical SA,Equity,HealthCare,EUR
+969,JJIS.L,Greycliff Entertainment plc,Equity,  CommServices  ,GBP
+970,GUIY,Ashford Capital Inc,Equity, Financials , usd
+971,7620.T,Beacon Industries Corporation,Equity,Industrials,JPY
+972,KPOF.L,Quillon Estates plc,Equity,RealEstate,GBP
+973,2190.HK,Tindall Oil & Gas Holdings,Equity,Energy,HKD
+974,GZWD,Orion Aggregate Bond ETF,ETF,FixedIncome,USD
+975,UAQQ,Yarrow Networks Corp,Equity,InfoTech,USD
+976,BHMB,Belmont Holdings Group,Equity, Financials ,USD
+977,9405.HK,Dunmore Aerospace Ltd,Equity,Industrials,HKD
+978,QWAJ.DE,  Bauerfeld Medical AG  , Equity ,HealthCare,EUR
+979,FMQH.L,Beacon Mining plc,Equity,Materials,  GBP
+980,JQS.L,Pinnacle Software plc,Equity,InfoTech, gbp
+981,OXCY.DE,Granite Nutrition AG,Equity,ConsumerStaples,EUR
+982,CKT.L,Beacon Microsystems plc,Equity,InfoTech,GBP
+983,QVX,Quillon Household Group,Equity,ConsumerStaples,USD
+984,8128.HK,Westbrook Properties Holdings,Equity,RealEstate,HKD
+985,TQN.DE,Wycombe Utilities SE,Equity,Utilities,EUR
+986,RFCJ,Jardine Mining Corp,Equity,  Materials  ,USD
+987,FHPX.DE,Lumen Materials ETF,ETF,Materials,EUR
+988,ORWH,Juniper Semiconductor Group,Equity,InfoTech,USD
+989,RNCN.SW,Northcrest InfoTech ETF,ETF,InfoTech,CHF
+990,YKQ,Jardine Media Inc,Equity,CommServices,USD
+991,CHZCRSDUH0V2,Swiss Confederation 4.50% 2040,Bond,Government,CHF
+992, ikql.l ,Marisol Networks plc,Equity,CommServices,GBP
+993,  fqi.sw  ,Beacon Total Market ETF, ETF ,Broad,CHF
+994,EPTN,Granite Technologies Group,Equity,InfoTech,USD
+995,LRJ,Stonebridge Bancorp Inc,Equity,Financials,USD
+996,YBCN.PA,Kestrel Consumer SE,Equity,ConsumerStaples,EUR
+997,FRWX81AJ0C76,French OAT 3.25% 2035,Bond,Government,EUR
+998,8482.HK,Beacon Data Holdings,Equity,InfoTech,  HKD
+999,JUF,Zephyr Microsystems Group,Equity,InfoTech,USD
+1000, 6784.HK ,Jardine Partners Ltd,Equity,Financials,HKD
+1001,3021.HK,Umbra Financial Holdings,Equity,  Financials  ,HKD
+1002,XMEA,Vantage Innovation ETF,ETF,Thematic,USD
+1003,ADI.PA,Drakemoor Media SA,Equity,CommServices,EUR
+1004,CBR.PA,Westbrook Power SE,Equity,Utilities,EUR
+1005,USPLFPB21H88,  US Treasury 2.25% 2039  ,Bond,Government,USD
+1006,NWA,Drakemoor Water Inc,Equity,Utilities,USD
+1007,YCL.L,Pinnacle Holdings plc,Equity,Financials,GBP
+1008,WRW,Northcrest Utilities ETF,ETF,Utilities,USD
+1009, VIEL.SW ,Brightwater Systems SA,Equity,InfoTech,CHF
+1010,QYMR.DE,Thornbury Chemicals AG,Equity,Materials,EUR
+1011,7996.T,Ardent Entertainment KK,Equity,CommServices,JPY
+1012,JVH.SW,Larchmont Capital SA,Equity,Financials,CHF
+1013,URD.DE,Calder Partners SE,Equity,Financials,EUR
+1014,BPFA.PA,Aldridge Motors SA,Equity,ConsumerDisc,EUR
+1015,YSZ.L,Ardent Nutrition plc,Equity,ConsumerStaples,GBP
+1016,9092.T,Dunmore Motors Corporation,Equity,ConsumerDisc,JPY
+1017,2738.HK,Cheung Wah Data Ltd,Equity,InfoTech,HKD
+1018,JMGO.SW,Helvetia Foods AG,Equity,ConsumerStaples,CHF
+1019,JPP9EZ6X6194,Hoshino 5.75% 2031 Sr Notes,Bond,Corporate,JPY
+1020,7794.T,Orion Systems Corporation,Equity,InfoTech,JPY
+1021,HKMTJCX07RJ6,HK Government 4.50% 2030,Bond,Government,HKD
+1022,TNRH.DE,Lumen Total Market ETF, ETF ,Broad,EUR
+1023,BQX,Inverness Systems Inc,Equity,InfoTech,USD
+1024,QNSM,Verity Networks Inc,  Equity  ,CommServices,USD
+1025,YTCT.L,Umbra Software plc,Equity,InfoTech,GBP
+1026,DHG.SW,Foxglove Systems AG,Equity,InfoTech,CHF
+1027,9422.HK,Dunmore Software Ltd,Equity,InfoTech,HKD
+1028,CQRP,Quillon Diagnostics Inc,Equity,HealthCare,USD
+1029, de8a6t8z8ts9 , Umbra 1.75% 2038 Sr Notes ,Bond,Corporate,EUR
+1030,DWRK.PA,Montrose Trust SA,Equity,Financials,EUR
+1031,1896.T,Akatsuki Software KK,Equity,InfoTech,JPY
+1032,EWAN.PA,  Verity Communications SA  , Equity ,CommServices,EUR
+1033,JCQA.L,Cardinal Estates plc,Equity,RealEstate,GBP
+1034,HKLW13CNB860,Stonebridge 4.75% 2043 HY Notes,Bond,HighYield,HKD
+1035,DIBA,Aldridge Communications Inc,Equity,CommServices,USD
+1036,BWQ,Dunmore Electric Corp,Equity,Utilities,USD
+1037,SAT,Vantage Diagnostics Corp,Equity,HealthCare,USD
+1038,DALG,Ironwood Industries Group,Equity,Industrials,USD
+1039, usa6wkx5jb02 ,Ravenswood 2.00% 2035 Sr Notes,Bond,Corporate,USD
+1040,GQZN,Helvetia Total Market ETF,ETF,Broad,USD
+1041,5941.HK,Orion Motors Ltd,Equity,ConsumerDisc,HKD
+1042,USDS244CZKD3,Ellesmere 4.75% 2028 Sr Notes,Bond,Corporate,USD
+1043,6219.HK,Yarrow Energy Holdings,Equity,Energy,HKD
+1044,APN,Fairmont Diagnostics Corp,Equity,HealthCare,USD
+1045,4885.T, Umbra Medical Corporation ,Equity,HealthCare,JPY
+1046,QWQ.DE,Jardine Materials AG,Equity,  Materials  , EUR
+1047,7172.HK,Helvetia Total Market ETF,ETF,Broad,HKD
+1048,8384.HK,Goldhill Pharmaceuticals Ltd,Equity,HealthCare,HKD
+1049,  zvrn  ,Cardinal Metals Inc,Equity,Materials,USD
+1050,FRJM1DGSNDX0,Dufour 5.25% 2037 Sr Notes,Bond,Corporate,EUR
+1051,WLKB,Corn Spot,Commodity,Agriculture,USD
+1052,8185.T,Verity Diagnostics Corporation,Equity,HealthCare,JPY
+1053,1718.HK,Cardinal Apparel Ltd,Equity,ConsumerDisc,HKD
+1054,4685.T,Orion HealthCare ETF,ETF,HealthCare,JPY
+1055,TIA,Fairmont Nutrition Group,Equity,ConsumerStaples,USD
+1056,KYN.PA,Jardine Developments SE,Equity,RealEstate,EUR
+1057,YDHT.PA,Juniper Telecom SA,Equity,CommServices,EUR
+1058,WJS,Calder Machinery Group,Equity,Industrials,USD
+1059,APYX,Quillon Pharmaceuticals Corp,Equity,HealthCare,USD
+1060,USQ1UNARZBB5,US Treasury 3.50% 2031,Bond,Government,USD
+1061,  9810.t  ,Thornbury Pharmaceuticals Corporation,Equity,HealthCare,JPY
+1062,JEN.PA,Marisol Power SA,Equity,Energy,EUR
+1063,MAU,Pemberton Nutrition Inc,Equity,ConsumerStaples,USD
+1064, 0109.hk ,Ravenswood Electric Holdings,Equity,Utilities,HKD
+1065,GAO.DE,Lumen Total Market ETF,ETF,Broad,EUR
+1066,NMNM,Greycliff Power Corp,Equity,Energy,USD
+1067,PRU,Montrose Trust Inc,Equity,Financials,USD
+1068,XXCI,Vantage Total Market ETF,ETF,  Broad  ,USD
+1069,VQLB.DE,Verity Utilities SE,Equity,Utilities, EUR
+1070,HWZZ.DE,Königsberg Systems SE,Equity,InfoTech,EUR
+1071,US5FVYX00WK6,Quillon 5.00% 2033 Sr Notes,Bond,Corporate,USD
+1072,3342.T,Lumen Industrials ETF,ETF,Industrials,JPY
+1073,TYVN.L,Dunmore Technologies plc,Equity,InfoTech,GBP
+1074,DEU9FHM7YS67,Quillon 5.00% 2044 Sr Notes,Bond, Corporate ,EUR
+1075,DEQJ2818U923,  Verity 5.75% 2033 Sr Notes  ,Bond,Corporate,EUR
+1076,VLJ,Harlow Industries Corp,Equity,Materials,USD
+1077,  9591.HK  ,Redstone Systems Holdings,Equity,InfoTech,  HKD
+1078,VCOL,Westbrook Partners Inc,Equity,Financials,USD
+1079,4119.HK,Verity REIT Ltd,Equity,RealEstate,HKD
+1080,MIWB,Soybeans Spot,Commodity,Agriculture,USD
+1081,UWZN,  Stratford Health Inc  ,Equity,HealthCare,USD
+1082,GBFCMZUME831,UK Gilt 4.75% 2044,Bond,Government,GBP
+1083,US615PUEQV70, US Treasury 2.25% 2038 ,Bond,Government,USD
+1084,HRR.DE,Kestrel Resources AG,Equity,Energy,EUR
+1085,YIB,Vantage Innovation ETF,ETF,Thematic,USD
+1086,MTGL,Stratford Diagnostics Inc,Equity,HealthCare,USD
+1087,JPQGECE943K3,JGB 2.50% 2032,Bond,  Government  ,JPY
+1088,BETY, Underwood Semiconductor Inc ,Equity,InfoTech,USD
+1089,CHE7NR4FXFD7,Swiss Confederation 1.75% 2043,Bond,Government,CHF
+1090,7171.T,Stonebridge Partners Corporation,Equity,Financials,JPY
+1091,COK,Oakhaven Therapeutics Inc,Equity,HealthCare,USD
+1092,HUPO,Copper Spot,Commodity,BaseMetals,USD
+1093,EYZ,Ellesmere Metals Inc,Equity,Materials,USD
+1094,XXLB,Pinnacle Industries Group,Equity,Industrials,USD
+1095,CH89HK2KM7G6, Swiss Confederation 6.25% 2040 , Bond ,Government,CHF
+1096,  XVCC  ,Westbrook Chemicals Inc,Equity,Materials,  usd
+1097,UZKN,Redstone Technologies Corp,Equity,InfoTech,USD
+1098,NRW.SW,Kingsley Networks SA,Equity,InfoTech,CHF
+1099,JRLJ.L,Beacon Total Market ETF,ETF,Broad,GBP
+1100,USFE3VSUL3A2,US Treasury 6.00% 2036,Bond,Government,USD
+1101,PYI.DE,Halcyon Systems SE,Equity,InfoTech,EUR
+1102,IXE.DE,Montrose Motors AG,Equity,ConsumerDisc,EUR
+1103,JPU243ABSB61,  Tokai 5.25% 2032 Sr Notes  ,  Bond  ,Corporate,JPY
+1104,RIX.DE,Kingsley Aerospace SE, Equity ,Industrials,  eur
+1105,FRNBWAL5ZBW7,French OAT 3.00% 2042,Bond,Government,EUR
+1106,WKC.SW,Orion Aggregate Bond ETF,ETF,FixedIncome,CHF
+1107,EHYM,Thornbury Systems Corp,Equity,InfoTech,USD
+1108,9692.HK,Halcyon Household Ltd,Equity,ConsumerStaples,HKD
+1109,8137.HK,Northcrest Total Market ETF,ETF,Broad,HKD
+1110,BQRE.DE,Königsberg Apparel AG,Equity,ConsumerDisc,EUR
+1111,ZAP,Juniper Health Group,Equity,HealthCare,USD
+1112,MCR.L,Aldridge Partners plc,Equity,Financials,GBP
+1113,IFR.PA,Aubrac Systems SA,Equity,InfoTech,EUR
+1114,USSTBD33YLF7,Lumen 3.00% 2030 Sr Notes,Bond,Securitized,USD
+1115,QAEL.PA,Kingsley Industries SE,Equity,Materials,EUR
+1116,TBB,Brent Crude Spot,Commodity, Energy ,USD
+1117,4105.T,Ironwood Financial Corporation,  Equity  ,Financials,JPY
+1118,US4X1Z45NTB3,Redstone 2.50% 2027 Sr Notes,Bond,Corporate,USD
+1119,ABA.SW,Léman Logistics AG,Equity,Industrials,CHF
+1120,ERB,Halcyon Software Group,Equity,InfoTech,USD
+1121,  4435.hk  ,Northcrest Aggregate Bond ETF,ETF,FixedIncome,HKD
+1122,2960.HK,Westbrook Bancorp Holdings,Equity,Financials,HKD
+1123,EWN.L,Ashford Metals plc, Equity ,Materials,GBP
+1124,JPVWHH8VEWT5,Kestrel 2.50% 2031 Sr Notes,Bond,Corporate,JPY
+1125,BYT.L,Aldridge Industries plc,Equity,Industrials,GBP
+1126,YLPO.DE,Beacon Household AG,Equity,ConsumerStaples,EUR
+1127,GSRW.DE,Harlow Brands AG,Equity,ConsumerDisc,EUR
+1128,ZHHV.L,Orion Total Market ETF,ETF,Broad,GBP
+1129,BWK,Verity Communications Group,Equity,CommServices,USD
+1130,7648.HK,Ironwood Systems Holdings,Equity,InfoTech,HKD
+1131,ONXX.PA,Lumen Hospitality SE,Equity,ConsumerDisc,EUR
+1132,MRT,Wheat Spot,Commodity,Agriculture,  USD
+1133,UNA,Stonebridge Technologies Group,Equity,InfoTech,USD
+1134,CGWG.SW,Harlow Foods AG,Equity,ConsumerStaples,CHF
+1135,BSYW.L,Granite Financial plc,Equity,Financials,GBP
+1136,TOI,Montrose Communications Inc,Equity,CommServices,USD
+1137,KQV,Cardinal Software Inc,Equity,InfoTech,USD
+1138,JPT4Z2B6A1Z7,Orion 2.50% 2027 Sr Notes,Bond,Securitized,JPY
+1139,5968.HK,Helvetia Aggregate Bond ETF,ETF,FixedIncome,HKD
+1140,ZNLU,Granite Logistics Corp,Equity,Industrials,USD
+1141, ybvj ,Thornbury Water Group,Equity,Utilities,USD
+1142,JPUGRFAYAEB1,Ardent 4.00% 2032 Sr Notes,Bond,Securitized,JPY
+1143,GDE,Stratford Resources Group,Equity,Energy,USD
+1144,1005.HK, Westbrook Technologies Holdings ,Equity,InfoTech,HKD
+1145,USLL2NHQUGM0, US Treasury 5.50% 2044 ,Bond,Government,USD
+1146,9222.HK,Helvetia Total Market ETF,ETF,Broad,HKD
+1147,EBB.DE,Umbra Industries AG,Equity,Industrials,EUR
+1148,CH85Z1AZ5RF6,Brightwater 5.75% 2041 Sr Notes,Bond,Corporate,CHF
+1149,5068.T,Tindall Apparel Corporation,Equity,ConsumerDisc,JPY
+1150,  tewg.de  ,  Belmont Logistics SE  ,Equity,Industrials,EUR
+1151,IZI,  Yarrow Capital Inc  ,Equity,Financials,USD
+1152,MNSM,Jardine Microsystems Inc,Equity,InfoTech,USD
+1153,DE81A0VK89Q3,  German Bund 3.00% 2040  ,Bond,Government,EUR
+1154,KVM,Kingsley Apparel Inc,Equity,ConsumerDisc, USD
+1155,US0S8GU263E1,US Treasury 5.75% 2034,Bond,Government,USD
+1156,GBAI.DE,Lumen Machinery SE,Equity,Industrials,EUR
+1157,GEC.PA,Jardine Oil & Gas SA,Equity,Energy,EUR
+1158,JPK, Crestline Data Inc ,Equity,InfoTech,USD
+1159,QYUO.DE,Ironwood Data SE,Equity,InfoTech,EUR
+1160,USX7UG1E3ZS5,US Treasury 3.25% 2035,Bond,Government,USD
+1161,6336.T,Juniper Communications Corporation,Equity,CommServices,JPY
+1162,USN2NVG5GPA1,US Treasury 5.00% 2035,Bond,Government,USD
+1163,AHE,Umbra Technologies Group,Equity,InfoTech,USD
+1164,QEE,Granite Brands Inc,Equity,ConsumerDisc,USD
+1165,6661.T,Northcrest Realty KK,Equity,RealEstate,JPY
+1166,QHL,Wycombe Apparel Corp,Equity,ConsumerDisc,USD
+1167,GB9HHHQ6PKR6,UK Gilt 5.75% 2030,Bond,Government,GBP
+1168,VHIJ.L,Ravenswood Microsystems plc,Equity,InfoTech,GBP
+1169,VNN,Tindall Networks Inc,Equity,InfoTech,USD
+1170,REM.PA,Larchmont Networks SA,Equity,InfoTech,EUR
+1171,HDQK,Marisol Holdings Inc,Equity,Financials,USD
+1172,8048.HK,Lumen Aggregate Bond ETF,ETF,FixedIncome,HKD
+1173,ZAF,Pemberton Entertainment Inc,Equity,CommServices,  usd
+1174,5772.T,Verity Grid Corporation,Equity,Utilities,JPY
+1175,DKZ.SW,Ardent Partners SA,Equity,Financials,CHF
+1176,SKC,Calder Grid Corp,Equity,Utilities,USD
+1177,MAXX.L,Northcrest Total Market ETF,ETF,Broad,GBP
+1178,BND,Stratford Technologies Inc,Equity,InfoTech,USD
+1179,EOEL.SW,Foxglove Consumer AG,Equity,ConsumerStaples,CHF
+1180,  rnbi.l  ,Jardine Motors plc,Equity,ConsumerDisc,GBP
+1181,ZSGM.PA,Brightwater Industries SE,Equity,Industrials,EUR
+1182,DME.PA,Ironwood Logistics SA,Equity,Industrials,EUR
+1183,1000.HK,Orion Household Ltd,Equity,ConsumerStaples,HKD
+1184,BUR.PA,Orion Medical SE,Equity,HealthCare,EUR
+1185,KUQU,Beacon Aggregate Bond ETF,ETF,FixedIncome,USD
+1186,SZKD.SW,  Granite Logistics AG  ,Equity,Industrials,CHF
+1187,UJAS.PA,Drakemoor Systems SE,Equity,InfoTech,EUR
+1188,HPSM.SW,Northcrest Partners SA,Equity,Financials,CHF
+1189,BDK,Kestrel Networks Group,Equity,InfoTech,USD
+1190,OQN,Cardinal Nutrition Inc,Equity,ConsumerStaples,USD
+1191,PBGB.DE,Westbrook Networks AG,Equity,CommServices,EUR
+1192,3066.HK,Jardine Medical Holdings,Equity,HealthCare,HKD
+1193,ZCL,Beacon Biosciences Corp,Equity,HealthCare,USD
+1194,REOM,Yarrow Partners Inc,Equity,Financials,USD
+1195,WDD.DE,Vantage ConsumerDisc ETF,ETF,  ConsumerDisc  ,EUR
+1196,HTO.L,Oakhaven Medical plc,Equity,HealthCare,GBP
+1197,KTDS.L,Kestrel Hospitality plc,Equity,ConsumerDisc,GBP
+1198,NPD,Jardine Metals Inc,Equity,Materials,USD
+1199,USDLN2JY0857,Oakhaven 2.50% 2042 Sr Notes,Bond, Corporate ,USD
+1200,WTAN,Redstone Networks Group,Equity,InfoTech,USD
+1201,ZEHK.L,Beacon Bancorp plc,Equity,Financials,GBP
+1202,JKP.DE,Foxglove Leisure SE,Equity,ConsumerDisc,EUR
+1203,CWCT,Tindall Logistics Inc,Equity,Industrials,USD
+1204,NTA,Crestline Engineering Inc,Equity,Industrials,USD
+1205,VIYI,Northcrest Total Market ETF,ETF,Broad,USD
+1206,UBXA.DE,Ravenswood Networks AG,Equity,InfoTech,EUR
+1207,US3C55VKPX66,Calder 6.25% 2045 Sr Notes,Bond,Corporate,USD
+1208,MOK.DE,Westfalen Beverages AG,Equity,ConsumerStaples,EUR
+1209,ZCL.L,Ironwood Biosciences plc,Equity,HealthCare,GBP
+1210,HBD.L,Vantage Retail plc,  Equity  ,ConsumerDisc,GBP
+1211,RYW,Granite Electric Inc,Equity,Utilities,USD
+1212,USCWPG6Q7287,Juniper 4.00% 2034 Sr Notes,Bond,Securitized,USD
+1213,VJA,Ashford Nutrition Corp,Equity,ConsumerStaples,USD
+1214,MPSC,Crestline Industries Inc,Equity,Materials,USD
+1215,FLAP.L,Stratford Industries plc,Equity, Industrials ,GBP
+1216,3479.T,Fujimoto Power KK,Equity,Energy,JPY
+1217,ZQZ,Jardine Communications Inc,Equity,CommServices,USD
+1218,RUW,Marisol Apparel Inc, Equity ,ConsumerDisc,USD
+1219,  fjq.sw  , Kingsley Electric SA ,Equity,Utilities,CHF
+1220,IBJ.SW,Ironwood Machinery AG,Equity,Industrials,CHF
+1221,5089.HK,Thornbury Networks Ltd,Equity,InfoTech,HKD
+1222,PWT.L,Jardine Technologies plc,Equity,InfoTech,GBP
+1223,USAMT9DWNF91,Belmont 5.00% 2027 Sr Notes,Bond,Corporate,USD
+1224,KZF.PA,Calder Biosciences SE,Equity,HealthCare,  eur
+1225,BXHJ.L,Stonebridge Properties plc,Equity,RealEstate,GBP
+1226,SQY.DE,Helvetia InfoTech ETF,ETF,InfoTech,EUR
+1227,  vwup.pa  ,Lumen Semiconductor SA,Equity,InfoTech,EUR
+1228,US05N6JEMXP8,Ashford 2.50% 2043 Sr Notes,Bond,Corporate,USD
+1229,FRNSL99PNC36,French OAT 1.50% 2028,Bond,  Government  ,  eur
+1230,PEO,Beacon HealthCare ETF, ETF ,HealthCare,USD
+1231,FR97Q4NUF3Z5,Verity 3.25% 2031 HY Notes,Bond,HighYield,EUR
+1232,7618.T,Tokai Biosciences KK,Equity,HealthCare,JPY
+1233,RTO.L,Larchmont Trust plc,Equity,Financials,GBP
+1234,CPSM,Wycombe Hospitality Inc,Equity,ConsumerDisc,USD
+1235,1304.T,Sakura Semiconductor KK,Equity,InfoTech,JPY
+1236,0803.HK,Ardent Diagnostics Holdings,Equity,HealthCare,HKD
+1237,WIWX,Cardinal Electric Inc,Equity,Utilities,USD
+1238,RBGR.DE,Marisol Semiconductor AG, Equity ,InfoTech,EUR
+1239,XFK.SW,Yarrow Power SA,Equity, Utilities ,CHF
+1240,6012.HK,Jardine Health Holdings,Equity,HealthCare,HKD
+1241,DREH.SW,Thornbury Medical SA,Equity,HealthCare,CHF
+1242, 4039.hk , Kestrel Health Holdings ,Equity,HealthCare,HKD
+1243, mhnm ,Jardine Beverages Group,Equity,ConsumerStaples,USD
+1244,RMC,Calder Holdings Corp,Equity,Financials,USD
+1245,FRFEBNF63BR3,Marisol 3.75% 2042 Sr Notes,Bond,Corporate,EUR
+1246,ABBB,  Larchmont Consumer Corp  ,Equity,ConsumerStaples,USD
+1247,2382.HK, Lumen Communications Holdings ,Equity,CommServices,HKD
+1248,GBCBPU8SDS95,UK Gilt 1.75% 2029,Bond,Government,GBP
+1249,JND.L,Northcrest Total Market ETF,ETF,Broad,GBP
+1250,USBQRSA17P22,Stratford 6.25% 2042 Sr Notes,Bond,Securitized,USD
+1251,JQZ,Oakhaven Materials Group,Equity,Materials,USD
+1252,2676.T,Lumen Innovation ETF,ETF,Thematic,JPY
+1253,IXI.DE,Norwood Trust SE,Equity,Financials,EUR
+1254,WEN.L,Helvetia Total Market ETF,ETF,Broad,GBP
+1255,WDS,Harlow Financial Inc,Equity,Financials,USD
+1256,3751.HK,Drakemoor Retail Holdings,Equity,ConsumerDisc,HKD
+1257,FEXU.L,Beacon Medical plc,Equity,HealthCare,  GBP
+1258,6498.HK,Greycliff Semiconductor Ltd,Equity,InfoTech,HKD
+1259,CIB,Ardent Holdings Inc,Equity,Financials,USD
+1260,TEFN.L,Vantage Total Market ETF,ETF,Broad,GBP
+1261,EIK.L,Pemberton Telecom plc,Equity,CommServices,GBP
+1262,USB8MVG7UGR9,US Treasury 3.25% 2032,Bond, Government ,USD
+1263,2104.HK,Lumen Microsystems Holdings,Equity,InfoTech,HKD
+1264,USSP4E7L15Z1,Wycombe 4.00% 2035 Sr Notes,Bond,Securitized,USD
+1265,CHRWTW63VEB2,Juniper 5.25% 2040 Sr Notes,Bond,Securitized,CHF
+1266,NMA,Kingsley Electric Inc,Equity,Utilities,USD
+1267,DEYVB2G1ZPF2,Montrose 5.00% 2045 HY Notes,Bond,HighYield,EUR
+1268,5608.T,Kestrel Power Corporation,Equity,Utilities,JPY
+1269, YAP.PA ,Harlow Financial SA,Equity,Financials,EUR
+1270,EBG,Orion Commodity ETF,ETF,Commodity,USD
+1271,HSHO.PA,Ellesmere Financial SE,Equity,Financials,EUR
+1272,NUM.DE,Helvetia Total Market ETF,ETF,Broad,EUR
+1273,UCTM,Underwood Technologies Inc,Equity,InfoTech,USD
+1274,9180.T,Montrose Medical KK,Equity,HealthCare,JPY
+1275,UEF,Northcrest Beverages Corp,Equity,ConsumerStaples,USD
+1276,ANBW.SW,Redstone Systems SA,Equity,InfoTech,CHF
+1277,GBC9DFB7C675,UK Gilt 4.50% 2031,Bond,Government,GBP
+1278,HEK,Orion Energy Inc,Equity,Energy,USD
+1279,6404.HK, Evermore Therapeutics Holdings ,Equity,HealthCare,HKD
+1280,EHUD,Larchmont Household Corp,Equity,ConsumerStaples,USD
+1281,IKPM.PA,Saint-Cyr Motors SE,Equity, ConsumerDisc ,  eur
+1282,BZE,Brightwater Electric Corp,Equity,Utilities,USD
+1283,NDY.SW,Helvetia Communications SA,Equity,CommServices,CHF
+1284,7489.T,Dunmore Networks Corporation,Equity,CommServices, JPY
+1285,USL0PH9V7329,Beacon 5.75% 2028 Sr Notes,Bond,Corporate,USD
+1286,2921.T,Tindall Microsystems Corporation,Equity,InfoTech,JPY
+1287,LMSN.L,Juniper Retail plc,Equity,ConsumerDisc,GBP
+1288,8073.T,Beacon Aerospace KK,Equity,Industrials,JPY
+1289,2893.T,Ironwood Aerospace Corporation,Equity,Industrials,JPY
+1290,BTZK,Kestrel Holdings Group,Equity,Financials,USD
+1291,CHT0FJMGWYZ1,Swiss Confederation 3.25% 2039,Bond,Government,CHF
+1292,US8XKR7TLBD8,  US Treasury 3.75% 2033  ,Bond,Government,USD
+1293,  JAUA  ,Aldridge Materials Inc,Equity,Materials,USD
+1294,QEC.DE,Brightwater Machinery AG,Equity,Industrials,EUR
+1295,IXPU.DE,Inverness Semiconductor SE,Equity,InfoTech,EUR
+1296,5035.T,Tindall Data KK,Equity,InfoTech,JPY
+1297, ruqv.pa ,Evermore Systems SA,Equity,InfoTech,EUR
+1298,JSM,Jardine Estates Inc,Equity,RealEstate,USD
+1299,9612.T,Stratford Therapeutics Corporation,Equity,HealthCare,JPY
+1300,JPE80FKM4VF5,Westbrook 6.50% 2032 Sr Notes,Bond,Municipal, jpy
+1301,DUY.PA,Inverness Technologies SE,Equity,InfoTech,EUR
+1302,YKSW.L,Juniper Telecom plc,Equity,CommServices,GBP
+1303,JXB.DE,Adlerstein Data AG,Equity,InfoTech,EUR
+1304,VVW,Norwood Materials Corp,Equity,Materials,USD
+1305,CBW.DE,Northcrest Communications SE,Equity,CommServices,EUR
+1306,GBRX,Northcrest Total Market ETF,ETF,Broad,USD
+1307,CNJJ.L,Evermore Resources plc,Equity,Energy,GBP
+1308,ODH.PA,Northcrest ConsumerStaples ETF,ETF,ConsumerStaples,EUR
+1309,ZAHZ,Calder Resources Inc,Equity,Energy,USD
+1310,MOL.PA,Brightwater Brands SA,  Equity  ,ConsumerDisc,EUR
+1311,FRAKAP0LB790,French OAT 3.00% 2040,Bond,Government,EUR
+1312,KOR,Stratford Nutrition Inc,Equity,ConsumerStaples, usd
+1313,YFC, Lumen Foods Inc ,Equity,ConsumerStaples,USD
+1314,VQR,Vantage InfoTech ETF,ETF,InfoTech,USD
+1315, YHW ,Soybeans Spot,Commodity,Agriculture,USD
+1316,GFC.SW,Zephyr Leisure SA,Equity,ConsumerDisc,CHF
+1317,HK0R6EZ7K2S5,Ellesmere 2.00% 2045 Sr Notes,Bond,Corporate,HKD
+1318,HRK,Brightwater Health Inc,  Equity  , HealthCare ,USD
+1319,PPIR.L,Fairmont Motors plc,Equity,ConsumerDisc,GBP
+1320,FFNG.DE,Ellesmere Semiconductor AG,Equity,InfoTech,EUR
+1321,JHD.SW,Redstone Holdings AG,Equity,Financials,CHF
+1322, ncup.l ,Crestline Biosciences plc,Equity,HealthCare,GBP
+1323,RIH,Tindall Semiconductor Corp,Equity,InfoTech, USD
+1324,HEHM.SW,Tindall Resources SA,Equity,Energy,CHF
+1325,ALQ,Fairmont Financial Inc,Equity,Financials,  USD
+1326,VVIX.SW,Pemberton Nutrition SA,Equity,ConsumerStaples,CHF
+1327,HBQ,Ironwood Mining Corp,Equity,  Materials  ,USD
+1328,KOSR.PA,Brightwater Data SA,Equity,  InfoTech  ,EUR
+1329,3388.HK,Umbra Microsystems Holdings,Equity,InfoTech,HKD
+1330,PWL,Northcrest Bancorp Inc,Equity,Financials,USD
+1331,ZSGT.L,Fairmont Capital plc,Equity,Financials,GBP
+1332,1765.T,Vantage CommServices ETF,ETF,CommServices,JPY
+1333,ECPD.PA,Orion Pharmaceuticals SE,Equity,HealthCare,EUR
+1334,PWAM,Tindall Mining Corp,Equity,Materials,USD
+1335,XACA,Ashford Semiconductor Corp,Equity,InfoTech,USD
+1336,HZF,Zephyr Capital Inc,Equity,Financials,USD
+1337,FUHE,Underwood Grid Group,Equity,Utilities,USD
+1338,GBTX1NZVNU15,UK Gilt 4.50% 2038,Bond,Government,GBP
+1339,ZBS,Halcyon Resources Group,Equity,Energy,USD
+1340,9474.T,Yarrow Capital KK,Equity,Financials,JPY
+1341,HKH,Copper Spot,Commodity,BaseMetals,USD
+1342,TJJM,Natural Gas Spot,Commodity,Energy,USD
+1343,EHVE.PA,Aubrac Hospitality SA,Equity,ConsumerDisc,EUR
+1344,5545.T,Dunmore Telecom Corporation,Equity,CommServices,JPY
+1345,US0QP2JMC3S7,US Treasury 3.50% 2043,Bond,Government,USD
+1346,FR5Y18YMLSB3,Calder 2.50% 2028 Sr Notes,Bond,Corporate, eur
+1347,IXB.SW,Calder Financial AG,Equity,Financials,CHF
+1348,KOMM,Pemberton Nutrition Inc,Equity,ConsumerStaples,USD
+1349,USMYG639YGG5,Pemberton 5.75% 2040 Sr Notes,Bond,Corporate, usd
+1350,TVTT.SW,Drakemoor Power SA,Equity,Utilities,CHF
+1351,JSAO,Oakhaven Grid Corp,Equity,Utilities,USD
+1352,AFAU.L,Evermore Aerospace plc,Equity,Industrials,  GBP
+1353,KWKZ.PA,Verity Systems SA,Equity,InfoTech,EUR
+1354,6720.HK,Orion Innovation ETF,ETF,Thematic,HKD
+1355,5933.T,Stratford Apparel Corporation,Equity,ConsumerDisc,JPY
+1356,YXT,Harlow Consumer Inc,Equity,ConsumerStaples,USD
+1357,FR7NFSM9CZC7,Aldridge 1.75% 2033 HY Notes,Bond,HighYield,EUR
+1358,HHU,  Stratford Power Corp  ,Equity,Energy,USD
+1359,FREKS4EULRG6,  French OAT 6.00% 2043  ,Bond,Government,  EUR
+1360,DPK.L,Ardent Technologies plc,Equity,InfoTech,GBP
+1361,ZXCJ.DE,Foxglove Water SE,Equity,Utilities,EUR
+1362,1840.HK,Umbra Systems Holdings,Equity,InfoTech,HKD
+1363,BBIF,  Evermore Foods Corp  ,Equity,ConsumerStaples,USD
+1364,LBWT.DE,Foxglove Therapeutics AG,Equity,HealthCare,EUR
+1365,OMI.L,Marisol Communications plc,Equity,CommServices,GBP
+1366,HDH.SW,Inverness Semiconductor SA,Equity,InfoTech,CHF
+1367,EJQ,Gold Spot,Commodity,PreciousMetals,USD
+1368,QSS,Belmont Financial Inc,Equity,Financials,USD
+1369,NQOG.DE,Kestrel Capital SE,Equity,Financials,EUR
+1370,US7M4TTB86J2,Granite 5.00% 2028 Sr Notes,Bond,Corporate,USD
+1371,FFKY.PA,Quillon Communications SE,Equity,CommServices, EUR
+1372,SXO,Ravenswood Holdings Inc,Equity,Financials,USD
+1373,9380.T,Montrose Trust KK,Equity,Financials,JPY
+1374,  1204.hk  , Stonebridge Metals Holdings ,Equity,Materials,HKD
+1375,US0YP8XXKPV2,  US Treasury 4.25% 2030  ,Bond,Government,USD
+1376,USUKVHZAEZ90,Thornbury 2.25% 2038 Sr Notes,Bond,Corporate,USD
+1377,GSWA.L,Ellesmere Industries plc,Equity,Industrials,GBP
+1378,HDWE.PA,Redstone Utilities SE,Equity,Utilities,EUR
+1379,1706.HK,Hang Cheong Beverages Holdings,Equity,ConsumerStaples,HKD
+1380,WNE,Orion Aggregate Bond ETF,ETF,FixedIncome,USD
+1381,EOQ,Crestline Microsystems Group,Equity,InfoTech,USD
+1382,NXX.DE,Lumen InfoTech ETF, ETF ,InfoTech,  eur
+1383,CHQWDVULK5G4,Stratford 3.25% 2029 Sr Notes,Bond,Municipal,CHF
+1384,OSME.PA,Oakhaven Industries SA,Equity,Materials,EUR
+1385,DZCV.L,Yarrow Semiconductor plc,Equity,InfoTech, GBP
+1386,BQAC,Foxglove Industries Corp,Equity,Materials,USD
+1387,QOK.SW,Montrose Therapeutics SA,Equity,  HealthCare  ,CHF
+1388,MXGX.SW,Norwood Industries AG,Equity,Materials,CHF
+1389,GDR,Ironwood Leisure Inc,Equity,ConsumerDisc,USD
+1390,HTHX,Lumen Networks Inc,Equity,InfoTech,USD
+1391,RSZM.DE,Orion Total Market ETF,ETF, Broad ,EUR
+1392,9856.T,Foxglove Apparel KK,Equity,ConsumerDisc,JPY
+1393,  lfjs.pa  ,Jardine Holdings SA,Equity,Financials,EUR
+1394,QWV.L,  Greycliff Brands plc  ,Equity,ConsumerDisc,GBP
+1395,SPAY,Ironwood Partners Inc,Equity,Financials,USD
+1396,ILOR,Halcyon Microsystems Inc,Equity,InfoTech,USD
+1397,7807.T,Quillon Networks Corporation,Equity,InfoTech,JPY
+1398,ZSF,Zephyr Logistics Group,Equity,Industrials,USD
+1399,DERBGAVPU065,German Bund 3.75% 2029,Bond,Government,EUR
+1400,CHGY8W3HQ3H1,Jardine 2.25% 2033 Sr Notes,Bond,Securitized,CHF
+1401,US3JJLDDER20,US Treasury 4.00% 2040,Bond,Government,USD
+1402,AJDC,Kingsley Health Inc,Equity,HealthCare,USD
+1403,BCRL.L,Montrose Medical plc,Equity,HealthCare,GBP
+1404,FIN,Stonebridge Health Inc,Equity,HealthCare,USD
+1405,IMSK,Belmont Water Group,Equity,  Utilities  ,USD
+1406,FSO, Umbra Foods Inc ,Equity,ConsumerStaples,USD
+1407,7842.T,Northcrest Software Corporation,Equity,InfoTech,JPY
+1408,2050.T,Orion Commodity ETF,ETF,Commodity,JPY
+1409,GBL8V7J08JB2,UK Gilt 4.75% 2039,Bond,Government,GBP
+1410,7796.HK,Beacon Hospitality Ltd,Equity,ConsumerDisc,HKD
+1411,GB42DHGHE480,UK Gilt 2.00% 2034,Bond,Government,GBP
+1412,GVD.SW,Marisol Partners AG,Equity,Financials,CHF
+1413,RPJ,Granite Microsystems Inc,Equity,InfoTech,USD
+1414,NXG.SW,Underwood Nutrition AG,Equity,ConsumerStaples,CHF
+1415,  JPXPYU3CHM53  ,JGB 3.75% 2040,Bond,Government,JPY
+1416,SZB,Inverness Financial Inc,Equity,Financials,USD
+1417,DPR,Tindall Apparel Inc,Equity,ConsumerDisc,USD
+1418,HKNLCXPLEUP1,Granite 3.25% 2043 HY Notes,Bond,HighYield,HKD
+1419,AGD,Wycombe Telecom Inc,Equity,CommServices,USD
+1420,FMRH.DE,  Foxglove Consumer SE  ,  Equity  ,ConsumerStaples,EUR
+1421,  wfvs  ,Belmont Aerospace Inc,Equity,Industrials,USD
+1422,1394.HK,Ellesmere Properties Holdings, Equity ,RealEstate,HKD
+1423,IGH.SW,Orion Networks AG,Equity,InfoTech,CHF
+1424,SPH,Quillon Industries Corp,Equity, Industrials ,USD
+1425,RHHK,Zephyr Realty Inc,Equity,  RealEstate  ,USD
+1426,DBAN.DE,Cardinal Industries SE,Equity,Materials,EUR
+1427,5888.HK,Vantage Aggregate Bond ETF,ETF,FixedIncome,HKD
+1428,FXPD.L,Orion Engineering plc,Equity,  Industrials  ,GBP
+1429,CTW.PA,Belcour Trust SA,Equity,Financials,EUR
+1430,BPW.SW, Larchmont Brands SA ,Equity,ConsumerDisc,CHF
+1431,DLGC.L,Greycliff Bancorp plc,Equity,Financials,GBP
+1432,USMH96EU1NL3,US Treasury 4.25% 2027,Bond,Government,USD
+1433,9497.T,Dunmore Household Corporation,Equity,ConsumerStaples,JPY
+1434,UST5QKHH9R13,Thornbury 6.25% 2040 Sr Notes,Bond,Securitized,USD
+1435,NJQB,Stratford Data Corp,Equity,InfoTech,USD
+1436,AYZC.DE, Cardinal Semiconductor SE ,Equity,InfoTech,EUR
+1437,IUXE.PA,Oakhaven Capital SE,Equity,Financials,EUR
+1438,2701.HK,Stratford Leisure Ltd,Equity,ConsumerDisc,HKD
+1439,RZG.PA,Ironwood Electric SE,Equity,  Utilities  ,EUR
+1440,  QVG.PA  ,Lumen Oil & Gas SE,Equity,Energy,EUR
+1441,  ZGKV  ,Northcrest Commodity ETF,ETF,Commodity,USD
+1442,OQPC.L,Underwood Retail plc,Equity,ConsumerDisc, gbp
+1443,FR1038C14TE6,Crestline 5.50% 2031 Sr Notes,Bond,Securitized,EUR
+1444,8682.HK,Cheung Wah Foods Holdings,Equity,ConsumerStaples,HKD
+1445,XWEH,Stonebridge Pharmaceuticals Group,Equity,HealthCare,USD
+1446,8123.HK,Larchmont Biosciences Ltd,Equity,HealthCare,HKD
+1447,KTAI.SW,Inverness Beverages SA,Equity,ConsumerStaples,CHF
+1448,8730.T, Helvetia Total Market ETF ,ETF,Broad,JPY
+1449,QBHO,Kingsley Foods Corp,Equity,ConsumerStaples,USD
+1450,EMZT,Aluminium Spot,Commodity,BaseMetals,USD
+1451,4349.HK,Ashford Pharmaceuticals Ltd,Equity,HealthCare,HKD
+1452,USQNPA1UADT7,Brightwater 2.75% 2039 Sr Notes,Bond,Corporate,USD
+1453,WTP,Wycombe Capital Corp,Equity,Financials,USD
+1454,WUN.PA,Quillon Retail SE,  Equity  ,ConsumerDisc,EUR
+1455,SBO.L,Crestline Entertainment plc,Equity,CommServices,GBP
+1456, IJJT ,Copper Spot,Commodity,BaseMetals,USD
+1457,FR8SY5LG1T22,French OAT 6.25% 2028,Bond,Government,EUR
+1458,JFVO,Stonebridge Pharmaceuticals Inc,Equity,HealthCare,USD
+1459,CHDDGQL1VCX6,Swiss Confederation 1.75% 2031,Bond, Government ,CHF
+1460,CLKN,Palladium Spot,Commodity,PreciousMetals,USD
+1461,AGHN,Harlow Microsystems Inc,Equity,InfoTech, usd
+1462,KQE,Underwood Logistics Inc,Equity,Industrials,USD
+1463,KPO,Drakemoor Industries Inc,Equity,Industrials,USD
+1464,5546.HK,Helvetia Aggregate Bond ETF,ETF,FixedIncome,HKD
+1465,ZLJ,  Calder Diagnostics Inc  ,Equity,HealthCare,USD
+1466,XQU.L,Harlow Software plc,Equity,InfoTech,GBP
+1467,DE7Q2AXXHRS4,Bauerfeld 2.25% 2040 Sr Notes,Bond,Corporate,EUR
+1468,USSZNDRYNFQ6, US Treasury 2.25% 2029 ,Bond,Government,USD
+1469, GFXU ,Orion Innovation ETF,ETF,Thematic,USD
+1470,RQJU.SW,Juniper Engineering SA,Equity,Industrials,CHF
+1471,TAGP.L,Vantage Household plc,Equity,  ConsumerStaples  ,GBP
+1472,2919.HK,Cheung Wah Software Ltd,  Equity  ,InfoTech,HKD
+1473,ONU.DE,Foxglove Realty SE,Equity,RealEstate,EUR
+1474, 2187.T ,Montrose Oil & Gas Corporation,Equity,Energy,JPY
+1475,GBH749RMMMQ2,Thornbury 3.25% 2035 Sr Notes,Bond,Corporate,GBP
+1476,VLFT.SW,Helvetia InfoTech ETF,ETF,InfoTech,CHF
+1477,YMWO.SW,Lumen Utilities SA,Equity,Utilities,CHF
+1478,NVYN,Crestline Bancorp Corp,Equity,Financials,USD
+1479,7898.T,Akatsuki REIT Corporation,Equity,RealEstate,JPY
+1480,XKTB.L,Calder Motors plc,Equity,ConsumerDisc,GBP
+1481,FVT.DE,Cardinal Properties AG,Equity, RealEstate ,  EUR
+1482,HIMY.SW,Quillon Beverages AG,Equity,ConsumerStaples,CHF
+1483,US4M0YHTRLU2,  Ironwood 4.75% 2035 Sr Notes  ,Bond,Corporate,USD
+1484,HQDU,Redstone Systems Corp,Equity,InfoTech, usd
+1485,LTOV.PA,Inverness Bancorp SE,Equity,Financials,EUR
+1486,YZVL,Brightwater Semiconductor Inc,Equity,InfoTech,USD
+1487,RBS.DE,Underwood Pharmaceuticals AG,Equity,HealthCare, EUR
+1488,ZXVT.DE,Orion Oil & Gas AG,Equity,Energy,EUR
+1489,JPP7A25JPU35, Wycombe 3.50% 2041 Sr Notes ,  Bond  ,Corporate,JPY
+1490,USU261H89UR2,Yarrow 2.25% 2043 Sr Notes,Bond,Corporate,USD
+1491,NFJ,Ashford Biosciences Inc,Equity,HealthCare,USD
+1492,HQGH,Juniper Medical Corp,Equity,HealthCare,USD
+1493,OUUG,Thornbury Entertainment Corp,Equity,CommServices,USD
+1494,AQUT,Lumen Aggregate Bond ETF,ETF,FixedIncome,USD
+1495, FAZ ,Beacon Aggregate Bond ETF,ETF,FixedIncome,USD
+1496,  hat.l  ,Redstone Household plc,Equity,ConsumerStaples,GBP
+1497,  BEIR  ,Brightwater Therapeutics Corp,Equity,HealthCare,USD
+1498,4536.T,Northcrest Therapeutics KK,Equity,HealthCare,JPY
+1499,AIKM,Yarrow Properties Corp,Equity,RealEstate,USD
+1500,GBF85HB0ELV6,UK Gilt 3.75% 2036,Bond,Government,GBP
+0,  bad ,Unmapped Instrument,Equity,InfoTech,usd
+-1,ZZZ,Sentinel,Bond,Government,eur

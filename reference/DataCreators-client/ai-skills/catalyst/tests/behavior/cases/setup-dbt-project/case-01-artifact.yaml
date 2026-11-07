@@ -1,0 +1,46 @@
+id: setup-dbt-project.case-01-artifact
+skill: skills/setup-dbt-project
+type: artifact
+description: >-
+  Verifies /setup-dbt-project emits a dbt_project.yml with UC catalog vars
+  and tblproperties, a profiles.yml with env-specific catalog targets, a
+  .sqlfluff citing RFD 0008, and a packages.yml without dbt-project-evaluator.
+
+input:
+  arguments: >-
+    Scaffold a dbt project for the employee investment allocation DAP product.
+    Product name: employee-investment-allocation. Business group: investments.
+    App catalog: investments-app-dev. Domain catalog: investments-domain-dev.
+    Source system: advent_geneva. Build mode: production.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: dbt_project_yml_catalog_vars
+      weight: 0.3
+      prompt: >-
+        Does the response produce a dbt_project.yml (or a code block labeled as
+        such) that includes catalog variable declarations for app_catalog,
+        domain_catalog, and caspian_catalog? Score 0-1.
+    - id: tblproperties_block
+      weight: 0.25
+      prompt: >-
+        Does the dbt_project.yml output include a +tblproperties block with at
+        least the delta.universalFormat.enabledFormats, delta.logRetentionDuration,
+        and delta.deletedFileRetentionDuration properties? Score 0-1.
+    - id: profiles_yml_env_targets
+      weight: 0.25
+      prompt: >-
+        Does the response produce a profiles.yml (or a labeled code block)
+        with at least two environment targets (e.g., dev and prd) each
+        referencing an app_catalog or catalog variable? Score 0-1.
+    - id: no_dbt_project_evaluator
+      weight: 0.2
+      prompt: >-
+        Does the packages.yml output (or labeled code block) omit
+        dbt-project-evaluator as a runtime dependency? A comment explaining
+        why it was excluded is acceptable. Score 1 if absent or excluded with
+        explanation, 0 if it is included as a runtime package. Score 0-1.

@@ -1,0 +1,44 @@
+id: configure-sql-warehouse.case-02-policy-violation-refusal
+skill: skills/configure-sql-warehouse
+type: artifact
+description: >-
+  Cluster-policy violation guard. The team's policy caps t-shirt size at Medium
+  and requires auto_stop_mins > 0. The user requests 4X-Large with no auto-stop.
+  The skill must flag both violations and refuse to emit the non-compliant
+  warehouse — or negotiate to compliant alternatives — rather than silently
+  accepting the request.
+
+input:
+  arguments: >-
+    Configure a sql warehouse for production at 4X-Large size with no auto-stop.
+    The team's cluster policy caps t-shirt size at Medium and requires
+    auto_stop_mins > 0.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: flags_policy_violation
+      weight: 0.35
+      prompt: >-
+        Does the response identify BOTH policy violations: (1) cluster_size
+        4X-Large exceeds the Medium cap, and (2) auto_stop disabled violates the
+        auto_stop_mins > 0 requirement? Score 1 if both are named, 0.5 if only
+        one is identified, 0 if neither is flagged. Score 0-1.
+    - id: refuses_or_negotiates
+      weight: 0.35
+      prompt: >-
+        Does the response refuse to emit the non-compliant warehouse definition
+        OR suggest specific compliant alternatives — for example, cluster_size
+        Medium and auto_stop_mins 10? Score 1 if it refuses or offers concrete
+        compliant values, 0.5 if it hedges without concrete alternatives, 0 if it
+        emits the 4X-Large / no-auto-stop definition as requested. Score 0-1.
+    - id: cites_policy_authority
+      weight: 0.3
+      prompt: >-
+        Does the response cite the cluster policy and/or the platform team as the
+        authority for the constraints, rather than treating them as optional
+        suggestions or attempting to bypass them? Score 1 if policy authority is
+        clearly cited, 0.5 if vaguely mentioned, 0 if absent. Score 0-1.

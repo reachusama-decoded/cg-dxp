@@ -1,0 +1,8 @@
+atlas_elt:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('ATLAS_DUCKDB_PATH', 'warehouse/training_dev.duckdb') }}"
+      schema: "{{ env_var('ATLAS_SCHEMA', 'training_demo') }}"
+      threads: 4

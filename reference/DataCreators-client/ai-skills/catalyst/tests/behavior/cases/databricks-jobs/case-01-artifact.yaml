@@ -1,0 +1,43 @@
+id: databricks-jobs.case-01-artifact
+skill: skills/databricks-jobs
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "Configure a Databricks job with a scheduled notebook task"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: emits_job_yaml
+      weight: 0.35
+      prompt: >-
+        Does the response produce job YAML with the `resources.jobs.<key>`
+        top-level structure and a `tasks:` list beneath it, consistent
+        with the Databricks Asset Bundle job resource schema? Score 1.0
+        if both `resources.jobs` nesting and `tasks:` are present and
+        structurally correct; 0.5 if only one is present; 0 if neither
+        appears. Score 0-1.
+    - id: cites_task_type_correctly
+      weight: 0.35
+      prompt: >-
+        Does the response correctly distinguish Databricks task types per
+        the actual SDK — using `notebook_task`, `spark_python_task`, or
+        `sql_task` (or another real task-type key) — and avoid invented
+        task-type names such as `python_task`, `job_task`, or generic
+        `script_task`? Score 1.0 if only real task-type keys are used;
+        0.5 if mostly real with minor errors; 0 if invented keys
+        dominate or no task types are discussed. Score 0-1.

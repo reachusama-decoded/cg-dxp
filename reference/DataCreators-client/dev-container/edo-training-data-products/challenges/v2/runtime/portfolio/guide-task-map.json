@@ -1,0 +1,1735 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "dbt-guide-q01",
+      "question": "What problem does dbt solve, and where does it fit in a data pipeline?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-01"
+      ]
+    },
+    {
+      "id": "dbt-guide-q02",
+      "question": "What does a dbt project contain, and how do we connect it to our data?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dbt_project.yml",
+        "profiles.yml"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-01"
+      ]
+    },
+    {
+      "id": "dbt-guide-q03",
+      "question": "How does a SQL query become a dbt model?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/staging/stg_holdings.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-02"
+      ]
+    },
+    {
+      "id": "dbt-guide-q04",
+      "question": "How do we connect models using source() and ref()?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/sources.yml"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-03"
+      ]
+    },
+    {
+      "id": "dbt-guide-q05",
+      "question": "How should we split a large query into understandable, reusable models?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "stg_prices",
+        "stg_fx_rates",
+        "stg_funds",
+        "stg_positions",
+        "int_holdings_enriched"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/intermediate/int_holdings_enriched.sql",
+        "models/staging/stg_positions.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-01",
+        "dbt-p2-02"
+      ]
+    },
+    {
+      "id": "dbt-guide-q06",
+      "question": "When should a model be a view or a table?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dbt_project.yml"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-04"
+      ]
+    },
+    {
+      "id": "dbt-guide-q07",
+      "question": "How do we know our models produce trustworthy data?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "tests/matched_enrichment.sql",
+        "tests/matched_funds.sql",
+        "tests/nav_reconciliation.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p1-05",
+        "dbt-p2-03"
+      ]
+    },
+    {
+      "id": "dbt-guide-q08",
+      "question": "How do we make a change confidently and explain the result?",
+      "destination": "03-day-3-data-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/schema.yml",
+        "evidence.md"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-03",
+        "dbt-p2-05"
+      ]
+    },
+    {
+      "id": "dbt-guide-q09",
+      "question": "When does Jinja help, and when should we keep the logic in SQL?",
+      "destination": "23-project-dbt-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "native_value"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "macros/native_value.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-02"
+      ]
+    },
+    {
+      "id": "dbt-guide-q10",
+      "question": "How can we process less data without producing incorrect results?",
+      "destination": "23-project-dbt-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "holdings_replay"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/marts/holdings_replay.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-04"
+      ]
+    },
+    {
+      "id": "dbt-guide-q11",
+      "question": "How do we preserve history when source records change?",
+      "destination": "23-project-dbt-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "fund_history"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "snapshots/fund_history.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-05"
+      ]
+    },
+    {
+      "id": "dbt-guide-q12",
+      "question": "How does a dbt project move into reliable team delivery?",
+      "destination": "23-project-dbt-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-05"
+      ]
+    },
+    {
+      "id": "dbt-guide-q13",
+      "question": "Can we independently deliver a documented, tested model?",
+      "destination": "23-project-dbt-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "models/marts/fund_nav_report.sql"
+      ],
+      "canonical_source": "dbt/README.md",
+      "canonical_source_sha256": "ab60fdd54a3d63e4012e8a15a543ac097ff8698eb535b41f34684fe6d8a40bea",
+      "canonical_task_ids": [
+        "dbt-p2-05"
+      ]
+    },
+    {
+      "id": "airflow-guide-q01",
+      "question": "What problem does Airflow solve alongside dbt?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-01"
+      ]
+    },
+    {
+      "id": "airflow-guide-q02",
+      "question": "What are a DAG, task, operator, run and task instance?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-02"
+      ]
+    },
+    {
+      "id": "airflow-guide-q03",
+      "question": "Which components parse, schedule, execute and record the work?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-01"
+      ]
+    },
+    {
+      "id": "airflow-guide-q04",
+      "question": "How do we define dependencies and pass information?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-03"
+      ]
+    },
+    {
+      "id": "airflow-guide-q05",
+      "question": "What do schedules, logical dates, intervals and catchup mean?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-01"
+      ]
+    },
+    {
+      "id": "airflow-guide-q06",
+      "question": "What should happen when a task fails or retries?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-04",
+        "airflow-p2-02"
+      ]
+    },
+    {
+      "id": "airflow-guide-q07",
+      "question": "How do reruns and backfills produce correct results?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-03"
+      ]
+    },
+    {
+      "id": "airflow-guide-q08",
+      "question": "How do we inspect a run and prove completion?",
+      "destination": "04-day-4-orchestration-systems.md",
+      "placement": "core teaching",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-05",
+        "airflow-p2-04"
+      ]
+    },
+    {
+      "id": "airflow-guide-q09",
+      "question": "How do readiness and freshness differ?",
+      "destination": "24-project-airflow-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-01"
+      ]
+    },
+    {
+      "id": "airflow-guide-q10",
+      "question": "How should Airflow orchestrate dbt, and when does Cosmos help?",
+      "destination": "24-project-airflow-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "dags/portfolio_daily.py"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p1-02",
+        "airflow-p2-04"
+      ]
+    },
+    {
+      "id": "airflow-guide-q11",
+      "question": "What do Astro Runtime and the CLI add?",
+      "destination": "24-project-airflow-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-04"
+      ]
+    },
+    {
+      "id": "airflow-guide-q12",
+      "question": "How do we test and operate a workflow as a team?",
+      "destination": "24-project-airflow-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-05"
+      ]
+    },
+    {
+      "id": "airflow-guide-q13",
+      "question": "Can we deliver a workflow and demonstrate recovery?",
+      "destination": "24-project-airflow-portfolio-analytics.md",
+      "placement": "Further study",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw",
+        "refdata_raw",
+        "seed_funds",
+        "seed_custodian_nav"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "runtime": "dbt-databricks/Astro",
+      "check": "independent CSV/warehouse reference plus owned scheduled run for Airflow",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "task_graph": [
+        "source_ready",
+        "dbt_build",
+        "quality",
+        "publication_evidence"
+      ],
+      "canonical_source": "airflow/README.md",
+      "canonical_source_sha256": "3278ec998ab3c1e79e7898c7b93bed08cfc7dc4723d51e6b818cb4f5bd82088d",
+      "canonical_task_ids": [
+        "airflow-p2-05"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "dbt-guide-01",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-01",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "check": "Eight holdings, four funds, two business dates; safe identity and seed inventory",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-01"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-02",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-02",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "models/staging/stg_holdings.sql",
+        "tests/holdings_grain.sql",
+        "evidence.md"
+      ],
+      "check": "Eight unique dated holding keys and native decimal values; a controlled zero-valued holding retains its key; restoration recovers baseline.",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-03"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-03",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-03",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "models/sources.yml",
+        "models/staging/stg_holdings.sql",
+        "evidence.md"
+      ],
+      "check": "Compiled source relations and manifest dependencies agree with all raw seeds",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-02"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-04",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-04",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "models/marts/fund_nav_report.sql",
+        "evidence.md"
+      ],
+      "check": "Eight fund/date rows; independently derived GBP exposure and teaching NAV",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-04"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-05",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-05",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "models/intermediate/int_holdings_enriched.sql",
+        "evidence.md"
+      ],
+      "check": "Eight input keys; date-free price join yields sixteen matches; dated repair retains eight",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/02-trustworthy-models/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-01",
+        "dbt-p2-02"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "dbt-guide-06",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-06",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "models/marts/fund_nav_report.sql",
+        "evidence.md"
+      ],
+      "check": "Eight fund/date rows; independently derived GBP exposure and teaching NAV",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/02-trustworthy-models/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-04"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-07",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-07",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "models/schema.yml",
+        "tests/holdings_grain.sql",
+        "tests/matched_funds.sql",
+        "tests/matched_enrichment.sql",
+        "tests/nav_reconciliation.sql",
+        "evidence.md"
+      ],
+      "check": "Structural/business tests pass; unknown fund fails membership for its intended reason; restored seed/model/output passes again.",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/02-trustworthy-models/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p1-05",
+        "dbt-p2-03"
+      ],
+      "canonical_source": "dbt/phase-one-certified/README.md",
+      "canonical_source_sha256": "70ce34805e3ee50beafa6939b37a254474481a2fc6f6311875177a1f715b59f7"
+    },
+    {
+      "id": "dbt-guide-08",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-08",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "tests/matched_enrichment.sql",
+        "tests/nav_reconciliation.sql",
+        "models/schema.yml",
+        "evidence.md"
+      ],
+      "check": "Coverage and NAV tests fail on copied missing-FX input and pass after restoration",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/02-trustworthy-models/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-03",
+        "dbt-p2-05"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "dbt-guide-09",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-09",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "models/intermediate/int_holdings_enriched.sql",
+        "macros/native_value.sql",
+        "evidence.md"
+      ],
+      "check": "Eight enriched keys; explicit matched-price/FX coverage and decimal GBP value",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/03-history-and-delivery/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-02"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "dbt-guide-10",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-10",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "models/marts/holdings_replay.sql",
+        "evidence.md"
+      ],
+      "check": "Older-date +1,000 GBP correction retains eight unique keys; +500 GBP unseen holding inserts a ninth; both correction and insertion replay without duplication; restore owned eight-key baseline",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/03-history-and-delivery/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-04"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "dbt-guide-11",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-11",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "models/marts/fund_nav_report.sql",
+        "snapshots/fund_history.sql",
+        "models/schema.yml",
+        "evidence.md"
+      ],
+      "check": "Declared fund report, meaningful snapshot intervals, lineage and explicit Astro boundary",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/03-history-and-delivery/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-05"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "dbt-guide-12",
+      "destination": "23-project-dbt-portfolio-analytics.md#dbt-guide-12",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "models/marts/fund_nav_report.sql",
+        "snapshots/fund_history.sql",
+        "models/schema.yml",
+        "evidence.md"
+      ],
+      "check": "Declared fund report, meaningful snapshot intervals, lineage and explicit Astro boundary",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/dbt-guide/03-history-and-delivery/starter",
+      "instructor_reference": "facilitator/practice-dbt-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "dbt-p2-05"
+      ],
+      "canonical_source": "dbt/phase-two-proficient/README.md",
+      "canonical_source_sha256": "f1e8830a41c510d10c2aa348933ee0c4165f014d48e0734136b32c9e29c38f71"
+    },
+    {
+      "id": "airflow-guide-01",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-01",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "evidence.md"
+      ],
+      "check": "Actual mount/executable identities, owned namespace and supplied-vs-authored inventory",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-01"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-02",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-02",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Four meaningful tasks with explicit paths, target and actual warehouse checks",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-02"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-03",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-03",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Readiness \u2192 build \u2192 quality \u2192 evidence; fresh scheduled task identities",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-03"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-04",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-04",
+      "checkpoint": 1,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Readiness \u2192 build \u2192 quality \u2192 evidence; fresh scheduled task identities",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/01-foundations/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-03",
+        "airflow-p1-05"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-05",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-05",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Supported May partition, explicit schedule interval and reproducible source readiness",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/02-reliable-runs/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p2-01"
+      ],
+      "canonical_source": "airflow/phase-two-proficient/README.md",
+      "canonical_source_sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7"
+    },
+    {
+      "id": "airflow-guide-06",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-06",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Quality failed; evidence upstream_failed; no failed-run receipt; repair succeeds",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/02-reliable-runs/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-04",
+        "airflow-p2-02"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-07",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-07",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Eight unique report keys, four partition rows, stable values across repeated input",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/02-reliable-runs/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p2-03"
+      ],
+      "canonical_source": "airflow/phase-two-proficient/README.md",
+      "canonical_source_sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7"
+    },
+    {
+      "id": "airflow-guide-08",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-08",
+      "checkpoint": 2,
+      "route": "Core project",
+      "authored_files": [
+        "evidence.md",
+        "incident.md"
+      ],
+      "check": "Coherent handoff links run/task IDs, artifacts and independent fund/date output",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/02-reliable-runs/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-05",
+        "airflow-p2-04"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-09",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-09",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Supported May partition, explicit schedule interval and reproducible source readiness",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/03-dbt-and-astro/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p2-01"
+      ],
+      "canonical_source": "airflow/phase-two-proficient/README.md",
+      "canonical_source_sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7"
+    },
+    {
+      "id": "airflow-guide-10",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-10",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "dags/portfolio_daily.py",
+        "evidence.md"
+      ],
+      "check": "Four meaningful tasks with explicit paths, target and actual warehouse checks",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/03-dbt-and-astro/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p1-02",
+        "airflow-p2-04"
+      ],
+      "canonical_source": "airflow/phase-one-certified/README.md",
+      "canonical_source_sha256": "359d27a356749e0d3bea13e94a473c846b037f68d484c7f9dd87c81bdca279ad"
+    },
+    {
+      "id": "airflow-guide-11",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-11",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "incident.md",
+        "evidence.md"
+      ],
+      "check": "Exact graph/grid/log identities, causal diagnosis and observed repair decision",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/03-dbt-and-astro/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p2-04"
+      ],
+      "canonical_source": "airflow/phase-two-proficient/README.md",
+      "canonical_source_sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7"
+    },
+    {
+      "id": "airflow-guide-12",
+      "destination": "24-project-airflow-portfolio-analytics.md#airflow-guide-12",
+      "checkpoint": 3,
+      "route": "Advanced project",
+      "authored_files": [
+        "incident.md",
+        "evidence.md",
+        "dags/portfolio_daily.py"
+      ],
+      "check": "Current success/failure/repair/replay chain, reviewable diff and explicit pending gates",
+      "inputs": [
+        "holdings_raw",
+        "positions_raw",
+        "prices_raw",
+        "fx_rates_raw",
+        "fund_master_raw"
+      ],
+      "models": [
+        "stg_holdings",
+        "int_holdings_enriched",
+        "fund_nav_report"
+      ],
+      "independent_baseline": "practice/airflow-guide/03-dbt-and-astro/starter",
+      "instructor_reference": "facilitator/practice-airflow-guide/reference",
+      "aliases": [],
+      "overlap_policy": "Compatibility outcome alias; canonical v2 tasks are the sole assigned authoring route",
+      "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+      "canonical_task_ids": [
+        "airflow-p2-05"
+      ],
+      "canonical_source": "airflow/phase-two-proficient/README.md",
+      "canonical_source_sha256": "14bf8b5619919f7582360d11274fcab5ad11a4ad81330982d6e6f5a62d374ac7"
+    }
+  ],
+  "runtime_status": "connected execution, fresh reconstruction and human acceptance pending",
+  "contract_sha256": "9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19",
+  "source_authority": "maintained client v2 READMEs and manifest"
+}

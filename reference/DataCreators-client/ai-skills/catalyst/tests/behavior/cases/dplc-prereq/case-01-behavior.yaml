@@ -1,0 +1,13 @@
+id: dplc-prereq.case-01-behavior
+skill: skills/dplc-prereq
+type: behavior
+description: >-
+  Phase 0 (Pre-requisite) orchestrator. Should invoke phase-zero-checklist
+  to confirm roles and infrastructure readiness before clearing the gate.
+input:
+  arguments: "Run the Phase 0 prereq check for a new data product."
+expected_sequence:
+  - skills/phase-zero-checklist
+strict_order: true
+allow_extra: true
+max_steps: 15

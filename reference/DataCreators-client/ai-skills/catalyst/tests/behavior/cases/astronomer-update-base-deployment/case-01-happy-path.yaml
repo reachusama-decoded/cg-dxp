@@ -1,0 +1,57 @@
+# Validation evidence:
+# - Offline suite: 1,349 passed.
+# - Overlay exercise: local template-root/target fixture, dry-run mode; apply
+#   was not used because this case verifies the no-write safety boundary.
+# Dry run completed against itg-ig-tech-imt-csgd-data-products.
+#    Detected Airflow 3
+#    Template SHA: d8c31677d5e6385d82b6c9c0c66a42ef618a409c
+#    5 files would be added
+#    9 files are divergent and would be overwritten
+#    20 files are identical
+#    7 parameterized/user-owned paths were skipped
+#    No target files were modified.
+
+id: astronomer-update-base-deployment.case-01-happy-path
+skill: skills/astronomer-update-base-deployment
+type: artifact
+description: >
+  Happy-path dry-run case. Preview an overlay of the latest Astronomer template
+  scaffolding onto an existing vended deployment repository using a local
+  template checkout, and report the Airflow version plus the file classifications
+  without modifying the target. The user must opt into --apply before any writes.
+input:
+  arguments: >
+    Use astronomer-update-base-deployment to preview a scaffolding overlay for
+    my existing vended Astronomer deployment repository. Use --template-root
+    ../template-copier-astro-infra-bundle and --dry-run so this can run offline.
+    Detect the target Airflow major version, classify every template-owned file
+    as MISSING, IDENTICAL, DIVERGENT, PARAM, or USER-OWNED, and show the plan.
+    Confirm that the target was not modified and explain that --apply is required
+    before any files are written.
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+rubric:
+  threshold: 0.8
+  criteria:
+  - id: dry_run_is_default_safe_path
+    weight: 0.35
+    prompt: >
+      Does the output clearly use or recommend --dry-run and state that the
+      target is not modified or written during the preview? Score 0-1.
+  - id: reports_file_classification
+    weight: 0.35
+    prompt: >
+      Does the output explain the file-level plan and distinguish the relevant
+      MISSING, IDENTICAL, DIVERGENT, PARAM, and USER-OWNED classifications,
+      including that strategy controls only divergent files? Score 0-1.
+  - id: apply_requires_explicit_opt_in
+    weight: 0.2
+    prompt: >
+      Does the output state that --apply is required before files can be added,
+      overwritten, merged, or written as template-new siblings? Score 0-1.
+  - id: no_placeholders
+    weight: 0.1
+    prompt: >
+      Is the output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells
+      where data was expected? Score 0-1.

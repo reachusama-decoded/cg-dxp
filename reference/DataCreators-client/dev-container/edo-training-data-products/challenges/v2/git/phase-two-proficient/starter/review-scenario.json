@@ -1,0 +1,12 @@
+{
+  "remote": "Instructor-provided private training repository, or your own private OWNER/dc-git-training created with gh (git-p2-01)",
+  "review": "Clarify deadline timezone and who receives late-feed incidents",
+  "upstream_change": "Add an input classification note on main",
+  "evidence": [
+    "PR URL",
+    "review author/comment",
+    "revision commit",
+    "upstream merge commit",
+    "final CI/review state"
+  ]
+}

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1320" height="900" viewBox="0 0 1320 900"
+     font-family="Helvetica, Arial, sans-serif">
+  <title>Option A: Single Topic (status quo)</title>
+  <desc>RFD 0007 — Topic Strategy Option A. Multiple Airflow deployments (each with an embedded astro-dependency-plugin) both produce to and consume from a single Kafka topic. Plugin filters out events from its own deployment. Non-Airflow consumers also subscribe with client-side filters.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8FADB2"/>
+    </marker>
+    <marker id="arrow-prod" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0068AE"/>
+    </marker>
+    <marker id="arrow-cons" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#008074"/>
+    </marker>
+    <style>
+      .title         { font-size: 22px; font-weight: 700; fill: #083469; }
+      .subtitle      { font-size: 13px; fill: #555555; }
+      .group-label   { font-size: 13px; font-weight: 700; fill: #555555; letter-spacing: 0.5px; }
+      .airflow-title { font-size: 15px; font-weight: 700; fill: #1F1F1F; }
+      .sub-title     { font-size: 13px; font-weight: 700; fill: #1F1F1F; }
+      .sub-text      { font-size: 11px; fill: #1F1F1F; }
+      .plugin-title  { font-size: 13px; font-weight: 700; fill: #841574; }
+      .plugin-cap    { font-size: 11px; font-weight: 600; fill: #841574; }
+      .topic-title   { font-size: 18px; font-weight: 700; fill: #FFFFFF; }
+      .topic-sub     { font-size: 12px; fill: #FFFFFF; }
+      .topic-tag     { font-size: 11px; font-weight: 700; fill: #FFFFFF; }
+      .filter-tag    { font-size: 11px; font-weight: 700; fill: #841574; }
+      .edge-label    { font-size: 11px; font-weight: 700; fill: #0068AE; }
+      .edge-label-c  { font-size: 11px; font-weight: 700; fill: #008074; }
+      .edge-note     { font-size: 11px; fill: #841574; font-style: italic; }
+      .legend        { font-size: 11px; fill: #1F1F1F; }
+      .note          { font-size: 11px; fill: #555555; font-style: italic; }
+      .consumer-title{ font-size: 13px; font-weight: 700; fill: #1F1F1F; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1320" height="900" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="660" y="34" text-anchor="middle" class="title">Option A: Single Topic (status quo)</text>
+  <text x="660" y="55" text-anchor="middle" class="subtitle">Each Airflow deployment embeds astro-dependency-plugin and is BOTH a producer and consumer on one shared Kafka topic.</text>
+
+  <!-- Row labels -->
+  <text x="60" y="92" class="group-label">AIRFLOW DEPLOYMENTS (producer + consumer)</text>
+  <text x="60" y="478" class="group-label">SHARED KAFKA TOPIC</text>
+  <text x="60" y="708" class="group-label">NON-AIRFLOW CONSUMERS</text>
+
+  <!-- ============ TOP ROW: 3 Airflow deployments ============ -->
+  <!-- Each Airflow container: x positions 50, 490, 930; width 340; height 340 starting y=110 -->
+
+  <!-- Airflow A: data-platform -->
+  <g>
+    <!-- Outer Airflow container -->
+    <rect x="50" y="110" width="340" height="340" rx="14" ry="14"
+          fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="220" y="136" text-anchor="middle" class="airflow-title">airflow: data-platform</text>
+
+    <!-- DAGs sub-box -->
+    <rect x="70" y="150" width="300" height="80" rx="8" ry="8"
+          fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.2"/>
+    <text x="220" y="170" text-anchor="middle" class="sub-title">DAGs</text>
+    <text x="220" y="188" text-anchor="middle" class="sub-text">ingest_market_data</text>
+    <text x="220" y="204" text-anchor="middle" class="sub-text">build_reference_tables</text>
+    <text x="220" y="220" text-anchor="middle" class="sub-text">refresh_security_master</text>
+
+    <!-- astro-dependency-plugin sub-box -->
+    <rect x="70" y="244" width="300" height="76" rx="8" ry="8"
+          fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="220" y="263" text-anchor="middle" class="plugin-title">astro-dependency-plugin</text>
+    <text x="220" y="281" text-anchor="middle" class="plugin-cap">produces / consumes</text>
+    <text x="220" y="299" text-anchor="middle" class="sub-text">filter: own deployment</text>
+    <text x="220" y="313" text-anchor="middle" class="sub-text">(self-echo suppression)</text>
+
+    <!-- Airflow Assets sub-box -->
+    <rect x="70" y="334" width="300" height="100" rx="8" ry="8"
+          fill="#E0F0EE" stroke="#008074" stroke-width="1.2"/>
+    <text x="220" y="354" text-anchor="middle" class="sub-title">Airflow Assets</text>
+    <text x="220" y="372" text-anchor="middle" class="sub-text">trigger surface for</text>
+    <text x="220" y="388" text-anchor="middle" class="sub-text">downstream DAGs in this</text>
+    <text x="220" y="404" text-anchor="middle" class="sub-text">deployment when matching</text>
+    <text x="220" y="420" text-anchor="middle" class="sub-text">events arrive</text>
+  </g>
+
+  <!-- Airflow B: portfolio -->
+  <g>
+    <rect x="490" y="110" width="340" height="340" rx="14" ry="14"
+          fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="660" y="136" text-anchor="middle" class="airflow-title">airflow: portfolio</text>
+
+    <rect x="510" y="150" width="300" height="80" rx="8" ry="8"
+          fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.2"/>
+    <text x="660" y="170" text-anchor="middle" class="sub-title">DAGs</text>
+    <text x="660" y="188" text-anchor="middle" class="sub-text">build_holdings_snapshot</text>
+    <text x="660" y="204" text-anchor="middle" class="sub-text">compute_pnl</text>
+    <text x="660" y="220" text-anchor="middle" class="sub-text">portfolio_attribution</text>
+
+    <rect x="510" y="244" width="300" height="76" rx="8" ry="8"
+          fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="660" y="263" text-anchor="middle" class="plugin-title">astro-dependency-plugin</text>
+    <text x="660" y="281" text-anchor="middle" class="plugin-cap">produces / consumes</text>
+    <text x="660" y="299" text-anchor="middle" class="sub-text">filter: own deployment</text>
+    <text x="660" y="313" text-anchor="middle" class="sub-text">(self-echo suppression)</text>
+
+    <rect x="510" y="334" width="300" height="100" rx="8" ry="8"
+          fill="#E0F0EE" stroke="#008074" stroke-width="1.2"/>
+    <text x="660" y="354" text-anchor="middle" class="sub-title">Airflow Assets</text>
+    <text x="660" y="372" text-anchor="middle" class="sub-text">trigger surface for</text>
+    <text x="660" y="388" text-anchor="middle" class="sub-text">downstream DAGs in this</text>
+    <text x="660" y="404" text-anchor="middle" class="sub-text">deployment when matching</text>
+    <text x="660" y="420" text-anchor="middle" class="sub-text">events arrive</text>
+  </g>
+
+  <!-- Airflow C: risk -->
+  <g>
+    <rect x="930" y="110" width="340" height="340" rx="14" ry="14"
+          fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+    <text x="1100" y="136" text-anchor="middle" class="airflow-title">airflow: risk</text>
+
+    <rect x="950" y="150" width="300" height="80" rx="8" ry="8"
+          fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.2"/>
+    <text x="1100" y="170" text-anchor="middle" class="sub-title">DAGs</text>
+    <text x="1100" y="188" text-anchor="middle" class="sub-text">var_calculation</text>
+    <text x="1100" y="204" text-anchor="middle" class="sub-text">stress_scenarios</text>
+    <text x="1100" y="220" text-anchor="middle" class="sub-text">exposure_aggregation</text>
+
+    <rect x="950" y="244" width="300" height="76" rx="8" ry="8"
+          fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+    <text x="1100" y="263" text-anchor="middle" class="plugin-title">astro-dependency-plugin</text>
+    <text x="1100" y="281" text-anchor="middle" class="plugin-cap">produces / consumes</text>
+    <text x="1100" y="299" text-anchor="middle" class="sub-text">filter: own deployment</text>
+    <text x="1100" y="313" text-anchor="middle" class="sub-text">(self-echo suppression)</text>
+
+    <rect x="950" y="334" width="300" height="100" rx="8" ry="8"
+          fill="#E0F0EE" stroke="#008074" stroke-width="1.2"/>
+    <text x="1100" y="354" text-anchor="middle" class="sub-title">Airflow Assets</text>
+    <text x="1100" y="372" text-anchor="middle" class="sub-text">trigger surface for</text>
+    <text x="1100" y="388" text-anchor="middle" class="sub-text">downstream DAGs in this</text>
+    <text x="1100" y="404" text-anchor="middle" class="sub-text">deployment when matching</text>
+    <text x="1100" y="420" text-anchor="middle" class="sub-text">events arrive</text>
+  </g>
+
+  <!-- ============ MIDDLE: single Kafka topic ============ -->
+  <g>
+    <rect x="160" y="500" width="1000" height="150" rx="14" ry="14"
+          fill="#083469" stroke="#083469" stroke-width="2"/>
+    <text x="660" y="534" text-anchor="middle" class="topic-title">Kafka Topic: platform-notifications</text>
+    <text x="660" y="556" text-anchor="middle" class="topic-sub">single topic carries every event type — consumers must filter by `type` in the payload</text>
+
+    <!-- event type chips -->
+    <rect x="220" y="578" width="180" height="46" rx="6" ry="6" fill="#083469" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="310" y="600" text-anchor="middle" class="topic-tag">data-ready</text>
+    <text x="310" y="616" text-anchor="middle" class="topic-tag">(table / partition)</text>
+
+    <rect x="420" y="578" width="200" height="46" rx="6" ry="6" fill="#083469" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="520" y="600" text-anchor="middle" class="topic-tag">orchestrator events</text>
+    <text x="520" y="616" text-anchor="middle" class="topic-tag">(start / success / fail)</text>
+
+    <rect x="640" y="578" width="160" height="46" rx="6" ry="6" fill="#083469" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="720" y="600" text-anchor="middle" class="topic-tag">DQ alerts</text>
+    <text x="720" y="616" text-anchor="middle" class="topic-tag">(quality / threshold)</text>
+
+    <rect x="820" y="578" width="200" height="46" rx="6" ry="6" fill="#083469" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="920" y="600" text-anchor="middle" class="topic-tag">dashboard / refresh</text>
+    <text x="920" y="616" text-anchor="middle" class="topic-tag">+ other operational</text>
+  </g>
+
+  <!-- ============ Bidirectional arrows: Airflow <-> Topic ============ -->
+  <!-- For each Airflow we draw two parallel thin arrows side-by-side:
+       - left arrow (going DOWN): "produce" (Bright Sapphire)
+       - right arrow (going UP):  "consume + filter own deployment" (Teal) -->
+
+  <!-- Airflow A (data-platform). Container bottom = 450, Topic top = 500 -->
+  <!-- produce (down) -->
+  <line x1="180" y1="450" x2="180" y2="500" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-prod)"/>
+  <text x="180" y="468" text-anchor="end" class="edge-label" transform="rotate(0)"> </text>
+  <text x="173" y="478" text-anchor="end" class="edge-label">produce</text>
+  <!-- consume (up) -->
+  <line x1="260" y1="500" x2="260" y2="450" stroke="#008074" stroke-width="2" marker-end="url(#arrow-cons)"/>
+  <text x="267" y="478" class="edge-label-c">consume</text>
+  <text x="267" y="492" class="edge-note">+ filter own deployment</text>
+
+  <!-- Airflow B (portfolio) -->
+  <line x1="620" y1="450" x2="620" y2="500" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-prod)"/>
+  <text x="613" y="478" text-anchor="end" class="edge-label">produce</text>
+  <line x1="700" y1="500" x2="700" y2="450" stroke="#008074" stroke-width="2" marker-end="url(#arrow-cons)"/>
+  <text x="707" y="478" class="edge-label-c">consume</text>
+  <text x="707" y="492" class="edge-note">+ filter own deployment</text>
+
+  <!-- Airflow C (risk) -->
+  <line x1="1060" y1="450" x2="1060" y2="500" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-prod)"/>
+  <text x="1053" y="478" text-anchor="end" class="edge-label">produce</text>
+  <line x1="1140" y1="500" x2="1140" y2="450" stroke="#008074" stroke-width="2" marker-end="url(#arrow-cons)"/>
+  <text x="1147" y="478" class="edge-label-c">consume</text>
+  <text x="1147" y="492" class="edge-note">+ filter own deployment</text>
+
+  <!-- ============ BOTTOM ROW: Non-Airflow consumers ============ -->
+
+  <!-- Dashboards -->
+  <g>
+    <rect x="280" y="730" width="320" height="100" rx="10" ry="10"
+          fill="#E6ECEE" stroke="#8FADB2" stroke-width="1.5"/>
+    <text x="440" y="756" text-anchor="middle" class="consumer-title">Dashboards</text>
+    <text x="440" y="776" text-anchor="middle" class="sub-text">refresh on data-ready;</text>
+    <text x="440" y="792" text-anchor="middle" class="sub-text">render DQ + alerting status</text>
+    <text x="440" y="816" text-anchor="middle" class="filter-tag">[client-side filter]</text>
+  </g>
+
+  <!-- Ops monitoring -->
+  <g>
+    <rect x="720" y="730" width="320" height="100" rx="10" ry="10"
+          fill="#E6ECEE" stroke="#8FADB2" stroke-width="1.5"/>
+    <text x="880" y="756" text-anchor="middle" class="consumer-title">Ops Monitoring</text>
+    <text x="880" y="776" text-anchor="middle" class="sub-text">SLA / failure tracking,</text>
+    <text x="880" y="792" text-anchor="middle" class="sub-text">paging on orchestrator events</text>
+    <text x="880" y="816" text-anchor="middle" class="filter-tag">[client-side filter]</text>
+  </g>
+
+  <!-- Topic -> Dashboards arrow -->
+  <line x1="440" y1="650" x2="440" y2="730" stroke="#8FADB2" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- Topic -> Ops arrow -->
+  <line x1="880" y1="650" x2="880" y2="730" stroke="#8FADB2" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ============ Notes / legend ============ -->
+  <g>
+    <rect x="40" y="850" width="1240" height="42" rx="8" ry="8"
+          fill="#FFFFFF" stroke="#8FADB2" stroke-width="1"/>
+    <rect x="56" y="862" width="14" height="14" rx="3" ry="3" fill="#D0EAE9" stroke="#0068AE"/>
+    <text x="78" y="874" class="legend">Airflow deployment (producer + consumer)</text>
+
+    <rect x="320" y="862" width="14" height="14" rx="3" ry="3" fill="#F3E0EE" stroke="#841574"/>
+    <text x="342" y="874" class="legend">astro-dependency-plugin</text>
+
+    <rect x="640" y="862" width="14" height="14" rx="3" ry="3" fill="#E0F0EE" stroke="#008074"/>
+    <text x="662" y="874" class="legend">Airflow Assets (downstream-DAG trigger surface)</text>
+
+    <rect x="960" y="862" width="14" height="14" rx="3" ry="3" fill="#083469" stroke="#083469"/>
+    <text x="982" y="874" class="legend">Single Kafka topic carrying all event types</text>
+  </g>
+
+  <!-- Embedded mxfile so drawio can re-open this SVG for editing -->
+  <foreignObject width="0" height="0" x="0" y="0" overflow="hidden">
+    <mxfile xmlns="http://www.w3.org/1999/xhtml" host="rfd-0007" modified="2026-05-05T00:00:00.000Z" agent="claude-code" version="24.0.0">
+      <diagram id="option-a" name="Option A: Single Topic">
+        <mxGraphModel dx="1320" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1320" pageHeight="900" math="0" shadow="0">
+          <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+
+            <mxCell id="title" value="Option A: Single Topic (status quo)" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#083469;" vertex="1" parent="1">
+              <mxGeometry x="0" y="14" width="1320" height="28" as="geometry"/>
+            </mxCell>
+            <mxCell id="subtitle" value="Each Airflow deployment embeds astro-dependency-plugin and is BOTH a producer and consumer on one shared Kafka topic." style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#555555;" vertex="1" parent="1">
+              <mxGeometry x="0" y="44" width="1320" height="20" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Airflow A: data-platform ===== -->
+            <mxCell id="af-a" value="airflow: data-platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;strokeWidth=2;fontStyle=1;fontSize=15;verticalAlign=top;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="50" y="110" width="340" height="340" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-a-dags" value="DAGs&#10;ingest_market_data&#10;build_reference_tables&#10;refresh_security_master" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-a">
+              <mxGeometry x="20" y="40" width="300" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-a-plugin" value="astro-dependency-plugin&#10;produces / consumes&#10;filter: own deployment (self-echo suppression)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;fontStyle=1;" vertex="1" parent="af-a">
+              <mxGeometry x="20" y="134" width="300" height="76" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-a-assets" value="Airflow Assets&#10;trigger surface for downstream DAGs in this deployment when matching events arrive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#1F1F1F;" vertex="1" parent="af-a">
+              <mxGeometry x="20" y="224" width="300" height="100" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Airflow B: portfolio ===== -->
+            <mxCell id="af-b" value="airflow: portfolio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;strokeWidth=2;fontStyle=1;fontSize=15;verticalAlign=top;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="490" y="110" width="340" height="340" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-b-dags" value="DAGs&#10;build_holdings_snapshot&#10;compute_pnl&#10;portfolio_attribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-b">
+              <mxGeometry x="20" y="40" width="300" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-b-plugin" value="astro-dependency-plugin&#10;produces / consumes&#10;filter: own deployment (self-echo suppression)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;fontStyle=1;" vertex="1" parent="af-b">
+              <mxGeometry x="20" y="134" width="300" height="76" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-b-assets" value="Airflow Assets&#10;trigger surface for downstream DAGs in this deployment when matching events arrive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#1F1F1F;" vertex="1" parent="af-b">
+              <mxGeometry x="20" y="224" width="300" height="100" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Airflow C: risk ===== -->
+            <mxCell id="af-c" value="airflow: risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D0EAE9;strokeColor=#0068AE;strokeWidth=2;fontStyle=1;fontSize=15;verticalAlign=top;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="930" y="110" width="340" height="340" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-c-dags" value="DAGs&#10;var_calculation&#10;stress_scenarios&#10;exposure_aggregation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="af-c">
+              <mxGeometry x="20" y="40" width="300" height="80" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-c-plugin" value="astro-dependency-plugin&#10;produces / consumes&#10;filter: own deployment (self-echo suppression)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E0EE;strokeColor=#841574;fontColor=#841574;fontStyle=1;" vertex="1" parent="af-c">
+              <mxGeometry x="20" y="134" width="300" height="76" as="geometry"/>
+            </mxCell>
+            <mxCell id="af-c-assets" value="Airflow Assets&#10;trigger surface for downstream DAGs in this deployment when matching events arrive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F0EE;strokeColor=#008074;fontColor=#1F1F1F;" vertex="1" parent="af-c">
+              <mxGeometry x="20" y="224" width="300" height="100" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Single Kafka topic ===== -->
+            <mxCell id="topic" value="Kafka Topic: platform-notifications&#10;single topic carries every event type — consumers must filter by `type` in the payload&#10;&#10;[ data-ready | orchestrator events | DQ alerts | dashboard / refresh + other operational ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083469;strokeColor=#083469;fontColor=#FFFFFF;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+              <mxGeometry x="160" y="500" width="1000" height="150" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Non-Airflow consumers ===== -->
+            <mxCell id="cons-dash" value="Dashboards&#10;refresh on data-ready; render DQ + alerting status&#10;[client-side filter]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="280" y="730" width="320" height="100" as="geometry"/>
+            </mxCell>
+            <mxCell id="cons-ops" value="Ops Monitoring&#10;SLA / failure tracking, paging on orchestrator events&#10;[client-side filter]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6ECEE;strokeColor=#8FADB2;fontColor=#1F1F1F;" vertex="1" parent="1">
+              <mxGeometry x="720" y="730" width="320" height="100" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Edges: Airflow <-> Topic (bidirectional, two thin arrows each) ===== -->
+            <mxCell id="e-a-prod" value="produce" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2;fontColor=#0068AE;fontStyle=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.02;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af-a" target="topic">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e-a-cons" value="consume + filter own deployment" style="endArrow=classic;html=1;strokeColor=#008074;strokeWidth=2;fontColor=#008074;fontStyle=1;exitX=0.1;exitY=0;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic" target="af-a">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="e-b-prod" value="produce" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2;fontColor=#0068AE;fontStyle=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.46;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af-b" target="topic">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e-b-cons" value="consume + filter own deployment" style="endArrow=classic;html=1;strokeColor=#008074;strokeWidth=2;fontColor=#008074;fontStyle=1;exitX=0.54;exitY=0;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic" target="af-b">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+
+            <mxCell id="e-c-prod" value="produce" style="endArrow=classic;html=1;strokeColor=#0068AE;strokeWidth=2;fontColor=#0068AE;fontStyle=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.9;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="af-c" target="topic">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e-c-cons" value="consume + filter own deployment" style="endArrow=classic;html=1;strokeColor=#008074;strokeWidth=2;fontColor=#008074;fontStyle=1;exitX=0.98;exitY=0;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="topic" target="af-c">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+
+            <!-- ===== Edges: Topic -> non-Airflow consumers ===== -->
+            <mxCell id="e-dash" style="endArrow=classic;html=1;strokeColor=#8FADB2;strokeWidth=1.8;" edge="1" parent="1" source="topic" target="cons-dash">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="e-ops" style="endArrow=classic;html=1;strokeColor=#8FADB2;strokeWidth=1.8;" edge="1" parent="1" source="topic" target="cons-ops">
+              <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+          </root>
+        </mxGraphModel>
+      </diagram>
+    </mxfile>
+  </foreignObject>
+</svg>

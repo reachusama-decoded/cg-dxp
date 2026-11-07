@@ -1,0 +1,63 @@
+{
+  "snapshot_scope": "25 ETF + 65 F3 + 19 SMA strategy IDs",
+  "source_use": "Preparation copy; confirm classroom redistribution/audience conditions, especially SMA, before delivery",
+  "selection": {
+    "etfs": {
+      "distinct_ids": 25,
+      "input_files": {
+        "products": "d7639117429d0bf00d2c3c285ba11876077fa372f64a1d232f1430e98a739fee",
+        "fees": "7e01f80116991c8ad76fe37ae59cab4252824cc690f4749e235f21d390bc4213",
+        "returns": "5356de07a84e06f93cd01a1cb3b8df224fcaab0441e9bf12709827a18fad883e"
+      }
+    },
+    "mutual_funds": {
+      "distinct_ids": 65,
+      "input_files": {
+        "products": "dc8e7acbf5398a3b0a965af00d6295cd41711c808410b0d401a6610a12305586",
+        "fees": "c1dc94e64055237303c0488efa25f6d78e29a04a83aad5ee2851844d34c83e88",
+        "returns": "234d4c66addef63a015f55a658adbb506d2153aa952d7950e898816fc6219d8a"
+      }
+    },
+    "managed_accounts": {
+      "distinct_ids": 19,
+      "input_files": {
+        "products": "0647d4bcae2f83ae7310f56231c3f7b4d772e6735c1e78e9a645af8488a653ac",
+        "returns": "55412f72390f5cbb6b68b1e587621ff8b08c37c1a7ce4039ea3a0e41b210baf6"
+      }
+    }
+  },
+  "files": {
+    "cg_fees.csv": {
+      "bytes": 112099,
+      "sha256": "624b1b6bdf9f9d3a5aec19105f9d6c8ced8c5468ba2f403846d969c3a72a4885"
+    },
+    "cg_products.csv": {
+      "bytes": 56558,
+      "sha256": "4e4fba2fbb8955dc9a2f48e183c615a345dced9c28c95e7b614b564fa73b0b7d"
+    },
+    "cg_smoke.csv": {
+      "bytes": 26,
+      "sha256": "bc6ff421c99444feb79d71c6506ce72aeeaf204367d5a9e5c65bd600897867b8"
+    },
+    "cg_training_enquiries.csv": {
+      "bytes": 607,
+      "sha256": "cd7634f41462acec61a575478617931f390812441a95ee0206c841d1b2cd418e"
+    },
+    "training_events.json": {
+      "bytes": 1131,
+      "sha256": "f48f7da767b19faeff3850017bb4f3733e606be1058395ad17d1fd8d4083a2bf"
+    },
+    "cg_returns.csv": {
+      "bytes": 320121,
+      "sha256": "33facb7b7a37653ddd0b114b357d0eb2eae9bb59d9d4dc2015cff3bd6daa412f"
+    },
+    "cg_source_receipts.csv": {
+      "bytes": 32852,
+      "sha256": "caaba4ef397facd5c126ab52940c7ea5a16eda9b8809660e4f56ce89c71c9516"
+    },
+    "DISCLOSURES.md": {
+      "bytes": 13663,
+      "sha256": "1468d19497c685f4480728dec586a251f923e4fcc43e9cba871b57d29478ea59"
+    }
+  }
+}

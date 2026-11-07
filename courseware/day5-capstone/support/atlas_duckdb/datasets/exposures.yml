@@ -1,0 +1,32 @@
+version: 2
+
+exposures:
+  - name: advisor_dashboard
+    label: "Advisor performance dashboard"
+    type: dashboard
+    maturity: high
+    owner:
+      name: Sales Ops
+      email: sales-ops@example.com
+    depends_on:
+      - ref('rpt_advisor_book')
+
+  - name: portfolio_dashboard
+    label: "Portfolio executive dashboard"
+    type: dashboard
+    maturity: high
+    owner:
+      name: Wealth Analytics
+      email: wealth-analytics@example.com
+    depends_on:
+      - ref('rpt_portfolio_summary')
+
+  - name: market_dashboard
+    label: "Market activity dashboard"
+    type: dashboard
+    maturity: medium
+    owner:
+      name: Trading Desk
+      email: trading-desk@example.com
+    depends_on:
+      - ref('ts_daily_market')

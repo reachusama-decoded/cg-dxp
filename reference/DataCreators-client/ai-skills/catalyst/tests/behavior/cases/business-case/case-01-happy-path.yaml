@@ -1,0 +1,35 @@
+id: business-case.case-01-happy-path
+skill: skills/business-case
+type: artifact
+description: 'Bootstrap happy-path case. Build a business case with cost/benefit analysis, alternatives,
+  and strategic
+
+  alignment. Use when the user asks to "write the business case", "justify this
+
+  project", "build the cost-benefit analysis", or "make the case for this
+
+  data product".'
+input:
+  arguments: Write the business case for an employee directory data product replacing 5 fragmented HR
+    exports.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/business-case/templates/business-case.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Build a business
+      case with cost/benefit analysis, alternatives, and strategic
+
+      alignment. Use when the user asks to "write the business case"''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

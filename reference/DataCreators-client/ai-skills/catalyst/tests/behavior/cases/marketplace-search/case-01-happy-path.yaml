@@ -1,0 +1,29 @@
+id: marketplace-search.case-01-happy-path
+skill: skills/marketplace-search
+type: artifact
+description: Bootstrap happy-path case. Search the Capital Group marketplace for existing data products
+  before triaging a new request. Use when the user asks "is there an existing data product for X?", "search
+  the marketplace for Y", "what data products cover Z?", "before we build, check the marketplace for...",
+  or any Phase 1 (Triage) st
+input:
+  arguments: Search the marketplace for an existing employee directory product before we propose a new
+    one.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Search the Capital
+      Group marketplace for existing data products before triaging a new request. Use when the user asks
+      "is there an existing ''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

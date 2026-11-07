@@ -1,0 +1,16 @@
+airflow:
+  connections:
+    - conn_id: 'databricks_default'
+      conn_type: 'databricks'
+      conn_host: ''
+      conn_login: ''
+      conn_password: ''
+    - conn_id: 'caspian-training-databricks'
+      conn_type: 'databricks'
+      conn_host: ''
+      conn_login: ''
+      conn_password: ''
+  pools: []
+  variables:
+    - variable_name: databricks_job_prefix
+      variable_value: ""

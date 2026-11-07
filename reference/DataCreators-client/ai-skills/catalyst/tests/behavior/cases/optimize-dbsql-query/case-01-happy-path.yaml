@@ -1,0 +1,25 @@
+id: optimize-dbsql-query.case-01-happy-path
+skill: skills/optimize-dbsql-query
+type: artifact
+description: |
+  Bootstrap happy-path case. Scan SQL files for common Databricks SQL
+  performance pitfalls and emit findings under the SQL-PERF-DBSQL-*
+  family. Pure static analysis. Trigger phrases: "optimize dbsql query",
+  "check sql performance", "scan sql for performance".
+input:
+  arguments: Run optimize-dbsql-query against a compiled dbt model that contains a SELECT * with no partition predicate.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address scanning SQL for SQL-PERF-DBSQL-* performance issues? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output emit suggestion-only findings with rule_id (SQL-PERF-DBSQL-*), path, line, severity, and remediation text — without auto-rewriting source? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

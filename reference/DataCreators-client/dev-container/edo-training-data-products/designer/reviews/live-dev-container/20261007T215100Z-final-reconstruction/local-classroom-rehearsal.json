@@ -1,0 +1,240 @@
+{
+  "run_id": "20261007T215100Z-final-reconstruction",
+  "boundary": "local dbt/DuckDB only",
+  "reconstruction": "Authored from fresh learner starter and phase task contracts; instructor solution inspected earlier, so independence is limited",
+  "two_workspaces": "Concurrent seed/build/independent query; deleting A database leaves B correct",
+  "reconnect": "Separate processes restore explicit runtime and cwd/profile; no prior activated shell used",
+  "records": [
+    {
+      "label": "version",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "--version"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 0.79,
+      "raw_log_sha256": "d10ecc47754350ffe679b6dfa7adea259dda12c1c05faa9a4c7a43e5189e8453"
+    },
+    {
+      "label": "debug",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "debug",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.015,
+      "raw_log_sha256": "e18b0bd5f9f410d0982a0f302d27df473ae8ef0d15c43348f572784c4dc7f171"
+    },
+    {
+      "label": "seed",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "seed",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.754,
+      "raw_log_sha256": "48bcac9d40a098b592bb37983163d90099113094a03dd740afaa644995e3ae0f"
+    },
+    {
+      "label": "staging",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "run",
+        "--select",
+        "stg_holdings",
+        "stg_funds",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.484,
+      "raw_log_sha256": "33ae53bdcf189ab68e46d79b7f8d66898e026293956373ffbaffd61198b30460"
+    },
+    {
+      "label": "mart",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "run",
+        "--select",
+        "+fund_exposure",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.37,
+      "raw_log_sha256": "f0291b8f3b75303f74c430e2a47b697ebae971847c836a3385bb2e137ae8d13b"
+    },
+    {
+      "label": "completed-build",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "build",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.543,
+      "raw_log_sha256": "98fc0d0750c44346c5bd41c6438651512880a4819cdd8b1956494b910a064089"
+    },
+    {
+      "label": "independent-output",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/python",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/scripts/demo-checks.py",
+        "exposure",
+        "--workspace",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/classroom-rehearsal/20261007T215100Z-final-reconstruction/learner reconstruction"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 0.073,
+      "raw_log_sha256": "e97294bb5c82f4c27c01fb36b0c5f543360f81f46961842b4b6019dbe8bb194f"
+    },
+    {
+      "label": "completion-verifier",
+      "command": [
+        "/usr/bin/python3",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify",
+        "dbt",
+        "phase-one-certified",
+        "--workspace",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/classroom-rehearsal/20261007T215100Z-final-reconstruction/learner reconstruction",
+        "--mode",
+        "offline"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 17.813,
+      "raw_log_sha256": "46c183ea8dfd2328bed2bc1de32d72a486eec94208d3ed8886629fcf01b4282b"
+    },
+    {
+      "label": "new-shell-replay",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "build",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.43,
+      "raw_log_sha256": "c8985d41c0b8bcf02b9a2dd4db510c3a2b548ab9510eec6b59516db9144979cb"
+    },
+    {
+      "label": "learner-b-seed",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "seed",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.977,
+      "raw_log_sha256": "b10a85e66eb7e6f3a826f8f54067fa8c9e5aecd1eb33dd359ee26365efec7652"
+    },
+    {
+      "label": "learner-a-seed",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "seed",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.997,
+      "raw_log_sha256": "3e79e7bc636bd07324beba8f54e86b96022afb68d5d2ef097038dc7882253ebb"
+    },
+    {
+      "label": "learner-b-build",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "build",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.52,
+      "raw_log_sha256": "acb5f9c03146a51bc940c08842507dfbda02569ec822f23386d8637ab3795414"
+    },
+    {
+      "label": "learner-a-build",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+        "build",
+        "--profiles-dir",
+        "."
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 1.506,
+      "raw_log_sha256": "326d45eb16b3279b1acd25e2a18e12bf21d6c6559505360452041310eaea995a"
+    },
+    {
+      "label": "learner-b-oracle",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/python",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/scripts/demo-checks.py",
+        "exposure",
+        "--workspace",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/classroom-rehearsal/20261007T215100Z-final-reconstruction/learner-b"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 0.076,
+      "raw_log_sha256": "e97294bb5c82f4c27c01fb36b0c5f543360f81f46961842b4b6019dbe8bb194f"
+    },
+    {
+      "label": "learner-a-oracle",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/python",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/scripts/demo-checks.py",
+        "exposure",
+        "--workspace",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/classroom-rehearsal/20261007T215100Z-final-reconstruction/learner-a"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 0.072,
+      "raw_log_sha256": "e97294bb5c82f4c27c01fb36b0c5f543360f81f46961842b4b6019dbe8bb194f"
+    },
+    {
+      "label": "learner-b-after-a-cleanup",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/python",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/scripts/demo-checks.py",
+        "exposure",
+        "--workspace",
+        "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/classroom-rehearsal/20261007T215100Z-final-reconstruction/learner-b"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "duration_seconds": 0.078,
+      "raw_log_sha256": "e97294bb5c82f4c27c01fb36b0c5f543360f81f46961842b4b6019dbe8bb194f"
+    }
+  ],
+  "owned_resources": "Only this fresh private rehearsal directory and its databases; A DB removed, B/reconstruction retained for evidence",
+  "human_learner_pilot": "unavailable; durations are agent/tool execution, not learner completion estimates",
+  "docker_astro_connected_isolation": "pending real environment",
+  "disk_bytes": 7667038,
+  "source_hashes": {
+    "challenges/v2/manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2/dbt/phase-one-certified/README.md": "8bf60e32facde8627651435e8fb0b1c3e19f5687fb23742907d5d624f1beae6a",
+    "scripts/challenge-v2.py": "c2af1efb9665c370b50897409aa1dc7e6b0e5b165ed15975c150f5a950f8bf3d",
+    "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+    "instructor-demos/rehearse-local.py": "ec44c8520413dda9cb393c3dddcee4b326ba226bf3a9cfe2f905021e63419dc6"
+  }
+}

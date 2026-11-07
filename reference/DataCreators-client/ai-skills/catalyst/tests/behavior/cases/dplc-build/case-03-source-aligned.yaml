@@ -1,0 +1,23 @@
+id: dplc-build.case-03-source-aligned
+skill: skills/dplc-build
+type: behavior
+description: >-
+  Phase 4 Build sub-orchestrator, source-aligned branch. The pipeline-type
+  determination should route to `/source-aligned` when the user describes
+  raw data landing in a schema (data-engineering idiom: "sources land in
+  X" → raw inbound feed). After pipeline authoring, the production-mode
+  artifact chain (unit-test-report → integration-test-report →
+  code-review-sign-off → build-checklist) must follow.
+input:
+  arguments: >-
+    Run Phase 4 in production mode. Design artifacts approved. Raw
+    source files land in cspn_dev1; ingest one model end-to-end.
+expected_sequence:
+  - skills/source-aligned
+  - skills/unit-test-report
+  - skills/integration-test-report
+  - skills/code-review-sign-off
+  - skills/build-checklist
+strict_order: false
+allow_extra: true
+max_steps: 80

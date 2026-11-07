@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1640" height="1500" viewBox="0 0 1640 1500"
+     font-family="Helvetica, Arial, sans-serif">
+
+  <defs>
+    <marker id="arrow-pub" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0068AE"/>
+    </marker>
+    <marker id="arrow-sub" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#008074"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8FADB2"/>
+    </marker>
+  </defs>
+
+  <!-- Hidden drawio source for editability -->
+  <foreignObject width="0" height="0" style="visibility:hidden">
+    <mxfile host="app.diagrams.net">
+      <diagram id="option-c" name="Option C">
+        <mxGraphModel dx="1640" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1640" pageHeight="1500" math="0" shadow="0">
+          <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+          </root>
+        </mxGraphModel>
+      </diagram>
+    </mxfile>
+  </foreignObject>
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="820" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#083469">
+    Option C: One Topic per Notification Type
+  </text>
+  <text x="820" y="62" text-anchor="middle" font-size="13" fill="#555555">
+    Four dedicated topics, each with a purpose-built schema
+  </text>
+
+  <!-- ==================== AIRFLOW ROW (y 90 - 340) ==================== -->
+  <!-- Three Airflow deployments: data-platform (40-520), portfolio (560-1080), risk (1120-1600) -->
+
+  <!-- Airflow: data-platform -->
+  <rect x="40" y="90" width="480" height="250" rx="10" ry="10"
+        fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="280" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    airflow: data-platform
+  </text>
+
+  <rect x="60" y="135" width="200" height="80" rx="6" ry="6"
+        fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="160" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+  <text x="160" y="180" text-anchor="middle" font-size="11" fill="#555555">load_security_master</text>
+  <text x="160" y="196" text-anchor="middle" font-size="11" fill="#555555">load_reference_data</text>
+
+  <rect x="280" y="135" width="220" height="80" rx="6" ry="6"
+        fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="390" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+  <text x="390" y="180" text-anchor="middle" font-size="11" fill="#1F1F1F">produces data-ready</text>
+  <text x="390" y="196" text-anchor="middle" font-size="11" fill="#1F1F1F">consumes data-ready</text>
+
+  <rect x="60" y="235" width="440" height="90" rx="6" ry="6"
+        fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="280" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+  <text x="280" y="280" text-anchor="middle" font-size="11" fill="#1F1F1F">security_master, reference_data</text>
+  <text x="280" y="298" text-anchor="middle" font-size="11" fill="#555555">Asset events drive event-driven DAG runs</text>
+
+  <!-- Airflow: portfolio -->
+  <rect x="560" y="90" width="480" height="250" rx="10" ry="10"
+        fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="800" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    airflow: portfolio
+  </text>
+
+  <rect x="580" y="135" width="200" height="80" rx="6" ry="6"
+        fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="680" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+  <text x="680" y="180" text-anchor="middle" font-size="11" fill="#555555">build_positions</text>
+  <text x="680" y="196" text-anchor="middle" font-size="11" fill="#555555">aggregate_holdings</text>
+
+  <rect x="800" y="135" width="220" height="80" rx="6" ry="6"
+        fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="910" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+  <text x="910" y="180" text-anchor="middle" font-size="11" fill="#1F1F1F">produces data-ready</text>
+  <text x="910" y="196" text-anchor="middle" font-size="11" fill="#1F1F1F">consumes data-ready</text>
+
+  <rect x="580" y="235" width="440" height="90" rx="6" ry="6"
+        fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="800" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+  <text x="800" y="280" text-anchor="middle" font-size="11" fill="#1F1F1F">daily_positions, holdings</text>
+  <text x="800" y="298" text-anchor="middle" font-size="11" fill="#555555">Asset events drive event-driven DAG runs</text>
+
+  <!-- Airflow: risk -->
+  <rect x="1080" y="90" width="480" height="250" rx="10" ry="10"
+        fill="#D0EAE9" stroke="#0068AE" stroke-width="2"/>
+  <text x="1320" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    airflow: risk
+  </text>
+
+  <rect x="1100" y="135" width="200" height="80" rx="6" ry="6"
+        fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="1200" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">DAGs</text>
+  <text x="1200" y="180" text-anchor="middle" font-size="11" fill="#555555">compute_var</text>
+  <text x="1200" y="196" text-anchor="middle" font-size="11" fill="#555555">stress_tests</text>
+
+  <rect x="1320" y="135" width="220" height="80" rx="6" ry="6"
+        fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="1430" y="160" text-anchor="middle" font-size="12" font-weight="bold" fill="#841574">astro-dependency-plugin</text>
+  <text x="1430" y="180" text-anchor="middle" font-size="11" fill="#1F1F1F">produces data-ready</text>
+  <text x="1430" y="196" text-anchor="middle" font-size="11" fill="#1F1F1F">consumes data-ready</text>
+
+  <rect x="1100" y="235" width="440" height="90" rx="6" ry="6"
+        fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="1320" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#008074">Airflow Assets</text>
+  <text x="1320" y="280" text-anchor="middle" font-size="11" fill="#1F1F1F">var_calculations, stress_results</text>
+  <text x="1320" y="298" text-anchor="middle" font-size="11" fill="#555555">Asset events drive event-driven DAG runs</text>
+
+  <!-- ==================== GAP: shared data-ready annotation (y 350 - 410) ==================== -->
+  <text x="540" y="372" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">
+    all 3 Airflows: produce + consume data-ready
+  </text>
+  <text x="540" y="390" text-anchor="middle" font-size="11" fill="#841574">
+    [client-side filter: own deployment]
+  </text>
+
+  <!-- Short produce arrows (blue) down from each Airflow into data-ready band top edge (y=420) -->
+  <!-- Airflow boxes bottom edge at y=340; arrows start at 340 end at 420 -->
+  <!-- data-platform: produce at x=240, consume at x=320 -->
+  <line x1="240" y1="340" x2="240" y2="418" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+  <line x1="320" y1="420" x2="320" y2="342" stroke="#008074" stroke-width="2" marker-end="url(#arrow-sub)"/>
+
+  <!-- portfolio: produce at x=760, consume at x=840 -->
+  <line x1="760" y1="340" x2="760" y2="418" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+  <line x1="840" y1="420" x2="840" y2="342" stroke="#008074" stroke-width="2" marker-end="url(#arrow-sub)"/>
+
+  <!-- risk: produce at x=1280, consume at x=1360 -->
+  <line x1="1280" y1="340" x2="1280" y2="418" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+  <line x1="1360" y1="420" x2="1360" y2="342" stroke="#008074" stroke-width="2" marker-end="url(#arrow-sub)"/>
+
+  <!-- ==================== BAND 2: data-ready (y 420 - 490) ==================== -->
+  <rect x="40" y="420" width="1520" height="70" rx="8" ry="8"
+        fill="#FFFFFF" stroke="#083469" stroke-width="2.5"/>
+  <text x="800" y="450" text-anchor="middle" font-size="16" font-weight="bold" fill="#083469">
+    Kafka topic: data-ready
+  </text>
+  <text x="800" y="472" text-anchor="middle" font-size="11" fill="#555555">
+    Dataset-available events -- one schema, header keys: deployment, dataset, run_id
+  </text>
+
+  <!-- ==================== GAP: shared orchestrator-events label (y 500 - 560) ==================== -->
+  <!-- Single collective arrow placed on the LEFT of the gap so the shared label sits in clear whitespace to the right. -->
+  <line x1="220" y1="490" x2="220" y2="568" stroke="#0068AE" stroke-width="2.5" marker-end="url(#arrow-pub)"/>
+
+  <text x="900" y="522" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">
+    all Airflows publish DAG/workflow lifecycle events to orchestrator-events
+  </text>
+  <text x="900" y="540" text-anchor="middle" font-size="11" fill="#555555">
+    (one collective stream from each Airflow scheduler into the dedicated topic)
+  </text>
+
+  <!-- ==================== BAND 3: orchestrator-events (y 570 - 640) ==================== -->
+  <rect x="40" y="570" width="1520" height="70" rx="8" ry="8"
+        fill="#FFFFFF" stroke="#083469" stroke-width="2.5"/>
+  <text x="800" y="600" text-anchor="middle" font-size="16" font-weight="bold" fill="#083469">
+    Kafka topic: orchestrator-events
+  </text>
+  <text x="800" y="622" text-anchor="middle" font-size="11" fill="#555555">
+    DAG/workflow lifecycle signals from Airflow, Autosys, Temporal, Databricks
+  </text>
+
+  <!-- ==================== Orchestrator Dashboards consumer (y 700 - 780) ==================== -->
+  <rect x="660" y="700" width="320" height="80" rx="8" ry="8"
+        fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+  <text x="820" y="730" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F1F1F">
+    Orchestrator Dashboards
+  </text>
+  <text x="820" y="750" text-anchor="middle" font-size="11" fill="#555555">
+    subscribes to orchestrator-events
+  </text>
+  <text x="820" y="767" text-anchor="middle" font-size="11" fill="#841574">
+    [no client-side filter -- dedicated topic]
+  </text>
+
+  <!-- Single short straight subscribe arrow from orch-events bottom (y=640) down to dashboard top (y=700) -->
+  <line x1="820" y1="640" x2="820" y2="698" stroke="#008074" stroke-width="2" marker-end="url(#arrow-sub)"/>
+
+  <!-- ==================== DIVIDER (y = 830) ==================== -->
+  <line x1="40" y1="830" x2="1600" y2="830" stroke="#8FADB2" stroke-width="1.5" stroke-dasharray="8,6"/>
+  <text x="820" y="855" text-anchor="middle" font-size="12" font-style="italic" fill="#555555">
+    independent cluster -- not connected to the Airflow flow above
+  </text>
+
+  <!-- ==================== ISOLATED CLUSTER (y 880 - 1110) ==================== -->
+  <!-- Platform Services on left, two topics in middle, two consumers on right -->
+
+  <!-- Platform Services producer -->
+  <rect x="60" y="940" width="280" height="120" rx="8" ry="8"
+        fill="#E6ECEE" stroke="#083469" stroke-width="2"/>
+  <text x="200" y="980" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    Platform Services
+  </text>
+  <text x="200" y="1002" text-anchor="middle" font-size="11" fill="#1F1F1F">
+    dashboard refresh signals
+  </text>
+  <text x="200" y="1020" text-anchor="middle" font-size="11" fill="#1F1F1F">
+    dependency-set updates
+  </text>
+  <text x="200" y="1042" text-anchor="middle" font-size="11" fill="#555555">
+    (non-Airflow producer)
+  </text>
+
+  <!-- dashboard-notifications topic -->
+  <rect x="620" y="900" width="400" height="70" rx="8" ry="8"
+        fill="#FFFFFF" stroke="#083469" stroke-width="2.5"/>
+  <text x="820" y="930" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    Kafka topic: dashboard-notifications
+  </text>
+  <text x="820" y="952" text-anchor="middle" font-size="11" fill="#555555">
+    Dashboard refresh and alerting signals
+  </text>
+
+  <!-- dependency-sets topic -->
+  <rect x="620" y="1030" width="400" height="70" rx="8" ry="8"
+        fill="#FFFFFF" stroke="#083469" stroke-width="2.5"/>
+  <text x="820" y="1060" text-anchor="middle" font-size="14" font-weight="bold" fill="#083469">
+    Kafka topic: dependency-sets
+  </text>
+  <text x="820" y="1082" text-anchor="middle" font-size="11" fill="#555555">
+    Cross-system dependency resolution
+  </text>
+
+  <!-- Dashboard Refresh Service consumer -->
+  <rect x="1280" y="900" width="300" height="70" rx="8" ry="8"
+        fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+  <text x="1430" y="928" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F1F1F">
+    Dashboard Refresh Service
+  </text>
+  <text x="1430" y="950" text-anchor="middle" font-size="11" fill="#555555">
+    subscribes to dashboard-notifications
+  </text>
+
+  <!-- Dependency Resolver consumer -->
+  <rect x="1280" y="1030" width="300" height="70" rx="8" ry="8"
+        fill="#E6ECEE" stroke="#8FADB2" stroke-width="2"/>
+  <text x="1430" y="1058" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F1F1F">
+    Dependency Resolver
+  </text>
+  <text x="1430" y="1080" text-anchor="middle" font-size="11" fill="#555555">
+    subscribes to dependency-sets
+  </text>
+
+  <!-- Producer arrows (Platform Services -> topics): blue produce -->
+  <!-- Platform Services right edge x=340; produce arrow to dashboard-notifications left edge x=620 at y=935 -->
+  <line x1="340" y1="970" x2="618" y2="935" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+  <!-- and to dependency-sets at y=1065 -->
+  <line x1="340" y1="1030" x2="618" y2="1065" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+
+  <!-- Subscribe arrows (topics -> consumers): grey/teal -->
+  <!-- dashboard-notifications right edge x=1020 -> Dashboard Refresh Service left edge x=1280 at y=935 -->
+  <line x1="1020" y1="935" x2="1278" y2="935" stroke="#8FADB2" stroke-width="2" marker-end="url(#arrow-grey)"/>
+  <!-- dependency-sets right edge x=1020 -> Dependency Resolver left edge x=1280 at y=1065 -->
+  <line x1="1020" y1="1065" x2="1278" y2="1065" stroke="#8FADB2" stroke-width="2" marker-end="url(#arrow-grey)"/>
+
+  <!-- Inline labels above arrows (in clear whitespace) -->
+  <text x="475" y="918" text-anchor="middle" font-size="11" fill="#0068AE">produce</text>
+  <text x="475" y="1018" text-anchor="middle" font-size="11" fill="#0068AE">produce</text>
+  <text x="1149" y="925" text-anchor="middle" font-size="11" fill="#555555">subscribe</text>
+  <text x="1149" y="1055" text-anchor="middle" font-size="11" fill="#555555">subscribe</text>
+
+  <!-- ==================== LEGEND (y 1180 - 1460) ==================== -->
+  <rect x="40" y="1180" width="1520" height="280" rx="8" ry="8"
+        fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="60" y="1210" font-size="14" font-weight="bold" fill="#083469">Legend</text>
+
+  <!-- Color swatches column 1 -->
+  <rect x="60" y="1230" width="20" height="14" fill="#D0EAE9" stroke="#0068AE" stroke-width="1.5"/>
+  <text x="92" y="1242" font-size="11" fill="#1F1F1F">Airflow deployment container</text>
+
+  <rect x="60" y="1254" width="20" height="14" fill="#FFFFFF" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="92" y="1266" font-size="11" fill="#1F1F1F">DAGs sub-box</text>
+
+  <rect x="60" y="1278" width="20" height="14" fill="#F3E0EE" stroke="#841574" stroke-width="1.5"/>
+  <text x="92" y="1290" font-size="11" fill="#1F1F1F">astro-dependency-plugin</text>
+
+  <rect x="60" y="1302" width="20" height="14" fill="#E0F0EE" stroke="#008074" stroke-width="1.5"/>
+  <text x="92" y="1314" font-size="11" fill="#1F1F1F">Airflow Assets</text>
+
+  <rect x="60" y="1326" width="20" height="14" fill="#FFFFFF" stroke="#083469" stroke-width="2"/>
+  <text x="92" y="1338" font-size="11" fill="#1F1F1F">Kafka topic</text>
+
+  <rect x="60" y="1350" width="20" height="14" fill="#E6ECEE" stroke="#8FADB2" stroke-width="1.5"/>
+  <text x="92" y="1362" font-size="11" fill="#1F1F1F">Non-Airflow consumer</text>
+
+  <rect x="60" y="1374" width="20" height="14" fill="#E6ECEE" stroke="#083469" stroke-width="2"/>
+  <text x="92" y="1386" font-size="11" fill="#1F1F1F">Non-Airflow producer (Platform Services)</text>
+
+  <!-- Arrows column 2 -->
+  <line x1="540" y1="1237" x2="600" y2="1237" stroke="#0068AE" stroke-width="2" marker-end="url(#arrow-pub)"/>
+  <text x="612" y="1242" font-size="11" fill="#1F1F1F">produce (publish to topic)</text>
+
+  <line x1="540" y1="1265" x2="600" y2="1265" stroke="#008074" stroke-width="2" marker-end="url(#arrow-sub)"/>
+  <text x="612" y="1270" font-size="11" fill="#1F1F1F">consume (Airflow subscribes)</text>
+
+  <line x1="540" y1="1293" x2="600" y2="1293" stroke="#8FADB2" stroke-width="2" marker-end="url(#arrow-grey)"/>
+  <text x="612" y="1298" font-size="11" fill="#1F1F1F">topic to non-Airflow consumer</text>
+
+  <text x="540" y="1326" font-size="11" font-weight="bold" fill="#841574">[filter: ...]</text>
+  <text x="612" y="1326" font-size="11" fill="#1F1F1F">consumer-side filtering note</text>
+
+  <!-- Topic table column 3 -->
+  <text x="980" y="1242" font-size="12" font-weight="bold" fill="#083469">Four topics in this option:</text>
+  <text x="980" y="1262" font-size="11" fill="#1F1F1F">
+    <tspan font-weight="bold">data-ready</tspan> -- dataset available; drives Airflow Assets
+  </text>
+  <text x="980" y="1282" font-size="11" fill="#1F1F1F">
+    <tspan font-weight="bold">orchestrator-events</tspan> -- DAG/workflow lifecycle
+  </text>
+  <text x="980" y="1302" font-size="11" fill="#1F1F1F">
+    <tspan font-weight="bold">dashboard-notifications</tspan> -- refresh and alerting
+  </text>
+  <text x="980" y="1322" font-size="11" fill="#1F1F1F">
+    <tspan font-weight="bold">dependency-sets</tspan> -- cross-system dependency resolution
+  </text>
+  <text x="980" y="1352" font-size="11" font-style="italic" fill="#555555">
+    Dedicated topics carry purpose-built schemas and tuned retention/ACLs.
+  </text>
+
+</svg>

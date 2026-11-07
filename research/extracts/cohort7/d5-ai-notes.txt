@@ -1,0 +1,98 @@
+Capstone Project
+Location and objective
+• The project is in folder 4, under challenges in the dev container, and is named
+  capstone.
+• The main task is to work in table groups to reverse-engineer the project s
+  source-to-target mappings.
+• Review the provided data and the tables to be produced; determine the
+  required output tables and relevant STTM rules.
+• The project data and materials were generated with ChatGPT and revised
+  during attempts to make the project work in the repository. Some details may
+  therefore be confusing or inconsistent.
+• The instructor said they had spent time rationalizing the project but cautioned
+  that additional AI-generated revisions had been made.
+Terminology and model context
+• Terms such as portfolio and fund may have meanings that differ from those in
+  the CD model.
+• In particular, portfolio does not refer to multi-manager portfolio construction.
+
+Suggested project documentation
+• A PRD, data contract, or similar documentation would be useful to produce
+  during the initial work.
+• This was presented as a desirable outcome, rather than a firm requirement.
+
+Reading and Group Work
+Individual reading
+• Spend approximately 5 10 minutes reading the beginning of the Markdown file
+  individually.
+• The suggested amount is the first third, or at least the first quarter.
+
+Table discussion and project phases
+
+
+
+
+• Reconvene as a table at 9 15 to discuss what the project is asking the group to
+                                                          ’
+           :
+       –
+    • Reconvene as a table at 9 15 to discuss what the project is asking the group to
+      do.
+    • Aim to wrap up discussion around 10 00, and no later than about 10 15, to
+      leave time for project work.
+    • Groups may end their discussion when ready.
+    • Phase two begins once everyone has completed phase one. Groups may finish
+      phase one at different times.
+    • Groups that finish phase one early can move on to more open-ended,
+      challenging questions intended for advanced technical practitioners.
+
+    Day Schedule and Debrief
+    Lunch and return
+    • Lunch is flexible; there is no fixed lunch time.
+    • Everyone should be back in the room by 1 30.
+
+    End of day and presentations
+    • The instructor aimed to finish the day at about 1 45.
+    • The schedule notes list presentations at 13 45. The spoken description says a
+      final 15-minute group debrief may take place if everyone has completed phase
+      one by 1 45.
+    • The debrief could involve one representative from each table speaking for 2 3
+      minutes.
+    • Possible debrief topics include:
+      ◦ Team progress and what the group accomplished.
+      ◦ What was challenging or straightforward.
+      ◦ Where the team got to.
+      ◦ Use of Catalyst or design documentation.
+
+    Suggested points to highlight
+    • If senior leaders attend, consider mentioning Catalyst, the paved path, and the
+      mission.
+
+
+
+
+    • If senior leaders are not present, share useful reflections on the day s work or
+                                                                 –
+                                                         :
+                                                         ’
+                                      :
+                                  :
+                              :
+                         :
+              :
+:
+• If senior leaders are not present, share useful reflections on the day s work or
+  team experience.
+• These were suggestions for the debrief, not stated requirements.
+
+Additional Context
+• The instructor welcomed additional attendees and mentioned that there might
+  be merchandise prizes, though this was uncertain.
+• The session was organized around table groups, with the initial discussion
+  followed by project work.
+
+
+
+
+                                                    ’
+

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# mise description="Create your personal Databricks schema and Flyway history table for local development. Run once before contract:migrate."
+set -euo pipefail
+
+if [ -z "${DATABRICKS_TOKEN:-}" ]; then echo "ERROR: DATABRICKS_TOKEN is not set. Check your .env file."; exit 1; fi
+if [ -z "${DATABRICKS_SCHEMA:-}" ]; then echo "ERROR: DATABRICKS_SCHEMA is not set. Check your .env file."; exit 1; fi
+if [ -z "${DATABRICKS_CATALOG:-}" ]; then echo "ERROR: DATABRICKS_CATALOG is not set. Check your .env file."; exit 1; fi
+
+DBX_HOST=$(echo "${DATABRICKS_HOST}" | sed 's|^https://||')
+WAREHOUSE_ID=$(echo "${DATABRICKS_HTTP_PATH}" | sed 's|.*/||')
+
+echo "INFO: Creating personal schema ${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA}..."
+RESP=$(curl -s -X POST \
+  -H "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+  -H 'Content-Type: application/json' \
+  -d '{"statement": "CREATE SCHEMA IF NOT EXISTS '"${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA}"'", "warehouse_id": "'"${WAREHOUSE_ID}"'", "wait_timeout": "30s"}' \
+  "https://${DBX_HOST}/api/2.0/sql/statements")
+echo "$RESP" | grep -q "SUCCEEDED" || { echo "ERROR: $RESP"; exit 1; }
+
+echo "INFO: Creating Flyway history table flyway_schema_history..."
+RESP=$(curl -s -X POST \
+  -H "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+  -H 'Content-Type: application/json' \
+  -d '{"statement": "CREATE TABLE IF NOT EXISTS '"${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA}"'.flyway_schema_history (installed_rank INT NOT NULL, version VARCHAR(50), description VARCHAR(200) NOT NULL, type VARCHAR(20) NOT NULL, script VARCHAR(1000) NOT NULL, checksum INT, installed_by VARCHAR(100) NOT NULL, installed_on TIMESTAMP NOT NULL, execution_time INT NOT NULL, success BOOLEAN NOT NULL)", "warehouse_id": "'"${WAREHOUSE_ID}"'", "wait_timeout": "30s"}' \
+  "https://${DBX_HOST}/api/2.0/sql/statements")
+echo "$RESP" | grep -q "SUCCEEDED" || { echo "ERROR: $RESP"; exit 1; }
+
+echo "INFO: Init complete — you can now run 'mise run contract:migrate <contract>'"

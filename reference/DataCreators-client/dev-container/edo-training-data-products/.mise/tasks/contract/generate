@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# mise description="Generate Flyway migration SQL from an ODCS contract. Usage: mise run contract:generate <path/to/contract.odcs.yaml>"
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then echo "Usage: mise run contract:generate <path/to/contract.odcs.yaml>"; exit 1; fi
+CONTRACT="$1"
+CONTRACT_DIR=$(dirname "$CONTRACT")
+MIGRATION_DIR="${CONTRACT_DIR}/migrations"
+echo "INFO: Generating migration SQL for $CONTRACT..."
+datacounsel generate-migration "$CONTRACT" --output-dir "$MIGRATION_DIR"
+echo "INFO: SQL written to $MIGRATION_DIR"

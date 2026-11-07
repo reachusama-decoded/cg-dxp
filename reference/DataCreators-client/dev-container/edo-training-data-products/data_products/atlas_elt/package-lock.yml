@@ -1,0 +1,4 @@
+packages:
+  - local: ../../shared
+    name: edo_shared
+sha1_hash: d874e1599002cfac1b84b82d24d286b1b1f58be4

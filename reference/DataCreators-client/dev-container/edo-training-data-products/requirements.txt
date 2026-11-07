@@ -1,0 +1,10 @@
+# Force Astro Runtime ONBUILD dependency installation to use pip instead of uv.
+# uv does not trust corp MITM cert roots by default during `astro dev start` image builds.
+# ASTRO_RUNTIME_USE_PIP
+--index-url https://cgrepo.capgroup.com/repository/cgpypi/simple/
+--trusted-host pip.astronomer.io
+--trusted-host pypi.org
+--trusted-host pypi.python.org
+--trusted-host files.pythonhosted.org
+
+astro-run-dag

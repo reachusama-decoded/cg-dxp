@@ -1,0 +1,517 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool": {
+      "enum": [
+        "docker",
+        "dbt",
+        "airflow",
+        "git",
+        "databricks-cli",
+        "kafka",
+        "capstone"
+      ]
+    },
+    "task_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readiness": {
+      "enum": [
+        "ready",
+        "draft"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prerequisites": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workspace_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "workspace_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "destination": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      }
+    },
+    "source_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requires": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cleanup": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "main_book": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "include": {
+          "type": "boolean"
+        },
+        "teaching_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "include",
+        "teaching_key"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "action": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "adapter": {
+                    "const": "terminal"
+                  },
+                  "session": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                  },
+                  "command": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "input": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "control": {
+                    "enum": [
+                      "ctrl-c",
+                      "ctrl-d",
+                      "enter"
+                    ]
+                  },
+                  "complete": {
+                    "type": "boolean"
+                  },
+                  "wait_for": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "timeout_seconds": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 600
+                  }
+                },
+                "required": [
+                  "adapter",
+                  "session"
+                ],
+                "oneOf": [
+                  {
+                    "required": [
+                      "command"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "input"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "control"
+                    ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "complete": {
+                          "const": false
+                        }
+                      },
+                      "required": [
+                        "complete"
+                      ]
+                    },
+                    "then": {
+                      "required": [
+                        "wait_for"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "adapter": {
+                    "const": "browser"
+                  },
+                  "verb": {
+                    "enum": [
+                      "navigate",
+                      "click",
+                      "fill",
+                      "wait"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "locator": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "focus": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "timeout_seconds": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 600
+                  }
+                },
+                "required": [
+                  "adapter",
+                  "verb"
+                ],
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "verb": {
+                          "const": "navigate"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "url"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "verb": {
+                          "const": "click"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "locator"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "verb": {
+                          "const": "fill"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "locator",
+                        "text"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "verb": {
+                          "const": "wait"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "locator"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "expect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "exit_code": {
+                "type": "integer"
+              },
+              "checks": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "output-contains",
+                        "file-present",
+                        "file-absent",
+                        "command"
+                      ]
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "argv": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "exit_code": {
+                      "type": "integer"
+                    },
+                    "contains": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "kind": {
+                            "const": "command"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "argv"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "kind": {
+                            "const": "output-contains"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "text"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "kind": {
+                            "const": "file-present"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "path"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "kind": {
+                            "const": "file-absent"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "path"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "checks"
+            ]
+          },
+          "capture": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "context": {
+                "type": "string",
+                "minLength": 1
+              },
+              "focus": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hold_seconds": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 30
+              }
+            },
+            "required": [
+              "context"
+            ]
+          },
+          "caption": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "type": "string",
+                "minLength": 1
+              },
+              "notice": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "action",
+              "notice"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "action",
+          "expect",
+          "capture",
+          "caption"
+        ]
+      }
+    },
+    "closing_question": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "objective",
+    "tool",
+    "task_ids",
+    "route",
+    "readiness",
+    "audience",
+    "prerequisites",
+    "source_inputs",
+    "requires",
+    "resources",
+    "cleanup",
+    "main_book",
+    "steps",
+    "closing_question"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Observed instructor teaching story"
+}

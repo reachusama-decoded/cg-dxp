@@ -1,0 +1,35 @@
+id: deprecation-notice.case-01-happy-path
+skill: skills/deprecation-notice
+type: artifact
+description: 'Bootstrap happy-path case. Create a deprecation notice with scope, timeline, migration checklist,
+  and
+
+  rollback plan. Use when the user asks to "deprecate this product", "write
+
+  the deprecation notice", "plan the sunset", or "notify consumers of
+
+  retirement".'
+input:
+  arguments: Draft the deprecation notice for the legacy employee_export_v3 table, replaced by the employee
+    directory data product.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/deprecation-notice/templates/deprecation-notice.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Create a deprecation
+      notice with scope, timeline, migration checklist, and
+
+      rollback plan. Use when the user asks to "deprecate this product"''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

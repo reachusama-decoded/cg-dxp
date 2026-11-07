@@ -1,0 +1,33 @@
+id: data-quality-sign-off.case-01-happy-path
+skill: skills/data-quality-sign-off
+type: artifact
+description: 'Bootstrap happy-path case. Record DQ validation results and sign-off from data owner and
+  engineering
+
+  leads. Use when the user asks to "sign off on data quality", "document the
+
+  DQ results", "create the quality sign-off", or "record validation results".'
+input:
+  arguments: Record DQ sign-off for the employee directory data product. Compare measured DQ against contract
+    thresholds.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/data-quality-sign-off/templates/data-quality-sign-off.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Record DQ validation
+      results and sign-off from data owner and engineering
+
+      leads. Use when the user asks to "sign off on data quality", "docu''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

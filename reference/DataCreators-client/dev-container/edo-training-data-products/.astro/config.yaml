@@ -1,0 +1,16 @@
+project:
+    name: edo-training
+context: astronomer.io
+contexts:
+    dev:
+        organization: cma487t5y0bgq01lc2992s0bp
+        organization_product: HOSTED
+        workspace:
+    sqa:
+        organization: cma487t5y0bgq01lc2992s0bp
+        organization_product: HOSTED
+        workspace:
+    prod:
+        organization: cma487t5y0bgq01lc2992s0bp
+        organization_product: HOSTED
+        workspace:

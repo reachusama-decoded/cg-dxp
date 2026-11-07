@@ -1,0 +1,21 @@
+# macOS / editors
+.DS_Store
+.vscode/
+# Python
+**/__pycache__/
+**/.pytest_cache/
+**/.venv/
+# dbt / DuckDB build artefacts (rebuilt by the demo scripts)
+**/target/
+**/dbt_packages/
+**/logs/
+**/warehouse/
+**/*.duckdb
+**/*.duckdb.wal
+# Airflow local stack runtime files
+courseware/day4-airflow/demos/airflow_local/.env
+courseware/day4-airflow/demos/airflow_local/include/warehouse/*
+!courseware/day4-airflow/demos/airflow_local/include/warehouse/.gitkeep
+# client repo local state
+reference/DataCreators-client/dev-container/edo-training-data-products/.local/
+reference/DataCreators-client/ai-skills/catalyst/.coverage

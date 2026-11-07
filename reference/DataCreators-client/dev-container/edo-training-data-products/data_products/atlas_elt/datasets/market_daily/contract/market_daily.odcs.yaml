@@ -1,0 +1,34 @@
+apiVersion: v3.0.0
+kind: DataContract
+id: urn:datacontract:atlas_elt:market_daily
+name: market_daily
+version: 1.0.0
+domain: atlas_elt
+status: draft
+schema:
+  - name: market_daily
+    physicalName: ts_daily_market
+    logicalType: object
+    physicalType: table
+    format: delta
+    external: true
+    properties:
+      - name: trade_date
+        logicalType: date
+        physicalType: date
+        nullable: false
+      - name: traded_value
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: fees
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: trades
+        logicalType: integer
+        physicalType: bigint
+        nullable: true
+grants:
+  select:
+    - ${env_grant_prefix}_ATLAS_ELT_READ

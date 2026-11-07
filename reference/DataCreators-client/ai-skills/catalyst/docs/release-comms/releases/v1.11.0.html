@@ -1,0 +1,77 @@
+<!-- Catalyst product release comms — v1.11.0 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Catalyst v1.11.0 Release Notes</title>
+</head>
+<body style="margin:0;padding:32px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Avenir Next',Avenir,sans-serif;color:#333333;">
+
+<div style="max-width:600px;margin:0 auto;">
+
+  <!-- Header -->
+  <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#009CDC;">AI Catalyst</p>
+  <h1 style="margin:0 0 4px 0;font-size:22px;font-weight:700;color:#00294B;">v1.11.0 &mdash; dbt Unit Testing</h1>
+  <p style="margin:0 0 20px 0;font-size:13px;color:#888888;">July 27, 2026</p>
+
+  <!-- Blurb -->
+  <p style="margin:0 0 12px 0;font-size:15px;line-height:1.7;">This release brings unit testing into your dbt build loop. The new <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/dbt-unit-test</code> skill generates a unit-test suite for a dbt model &mdash; mocking the upstream inputs and asserting the expected outputs &mdash; so you can cover model logic without hand-writing fixtures.</p>
+
+  <!-- What's new -->
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">In this release:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>New skill</strong> &mdash; <strong>/dbt-unit-test</strong> generates unit tests for a dbt model, mocking upstream inputs and asserting expected outputs</li>
+    <li style="margin-bottom:4px;"><strong>Updates &amp; enhancements</strong> &mdash; local Airflow deploy, plus RFD authoring and publishing improvements</li>
+    <li style="margin-bottom:4px;"><strong>Coming soon</strong> &mdash; newly approved standards for pipeline testing and containerization</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 1: headline new skill -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">1. /dbt-unit-test &mdash; Unit Tests for Your dbt Models</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Point <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/dbt-unit-test</code> at a dbt model and it generates a full unit-test suite for you &mdash; inspecting the model&rsquo;s SQL and its upstream <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">ref()</code> / <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">source()</code> dependencies to synthesize input fixtures and the expected results, then emitting them as pytest-based tests. You cover model logic without hand-writing a single fixture.
+  </p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">The practical companion to the tiered testing strategy ratified in v1.10.0 &mdash; test generation now lands directly in the Phase 4 build loop. If you build dbt models, it&rsquo;s your fastest path to model-logic coverage.</p>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>AGGB</strong> for contributing this skill.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 2: updates & enhancements -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">2. Updates &amp; Enhancements</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:6px;"><strong>/deploy-airflow-local</strong> &mdash; run your data product&rsquo;s DAG locally with <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">astro dev start</code>, extending the Phase 4 build loop from Databricks bundles to Airflow orchestration in your own environment</li>
+    <li style="margin-bottom:6px;"><strong>rfd-authoring</strong> &mdash; a contributor skill that scaffolds new RFDs with the right structure and metadata</li>
+    <li style="margin-bottom:6px;"><strong>All ratified RFDs now published on <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">main</code></strong> &mdash; every accepted RFD is rendered for easy reference, with author initials normalized</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 3: roadmap / coming soon -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">3. Coming Soon</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">Two standards were just approved and will shape upcoming skills and guidance:</p>
+  <ul style="margin:0 0 12px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:6px;"><strong>Testing strategy (RFD 0018)</strong> &mdash; a tiered unit / integration / data-quality model that will steer upcoming test tooling across the lifecycle</li>
+    <li style="margin-bottom:6px;"><strong>Containerization guide (RFD 0008)</strong> &mdash; standards for building container images on the corporate network, sourcing from internal mirrors</li>
+  </ul>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>DMRS</strong> (RFD 0018) and <strong>GPLN</strong> (RFD 0008) for authoring these.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Boilerplate: do not change -->
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;"><strong>Keeping Your Plugin Up to Date</strong> &mdash; No reinstall needed. <strong>Cmd+Shift+P</strong> &rarr; &ldquo;Developer: Reload Window&rdquo;, or click the refresh icon in the Agent Plugins panel.</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;"><strong>Share Your Feedback</strong> &mdash; Type <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> in Copilot Chat to share what worked, what didn&rsquo;t, or what could be better. The more specific you are (&ldquo;expected X, got Y&rdquo;), the faster we can act.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 16px 0;" />
+
+  <!-- Footer -->
+  <p style="margin:0 0 6px 0;font-size:13px;">Full release notes &rarr; <a href="https://github.com/cg-open-itg/catalyst/releases/tag/1.11.0" style="color:#005F9E;font-weight:600;">Read Release Notes</a></p>
+  <p style="margin:0 0 6px 0;font-size:13px;">Still new to Catalyst? &rarr; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011" style="color:#005F9E;font-weight:600;">Get Started</a></p>
+  <p style="margin:0 0 20px 0;font-size:13px;">Questions or need a hand? &rarr; <a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe" style="color:#005F9E;font-weight:600;">Join Catalyst Launchpad</a></p>
+  <p style="margin:0;font-size:13px;color:#aaaaaa;">===</p>
+
+</div>
+
+</body>
+</html>

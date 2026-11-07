@@ -1,0 +1,105 @@
+{
+  "name": "Databricks DBT Development Environment",
+  
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  
+  "remoteEnv": {
+    // These are non-sensitive environment variables that can be shared with the container. For sensitive variables, use the .env file in this same folder
+    "PATH": "${containerEnv:PATH}:/root/.local/bin:/root/.local/share/mise/shims",
+    "GIT_SSL_CAINFO": "/cacert.pem",
+    "SSL_CERT_FILE": "/cacert.pem",
+    "REQUESTS_CA_BUNDLE": "/cacert.pem",
+    "WORKSPACE_BASENAME": "${localWorkspaceFolderBasename}",
+    // "DBT_PROFILES_DIR": "/workspaces/${localWorkspaceFolderBasename}/airflow/include/dbt_project"
+  },
+
+  "containerEnv": {
+    "DOCKER_BUILDKIT": "1",
+    "COMPOSE_DOCKER_CLI_BUILD": "1",
+    "SSL_CERT_FILE": "/cacert.pem",
+    "REQUESTS_CA_BUNDLE": "/cacert.pem",
+    "MISE_PYTHON_GITHUB_ATTESTATIONS": "false"
+  },
+
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "runArgs": [
+    "--privileged",
+    "--init"
+  ],
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vscode.makefile-tools",
+        "redhat.vscode-yaml",
+        "Databricks.databricks",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "python.formatting.blackArgs": [
+          "--line-length=88"
+        ],
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.python",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          }
+        },
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true,
+          "**/.mypy_cache": false
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        }
+      }
+    }
+  },
+  
+  "postCreateCommand": "mise trust .mise.toml && mise install && mise run setup",
+  "postStartCommand": "/usr/local/bin/post-start.sh ${containerWorkspaceFolder}",
+  "postAttachCommand": "/usr/local/bin/ensure-dockerd.sh",
+  
+  // Supported on Linux hosts and Windows hosts using Docker Desktop in Linux containers mode.
+  "mounts": [
+    "source=edo-training-docker-data-${localWorkspaceFolderBasename},target=/var/lib/docker,type=volume"
+  ],
+  
+  "forwardPorts": [8020, 8080, 8081, 6563],
+
+  // To silent OAuth automatic pop up, use terminal link instead.
+  "portsAttributes": {
+    "8020": {
+      "label": "Databricks OAuth Callback",
+      "onAutoForward": "silent"
+    },
+    "8081": {
+      "label": "dbt docs"
+    }
+  },
+  
+  "remoteUser": "root"
+}

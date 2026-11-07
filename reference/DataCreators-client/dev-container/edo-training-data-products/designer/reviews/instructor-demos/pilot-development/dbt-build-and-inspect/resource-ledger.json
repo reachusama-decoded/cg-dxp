@@ -1,0 +1,8 @@
+{
+  "workspace": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/instructor-demos/pilot-development/dbt-build-and-inspect/workspace",
+  "owned": [
+    "fresh private workspace"
+  ],
+  "cleanup": [],
+  "state": "owned services cleaned; private workspace retained for investigation"
+}

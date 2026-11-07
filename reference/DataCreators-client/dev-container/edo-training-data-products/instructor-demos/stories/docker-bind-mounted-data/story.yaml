@@ -1,0 +1,79 @@
+schema_version: 1
+id: docker-bind-mounted-data
+title: Read input through a bounded mount
+objective: Explain read-only input access without copying the host root.
+tool: docker
+task_ids:
+- docker-p1-03
+route: devcontainer-docker
+readiness: draft
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/docker/phase-one-certified/solution
+source_inputs:
+- challenges/v2/docker/phase-one-certified/README.md
+- challenges/v2-solutions/docker/phase-one-certified/solution
+requires:
+- browser
+- docker-client
+- docker-server
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: docker-images-and-containers
+steps:
+- id: input
+  action:
+    adapter: terminal
+    session: developer
+    command: cat app/holdings.csv
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: market_value
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect the copied teaching input.
+    notice: The input remains outside the image.
+- id: mount
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm -v "$PWD/app:/app:ro" -w /app python:3.11-slim python
+      summarize.py
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 12,011,626.50
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Run the app through a read-only mount.
+    notice: Six holdings produce the verified portfolio total.
+- id: denied
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm -v "$PWD/app:/app:ro" -w /app python:3.11-slim touch
+      blocked-write
+  expect:
+    exit_code: 1
+    checks:
+    - kind: output-contains
+      text: Read-only file system
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Attempt a write to the mounted input.
+    notice: The filesystem rejects the write because the mount is read-only.
+closing_question: Explain read-only input access without copying the host root. Which
+  observation supports your explanation?

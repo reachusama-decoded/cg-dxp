@@ -1,0 +1,52 @@
+id: write-dbt-wrapper.case-01-artifact
+skill: skills/write-dbt-wrapper
+type: artifact
+description: >-
+  Verify that /write-dbt-wrapper produces a complete dbt_wrapper.py with
+  the four-command dispatcher, dbutils auth hydration, and REQUESTS_CA_BUNDLE
+  handling scoped to dbt deps only. Triggered when a user asks to scaffold the
+  dbt Python wrapper for a Databricks job.
+
+input:
+  arguments: >-
+    Write the dbt wrapper for the pricing data product. The secrets scope is dbt-secrets.
+    The product directory is data_products/pricing.
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: four_command_dispatcher
+      weight: 0.30
+      prompt: >-
+        Does the output include a Python function or block that dispatches on all four
+        commands — deps, seed, run, and test — calling the appropriate dbt sub-command
+        for each? Score 1 if all four are present and routed correctly, 0.5 if 2-3 are
+        present, 0 if the dispatcher is absent.
+
+    - id: ca_bundle_deps_only
+      weight: 0.30
+      prompt: >-
+        Does the output set REQUESTS_CA_BUNDLE (or reference CGREPO_CA_BUNDLE_PATH) only
+        inside the deps branch of the dispatcher, and explicitly NOT for run/test/seed?
+        Score 1 if scoped to deps only with a clear explanation, 0.5 if present but not
+        scoped, 0 if absent entirely.
+
+    - id: dbutils_auth_hydration
+      weight: 0.25
+      prompt: >-
+        Does the output include code that reads credentials from dbutils.secrets (or
+        equivalent Databricks secrets API) when running on Databricks, and sets
+        DATABRICKS_TOKEN or DBT_ENV_SECRET_DATABRICKS_TOKEN from the secrets scope?
+        Score 1 if the hydration logic is present and scoped to the on-Databricks case,
+        0.5 if partially addressed, 0 if absent or hard-coded credentials are shown.
+
+    - id: no_hardcoded_credentials
+      weight: 0.15
+      prompt: >-
+        Is the output free of hard-coded Databricks tokens, passwords, or literal secret
+        values? (DBX-SEC-002). Score 1 if no credentials are hard-coded and the skill
+        explicitly references secrets-based auth, 0 if any literal credential is present.

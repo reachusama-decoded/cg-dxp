@@ -1,0 +1,39 @@
+id: dbt-unit-test.case-01-trigger
+skill: skills/dbt-unit-test
+type: artifact
+description: >-
+  Smoke test for dbt-unit-test skill. Verifies the skill loads, responds
+  on-topic, and describes its analysis and execution workflow.
+
+input:
+  arguments: "generate tests for int_fund_performance"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: describes_analysis_workflow
+      weight: 0.35
+      prompt: >-
+        Does the response describe the model analysis and test-case generation
+        workflow — including steps like locating the SQL file, analysing CTEs
+        and joins, generating test cases, and/or executing them via pandas or
+        PySpark? Score 1.0 if a clear multi-step workflow is described with
+        concrete steps; 0.5 if only partial workflow is mentioned; 0 if no
+        workflow is described. Score 0-1.
+    - id: references_correct_output_location
+      weight: 0.35
+      prompt: >-
+        Does the response reference or describe output files in a
+        `workspace/dbt-unit-test/` directory (e.g. test_cases.json,
+        report.md, or a pytest script), or explain that it will locate
+        the model's SQL file to begin analysis? Score 1.0 if the output
+        path or SQL file location step is mentioned; 0 otherwise. Score 0-1.

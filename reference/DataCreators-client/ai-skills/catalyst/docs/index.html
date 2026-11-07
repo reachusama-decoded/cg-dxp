@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Catalyst — Docs</title>
+<style>
+:root{
+  --page:          #0f0f17;
+  --surface:       #16161f;
+  --text-primary:  #ffffff;
+  --text-secondary:#c3c2b7;
+  --text-muted:    #898781;
+  --border:        rgba(255, 255, 255, 0.10);
+  --design:        #199e70;
+  --build:         #d95926;
+  --ship:          #3987e5;
+  --cross:         #c98500;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--page);color:var(--text-primary);
+  line-height:1.6;padding:48px 24px;
+  -webkit-font-smoothing:antialiased;
+}
+main{max-width:760px;margin:0 auto}
+h1{font-size:26px;letter-spacing:-.2px;margin-bottom:6px}
+.sub{color:var(--text-muted);font-size:14px;margin-bottom:34px;max-width:60ch}
+a.card{
+  display:block;background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--c,var(--build));border-radius:8px;
+  padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;
+  transition:border-color .12s,transform .12s;
+}
+a.card:hover{border-color:rgba(255,255,255,.22);transform:translateY(-1px)}
+a.card .t{font-weight:600;font-size:15px;color:var(--c,var(--build))}
+a.card .d{font-size:13px;color:var(--text-secondary);margin-top:4px}
+h2{
+  font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);
+  margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);
+}
+ul{list-style:none;font-size:14px}
+li{padding:5px 0;color:var(--text-muted)}
+li a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid transparent}
+li a:hover{color:var(--text-primary);border-bottom-color:var(--border)}
+code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--text-muted)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);
+       font-size:12px;color:var(--text-muted);line-height:1.7}
+</style>
+</head>
+<body>
+<main>
+  <h1>AI Catalyst</h1>
+  <p class="sub">Documentation for the AI Catalyst skills repository — Data Product
+     Lifecycle skills for building data products at Capital Group.
+     Access is limited to Capital Group members with repository access.</p>
+
+  <a class="card" href="getting-started-faq.html" style="--c:var(--cross)">
+    <div class="t">Getting Started FAQ &rarr;</div>
+    <div class="d">New to Catalyst? Start here. The prerequisites in order — access,
+        VS Code, Copilot, PAT, credentials — what to run in your first five minutes,
+        and where to go when Catalyst mentions something about the lifecycle you
+        don't recognize.</div>
+  </a>
+
+  <a class="card" href="skills-graph/" style="--c:var(--design)">
+    <div class="t">Skills Graph &rarr;</div>
+    <div class="d">Interactive map of how the ~100 skills connect — what each one
+        consumes and produces, which lifecycle phase it belongs to, and which
+        skills declare no relationships. Start here to understand the repository.</div>
+  </a>
+
+  <a class="card" href="dplc-skill-architecture.html" style="--c:var(--ship)">
+    <div class="t">DPLC Skill Architecture &rarr;</div>
+    <div class="d">How the Data Product Lifecycle decomposes into orchestrators,
+        execution skills, and document skills.</div>
+  </a>
+
+  <h2>Guides</h2>
+  <ul>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/install.md">Install</a> — add the marketplace and run your first skill</li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/CONTRIBUTING.md">Contributing</a> — authoring skills, behavior tests, PR conventions</li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/release-process.md">Release Process</a> — end-to-end release and tagging</li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/release-notes-guide.md">Release Notes Guide</a></li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/catalyst-release-comms-guide.md">Release Comms Guide</a></li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/docs/catalyst-otel-getting-started.md">Usage Reporting Setup</a> — turn on Copilot Chat usage reporting (5 min, no install)</li>
+    <li><a href="https://github.com/cg-open-itg/catalyst/blob/HEAD/rfd/README.md">RFDs</a> — engineering decisions of record</li>
+  </ul>
+
+  <h2>Release comms</h2>
+  <ul>
+    <li><a href="release-comms/releases/v1.13.0.html">v1.13.0</a> — environment pre-flight, guided onboarding, usage reporting</li>
+    <li><a href="release-comms/releases/v1.12.0.html">v1.12.0</a> — data quality control planning</li>
+    <li><a href="release-comms/releases/v1.11.0.html">v1.11.0</a> — dbt unit testing</li>
+    <li><a href="release-comms/releases/v1.10.0.html">v1.10.0</a> — local Airflow orchestration</li>
+    <li><a href="release-comms/releases/v1.9.0.html">v1.9.0</a></li>
+  </ul>
+
+  <footer>
+    <code>skills-graph/graph.json</code> is generated by
+    <code>scripts/build_skills_graph.py</code> — edit the generator and the
+    <code>SKILL.md</code> frontmatter it reads, never the output.
+    <code>tests/ci/test_skills_graph.py</code> fails if the committed copy drifts.
+    <br>
+    This site is served from <code>docs/</code> on <code>main</code>. Working notes under
+    <code>docs/specs/</code>, <code>docs/superpowers/</code>, and <code>docs/todos/</code>
+    are published but intentionally unlinked — they are design history, not documentation.
+  </footer>
+</main>
+</body>
+</html>

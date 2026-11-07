@@ -1,0 +1,31 @@
+id: fetch-confluence.case-01-happy-path
+skill: skills/fetch-confluence
+type: artifact
+description: 'Bootstrap happy-path case. Fetch and parse Confluence pages as Markdown context. Trigger
+  phrases: "fetch this confluence page", "get the spec from confluence", "pull confluence content", "read
+  page 12345678".'
+input:
+  arguments: Fetch Confluence page ${TEST_CONFLUENCE_PAGE_ID} (the Index Data Product Proposal in space
+    ${TEST_CONFLUENCE_SPACE}).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/confluence.py
+- skills/clients/confluence.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Fetch and parse
+      Confluence pages as Markdown context. Trigger phrases: "fetch this confluence page", "get the spec
+      from confluence", "pull c''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

@@ -1,0 +1,39 @@
+id: source-aligned.case-01-happy-path
+skill: skills/source-aligned
+type: artifact
+description: "Bootstrap happy-path case. Generate source-aligned data product artifacts \u2014 ingestion\
+  \ YAML, DQ rules, dbt models (staging/integration/prepared), DDL, source YAML, and Airflow DAGs\
+  \ \u2014 from a CSV, DAT, or .out.gz source file. Part of the AI Catalyst DPLC plugin bundle, aligned\
+  \ with RFD2 Phase 4 (Build). Use this skill when"
+input:
+  arguments: 'Generate the source-aligned pipeline for the employee directory data product. Source: ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+# Ingestion generator \u2014 the AICAT-130 fix lives here. Agent should
+# drive this script (not roll its own heredoc) per SKILL.md "Mode:
+# generate-ingestion \u2192 Execution safety note (avoid heredoc)".
+- skills/source-aligned/scripts/generate_ingestion_from_profile.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.35
+    prompt: "Does the output meaningfully address the request described by the skill: 'Generate source-aligned\
+      \ data product artifacts \u2014 ingestion YAML, DQ rules, dbt models (staging/integration/prepared),\
+      \ DDL, source YAML'? Score 0-1."
+  - id: format_conformant
+    weight: 0.35
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.15
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.
+  - id: mode_and_verification_aware
+    weight: 0.15
+    prompt: "Does the agent demonstrate awareness of the skill's mode-driven emission (reads .catalyst-build.yml#mode,\
+      \ branches prototype vs production) and the live-data verification step (asserts column count, no\
+      \ all-null rows, unique names) introduced by AICAT-142? Score 0-1; 1 if both are referenced, 0.5 if one,\
+      \ 0 if neither."

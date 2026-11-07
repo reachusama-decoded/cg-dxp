@@ -1,0 +1,31 @@
+#!/bin/bash
+# ~/.bashrc: executed by bash(1) for non-login shells
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# History settings
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+shopt -s histappend
+shopt -s checkwinsize
+
+# Source any additional profile scripts
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r "$i" ]; then
+      . "$i"
+    fi
+  done
+  unset i
+fi
+
+# Must come after profile.d: otherwise starship_precmd runs after VS Code's precmd and strips its shell-integration markers from PS1.
+eval "$(starship init bash)"
+
+# Self-heal inner DinD on each interactive shell (no-op when already healthy).
+[ -x /usr/local/bin/ensure-dockerd.sh ] && /usr/local/bin/ensure-dockerd.sh

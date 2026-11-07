@@ -1,0 +1,55 @@
+id: deploy-airflow-local.case-01-happy-path
+skill: skills/deploy-airflow-local
+type: artifact
+description: 'Happy-path case. Bring up a local Airflow environment with the Astronomer
+  CLI (astro dev start) for a typical Astro-based data-product project: create the
+  local settings file, set the required Airflow Variables, add the Databricks
+  connection from an env var, start the stack, and verify the dynamically generated
+  DAGs render. Use when the user asks to "start airflow locally", "run airflow
+  locally", "astro dev start", "spin up local airflow", or "test my dags locally".'
+input:
+  arguments: >
+    Bring up Airflow locally for my Astro data-product project with
+    `astro dev start` so I can see my YAML-defined DAGs render before pushing.
+    Walk me through creating the local .airflow/airflow_settings.yaml from the
+    committed .example, setting the required Airflow Variables, adding the
+    Databricks connection (using my project's conn_id) from my DATABRICKS_TOKEN
+    environment variable (never hardcoded), starting the stack, and confirming
+    the dataset DAGs parse with no import errors.
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: settings_file_and_start
+    weight: 0.25
+    prompt: >
+      Does the output explain creating the local .airflow/airflow_settings.yaml
+      from the committed .example and starting the stack with `astro dev start`
+      (including the benign webserver health-check timeout / `--wait` caveat)?
+      Score 0-1.
+  - id: variables_and_connection
+    weight: 0.30
+    prompt: >
+      Does the output cover setting the required Airflow Variables AND adding the
+      project's Databricks connection sourced from the DATABRICKS_TOKEN env var
+      rather than a hardcoded/committed token? Score 0-1.
+  - id: verify_dags_render
+    weight: 0.25
+    prompt: >
+      Does the output show how to verify the dynamically generated dataset DAGs
+      parsed and appear (e.g. `astro dev run dags list` /
+      `dags list-import-errors`), distinguishing real errors from the expected
+      platform-DAG import noise? Score 0-1.
+  - id: host_workspace_path
+    weight: 0.10
+    prompt: >
+      Does the output mention exporting HOST_WORKSPACE_PATH on a plain host
+      (non-dev-container) so the bind mounts resolve correctly? Score 0-1.
+  - id: no_placeholders
+    weight: 0.10
+    prompt: >
+      Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where
+      data was expected? Angle-bracket placeholders like <your-conn-id> are
+      acceptable template markers and should NOT be penalized. Score 0-1.

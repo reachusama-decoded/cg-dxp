@@ -1,0 +1,8 @@
+{
+  "extraKnownMarketplaces": [
+    {
+      "name": "ai-catalyst",
+      "source": "cg-open-itg/catalyst"
+    }
+  ]
+}

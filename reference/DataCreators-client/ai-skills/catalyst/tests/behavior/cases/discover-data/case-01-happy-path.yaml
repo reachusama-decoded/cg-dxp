@@ -1,0 +1,33 @@
+id: discover-data.case-01-happy-path
+type: artifact
+description: Bootstrap happy-path case. Query Unity Catalog for tables relevant to a data product. Use
+  during Phase 2 Discovery to inventory available sources before writing the feasibility report.
+
+# Reference a shared Run (skill + arguments + environment) instead of
+# inlining them. case-02-discovery-coverage references the same run, so
+# both cases share a single transcript on disk and only one agent
+# invocation is needed per (--cache-dir) run.
+run: discover-data.run-01-happy-path
+
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/discover.py
+- skills/clients/databricks.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Query Unity Catalog
+      for tables relevant to a data product. Use during Phase 2 Discovery to inventory available sources
+      before writing the fe''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

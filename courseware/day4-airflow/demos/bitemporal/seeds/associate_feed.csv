@@ -1,0 +1,12 @@
+batch_id,business_date,associate_id,name,job_code,job_title,tenure_months
+D1,2026-11-02,1001,Chris Nakamura,DE2,Data Engineer II,53
+D1,2026-11-02,1002,Priya Raman,DPM,Data Product Manager,27
+D1,2026-11-02,1003,Marcus Bell,SE3,Software Engineer III,88
+D2,2026-11-03,1001,Chris Nakamura,DE2,Data Engineer,54
+D2,2026-11-03,1002,Priya Raman,DPM,Data Product Manager,27
+D2,2026-11-03,1003,Marcus Bell,SE3,Software Engineer III,88
+D2,2026-11-03,1004,Ana Kowalczyk,DA1,Data Analyst I,2
+D2-CORR,2026-11-03,1001,Chris Nakamura,DE2,Data Engineer II,54
+D2-CORR,2026-11-03,1002,Priya Raman,DPM,Data Product Manager,27
+D2-CORR,2026-11-03,1003,Marcus Bell,SE3,Software Engineer III,88
+D2-CORR,2026-11-03,1004,Ana Kowalczyk,DA1,Data Analyst I,2

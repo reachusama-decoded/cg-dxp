@@ -1,0 +1,28 @@
+id: query-table.case-01-happy-path
+skill: skills/query-table
+type: artifact
+description: 'Bootstrap happy-path case. Run SQL against a connected Databricks workspace. Trigger phrases:
+  "run this query", "query this table", "show me the schema", "describe table", "execute SQL".'
+input:
+  arguments: Sample 20 rows from ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4 to confirm shape.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/clients/databricks.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Run SQL against
+      a connected Databricks workspace. Trigger phrases: "run this query", "query this table", "show me
+      the schema", "describe tab''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

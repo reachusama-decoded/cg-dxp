@@ -1,0 +1,2013 @@
+{
+  "records": [
+    {
+      "tool": "airflow",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "airflow": "actual Dag.test dbt run/quality failure/repair/replay",
+        "astro_ui": "not assessed",
+        "output": [
+          [
+            "A",
+            2,
+            "150.00"
+          ],
+          [
+            "B",
+            2,
+            "100.00"
+          ],
+          [
+            "C",
+            1,
+            "0.00"
+          ]
+        ]
+      },
+      "source_sha256": {
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "airflow-p1-01",
+        "airflow-p1-02",
+        "airflow-p1-03",
+        "airflow-p1-04",
+        "airflow-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 23.375,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "airflow",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "working scaffold",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+        "pipeline.py": "73974988a56d2d605f9b6e17cd72410d61a934b2f9fb5c3d43200361e63087ea",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "airflow-p1-01",
+        "airflow-p1-02",
+        "airflow-p1-03",
+        "airflow-p1-04",
+        "airflow-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.011,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "airflow",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "Astro UI/container and connected adapter checks need the prepared client runtime; local Dag.test is checked in offline mode"
+      },
+      "source_sha256": {
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.002,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "airflow",
+        "phase-two-proficient",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "airflow": "actual Dag.test dbt run/quality failure/repair/replay",
+        "astro_ui": "not assessed",
+        "output": [
+          [
+            "A",
+            2,
+            "150.00"
+          ],
+          [
+            "B",
+            2,
+            "100.00"
+          ],
+          [
+            "C",
+            1,
+            "0.00"
+          ]
+        ]
+      },
+      "source_sha256": {
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "7c54d0f2e27dc7fe23d14bcbd66a31bd958c9a675956127ed580d4ec1f043ae3",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "airflow-p2-01",
+        "airflow-p2-02",
+        "airflow-p2-03",
+        "airflow-p2-04",
+        "airflow-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 23.463,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "airflow",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-two-proficient",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "airflow": "actual baseline import",
+        "astro_ui": "not assessed",
+        "output": "baseline not executed"
+      },
+      "source_sha256": {
+        "README.md": "8c40a86e1e8873d024bec17976a7b311d483cd60abbc0fa90548a81dbebd94f1",
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "7c54d0f2e27dc7fe23d14bcbd66a31bd958c9a675956127ed580d4ec1f043ae3",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "airflow-p2-01",
+        "airflow-p2-02",
+        "airflow-p2-03",
+        "airflow-p2-04",
+        "airflow-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 3.292,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "airflow",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "Connected Databricks output rehearsal requires the prepared client schema/adapter and instructor run ledger; this verifier executes the local DuckDB boundary only"
+      },
+      "source_sha256": {
+        "contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+        "dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+        "fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+        "models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+        "models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+        "models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+        "models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+        "models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+        "models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+        "models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+        "models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+        "models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+        "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+        "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+        "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+        "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+        "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+        "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+        "tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.003,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "capstone",
+        "phase-one-certified",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "valid_trades": 9880,
+        "positions": 3717,
+        "active_portfolios": 1028,
+        "inactive_portfolios": 1472,
+        "oracle": "raw CSV Decimal per-key independent computation",
+        "wrong_key_join_portfolios": 152
+      },
+      "source_sha256": {
+        "contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+        "dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+        "fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+        "models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+        "models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+        "models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+        "models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+        "models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+        "models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+        "models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+        "models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+        "models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+        "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+        "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+        "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+        "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+        "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+        "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+        "tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01"
+      },
+      "learner_readme_sha256": "777021807f81752599024cc045fed2f573b12247f46df103bbfdc011506e5c37",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "capstone-p1-01",
+        "capstone-p1-02",
+        "capstone-p1-03",
+        "capstone-p1-04",
+        "capstone-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 4.533,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "capstone",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "seed/build executed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+        "contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+        "dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+        "fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+        "models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+        "models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+        "models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+        "models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+        "models/starter_status.sql": "5810301b2c30cce19376f225ffde17a26b1085ab2f826ff422af3d9c213ccd45",
+        "prepared/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+        "prepared/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+        "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+        "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+        "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+        "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+        "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+        "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b"
+      },
+      "learner_readme_sha256": "777021807f81752599024cc045fed2f573b12247f46df103bbfdc011506e5c37",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "capstone-p1-01",
+        "capstone-p1-02",
+        "capstone-p1-03",
+        "capstone-p1-04",
+        "capstone-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 3.948,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "capstone",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "valid_trades": 9880,
+        "positions": 3717,
+        "active_portfolios": 1028,
+        "inactive_portfolios": 1472,
+        "oracle": "raw CSV Decimal per-key independent computation",
+        "wrong_key_join_portfolios": 152,
+        "advisor_rows": 120,
+        "region_rows": 12,
+        "portfolio_rows": 1028,
+        "negative_case": "regional omission failed reconciliation; repaired output rechecked"
+      },
+      "source_sha256": {
+        "contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+        "dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+        "fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+        "models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+        "models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+        "models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+        "models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+        "models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+        "models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+        "models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+        "models/rpt_advisor_book.sql": "64b94c5cc490615710fd6538cca98b2d19e8e62b7de61c19ac7564c7682503fa",
+        "models/rpt_advisor_leaderboard.sql": "e29b1ae95ae4a00d3a33885f47f4c8e69cd0310746852d2b3658459b9eb6d0f1",
+        "models/rpt_portfolio_performance.sql": "daee35093070a9d49ba66003b40bc1e40a48e3a3773cc526d98dc76f19331e7c",
+        "models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+        "models/rpt_region_report.sql": "522f19500e62103131bd4ca597157e95626380e78bfe6ba94dbb2ebab83e3b9d",
+        "models/schema.yml": "3626059dff41c290aa290a841bbb54c3bcc4dcb175504584bfed76d1ccc3e8ee",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+        "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+        "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+        "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+        "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+        "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+        "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b",
+        "tests/population.sql": "c63d4a762db0364091c425b819e8c44d19a577780713381632be90c03917bb01",
+        "tests/reconcile_region.sql": "927cc04dc049732abe999f6b211822a5446d6b1c1417ccc8c97a9d06692e883b"
+      },
+      "learner_readme_sha256": "f490bcae1da054c88b258f4fd9dcc1caacbff9c8a064885bc0b6152e65993054",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "capstone-p2-01",
+        "capstone-p2-02",
+        "capstone-p2-03",
+        "capstone-p2-04",
+        "capstone-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 9.977,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "capstone",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-two-proficient",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "seed/build executed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "d329ad887b8148306f758ce2a49ebfd527cf002421680bb010727fb7a7f4a0bc",
+        "contract.md": "aa561026006df1298e55377d569b196efa8fb0f978a775fc5846fd112ba8a473",
+        "dbt_project.yml": "2036f4c4b9cc7a0d7ed4cc214c93040047a9198c1dd9449def8ae0b9a2a6ab24",
+        "fixtures/defective_join.sql": "27c99f5e0f954812fb9bead1f8b958434f58b90d61975af3a5accdbf7a44b8df",
+        "models/dom_instrument__instrument.sql": "6f5b377dba576d6a7a933fe44bb47dd231c568898cf9f8b57629f47ce634b543",
+        "models/dom_party__advisor.sql": "8787e7c0ae32167baf1a5205bcefc514540f8653f522a8f7022e63808555ca1a",
+        "models/dom_party__client.sql": "d76c4e300df02ed7f812d05520609038104bb12fdf5360a7c21e7ee874be8c82",
+        "models/dom_portfolio__portfolio.sql": "f971bd790aa1a58eeb5dd8d845c78b0f175c84e9492074ff849d703fe17edd12",
+        "models/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+        "models/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+        "models/dom_trading__trade.sql": "9d89d8df09099f9f2182eda4372823975dae4abb1583e74e33b4047a44ddf75f",
+        "models/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+        "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+        "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+        "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+        "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+        "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+        "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b"
+      },
+      "learner_readme_sha256": "f490bcae1da054c88b258f4fd9dcc1caacbff9c8a064885bc0b6152e65993054",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "capstone-p2-01",
+        "capstone-p2-02",
+        "capstone-p2-03",
+        "capstone-p2-04",
+        "capstone-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 4.088,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "capstone",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "databricks-cli",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "databricks unavailable; prepare the declared execution boundary"
+      },
+      "source_sha256": {
+        "discovery.md": "5e8067f3a8563e1bd8514282d52b7edb87e5a94a145bd94abe8198700abd43aa",
+        "metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.001,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "databricks-cli",
+        "phase-one-certified",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "databricks-cli",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "fixture_parse": "pass",
+        "live_access": "not assessed",
+        "completion": false
+      },
+      "source_sha256": {
+        "discovery.md": "5e8067f3a8563e1bd8514282d52b7edb87e5a94a145bd94abe8198700abd43aa",
+        "metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783"
+      },
+      "learner_readme_sha256": "31d8333f27293a73b94c80569a790e8cfb1c9272e58053b5e6ce53df59d02055",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "databricks-cli-p1-01",
+        "databricks-cli-p1-02",
+        "databricks-cli-p1-03",
+        "databricks-cli-p1-04",
+        "databricks-cli-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.001,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "databricks-cli",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "databricks-cli",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "fixture_parse": "pass",
+        "live_access": "not assessed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "6cfd49f817023616e0bee614b4e8a557c7d3bde2232a5fcb020ac43402ecd3b2",
+        "metadata.json": "bf8b59263308a0594c70a66cabea52da14dce86d513fe3e4e3c1ac813e51d783"
+      },
+      "learner_readme_sha256": "31d8333f27293a73b94c80569a790e8cfb1c9272e58053b5e6ce53df59d02055",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "databricks-cli-p1-01",
+        "databricks-cli-p1-02",
+        "databricks-cli-p1-03",
+        "databricks-cli-p1-04",
+        "databricks-cli-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.001,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "databricks-cli",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "Connected Databricks output rehearsal requires the prepared client schema/adapter and instructor run ledger; this verifier executes the local DuckDB boundary only"
+      },
+      "source_sha256": {
+        "dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.001,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "dbt",
+        "phase-one-certified",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "exposure": [
+          [
+            "A",
+            2,
+            "150.00"
+          ],
+          [
+            "B",
+            2,
+            "100.00"
+          ],
+          [
+            "C",
+            1,
+            "0.00"
+          ]
+        ]
+      },
+      "source_sha256": {
+        "dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "dbt-p1-01",
+        "dbt-p1-02",
+        "dbt-p1-03",
+        "dbt-p1-04",
+        "dbt-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 3.471,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "dbt",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "seed/build executed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+        "dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff"
+      },
+      "learner_readme_sha256": "e4c4b1edbdc2958da273e09c528a588ac1f3f01efdceb702d3e66f940413ceb6",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "dbt-p1-01",
+        "dbt-p1-02",
+        "dbt-p1-03",
+        "dbt-p1-04",
+        "dbt-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 3.117,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "dbt",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "exposure": [
+          [
+            "A",
+            2,
+            "150.00"
+          ],
+          [
+            "B",
+            2,
+            "100.00"
+          ],
+          [
+            "C",
+            1,
+            "0.00"
+          ]
+        ],
+        "incremental_initial": [
+          2,
+          180
+        ],
+        "incremental_final": [
+          3,
+          225
+        ],
+        "negative_fanout": [
+          7,
+          400
+        ],
+        "negative_test": "observed failure then repair"
+      },
+      "source_sha256": {
+        "dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+        "models/arrival_ledger.sql": "f19d2344bbf5b85fae1b7f28b7cfd944b82a2e97f9cd1b1edd54bba972ddce99",
+        "models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+        "seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "c73287181f61490dfaa6d0d9feabe877a3d5ab20ac06cca436bf000da0a427ee",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "dbt-p2-01",
+        "dbt-p2-02",
+        "dbt-p2-03",
+        "dbt-p2-04",
+        "dbt-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 18.171,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "dbt",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-two-proficient",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "seed/build executed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "072a7b5b39ab6ee29f9cae821e154c0df4ff0bc4d655d8c853ee7ef4110206a7",
+        "dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "fixtures/fund_labels_duplicate.csv": "261960d18d7913a9da400a8a86d0968e383b51d6010d1c657754e58d8c90a394",
+        "models/fund_exposure.sql": "9323a33881ec03d53fcf303a44cfbc1fd62d7b06a8fd4babdae2bb31f4d8f983",
+        "models/schema.yml": "503eed658c6cdc7fddb377887d40858b13d6d45de096879e03aabd9435418b7f",
+        "models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "models/starter_status.sql": "9b4c6e581e2b6c7aa06b46304ab99887ea3239819089246898179328770ea394",
+        "models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "seeds/arrivals.csv": "40a176c2ba53556830db37d84c15f4396e20a0e5df41fb47eed98ab443ea09ee",
+        "seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff"
+      },
+      "learner_readme_sha256": "c73287181f61490dfaa6d0d9feabe877a3d5ab20ac06cca436bf000da0a427ee",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "dbt-p2-01",
+        "dbt-p2-02",
+        "dbt-p2-03",
+        "dbt-p2-04",
+        "dbt-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 3.432,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "dbt",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "docker unavailable; prepare the declared execution boundary"
+      },
+      "source_sha256": {
+        ".dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+        "Dockerfile": "9de0b9ad68c7c127dc479175748e587b59b04e567676e0bf98582018becdba9f",
+        "app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+        "app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+        "app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.032,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "docker",
+        "phase-one-certified",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "app_oracle": "pass",
+        "docker_build_run": "blocked: Docker unavailable in offline mode",
+        "completion": false
+      },
+      "source_sha256": {
+        ".dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+        "Dockerfile": "9de0b9ad68c7c127dc479175748e587b59b04e567676e0bf98582018becdba9f",
+        "app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+        "app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+        "app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96"
+      },
+      "learner_readme_sha256": "696acaab9af2c1f11ce5a32fc3e71d62d693b80d79f7b5e2675468be90d1e9ad",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "docker-p1-01",
+        "docker-p1-02",
+        "docker-p1-03",
+        "docker-p1-04",
+        "docker-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.032,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "docker",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "app_oracle": "pass",
+        "docker_build_run": "blocked: Docker unavailable in offline mode",
+        "completion": false
+      },
+      "source_sha256": {
+        ".dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+        "Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+        "README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+        "app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+        "app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+        "app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96"
+      },
+      "learner_readme_sha256": "696acaab9af2c1f11ce5a32fc3e71d62d693b80d79f7b5e2675468be90d1e9ad",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "docker-p1-01",
+        "docker-p1-02",
+        "docker-p1-03",
+        "docker-p1-04",
+        "docker-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.031,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "docker",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "app_oracle": "pass",
+        "docker_build_run": "blocked: Docker unavailable in offline mode",
+        "completion": false
+      },
+      "source_sha256": {
+        ".dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+        "Dockerfile": "40ee62fdd50b5360ab1195ebe98333ed448c2085ee833f9305272f06eed7f077",
+        "app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+        "app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+        "app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96"
+      },
+      "learner_readme_sha256": "2128c01fc2c4c1a0abed3ae1068c674fb4320be52c3e8296472fd50af4cc9dd2",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "docker-p2-01",
+        "docker-p2-02",
+        "docker-p2-03",
+        "docker-p2-04",
+        "docker-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.031,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "docker",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-two-proficient",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "app_oracle": "pass",
+        "docker_build_run": "blocked: Docker unavailable in offline mode",
+        "completion": false
+      },
+      "source_sha256": {
+        ".dockerignore": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c",
+        "Dockerfile": "6aad905ffc5895d5340d1255ab99e1b9d99d610e86a20d9af4bd0d072143d8a8",
+        "README.md": "c14c86d4465021e0607541b5c74202f783c005071afb648a58e096e79b766a20",
+        "app/holdings.csv": "ecf331a329aefbc71e876ad46bebffcf07a011e9b2a4a89edf8c43cbefb1df18",
+        "app/summarize.py": "3e6838ab0c86f453bfca28aa91165d244985d78f37bbfebf919e8d5636781ce3",
+        "app/test_summary.py": "04934d3232a8b420c27c7a086151329425e73444ddaa16feaab520a3cad89e96"
+      },
+      "learner_readme_sha256": "2128c01fc2c4c1a0abed3ae1068c674fb4320be52c3e8296472fd50af4cc9dd2",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "docker-p2-01",
+        "docker-p2-02",
+        "docker-p2-03",
+        "docker-p2-04",
+        "docker-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.031,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "docker",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "git",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "local_history": "commit/branches/merges/conflict/restore executed",
+        "remote_evidence": "not required",
+        "completion": true
+      },
+      "source_sha256": {
+        "contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+        "workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9"
+      },
+      "learner_readme_sha256": "7f66f1b2f1444cba471c5801e1e10d84084d375e9baf3c011374a984a941fe0a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "git-p1-01",
+        "git-p1-02",
+        "git-p1-03",
+        "git-p1-04",
+        "git-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.077,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "git",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "git",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "readable contract",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+        "contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d"
+      },
+      "learner_readme_sha256": "7f66f1b2f1444cba471c5801e1e10d84084d375e9baf3c011374a984a941fe0a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "git-p1-01",
+        "git-p1-02",
+        "git-p1-03",
+        "git-p1-04",
+        "git-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.002,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "git",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "git",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "V2_GITHUB_REPO and V2_GITHUB_PR required for read-only real PR evidence"
+      },
+      "source_sha256": {
+        "contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+        "workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.303,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "git",
+        "phase-two-proficient",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "git",
+      "phase": "phase-two-proficient",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "local_history": "commit/branches/merges/conflict/restore executed",
+        "remote_evidence": "not assessed",
+        "completion": false
+      },
+      "source_sha256": {
+        "contract.md": "bbf1e85ce6094c82318a19bb310aef9e1929333ab172e19a6d691a18ec887f00",
+        "workflow.sh": "74cf63047789d4a0a64587db514554d802e7b5df3bccda23401ed43b0d9904a9"
+      },
+      "learner_readme_sha256": "84eac9ebd3c0360f193b1535d7ea8b9693d34b57b38c4b766aa8ff08cea5233a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "git-p2-01",
+        "git-p2-02",
+        "git-p2-03",
+        "git-p2-04",
+        "git-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.077,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "git",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "git",
+      "phase": "phase-two-proficient",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "baseline": "readable contract",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "c055e190454f28d93cb3aadc032f67d31da5abb59ae079074b1cae680dd1094e",
+        "contract.md": "3eede605ef4e8950199af1ca0e588e35936be8e1b7194bfc515a87d927ff0c1d",
+        "review-scenario.json": "aa3609de1f9ec6d4c16fb1f35545fd7021b27496b5edabee531e3da675e3bb92"
+      },
+      "learner_readme_sha256": "84eac9ebd3c0360f193b1535d7ea8b9693d34b57b38c4b766aa8ff08cea5233a",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "git-p2-01",
+        "git-p2-02",
+        "git-p2-03",
+        "git-p2-04",
+        "git-p2-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.002,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "git",
+        "phase-two-proficient",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "kafka",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "live",
+      "result": "blocked",
+      "observations": {
+        "reason": "Use bridge produce/consume and verify-chain with prepared broker/Airflow; this command does not fabricate an end-to-end event"
+      },
+      "source_sha256": {
+        "compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+        "event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "verifier_sha256": "59d20d8bd3627be1d32f14ee388233bee3f9c592a9d61e4ce44376cb9dfc0974",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.002,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "scripts/challenge-v2.py",
+        "verify-solution",
+        "kafka",
+        "phase-one-certified",
+        "--mode",
+        "live"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "kafka",
+      "phase": "phase-one-certified",
+      "action": "verify-solution",
+      "mode": "offline",
+      "result": "supporting-only",
+      "observations": {
+        "event_contract": "pass",
+        "broker_airflow_chain": "not assessed",
+        "completion": false
+      },
+      "source_sha256": {
+        "compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+        "event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "a09c8ed15267114ef80c4de233f2733a07933535f675450f54f863c6397ab8df",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "kafka-p1-01",
+        "kafka-p1-02",
+        "kafka-p1-03",
+        "kafka-p1-04",
+        "kafka-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.002,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-solution",
+        "kafka",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    },
+    {
+      "tool": "kafka",
+      "phase": "phase-one-certified",
+      "action": "verify-starter",
+      "mode": "offline",
+      "result": "pass",
+      "observations": {
+        "event_contract": "pass",
+        "broker_airflow_chain": "not assessed",
+        "completion": false
+      },
+      "source_sha256": {
+        "README.md": "865d5aac7165f47907a3568b61c16f99fd1aadd9b1458da433b1fd9fb7f6b008",
+        "compose.yaml": "070782b27c5a6fe15b6c738803b0c84bcb26d75a3cd6ab1dccecf206b0990646",
+        "event.json": "938748d58f617b5733a44dcd1b0c569044b6c9fe03736463e6c47d6ca4347597",
+        "learner-event.json": "1ea7959d63e00ada414f8acdccdb21dce0e99570b45d768a404a64edde16cc84",
+        "pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+        "project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+        "project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+        "project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+        "project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+        "project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+        "project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+        "project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+        "project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+        "project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+        "project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b"
+      },
+      "learner_readme_sha256": "a09c8ed15267114ef80c4de233f2733a07933535f675450f54f863c6397ab8df",
+      "manifest_sha256": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+      "task_ids": [
+        "kafka-p1-01",
+        "kafka-p1-02",
+        "kafka-p1-03",
+        "kafka-p1-04",
+        "kafka-p1-05"
+      ],
+      "automated_scope": "Behavioral assertions stated in observations; learner explanations and peer review require instructor assessment",
+      "verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b",
+      "support_scripts_sha256": {
+        "v2-airflow-check.py": "46f12adf625c681f4c278421190073f2fb963975fef9317f23cf7406e64e9ac2",
+        "v2-tools-requirements.txt": "623c655b3fe778be9267f256538b4b9ffb5a071129d42a6e81d23c6bc52d650d",
+        "v2_kafka_bridge.py": "5284c19225720930ccec48f9379494dbda73394b586c9a388bc06bb21d12e030",
+        "v2-presentation.lua": "cc3c5b50b65f8cc5108bdf46e28e701df534c1934cb41bdd6b3f63041dc5333f"
+      },
+      "duration_seconds": 0.003,
+      "cleanup": "temporary workspace removed; source hashes unchanged",
+      "command": [
+        "/home/prox-admin/repo/ts-cg-datacreators/Capital/DataCreators-client/dev-container/edo-training-data-products/scripts/challenge-v2.py",
+        "verify-starter",
+        "kafka",
+        "phase-one-certified",
+        "--mode",
+        "offline"
+      ],
+      "versions": {
+        "dbt": "Core:\n  - installed: 1.10.13\n  - latest:    1.12.5  - Update available!\n\n  Your version of dbt-core is out of date!\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation\n\nPlugins:\n  - duckdb: 1.9.6 - Update available!\n\n  At least one plugin is out of date with dbt-core.\n  You can find instructions for upgrading here:\n  https://docs.getdbt.com/docs/installation",
+        "airflow": "3.1.0"
+      }
+    }
+  ],
+  "offline_shell_checks": 24,
+  "offline_all_sources_bound_to_current_verifier_and_manifest": true,
+  "live_checks": "seven representative boundaries blocked with exit77; historical same-service absence still valid",
+  "baseline_tests": "241passed1failed1skipped; fixed missing--pat readiness hint",
+  "migrated_tests": "249passed1skipped (Mise unavailable), disposable indexed checkout",
+  "result_limits": "Supporting-only is not live completion. Durations are automation, not junior pilots.",
+  "shell_runs": [
+    {
+      "script": "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+      "sha256": "66bf8121c520a85ab80bf619f7567ac065aa8b25a6548ccb371bf6dedd06052d",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+      "sha256": "dfa94a4310f6f91b03c11c1cf2abbf73c1691cb443060a2c2b8e185b9ba6512b",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+      "sha256": "c3a9e52a83809ef548d16fcc995abeb1c3ce7c64f100c4fde91a7725d6b0da3c",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+      "sha256": "0cbf5f3de8798b570c5a348f3fe6877e58018dc76d8790aedcb413af6793fd99",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+      "sha256": "63296a33569733987e3a4fc4d5579a12bee052edfd68c33338d02aa54cdb1710",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+      "sha256": "083f200e05051ef9dc79c8629da1d41cc00f1446bda8146156656f2bd5d1af1a",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+      "sha256": "898035e6fdb28f3976a3279f3d9712b4e63edab81840487a2e4fcfa5d62a952e",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+      "sha256": "887071f8cee3ce562d96bf7f2d4d6ac3509f365be1ab95d819d68e787fd7b569",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh",
+      "sha256": "ce8ac86b7d4f057be793ff2f3c6d00bbac6ed826626e5c89445600fba09a0a46",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+      "sha256": "365c8fdd883ff455d92374de0bf6ae16307c35de5ea613401e0a99fb7767cc49",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+      "sha256": "694884d487f059591855f5ba6b43773c1a4bed0239d90fc899afe2bcb1222847",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+      "sha256": "b55ecafcd2848f6766a232687037763aa83c0cc8753d7b1f6e62a1a32ac2c589",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+      "sha256": "510dbe64afdea3c797b8b961114adfe6612577d355531dbec2c0e0ab6d73efa6",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+      "sha256": "906376a9e1566cc80511ec9230de2e5d7dca74d3b3aa24119f7de0b9b09e978e",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/docker/phase-one-certified/verify.sh",
+      "sha256": "f44cfaba48fe97714ebce777b6f3b1f59665d3c48aba40667d7e845e83fc2a27",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/docker/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+      "sha256": "6ec52b54792468bc924cf5d54bdcf060e7cafd0f137b591551a397a264e0ab30",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/docker/phase-two-proficient/verify.sh",
+      "sha256": "dd4b8745d1d38317415f41840c0c10dff80956e438b1c5117471ec53b1fc6115",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/docker/phase-two-proficient/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+      "sha256": "a41c045713fc2c9c1a7c4f7be76da4b8314bd619c3fff839f25eca22a0ff8fce",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/git/phase-one-certified/verify.sh",
+      "sha256": "6803b765dd4e996f54c851aaf1cae6325097b59740f61fc3b13845b7ab8dfdd3",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/git/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+      "sha256": "b2af1e8354e3d0b3e5255429b8f6b9db58b9c415e8555f8e9d575f7dd98728e7",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/git/phase-two-proficient/verify.sh",
+      "sha256": "b6c391ba288798a3b494a72d51172aac3adc0529a0c752e8887d74a97392ba37",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/git/phase-two-proficient/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+      "sha256": "e4e64e2b87a191b496d034c70baf768a1f3d625147dd99e85f7a16f204fbf1c2",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/kafka/phase-one-certified/verify.sh",
+      "sha256": "dae12353d4b2e53501346b8d558a361fc5ae6d37f7f15fc2ade7ffcac64b1f72",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/kafka/phase-one-certified/verify.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "supporting-only",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    },
+    {
+      "script": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+      "sha256": "a3099a956290caa9e6c88a4d9986256dbc7863114bddc78bf722ebddd808bd0a",
+      "command": [
+        "bash",
+        "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+        "--mode",
+        "offline"
+      ],
+      "exit_code": 0,
+      "result": "pass",
+      "current_main_verifier_sha256": "e4b2c01c368c7256846eaf1118f23e8fffb1ad0745f8cedbd088696e700f333b"
+    }
+  ]
+}

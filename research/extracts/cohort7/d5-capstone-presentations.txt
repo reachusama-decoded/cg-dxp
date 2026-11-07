@@ -1,0 +1,111 @@
+        Capstone Team Presentations
+        Group 1 Portfolio Summary and Advisor Book
+        • The team reported building a phase-one model with staging and integration
+          models, final outputs, reconciliation passes, data-quality checks, build tests,
+          and the required Airflow DAGs.
+        • Their source data included trading data, CRM, fund references, security, and
+          portfolio management.
+        • Their consumer-facing product was described as supporting advisory
+          leadership and portfolio oversight.
+        • The team reported seven source-aligned tables and approximately nine ETL
+          models. The presentation also referred to seven sources; these counts may
+          reflect different layers of the design.
+        • The two selected outputs were Portfolio Summary and Advisor Book, intended
+          to help users assess portfolio health, including assets under management.
+        • The team reported running two jobs and said the Airflow jobs, Databricks
+          catalogs, and resulting data could be inspected.
+        “We basically tackled … Portfolio summary and advisor book.
+        Data-quality observation
+        • The team found trades dated before a portfolio s inception date.
+        • They chose to retain those records and notify business users, since they did
+          not know whether the dates indicated bad data or a valid business situation.
+        • A data-quality check could be added if business users identify the records as
+          an issue; otherwise, a business explanation may justify keeping them.
+        “We decided, hey, let's let our business users know that this is happening, and
+        we will just keep it in there.
+        Group 2 Instrument Activity and Client Segments
+        • This team focused on two aggregate business outputs:
+           ◦ Instrument Activity: a view of trading activity grouped by instrument
+             classification, intended to help leadership understand which instruments or
+
+
+
+
+             asset classes are traded most.
+                                                      ”
+                                         ’
+                   ”
+    :
+:
+      ◦ Instrument Activity: a view of trading activity grouped by instrument
+         classification, intended to help leadership understand which instruments or
+
+
+
+
+         asset classes are traded most.
+      ◦ Client-segment performance: an aggregate intended to compare activity
+         across client segments.
+    • The team described a pipeline that takes raw seed data through staging and
+      domain-specific processing to consumer-aligned outputs.
+    • Transformations considered included retaining valid trades, handling price
+      conversion, and aggregating the data.
+    • Potential issues they identified included:
+      ◦ Whether the latest price is fair and current.
+      ◦ Invalid trades, fee calculations, and reconciliation.
+      ◦ Missing currency conversion, which could make traded-value comparisons
+         inaccurate.
+      ◦ Trades referencing unknown instruments, which could be excluded by a join.
+      ◦ Duplicate counting if the same trade appears more than once.
+      ◦ Inconsistent or incorrect segment labels.
+    • For positions, the team described calculating net buys and sales for each
+      portfolio and instrument. The transcript s wording is unclear about the exact
+      formula.
+    Group 3 Portfolio Summary and Advisor Book
+    • This team also selected Portfolio Summary and Advisor Book, describing the
+      goal as a trustworthy view of portfolios and advisor books.
+    • They worked backward from the outputs to identify source data. Sources
+      mentioned included advisor and CRM data, trades, and fund summary or report
+      data.
+    • The team described using seven seed datasets to produce consumer reports
+      and presented an ERD to support team discussion and PRD development.
+    • They said they clarified definitions that were unclear in the requirements and
+      identified data-quality validation needs.
+    • Their presentation also called out data ownership, approvals, and validation.
+    • Databricks was proposed as the platform for the dbt work.
+
+
+
+
+    Additional Team Documentation and Technical Reflections
+                           ’
+:
+    Additional Team Documentation and Technical Reflections
+    • Another presenter described creating a summary document using a technique
+      learned earlier in the course.
+    • The documentation covered the PRD, data contract, lineage diagrams, and
+      calculations, with the work focused on the first two outputs: Portfolio Summary
+      and Advisor Book.
+    • Basis-point calculations were identified as a point requiring investigation: the
+      team checked whether to divide by 1,000 or 10,000.
+    • The presenter said the generated documentation included guidance on what
+      readers should not assume.
+    • Imports were described as the hardest part of phase two, and the presenter
+      said they had stopped there.
+    • The presenter also described using AI to produce a one-page summary of the
+      day s work.
+    Shared Context
+    • Teams described using AI-assisted development and documentation tools,
+      including Catalyst.
+    • Several teams produced similar outputs, especially Portfolio Summary and
+      Advisor Book, while another team focused on instrument activity and client-
+      segment aggregates.
+    • The presentations included both reported implementation work and potential
+      data risks; details such as source counts and some calculations were not fully
+      clear in the transcript.
+
+
+
+
+’
+

@@ -1,0 +1,53 @@
+id: generate-dag.case-07-compose-regression
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Compose-contract regression: job_name must be templated using the bundle's
+  databricks_job_prefix variable, not hardcoded. The skill must emit
+  job_name with the Jinja template and, for dag-factory output, use an
+  Astronomer Connection reference for databricks_conn_id rather than a
+  literal string.
+
+input:
+  arguments: >-
+    Generate a DAG for orders/orders_daily in production mode. Use the
+    dag-factory pattern. The bundle has been deployed; the job is
+    `orders_daily_job` and uses the
+    `databricks_job_prefix` variable per env (dev=`dev-orders-`,
+    prd=`prd-orders-`).
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: templates_job_name_with_prefix
+      weight: 0.4
+      prompt: >-
+        Does the response emit a job_name field templated with the bundle's
+        databricks_job_prefix Airflow variable — for example
+        job_name: "{{ var.value.databricks_job_prefix }}orders_daily_job"?
+        Score 1 if the Jinja template using databricks_job_prefix is present,
+        0.5 if the prefix variable is referenced but incorrectly templated,
+        0 if job_name is hardcoded without the template. Score 0-1.
+    - id: references_databricks_conn_id
+      weight: 0.3
+      prompt: >-
+        For dag-factory output, does the response use an Astronomer
+        Connection reference for databricks_conn_id rather than a hardcoded
+        literal string? For example,
+        databricks_conn_id: "{{ conn.databricks_default.conn_id }}" or an
+        equivalent Astronomer Connection pattern. Score 1 if an Astronomer
+        Connection templating pattern is used, 0.5 if the field is present but
+        uses a plain string like "databricks_default", 0 if the field is absent
+        or uses a non-standard literal. Score 0-1.
+    - id: documents_compose_contract
+      weight: 0.3
+      prompt: >-
+        Does the response cite or explain that the templated job_name matches
+        the bundle's deployed naming convention — for example via an inline
+        comment, explanation, or reference to the compose-with-bundle contract?
+        Score 1 if the connection between the DAG template and the bundle
+        variable convention is explicitly noted, 0.5 if implied, 0 if absent.
+        Score 0-1.

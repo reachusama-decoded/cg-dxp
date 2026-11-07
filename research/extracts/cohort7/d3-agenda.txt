@@ -1,0 +1,30 @@
+                09 05
+                learners work through dbt challenges
+                10 00
+                break then continue with challenges
+                11 00
+                Martin s talk
+                12 00
+                lunch
+                13 00
+                Back to challenges
+                14 00
+                Learners asked to report back what they ve learnt
+                Asked learners to give teaching demos tomorrow on bi-temporal
+                loading harness, CI/CD
+                14 10
+                End
+
+
+
+
+                                ’
+            ’
+        :
+    :
+    :
+    :
+    :
+    :
+:
+

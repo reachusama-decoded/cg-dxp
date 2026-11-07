@@ -1,0 +1,32 @@
+id: release-notes.case-01-happy-path
+skill: skills/release-notes
+type: artifact
+description: 'Bootstrap happy-path case. Write release notes: summary, what is new, known limitations,
+  and migration
+
+  notes. Use when the user asks to "write the release notes", "document what
+
+  changed", "create the changelog", or "summarize this release".'
+input:
+  arguments: Write release notes for v1.0 of the employee directory data product.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/release-notes/templates/release-notes.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Write release
+      notes: summary, what is new, known limitations, and migration
+
+      notes. Use when the user asks to "write the release notes", "doc''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

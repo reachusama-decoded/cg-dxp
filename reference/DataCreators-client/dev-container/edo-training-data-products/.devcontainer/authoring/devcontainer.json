@@ -1,0 +1,105 @@
+// Authoring only, never shipped to learners (package-v2.sh excludes it). Same image and
+// workspace path as ../devcontainer.json (the client's scripts and READMEs assume
+// /workspaces/edo-training-data-products); additionally mounts the ts-cg-datacreators
+// checkout (course, Git). ts-builder is optional and is not mounted at startup.
+// Keep the rest in step with ../devcontainer.json.
+{
+  "name": "Data Creators authoring (course + client)",
+
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": "../.."
+  },
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/root/.local/bin:/root/.local/share/mise/shims",
+    "GIT_SSL_CAINFO": "/cacert.pem",
+    "SSL_CERT_FILE": "/cacert.pem",
+    "REQUESTS_CA_BUNDLE": "/cacert.pem",
+    "NODE_EXTRA_CA_CERTS": "/cacert.pem",
+    "WORKSPACE_BASENAME": "${localWorkspaceFolderBasename}",
+    "WORKSPACE": "/workspaces/${localWorkspaceFolderBasename}",
+    "CLIENT_ROOT": "/workspaces/${localWorkspaceFolderBasename}",
+    "COURSE_ROOT": "/workspaces/ts-cg-datacreators"
+  },
+
+  "containerEnv": {
+    "DOCKER_BUILDKIT": "1",
+    "COMPOSE_DOCKER_CLI_BUILD": "1",
+    "SSL_CERT_FILE": "/cacert.pem",
+    "REQUESTS_CA_BUNDLE": "/cacert.pem",
+    "MISE_PYTHON_GITHUB_ATTESTATIONS": "false",
+    // Course PDF builds: public npm returns 403 for mermaid-cli deps; Puppeteer has no arm64 Chrome.
+    "npm_config_registry": "https://cgrepo-aws.capgroup.com/repository/cgnpm/",
+    "PUPPETEER_SKIP_DOWNLOAD": "1",
+    "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium",
+    // The client is also visible through the course mount; trust its .mise.toml there too.
+    "MISE_TRUSTED_CONFIG_PATHS": "/workspaces/edo-training-data-products:/workspaces/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products"
+  },
+
+  "runArgs": [
+    "--privileged",
+    "--init"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vscode.makefile-tools",
+        "redhat.vscode-yaml",
+        "Databricks.databricks",
+        "esbenp.prettier-vscode",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        }
+      }
+    }
+  },
+
+  "postCreateCommand": "apk add poppler-utils nodejs-22 npm chromium && .devcontainer/authoring/link-courseware.sh && mise trust .mise.toml && mise install && mise run setup",
+  "postStartCommand": "/usr/local/bin/post-start.sh ${containerWorkspaceFolder}",
+  "postAttachCommand": "/usr/local/bin/ensure-dockerd.sh",
+
+  "mounts": [
+    "source=edo-training-docker-data-${localWorkspaceFolderBasename},target=/var/lib/docker,type=volume",
+    "source=${localWorkspaceFolder}/../../../..,target=/workspaces/ts-cg-datacreators,type=bind"
+  ],
+
+  "forwardPorts": [8020, 8080, 8081, 6563],
+
+  "portsAttributes": {
+    "8020": {
+      "label": "Databricks OAuth Callback",
+      "onAutoForward": "silent"
+    },
+    "8081": {
+      "label": "dbt docs"
+    }
+  },
+
+  "remoteUser": "root"
+}

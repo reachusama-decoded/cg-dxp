@@ -1,0 +1,2598 @@
+Yeah, maybe that he's just doing it because I'm away in the US is managing the
+facial period that we've got to go over here.
+It's just past nine minutes. Oh, yeah, yeah.
+Oh Nicole, I'll let you start whenever you need to talk about something.
+How many are we waiting for? Two way away on two people.
+We won't wait on other mornings, so if you think that we're gonna wait for you
+every morning, we're not.
+Can I give you this? Are you okay just to morning everyone? Morning. Good
+morning, everyone. Um mayor may not know me on the policeman the program
+coordinator.
+Um, before we get started, and I give the floor to Michael and Sophie for a quick
+intro. Um I'm just gonna play this video from leadership. Um, just a couple of
+housekeeping items.
+We do have voucher code for lunch the entire week. That's your code. It's also in
+the chat if you forget. Um, and then if you have the occasional conflict with the
+meeting or something, you can step out as long as it's not really disruptive, that's
+fine.
+Um just let us know if you're gonna be belong gone for a long time. Um we don't
+want you to miss too much.
+We're so excited to have you here. This is an important part of capital groups
+investment in data excellence. You're here because we believe you have the
+potential to succeed in this role.
+The training here is gonna help you develop the skills and experience needed to
+make that impact in data and our data excellence program here a capital group.
+As our firm becomes increasingly data frequent, you'll help transform business
+needs into trusted reusable data products that help us deliver business priorities
+at scale.
+Please treat this training as a hands-on learning experience. Throughout the
+week, you'll apply concepts, practice new skills, and work with scenarios that
+reflect what you'll actually do as a data product creator.
+
+We don't expect that you've arrived here today, knowing everything. We expect
+We don't expect that you've arrived here today, knowing everything. We expect
+that we show up every day, engage with materials, and work through it with the
+energy and positivity that you would be doing to all of it.
+This program is still evolving. Your feedback matters. If something isn't clear, if
+you need support, if you have ideas for improvement, let us know.
+And one last thing. Please stay curious. Ask questions and engage fully in the
+experience. We're really glad you're here. We'll look forward to seeing the impact
+you will make.
+Michael before. Alright, good morning, everyone. Good morning. Thank you.
+Good morning, one, I suppose, right? Good morning. There we are. So my name
+is Michael Burgess.
+I'm uh what shall we say? I'm the head of technical consulting at uh decoded.
+Can you give me my name and so on? So my name is Michael, Michael Burgess,
+and I'm the head of technical consulting at a company called Decoded.
+And Decoded is an international skills consultancy. Uh it does many other things
+as well. Um and uh we work in the United States and Hong Kong and UK and
+other places.
+Um we work with very large organizations, often in finance. Personally, I work in
+finance and historically I work in defense as well. And um, what do I do for
+decoded?
+I'm the head of clinical consulting, so it's my job to work with uh clients and
+develop the first design of a program. Uh hopefully I then hand it over when the
+design is stable to other people.
+Um my background is I was um so what is my background? If you want to know
+my background, it'd be interesting, right? We can kill some time uh rambling
+about me.
+That sounds good, that just sounds good, right? Me rambling about me, I love
+that, right? Uh so I uh I had a web, uh I had a web uh startup when I was 17, so
+actually given a web startup by a company called Borland.
+You may some of you may know what Borland was, major web consultancy in
+
+Silicon Valley. Um what did I do after that? Then uh so I was a teenager and I was
+You may some of you may know what Borland was, major web consultancy in
+
+Silicon Valley. Um what did I do after that? Then uh so I was a teenager and I was
+a web a CTO of Webstar, and then what did I do?
+I um did physics, I was a contractor for 10 years in software engineering and
+defense. I worked in um for defense companies. I also work for um of the
+Olympics in 2012.
+I worked for uh what else should I do? So many different things work for orange.
+My first job was uh orange contractor, contractor for orange. You know Orange
+Key Mobile?
+You know T Mobile, right? It's the same same company. Then what? Then uh in
+my 20s, I took what was called retirement for me, and I started working in
+education, so that's where I am now.
+Uh so less stressful, hopefully. And uh for the last 10 years I've been doing this.
+So, what is this? This is again partnering with uh often large multinational
+organizations and their uh SMEs and then the L and D team and giving initial uh
+iterations on program design.
+Cool. Hi everyone, my name is Sophie McMurray. Um I've been working in data
+focused roles for the past nine years, and my background is in maths and
+statistics, and then I did a master's degree in data science.
+And um at decoded, I'm working primarily on our AI engineering programs and
+also supporting on this program. So I'll be around to answer any questions you
+have.
+I'll be walking around the room and yeah, looking forward to getting to know
+everybody. And my educational background is physics. You do medicine for a
+while, medicine for two years and decided it didn't like people.
+Then I transferred to physics. I sat I sat outside of a physics office and said, I
+can't bother doing anything. What do you want to do? So they said, Do you want
+to do physics?
+I said yes. And it was a bad decision because uh I'd have been better off doing
+theoretical physics, but they put me on a normal physics course and there's lots
+of experiments to do, and I hated it.
+
+So I drag kicking and screaming through an experimental physics degree. Uh
+So I drag kicking and screaming through an experimental physics degree. Uh
+anyway, the reason I'm being a little bit chatter this morning is because we have
+Hero coming up in a couple of minutes, so I don't really want to do anything else.
+Let me say a little bit about the course. But once we've talked about what we've
+had hero across to talk about additional things, we'll get some interruptions from
+you and I'll introduce the course a bit more.
+But one of the first things we'll do after Hero is we'll do a group exercise across
+your tables where you introduce each other. Um, you talk about some data
+products, you talk about some hobbies and some other things, icebreaker type
+stuff, and then we'll do a group debrief, and you can introduce yourself there.
+That's why I'm delaying that a little bit, so we'll do that when Hero's finish
+speaking. So we're waiting on Hero in a be here in a couple of minutes, I guess.
+Um what should we talk about then? Um here in ten minutes. Ten minutes. So we
+could do that channel. We could do that now then, couldn't we? Yeah.
+I mean, 10 minutes is a little sharp. Usually I give people a little bit longer than
+that. Um so we can at least do the first part of the challenge.
+We'll do the second part on heroes here. Cool. So the group challenge has two
+parts. The first part is just some icebreakers, introduce yourself.
+And the second part is talk about some data products and pain points around
+data products that you're already familiar with. So we'll do that part second.
+So, in terms of having you introduce introduce yourselves and each other, why
+don't we do? Um, first of all, go around the so here's what we're gonna do, right?
+Go around each group, introduce yourselves. So, this is what team you're from,
+right? What your role is in that team, right? Uh, any hobbies you have, and then
+share, want to know what the shared hobbies across the team are.
+If there are if there are any, cool. And what else? Look very depressed. Some
+people look very depressed this morning. What did Monday? Rainybody.
+Maybe we can give them until 9.30 to chat, and then Hero can join, and then they
+can you can do your little share out after. Sure. Okay. Okay. You can do it all
+together then.
+
+You can try and squeeze it in 50 minutes. So the last thing I want you to just go
+You can try and squeeze it in 50 minutes. So the last thing I want you to just go
+ask then after your shared hobbies, is uh any existing data products you're
+working on.
+And I want you to kind of gossip and bitch about what's wrong with them. Uh so
+you have um some paper on the desks and some pens. The paper and pens is
+mostly to do that brainstorm on data products you're working on.
+So it'd be nice to know what sort of data products you've been working on
+across the team. And if you can do a little brainstorm on that, that'd be very
+helpful.
+Because as we progress through the course, we'll refer back to some of those
+and some other additional challenges. So you have some bases to work from.
+So for example, if I say, for example, use one of the things you discussed earlier,
+then you've got that list of things to refer back to. That makes sense.
+Okay, so you've got 15 minutes to introduce yourselves, teams roles, shared
+hobbies, do that relatively quickly, five minutes, whatever. Then spend 10 minutes
+going through some existing data products you're working on and some issues
+that you have with them.
+Cool. Begin. Go. So I'm saying I'd be doing CD.
+It's all in Rosemary's head. Okay, great. Well, why don't we have a wonderful
+contribution from Hero? Now and when Hero's done, we'll come back and we'll
+do some brains on me together.
+Cool? Alright. April Mummy. Good morning, everybody. Hopefully. Not what it
+here. I need some notes. Okay. But uh, I'm glad you're all here. Let's say there's
+an arrainy uh micro.
+Yeah. I believe I look across the room. I know most of you, not everybody. Uh can
+I just get a show of hands? Who here is from this the client sales and marketing
+team?
+Anyone? Yeah. Right. Sales marketing? Global client group. Global client group,
+yeah. That's how you know how long you've been at CG. I don't think you can
+change my name yet.
+
+Global, what's it called? Global client group for global product. Yeah, most of
+Global, what's it called? Global client group for global product. Yeah, most of
+you? Right. How about uh am I going to say it's right? Io tech. Investment
+operations.
+One, alright. Investment group, IG Tech. One. Alright. Edo. You. Alright. Anyone
+else? Finance. Corporate. Anything? GBS? No? Okay, good. So we have a
+representative from IG, IO, and local client group.
+And you're probably wondering, how did you get so lucky to be voluntary to join
+this class? For how many days? Five in total. Great. You know, before it was six
+days.
+We cut it down to five days, so you don't have to come back in one day. Yeah.
+That's right. Right? Okay, good. Alright. So you wonder why is it so important that
+you are here taking time away from your busy time.
+You know, I've been in CG for almost 25 years. I think Charles, I remember you
+and I were playing Counter-Strike. Remember, we used to bring our LAN boxes.
+Another one who used best in there. But today I know we're terribly busy. Every
+day, every minute, we are always working. Right? And with the admin of AI, we're
+now expected to do a lot more, right, with less resources and using AI as a tool.
+Now what we know in today's world and in the future is that without good data,
+it's going to be really bad. Right? AI without solid data, it's gonna be not good.
+We know that. Right? And the next thing we know, since most of you are
+technologists, is that technical folks making calls on data on their own without the
+right business content?
+It's also not good. Right? And in the 20 plus years, 35 plus year close, I think, I've
+been here in CG. It's always been us technologists making calls on data.
+Right? Never a business user. For those of you who have been here, does that
+make sense to you? Do you agree with that? Right? Well, you know the SQL
+query, you should give it to me.
+Well, it's like sensitive data, can I? Well, it's you know, you're asking me to create
+these position report, but how do I link this to the right primary keys in our
+company master?
+
+What's our company master? What about our sales data? How should we link that
+What's our company master? What about our sales data? How should we link that
+to the positions? The client positions. Who knows the authoritative source of
+that?
+What's the right logic? Right? If you haven't kind of done that, you figure out that
+you did that because of what you know. Not because of what's prescribed or
+what's available, correct?
+Right? So right now, if I want to ask any of you, can you find me quickly within
+three seconds? The portfolio positions of a fund, BFA. And with strong
+confidence as the right table.
+Can any of you do that right now? Or global client group. Okay? Give me an
+example. Sales flows. Can you find that real quick? Right? But if you take a step
+further, can you take a new person, a Trex associate, and say, can you find it
+within five minutes?
+What do you think the answer is going to be? Check with AI. Check with AI? Well,
+even AI. Can you find it? Can we put out? Yeah, okay. By the way, we can't
+connect log data written out.
+So it's policies. Okay, but anyway, so even with AI. Can it find it? And can you
+trust that it finds the right thing? The answer is obviously no.
+But when we're done with this, it should not be known. It should not be no. We
+need to be in a world where we have self-service on trusted data across the firm.
+And we must make sure that those who are getting access to that data are
+allowed to see it. These aggregation policies are there. PII is protected.
+Right? And both humans and AI can actually with trust and with speed get to the
+data leader. Right? So now, how do we get there? We want to look on the screen.
+When you hear the word DXP, we have distilled this operating model into four
+persona archetypes. And you're one of them. You're probably most the most
+important one.
+And we'll talk about that in a second. So what are four archetypes? Consumers.
+That's everyone who wants data, including you. You're a consumer too.
+But your business partners and everyone, business management, they want data.
+
+Right? So that's pretty clear. What's a platform provider? A little bit of some of the
+But your business partners and everyone, business management, they want data.
+
+Right? So that's pretty clear. What's a platform provider? A little bit of some of the
+folks in the room here are platform providers.
+But what's a platform provider? So up until the last 18 months. What's the
+platform you should use to build your data on? Is it laser? Is it Caspian?
+Is it EMR? Is it Databricks? Is it Dremio? Is anyone know the answer? Right? It's all
+the above. Right? But when you have all the above, what you lose is clarity into
+what you should be doing and why.
+So forming DXP is saying we have a platform provider team that's Edo. Edo
+platform team. That is now saying there is one way to create data. The right way,
+in accordance with policies, standards, and tooling.
+Then it makes everyone's lives easier because they're not guessing. It's not
+choose your own adventure. It is. This is the way to do it. Right? This is the way
+you do it because we have the best of the best tools.
+Right? Data breaks, that's farming. Right? We are gonna make sure that people
+can put data in the right places in the right catalog. And we're gonna make sure
+that you're all popular metadata.
+Why is that important? So that consumers can find it easily. AI can find these. So
+the paid path, what you hear, is what the responsibility for platform provider
+does.
+Owners. So I opened the talk earlier with owners. Owners are business, senior
+business people. Okay. Now, for a long time, the only people making calls on data
+were IT.
+Right? And most recently, Edom. That's a bad position for technologists. Right?
+How do we know here in this group if we're allowed to share certain tables on the
+employee directory?
+How do we know if we're allowed to share certain positions of a fund to clients?
+How do we know that? Do you all know that? We don't know. We're not the one
+creating this data.
+We're not the one with the policies in our minds. We see data through a table.
+And it's a I see table, I see data, I'm using it. Right? That position to be for
+
+technologies, if we're making the calls, because then we are accountable.
+And it's a I see table, I see data, I'm using it. Right? That position to be for
+
+technologies, if we're making the calls, because then we are accountable.
+If we take a table and we set it outside and we shouldn't, that's on us. It's unfair.
+Right? So that's why we have owners. A business data owner is the one
+accountable for the data in capital group for their domain.
+So we have a business owner for client data. We have a business owner for
+results for positions for attribution for trades, for research data. Right?
+And they are accountable for anything that goes on with that data, whether
+people can use it, whether it's it's the
+Right? So the vision here is we have clear business owners assigned to domains.
+You can go to the DXP forward slash in your browser. And there's a link there for
+owners, and you can click on there's a link that shows Nicole can send this out,
+right?
+There's a link that says here are the data owners and stewards for our domain.
+Those are the business people who are accountable for the data. But now as we
+know, okay?
+A business user with that much accountability, what's the first thing you're gonna
+say? Well where's my data? What's the state of it? Oh, by the way, I got a bunch
+of consumers asking me to give it give them this data.
+I don't know where to start. But I think you're all here in this room. You're a
+product creator. You're a data product creator. You have the most important job
+in this operating model.
+Because your job is the intersection of using the platforms correctly, knowing
+what the owners is prioritizing and understanding in terms of what is good, what
+you should work on.
+And understanding what the consumer is looking for. And when you take all of
+those three things, and you distill it, you do what you're really good at, which is
+what?
+Build these stuff. Right? We're all in this room because we've built stuff. Right?
+But when we build stuff, we want it to be well informed. We want it to follow
+standards.
+
+We want it to be reusable. Right? Because if there's one thing we don't like to do
+We want it to be reusable. Right? Because if there's one thing we don't like to do
+is build stuff and have to rebuild it again the next day, right?
+We as technologies, we build stuff for scale. The difference between us and a
+query writer or a BI writer is what? Right? That's possible. Right.
+And we also build stuff for scale and resiliency. That's why we're technologist.
+Okay. So product creators is why you are here. And we want to make sure that
+you are well versed in the basics of how to create a data product.
+Okay? And how to use the platforms provider tools. That's kind of the focus of
+this five days. Now, you're all going to come from different skill sets, different
+levels of what you know.
+For some of you, you're probably yawning through the whole thing. Right?
+Because maybe you'll learn a couple of new things that's important. For some of
+you, it's like this is wow, this is overwhelming.
+That's okay. So we've designed this course just for the entry and intermediate.
+But everyone must pass it. Okay. So by five days, you will know the basis of
+creating a data product.
+When you create data products in your domains, and you publish it to data bricks,
+what's going to happen? And when you publish it with the right metadata, what's
+going to happen?
+Okay? Now, one thing is we want to make sure that everyone gets access to that
+with a with the right access controls. Because you don't have a database we can
+table follow-level security, right?
+Now you're publishing what you created to a catalog. Now that only you and your
+teams and other people doing the consume that data can go to. Instead of going
+to a person to say, give me this data, you say just go to this catalog is there.
+I already voted. Right? So your job is to create reusable data products for the firm
+and for your site area. Okay? We're gonna give you the basics so you can do that.
+Now, no amount of training will be a substitute for a real life. Okay. So when you
+do this training, think about your real life use cases, and after this training, put it
+into practice right away.
+
+Right? Hopefully, when you get out of here, you will not be dealing with access
+Right? Hopefully, when you get out of here, you will not be dealing with access
+issues. You will not be dealing with what's astronomer, you will not be doing
+what's a catalog.
+Right, Michael? Yes. And all your questions to get started should be answered. If
+they are not, ask it. If our gracious instructors don't know the answer, we will log
+it.
+My team will. Our team will log in. And if any of us need to come here and give
+you straight answers, because you're not getting it from the materials, Nicole will
+call me.
+Okay. Any questions? Yeah. Alright. I'm here for questions for like five more
+minutes if you want. Um but otherwise I will leave you guys alone.
+Yeah, lots of questions in the last cohort. They tend to save them for when
+they're inconvenient, don't you? You wait for a moment where we can't answer
+the question and the answer.
+Yeah, it's okay. Uh but Martine is coming on Thursday, so Martin does a nice, it's
+got a nice hour, I think. Okay, of going through the entire pay path and the
+reasoning behind every tool choice, and that tends to mop up a lot of the
+questions that people have.
+Good. Yeah. So that's great. Okay, thank you very much. All right, great. Thanks,
+everybody. Thanks for uh, good morning everyone. Yep. Where are we?
+We've we put this with the matchup on. I don't need. Now, uh, did you bring you
+brainstormed something, did you? Yes. Yes. Yeah, thank you. Bit more monotone,
+bit more board.
+Did we do that? We go in more board. Yes. Um, you didn't write them down
+though, did you? No. None of you did. Which suggests the fault is with me.
+So I need to become more belligerent. More demanding. Okay. Um I've just
+turned off the projector, which is the exact opposite thing I want to do.
+What happens? Uh, what we'll do is we'll go around and we'll get some
+introductions from you all. And I do want you to maybe maybe every time we talk
+about a data product on the course, possibly, maybe.
+
+Write it down. And the reason will become clear, which is that I'm gonna ask you
+Write it down. And the reason will become clear, which is that I'm gonna ask you
+to do uh a couple more things around uh data products. And it's useful if you
+have them written down.
+Because if you don't, then people go, well, it took us a long time just to think
+about what data product to talk about. And we shouldn't. Okay. Right, let's guess
+let's let's let's do a bit of a debrief.
+Then so, ah, right, where are we? Um with me for a second whilst I wait. We're on
+day one. Just this on. Yep, it's on now. Okay. Cable's a little bit weak.
+Cool. Um, right. Come on. So we're on day one of data creators. Call this DC.md.
+Day one, data creators, we're in Irvine, it's the 12th of October, it's Monday.
+Right, here we are. So, uh, what we'll do, remember what the questions were.
+The questions are what teams or roles do you have? Right? They were what
+shared hobbies, hobbies do you have, and then what data products do you work
+on?
+And what were their pain points? Pain pants, pain points. Uh that you have. Yes?
+Remember that? Yeah, remember that. We're not in good. Um so we also need
+group names.
+So what's our group name? We didn't talk about it. So uh so group we didn't talk
+about it. What teams role quickly? Teams roles, yeah. Edo. Digital.
+Digital, what does digital do? CHP, I mean, like when maybe put a website. A
+customer facing apps and things. Good. Anything else? CXT. What does that do?
+Uh client experience technology. Right, client experience technology, CXT good.
+Uh great. Okay, uh roles. B and B Data Engineer, data product manager.
+Data engineer, data product manager, interesting. Interesting. Team me. Team
+lead of monkeys? Technical team. Technical team. Very similar to leading a team
+of monkeys, right?
+Um like a small capuchin monkey is like le little lemas, just getting over scurrying
+around everywhere, doing things on their own initiative. How dare they?
+Uh what data products do you work on? Okay, let's talk about the data products.
+Uh client data platform. Client data platform. Tell me about the client data
+
+platform.
+Uh client data platform. Client data platform. Tell me about the client data
+
+platform.
+Um it is a platform that CG's working on to align all of the client's data into one
+centralized hub. Okay, that sounds at once dangerous and useful.
+Into centralized uh hub. Good. Um what's the issue with that? What's going on
+there? What's annoying? Um I think just the teams that own different data
+domains aligning together.
+Um, aligning all in that, I think the business needs as we retire with one platform
+and then agree into another, I think, you know, just trying to figure out like
+misunderstandings or discrepancies across the data.
+Is it also gatekeeping there and uh loss of ownership sense of that, maybe? I I
+think the teams that we work with have good ownership. I think it's just aligning.
+Just alignment. Okay, okay. Good. Because when I when I hear about like, oh,
+let's have a centralized hub, different teams are in different domains.
+I hear how are being taken away from different teams. But you're telling me that
+isn't an issue. Yeah, it's like one team has like retirement plan accounts, another
+team has investor account data, and it's just how do we bring it all together?
+Cool. Okay, great. Um next data product, any more? Positions and transactions.
+Positions and transactions. Um tell me about that. We are trying to build a A-bar
+positions table from accounting click bar.
+Accounting book of record. Yeah, yeah. And then finding sourcing the data,
+figuring out what is the right for each kind of product that we own. Okay, so
+sourcing the data main pain point.
+Okay, cool. Any others? No. So we interact like uh we captured what uh users are
+doing on the website. So the pain point, but we have like we have a raw data, but
+what Edo is doing from massaging on, we don't have any like red long inside it.
+So what we got is like the curated data, right? But sometimes we want some data,
+but they have our bandwidth issues and whatever to expect. So getting getting
+work from Edo.
+Yeah, we go up with the EDOs closely and then uh get the raw data massage in
+the form which we can use in our CDP. But you presumably you have the raw
+
+data.
+the form which we can use in our CDP. But you presumably you have the raw
+
+data.
+So you're looking for curated reports, is that right? Uh curated raw data in the
+form which we can use in other played forms like CDB, like the tested target.
+Yeah, yeah, so so if you okay, okay, okay, okay. I'm gonna say getting data from
+ETA. Uh before we deep level now. Okay, great. Uh we'll come. Uh maybe we'll
+just do the couple from the rest.
+I'm not gonna uh encourage everyone with the same level of depth, otherwise
+behavior. Uh back of the room there, what's your what's your full name?
+Hi. Hi. Okay, that'll do. Uh and uh okay, so teams roles. I am team. I have
+investment operations. Okay, because uh investment operations? Yeah, okay.
+I mean, I know another hero asks for some teams and things, so we've kind of
+done this, but what roles and what roles? Software engineer, okay. What do you
+what's software engineering is there in investment operations?
+I'm working on some report or subject or IMM. Right, okay. So those are capable
+system basically. Right, okay, part of the topical investment system, sure.
+So they could cut uh like uh B2C app or B2B. Oh, internal application. Okay, that's
+fine. Um other roles in the group? Edo. Edo what do you do for Edo?
+Data operations. Data operations. Cool. Um digital marketing. Digital marketing,
+and what's your role? Solutions engineering. Solutions engineer, okay,
+interesting.
+Uh what do you do the solution engineer do? Um then from DC own um basically
+marketing, so you need marketing locations. Uh huh. That go out of capital
+group.
+Right. Um platforms. So yeah. Cool. That's just an example. Okay, great. Any
+others? Roles. Two move on? Okay. Okay. Data products. What data products do
+you have?
+For the marketing communications, um, that does the engagement data. Okay.
+Email engagement data. Uh marketing data. Any other uh what are the pain points
+there?
+Um so the platforms basically just um data from different bases. And one person
+
+can have multiple like profiles. Uh-huh. So I see. I believe just reconciliation of
+Um so the platforms basically just um data from different bases. And one person
+
+can have multiple like profiles. Uh-huh. So I see. I believe just reconciliation of
+that within the uh the downstream systems for reporting.
+Identifying one customer or one person across multiple events or um data well as
+records or anything so that. Yeah. So um in policing that's called a golden
+nominal.
+And in policing it's very, you might have heard the phrase golden nominal. But um
+uh means it means uh unique name, basically what it means. Um and in policing
+it's very hard, of course, because you have frontline policing staff just writing on
+bits of paper, so they could misspell something, they've got different different
+names of things, you know, Irvine with you know with a Y or something, who
+knows, right?
+So actually, even understanding what um unique thing in the world that they're
+talking about, it's very difficult. So similar, similar uh issue here.
+Okay, cool. Um any other data products one more? Yes? Um uh NFR search.
+Enterprise search. Digit uh so we have the digital public reason digital websites.
+Yep. And um we have a search engine on there that we collect a lot of um search
+for the related data. Um like to right now it's pretty i but um it's pretty siloed and
+then the vendor's platform.
+So we don't have a way to right now we're not currently we say vendors platform
+is a vendor providing a CG website? No, no, it's just a search. Oh the the vendor's
+providing the search.
+Yeah. So we have this all this search data that's kind of like. Okay, you agree. I
+like that. Um should we move over to the the table of uh extreme agreement?
+Should we call you back? The group the table of extreme agreement. There we
+go. Uh so uh teams roles, hobbies, maybe roles, we've looked at teams a little bit.
+I don't know, I don't really mind. But um just something to introduce yourselves a
+little bit. Uh we haven't done hobbies really, that's fine, we'll skip it.
+Um then data products. Hello. Roles. A few of us were from EO and mobile
+technology groups. Okay. And what roles do you have? Data engineer, yeah?
+Data product manager. Okay. Good. Product manager. Product manager, great.
+
+Uh data products. Data products. I support attribution. Attribution? Yes.
+Data product manager. Okay. Good. Product manager. Product manager, great.
+
+Uh data products. Data products. I support attribution. Attribution? Yes.
+So tell me about attribution. Well. What is the data product there? What's what's
+the underlying data product? So it is um the equity, multi-asset.
+Basically, it's data attribution. Like um we we usually have like a monthly and
+quarterly uh that's being published from the source system. And to downstream.
+And so I'm supporting it from the task family. Yeah. And uh what's some pain
+points with that? Currently we are um working with a business to kind of um take
+a look at all our data sets and removing you know some of the duplications on the
+different data set, trying to align it for the target state, which is PayPal.
+Okay, good. Um who else in that team? The product? Sure, so all the product
+reference data. As well as the capital multi-portfolio system. Yep. And indexes.
+All the reference data master, morning star data, yeah, investment data. Just all
+the data. All of it. All the data all the time. Um what's some pain points with that?
+That it's all the data all the time all the time. Everything everywhere all at once.
+Yeah. And the social networking that has to happen to get to all the data owners
+to align.
+Yeah. And across what Hero was saying about all the different lineages and
+versions. Yeah. That have to be supported in production at once. Mm-hmm.
+Um people make some people may know. There's a famous problem in in
+microeconomics, which is why do business exists at all? Why and why not just
+have independent contractors and just sell your labor on open market, right?
+Uh, one of the answers to that question is because it reduces transaction costs.
+In other words, there's a certain cost of the certain cost just to turn it up to an
+office, right?
+And you have to go to a cafe, right? Especially in LA, right? Might want the what
+cost there is just to get anything done, right? You have to be in the same place.
+It's very expensive. Um so businesses exist so that you can reduce the
+alignment. You can think of it as reducing alignment cost, right? Which is how do
+we get the alignment all the way down?
+But a certain size of business, then you start how you start essentially having
+
+those kind of huge transaction costs again, right? So if you're in a small bit like a
+But a certain size of business, then you start how you start essentially having
+
+those kind of huge transaction costs again, right? So if you're in a small bit like a
+hundred people business or 200 people business, you're essentially getting free
+alignment.
+Right? But once you get into thousands of people, you then you send you then
+almost getting back the same cost you'd have if everyone's an independent
+independent contractor.
+It's like, oh, I need to call the independent contractor in the New York office or
+something, right? And then I'll get it get get ours and get a zoom call, everything
+else, it's you get back to the same kind of costs.
+Um which is then why you get bureaucracy and why you get you know you start
+it's like having a bureaucratic system to try and push the transaction cost down
+again.
+Um but yes, so alignment becomes one of the biggest issues as businesses
+scale, right? Because then you're very expensive to do any. Cool. Alright, good.
+Um we're kind of overseed the customer data platform. Customer data platform?
+Data management platform. So most of our work is trying to sourcing different
+data from our across the organization.
+And yeah, you're kind of activate all those. Okay, cool. Um one more group, is
+that right? Not going crazy on that. Oh yeah. What's your group name?
+Oh, group three. Um right. Roles, teams, products. You know. You know? What
+you do is what do you do? Yeah, what do you what do you? Um need a DPM?
+DPM? Okay, what else? Um we have software engineer and software engineer,
+and we have an architect. Oh, what kind of architect? What kind of architect?
+Technical architect. I gotta get paid more for that one. Easy architect. Ah, yeah, I
+was gonna say, what's the architect? Data architect. Ah, right, okay.
+So because my as you may have heard in intro, my background is data science
+soft engineering, principally soft engineering and data science wrong.
+Um so when people say architect, I'm thinking technology. Oh, solution
+architecture. Uh I mean, obviously in this context. So I know the load of solution
+architects.
+
+Oh, and the solution action. Okay. Because like I mean, you know. Yeah. Oh, and
+Oh, and the solution action. Okay. Because like I mean, you know. Yeah. Oh, and
+uh uh, yeah. I I I I would find a technical and solution I can. That's my point.
+Uh uh, okay. So um anyone else? Any other rule roles? No. DBM, SM. DE. Uh
+solution engineer as well. Solution engineer. Cool. So part of the reason I'm doing
+this is people so people can see across the room that we have DPMs in the room,
+we have a mixture of profiles as these.
+So people are asking different questions, or if I'm saying things that sound like,
+well, why is he saying that? It might be for a different audience, right?
+Okay. Um data products that you've been working on or know about. Ums
+product. Assets and you say flows. Yeah. Flows of clients. Okay. Walk me through
+that.
+What do you mean by that? Um the um basically what are the client sales for the
+engines and and all the sort of things. Right, so so uh like like by tracing uh client
+action through the lifecycle, like a client license.
+Yeah, yeah, trans action. Uh okay, any other data products? Client profile data.
+Client profile data? Might sound similar to client data, but yeah, we mastered
+source client profiles.
+We must student source client profiles. Master and source client profiles. So like
+uh candidate client profiles, like or reciprocate rules. It's the CGI's clients.
+Right. Okay, so is that retrospectively? So if we we all have these kinds we have
+these clients you want to know what profiles they match on. Okay.
+Um we do a lot of deduplication, data quality, okay. Okay, and then some pain
+points. Any others in that group before we do some pain points? Okay.
+Some pain points then. What's annoying and frustrating about the things that you
+work with? Data quality. Data quality, what do you mean by that?
+It can be a very specific, almost too specific example of the data quality issue. So
+many times we don't know whether it is the right data or not.
+Is that data quality issue? Yeah, from external sources. Do you mean you don't
+know if it's fit for your product, or you don't mean that it's a correct?
+No, whether it is correct or not. Correct not right, yeah. Okay. Um other data pain
+
+points? Why is that? So what causes that? What causes the lack of correctness?
+No, whether it is correct or not. Correct not right, yeah. Okay. Um other data pain
+
+points? Why is that? So what causes that? What causes the lack of correctness?
+Is it just that small you have small vendors and they you're waiting on an Excel
+file, or what's the um it's not just that. Um sometimes it's not one product which
+can tell you uh you have to look into other data too.
+Right. Correlation uh to understand whether it is right or not. Right. So um
+individual products are not a one, and the correlation is where we can read all
+whether we have done that.
+So that correlation doesn't take slightly. Cool. So but what in what sense could it
+be wrong? Um for example, uh, I'm gonna give you an example.
+Yes, please. Um you do 50 billion Ts. Yep. You don't know whether it is right or
+wrong unless you see the uh UN. Okay, okay, okay. So it could be line to you, is
+that right?
+I mean, we know it is 50 billion CNC wrong because one day no one can see it.
+Right, so that could be it could be just uh uh 50 million rather than 50 billion, but it
+could be an extra zero.
+Or you could okay, so it's a data entry issue in the end, but then but okay. Um
+different sources are issue, right? So someone might be sending an email every
+now and again, and you're waiting on the email, and then you don't know if it's
+coming from the right part.
+I mean lots of different sorts. I'm just curious as to as to an example. Okay. Um
+right, okay. Um what we'll do is we'll we'll we'll discuss some stuff now.
+Uh I'll maybe I'll introduce the course actually, and then we'll discuss some stuff,
+and then we'll take a break. Cool. You mean you've been listening for a while, I
+appreciate.
+Um so yes. Um what is this course? So the on Friday, we have a capstone
+project, which is where you go away and um you know, create a data product
+based on some CSV file data based on funds and all that sort of stuff.
+And the goal of that product product project is for you to get a data product onto
+uh Caspian uh data bricks and be certified that you we've observed you to do
+that, right?
+
+So there's a phase one of that project, which is a kind of certification bar barrier
+So there's a phase one of that project, which is a kind of certification bar barrier
+if you like. If we all if I observe you to do that, then we've ticked off that you are a
+data creator, right?
+Um so the point of these four days, which are Monday through Thursday, is to
+prepare you to do that project. Cool. Um so what do we cover? So today is a kind
+of soft skills, mindset behavioral day, group challenges, things of that kind.
+Part of the reason for that is to cover off or to ask the question, how do you
+design a data product? How do you design a data product? And that comes down
+to you know, you know, interviewing people who need the data product
+interviewing customers and uh thinking through how how products get adopted
+and all that sort of stuff, how it gets finance, what business case would be.
+So you might think that's primarily for data product managers or something, but
+it's not necessarily because technical stakeholders play a vital part in that design
+process, right?
+Then on Tuesday, tomorrow, um we might have a couple of things in the morning
+to continue from that, but then we start introducing technology stack pay pack in
+a lot of detail.
+Um Docker containers, might have a look at Git there as well. And we'll look at the
+entire paid package system. And then on Wednesday, we're focusing on one
+core tool called DBT, which is how you uh in some sense how you literally create
+the data products on the page path.
+It's very SQL-like. And then on Thursday we focus on Airflow, which is how you
+orchestrate how you how you sort of queue up and schedule and then do the
+SLA stuff if you like and print those terms.
+Once on Thursday, and then we go into Friday, which is Cash Done project. Cool.
+Um now there are other technologies and things we'll talk about data bricks, we'll
+talk about uh we might even talk about like harness and some of the deployment
+context around um data products.
+Um those will just be slot in around our other conversations. But I've given you
+the focus. So the focus of data uh Monday is how to design the data product,
+
+focus of Tuesday is kind of what's the paid path, how do I do things on the page
+the focus. So the focus of data uh Monday is how to design the data product,
+
+focus of Tuesday is kind of what's the paid path, how do I do things on the page
+path?
+Wednesday is how do I use DPQ? Thursday is how do we use F1? Friday is let me
+go and create a data. Cool. Cool. Let's ask one question and let's ask and answer
+one question, and then we can go uh for a break.
+So uh the question I want to ask before we go for break is what is a data product?
+Shall I should we see what happens if I use a whiteboard marker and uh what is a
+data product?
+My writing is not an excuse. Okay, so there's a series of properties which we can
+call promises associated with the data product. And uh we would say that it's
+trusted, reusable.
+Business ready data sector. Business ready, uh there's some other things there
+as well, which is that it's accessible, right? Accessible, trusted, reusable.
+Okay. So what do we talk about? But these are properties of what? What are they
+properties of? Like not property of car, right? Car should be trusted, reusable.
+Right, but we don't mean car, what do we mean? Of what? What's being trusted?
+Data. Data, yeah, so some data sets, yeah. The promise is, so you can think of it
+as a data set plus a set of promises, right?
+And I can show you the ones at CG, that are researching the illicit update
+basically, we use more shareware. Um good. Um promises are enforced.
+Contracts.
+Contracts, okay, good. So there's written contracts, I suppose, and design
+documentation. How else are they enforced? Data quality checks. Data quality
+checks, so with code by coding for jobs.
+So we might also have a kind of uh so some of these promises are enforced by
+code, which runs on a certain infrastructure. So one view is that data product is a
+data set plus set promises.
+Another view is that a data product is some data plus the code infrastructure that
+enforces these promises. So from uh from a platforms or engineering point of
+view, that might be the when we say data product, it's what we mean this.
+
+From a data product creator or product manager point of view, we're thinking of
+From a data product creator or product manager point of view, we're thinking of
+these terms, make sense. Okay, cool. Um there is another view of what a data
+product is.
+Is it any data set? If I take uh morning star data set and I just sort of drop it into a
+folder somewhere, even if I even if I open piece of drop, right?
+Is that a data product from a CG point of view? It's a data product from a morning
+style point of view, right? That's probably a data product. But from a CG point
+view, that's just a source piece of data, right?
+So there's some that's not really an internal product, right? That makes sense? So
+there's something missing here. What do we have to do to the data to make a day
+product?
+Actionable. Actionable? Okay, good. It could be. I'm thinking in terms of
+alignment. So that again? Business purpose, yeah. So I mean, but I mean that's
+registered alignment, right?
+So one thing I do, another view of a data product, is that it's a transformation of a
+data set. Not just a not just a data set, it's a transformation, right?
+And the transformation is that we're going from a source aligned data set to a
+consumer aligned data set. Make sense? Okay, cool. Now what does the word
+alignment mean here?
+And then we can take a break. Rush action. What is the word alignment mean? I
+guess it means the goal, sort of thing or uh. Good, good. So I like that, yeah.
+So there's something to do with goals there. And importantly, there's something
+to do with people. You said team, you said person, etc. It's not a technical, it's not
+a technical condition.
+There's no such thing as a source aligned or consumer aligned data set as a
+technique. There's no code you can run or test you can do on a data set that tells
+you the source aligned or consumer aligned.
+It's relative to a personal key, right? So what source aligned means is that there's
+some people over there, and because they're over there and they're not us,
+they're evil, right?
+
+They're the other people, right? Um so they've got they've got their own interests
+They're the other people, right? Um so they've got they've got their own interests
+that we don't care about, we don't care about those people. But they've done
+someone in terrible to us.
+They've given us a data set aligned to their interests. How dare they? So then we
+have to uh we have to spend time and energy turning up to work and typing on a
+keyboard to fix their problem and make it aligned to our interests, right?
+Or at least our customers' interest or consumers' interest, right? So um what that
+means is that we have to, of course, apply a series of transformations in roots of
+data, apply rules, or the whole design piece and the whole uh notation piece.
+So what is the code doing? You could think of the code as enforcing the
+promises, but the core code also does the realignment of it as well, right?
+So you've got code that does it if you like SLAs or promises, SLAs, and it also
+does kind of realignment. So these are kind of three views of what a day product
+is.
+One view of data product is a kind of just, well, you get all these nice things. That
+doesn't really tell you why it's valuable necessarily, it just gives you the promises,
+right?
+The value comes from the realignment, right? The fact that you've realigned data
+such as you interest. And from an engineering point of view, you might just be
+very confused by that.
+Okay, so we've realigned some data and it has all these promises, but I'm an
+engineer, I don't know what that even even means, right? So from an engineering
+point of view, it means that you have this code and you have this data and you
+have this infrastructure, and what the code is doing is doing the realignment and
+it's doing the SLAs and the promises if you like.
+And what the infrastructure is doing running code and prediction data. That
+makes sense. That's three separate views depending on who you are. Cool.
+Now, what a data product isn't, a data product isn't then just a pair data set,
+right? It doesn't have these things. Um data product isn't isn't just some piece of
+code, it's some infrastructure, right?
+
+It has to be doing these things. And what a data product isn't, isn't just a source
+It has to be doing these things. And what a data product isn't, isn't just a source
+data set. And it isn't even just a consumer aligned data set just stranded out there
+in the ether.
+It has to have to be a realignment. Cool. And so in the provision of data products,
+what we want to do as a product creators is provide those things.
+Provide coding structure and data, provide a realignment, provide that. Right. Tell
+me we all. Should we could should we back come back here at 10 30?
+10 3 0. Cool. Alright, I'll see you back here at 10 30.
+Alright, good morning everyone again. So we're gonna answer the question now,
+I suppose. Uh, how do you design a data product? I can zoom in if you like.
+Um so what questions do we think are relevant when the initial phrase the very
+outermost initial phase of data product design. In other words, someone comes
+to you and say we need a data product, what what questions are you going to
+ask?
+I guess what's the scope? Like what areas are covered? Yeah. Uh sure. Can you
+put scope down there for a second? Phrase has questions, but what's the scope
+is a little bit too broad?
+That's good. Uh what else? What else are we asking? Source of business
+problem. Pardon? Business problem. Business problem, yeah. So what what's it
+for?
+What's it for? Yeah, keep going. Source of data. Yeah. Sure. Who had it done do
+you want? Yeah, I mean, uh I mean this is the this is I would say this is the next
+conversation rather than the very first.
+This is getting you to the design of the product. So I'm thinking the very first
+conversation, someone says you need a product. What questions are we asking?
+Yeah, so who needs it, I suppose, right? Who needs it? Do we already have it?
+Yeah, okay, good. A business purpose. Do we already does it already exist?
+Does it exist? And relatedly, what are people doing now? Even if it doesn't quite
+exist, there might be some work around people are engaging. Yeah, what else?
+Keep going. Why do we need good? Yeah. Do we still need it? Do we still need it?
+
+Yeah. Um, okay. So these are questioning what to some degree, what it is and
+Keep going. Why do we need good? Yeah. Do we still need it? Do we still need it?
+
+Yeah. Um, okay. So these are questioning what to some degree, what it is and
+what we're trying to build.
+Suppose we answer all these questions. So what now? What are we what
+questions are we asking now? What tools do we need? What tool, yeah. Um, so
+I'm gonna say can we build it?
+Can we build it? And then maybe how do we build it? And then how do we build
+it? When do we need it by? Yeah, when do we need it? Oh, that Japanese quite.
+Do we already have the data for it? Yeah, uh um does the data exist? So these are
+all related to can we build it? How do we build it? So that that would include
+what's a data source and things like that, for example.
+How do you build what a data source? What's the transformations? Uh what's the
+platform? Sensitivity, PIR, etc. etc. etc. etc. Yeah. Um is it to be delivered?
+How will it be adopted? Why will people use it versus existing actors? How
+frequently does it get updated? Yeah. So I'm just trying to think about where that
+goes.
+Um grain of the data. That would be how how. Um suppose we answer all this.
+That's still um now we're at remember at the outermost conversation before
+anything has happened here, right?
+So we need to make a decision. Are we gonna go ahead and build it or not?
+Right? I'm gonna go ahead and build it or not. What questions would come into
+that what into that decision?
+What question comes money? Good, yeah. So give me this needs to be broken
+down into something, right? So I'm gonna break it. Is it worth it? Is it worth it?
+Is it viable? Uh is it worth the cost? Um is does it deserve, if you like, does it need
+this particular level or prioritization? So, i.e. build it now, right?
+And then is it valuable? So you got you've got desirable. And this a lovely scale
+question. Right. Are we just doing it tactically to get something done right away,
+or is it gonna be here for a while?
+Yeah, what's life have value?
+Yeah. Um couple of things you can do now. A couple of things you can do now.
+
+You do a group challenge around this, answering these questions. We can we
+Yeah. Um couple of things you can do now. A couple of things you can do now.
+
+You do a group challenge around this, answering these questions. We can we
+could look at interviewing people.
+Should we do I let's do a group challenge? Group challenge. Let's do a group
+challenge.
+Okay, so um, so here's the group challenge. The group challenge is pick a data
+product you've discussed this morning. Or if you're feeling ambitious, a new data
+product you propose for CG.
+And answer these questions. However, I want you to focus on the non uh the
+non-technical areas. Um primarily. So who needs it? What's a business purpose?
+Does it exist? Can we build it? How do we build it? I want you to prioritize that
+less. Cool. And the reason is that we'll discuss how you can build it for the rest of
+the course.
+So I want you to think about how you would justify the creation of debt product.
+Cool.
+Alright. I'm gonna give you a little while to this. Uh so it's 10 40 now. Script
+challenge, what do we want? Do you want to half an hour? Maybe twenty
+minutes.
+Should we do twenty minutes? Eleven. So if you get done with one data product,
+you can do something incredibly ambitious and choose a second data product to
+talk about, right?
+So uh and when we come back, I want well I want people to uh when we debrief
+together, I want people to reflect on what was the most interesting, surprising or
+difficult question to answer from this set.
+Cool. Again. No group, group group. I recommend use the paper as well. Like
+assign a note taker, take some notes.
+Oh, it's not my own. I don't think that's the definition.
+Okay. So name. Table three or something. Cool. So rather than um go through
+your whole conversation, two questions. First question is what was the data
+product you were talking about?
+Second question is just across this space of questions, which uh part of the
+
+conversation was difficult, surprising, or interesting. Cool. Yeah.
+Second question is just across this space of questions, which uh part of the
+
+conversation was difficult, surprising, or interesting. Cool. Yeah.
+So what was the data product you were talking about? We were talking about
+advisor data. Advisor data, yeah. We're good there. We'll find out when you
+continue speaking.
+Alright. I think um to summarize it, one of the most difficult, and then you guys
+speak up as well. The time that we spent a lot on is probably um the adoption.
+I think you kind of circled back to all of our other questions regarding who needs
+it, does it exist? I think that kind of all wrapped around adoption and how is how
+do we adopt it for other teams to consume it in scalable way?
+Cool. So tell me, okay, so we've got advisor data. Remember that data itself is not
+a debt product. So what are we doing? What's the business purpose of this?
+What's the data? CEM. Right? Right. See, this is C go ahead. There you go. So it's
+to maintain the client profile data corresponding to our clients who are advisors.
+And distributed across the enterprise. And what how is this data? Is this data
+being provided to someone in a dashboard or something? Or uh how through it's
+through APIs, through files, okay, group Aspen.
+We already do that. Yeah. Um at scale, but there are problems. Sure. So you've
+got this AP, so from your point of view, the the API is like your consumer rather.
+But um, how does that where eventually does that go to? That must go
+somewhere and user. A lot of enterprise controls in that API. So it's contact, let's
+say CG's contact center, digital websites, right?
+Yeah, okay. In the digital portfolio, then CRM marketing and sales. Okay. I see. I
+see. And what decisions are they making with that data? What's the very the end
+of the final end user?
+What decision are they making that thing? So sales people use this data to rely on
+the data to make better relationships. Better plan relationships that helps
+leadership with uh when they look at analytical dashboards, leadership gets a
+view of um, you know, whom are we interacting with the most, how are we
+building better business with some of the larger firms?
+So this is essentially uh and this this product here is essentially an internal
+
+product. So you have to get other teams to consume it. Right. That's the adoption
+So this is essentially uh and this this product here is essentially an internal
+
+product. So you have to get other teams to consume it. Right. That's the adoption
+thing.
+Um what are the barriers to adoption then? What are the issues with adoption?
+Um it's mostly how the these consumers view this data set. Some of them look at
+it from a I mean there is diversity in how this data is consumed and viewed.
+Some of them look at it purely from a marketing lens. So they all that they're
+interested in is name, phone number, email, that type of stuff. There are others
+who are more interested in other aspects of it.
+So the dimensions vary quite a bit. Yeah, can you be some under the lens?
+Another lens is mostly what are their affiliations, right? Could be trading identities,
+who are the most what are the most commonly um surface products?
+You know, these advisors. Okay. Um, so you've got different competing interests
+for data and that creates adoption issues. How does that create adoption issues?
+It's mostly um the APA contracts and data contracts, they're a great project. I
+think at least what we expose. There could be more flexibility. They we are
+expecting to be more flexible, but yeah, the the contacts are rigid, so different
+consumers we we do a lot of juggling to satisfy the client means.
+Cool. Alright, thank you. Alright. Uh what's your group name? Eh? We didn't do it.
+We didn't talk about it. We didn't talk about it. Now that was almost a question
+there, it was rising in the end, right?
+Yeah. Uh okay. Um what was the data product and what was the most difficult?
+Surprising, interesting question. Uh we chose the same thing. Does you guys
+show Millie?
+Of course. Okay. Uh CDM. It's called CDM. Yeah, tell me about it then. What's
+what's that? Um distribution of client relationship. This means how capital sells
+the services, the financial advisor.
+Offices and forms that sell it funds. Uh the table field, like the office type, RIC
+update and so on. These are the things which are I need the volume levels
+change.
+Okay. So my my uh my right here is not getting enough, my left ear is getting too
+
+much. Okay. Should I repeat? Yes. So the business area, the distribution and the
+Okay. So my my uh my right here is not getting enough, my left ear is getting too
+
+much. Okay. Should I repeat? Yes. So the business area, the distribution and the
+client relationship.
+Yeah. This means how capital group sells to the services. Yep. The financial
+advisor of the and the firm that sells it funds. Firm that sells it funds.
+Right. The the business problem we are trying to solve is one trusted current
+record for every advisor office. One trusted record for every advisor office.
+We deal with who they are, whether they are active, and how we can cover that.
+Okay, great. Okay. I understand that. And yeah, question. So you have the biggest
+challenging question.
+So who needs it? Who owns it, right? So the consumer would be sales,
+wholesaler, internal sales, death, uh the client services, need the right officer
+status.
+Marketing, uh compliance, uh sales finance. So everyone needs it. Yes. Now the
+ownership. Uh again, it's like the business owner, the head of distribution
+operation, data short and technical owners.
+Like the Edo data product. Yeah, I mean that's me. That's not good, that's not
+great. I mean, is there is there needs to be an owner? I mean if you know one
+mean though, I don't know how to share the PA information, but yeah, share in
+the it's in the UXP forward slash thing.
+I think it's it. Okay. But well. I'm sorry. You're feeding the Synto A model and then
+trade it with all this information. Oh, you're doing that.
+Okay. So do you have a little copy to this? Yeah, give me a proper copy. There's a
+transcript taking place. Is it transcript? In fact, when I give you the notes on
+Friday, I guess, or some of the day.
+Uh the uh you'll find the notes even have heroes in the beginning of them, which
+they currently don't. So I'll I'm uh uh I'll put the transcript into the notes so that
+they're they're in the notes.
+Um okay. What else? That'll do, right? Okay, so mix yeah, so uh need, okay,
+great, let's get keep out keep going. So uh middle group? Disagreeables.
+We're disagreeable to negative. I disagree. Okay, then we'll agree that we'll agree
+
+that we disagree. We'll agree that we'll agree that we disagree.
+We're disagreeable to negative. I disagree. Okay, then we'll agree that we'll agree
+
+that we disagree. We'll agree that we'll agree that we disagree.
+Okay. I don't like that. So we chose the same data set. Yeah, that's fine. Um so
+what's different than everybody else? Yep. Um we talked about globalization as
+an issue.
+Okay. Um what else did we talk about? That's what like fragility in supply lines
+across integration between Canadian and American oil. Yeah.
+Okay, tell me about the tell me about globalization in this context then. Actually,
+tell me about it. In that. What's the issue? What is the issue?
+Well, the issue that historically we're very North America centric, and now we're
+trying to globalize, and those other operations are less mature, slash smaller,
+nibbler.
+Yep. Then maybe a hidden user group is the uh global product development
+group? Because they're actually looking at these customers for market sizing and
+new product development.
+To say what can the market bear, what new products should we offer these
+people strategically? Yada yada. Cool. So what specific issue does a less mature
+other office create for you?
+What are the issues that creates? So that's data standards, data, so lack of
+maturity data standards. Okay. Structure. So it's just that translation of love for
+things.
+Okay. So it's just like when multiple hospitals problem or something that just
+everyone's working some different. Uh but I think that well, I think the other one,
+the really big one that we've got also is regulatory.
+Yes. Okay. In that space? Fair enough. Regulatory compliance. You would think
+that uh in a um you know universal healthcare system, all the hospitals would be
+working working from the same data model, wouldn't you?
+It's just the same, it's just the same as any other system. Uh okay. I guess that's a
+problem with um kind of bringing uh you know early comp early computerizing of
+uh systems, you know, early 70s and 70s stuff, and then you get everyone doing
+anyway, good.
+
+Um the issue there's globalization, what kind of issue is that? Is that like um is
+Um the issue there's globalization, what kind of issue is that? Is that like um is
+that an adoption issue? Is that is that what what kind of issue?
+They're just like a getting started issue, how do we build a kind of issue? The
+centralization and scaling all happened in one region, one locale, and now all of a
+sudden we're trying to get everybody else in and they don't follow the same
+model or rubric.
+Right. So it's a kind it's a mix, it's it's an issue that clo cuts across several
+different concerns. One is can we build it because we don't we don't know?
+The other is is is it feasible because if the if the value trade-off is different
+because you've got all these different alignment issues? Okay, cool.
+Um what's your group name? Hi. What? Hi. Group no. Okay. We should say dot
+dot dot, dot dot dot, blah da, dot. Hi. Uh you know the little video games where
+there's just silence and they can give you three dots.
+Like a beat in a script, beat. Um okay, so what was the day product? What was
+the most difficult, interesting question, et cetera? Well, you call it user experience
+and slash engagement.
+Mm-hmm. Tell me about that. Um the uh uh users of those marketing. Okay. Uh
+and the owners are probably I and A. So we think. Cool. Uh it's got uh
+personalized uh marketing data.
+Okay. And uh it's used to measure engagements? Sure. Uh with what? What you
+what you're measuring engagement of? E-mails, search, right? Email. Any uh any
+communication channels?
+Cool. Right. Um what was your biggest question area? Uh the the challenge is
+integration of the data. Right. The data sources are scattered. You guys data is
+there, but um putting all that together and uh packaging it into a consumable uh
+product is the current challenge.
+Yeah, I mean so that uh so can be like globalization. Globalization, yeah. So
+what's the problem about that uh this is the problem with building it, right?
+I'm I'm not that much of an I understand this problem with building it. Um how
+does this translate to a design question? Do you have a question I think?
+
+So it becomes what becomes less more costly, becomes less feasible, more
+So it becomes what becomes less more costly, becomes less feasible, more
+difficult to design. It becomes difficult and more difficult to adopt it.
+I think design is the difficult part. Yeah. For example, all the data that is relevant to
+experience and engagement right now sent in silos, right?
+We have the email communications team sends to laser its own way. Research
+has challenges of getting into a capital group ecosystem. Um maybe we are not
+sure.
+So the research of how each team individually is sending the data and redesign is
+what was the most challenging discussion. But we see the value uh much higher
+to be set, but end of the day, whatever we do has to have a clear path of
+measurement and a product which can be integrated right now.
+I'm pretty sure all this is might be 50% there with a team, but not as like I sitting
+here, I don't have any idea like for what we said. So that was really I guess um
+what I'm trying to get at there is we can we can we can kind of that that the the
+the the these questions fall within umbrellas of questions if you like.
+And umbrella's questions are the stating one type design phase, which is if I'm
+trying to assess whether we build this data product, I need to understand, for
+example, the value type product or how it'll be adopted as to whether it's built or
+whether it's feasible.
+So if people come to me and say I've got all these challenges, I'm going, okay, I
+understand that all these challenges translate that for me into whether this means
+we should build it or not, right?
+So how do we do that? How do we do that? Um so we've got the the total value
+of the total lifetime value of the product. You want to have a new one talk about
+the total lifetime value of a product?
+How do people answer this question? Well, we just said long term. Long term,
+that's fine, yeah, but did you give me a bit what's the jollers? Any way of
+estimating that?
+How do we estimate that? As long as we exist. As long as we exist. Yeah, but
+people who know calculus will know that you can take limits, and once you take
+
+limit to infinity, that means it can still be a bad number.
+people who know calculus will know that you can take limits, and once you take
+
+limit to infinity, that means it can still be a bad number.
+In other words, if every day from now until the end of time, we cost half as much
+or cost twice as much as the day before, then the value is infinite.
+Cost half as much value is zero, right? Anyway, um the point is uh how do we
+estimate lifetime value of a product? Anyone have to type out that question?
+I was thinking about the lifetime of the tools or infrastructure that we need for
+you. So there's maintenance costs. So that's total cost of ownership, so on the
+negative side we've got the maintenance costs, um, which means you have to
+have teams.
+Um also opportunity costs for those teams, right? So if the teams are on this
+product, they're not on some other product. If they're maintaining things and not
+creating things, right?
+You have to factor that in. Um expect capacity there is to maintain a new data
+product? Cool. What other negative costs are there to create a data product?
+Licensing costs? Licensing for acquiring data? Time for people to develop
+product. Prioritization costs, which are opportunity costs. What else?
+Alignment costs, right? So you have to have SME time or the data expert time,
+whatever they think you might need. Cool. Any other costs we can think of?
+Cost of adoption, exactly. So right now, what you're doing right now is part of the
+cost of adoption of the paved path, right? So we call the paid path, what's the
+cost of that?
+Well, quite large, because you're here, right? So adoption strategies are part of
+the cost. And if you don't, if you don't have it, we'll talk about adoption strategies
+in a second.
+That's my second question. You like questions as well. Uh talk about those in
+seconds. But yes. Uh what else? Any else, any anyone to think of any others?
+Well, alignment costs. Now what are those? So like, well, you know, if we had um
+if I run this business, if I run a very large business, like 10, 10,000 people or
+something, I might even, because I'm insane.
+Have like an auction market for people's time, right? So you know like some kind
+
+of like 1970s Chilean experiment where you do have crazy capitalist experiments,
+Have like an auction market for people's time, right? So you know like some kind
+
+of like 1970s Chilean experiment where you do have crazy capitalist experiments,
+right?
+So anyone knows about like you know, crazy 70s capitalism. You had lots of uh
+people from Chicago go down to various American countries and just start doing
+random random things.
+But uh one of the random one of the random things that I might try and do is have
+an auction side of people's time, and then you'd be able to price that exactly,
+right?
+So I want to call this SME in this department. Well, they're there's their entire
+backlog, and you have some internal tokens in the business, and you you you
+ever get to allocated number of tokens for their own theme or something, or like a
+hundred tokens, and then you have to do it on their time.
+You have a half an hour of their time. Then you can price that high, and you
+would know how much that costs. And then someone who knew their salary
+could go, oh, that's how much time that costs us.
+It costs us a thousand dollars or five hundred dollars, or like half an hour. Cool?
+Now, if we did that, that'd be very clear, right? That's too what things cost.
+Um there's a line of cost, getting people the same room, getting people on the
+same call. Yeah, okay. What else? Okay, so on the positive side, uh, what are the
+payoffs from a uh from some of the for some of the data products you've been
+working on, what are the payoffs?
+What do we want? Consistency, yes, it's very hard to price that, isn't it? So uh
+one way you could do that. Now, if this was a data science course, or we're doing
+statistics or something, which some degree I might prefer.
+Uh we could go and we can have a little sidebar about how we might model that,
+right? But what we could say is it's part of the business case. We could say, well,
+look, um, here are all the alignment costs that exist at the moment because of our
+current way of working.
+In other words, there's this number of meetings a week, or there's this number of
+types of people we have to contact, there's one change over here, right?
+
+All these downstream consumers, one change over here means we need all
+All these downstream consumers, one change over here means we need all
+these meetings to line up, etc. If we have this product in place, those those those
+half or those get reduced.
+So we can we can price the value consistency by impact on alignment costs,
+yeah. Uh what other payoffs are there from creating a data product? Time
+consumer save, not all the data is a lot of things for.
+Time the consumer saves, yeah. Again, very also very hard to price. But it's really
+lovely if our consumer is bringing money into business, because any time that we
+can allocate that for them, we can directly measure like you know, if they're
+making a million year or how many yeah, right?
+Uh we could say, well, an hour of airtime is hugely valuable, so we we can we
+win. So oftentimes you may realize this is that things get prioritized in the
+business the closer they are to the value generating edges, because not
+necessarily because um the the products themselves are the better products to
+develop, but because it's easier to perceive the value.
+In fact, the entire finance the entire financial industry exists almost precisely
+because of that phenomenon, which is that you get to scoop up you know you
+guys get to scoop up financial value from the system because you're at exactly
+the points of the system in which you can observe that value.
+So you're able to extract some of that value. Make sense? Now if if if you were
+just so if you're just like sold as like musicians or like plumbers or something,
+right?
+Where you couldn't see the value, but you did the exactly the same work, you'd
+make less money, right? So the the work itself is not necessarily where the value
+is coming, they're coming from the working adjacent to where you can observe
+the streams of money in the system.
+Anyway, so you want to know how financial people make why do people make
+money from like Excel files? The answer is because they're very close to the
+money, right?
+So we can see, right? Now what that means is that when we're going to have
+
+business cases where we're very far away from the money, it becomes harder to
+So we can see, right? Now what that means is that when we're going to have
+
+business cases where we're very far away from the money, it becomes harder to
+justify this, right?
+So we have to get creative in our identifications, like for example, you know,
+consistency alignment. What are the payoffs out there? What are the payoffs out
+there?
+So you've got consistency, you've got alignment payoffs, we've got we could we
+help the consumer down the downstream consumer, save time. Uh what else?
+Can you tell me? I mean I can come up with some generic ones, but new
+something. You already kind of what what uh what value do you think you have?
+It can be a new business opportunity. New business opportunities, yeah. So
+there's also something about like there's also something here about what
+happens when good things are in the right place?
+So it's not necessarily that right now, so let's say we create a data product where
+all the, you know, let's I don't know, uh all the you know, you have a giant product
+catalog where all the products are there, and we can everything in one place and
+you can see all these things.
+It might be like, well, you know, our you know the consumer here already has that
+cross across two or three different dashboards, it's not gonna save them a lot of
+time, but it might then create opportunities in the future because things are out
+next to each other, uh, for those people to make you know greater inside of deep
+organizations.
+It's hard to hard to price those things. But you can you can say, look, it's part of
+the job of if you're like visionaries or evangelists or solution architects, is just to
+create things in the right place at the right time so that good things happen in the
+future.
+Um other payoffs? Pardon? Trust. Yeah, so reducing custom I I hear that as
+reducing customer churn. So what? Friction. Friction. Yeah, friction and then also
+operationally that you can operationalize something and scale it as opposed to
+inefficiently run the run the business.
+Good. Bring down general transaction costs across the business, yeah. I mean
+
+that's what the paved path is, right? So you think about the paved path, which is
+Good. Bring down general transaction costs across the business, yeah. I mean
+
+that's what the paved path is, right? So you think about the paved path, which is
+we'll talk about it tomorrow in detail.
+The paid path is something like all the technologies that comprise this course.
+Like what's the point of doing that? Well, it's a bring down the transaction costs
+across the business everyone's aligned in the same technologies, right?
+Very hard to price that, isn't it? Like how to justify that. So at some point, some
+people of leadership need to make a kind of visionary judgment and say, well, I
+kind of take this business case, and I have enough experience in the business to
+see that there's tremendous value there, even though we can't price it.
+So part of the job of leadership is to make those kind of calls. And generally
+speaking, there's a good often a good kind of wall between people who can price
+things in like leadership, and oftentimes you find surprisingly, leadership can
+make better decisions than people's prices because people's pricing is very
+limited to the things that can actually measure, right?
+So the value of leadership if you like. Why don't we just do like instrumentalize
+everything and just like do it based on numbers? Because well, if you try and do
+it, you'll find out.
+Okay, we any anything else? Anything we want to say? So what would what the
+question we're answering now is how do I provide a business? How do I
+contribute to a business case to justify the existence of creation of data product,
+right?
+And we think about the liabilities and all the all the payoffs. Costs. Anything else
+we might want to add to this stage? So can we think about each individual clause
+if we have the line single source of the code?
+Good. I like that. I like that. So in the modern environment, of course, they've got
+like process efficiency, you could say. So we improve process efficiency by
+making uh data products available to AI workflows and something.
+That's great. Yeah, what I like is focus. And there's not necessarily a wrong
+answer, but there's so many right answers, there's never a good one.
+Yep. So the focus to just say this is how we're going to do it. Let's go. As
+
+opposed to, well, that's all the way. That's the value of all the other things.
+Yep. So the focus to just say this is how we're going to do it. Let's go. As
+
+opposed to, well, that's all the way. That's the value of all the other things.
+And sometimes just being on the same page and go in one way is really the most
+valuable. Correct. I agree. I agree with that. Significantly. We could say a couple
+of things about that.
+Yeah, people just making decisions. Good. Good. Just trying to just sort of cutting
+things in my mind about things you can say. Let's move on. I might say something
+about that later.
+So let's talk about now the other question which is relevant to this phase of
+design, which is adoption. Cool. Adoption. So what causes data products to fail?
+Well, one thing that causes the I think I would say one of the main things that
+causes them to fail is lack of adoption. Agree with that? Okay, cool.
+That's why we're talking about it. So what are the barriers to adoption? Why does
+uh things that we why why does why do things not get adopted? Maybe we could
+integrate.
+Integration difficulty into existing systems like that, yeah. What else? You gave
+them the choice. Oh, you know, I love this sort of Stalin-esque way of thinking is I
+agree entirely.
+One person makes a decision, what's a decision? You do this. I agree. That's a
+decision. We've collected it with I've I've collectively made a decision that you're
+doing this.
+Beautiful. Yeah. Uh what else? What's the other barriers to adoption? Quality?
+Yeah, so quality can that there's two kind of sense of that, right?
+There could be trust. There could be just lack of integration opportunities, right?
+Uh what else? Uh, what does trust really mean here? So in other words, um, how
+does how is trust the barrier to adoption?
+Why is give someone give me some detail about why trust is a variable, like low
+trust is a variable adoption? So data quality is one of them, right?
+Because you might just not trust the data with data. What else? That it will save
+time because you can't see how it's going to be used or like envision yourself
+using it either.
+
+Good. Yep. So trust that the payoffs aren't worth aren't worth it, yeah. Um cool.
+Good. Yep. So trust that the payoffs aren't worth aren't worth it, yeah. Um cool.
+That there's liability on you for using the system. Right? So one way we deal with
+fears of being liable for things is we have again lead with leadership that serves
+that function.
+If a leader tells you to do something, then you're no longer liable for doing it,
+right? That's when the value of the things I often say is do the thing I've told you
+to do.
+Oh, but I don't want to do that. I want to have to think for myself. Well, what if I
+get told I'm doing something wrong, right? I just say, blame me.
+It's fine, just go and blame me. I don't care. No one's like just move on. Just get
+just do something, please. Um, so uh great. That's a functional leadership.
+Uh what other what other barriers to adoption are there? Got low trust, got low
+trust potentially we don't want to use it because it has low quality, or we don't
+use it because we don't think the payoffs are there.
+What other barriers are there? Computing training. Lack of training, good, I like
+that. Like a training, yes. What else? Awareness. Not even aware of the thing, are
+we?
+No. Competing priorities. Competing priorities like that. Well, why don't people
+adopt things? Why don't you adopt things? Have you been asked to adopt
+something and didn't?
+Yes. That has happened to all of you. I assume. Right. Why didn't you adopt it?
+Compatibility. Pardon? Compatibility. Just constantly like, yeah.
+So resistance to change? Resistance to change. Didn't actually see the value.
+Didn't see the value. Didn't see the value versus you learning something.
+Because you accrue a cost to learning something, right? Which is you have to
+spend the effort and you have to retrain yourself and you have to do all these
+different things.
+Like, well, you know, I'm I'm kicking three buttons. You've shown me one button,
+but I know three buttons work, and I can't be bothered thinking about one button.
+Right? Yes. Um so good. What else? So that's a that's related to safety. I feel safe
+
+if I'm doing this. Most of these things actually come down to safety, things and
+Right? Yes. Um so good. What else? So that's a that's related to safety. I feel safe
+
+if I'm doing this. Most of these things actually come down to safety, things and
+safety.
+I feel safe for these reasons. I feel safe if the data I can trust the equality, I feel
+safe if uh I know there's a payoff, I feel safe, etc. Um what else?
+Any others? Awareness, it's not safety issues, just awares. Yeah. What other
+problems? If people haven't adopted something, why haven't they adopted it?
+Doesn't support the use case, yeah. Miss you've been missold. Yeah.
+Say more. I guess like, you know, everyone has to go through like planning and
+you're planning, you know, you dedicate a certain amount of time to an effort, but
+then if it's gonna take more time to set up a new like system or a product, you
+know, you're less inclined to do it.
+Cool. Alright. How do we do with any how now next question? Well, that question
+subpar if you like if you want a heading structure. Uh what how do we deal with
+those issues?
+So one of the words I was using frequently there is the word leadership. So
+leadership is a big solution to those issues, which is I'm gonna I'm gonna reduce
+your liability for doing this.
+You blame me. Um so you feel more comfortable experimenting and trying it out,
+right? And I'm gonna take the I'm gonna take lead of making people aware of
+these things.
+In other words, I'm the nominated person to evangelize these things, I've got it
+out. So in some sense, leadership is a big part of the story. But let's be more
+specific.
+How do we solve some of these uh adoption issues? Do we show that value of
+envisioning product references product? Good. So show the value. So rather than
+just speaking abstractly about potential benefits, you literally just show someone
+something.
+Um yeah, I mean that that has been my experience in life. If I if I've you know I
+say that do it this way, and someone says, oh why do I do it that way with all
+these benefits, right?
+
+And then you come back a month later not doing that way. You then eventually,
+And then you come back a month later not doing that way. You then eventually,
+after like four or five times, you've always leveled increases, start screaming at
+them, why are you not doing this, right?
+Then you say, give me ten minutes, watch this Zoom call, boop, bop, boop, but
+don't, and then now they go and do it, right? Because there's just some blocker
+to I don't know, what is it?
+Um seeing the value. Don't see the value. What else? Training, yeah. Arranged
+training. Good. Well email campaigns, communication campaigns, internal
+announcements, boards.
+What about uh safety? What about this sort of like don't feel comfortable doing
+something? I guess with demonstrations with bribe and threaten people, right?
+Just give some reward if you do it. There's some punishment if you don't do it.
+But of course, if you're doing with clients and consumers and people outside the
+businesses are hard to think to do, maybe.
+Deadline? Headline's good, yep. Because it forces prioritization. Anything else? A
+lot of training with documentation. Documentation, good. So once you've done
+your Zoom call where you're showing some someone, recall the zoom call, put
+that on the thing in the future for people to watch.
+Tell people to watch it. Don't waste people's time. I mean, part of the background
+of many theories of adoption, of course, isn't simply a narrow issue about did we
+have a campaign or something.
+People may not not trust the source of the thing, right? So it's about, of course,
+um being reliable in your communications, right? In all the things you've been
+talking about, you have to have a certain level of reliability.
+So if you're if that reliability drops below at a certain point, you'll just won't trust
+that you're gonna honor your commitments or do things in.
+Alright, so some of the things we've been talking about now are in the design
+phase of a data product, if you like, which uh when I say design phase, I mean
+the very beginning of the design phase, which is called in the paper, the triage
+phase or something.
+
+But it's about um the conversations we have before we even really think about
+But it's about um the conversations we have before we even really think about
+the the full technical details or whatever. And it's cool. Um right.
+Alright. So there's lots of different things we can talk about now. I'm gonna have
+lunch at 12. We'll come back at one, maybe. So sometimes I mean that's mostly
+probably what we'll do for lunch in terms of times.
+Sometimes we could go a little earlier, maybe like can you if we get done talking?
+Okay. Go on to the next topic. So there is there is another thing we can do here,
+which is a group challenge around an interview.
+I might do we might do that tomorrow. Just so you're not grouped challenged out.
+What we might do as well tomorrow or this afternoon, is we might rotate the
+tables around a little bit.
+Just so that people have a different experience. If you hate the person you sat
+next to, like you, for example, I can see the hatred. Hate presentments, business,
+spice.
+I mean, you're planning, aren't you? You're thinking, how do how do I get back at
+these people for being awake? Um, of course not. But if you want a uh different
+experience, uh different people or different teams, etc.
+Uh, we'll mix around, maybe you have to lunch for you tomorrow. Um, okay, let's
+talk about let's let's move on then. So as you move into so and as you answer
+some of these questions formally on a piece of paper or in a mapdown
+document, um, we might create a product requirements document, PRD.
+Uh we might create a data contract, uh, which is a more specific kind of
+requirement might be right. Now, in order to create these kind of documents, we
+could create them by hand.
+Remember this, remember typing things. Do you remember that? All the way
+back in January that you would you would type something on a computer,
+remember that?
+Not anymore, right? Not anymore. Now you scream at an AR, don't you? Now you
+scream at an AI, and it does most of the tapping for you. And if you're really
+advanced, you might even just put transcriptions down.
+
+You might even use a use a microphone and just talk to the system, right? Um,
+You might even use a use a microphone and just talk to the system, right? Um,
+okay. Um now in CG, if we were to use AI to help us produce these documents,
+what would we call what would we call a system?
+Anyone know? Begins with CPUs, if we have DPLC, but what's part of that?
+What's that part of? Yeah, catalyst. Do you all know about catalysts? Ever seen
+catalyst?
+No, good. Right. So catalyst is a series of AI skills provided, I think, by Edo for uh
+for creating um everything you need across the data product lifecycle.
+So design documentation all the way into the technical artifacts, Python and EBT
+and all these other things that you might want to create. So catalyst is an AI skill.
+We'll talk about what that is now. So did you set up catalyst as part of your
+onboarding? Yeah. Some people nodding, some people not. What we'll do is
+before we go for lunch, I'll ask everyone to type something into catalyst, and we'll
+see if it works.
+If it doesn't, then you know, over lunch you should set up your catalyst. Go and
+find the onboarding documentation. Do the missing research now.
+Um, okay, so let's talk about AI and AI skills. Um AI and AI skills. So I want to have
+a focused conversation before lunch. We can have a broader conversation after
+lunch, I suppose, about effective AI use and how we use AI effectively and what's
+going on with AI.
+We do that to lunch. Before lunch, let's be a bit more focused. Uh what are uh so
+what is catalyst for? What is catalyst? What are AI skills? What are AI skills?
+So when I say skills, do they want to what agenda AI is? Catalyst is AI skills. Oh,
+okay, great. Thank you. A repeatable set of instructions. I don't expect you to
+know the answer, but I'm curious if some people do, right?
+So if I show you catalyst, uh GitHub on it on GitHub. If you have a look at some of
+these repeat what you say in repeatable instructions, they're markdown files with
+prompts in them, aren't they?
+So if we say uh data contract, for example, and we look at the data contract skill,
+what we find is some text that is a prompt, if you like a saved prompt that's been
+
+created by you do.
+what we find is some text that is a prompt, if you like a saved prompt that's been
+
+created by you do.
+And this prompt um has this contents, it says, go and produce number three here,
+produce a structured document that matches a template below. What's a
+template below?
+It has identity schema, SLAs, data quality, etc. Cool. So if I use the data cut uh the
+data contract skill, if I use that skill, what should happen is the AI should generate
+um a document that matches this structure.
+Cool. So one of the values of having these skills, which are basically just saved
+historical prompts, basically, just save prompts. Uh one of the benefits is that
+when we create a design documentation or other artifacts, they're aligned with
+CG policy, they're aligned with common standards, etc.
+So we're all doing the same. Cool. Now there's lots of lots of catalyst skills. Let's
+have a look in the main uh list of skills. So we've got um data contract.
+We've got databricks stuff, dbt unit test. We've got DL DPLC. What does DPLC
+stand for? Data product lifecycle. Data product lifecycle, yeah. We've got DP
+DPLC concierge.
+A phrase that no one can say. Right? That's Edo for you, right? What should we
+call this? We should call it DPLC concierge. What is DP, what is D PLC concierge?
+What do you think that does? It takes a long time to run, so no one knows. It does
+the entire DPLC. It goes through the entire data product lifecycle.
+So if you start that on a Friday morning, maybe by Monday you might have a tape
+product, right? It takes a long time to run. Um what I would recommend when
+we're working with catalysts, as we'll see as we go as a course go through, is
+using more specific catalyst skills, because some of these larger ones take a long
+time to run.
+Okay, but we but for every phase of the lifecycle, we have a different uh lifecycle
+skill. If we look at this, I'll just show you what one of them is, for example.
+If you go into design, which is what we're talking about now, look at this skill file,
+and go down, and we can say, okay, go and do all go and run all of these skills in
+a sequence.
+
+So go and run the requirements acceptance criteria skill. Go and run the
+So go and run the requirements acceptance criteria skill. Go and run the
+feasibility report. Go and run the consumer use case back. Go and run the data
+modeling.
+See this? So these lifecycle skills, they go and call out to these some of these
+more specific skills. So let me show you what does that mean? It means they go
+and include the prompts, those prompts.
+So if you look at some of those more specific skills, so for example,
+requirements, acceptance criteria. Uh, what we would see is that when we run
+the design skill, the first thing we're doing is we're running in fact this skill.
+Which does more and more and more calling out. Cool. Skill calling. Cool. So
+catalyst is a long list of um pre written prompts that are useful for building data
+products.
+It's more than that, though. It's more than just a pre-written prompts. You've also
+got some Python code. So for example, if we do maybe we do databrix search
+databricks somewhere.
+Okay, let's put some examples in. Oh look at this. So there's some skills that
+come with Python code. And the Python code allows catalysts, if you like, to run
+programs.
+So some of those programs can be searching data bricks for data products. It
+could be um running some jobs, finding some stuff. Cool. So catalyst is not just a
+series of pre-written prompts.
+It's also provided script that allow catalyst, if you like the system. To go and
+search for things, create things, do things. Cool. Now this seems a bit mysterious
+to you.
+Let's try using one of the skills. So if I go into my VS Code and I create a new
+chat here, new chat. Product requirements document. If I press forward slash,
+hopefully you'll have this hint.
+And the hint will show you what skills are available under catalyst. So if I type if I
+type forward slash, uh, so that's just forward slash. If I type AI, I get a uh list of
+things, yeah.catalyst, and I can say product requirements document somewhere.
+
+There you go. So if I do that product requirements document, and I go into my
+There you go. So if I do that product requirements document, and I go into my
+transcript, for example, that I've been recording this morning, and I copy and
+paste from that transcript one of your lovely group debriefs.
+I could drop it into there, and we could get trying to get a product requirements
+work out here. Cool. Now since my transcript is on that laptop rather than this
+laptop.
+That hasn't I don't have enough data for that. So let's do it, but we can we can
+maybe do um just copy that. See what we get.
+Cool. Now if catalyst if we're actually using catalyst rather than just general
+general AI, at some point it will say reading reading a skill file.
+Which it hasn't done here. Uh because I don't have catalysts in this uh I don't
+have catalysts in it. I'm not sure I have catalyst in this. Um have it in another one.
+So over here I should be able to say AI catalyst product requirements document.
+We go paste that doesn't okay. Um could be working, could be working.
+Could be working. I'll just I'll double check it as working. So what I want you to do
+now is I want you to do that. So I want you to try creating a product requirements
+document with catalyst.
+So what you need to do there, and I'll can leave this on the screen for you if you
+like, uh, is into your uh chat window on the right hand side, you should say
+something like uh forward slash AI catalyst.
+Product requirements documents. And you should give um each of you should
+give a description of a data product that you've been talking about. And I want
+you to work in pairs, and what you want you to do in pairs is do all the same data
+product, but hide from each other what you're writing about, and then at the end
+compare the contract the requirements documents.
+Cool. And the point of that exercise is to show you uh is give you an idea of how
+fragile the system is or how specific how how uh sensitive it is to how you're
+specifying the requirements.
+So the challenge there is challenge and pairs. Challenge pairs.
+If you haven't downloaded it, just work with the other guy, work with some some
+
+someone set next to you too. Okay. We've downloaded it over lunch.
+If you haven't downloaded it, just work with the other guy, work with some some
+
+someone set next to you too. Okay. We've downloaded it over lunch.
+Uh-huh. I had a little bit of a needle of the slide group. I got to slide. When you're
+done typing. Uh what does the ITG stand for? Shall I use this?
+It's a tending it's a um team within groups. Shall I use this for getting the access?
+Yeah, um, this is a separate section to the access central.
+But maybe this is more relevant. It wouldn't be heard. You shouldn't be needed if
+you if you are you literally unable to go to if you go to the link in the thing, can
+you not even see the repo?
+No, it just says not find. Ah, that's a bigger issue then. Yeah, yeah, yeah. So that's
+with that. And that should be the right player service request for IPT is fine.
+I guess so. I um delivering it. That's why the screen is. You could have two
+phones. I've got a new one at the weekend. So you can see 17. Uh 18.
+Yeah, so you can play highly consistent. So you have like a user. What group
+does this need to be assigned to I don't know. Everyone is doing is there's a
+different?
+I think we're supposed to be doing this. Access admin? Yes. Okay. But you need
+to give it some input. And just put it in my um. Data engineering, maybe.
+I didn't do any of this myself. It was all done for me, so I didn't. Uh why was it
+not? Done for me.
+Yeah, I got like a lot of both. Oh yes, and catalyst. Should I uh download that as
+well? That'll be part of the what you do. So you've got linked so lines.
+Yeah. I'm in the confluence, by the way. Let me know if there's anything I need to
+look at in there.
+Um, but like but the thing is you're giving it to people if they do the product well,
+we just do what the final product by normal is an SPR stands for.
+This was the weather looking. I don't know, I think it's like the perfect
+temperature. Like twenties rather than pushing forty. Right. Yeah, so yeah, like
+yeah, I do know just like either B but link or you know how to uh these are back to
+those.
+I gotta put it back into my Docker. It's gonna be like you shouldn't make it, you've
+
+got to calibrate. Oh that's Mac. I wouldn't need to say to me if they have one.
+I gotta put it back into my Docker. It's gonna be like you shouldn't make it, you've
+
+got to calibrate. Oh that's Mac. I wouldn't need to say to me if they have one.
+Yeah, yeah. I don't know. Yeah, I think there's a lot of this. I don't like it.
+Well my computer's gonna do an update. In two hours. Yeah. I'm not saying just
+do it now. Since we're going for that. Oh yeah, I always find that.
+I can't record it. No, it's just gonna be a good thing. Yeah, all social. All right, so
+yeah, that didn't bring that books and you have a US phone number.
+But I can make calls.
+I see why you're putting this way if you didn't know. Actually, I think that one
+about it.
+And if the transcript isn't on, it's now your fault. Um, two, one, two. No, okay,
+that's not working. One, two, one, two. There we are. So uh the hours for the
+course are nine till three, nine until three with lunch at twelve, break in the
+morning, break in the afternoon.
+Um the capstone event on Friday. Um runs till about two. So hopefully get off a
+little bit earlier. That's if you are focused and determined. If you're not, then we'll
+be here forever.
+Um, okay, so uh let's talk about AI. As I said, after lunch, what we'll do uh AI and
+effective AI practice, I suppose. Let's talk a little bit about the lights where I would
+where I was standing.
+Um let's talk a little bit about the difference between AI and catalyst, what what
+the skills are, harnesses, how the model is created a little bit, and then some
+attacking practice stuff.
+Cool. Um so where should we start? What is AI? Artificial good. I like I like how
+people laugh at the absurdity of answering questions by giving me the initials or
+the initials.
+Everyone else just gives me initials and no one realizes how absurd it is just to
+repeat the initials. I like that, artificial intelligence. That suggests this room is
+ahead of the others.
+You realize how bad your answers are. Um which is a step forward. Yeah, so let
+me for your own sake, just for a casual interest, let me give you my definitions of
+
+AI and other things.
+me for your own sake, just for a casual interest, let me give you my definitions of
+
+AI and other things.
+And I can play by computer scientists. Computer scientists, you should never
+trust them. If you're a computer scientist walks by, make sure you've still got your
+wallet in your pocket and you're not and no money missing or anything because
+you know they're always on a scam these computer scientists, something.
+So my definition is that uh artificial intelligence is a kind of research project or the
+or a human project of creating a system which can perform tasks that in human
+beings require intelligence.
+So it's reference to tasks that human beings do, and a subset of those require
+intelligence, and artificial intelligence is a project of building artificial systems to
+do that, right?
+Now, uh intelligence. Let me define that for you. By the way, all of this is
+transcribed, it's on the notes as well. So if you uh feel like it would be nice to
+have these, they're in the transcript.
+Cool. Um I want to define intelligence, unusually, maybe, as a strategy in animals
+for coping with a lack of solution. Strategy animals use to cope with lack of
+solution.
+What that means, and I can tell you what the what's the strategies are if we're
+interested. Don't know how interesting these things we are, I'm gonna move
+forward, but if you're curious, I can give you some.
+Anyway. So uh a strategy in animals for coping with a lack of solution. What do
+we mean by that? Well, if you have a solution to a problem, then my argument
+would be you wouldn't need to use intelligence to solve it.
+As soon as you have a solution to a known problem, you can automate that
+solution. And I would argue that any automated solution doesn't really use
+intelligence.
+Now that's the opposite view of computer science. I'll explain why in a second.
+Now what that means is what that means is that um, yeah, as soon as we find
+solutions problems, we we automate them.
+Okay, uh what else? What else did it say about that? Let me tell you a little bit how
+
+uh what's right to animal use, and I'll sort of play by the computer scientist
+Okay, uh what else? What else did it say about that? Let me tell you a little bit how
+
+uh what's right to animal use, and I'll sort of play by the computer scientist
+definition.
+So, what strategies do we use when we don't have a solution? Well, there are
+many problems in the world in which, for example, two animals are adversaries of
+each other, cat and mouse, and there isn't a kind of mouse behavior that is pre-
+programmed.
+So the cat can't say the mouse is going to do A, B, and C. So I'm not gonna go
+left or right, but the cat doesn't know, right? So there is no generalized solution to
+the problem of how do you hunt a mouse?
+Because the mouse itself is not the kind of thing which is programmed in that
+way, right? So the cat has to adopt a strategy, which is how do I use my
+techniques, how do I move around, how do I explore, how do I use curiosity, how
+do I use sensation, how do I use creativity, etc.
+Many other things, imagination, primarily. Um how do I what I'm gonna imagine
+the mouse gonna go in this direction? And the cat imagines that before the
+mouse does that in the other direction.
+I mean, we actually know that the map that the cat does that, so I mean we can
+actually look at rats' brains and see them imagining the future before they
+actually do things, actually see the uh planning taking place.
+So animals use imagination put principally. But the other things to plan uh to plan
+out of the future when things are uncertain. So um, okay. What is it to say then?
+So artificial intelligence is so artificial intelligence is looking at those tasks that
+human beings do where we use intelligence because we don't know the solution,
+and it's the activity of trying to find, okay, are there a space of solutions within
+that area where we use intelligence, can we automate those?
+Cool. So computer scientists have the opposite view. Let me tell you why
+computer scientists are the opposite view. So if you look at a human being trying
+to solve a problem, you can see from two sides, right?
+You can see from the side of what's a problem, what's the solution, so that's the
+formal side. Or you can see from kind of the inside of the head of the human
+
+being, right?
+formal side. Or you can see from kind of the inside of the head of the human
+
+being, right?
+Now if you see it from the outside, you go, there's a problem. Creating a data
+contract or whatever, right? There's a solution, there's a solution, right?
+Computer scientists will go, well, I'm not interested in the human being or the
+animal. I'm interested in the problem solution. And so the computer scientists say
+defines intelligence as simply that we have produced the solution.
+Make sense? And you can see why that may be.
+Anyway, two different views. Now the virtue of my uh one of the uh sort of
+virtues, if you like of my view, which you might call it biological view, uh, which is
+that as soon as the computer scientists have solved the problem, it's no longer
+it's no longer using television.
+No longer problem. Yeah, exactly. Um so as you so anyway, anyway, now why
+are we talking about this? Okay, so when we look at uh solutions to problems, so
+for example, uh general generative AI and things, we're always looking at what I
+would call a proxy model of intelligence.
+Now, proxy model, what proxy model is, what we're doing here. Uh proxy model
+means that we're we're looking at a system which is trying to uh trying to acquire
+some of the properties that the human being has uh with actually actually having
+them.
+Make sense? Right? So in the case of generative AI, which is what we're here to
+talk about, just in just throwing these things in uh bit of intro.
+Generative AI. We'll talk about LLMs and the way we'll talk about that in a second,
+but the way that uh when we're dealing with copilot or whatever we're dealing
+with in VS Code, what we're dealing with is a operates in what I call the text
+domain, which means that we have words going in, words going out.
+And so if we want to, for example, imagine the future, we have to emit a m a
+certain amount of text that describes the future, right? We don't have any direct
+capacity to imagine the future.
+Does that make sense? Like the LM does not have uh like copilot does not have in
+it in itself any ability to imagine the future, there's no ability to simulate.
+
+Just telling you that's a fact. So if you think, do LLMs simulate things in the
+Just telling you that's a fact. So if you think, do LLMs simulate things in the
+future, the answer is no. What they do is they generate text. If that text has a
+description of the future in it, then in some sense it's a bit like it's in making the
+future.
+But it kind of hasn't. It kind of hasn't. Simulated one or two possibilities. Make
+sense? I'm saying, huh? Okay, so generative AI. So it's a topic about two types of
+AI.
+So there's two types of AI. There's discriminative AI, discriminative AI, and
+generative AI. And we can define these somewhat formally. But discriminative AI
+is wherever we're labeling something or attributing something.
+Making sense? Now, for example, descriptive AI is whatever we're giving a
+prediction or a label or a classification to something, and the value, it's kind of an
+answer to a question.
+Think of it that way. Descriminative AI is your answering question. What's the
+price in the future? What kind of thing is this? Yes or no? Sense?
+One way thing about the answer. Generative AI is wherever we're generating
+something similar to the things that we've seen before. So we're not really asking
+questions.
+We're just saying, here's some pictures of cats. Give me another picture of a cat
+similar to the pictures of cats we've seen before. Now, in the case of LMs, which
+are the AI that we're dealing with here, code, etc., they're generating text
+documents similar to text documents they've seen before.
+Cool. Okay, so let's talk about LMs. What is LLM stand for? Large language model
+good, large language model. Large language, and blah blah blah.
+So how are how are LLMs created?
+How do you create train? An LLM. We do have data sets of these are we need
+some of the existing data sets.
+In the case of large language models, what is the the name of a historical text
+data set called the corpus? Anyone know what the corpus for an LLM is?
+What's a major part of the historical data for creating an LM? The internet. The
+
+internet, yeah, exactly. The worst possible thing. So why why why I'm just
+What's a major part of the historical data for creating an LM? The internet. The
+
+internet, yeah, exactly. The worst possible thing. So why why why I'm just
+bickering with you all day about nothing?
+We'll talk about that. So I've got the internet. What else do we have in the
+historical record? We have all ebooks. Everything ever digitized, everything ever
+all electronic text.
+Now in modern LLMs, they're provided by vendors. The problem the vendors
+have, or could have, you might imagine, is that they some years ago, they they'd
+already have all the text ever written, right?
+So now if they went to the internet now and they found new text on the internet,
+it's quite likely that new text would have been produced by an LM.
+There's a big problem with that, which is that LLMs are not like animals. This is
+one of the characteristics. If you say, well, well, how would you tell the difference
+between a system which is genuinely intelligent one which isn't, right?
+Here's one way of doing it. So if you feed the output to the system which is
+genuinely intelligent into a system into itself, right? In the words, I look at my hand
+and I look at where my hand is, that tends to stabilize the system.
+Right? So in animals, we have a hand-eye coordination. We have an internal
+sense of ourselves. When we when we feed our own, when we feed ourselves to
+ourselves, we actually stabilize.
+Because we sense of how we get a sense of how wrong we are, right? Let's call
+control. You want to go to that with call control. We can go down that route.
+LM's have exactly the opposite way of working. If you feed the output to an LM in
+its own training, it will collapse in its ability in its performance.
+Now the there's lots of reasons behind that, but basically the arrows explode. So
+you think of it, if you think about what an LM is doing with all this historical data,
+what it's actually doing is kind of compressing it.
+So mostly what an LLM is, is a very simple compression of the historical data. So
+you think about compression, you take a JPEG, you compress a JPEG, it gets
+blurry, right?
+Keep compressing and keep compressing and keeping it, it's blurry and blurring
+
+blurring, almost nothing in it. Make sense? So the process of creating a statistical
+Keep compressing and keep compressing and keeping it, it's blurry and blurring
+
+blurring, almost nothing in it. Make sense? So the process of creating a statistical
+AI model is a process of compression and compression can solve data.
+And if you keep compressing things on the output of compression, you end up
+just spiraling away. Now we can again if we're only going to talk about these
+theoretical things for like 15 minutes or something, just have a bit, you know, kind
+of interest stuff, but if we were had a more dedicated amount of time and could
+explain how that isn't.
+Why that didn't happen at all? Any case. Um so what else did you say about this?
+So vendors have a problem, which is they've already juiced, or they're basically
+compressed the entire internet and everything ever in.
+And all that if they if they if they took any more of that, it would just end up
+making it worse. So there's one additional source of new data that's very
+important for vendors that is definitely guaranteed a source of human data.
+Does anyone have an idea of what that is? So where in the entire internet today
+can we guarantee that there's a source of true, let's say low error human being
+data signal.
+Where do we get that from? There's a small number of places that produce
+genuine at large scale produce human data. Could be. Have you met any human
+beings in social networks?
+Uh no, could be. It's the AI vendors themselves. Because you're sending them a
+huge amounts of track messages. Right? So the on mass, they're the ones.
+You know how I said finance industry exists because it sits on top of the value
+stream of the thing. So one way AI vendors can produce frontier models, is they
+sit on the value stream, human being value stream, right, on the internet, which is
+the source of human data, and they sit on that like uh like a troll on a bridge or
+something, and they watch human beings send the prompts.
+So you're extracting all the value from those problems, right? So now we have
+internet, we have e-books, but we also have, we can call it like all the chat for all
+the all the vendor data, which is massive amounts of text, right?
+Now this is quite useful because if an LLM isn't very good at something, you fix
+
+it. Because you keep typing. Then they can observe that typing, and then they're
+Now this is quite useful because if an LLM isn't very good at something, you fix
+
+it. Because you keep typing. Then they can observe that typing, and then they're
+gonna add that to the LLM.
+So the LM appears to get more intelligent, appears to get more intelligent, but
+really there's a collaborative human effort, so it can essentially laundering that
+intelligence through human beings, right?
+So collaborative human effort to provide massive amounts of training data
+through these problems. Now, okay. There's a few other kinds of data we give the
+LLM.
+So the LLM uh generates text, it does so based on the similarity of previous text.
+However, if you do that, if you just generate it similar to previous text, isn't very
+useful.
+So that's the state of LM, the state of large language models in around, I would
+say 2020, 2020. Um not that useful, right? Now uh we have to do additional
+things.
+Anyone know what the additional things are? Some of them might know. Might
+not. We want to call instruction fine-tuning. Direction fine-tuning. Or uh ISF.
+The other one's called reinforcement learning routines. So instruction fine tuning,
+what instruction fine tuning is we go to Kenya, we go to India, we go to Nigeria,
+and we pay 10,000 people to produce data sets for us, customized data sets, that
+show an instruction and the machine correctly following that instruction.
+So we say write a poem and we write a poem. Cool? So those are artificial data
+sets. We add those to the mixture. What they do, it's called instruction fine-
+tuning.
+What they do is they emphasize the instruction words, so the LM doesn't just
+generate text similar to previous text. It focuses on the instruction words.
+So it makes it use it makes it kind of more like a system. Make sense? Cool. Um
+the other thing we do is called reinforcement learning with human feedback.
+Now that's not, that's that's quite different than the other ones. This is where we
+hire experts. Uh we hire large enough experts. We might hire you thousands of
+mathematics PhDs.
+
+And we say, given that you've generated this result, I've asked you to generate
+And we say, given that you've generated this result, I've asked you to generate
+this thing. Here's the thing you've generated. Generate the three or four or five
+different examples.
+I as an expert want to say this one is better than that one. It's called preference,
+right? Preference data. Now there's one area, there's one area where where we
+can automate this preferring of outputs.
+In other words, we can automate the idea almost like having an expert that can
+say we prefer this output versus that output. Hard question about ask it.
+Can you have an idea where that area would be? So what kind of thing can we
+ask an LM to generate where there's an automated way of finding out the thing
+it's generated is of good quality?
+So for example, poetry would not be a good example of that. Mathematics, kind
+of, yeah, because you could maybe have a theorem prover. But the reason
+mathematics works at all is because it's written in code.
+So it's code, so it's programming. So the reason LLMs are particularly good at
+programming, is you can have a programming compiler, interpreter, whatever you
+have Python or whatever, run the code, and say that works, that didn't work.
+That's actually quite a weak quality signal, because code working is not so great,
+right? So we have to do additional things. But the reason LM is a particular bit of
+code is because you know you can have trillions of code examples generated,
+and you can have the in an automated way, so that will move them with that.
+Right. So uh this is yeah, so in today's world, we have um probably a half the time
+in creating LM is creating it from this corpus data, and half the time in creating an
+LM is actually creating it from this font we call fine-tuning data, preference data
+interesting.
+How much did it take to how much does it cost to create an LM? So let's say on
+the uh I would say on the order of, yeah, on the order of 50 million, maybe.
+Yeah. Um 50 million. So within some factor of 10. Yeah, like two, two, three. Um,
+how much does it cost to run an LM? Uh front, frontier event. I mean like a
+frontier model.
+
+Oh, okay. Because it doesn't cost that much to run a to create local one If you're
+Oh, okay. Because it doesn't cost that much to run a to create local one If you're
+creating a small local one cost millions of right. Uh what did it cost to run
+ChatGPT thing?
+Per month. I have a guess. Yeah, so on the order of like a hundred million a
+month. I mean, we know from anthropics leak S1 filing. Um it's what, eight billion
+a year or something, so it's divided by something, right?
+So a few hundred million a month. So, where does the cost uh for running LMs
+go? Wow session. Where does the frontier model cost go? It doesn't cost it
+doesn't go in training LM.
+Training LM is one less than a month of cost, right? It goes in running uh an LM.
+Now this is not where people thought it was going to be. So go back in history,
+people thought the moat was going to be that very few people could um train an
+LM.
+The moat now is actually very few people can run an LM. So this is why China is
+not frontier at the moment. It's actually not because of the training uh office
+goals, because it doesn't have enough um infrastructure for that.
+But that will probably that'll probably change. Okay. Um let me say something
+about why this is, because that's gonna lead us in to talk about catalyst.
+So this difference here is talk about catalyst. How does it do that? Magic. We'll
+see. So why does it cost so much to run an LM? Power. Oh, yeah, yeah, yeah.
+Now uh power is running at so that's a yeah, that's correct. It's just not the
+answer I want. Uh shall I just tell you? GPUs, yeah, these are all correct.
+Compute. Compute. What are we computing? Yeah, computing the million of
+cloudition or instruction given by the GPU and something for the word. Yeah, so if
+we have an LM, right?
+What LM is going to do, is going to take the entire conversation history that
+you've had so far with the R, the entire history, and it's going to predict the next
+word, yeah?
+Yes, in the right predemption, right? It's going to continue the conversation.
+That's what an LM does. Um so every time you add a word to a conversation, that
+
+goes back in as the input.
+That's what an LM does. Um so every time you add a word to a conversation, that
+
+goes back in as the input.
+So it's always giving the entire conversation in as the input. Cool. Now, um this
+process of just predicting the next word, I'm just giving you one more word, that's
+quite cheap.
+So if I ask for a word, the next word, or even a thousand words from an LM, it's
+very cheap. Much cheaper than the actual running costs. So where does running
+costs come from?
+They come from behind the scenes in modern LLMs, they come from the vendor
+generating a large amount of tokens for you behind the scenes. So you put your
+conversation in, right?
+You get your response, which is called completion, by the way, if you want to
+know completion. And it seems like, well, I've got my completion from this
+conversation.
+A modern vendor like Althropic ChatGPT or ChatGPT or whatever, um, they're
+actually generating a large amount of reasoning. Uh given the game away.
+Maybe they'll tie today, I don't know. Let's say what is that what is that called
+where they generate a large amount of tokens behind the scenes?
+What's that called? Token? Nope, gives it R. Inference. Inference, the whole
+process called, yeah, the process of running an LM is called inference.
+Yeah. Training is making one, inference is running one. Right. Begins with our
+reasoning. Easily. So it's called reasoning. The reason it's called reasoning is,
+well, it looks like reasoning.
+So what they what they do is when they create LLMs, um, they kind of divide the
+training. Basically the way the training LMs is to produce a long conversation.
+Make sense? So they're training an LM with this prompt produce this
+conversation. Now, as part of that conversation, what they what the trainer wants
+to observe is a large amount of intermediate tokens between the question and
+the answer.
+Large amount of intermediate words. So for example, if you ask the question
+what's two plus two, they don't want to go all the way to four, straight to four.
+
+They want to see the user uh would like to ask a math micro question. They're
+They want to see the user uh would like to ask a math micro question. They're
+adding, they're asking about the number two added to the number two, that's
+four.
+Make sense? So every question they want an intermediate amount of tokens, and
+the reason for that is if they jump straight to asking what the next token is, that is
+uh that is a lower quality response, because whenever you just add, whenever
+you put one word at the end of something, you're always just generating
+something similar to the things before.
+So if you say what's two plus two, all you're ever really saying is given all of the
+things you've ever seen, what's the most similar word next to what's two plus
+two?
+The answer before. But if you say, generate my generate me a data contract with
+American mutual funds, blah blah blah, right? There is no similar conversation.
+So if we just ask what the next word is, there is nothing similar. So you might get
+garbage. But if we put if you put a large amount of intermediate word between
+them, where we say, for example, this is a CG investor portfolio, this is what CG
+does.
+Let me go and search the web to download this other thing and put that in the
+middle as well, get all the way down, suddenly then the next word out, even
+though there's similar to nothing before, it's still on average now, it's meant to be
+a bit better.
+Right. So reasoning, this this process of reasoning is where the vendors will on
+your behalf generate a very large amount of intermediate words for your tokens.
+And now it's all makes it cost money. So in the history of LLMs, we go, okay, we
+think we think training LLM is going to cost a lot of money, therefore we win.
+Oh no, everyone can do that. Okay. So we we go to a model of reasoning, but we
+generate lots of tokens behind the scenes. That means it costs a lot of money to
+run them.
+So we can go win because we can pay a lot of money, right? So how do we
+effectively uh choose what context will I assume the vendors say how the sound
+
+amount of words look at too, but like this is bigger as LLMs like draw bigger type
+effectively uh choose what context will I assume the vendors say how the sound
+
+amount of words look at too, but like this is bigger as LLMs like draw bigger type
+of DLP, potentially like paying like oh talk about like scheming.
+I should love in these words, how do you do that? Do you know? Well, it's the
+secret source, what's the secret source? Uh I mean um some things can be said.
+So for example, part of the reason cybersecurity LM is very good at
+cybersecurity, is on the internet there's a lot of forums, in fact, a lot of uh
+examples of people in forums just discussing cybersecurity.
+Like if you go to the sub-security conference, right? Let's have transcripts of a
+YouTube videos of 20 years of cybersecurity conferences, most of those talks
+are just reasoning choices.
+Someone says, I hacked this by doing that, and then the rest of the talk of the
+hour is someone going, and here's the steps I took. Right? And like in
+mathematics, what are mathematics papers?
+They're like prompt conclusion, here's all the here's all of the reasoning you need
+to get to the from the conclusion of the problem. So any cases where there's
+overrepresented already in our corpus, examples of people showing you they're
+working, the LM's are gonna be very good there.
+In cases where there aren't there, they have to go and pay someone to actually
+produce that intermediate steps. So there's so the areas where the N3D steps
+exist, you're gonna get a reasonably good quality.
+So cybersecurity is one of those areas, you might think, well, why is it
+cybersecurity code? Because everything in cybersecurity is the entire history of
+cybersecurity, has been from the very beginning, people just writing books on
+how what the steps are.
+Explaining their reasoning. It comes from like that. Comes from the hacker culture
+of the 70s and it's it's kind of like a the the culture of cybersecurity as a practice
+is very much um kind of shared knowledge culture because of the nature of what
+cybersecurity is, you can't be very good at cybersecurity if you just keep
+everything to yourself.
+So to be any good, you have to have this culture of sharing how things work.
+
+Okay. Where are we going now? So there's one thing to add to reasoning, which
+So to be any good, you have to have this culture of sharing how things work.
+
+Okay. Where are we going now? So there's one thing to add to reasoning, which
+makes a uh um which makes uh AI useful, is in the conversation traces, we then
+have the prompt, we have the reasoning, we have the response.
+This is still all text. Yes? So this means that the LM can't do anything, just test.
+Right? So there's one thing we need to add to this trace, this conversation history.
+That's called a tool call. What that is is a specific kind of text that the LM will
+generate for something else to interpret, that means go and run some command
+on my behalf.
+Right? So when we're training an LM, if I say go and for example, write me Python
+script to do something, what we really want to see is here's my prompt.
+Here's the hidden reasoning. Here's a tool call, called tool call, and then here is
+the actual code down here. Right? And what would a tool call do?
+It may check my Python version. It may see if there's any files relevant to the
+prompt that I've given it. Cool. So when I'm training an LM, I'm training it to
+produce conversations that have all these parts.
+I'm not just training on like the internet. That's a that's like five pennies or
+whatever, right? I'm not just saying go and go and copy this e-book.
+I'm saying this is the exact structure of the thing that you should be producing.
+Now the tool calls, this is just if you know what this is, just JSON.
+Just JSON. It's labeled tool call, basically. Part of the computation labeled tool.
+Now, what interprets these tool calls? Hey? H GTP? Could be.
+Oh. Yeah, of course. Well we remember that. You know, we were in, we were like
+eight years old, we were doing the the you know the salt put salt in the tray, it
+evaporates, leaves.
+Then they also said at the same time, you weren't paying attention. They said that
+the program that interprets an LM's tool call is a harness. You've all forgotten
+that.
+Um so a harness, so in our case, the harness is VS code, or it's also copilot. If
+you've used from if you've used AI from the command line, none of you have
+probably, maybe not all of you.
+
+Um, clawed is the harness. The model is called opus, right? Claude is the
+Um, clawed is the harness. The model is called opus, right? Claude is the
+harness. Now, in the modern era of AI, you know what we're gonna talk about?
+I training was the big thing. Then it was reasoning, inference was a big thing.
+Now it's harnesses other people. In other words, the big thing is what we call a
+genetic AI, which is where you use an LM to generate tool calls for you, so it does
+things for you.
+Right? That's like the third wave of AI. We're in the third wave. AI. That's why we
+talk about catalysts while we talk about skills. We're not asking it to generate
+similar things, we're asking it to like reason for us, we're asking you to do do
+things for us, right?
+Yeah. Then what is the agent? There you go. So an agent, we're gonna define an
+agent. Remember computer scientists are always trying to where's my money
+gone, right?
+What I did like part copilate all if I agree. Oh, yes. Yes. So look. So an agent,
+there's a harness plus an LM. So what does that mean? It means if I say to
+Catalyst, search Databricks Marketplace for a data set that is XYZ, right?
+That's a piece of text. That goes to a vendor, LLM, and it replies with behind the
+scenes lots of reasoning. And maybe show you a preview, a summary of what the
+reasoning was.
+So in your VS code, you can sort of see it tick by. That's not the real reasoning,
+because that's hidden from you. Because this is proprietary. So they show you a
+summary of what it's doing.
+Then it goes into a tool call. In other words, it's just generating text. That text is
+interpreted by the harness. In this case, the harness would be let's say ESL code.
+So this is a program that can interpret LLM output and do actions on behalf of
+that output. And this is a program written by human beings to do that.
+That's because LLM's okay, it only generates text. You can't do anything. So
+once you have a harness and you've got an LM coupled together, you have got
+an agent, because the LLM is generating actions and the agents performing the
+actions.
+
+Now when you have catalyst, what catalyst then is it's prompts given to the LLM,
+Now when you have catalyst, what catalyst then is it's prompts given to the LLM,
+which may generate text, but also may generate tool calls, may do things for you.
+Cool. Right. We call those skills. So skills are prompts, say prompts that you give
+to an LM, which in general trigger it to run commands. Cool.
+Any questions? That's our half hour on AR. I'm gonna show you some. I'm gonna
+show you some options now. What's this? Why is this up there? Who's doing this
+to me?
+Self-inflicted idea. Father, isn't it? I thought people have a great colouring. How
+do I?
+There you go. I am the cause of and solution to all of my problems. Okay. So let's
+have a look at this interface here. So what part what is uh let's just describe some
+parts of this interface.
+What is this? What is this part here? LM. That's the yellow lemon. That's the
+model we're using. Model or LLM. That's the model we're using. For opus,
+sonnet, haiku.
+What's the difference between these options here? Less token of option. Maybe.
+Or that means. There again. Less token comes up shape. Less token, yeah, that's
+from a pricing.
+There's a pricing difference, right? And in danger. Yeah, okay. Uh uh, from a like a
+technical difference is that the different sizes of model. So they've they're they're
+they're compressed more.
+So opus is the least compressed, if you like, of everything. You get all that in fine-
+tuning, all the data, blah, blah, blah. Like that's the best quality JPEG.
+Looking at an image, loads compression. Haiku is the mode compression. To
+point where Haiku45 is probably not very useful. Um it's quite a C model.
+Uh anyway. Um so Opus is the highest, and Sonic's mini per size. Yeah. And
+same for uh ChatGBT. So we chat GPT we have lunar, soul, uh, and terror.
+So again, Sol is the least compressed of those three. Lunar is the most, and terra
+is intermediate. Cool. Now, does that matter? Well, if you're providing massive
+amounts of context in your prompt, the quality of the model matters less.
+
+So you can go for cheap. If you're providing less in the prompt, then the model
+So you can go for cheap. If you're providing less in the prompt, then the model
+has to make up for your vagueness, so it matters more. Cool. Now, whether a
+model is any good at what you're doing is what you call an empirical question,
+means just something you have to try out and see.
+There is no theoretical answer to that question. Part of the reason is we don't
+know how they're trained, uh, to that level of fidelity. But also, uh, different
+vendors will prioritize different parts of the training.
+So, for example, it's commonly thought that ChatGBT prioritizes the instruction
+volume, meaning that it's quite literal. You say go and do something or go and go
+and do that thing.
+And people think that uh Claude or anthropic prioritize kind of the preferential
+part of the training. Where you can give it vague instructions, and maybe it'll do
+better guesses between different vague options.
+That might change. Okay. What's this part? Well the thinking effort. Ah, no, no,
+no. That's a computer scientist comes to sell you something. Oh, yes, the LMs
+think, don't they?
+They generate text, right? Which is which is a model of thinking if you're like
+deranged. So someone says, what's thinking like? And you go, it's like generating
+text, and someone goes, but this person must be deranged, right?
+So thinking is nothing like generating text, but it's a little bit like that. Anyway, this
+is behind the scenes reasoning. So what that means is this is the amount of
+tokens it will generate behind the scenes for you.
+So if you put this onto maximum, every time there's a gap in the conversation,
+behind the scenes is a massive amount of things we can generate for you.
+Now, you might think, well, why don't we always have this on maximum? Actually,
+a lot of performance can actually be worse than maximum, and it can be on high.
+So you're thinking like if this was thinking effort, how could that be? It's not
+thinking effort, right? It's not thinking effort. It's it's intermediate token
+generation.
+And the reason maximum can be worse performance is if you ask this simple
+
+question, and if it's forced to generate a large amount of text, that actually derails
+And the reason maximum can be worse performance is if you ask this simple
+
+question, and if it's forced to generate a large amount of text, that actually derails
+it.
+If you say what's a zebra or something, striped animal, whatever. And if it goes,
+well, the user might be asking about animals, and then it goes off on like for
+pages and pages and pages, it might give you the wrong answer.
+So maximum is not actually the best quality. People say medium or high is good
+standard, and then you play around and uh what's the context size?
+Memory-ish, kinda, that's kind of true. How many more have you in one or two?
+Yep, so it's it's the that's the so the c the entire conversation history.
+So remember the last gives the entire competition history, including all reasoning
+that you can't see, including all tool calls, right? That goes into the LLM when you
+generate one word.
+So, this is about 872,000 kilobytes. This is a byte is like a letter, roughly, so it's
+like it's like 800,000 letters. So that's about 100,000 words.
+Cool? And you might think 100,000 words is a lot of words, but they're generating
+massive amounts of things behind the scenes that you can't see.
+Yes? Question? Is the UN or a question? Before it checkpoints. Before it
+compresses, yeah. So we'll come back to that in a second. So 200,000 is quite
+small, but actually 800,000 isn't that big either.
+So actually, I would say that most non-trivial tasks, most like not one-off tasks,
+often take about a million tokens. So 800,000 is something like about a task.
+Because once you've gone through the conversation history, you've generated
+this on Python, you've iterated on that, you've got the Python right, you've got
+the thing right, da da da, you're probably up into the hundreds of thousands.
+Now, just because the window is this large does not mean performance is that
+good. Performance tends to degrade the longer your conversation. We're almost
+done, we're almost done.
+There was something you were saying about what was that last thing?
+Compression. Compression, yeah. Okay. So performance degrades, if you go on
+for long enough, at some point, towards the end of your window, the vendor or
+
+VS Code will choose to compress your conversation down to a smaller amount.
+for long enough, at some point, towards the end of your window, the vendor or
+
+VS Code will choose to compress your conversation down to a smaller amount.
+So if you've gone for 600,000 words, it'll try and reduce it down to like 50,000
+words, and then it will keep hold of that. Better is to start a new conversation.
+Better at some point when you're halfway through, just say, summarize
+everything we've been doing in a file, and then copy and paste that into a new
+conversation rather than because when it chooses to when it chooses to like
+checkpoint or compression, kind of random.
+It'll choose its best guess at work. Yeah. Which is length-based rather than hand
+off code. Yeah, rather than hand. If you go like, oh yeah, we've done that now,
+and you think, oh, well, let's continue.
+Probably in your own mind you can go, no, let me just summarize what we've
+done, let me just start on the next part of the task. Now you say it's one final
+point.
+What you'll find is that if you go on for long enough, you'll probably start
+swearing. WTF. On my reason for that, well, it might be two different reasons.
+One is it could just be higher sense. Another reason is that as you go down the
+content, as you fill out a context, um, the performance of the model drops, um,
+and as you compact things, the performance of the model drops, and you finally
+not doing the thing you want it to do.
+So there's a trade-off between restarting something and exploring a wider space
+of options versus being anchored down something, and because it's context is
+full of prior conversational history, it's always anchored by that history.
+So if I'm trying to solve one very specific problem, and there's lots of things
+we've been talking about, then is the next word is going to be similar to the
+conversations with all that stuff in it, so that's gonna be not very useful.
+Right. Okay. So in terms of uh effective AI use for ourselves, we think about
+effective AI use, we're thinking about being skeptical of AI when the thing we're
+doing seems particularly novel, unlikely to be represented in the training data,
+right?
+Am I in an area where I think I can just say do this and it's likely to work first time?
+
+That kind of area is likely to be something where there's lots of examples of the
+Am I in an area where I think I can just say do this and it's likely to work first time?
+
+That kind of area is likely to be something where there's lots of examples of the
+number forms, right?
+If we're not in that area, and we're often not in that area, then we need to be
+empirical. We need to sort of measure the actual performance of the system uh
+using different options, variety of different options and different techniques.
+And then coming up with an internal model of how good this system is at our
+particular task set. I'll be different across different people. So one person drop
+might be well certified.
+All right, there's some more things I'll say on another day.
+So why don't we take fifteen minutes? And when we come back, we'll do some
+group charging. Cool. So I'll see you in fifteen minutes time.
+So now we just need to do what's the word of the other link. Yeah, but we are we
+already did that. So now you're just going to do JPO off logging.
+And then you should be able to do that. Yes, it's like solved, so you just go to CG
+for the CP thing. Yeah, it's a CD thing. And what we did is we added the repo to
+the plugin.
+So it's fine, it's fine over the web. And now we're just talking about it.
+Do you see it?
+So there's like some side.
+So basically enter.
+Sometimes we have to optimize it.
+Or you're not going to be a little bit more than a lot of different things.
+It could be two. Could be two. I fear it might be two.
+I think we can do it.
+You don't like all the access to it. Yeah. I think you don't underneath it.
+Yeah, that's the hyper.
+Oh, it needs to see a lot. That's that's supposed to be an absolute fixed one.
+Yeah. I think it's one of these.
+But they're very open to the use of it. Yeah. I mean, not here. But they're just all
+features.
+
+Yeah. Yeah. That's probably true. Find it like a lighter at first.
+Yeah. Yeah. That's probably true. Find it like a lighter at first.
+No, I guess at least they got a pop-up that's in. Should I try to reopen this in the
+container?
+That there's supposed to be a container.
+We all hear more or less. Yeah, okay. So what I want to do now is to have a look
+at combining catalyst, get a product design, and maybe it's some audio
+transcription.
+So here's the activity. I'll put maybe some questions up on the screen in a
+second. For those who have a MacBook, you have Apple voice memos. Do you
+know about Apple voice memos?
+Yes? Some of you do. So if you have a MacBook, you can type voice memo and
+you can press record like this. And then Apple, Tim, you know our friend Tim at
+Apple.
+He'll record some of your voice. There you go. Press pause. Press done. And you
+can press the transcript button at the top there. It will show you the transcript.
+You can also, on the uh left hand side here, is if you click off it and then click on it
+again. You can copy the transcript. Copy transcript. Right?
+And if you do that, then it'll write, you know, it'll be you know good enough. Right.
+Now that isn't an amazing, it's free, so it's not an amazing transcript.
+And I know that there are uh there's there's things internally here where you have
+voice things, but I don't know the details of that. I do know that you're allowed to
+use whatever app is on your laptop.
+So by by inference, you must have approval to do that, because you have it,
+right? And they would have taken it away from you if you didn't. So that's my
+reasoning.
+Um, here's what I'm going to suggest is that one of you who has a Mac uses
+Apple voice memo and you press record, and then you have a conversation about
+a data product.
+And then you use that to generate a P I D document and a data contract. Cool?
+So here's the conversation. The conversation is going to be an interview where
+
+one of you role plays the data producer, one of you role plays the data consumer,
+So here's the conversation. The conversation is going to be an interview where
+
+one of you role plays the data producer, one of you role plays the data consumer,
+and one of you role plays the data creator.
+Cool. So creator, consumer, producer. So you'd have to choose something where
+the producer knows the data source quite well. The consumer knows what they
+want quite well, and the creator is there asking them questions.
+Well, how do I get this from this source? How often does it is it how often do I get
+this, etc.? Does that make sense? Now, try and roleplay as close as you can.
+But of course, if you break roll and you help each other out a little bit, that's okay.
+Cool. Now what else is there to say? What questions do you ask when you're
+interviewing?
+Well, um their questions. So this is the second phase of design, if you like, which
+is suppose we've configured the work this morning on the feasibility and viability
+and cost questions.
+So we agree we should build it. This is what we should build, right? This is how
+do you answer what we should build? Well, we ask, we interview the producers
+and the consumers, and we figure out what they want.
+Cool? So let me um let me just give you. Uh let me bring up the latest version of
+the courseware where the use questions live. And I'll drop this in the team's chat.
+Yeah. And as I said, by uh by the end of play Friday, if not by Friday, what I do is I
+put the transcript from this session in there as well, so you have that.
+Okay, so what page do we want? I believe we were on page 20, but I've I made
+some modifications this morning. Where are the questions? That's the line
+canvas.
+Please don't have removed the questions. Um let me just interview questions.
+There we go. So here's some questions. I'll put the I'll put these bigger.
+I'll put this bigger in a second. But what decision do you make with the data? Uh
+how do you make a decision today? Who uses the result directly?
+How is the source generated? What do these terms mean in your work? How do
+you recognize the result is usable? When do you read the result? Cool.
+Now you can ask these questions sort of literally as part of the conversation, it's
+
+part of the interview. And you can play around with additional questions that
+Now you can ask these questions sort of literally as part of the conversation, it's
+
+part of the interview. And you can play around with additional questions that
+might be relevant to understanding the consumer's need.
+Cool? So I want you to ask some of these questions and some of the questions of
+your own and figure out what what the data product should be. Cool.
+Now what we'll do this time is we will um switch up the groups. So I will put that
+on the screen for you. So here's what the exercise is going to be.
+I will tidy this up on the screen so it's easier for you to see. I'll put this on the
+screen. Uh you'll be in your threes. You'll Apple voice memos.
+One of you will have an Apple voice memo recording. You'll do the interview, then
+you'll drop the transcript into Catalyst, and you'll say, give me a PRD, and then
+give me a data contract.
+Cool? And we'll see how far that goes. Cool? Right. So that's kind of a workflow
+model for working with AI. It's not bad, not bad. If you're on Zoom, right, you're
+on Zoom or Teams, wherever you're on team, uh, you'll have a team transcript.
+So you can use that if you're on a cool. Alright, so let's do threes. How many
+people are in the room? One, two, three, four, five, six, seven, eight, nine, ten,
+eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventy.
+It's one more than we need. Oh well. So mining. Ene meeny mining. Mining. E me
+mining. Eenie. Mining. Ene. Meaning. Right. I've not completely wrong.
+I've divided by I've done uh divide by three, rather than divide by six is what I
+should be five years. Oh, trat. Okay. Let's do that again. Very fun.
+One, two, three, four, five. One, two, three, four, five. One, two, three, four, five,
+one, two. Cool. This table is one. That table is two. This table is three.
+That table is four. That little there is five. Go away. I always do that as well, by the
+way. I always do that. Never mind. Never mind. After we just started the bond.
+I know.
+Now what I would suggest is you try and roleplay for a little bit until it breaks
+down. And if it breaks down, that's fine. But the idea is that you're making the so
+the data creator sits in the middle making a data product and then talking to the
+producer and the consumer to figure out what the data product can be.
+
+Cool? Producer's a vendor, it's the upstream. Uh I mean consumers downstream
+Cool? Producer's a vendor, it's the upstream. Uh I mean consumers downstream
+and vendors like upstream uh the producer's upstream, right? Cool. Creators and
+the upside.
+If that doesn't fit exactly onto your use case or something, just a little bit. And
+you're recording it, right? Yeah, we have the point.
+Point to the right. What did you talk about? Save. Okay. Yeah. I feel like I asked
+you to use something. Right, yeah. Well, well, okay, was there any subtleties or
+interesting things that other people in the room might want to hear?
+Um we had the same conversation, but I think came from a different perspective.
+Brilliant. Um more from a like a business user's perspective on some of those, so
+not super technical.
+Cool. Um I think one of the interesting things is we all kind of ran it separately
+rather than doing once and then uh iterating it. Yeah. And it all came back with
+different results and different schemas, and I think that helped us.
+Um like if we could go back and ask different questions based off of the output.
+Yes, we would. Good, you've learned something. That's yeah, surprise, surprise.
+Well, that wasn't I definitely didn't intend that. So I'm glad that learning has taken
+place purely accidentally. Yeah. Yeah, so you but basically it's uh you know
+create some which we probably know.
+Yes, right. So it fills in some plans. That's because it's always generating stuff,
+isn't it? It can't not generate things. So what we're what we're discovering at
+least now is the fallibility of that, and therefore what information we need to
+provide us context to make sure that that doesn't happen in the future.
+Okay. Purely accidental learning. Enjoy and enjoy it. Uh what's your team name?
+Team Monterey. Okay. And what did you do? So we have a fixed income analytics
+product.
+So you're bond, high very high volatility. Yes. Go on then. And had the interview,
+we gave it the transcript. Yeah. A SME? Yes. And he said, you know, these are not
+all the fees.
+Of course they're not. This looks like maybe just a general internet search, like
+
+CD internal. So we asked you to connect the conference point it to the actual
+Of course they're not. This looks like maybe just a general internet search, like
+
+CD internal. So we asked you to connect the conference point it to the actual
+source.
+Yep. Nexus, and then say, you know, give us additional. Did that work? Yeah. Oh,
+amazing. Look at that. Um is that data data you could you could get from the CG
+website?
+Possibly no, it's not. Um okay, brilliant. Um what uh what else? So what parts of
+the data contract OPI were most like off? You got the wrong fields.
+There was one wrong field, and then there was a lack of fields in the schema,
+which we said, you know, we have more fields that the system generates that you
+would like to add to the projects.
+Cool. So okay, great. Was the PRD okay? Yeah. PRD was better because it's more
+vague a PRD, isn't it? Yeah, easy to BS. Okay. Team. Avengers. Team point to the
+left.
+Avengers. No, he pointed to the left. The first thing that happened. Is he pointing
+to the left? If you notice there's one rule I've been following today, or I'm naming
+teams, it's the very first thing that happens in the two.
+So you point to the left. And of course, my right, but he pointed to the right order
+now. So point left. Team, point left. What did you do? When you talk about what
+was went wrong, what went wrong, what was the product?
+So uh we discussed about um creating a um uh product which would have all of
+the uh screen products of CGs? Yep. Um both internal and external too.
+Um so um I think we we discussed the things um between ourselves. Yep. Um I
+think the PR was good. Uh uh was good from the transcript. Yeah, yeah.
+Um even the data contract when we told AI to pick some universally available
+attributes for finance products, it was able to pick view of them. Can you give me
+an example of some?
+Um it's like the QSIP, ticker, and all those stuff. We didn't give them by name, but
+we said, hey, can you pick something universal and you pick the Q subticker and
+ICIN and whatever?
+Um I mean it's not the comprehensive list, actually. Um it only has 10 teams of 15
+
+attributes, actually. There are many other stuff like the median and all those
+Um I mean it's not the comprehensive list, actually. Um it only has 10 teams of 15
+
+attributes, actually. There are many other stuff like the median and all those
+things.
+Um I think that's one of the shortfalls. Cool. Alright. Team Team Mumble. Okay,
+let's go. All I heard. Okay. Team two voices, team mumble. Team Mumble.
+What did you uh what pro what was the product and what were the issues with
+the ideal contract? So we start with all reliable lines of data. Yep.
+Um issues uh I would say it's uh you process a bit broad or open-ended. I'll say
+that's more online mediation. So you you screwed up the interview.
+Don't say that. I don't know. I said word for word, I'm not uh yeah, well I filter I
+filter American into European same. That's right. But um yeah, so it's a bit open-
+ended.
+So I say that uh the uh public sweat that it went a bit too far in terms of what
+things are covered. Yeah. So we got too much data that we actually don't know.
+That was one of the things like um with the tables in self, we want to have like uh
+capital streaming. I see as I include all the attributes as a single table, so
+normalizing it.
+That's one thing right there. We were trying to go like fix it up. That's great. I
+mean that's good. It's good. Yeah. Right. Pretty good. So I'm about to ask a
+question with which your behavior was good was is the correct answer.
+So you're already you shouldn't be feeling too bad. So what's the benefit of
+interviewing? So what are the oh uh what um how do we find out what we need?
+Um how do we find out requirements from um our consumers who are
+downstream of those creators, right? How do we find those requirements? So
+what options do we have?
+We can interview. What else can we do? Scan all their documentation that they've
+ever written. Good. So we can replace them with an AI and then ask that AI, right?
+It's like like Ido and Catalyst. We can replace. Maybe. No, no, no, no. Very
+valuable, very valuable, very valuable. We can work with them as a forward
+learned engineer to understand their process.
+Good. So we can observe them. Yes. In the natural environment. Okay, good. So
+
+we can observe their behavior. We can what was this suggestion over here?
+Good. So we can observe them. Yes. In the natural environment. Okay, good. So
+
+we can observe their behavior. We can what was this suggestion over here?
+My suggestion was to scan all the documents. Oh, yeah, yeah, yeah. Yeah, yeah,
+yeah. Scan scan the documents, they're good. So we can observe their current
+behavior, we can observe their past behavior.
+That's right. And we can interview, right? So there's kind of behavior observation
+past or present. We can interview what else can we do? What else could we do?
+Look at their code. Their code. We can install the cloud agent on their machine
+and then maybe what they are doing to already and then read information.
+So you you got upper matchment written all over you. That's right. That's right.
+So we can get we can get them under a microscope and we can take a scalpel
+and we can slice, yeah, that's right.
+No. Uh we can observe the past behavior, present behavior. We interview them,
+we could do something else. Access their data? Something that it treats them like
+a human being, minimally.
+Just a little bit. Logs. We can survey them. We can just ask some questions in an
+email, right? Make sense? Oh. Just have some survey. But that's not in the right
+extra.
+Yeah, I'm just saying, I mean, uh interviews of dynamic process surveys in this
+kind of funny. So I uh so we can survey them, you can observe the behavior with
+the interview them.
+Now uh uh of those three, which is preferable? Interview preferred. Interview
+preferable. Generally speaking, interview preferable, because why?
+Questions on the line. Yeah, exactly. Dynamic process of discovery where you
+can you can between you iterate and so on. Yeah. So uh and also a survey is
+usually phrased from the uh a creator or producer point of view, right?
+Where you're doing consumer alignment. So if you ask them questions in the
+survey, you may not have the right ones. Okay. Um observing behavior.
+Now, but let's say there are some cases in which the other ones are preferable,
+maybe. So when might uh in what situation might observing their behavior be
+preferable to or give you different information than or give you better information
+
+than an interview?
+preferable to or give you different information than or give you better information
+
+than an interview?
+They don't know what you want. They don't want what you want. Exactly. Who
+knows what who knows what anyone wants, right? Well, first of all, but secondly,
+it may help you with adoption.
+So there are certain parts of that interview process, or they will tell you certain
+things, but they might lie to you. So the problem with the interview is that people
+don't tell you the truth, right?
+Or um they may be confused, so that yeah, they're they're confused, the line, all
+these other things. Well, you don't get the honest answer of good answer.
+So by observing their behavior, you can at least what they're doing at the
+moment. Right? So um uh also might help you um kind of understand what their
+need kind of really is in a sense, like um you don't sit next to them, you can say,
+okay, they're doing these three crazy things.
+They're opening this, they're opening that, they're opening that. These are the
+three crazy things. How do I come in and then put produce one thing which is
+which is better, right?
+So um so rather than designing things from kind of like technical heaven first, you
+go down to purgatory where people really live. And you observe what they're
+actually doing, you go backwards, right?
+Okay, that's how software engineers should design things. That's what data
+creators might design things if you have the ability to do that. When is the survey
+better?
+Good, exactly. So it's thousands of people, hundreds of people, or you don't have
+the time, etc. So if you're looking to a survey, yeah. Um, okay.
+That's that. So, final set of questions, final activity for today, just as we've played
+out. So, what parts are there in the PRD? What are the what are the sections of
+the PRD?
+Executive. Executive summary. Sure. Use case. Use case, keep going. Problem
+value. Problem value, yep. Consumers. Consumers. Solution overview. Solution
+overview, wow.
+
+What this is not. What this is not. Great. I'll put ports. Sure. Their requirements.
+What this is not. What this is not. Great. I'll put ports. Sure. Their requirements.
+Their requirements. Anything else? Roles. Good. Files. Is there a final section?
+Technical design. Yeah, it's something about version at the end there should be
+as well, maybe. Um what parts are the success criteria? Good, I like that, right?
+Um what parts of the data contract are there? Schema. Schema. Data quality.
+Data quality. Dependencies. Dependencies. Is there a glottery or data fiction
+now?
+Yeah. Yeah. Files. Why is the glossary important? Why is the glossary in the data
+contract rather than the PRD? Because nobody speaks the same language.
+Yeah. Correct? That's why we have a glossary, because people don't know what
+things mean. We know what things mean, but they don't, right? Remember that.
+It's always always the case. Well.
+Different sources. Exactly. So in a in the PRD level, you know, you can align on
+the meaning when we produce a PRD if you like, but when we have dealing with
+different sources, you can't really align the meaning because we're dealing with
+who we're dealing with vendors or upstream defining their own terms.
+So it's a glossary is actually required. Otherwise you get into a complete
+confusion about uh aligning across data sets. Um other sections of the data
+contract.
+We just scroll a little bit. What else is there? Change management? Change
+management, great. What's change management for changing systems?
+Changing the contract.
+I think. Is that right? I hope it is. I got some breaking changes on here. So we've
+already got hallucinated changes in part of our contract, right?
+So you look to look at the change contract. How could there be changes in that in
+our contract? In version zero. In version zero, yeah, exactly.
+Good. Um right, brilliant. So um final question for the room then, and then you
+can maybe go, maybe. Ooh. Um I I want you to do some interviewing of catalyst.
+Now that may not seem exciting, but I wouldn't do that. So, where am I catalyst
+questions? So here's some questions I can think of off the top of my head.
+
+Something like what are the phases of the data product lifecycle cycle at uh
+Something like what are the phases of the data product lifecycle cycle at uh
+capital group? So I want you to ask catalyst what the phases of the data product
+lifecycle are.
+Go go and ask catalyst. I will find my question list while you're doing it. What are
+the phases of the data product life cycle?
+Then someone who has the answer can start reading out the phases. Pre-rex.
+Pre-rex, then triage, yeah, priority. Discovery. Discovery. Design. Design.
+Build. I do. What? Validate. Validate, yes. Publish. Good. Operate, yeah, then.
+Evolve. Evolve, yeah. Which is how periodically, which is how this uh skill or
+whatever you guys are.
+Well, this type of code.
+Right. Now I've listened I forgot. I'll just I'll bring up. Uh I don't know where they
+are. I think on Tuesday. We've actually, if you look at the course where I give you,
+what you'll find is I've been jumping around Monday and Tuesday depends.
+I do that based on your mood, basically. I look at people going, you look seem
+kind of bored and annoyed now. We'll do something from Tuesday. Anyway.
+So there are additional things I want to ask. But but okay. So what are the
+requirements of the build phase? You tell me. Type it in. Come on, type in.
+What are the requirements of the build phase? 58. Is that right?
+Oh, here we are. Here we are. Any any takers what the requirements of the build
+phase are? I can only hear mumbling. Yeah, so it's taking a while, is it?
+Still taking a while? Pre-data contract, data model, and transformation spectrum
+are our tribe. Good. So I've got a list of stuff there, and of those things, how many
+of those have skills associated with them?
+Pretty much all of them, right? Yeah, yeah. So all I'm doing here is I'm showing
+you that you can ask catalysts about the DPLC. That you can ask about the
+requirements of each skill before you use it.
+And you can ask about skills themselves. Kind of what I'm demonstrating here.
+So important learning objective of the course is that you know the nine phases of
+the DLPC.
+
+Now you know them. Right. And another thing is in terms of catalyst use that
+Now you know them. Right. And another thing is in terms of catalyst use that
+you're aware of and can interrogate catalysts for the skills and say, okay, what
+are my requirements?
+What do I need to know before I use these skills? Question. Okay. Leave. Go
+away. That will do for today. That will do over today. There you are.
+Thank you. No worries. I'll see you tomorrow at 9 a.m., right? 9 a.m. That's good.
+You got some more catalyst questions.
+No? No.
+What's the first thing you have to tell me tomorrow morning at 9 a.m.?
+I thought we called the room because we have time.
+Okay, you're on your own report. Oh yeah. Maybe we're looking for the one. No,
+no.
+Oh, yeah. I think so.
+Thanks for investing in the day with us. Oh, it wasn't an investment, it was a it
+was active consumption. All my energy is gone. I feel shortchanged.
+Do you have the phrase short change in America where people don't give you the
+change? Yeah. Short change, okay. I feel short changed. I need a refund.
+Investment. That's what I always learned to just use that. Yeah, because all the
+time now, right? Yeah, we don't think it's investing. I'm having this ice cream, it's
+investing in my fun.
+Yeah. That's right. It's much more compelling than saying the opportunity cost of
+what you'd rather have been doing. Or even just saying you know, consumption.
+Americans don't consume anymore, they invest. Yeah. They invest when they
+eat, they invest when they sleep. All right. Lovely. See you tomorrow.
+See you tomorrow.
+You ready?
+Did you get anywhere? Yep. Oh, break. So I find in that system. You can find what
+a user has access to, and then you can request all the things that user has
+access to.
+So I was able to find you and I and see and be able to like tick off the things I
+
+need. Good. I mean you can even show me what I have access to, and then I'll
+So I was able to find you and I and see and be able to like tick off the things I
+
+need. Good. I mean you can even show me what I have access to, and then I'll
+then I'll know.
+Yeah. I think I have quite a lot of access. But I don't really use all of it. Yeah, so let
+me show you now. Do I? Oh no. It might have disappeared after I hit submit.
+But I think I can do it again. So when you're in access central, manage user
+access. Just pick me. And then add access, find users access. And then your
+image.
+Maybe. There we go. And then if I hit apply. Here's all your things. Marketplace
+production machines. Yeah, definitely have the monitor, yeah. So those are all the
+things you have.
+The only one I've ticked for now is the Git access and then the cool. Yeah,
+because you've got a few pages. Look, there's four pages. Yes.
+We off. Yeah. And then you can uh see it in the hotels button. Do you know? Let's
+see it. Do you use a hotel paper?

@@ -1,0 +1,373 @@
+[
+  {
+    "readme": "challenges/v2/docker/phase-one-certified/README.md",
+    "line": 159,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/docker/phase-two-proficient/README.md",
+    "line": 159,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/docker/phase-two-proficient/stretch/README.md",
+    "line": 1,
+    "heading": "# docker: optional stretch selection",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-one-certified/README.md",
+    "line": 163,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/README.md",
+    "line": 163,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 1,
+    "heading": "# dbt: optional stretch selection",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 26,
+    "heading": "## Phase 2 \u2014 Challenge 1: The enrichment join \u2014 `int_holdings_enriched`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 57,
+    "heading": "## Phase 2 \u2014 Challenge 2: The two supporting intermediate models",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 84,
+    "heading": "## Phase 2 \u2014 Challenge 3: First curated mart \u2014 `agg_fund_exposure`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 107,
+    "heading": "## Phase 2 \u2014 Challenge 4: Second curated mart \u2014 `fct_portfolio_returns`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 130,
+    "heading": "## Phase 2 \u2014 Challenge 5: Generic tests on the marts",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 152,
+    "heading": "## Phase 2 \u2014 Challenge 6: A singular reconciliation test \u2014 NAV within tolerance",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 175,
+    "heading": "## Phase 2 \u2014 Challenge 7: The full build \u2014 `dbt build`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 206,
+    "heading": "## Phase 2 \u2014 Challenge 8: Docs and the lineage graph",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 241,
+    "heading": "## Phase 2 \u2014 Challenge 9: The Databricks performance post-hook \u2014 `OPTIMIZE \u2026 ZORDER`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "line": 275,
+    "heading": "## Phase 2 \u2014 Challenge 10: Capstone \u2014 add a new mart end to end",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-one-certified/README.md",
+    "line": 163,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/README.md",
+    "line": 130,
+    "heading": "### capstone-p2-05: Present a fixed completed core and select stretch {#capstone-p2-05}",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/README.md",
+    "line": 132,
+    "heading": "#### Concept: capstone-p2-05-concept \u2014 Present a fixed completed core and select stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/README.md",
+    "line": 163,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 1,
+    "heading": "# capstone: optional stretch selection",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 62,
+    "heading": "### Challenge 1: A richer executive report mart",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 107,
+    "heading": "### Challenge 2: Advisor leaderboard with `dense_rank()`",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 153,
+    "heading": "### Challenge 3: Daily activity by asset class, plus a rolling window",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 197,
+    "heading": "### Challenge 4: Declare source freshness on the source extracts",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 242,
+    "heading": "### Challenge 5: Document who consumes the marts with exposures",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 284,
+    "heading": "### Challenge 6: A reusable money macro",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 330,
+    "heading": "### Challenge 7: A custom generic test for non-negative money",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 382,
+    "heading": "### Challenge 8: A relationship (referential-integrity) test",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 422,
+    "heading": "### Challenge 9: Singular reconciliation tests within tolerance",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 484,
+    "heading": "### Challenge 10: An incremental market mart",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 557,
+    "heading": "### Challenge 11: A snapshot for slowly-changing portfolios",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 613,
+    "heading": "### Challenge 12: Understand and extend the orchestration",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 653,
+    "heading": "### Challenge 13: Understand params-driven orchestration",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "line": 696,
+    "heading": "### Challenge 14: A reconciling regional report (capstone)",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/databricks-cli/phase-one-certified/README.md",
+    "line": 159,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-one-certified/README.md",
+    "line": 167,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/README.md",
+    "line": 167,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 1,
+    "heading": "# airflow: optional stretch selection",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 44,
+    "heading": "### Challenge 1: The vendor-neutral alert transport",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 81,
+    "heading": "### Challenge 2: Tiered failure alerting \u2014 page on P1, notify on P2",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 121,
+    "heading": "### Challenge 3: The P2 and P3 tiers \u2014 SLA miss and retry",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 158,
+    "heading": "### Challenge 4: Wire the callbacks and the SLA into the DAG",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 196,
+    "heading": "### Challenge 5: The source-freshness gate as a contract",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 234,
+    "heading": "### Challenge 6: The monitoring config",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 271,
+    "heading": "### Challenge 7: The runbook and the consumer guide",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 310,
+    "heading": "### Challenge 8: Structural tests for the DAG",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 349,
+    "heading": "### Challenge 9: Stretch \u2014 the paved-path `DatabricksSubmitRunOperator` variant",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "line": 392,
+    "heading": "### Challenge 10: Capstone \u2014 a complete production-ready DAG",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/git/phase-one-certified/README.md",
+    "line": 159,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/git/phase-two-proficient/README.md",
+    "line": 159,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/git/phase-two-proficient/stretch/README.md",
+    "line": 1,
+    "heading": "# git: optional stretch selection",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  },
+  {
+    "readme": "challenges/v2/kafka/phase-one-certified/README.md",
+    "line": 179,
+    "heading": "## Optional stretch",
+    "status": "not-run individually; inventory only",
+    "boundary": "Legacy stretch uses its separate v1 runtime; generic phase variations do not replace core tasks"
+  }
+]

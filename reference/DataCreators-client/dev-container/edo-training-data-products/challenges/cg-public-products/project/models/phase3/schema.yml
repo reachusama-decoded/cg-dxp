@@ -1,0 +1,6 @@
+# Activate only when the lane-M macro/test and generated seed are ready.
+version: 2
+models:
+  - name: int_cg__training_history
+    data_tests:
+      - cg_temporal_integrity

@@ -1,0 +1,20 @@
+{
+  "run_id": "20261007T215100Z",
+  "owned_local_roots": [
+    ".local/demo-dbt",
+    ".local/demo-capture",
+    ".local/demo-launchers",
+    ".local/live-dev-audit/20261007T215100Z",
+    ".local/instructor-demos/",
+    ".local/classroom-rehearsal/",
+    ".local/verified-packages",
+    ".local/package-extraction"
+  ],
+  "owned_processes": "Capture PTY sessions/process groups, Chromium contexts and temporary loopback review HTTP servers",
+  "cleanup": "PTY/browser processes closed; temporary verifier workspaces removed; owned review servers stopped; learner A database deleted while B was rechecked",
+  "retained": "Private logs/databases/videos and package extractions retained for reproducible investigation; candidate bundles retained",
+  "external_resources_created": [],
+  "managed_environments": "Existing .local/v2-tools and .local/v2-airflow packages/launchers unchanged",
+  "canonical_starters": "Initial/final byte hashes unchanged",
+  "services_to_stop": "None deliberately left running"
+}

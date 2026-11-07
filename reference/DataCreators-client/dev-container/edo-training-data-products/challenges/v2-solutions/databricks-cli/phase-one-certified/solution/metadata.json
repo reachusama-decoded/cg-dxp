@@ -1,0 +1,27 @@
+{
+  "catalogs": [
+    {
+      "name": "training_dev",
+      "comment": "Instructor training catalog"
+    }
+  ],
+  "schemas": [
+    {
+      "name": "training_learner",
+      "catalog_name": "training_dev"
+    }
+  ],
+  "tables": [
+    {
+      "name": "holdings",
+      "full_name": "training_dev.training_learner.holdings",
+      "table_type": "MANAGED"
+    }
+  ],
+  "workspace": [
+    {
+      "path": "/Shared/training_dev",
+      "object_type": "DIRECTORY"
+    }
+  ]
+}

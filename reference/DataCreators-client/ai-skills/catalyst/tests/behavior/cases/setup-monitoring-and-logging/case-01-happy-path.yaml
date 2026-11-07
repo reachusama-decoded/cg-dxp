@@ -1,0 +1,54 @@
+id: setup-monitoring-and-logging.case-01-happy-path
+skill: skills/setup-monitoring-and-logging
+type: artifact
+description: >
+  Configure monitoring and logging for a serverless dbt-on-Databricks pipeline.
+  Verifies the rewritten (AICAT-136) skill: no cluster_log_conf, stdout/stderr
+  via runs/get-output API, wrapper-driven dbt artifact capture to a UC Volume,
+  and a notification-agnostic alert standard.
+input:
+  arguments: >
+    Configure monitoring and logging for the employee-directory data product.
+    Catalog: app_catalog. Schema: employee_directory. The pipeline runs on
+    serverless. Write the runbook and confirm dbt artifacts are uploaded to a
+    UC Volume.
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: no_cluster_log_conf
+      weight: 0.25
+      prompt: >
+        Does the output AVOID any mention of cluster_log_conf? The skill must
+        not reference cluster_log_conf at all (it is invalid on serverless).
+        Score 1 if cluster_log_conf is never mentioned, 0 if it appears anywhere
+        in the output.
+    - id: stdout_via_runs_get_output
+      weight: 0.25
+      prompt: >
+        Does the output reference GET /api/2.1/jobs/runs/get-output (or the
+        equivalent runs/get-output endpoint, e.g. `databricks jobs get-run-output`)
+        as the mechanism for retrieving task stdout/stderr on serverless? Score 1
+        if the endpoint is explicitly named, 0.5 if stdout/stderr retrieval is
+        described without naming the endpoint, 0 if absent.
+    - id: wrapper_artifact_upload
+      weight: 0.30
+      prompt: >
+        Does the output describe wrapper-driven dbt artifact capture — i.e.,
+        that the dbt wrapper (dbt_wrapper.py) uploads target/run_results.json,
+        target/manifest.json, and logs/dbt.log to a UC Volume path like
+        /Volumes/<catalog>/<schema>/dbt_artifacts/<run_id>/<task_key>/ after
+        each dbt invocation? Score 1 if all three pieces (wrapper ownership,
+        artifact files, UC Volume dbt_artifacts path) are present, 0.5 if
+        partial, 0 if absent.
+    - id: notification_generic
+      weight: 0.20
+      prompt: >
+        Does the output keep the notification mechanism generic — i.e., does
+        NOT prescribe Datadog (or any specific tool like Slack-only,
+        ServiceNow-only, PagerDuty-only) as the alert sink? Score 1 if the
+        notification mechanism is left to the DAG layer or described as a
+        "configured alert sink" without naming a specific tool as required, 0
+        if Datadog is prescribed as the standard sink.

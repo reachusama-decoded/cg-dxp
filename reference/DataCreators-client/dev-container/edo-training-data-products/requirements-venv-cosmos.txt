@@ -1,0 +1,2 @@
+# /home/astro/.venv/cosmos
+dbt-databricks # conflicts with base, so installing in a venv

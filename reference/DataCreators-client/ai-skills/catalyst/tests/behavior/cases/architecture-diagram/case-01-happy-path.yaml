@@ -1,0 +1,30 @@
+id: architecture-diagram.case-01-happy-path
+skill: skills/architecture-diagram
+type: artifact
+description: "Bootstrap happy-path case. Generate architecture diagrams for a data product \u2014 data\
+  \ flow, storage layout,\ninfrastructure, and failure modes. Use when the user asks to \"create the\n\
+  architecture diagram\", \"draw the data flow\", \"diagram the pipeline\",\n\"show the system architecture\"\
+  , or \"map the infrastructure\"."
+input:
+  arguments: Produce an architecture diagram for an employee directory data product (Databricks medallion
+    + Marketplace).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/architecture-diagram/templates/architecture-diagram.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: "Does the output meaningfully address the request described by the skill: 'Generate architecture\
+      \ diagrams for a data product \u2014 data flow, storage layout,\ninfrastructure, and failure modes.\
+      \ Use when the user asks to '? Score 0-1."
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

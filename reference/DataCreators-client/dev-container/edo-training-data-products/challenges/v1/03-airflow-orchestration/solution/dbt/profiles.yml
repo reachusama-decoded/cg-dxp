@@ -1,0 +1,65 @@
+# Databricks-only profile. The connection is env-var driven so nothing secret
+# lives in this file. Auth is token-based: every target reads DBT_ACCESS_TOKEN,
+# which `.mise/env.sh` mints from the OAuth session on each mise run (falling
+# back to ~/.databrickscfg). A static token target is required because the DAG
+# runs dbt via profiles_yml_filepath (target=dev) inside the astro container,
+# where auth_type: oauth would fall back to interactive browser OAuth and hang.
+#
+# `.devcontainer/setup-databricks-dbt.sh` runs the login, exports the four
+# DATABRICKS_*/DBT_* vars below, and also writes an equivalent profile to
+# ~/.dbt/profiles.yml. Either profiles.yml works; this in-repo copy keeps the
+# project self-describing.
+#
+#   DATABRICKS_HOST        e.g. adb-1234.5.azuredatabricks.net
+#   DATABRICKS_HTTP_PATH   e.g. /sql/1.0/warehouses/<warehouse-id>
+#   DBT_CATALOG            pre-provisioned catalog (default: training_dev)
+#   DBT_SCHEMA             your pre-provisioned schema (default: training_<username>)
+
+portfolio_analytics:
+  target: dev
+  outputs:
+    # Token target used by the DAG's source-freshness gate in the astro runtime. It
+    # authenticates with the fresh OAuth access token from the `databricks_default`
+    # Airflow connection (passed in as DBT_ACCESS_TOKEN by the task), exactly like the
+    # Cosmos DbtTaskGroup — so the gate never falls back to interactive external-browser
+    # OAuth, which hangs the task. The URL scheme is stripped so the databricks adapter
+    # builds a valid host.
+    airflow:
+      type: databricks
+      host: "{{ env_var('DATABRICKS_HOST') | replace('https://', '') | replace('http://', '') }}"
+      http_path: "{{ env_var('DATABRICKS_HTTP_PATH') }}"
+      catalog: "{{ env_var('DBT_CATALOG', 'training_dev') }}"
+      schema: "{{ env_var('DBT_SCHEMA', 'training_student') }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', 'MISSING_run__mise_run_setup_databricks') }}"
+      threads: 1
+      connection_parameters:
+        _disable_pandas: true
+    # `local` and `dev` are identical token targets (DBT_ACCESS_TOKEN). The
+    # challenge:dbt / challenge:seed mise tasks invoke dbt with `--target local`
+    # (the repo-wide convention every other profile follows); the DAG points
+    # profiles_yml_filepath at target_name="dev". Both names must resolve, so
+    # both targets are defined.
+    local:
+      type: databricks
+      host: "{{ env_var('DATABRICKS_HOST') | replace('https://', '') | replace('http://', '') }}"
+      http_path: "{{ env_var('DATABRICKS_HTTP_PATH') }}"
+      catalog: "{{ env_var('DBT_CATALOG', 'training_dev') }}"
+      # Prefer export DBT_SCHEMA=training_<username> (matches provision + gate 2).
+      # Fallback default is training_student so parse/debug does not hard-fail.
+      schema: "{{ env_var('DBT_SCHEMA', 'training_student') }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', env_var('DATABRICKS_TOKEN', 'MISSING_run__mise_run_setup_databricks')) }}"
+      threads: 1
+      connection_parameters:
+        _disable_pandas: true
+    dev:
+      type: databricks
+      host: "{{ env_var('DATABRICKS_HOST') | replace('https://', '') | replace('http://', '') }}"
+      http_path: "{{ env_var('DATABRICKS_HTTP_PATH') }}"
+      catalog: "{{ env_var('DBT_CATALOG', 'training_dev') }}"
+      # Prefer export DBT_SCHEMA=training_<username> (matches provision + gate 2).
+      # Fallback default is training_student so parse/debug does not hard-fail.
+      schema: "{{ env_var('DBT_SCHEMA', 'training_student') }}"
+      token: "{{ env_var('DBT_ACCESS_TOKEN', env_var('DATABRICKS_TOKEN', 'MISSING_run__mise_run_setup_databricks')) }}"
+      threads: 1
+      connection_parameters:
+        _disable_pandas: true

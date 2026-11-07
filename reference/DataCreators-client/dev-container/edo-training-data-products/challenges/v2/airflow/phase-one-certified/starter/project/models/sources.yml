@@ -1,0 +1,62 @@
+version: 2
+
+sources:
+  - name: custodian
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily SFTP drop from the custodian: position-level holdings and cash."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 4, period: hour}
+        error_after: {count: 6, period: hour}
+    tables:
+      - name: holdings_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_holdings_raw"
+        description: "Position-level holdings per fund per day."
+        columns:
+          - name: fund_cd
+          - name: pos_dt
+          - name: isin
+          - name: qty
+          - name: mkt_val_lc
+          - name: ccy_cd
+      - name: positions_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_positions_raw"
+        description: "Cash + accrued positions per fund per day."
+
+  - name: bloomberg
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily reference data + end-of-day prices."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 8, period: hour}
+        error_after: {count: 24, period: hour}
+    tables:
+      - name: prices_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_prices_raw"
+      - name: refdata_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_refdata_raw"
+
+  - name: fx_feed
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily FX close rates to a GBP base."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 6, period: hour}
+        error_after: {count: 12, period: hour}
+    tables:
+      - name: fx_rates_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_fx_rates_raw"
+
+  - name: product_ref
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Internal fund master + product catalogue."
+    tables:
+      - name: fund_master_raw
+        identifier: "{{ env_var('DC_RELATION_PREFIX') }}_fund_master_raw"

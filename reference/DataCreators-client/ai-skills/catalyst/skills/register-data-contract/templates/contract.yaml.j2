@@ -1,0 +1,15 @@
+# ODCS minimal v3 contract template (rendered by scripts/register.py).
+# This file documents the target shape; the script builds the dict in
+# Python and dumps via yaml.safe_dump, so no Jinja runtime is required.
+version: "{{ version }}"
+domain: "{{ domain }}"
+dataset: "{{ dataset }}"
+status: draft
+contract:
+  owner:
+    team: "{{ owner_team }}"
+  sla:
+    availability: "{{ sla_availability }}"
+    freshness: "{{ sla_freshness }}"
+  schema:
+    properties: "{{ properties }}"

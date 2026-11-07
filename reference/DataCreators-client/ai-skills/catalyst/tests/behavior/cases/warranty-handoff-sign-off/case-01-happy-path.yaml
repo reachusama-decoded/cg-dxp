@@ -1,0 +1,33 @@
+id: warranty-handoff-sign-off.case-01-happy-path
+skill: skills/warranty-handoff-sign-off
+type: artifact
+description: 'Bootstrap happy-path case. Document warranty period criteria, actuals, and sign-off for
+  transition to
+
+  BAU operations. Use when the user asks to "sign off on warranty", "complete
+
+  the handoff", "transition to BAU", or "close the warranty period".'
+input:
+  arguments: "Record warranty handoff sign-off for the employee directory data product (build team \u2192\
+    \ ops)."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/warranty-handoff-sign-off/templates/warranty-handoff-sign-off.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Document warranty
+      period criteria, actuals, and sign-off for transition to
+
+      BAU operations. Use when the user asks to "sign off on warranty",''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

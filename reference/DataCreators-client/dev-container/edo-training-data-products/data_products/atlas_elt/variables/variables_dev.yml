@@ -1,0 +1,23 @@
+variables:
+  sql_warehouse_id:
+    default: 267dd55b7f7395ce
+  kafka_secret_scope:
+    default: "msk-test-manw"
+  # temporary scope for testing - TODO: replace with system or env creds once available
+  data_notify_topic:
+    default: "caspian.notification.data-ready-r"
+  bootstrap_brokers:
+    default: "b-1.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096,b-2.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096,b-3.datalake-msk-dev1-us.l62223.c21.kafka.us-east-1.amazonaws.com:9096"
+  schema_registry_url:
+    default: "https://caspian-kafka-schema-registry.datalakefoundation.aws-dev.capgroup.com"
+  zone_bucket:
+    default: "s3://datalake-curated-dev1-us-east-1/cspn_fndn2/"  # TODO: set S3 zone bucket
+  dev_cluster_id:
+    # "Training Shared Compute" cluster ID for dev job runs
+    default: "0723-050014-ofggyaz4"
+  caspian_catalog:
+    default: caspian_dev1
+  app_catalog:
+    default: training_dev
+  domain_catalog:
+    default: ""

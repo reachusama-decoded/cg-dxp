@@ -1,0 +1,7 @@
+data_products/**/contract/**
+data_products/**/airflow/**
+data_products/**/bundle/**
+challenges/**/solution/**
+
+challenges/v2-solutions/**
+.local/challenges-v2/**

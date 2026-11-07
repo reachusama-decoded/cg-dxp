@@ -1,0 +1,30 @@
+# Minimal ODCS-shaped draft. Fill ownership/consumer/meaning before phase-1 submission.
+# The instructor will validate against the course's approved ODCS schema in the devcontainer.
+apiVersion: v3.0.0
+kind: DataContract
+id: urn:datacontract:training:cg-product-research
+name: CG Product Information Research
+version: 0.1.0
+status: draft
+domain: training-cg-products
+# AUTHOR: consumer promise, DPM/steward role ownership, source choices and quality rules.
+schema:
+  - name: product_research
+    logicalType: object
+    physicalType: table
+    properties:
+      - name: product_id
+        logicalType: string
+        physicalType: string
+        nullable: false
+        description: "AUTHOR: distinguish ETF/fund-class/strategy offering grain"
+      - name: net_expense_bps
+        logicalType: number
+        physicalType: decimal(12,4)
+        nullable: true
+        description: "AUTHOR: unit, cost scope and nullable meaning"
+      - name: fee_as_of_date
+        logicalType: date
+        physicalType: date
+        nullable: true
+        description: "AUTHOR: source reporting date, not effective or retrieval date"

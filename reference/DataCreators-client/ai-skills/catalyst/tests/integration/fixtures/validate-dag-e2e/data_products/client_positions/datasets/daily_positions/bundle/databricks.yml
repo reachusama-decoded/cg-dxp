@@ -1,0 +1,36 @@
+# data_products/client_positions/datasets/daily_positions/bundle/databricks.yml
+# Databricks Asset Bundle for the daily_positions dataset (RFD 0003 — each
+# dataset IS a product; bundle/ lives under the dataset subtree).
+# DBX-DAB-001 / DBX-DAB-004 — exports `databricks_job_prefix` var that the
+# Airflow DAG reads via {{ var.value.databricks_job_prefix }} to compose the
+# fully-qualified job name with the deployed resource.
+
+bundle:
+  name: daily_positions
+
+include:
+  - resources/*.job.yml
+  - variables_*.yml
+
+variables:
+  databricks_job_prefix:
+    description: >
+      Per-environment prefix applied to deployed job names. Consumed by the
+      Airflow DAG (compose contract — see compose-with-bundle.md). The DAG
+      composes `${var.databricks_job_prefix}<resource_key>` to match exactly
+      what `databricks bundle deploy` pushes to the workspace.
+    default: "edo_prd_"
+
+targets:
+  prd:
+    mode: production
+    workspace:
+      host: https://edo-prd.cloud.databricks.com
+    variables:
+      databricks_job_prefix: "edo_prd_"
+
+# Resource definitions are pulled in via the `include:` directive above
+# (resources/*.job.yml). Do NOT declare resources here — duplicate keys
+# across databricks.yml and resources/*.yml cause a deploy conflict.
+# The Airflow DAG references resource key `daily_positions_job`; its body
+# lives in resources/daily_positions.job.yml. Renders to "edo_prd_daily_positions_job".

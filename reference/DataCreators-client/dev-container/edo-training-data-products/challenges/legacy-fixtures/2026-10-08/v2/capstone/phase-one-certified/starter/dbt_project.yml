@@ -1,0 +1,10 @@
+name: v2_atlas
+version: '2.0'
+config-version: 2
+profile: v2_training
+model-paths: [models]
+seed-paths: [seeds]
+test-paths: [tests]
+models:
+  v2_atlas:
+    +materialized: table

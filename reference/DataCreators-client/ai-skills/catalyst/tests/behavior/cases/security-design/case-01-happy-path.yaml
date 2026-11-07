@@ -1,0 +1,35 @@
+id: security-design.case-01-happy-path
+skill: skills/security-design
+type: artifact
+description: 'Bootstrap happy-path case. Document authentication, authorization, encryption, audit trails,
+  and threat
+
+  model. Use when the user asks to "create the security design", "document
+
+  access control", "write the security spec", "design the auth model", or
+
+  "assess security requirements".'
+input:
+  arguments: Produce the security design for the employee directory data product. Restricted PII; row-level
+    security on manager hierarchy.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/security-design/templates/security-design.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Document authentication,
+      authorization, encryption, audit trails, and threat
+
+      model. Use when the user asks to "create the security design", ''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

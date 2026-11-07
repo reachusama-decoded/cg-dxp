@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Worktrees
+.worktrees/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+tests/behavior/live-report/
+tests/behavior/cache/
+tests/behavior/*-stdout.log
+
+# Behavior-test artifacts: scratch / outputs / caches
+products/
+workspace/
+
+# Session markers (skill-emitted)
+.claude/markers/
+
+# Local working notes (per-ticket smoke-test captures, scratch)
+work_docs/
+
+# Superpowers specs/plans — local-only, not tracked on this branch
+docs/superpowers/
+
+# Skill-emitted environment/build state caches. Machine-specific, and
+# .catalyst-env.yml records the user's email, workspace host, profile names, and
+# catalog names — never commit either.
+.catalyst-env.yml
+.catalyst-build.yml
+
+# Playwright MCP scratch output (screenshots, snapshots, console logs).
+# Written into the repo root by the browser tools; never an artifact worth keeping.
+.playwright-mcp/

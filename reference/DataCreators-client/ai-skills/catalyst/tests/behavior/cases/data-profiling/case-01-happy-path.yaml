@@ -1,0 +1,31 @@
+id: data-profiling.case-01-happy-path
+skill: skills/data-profiling
+type: artifact
+description: Bootstrap happy-path case. Profile source tables for quality, completeness, and fitness.
+  Use during Phase 2 Discovery to assess source data before writing the feasibility report, or Phase 5
+  Validate to verify built tables.
+input:
+  arguments: Profile tables in ${TEST_CATALOG}.${TEST_SCHEMA} for an employee directory data product.
+    Focus on cg_employee_v4.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/profile.py
+- skills/clients/databricks.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Profile source
+      tables for quality, completeness, and fitness. Use during Phase 2 Discovery to assess source data
+      before writing the feasibil''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

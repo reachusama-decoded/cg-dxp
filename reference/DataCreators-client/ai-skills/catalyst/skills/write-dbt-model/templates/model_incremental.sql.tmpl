@@ -1,0 +1,27 @@
+{{ config(
+    materialized='incremental',
+    incremental_strategy='merge',
+    unique_key='<<UNIQUE_KEY>>',
+    file_format='delta',
+    location_root='<<LOCATION_ROOT>>',
+    tblproperties={
+      'delta.autoOptimize.optimizeWrite': 'true',
+      'delta.autoOptimize.autoCompact': 'true'
+    }
+) }}
+
+-- Model: <<MODEL_NAME>>
+-- Layer: <<LAYER>>
+-- SQL-DBSQL-003: incremental merge keyed on <<UNIQUE_KEY>>.
+-- SQL-DBSQL-005: external table via location_root.
+-- SQL-DBSQL-009: operate VACUUM RETAIN 168 HOURS on this table on the
+-- scheduled cadence (handled by the platform vacuum job; see runbook).
+
+select
+    -- TODO: replace with real columns; <<UNIQUE_KEY>> must be present.
+    cast(null as string) as <<UNIQUE_KEY>>,
+    current_timestamp() as ingested_at
+
+{% if is_incremental() %}
+where ingested_at > (select coalesce(max(ingested_at), '1900-01-01') from {{ this }})
+{% endif %}

@@ -1,0 +1,70 @@
+id: generate-dag.case-04-lift-and-shift
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Lift-and-shift mode. Caller has an existing DAG with a PagerDuty
+  callback, a polling sensor for upstream dependency, and missing MDS
+  tags. Skill should emit the proposed DAG to workspace/dag-proposals/
+  (NOT runtime location) and report a diff-style summary.
+
+input:
+  arguments: >-
+    Lift-and-shift this existing DAG to RFD 0011 standards:
+    /---
+    dag_id: orders__orders_daily
+    schedule: "0 3 * * *"
+    catchup: false
+    default_args:
+      owner: "EDO IG"
+      retries: 3
+      on_failure_callback: "callbacks.pagerduty.notify"
+    tasks:
+      run_dag_exec_check:
+        operator: airflow.operators.empty.EmptyOperator
+      run_orders_daily_dbt:
+        depends_on: [run_dag_exec_check]
+        operator: airflow.providers.databricks.operators.databricks.DatabricksRunNowOperator
+        job_name: orders_daily_job
+        databricks_conn_id: caspian-ig-databricks
+    /---
+    Data product: orders, dataset: orders_daily.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: workspace_output_path
+      weight: 0.3
+      prompt: >-
+        Does the response reference the output path as
+        workspace/dag-proposals/data_products/orders/datasets/orders_daily/airflow/orders_daily.dag-factory.yml
+        (NOT runtime location)? Score 0-1.
+    - id: pagerduty_removed
+      weight: 0.2
+      prompt: >-
+        Does the response REMOVE the PagerDuty on_failure_callback entirely
+        (no replacement Datadog/email callback) and flag the removal, noting
+        failure alerting is platform-side (Astronomer Datadog), not a
+        DAG-level callback? Score 0-1.
+    - id: polling_to_asset
+      weight: 0.15
+      prompt: >-
+        Does the response replace the polling dag_exec_check pattern
+        with an Asset trigger (or annotate it for migration)? Score 0-1.
+    - id: mds_tags_added
+      weight: 0.15
+      prompt: >-
+        Does the response add the 5 MDS tags annotated with
+        "# ADDED by /generate-dag" or similar? Score 0-1.
+    - id: diff_summary
+      weight: 0.1
+      prompt: >-
+        Does the response include a diff-style summary of what changed
+        and what was preserved? Score 0-1.
+    - id: no_rfd_number_in_filename
+      weight: 0.1
+      prompt: >-
+        Does the response AVOID using "rfd0011" or similar version/RFD
+        numbers in the runtime artifact filename? Score 0-1.

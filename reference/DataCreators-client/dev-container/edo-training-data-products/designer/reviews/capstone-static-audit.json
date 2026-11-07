@@ -1,0 +1,209 @@
+{
+  "method": "Static CSV and reference-SQL membership analysis; no dbt/warehouse execution or arithmetic-output verification",
+  "tables": {
+    "advisors": {
+      "rows": 120,
+      "columns": [
+        "advisor_id",
+        "name",
+        "region"
+      ],
+      "key": [
+        "advisor_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "clients": {
+      "rows": 2002,
+      "columns": [
+        "client_id",
+        "name",
+        "segment",
+        "domicile"
+      ],
+      "key": [
+        "client_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "fund_holdings": {
+      "rows": 3205,
+      "columns": [
+        "fund_id",
+        "instrument_id",
+        "weight_pct"
+      ],
+      "key": [
+        "fund_id",
+        "instrument_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "funds": {
+      "rows": 60,
+      "columns": [
+        "fund_id",
+        "name",
+        "style"
+      ],
+      "key": [
+        "fund_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "instruments": {
+      "rows": 1502,
+      "columns": [
+        "instrument_id",
+        "ticker",
+        "name",
+        "asset_class",
+        "sector",
+        "ccy"
+      ],
+      "key": [
+        "instrument_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "portfolios": {
+      "rows": 2501,
+      "columns": [
+        "portfolio_id",
+        "client_id",
+        "advisor_id",
+        "strategy",
+        "inception_date"
+      ],
+      "key": [
+        "portfolio_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    },
+    "trades": {
+      "rows": 10000,
+      "columns": [
+        "trade_id",
+        "ts",
+        "portfolio_id",
+        "instrument_id",
+        "side",
+        "qty",
+        "price_cents",
+        "fee_bps",
+        "venue",
+        "ccy"
+      ],
+      "key": [
+        "trade_id"
+      ],
+      "missing_key_columns": [],
+      "null_key_rows": 0,
+      "duplicate_key_groups": 0
+    }
+  },
+  "relationships": [
+    {
+      "from": "trades.portfolio_id",
+      "to": "portfolios.portfolio_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    },
+    {
+      "from": "trades.instrument_id",
+      "to": "instruments.instrument_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    },
+    {
+      "from": "portfolios.client_id",
+      "to": "clients.client_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    },
+    {
+      "from": "portfolios.advisor_id",
+      "to": "advisors.advisor_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    },
+    {
+      "from": "fund_holdings.fund_id",
+      "to": "funds.fund_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    },
+    {
+      "from": "fund_holdings.instrument_id",
+      "to": "instruments.instrument_id",
+      "orphan_rows": 0,
+      "missing_ids": []
+    }
+  ],
+  "population": {
+    "raw_trade_rows": 10000,
+    "filtered_invalid_trade_rows": 120,
+    "valid_trade_rows": 9880,
+    "valid_trade_portfolio_instrument_groups": 3717,
+    "positions_after_instrument_join": 3717,
+    "positions_dropped_at_instrument_join": 0,
+    "trade_rows_dropped_at_instrument_join": 0,
+    "conformed_portfolios": 2500,
+    "summary_distinct_portfolios": 1028,
+    "portfolios_absent_from_summary_count": 1472,
+    "portfolios_absent_from_summary_sample": [
+      "1",
+      "2",
+      "3",
+      "6",
+      "7",
+      "8",
+      "9",
+      "12",
+      "13",
+      "14",
+      "15",
+      "17"
+    ],
+    "positions_dropped_at_portfolio_party_joins": 0,
+    "valid_trade_orphan_portfolio_rows": 0,
+    "valid_trade_orphan_instrument_rows": 0
+  },
+  "conformed_dimensions": {
+    "instruments": 1500,
+    "portfolios": 2500,
+    "clients": 2000,
+    "advisors": 120
+  },
+  "source_hashes": {
+    "seeds/advisors.csv": "262c0390412efcb647b2b4081e4dbd0c2a491ce9e7657b4580eae5ff3685621e",
+    "seeds/clients.csv": "de465b2e17dda37bab50abe6501f7f3125170701b90b4a33f1fbe0669aafda96",
+    "seeds/fund_holdings.csv": "7a2304b7b79804fcbddcb9d26ed330e6bf2d37e62e32d388f2d214cf6bb8ba08",
+    "seeds/funds.csv": "f8bf6de2ce96a1ee96e7c2d38ca0db1563dc6276477e498433e4c43f41d1f623",
+    "seeds/instruments.csv": "3d587b787dea83e7c5865b36efb59cbf32d073a4daca031450f19d7c573fa35c",
+    "seeds/portfolios.csv": "a32a75ded9ca0d566a382bea22d0f155d891a8f8ecff4805bb09fda5e71df1ca",
+    "seeds/trades.csv": "d53b6a4148245c682ccbdd9db3e7cb1db2934c7d6baa9321ca03852dd8d09d7b"
+  },
+  "reference_model_hashes": {
+    "challenges/04-atlas-capstone/solution/datasets/trades/dbt/integration/dom_trading__trade.sql": "f627e0eae70917146a744f47586c4733cd5f6ffb1d92c8e53d254f13bda3685f",
+    "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/integration/dom_positions__position.sql": "b2c31e69272affdf556a74e0bc6deb25580f92cadb8a7d2777cb26079aef6bf4",
+    "challenges/04-atlas-capstone/solution/datasets/portfolios/dbt/integration/dom_portfolio__portfolio.sql": "74cc0d7d94b63867e4bd944f2df15c4cf9a8b83de33cd1e073c058315b108f18",
+    "challenges/04-atlas-capstone/solution/datasets/market_daily/dbt/integration/dom_trading__latest_price.sql": "ab7bd5d72ce9a5ffd589e1208c4122e9a4c71eeae7f320edd77b21db4e82b6f5",
+    "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/rpt_portfolio_summary.sql": "4e4dee4436fec97773d8ab64d8b8c911ad3d866e111556d7d86f5d1b4484137b",
+    "challenges/04-atlas-capstone/solution/datasets/clients/dbt/integration/dom_party__client.sql": "fc63fbf949fe570a35add3f90272168d732f67f3112cce06fbbbd1f1be2dc1fd",
+    "challenges/04-atlas-capstone/solution/datasets/instruments/dbt/integration/dom_instrument__instrument.sql": "318cd4d85a6e5bb79a535fe1aeb70655e8f9201cc8c26cc6197f95ef1b6185d1",
+    "challenges/04-atlas-capstone/solution/datasets/advisors/dbt/integration/dom_party__advisor.sql": "adf69effd6ae320d0951710df67eb76871db076a1a49216591a85a2e4ea218a4"
+  }
+}

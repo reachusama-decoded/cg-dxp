@@ -1,0 +1,4 @@
+awscli
+rclone
+liblz4-dev
+gcc

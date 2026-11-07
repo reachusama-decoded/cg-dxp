@@ -1,0 +1,28 @@
+id: consumer-aligned.case-01-happy-path
+skill: skills/consumer-aligned
+type: artifact
+description: 'Bootstrap happy-path case. Generate consumer-aligned data products from domain-aligned canonical
+  tables. Creates denormalized views, pre-aggregated summaries, time-series rollups, and API-friendly
+  formats optimized for consumer use cases. Part of the AI Catalyst DPLC plugin bundle, aligned with RFD2
+  Phase 4 (Build). Use when '
+input:
+  arguments: Generate the consumer-aligned views for the employee directory data product (HR analytics-shaped).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Generate consumer-aligned
+      data products from domain-aligned canonical tables. Creates denormalized views, pre-aggregated summaries,
+      time-ser''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

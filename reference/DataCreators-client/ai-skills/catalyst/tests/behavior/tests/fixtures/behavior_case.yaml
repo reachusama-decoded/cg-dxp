@@ -1,0 +1,13 @@
+id: dplc-discovery.case-01-behavior
+skill: skills/orchestrators/dplc-discovery
+type: behavior
+description: Phase 2 orchestrator must invoke discover-data and data-profiling before document skills.
+input:
+  arguments: "employee headcount product ${TEST_CATALOG}"
+expected_sequence:
+  - skills/execution/discover-data
+  - skills/execution/data-profiling
+  - skills/document/feasibility-report
+strict_order: true
+allow_extra: true
+max_steps: 25

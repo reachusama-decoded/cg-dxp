@@ -1,0 +1,44 @@
+id: databricks-unity-catalog.case-01-artifact
+skill: skills/databricks-unity-catalog
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "set up Unity Catalog schema"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: references_uc_hierarchy
+      weight: 0.35
+      prompt: >-
+        Does the response correctly reference the Unity Catalog three-level
+        namespace hierarchy (catalog → schema → table) and use real UC
+        DDL commands such as `CREATE CATALOG`, `USE CATALOG`,
+        `GRANT <privilege> ON CATALOG`, or `CREATE SCHEMA ... IN CATALOG`?
+        Score 1.0 if the hierarchy is named correctly and at least one
+        real UC command is shown; 0.5 if the concept is present but
+        command syntax is wrong; 0 if the UC hierarchy is absent or
+        confused with legacy Hive metastore. Score 0-1.
+    - id: covers_volumes_or_external_locations
+      weight: 0.35
+      prompt: >-
+        Does the response cover either Unity Catalog Volumes (managed or
+        external, used for file storage paths such as a DAB target-path)
+        or External Locations (registering cloud storage paths via
+        `CREATE EXTERNAL LOCATION`)? Score 1.0 if either concept is
+        explained with correct syntax or use-case context; 0.5 if
+        mentioned but without meaningful detail; 0 if absent. Score 0-1.

@@ -1,0 +1,38 @@
+id: run-dbt-on-databricks.case-01-artifact
+skill: skills/run-dbt-on-databricks
+type: artifact
+description: 'Happy-path case. Explain how to run dbt on Databricks using the three
+  invocation modes. Use when the user asks to "run dbt on Databricks", "deploy dbt
+  to Databricks", "trigger dbt job", or "dbt run with --select".'
+input:
+  arguments: >
+    Show me how to run the dbt employee pipeline on Databricks. I want to iterate
+    locally first, then deploy the bundle, and finally trigger the job. Include
+    how to pass --select stg_employee__records to run only that model.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: three_modes_covered
+    weight: 0.4
+    prompt: >
+      Does the output describe all three run modes — local (dbt run --target local),
+      bundle-deploy (databricks bundle deploy), and bundle-run (databricks bundle run)?
+      Score 0-1.
+  - id: select_param_shown
+    weight: 0.3
+    prompt: >
+      Does the output show a concrete example of passing --select stg_employee__records
+      (or equivalent) in at least one of the run modes? Score 0-1.
+  - id: format_conformant
+    weight: 0.2
+    prompt: >
+      Does the output include concrete shell command examples with proper flags and
+      target names? Score 0-1.
+  - id: no_placeholders
+    weight: 0.1
+    prompt: >
+      Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where
+      data was expected? Score 0-1.

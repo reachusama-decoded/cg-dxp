@@ -1,0 +1,27 @@
+id: write-dbt-model.case-01-happy-path
+skill: skills/write-dbt-model
+type: artifact
+description: |
+  Bootstrap happy-path case. Author a single dbt model .sql file under
+  {product}/dbt/{layer}/{model_name}.sql plus update the per-layer
+  _{layer}__models.yml config with column test stubs. Compliance:
+  SQL-DBSQL-* rules + PY-NAMING-*. Trigger phrases: "write a dbt model",
+  "scaffold a dbt model", "author dbt staging model", "create dbt model
+  file".
+input:
+  arguments: Write a staging dbt model named stg_cg_employee under data-products/investments/datasets/employee_directory/dbt/staging/ that selects from the raw cg_employee source.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address authoring a single dbt model SQL file plus its yml entry under the canonical layout? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the model conform to SQL-DBSQL-* (file_format=delta, location_root for external table per SQL-DBSQL-005, merge incremental strategy with unique_key per SQL-DBSQL-003) and PY-NAMING-* (snake_case)? Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

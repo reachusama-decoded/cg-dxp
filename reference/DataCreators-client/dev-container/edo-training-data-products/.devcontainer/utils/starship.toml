@@ -1,0 +1,39 @@
+# Starship configuration using pastel-powerline preset
+# https://starship.rs/presets/
+
+add_newline = true
+
+format = """
+[┌─────────────────────→](bold green)
+[│](bold green)$directory$git_branch$git_status$python$nodejs$rust
+[└─ ](bold green)$character"""
+
+[character]
+success_symbol = "[✓](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+style = "cyan bold"
+truncate_to_repo = true
+truncation_length = 3
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "red bold"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+
+[python]
+symbol = "🐍 "
+style = "yellow bold"
+
+[nodejs]
+symbol = " "
+style = "green"
+
+[rust]
+symbol = "🦀 "
+style = "red"

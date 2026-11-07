@@ -1,0 +1,6 @@
+include/warehouse
+**/target
+**/logs
+**/warehouse
+**/dbt_packages
+.git

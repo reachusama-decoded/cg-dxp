@@ -1,0 +1,36 @@
+id: connect-databricks.case-01-happy-path
+skill: skills/connect-databricks
+type: artifact
+description: 'OAuth M2M happy-path case (DBX-SEC-002). Authenticate to a Databricks workspace using
+  OAuth client credentials and verify the session with SELECT 1. Trigger phrases: "connect to databricks",
+  "set up databricks connection", "authenticate databricks workspace", "log in to databricks".'
+env:
+  DATABRICKS_HOST: ${SANDBOX_DATABRICKS_HOST}
+  DATABRICKS_CLIENT_ID: ${SANDBOX_DATABRICKS_CLIENT_ID}
+  DATABRICKS_CLIENT_SECRET: ${SANDBOX_DATABRICKS_CLIENT_SECRET}
+  DATABRICKS_WAREHOUSE_ID: ${SANDBOX_DATABRICKS_WAREHOUSE_ID}
+input:
+  arguments: Confirm connectivity to ${TEST_CATALOG}.${TEST_SCHEMA} and report what's reachable.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+- output_contains: Connected to
+- output_contains: via OAuth M2M
+expected_components:
+- skills/connect-databricks/scripts/oauth_connect.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Authenticate
+      to a Databricks workspace using OAuth client credentials (DBX-SEC-002), refuse PATs, and verify
+      the session with SELECT 1''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

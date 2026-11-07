@@ -1,0 +1,6 @@
+include/warehouse/*.duckdb
+**/target/
+**/logs/
+**/dbt_packages/
+airflow_settings.yaml
+.env

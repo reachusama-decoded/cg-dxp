@@ -1,0 +1,36 @@
+id: dplc-design.case-02-no-sql
+skill: skills/dplc-design
+type: behavior
+description: >-
+  Phase 3 (Design) orchestrator on the SQL-unknown branch. When source-system
+  SQL transformations are not yet authored, `/column-lineage` must NOT be
+  invoked — the orchestrator should note in the data contract that lineage
+  tracing is deferred until Phase 4 Build. This is the negative half of the
+  AICAT-59 conditional: case-01 covers SQL-known, this case covers SQL-unknown.
+input:
+  arguments: >-
+    Run Phase 3 Design for the index data product. Discovery artifacts already
+    exist, but source-system SQL transformations have NOT yet been authored —
+    SQL is not available for this run. Use an approved architecture pattern,
+    schedule is straightforward, single source and single consumer, and the
+    product is classified Internal (no named regulations in scope).
+# Strict allow_extra=false: any sub-skill outside this list (notably
+# column-lineage) causes the case to fail. This is how the harness expresses
+# "column-lineage must NOT have been invoked" — see tests/behavior/cases.py
+# (only expected_sequence/strict_order/allow_extra are supported) and
+# tests/behavior/judge/sequence.py (allow_extra=False rejects unexpected).
+# Note: dplc-design self-invocation is also caught by allow_extra=False but
+# is now separately excluded in sub_skill_detection.py (AICAT-122) — an
+# orchestrator reading its own SKILL.md at startup is not a sub-skill call.
+expected_sequence:
+  - skills/data-modeling
+  - skills/data-contract
+  - skills/data-model
+  - skills/transformation-spec
+  # dataops-handoff-draft is marked Recommended in the orchestrator and the
+  # agent reliably elects to invoke it; include it in the allowlist so the
+  # negative assertion stays targeted on column-lineage.
+  - skills/dataops-handoff-draft
+strict_order: false
+allow_extra: false
+max_steps: 40

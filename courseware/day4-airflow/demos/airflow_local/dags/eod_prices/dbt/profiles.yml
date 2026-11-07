@@ -1,0 +1,8 @@
+eod_prices:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('EOD_DUCKDB_PATH', 'warehouse/eod_prices.duckdb') }}"
+      schema: "{{ env_var('EOD_SCHEMA', 'training_demo') }}"
+      threads: 4

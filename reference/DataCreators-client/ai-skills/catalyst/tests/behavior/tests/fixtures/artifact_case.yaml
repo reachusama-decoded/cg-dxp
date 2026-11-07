@@ -1,0 +1,30 @@
+id: discover-data.case-01-happy-path
+skill: skills/execution/discover-data
+type: artifact
+description: Discovers tables in the test catalog.
+input:
+  arguments: "${TEST_CATALOG} employee headcount"
+  prior_artifacts: []
+environment:
+  databricks: live
+  confluence: not_required
+structural_checks:
+  - non_empty_output
+  - contains_section: "Discovered Tables"
+  - has_markdown_table
+  - no_placeholder_text
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: structure
+      weight: 0.2
+      prompt: Does the output contain a markdown table with columns Schema, Table, Row Count, Key Columns, Relevance? Score 0-1.
+    - id: groundedness
+      weight: 0.4
+      prompt: Does the output reference cg_employee_v4 and only real Unity Catalog objects? Score 0-1.
+    - id: relevance_flagging
+      weight: 0.3
+      prompt: Does at least one row carry a HIGH/MEDIUM/LOW relevance label? Score 0-1.
+    - id: no_placeholders
+      weight: 0.1
+      prompt: Output free of [TBD], [fill in], lorem-ipsum stubs? Score 0-1.

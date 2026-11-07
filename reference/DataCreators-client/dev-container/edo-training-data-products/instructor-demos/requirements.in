@@ -1,0 +1,6 @@
+# Separate capture environment; never install these into the managed client Python.
+playwright==1.61.0
+PyYAML==6.0.3
+jsonschema==4.26.0
+pyte==0.8.2
+pytest==8.3.5

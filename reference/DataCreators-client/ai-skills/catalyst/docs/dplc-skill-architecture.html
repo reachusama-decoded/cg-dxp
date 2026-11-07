@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Catalyst: DPLC Skill Architecture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f17; color: #cdd6f4; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 40px; max-width: 1100px; margin: 0 auto; }
+
+  h1 { text-align: center; font-size: 1.6em; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.02em; }
+  .subtitle { text-align: center; color: #7f849c; font-size: 0.9em; margin-bottom: 36px; }
+
+  .section { margin-bottom: 48px; }
+  .section h2 { font-size: 1.2em; font-weight: 600; margin-bottom: 6px; color: #cba6f7; }
+  .section .desc { color: #7f849c; font-size: 0.875em; margin-bottom: 16px; line-height: 1.6; }
+
+  /* ── Big picture ── */
+  .big-picture { margin-top: 20px; }
+  .bp-top { display: flex; justify-content: center; margin-bottom: 24px; }
+  .bp-concierge { background: #2a1a30; border: 2px solid #cba6f7; border-radius: 12px; padding: 22px 56px; text-align: center; }
+  .bp-concierge strong { color: #cba6f7; font-size: 1.2em; vertical-align: middle; }
+  .bp-concierge-skill { font-size: 0.875em; color: #9399b2; font-family: 'SF Mono', Menlo, monospace; margin-top: 6px; }
+  .bp-concierge-desc { font-size: 0.875em; color: #7f849c; margin-top: 4px; }
+  .bp-grid { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr; grid-template-rows: auto auto auto; }
+  .bp-entry-label { text-align: center; font-size: 0.8em; color: #7f849c; font-style: italic; padding-bottom: 4px; }
+  .bp-down-arrow { text-align: center; font-size: 0.95em; color: #585b70; padding-bottom: 8px; }
+  .bp-stage { border-radius: 10px; padding: 22px 16px; text-align: center; }
+  .bp-stage.design { background: #142614; border: 2px solid #2ecc71; }
+  .bp-stage.build  { background: #261406; border: 2px solid #e67e22; }
+  .bp-stage.ship   { background: #06142e; border: 2px solid #3498db; }
+  .bp-stage-name { font-size: 1.4em; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .bp-stage.design .bp-stage-name { color: #2ecc71; }
+  .bp-stage.build  .bp-stage-name { color: #e67e22; }
+  .bp-stage.ship   .bp-stage-name { color: #3498db; }
+  .bp-stage-skill { font-size: 0.875em; color: #9399b2; font-family: 'SF Mono', Menlo, monospace; margin-bottom: 8px; }
+  .bp-stage-phases { font-size: 0.9em; color: #cdd6f4; }
+  .bp-horiz-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: #585b70; }
+  .bp-rework-box { margin-top: 16px; background: #181825; border-radius: 8px; padding: 12px 18px; border-left: 3px solid #585b70; }
+  .bp-rework-box div { font-size: 0.875em; color: #9399b2; padding: 3px 0; line-height: 1.5; }
+  .bp-rework-box strong { color: #cdd6f4; }
+  .phase-tag { background: #313244; border-radius: 4px; padding: 1px 6px; font-size: 0.85em; font-family: 'SF Mono', Menlo, monospace; color: #cdd6f4; }
+
+  /* ── Layer rows ── */
+  .layers { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .layer-row { display: flex; gap: 8px; }
+  .layer-box { flex: 1; border-radius: 8px; padding: 12px 16px; }
+  .layer-box.lb-concierge { background: #2a1a30; border-left: 4px solid #cba6f7; }
+  .layer-box.lb-design    { background: #142614; border-left: 4px solid #a6e3a1; }
+  .layer-box.lb-build     { background: #261406; border-left: 4px solid #fab387; }
+  .layer-box.lb-ship      { background: #06142e; border-left: 4px solid #89b4fa; }
+  .layer-box.lb-leaf      { background: #13131e; border-left: 4px solid #313244; }
+  .layer-label { font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #585b70; margin-bottom: 4px; }
+  .layer-title { font-size: 0.9em; font-weight: 600; color: #cdd6f4; }
+  .layer-desc  { font-size: 0.825em; color: #9399b2; margin-top: 4px; line-height: 1.4; }
+  .layer-skills { font-size: 0.8em; color: #6c7086; margin-top: 6px; font-family: 'SF Mono', Menlo, monospace; line-height: 1.6; }
+  .layer-desc code, .layer-skills code { background: #1e1e2e; padding: 1px 5px; border-radius: 3px; color: #f5c2e7; font-size: 0.9em; }
+
+  /* ── Tables ── */
+  .term-table { width: 100%; border-collapse: collapse; font-size: 0.875em; }
+  .term-table th { text-align: left; padding: 8px 10px; color: #89b4fa; border-bottom: 2px solid #313244; }
+  .term-table td { padding: 8px 10px; border-bottom: 1px solid #1e1e2e; vertical-align: top; }
+  .term-table code { background: #1e1e2e; padding: 1px 5px; border-radius: 3px; color: #f5c2e7; font-size: 0.875em; }
+
+  /* ── Rules grid ── */
+  .rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+  .rule { background: #181825; border-radius: 8px; padding: 14px 16px; border-left: 3px solid #cba6f7; }
+  .rule strong { color: #cdd6f4; font-size: 0.9em; }
+  .rule p { font-size: 0.875em; color: #9399b2; margin-top: 4px; line-height: 1.4; }
+  .rule code { background: #1e1e2e; padding: 1px 5px; border-radius: 3px; color: #f5c2e7; font-size: 0.875em; }
+
+  /* ── Stage sections ── */
+  .stage { margin-bottom: 48px; }
+  .stage h2 { font-size: 1.2em; font-weight: 600; margin-bottom: 6px; }
+  .stage .desc { color: #7f849c; font-size: 0.875em; margin-bottom: 6px; line-height: 1.6; }
+  .stage .illustrative-note { font-size: 0.875em; color: #585b70; font-style: italic; margin-bottom: 16px; }
+
+  /* ── Phase cards ── */
+  .phases { display: grid; gap: 12px; margin-top: 16px; }
+  .phases.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .phases.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .phases.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .phase { background: #181825; border-radius: 10px; padding: 16px 18px; border-top: 3px solid #555; }
+  .phase.green  { border-top-color: #a6e3a1; }
+  .phase.orange { border-top-color: #fab387; }
+  .phase.blue   { border-top-color: #89b4fa; }
+  .phase h3 { font-size: 0.95em; margin-bottom: 2px; color: #cdd6f4; }
+  .phase .skill-name { font-size: 0.8em; color: #585b70; font-family: 'SF Mono', Menlo, monospace; margin-bottom: 8px; }
+  .phase .gate { font-size: 0.8em; color: #f9e2af; margin-bottom: 10px; font-style: italic; }
+  .phase .leaf-label { font-size: 0.75em; color: #585b70; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 10px; margin-bottom: 4px; }
+  .phase ul { list-style: none; padding: 0; }
+  .phase li { font-size: 0.875em; color: #9399b2; padding: 2px 0; }
+  .phase li.primary { color: #cdd6f4; font-weight: 500; }
+  .phase li.doc { color: #7f849c; }
+
+  hr.divider { border: none; border-top: 1px solid #1e1e2e; margin: 48px 0; }
+</style>
+</head>
+<body>
+
+<h1>AI Catalyst: DPLC Skill Architecture</h1>
+<p class="subtitle">How the agent plugin orchestrates the Data Product Lifecycle</p>
+
+<!-- ═══════ BIG PICTURE ═══════ -->
+<div class="section">
+  <h2>The big picture</h2>
+  <p class="desc">Three stages. Nine phases. Users can enter at any point — the Concierge detects where they are and routes them.</p>
+
+  <div class="big-picture">
+    <div class="bp-top">
+      <div class="bp-concierge">
+        <div>🎯 <strong>Concierge</strong></div>
+        <div class="bp-concierge-skill">dplc-concierge</div>
+        <div class="bp-concierge-desc">Detects context, routes to the right stage</div>
+      </div>
+    </div>
+    <div class="bp-grid">
+      <div class="bp-entry-label">new request</div>
+      <div></div>
+      <div class="bp-entry-label">design approved</div>
+      <div></div>
+      <div class="bp-entry-label">product is live</div>
+
+      <div class="bp-down-arrow">↓</div>
+      <div></div>
+      <div class="bp-down-arrow">↓</div>
+      <div></div>
+      <div class="bp-down-arrow">↓</div>
+
+      <div class="bp-stage design">
+        <div class="bp-stage-name">DESIGN</div>
+        <div class="bp-stage-skill">dplc-design-stage</div>
+        <div class="bp-stage-phases">P0 · P1 · P2 · P3</div>
+      </div>
+      <div class="bp-horiz-arrow">→</div>
+      <div class="bp-stage build">
+        <div class="bp-stage-name">BUILD</div>
+        <div class="bp-stage-skill">dplc-build-stage</div>
+        <div class="bp-stage-phases">P4 · P5 · P6</div>
+      </div>
+      <div class="bp-horiz-arrow">→</div>
+      <div class="bp-stage ship">
+        <div class="bp-stage-name">SHIP</div>
+        <div class="bp-stage-skill">dplc-ship-stage</div>
+        <div class="bp-stage-phases">P7 · P8</div>
+      </div>
+    </div>
+    <div class="bp-rework-box">
+      <div>↩ <strong>Rework</strong> — gate failure in Build (<span class="phase-tag">P4</span>, <span class="phase-tag">P5</span>, <span class="phase-tag">P6</span>) loops back to Design</div>
+      <div>↩ <strong>Major change</strong> — Evolve (<span class="phase-tag">P8</span>) loops back to Design for new versions or breaking changes</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ DESIGN RULES ═══════ -->
+<div class="section">
+  <h2>Design rules</h2>
+  <p class="desc">These govern how every stage and phase skill is built.</p>
+  <div class="rules">
+    <div class="rule">
+      <strong>Phases don't call each other</strong>
+      <p>The stage orchestrator calls them in sequence. <code>dplc-validate</code> never calls <code>dplc-build</code>.</p>
+    </div>
+    <div class="rule">
+      <strong>Check artifacts, not skills</strong>
+      <p>Phase 5 checks <em>"does <code>build-checklist.md</code> exist?"</em> — not "did dplc-build run?"</p>
+    </div>
+    <div class="rule">
+      <strong>Gate failures stay local</strong>
+      <p>If Gate 5 fails → fix and retry Phase 5. Don't restart Phase 4.</p>
+    </div>
+    <div class="rule">
+      <strong>Rework loops back to Design</strong>
+      <p>Any gate failure in Build (P4–P6) can loop back to Phase 3. Evolve (P8) loops back for major changes. Minor fixes stay local.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ HOW THE LAYERS WORK ═══════ -->
+<div class="section">
+  <h2>How the layers work</h2>
+  <p class="desc">Four layers. Each invokes only the layer immediately below it — never sideways or upward.</p>
+
+  <div class="layers">
+
+    <div class="layer-row">
+      <div class="layer-box lb-concierge">
+        <div class="layer-label">Layer 1 — Entry</div>
+        <div class="layer-title">Concierge</div>
+        <div class="layer-desc">Detects context, determines the right entry point, routes to a stage orchestrator.</div>
+        <div class="layer-skills"><code>dplc-concierge</code></div>
+      </div>
+    </div>
+
+    <div class="layer-row">
+      <div class="layer-box lb-design">
+        <div class="layer-label">Layer 2 — Stage (Design)</div>
+        <div class="layer-title">Stage Orchestrator</div>
+        <div class="layer-desc">Sequences phases P0→P3, checks gates between them.</div>
+        <div class="layer-skills"><code>dplc-design-stage</code></div>
+      </div>
+      <div class="layer-box lb-build">
+        <div class="layer-label">Layer 2 — Stage (Build)</div>
+        <div class="layer-title">Stage Orchestrator</div>
+        <div class="layer-desc">Sequences phases P4→P6, checks gates between them.</div>
+        <div class="layer-skills"><code>dplc-build-stage</code></div>
+      </div>
+      <div class="layer-box lb-ship">
+        <div class="layer-label">Layer 2 — Stage (Ship)</div>
+        <div class="layer-title">Stage Orchestrator</div>
+        <div class="layer-desc">Sequences phases P7→P8, handles the loop-back decision.</div>
+        <div class="layer-skills"><code>dplc-ship-stage</code></div>
+      </div>
+    </div>
+
+    <div class="layer-row">
+      <div class="layer-box lb-design">
+        <div class="layer-label">Layer 3 — Phase (Design)</div>
+        <div class="layer-title">Phase Sub-Orchestrators</div>
+        <div class="layer-desc">Validate inputs, invoke leaf skills, evaluate gate.</div>
+        <div class="layer-skills"><code>dplc-prereq</code> · <code>dplc-triage</code> · <code>dplc-discovery</code> · <code>dplc-design</code></div>
+      </div>
+      <div class="layer-box lb-build">
+        <div class="layer-label">Layer 3 — Phase (Build)</div>
+        <div class="layer-title">Phase Sub-Orchestrators</div>
+        <div class="layer-desc">Validate inputs, invoke leaf skills, evaluate gate.</div>
+        <div class="layer-skills"><code>dplc-build</code> · <code>dplc-validate</code> · <code>dplc-publish</code></div>
+      </div>
+      <div class="layer-box lb-ship">
+        <div class="layer-label">Layer 3 — Phase (Ship)</div>
+        <div class="layer-title">Phase Sub-Orchestrators</div>
+        <div class="layer-desc">Validate inputs, invoke leaf skills, evaluate gate.</div>
+        <div class="layer-skills"><code>dplc-operate</code> · <code>dplc-evolve</code></div>
+      </div>
+    </div>
+
+    <div class="layer-row">
+      <div class="layer-box lb-leaf">
+        <div class="layer-label">Layer 4 — Leaf Skills</div>
+        <div class="layer-title">The skills that do the work</div>
+        <div class="layer-desc" style="margin-bottom: 12px;">Three types, each with a distinct contract. A phase sub-orchestrator can invoke all three types.</div>
+        <table class="term-table">
+          <tr>
+            <th>Type</th>
+            <th>What it does</th>
+            <th>Result</th>
+            <th>Examples</th>
+          </tr>
+          <tr>
+            <td><strong>Capability</strong></td>
+            <td>Executes an action against an external system — queries data, profiles tables, runs SQL. Does not write a document.</td>
+            <td>Data, analysis, or structured output returned to the orchestrator</td>
+            <td><code>discover-data</code> · <code>data-profiling</code> · <code>data-modeling</code></td>
+          </tr>
+          <tr>
+            <td><strong>Document</strong></td>
+            <td>Generates a markdown artifact and persists it to <code>.catalyst/</code>. Does not execute external calls.</td>
+            <td>A file on disk that downstream phases and gates check for existence</td>
+            <td><code>feasibility-report</code> · <code>data-contract</code> · <code>build-checklist</code></td>
+          </tr>
+          <tr>
+            <td><strong>Workflow</strong></td>
+            <td>Multi-step pipeline generation — scaffolds, configures, and wires together multiple components in sequence.</td>
+            <td>Runnable code or config (DAGs, dbt models, Databricks jobs)</td>
+            <td><code>source-aligned</code> · <code>domain-aligned</code> · <code>consumer-aligned</code></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <table class="term-table" style="margin-top: 20px;">
+    <tr>
+      <th>Stage</th>
+      <th>Stage Orchestrator</th>
+      <th>Phase Sub-Orchestrators</th>
+    </tr>
+    <tr>
+      <td><strong>Design</strong></td>
+      <td><code>dplc-design-stage</code></td>
+      <td><code>dplc-prereq</code> · <code>dplc-triage</code> · <code>dplc-discovery</code> · <code>dplc-design</code></td>
+    </tr>
+    <tr>
+      <td><strong>Build</strong></td>
+      <td><code>dplc-build-stage</code></td>
+      <td><code>dplc-build</code> · <code>dplc-validate</code> · <code>dplc-publish</code></td>
+    </tr>
+    <tr>
+      <td><strong>Ship</strong></td>
+      <td><code>dplc-ship-stage</code></td>
+      <td><code>dplc-operate</code> · <code>dplc-evolve</code></td>
+    </tr>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════ DESIGN STAGE ═══════ -->
+<div class="stage">
+  <h2 style="color: #a6e3a1;">Design Stage</h2>
+  <p class="desc">From initial request through approved design. <code>dplc-design-stage</code> runs Phases 0→1→2→3 in sequence.</p>
+  <p class="illustrative-note">Skills listed below are illustrative — see each phase's <code>SKILL.md</code> or <a href="https://github.com/cg-open-itg/catalyst/tree/main/skills" target="_blank" rel="noopener noreferrer" style="color: #89b4fa;">browse all skills on GitHub</a> for the full list.</p>
+
+  <div class="phases cols-4">
+    <div class="phase green">
+      <h3>Phase 0 — Prereq</h3>
+      <div class="skill-name">dplc-prereq</div>
+      <div class="gate">Gate: Data Owner assigned?</div>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>phase-zero-checklist</li>
+      </ul>
+    </div>
+
+    <div class="phase green">
+      <h3>Phase 1 — Triage</h3>
+      <div class="skill-name">dplc-triage</div>
+      <div class="gate">Gate: Proceed to Discovery?</div>
+      <div class="leaf-label">Capability</div>
+      <ul>
+        <li class="primary">marketplace-search</li>
+      </ul>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>demand-tracker-entry</li>
+        <li>consumer-use-case-map</li>
+      </ul>
+    </div>
+
+    <div class="phase green">
+      <h3>Phase 2 — Discovery</h3>
+      <div class="skill-name">dplc-discovery</div>
+      <div class="gate">Gate: Feasible &amp; Capacity?</div>
+      <div class="leaf-label">Capability</div>
+      <ul>
+        <li class="primary">discover-data</li>
+        <li class="primary">data-profiling</li>
+        <li class="primary">load-confluence-context</li>
+      </ul>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>product-requirements-document</li>
+        <li>feasibility-report</li>
+        <li>requirements-acceptance-criteria</li>
+        <li>outcome-kpi-statement</li>
+        <li>effort-estimate</li>
+        <li class="doc">business-case (optional)</li>
+        <li class="doc">privacy-impact-assessment (if PII)</li>
+      </ul>
+    </div>
+
+    <div class="phase green">
+      <h3>Phase 3 — Design</h3>
+      <div class="skill-name">dplc-design</div>
+      <div class="gate">Gate: Contract approved?</div>
+      <div class="leaf-label">Capability</div>
+      <ul>
+        <li class="primary">data-modeling</li>
+        <li class="primary">column-lineage</li>
+      </ul>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>data-contract</li>
+        <li>data-model</li>
+        <li>transformation-spec</li>
+        <li>architecture-diagram</li>
+        <li>dataops-handoff-draft</li>
+        <li class="doc">schedule-backfill-plan (optional)</li>
+        <li class="doc">nfr-specification (optional)</li>
+        <li class="doc">security-design (if restricted)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ BUILD STAGE ═══════ -->
+<div class="stage">
+  <h2 style="color: #fab387;">Build Stage</h2>
+  <p class="desc">From approved design through production deployment. <code>dplc-build-stage</code> runs Phases 4→5→6 in sequence. Requires design artifacts as inputs.</p>
+  <p class="illustrative-note">Skills listed below are illustrative — see each phase's <code>SKILL.md</code> or <a href="https://github.com/cg-open-itg/catalyst/tree/main/skills" target="_blank" rel="noopener noreferrer" style="color: #89b4fa;">browse all skills on GitHub</a> for the full list.</p>
+
+  <div class="phases cols-3">
+    <div class="phase orange">
+      <h3>Phase 4 — Build</h3>
+      <div class="skill-name">dplc-build</div>
+      <div class="gate">Gate: Code reviewed &amp; CI passed?</div>
+      <div class="leaf-label">Workflow</div>
+      <ul>
+        <li class="primary">source-aligned</li>
+        <li class="primary">domain-aligned</li>
+        <li class="primary">consumer-aligned</li>
+      </ul>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>build-checklist</li>
+        <li>unit-test-report</li>
+        <li>code-review-sign-off</li>
+      </ul>
+    </div>
+
+    <div class="phase orange">
+      <h3>Phase 5 — Validate</h3>
+      <div class="skill-name">dplc-validate</div>
+      <div class="gate">Gate: UAT passed &amp; accepted?</div>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>integration-test-report</li>
+        <li>data-quality-sign-off</li>
+        <li>uat-sign-off</li>
+      </ul>
+    </div>
+
+    <div class="phase orange">
+      <h3>Phase 6 — Publish</h3>
+      <div class="skill-name">dplc-publish</div>
+      <div class="gate">Gate: Production validated?</div>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>deployment-record</li>
+        <li>consumer-onboarding-guide</li>
+        <li>release-notes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ SHIP STAGE ═══════ -->
+<div class="stage">
+  <h2 style="color: #89b4fa;">Ship Stage</h2>
+  <p class="desc">Post-production: operational support and evolution. <code>dplc-ship-stage</code> runs Phase 7 once after go-live, then Phase 8 whenever the product needs to change.</p>
+  <p class="illustrative-note">Skills listed below are illustrative — see each phase's <code>SKILL.md</code> or <a href="https://github.com/cg-open-itg/catalyst/tree/main/skills" target="_blank" rel="noopener noreferrer" style="color: #89b4fa;">browse all skills on GitHub</a> for the full list.</p>
+
+  <div class="phases cols-2">
+    <div class="phase blue">
+      <h3>Phase 7 — Operate</h3>
+      <div class="skill-name">dplc-operate</div>
+      <div class="gate">Gate: Runbook &amp; handoff signed?</div>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>runbook</li>
+        <li>sla-dashboard-spec</li>
+        <li>warranty-handoff-sign-off</li>
+        <li class="doc">incident-log (ongoing)</li>
+      </ul>
+    </div>
+
+    <div class="phase blue">
+      <h3>Phase 8 — Evolve</h3>
+      <div class="skill-name">dplc-evolve</div>
+      <div class="gate">Decision: continue / change / deprecate?</div>
+      <div class="leaf-label">Document</div>
+      <ul>
+        <li>usage-analytics-report</li>
+        <li>downstream-impact-assessment</li>
+        <li class="doc">deprecation-notice (if retiring)</li>
+      </ul>
+      <div class="leaf-label" style="margin-top: 10px;">Routing</div>
+      <ul>
+        <li class="doc">Minor fix → handle in Ship</li>
+        <li class="doc">Major change → loop to Design</li>
+        <li class="doc">No change → continue monitoring</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

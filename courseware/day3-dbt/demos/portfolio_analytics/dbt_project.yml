@@ -1,0 +1,51 @@
+# Portfolio Analytics — instructor demo copy of challenge 02, running on DuckDB.
+# Same project name, layers, tags and models as the learners' Databricks project, so
+# every command in the challenge README can be shown here with the same output shape.
+name: 'portfolio_analytics_challenge'
+version: '1.0'
+profile: 'portfolio_analytics_challenge'
+config-version: 2
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+# Layers are separated by +tags, not +schema, exactly as in the training catalog
+# (one pre-provisioned schema per learner). Select a layer with --select tag:staging.
+models:
+  portfolio_analytics_challenge:
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +tags: ["marts"]
+      # On Databricks the learners' project runs `OPTIMIZE {{ this }} ZORDER BY (...)`
+      # after each mart. That is a Delta feature, so the macro below emits it only when
+      # target.type is databricks and a harmless no-op on DuckDB. Open macros/optimize_mart.sql.
+      +post-hook: "{{ optimize_mart(this) }}"
+    stretch:
+      +tags: ["stretch"]
+
+# The five *_raw seeds carry an authored May 2026 _extracted_at. Refreshing it to "now"
+# on load is what lets `dbt source freshness` (and Day 4's freshness gate) pass on a
+# fresh seed. The macro uses dbt's cross-database current_timestamp().
+seeds:
+  portfolio_analytics_challenge:
+    holdings_raw:
+      +post-hook: "{{ refresh_extracted_at(this) }}"
+    positions_raw:
+      +post-hook: "{{ refresh_extracted_at(this) }}"
+    prices_raw:
+      +post-hook: "{{ refresh_extracted_at(this) }}"
+    refdata_raw:
+      +post-hook: "{{ refresh_extracted_at(this) }}"
+    fx_rates_raw:
+      +post-hook: "{{ refresh_extracted_at(this) }}"

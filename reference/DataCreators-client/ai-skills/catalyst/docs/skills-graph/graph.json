@@ -1,0 +1,2541 @@
+{
+  "$comment": "GENERATED FILE — do not edit by hand. Run: python scripts/build_skills_graph.py",
+  "schemaVersion": 1,
+  "phases": [
+    {
+      "id": "phase-0-prereq",
+      "label": "0 · Prereq",
+      "stage": "design"
+    },
+    {
+      "id": "phase-1-triage",
+      "label": "1 · Triage",
+      "stage": "design"
+    },
+    {
+      "id": "phase-2-discovery",
+      "label": "2 · Discovery",
+      "stage": "design"
+    },
+    {
+      "id": "phase-3-design",
+      "label": "3 · Design",
+      "stage": "design"
+    },
+    {
+      "id": "phase-4-build",
+      "label": "4 · Build",
+      "stage": "build"
+    },
+    {
+      "id": "phase-5-validate",
+      "label": "5 · Validate",
+      "stage": "build"
+    },
+    {
+      "id": "phase-6-publish",
+      "label": "6 · Publish",
+      "stage": "build"
+    },
+    {
+      "id": "phase-7-operate",
+      "label": "7 · Operate",
+      "stage": "ship"
+    },
+    {
+      "id": "phase-8-evolve",
+      "label": "8 · Evolve",
+      "stage": "ship"
+    },
+    {
+      "id": "cross-cutting",
+      "label": "Cross-cutting",
+      "stage": "cross-cutting"
+    },
+    {
+      "id": "none",
+      "label": "Standalone",
+      "stage": "standalone"
+    }
+  ],
+  "stages": [
+    {
+      "id": "design",
+      "label": "Design"
+    },
+    {
+      "id": "build",
+      "label": "Build"
+    },
+    {
+      "id": "ship",
+      "label": "Ship"
+    },
+    {
+      "id": "cross-cutting",
+      "label": "Cross-cutting"
+    },
+    {
+      "id": "standalone",
+      "label": "Standalone"
+    }
+  ],
+  "tiers": [
+    "orchestrator",
+    "workflow",
+    "document",
+    "capability",
+    "unspecified"
+  ],
+  "nodes": [
+    {
+      "id": "adding-dbt-unit-test",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Creates unit test YAML definitions that mock upstream model inputs and validate expected outputs.",
+      "path": "skills/adding-dbt-unit-test/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "architecture-diagram",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Generate architecture diagrams for a data product — data flow, storage layout, infrastructure, and failure modes.",
+      "path": "skills/architecture-diagram/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "astronomer-update-base-deployment",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Update the base scaffolding of an existing Astronomer deployment repo (previously vended from the `cg-open-itg/template-copier-astro-infra-bundle` template) with the latest Astro / IAC template.",
+      "path": "skills/astronomer-update-base-deployment/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "behavior-test-triage",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Automate the full behavior-test triage loop: generate a categorized triage report, open a Jira epic + per-finding tickets in AICAT, post back-link comments on the GitHub issues, and update the Confluence triage page with a ticket-to-issue mapping table.",
+      "path": "skills/behavior-test-triage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "build-checklist",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generate a build checklist tracking infrastructure, pipeline code, tests, DQ rules, and documentation completeness.",
+      "path": "skills/build-checklist/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "build-preflight",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Run the Phase 4 Build preflight check: confirm build mode, resolve product type and catalog placement, inventory DPLC artifacts with agentic backfill, scan macro pattern signatures, verify Databricks readiness, and emit a build-state report cached in `.catalyst-build.yml`.",
+      "path": "skills/build-preflight/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "business-case",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Build a business case with cost/benefit analysis, alternatives, and strategic alignment.",
+      "path": "skills/business-case/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "catalyst-feedback",
+      "kind": "skill",
+      "tier": "unspecified",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Capture substantive feedback on an AI Catalyst skill as a GitHub issue, including rich session context (skill inputs, sub-skills run, phase, errors).",
+      "path": "skills/catalyst-feedback/SKILL.md",
+      "registered": true,
+      "gaps": [
+        "lifecycle-phase",
+        "tier"
+      ]
+    },
+    {
+      "id": "code-review-sign-off",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Record code review findings, resolutions, and sign-off.",
+      "path": "skills/code-review-sign-off/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "column-lineage",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Trace column-level lineage across transformation layers.",
+      "path": "skills/column-lineage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "configure-sql-warehouse",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Provisions or reuses a Databricks serverless SQL warehouse for dbt workloads, scaffolds a compute DAB (separate lifecycle from the pipeline DAB), wires http_path and warehouse_id into profiles.yml and variables_{env}.yml, and documents the sizing decision.",
+      "path": "skills/configure-sql-warehouse/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "connect-astro",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Authenticate to Astronomer Cloud using an API token sourced from a platform secrets backend (PY-SECURITY-*).",
+      "path": "skills/connect-astro/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "connect-databricks",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Authenticate to a Databricks workspace using OAuth client credentials (DBX-SEC-002).",
+      "path": "skills/connect-databricks/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "consumer-aligned",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generate consumer-aligned data products from domain-aligned canonical tables.",
+      "path": "skills/consumer-aligned/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "consumer-onboarding-guide",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-6-publish",
+      "stage": "build",
+      "description": "Create a consumer onboarding guide with prerequisites, datasets, example queries, and support contacts.",
+      "path": "skills/consumer-onboarding-guide/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "consumer-use-case-map",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-1-triage",
+      "stage": "design",
+      "description": "Map downstream consumers, their use cases, access patterns, and SLA requirements.",
+      "path": "skills/consumer-use-case-map/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-contract",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Define the producer-consumer contract: schema, SLAs, quality rules, access control, and versioning.",
+      "path": "skills/data-contract/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-model",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Design conceptual, logical, and physical data models with data dictionary.",
+      "path": "skills/data-model/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-modeling",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Design the conceptual data model — entities, grain, SCD strategy, and an ER diagram — from business requirements.",
+      "path": "skills/data-modeling/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-profiling",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Profile source tables for quality, completeness, and fitness.",
+      "path": "skills/data-profiling/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-quality-controls-plan",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Derive a focused set of data-quality controls for a target table during Phase 3 Design.",
+      "path": "skills/data-quality-controls-plan/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "data-quality-sign-off",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-5-validate",
+      "stage": "build",
+      "description": "Record DQ validation results and sign-off from data owner and engineering leads.",
+      "path": "skills/data-quality-sign-off/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-bundles",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Create and configure Declarative Automation Bundles (formerly Asset Bundles) with best practices for multi-environment deployments (CICD).",
+      "path": "skills/databricks-bundles/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-config",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Manage Databricks workspace connections: check current workspace, switch profiles, list available workspaces, or authenticate to a new workspace.",
+      "path": "skills/databricks-config/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-dbsql",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Databricks SQL (DBSQL) advanced features and SQL warehouse capabilities.",
+      "path": "skills/databricks-dbsql/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-docs",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Databricks documentation reference via llms.txt index.",
+      "path": "skills/databricks-docs/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-execution-compute",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Execute code and manage compute on Databricks.",
+      "path": "skills/databricks-execution-compute/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-jobs",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Use this skill proactively for ANY Databricks Jobs task - creating, listing, running, updating, or deleting jobs.",
+      "path": "skills/databricks-jobs/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-python-sdk",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Databricks development guidance including Python SDK, Databricks Connect, CLI, and REST API.",
+      "path": "skills/databricks-python-sdk/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "databricks-unity-catalog",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Unity Catalog system tables and volumes.",
+      "path": "skills/databricks-unity-catalog/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dataops-handoff-draft",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Draft the operational handoff package: compute, orchestration, monitoring, alerting, and on-call contacts.",
+      "path": "skills/dataops-handoff-draft/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dbt-best-practices",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generation-time best practices for dbt projects on Databricks.",
+      "path": "skills/dbt-best-practices/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dbt-unit-test",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generate unit tests for a DBT model.",
+      "path": "skills/dbt-unit-test/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "demand-tracker-entry",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-1-triage",
+      "stage": "design",
+      "description": "Create a demand tracker entry capturing requestor, classification, priority, and lifecycle state.",
+      "path": "skills/demand-tracker-entry/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "deploy-airflow-local",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Bring up a local Airflow environment with the Astronomer CLI (`astro dev start`) for any Astro-based data product, so a developer can see their YAML-defined DAGs render and run them against Databricks.",
+      "path": "skills/deploy-airflow-local/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "deploy-dab",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Deploy a Databricks Asset Bundle for a single data product to the developer's own local dev space during the Phase 4 build inner loop.",
+      "path": "skills/deploy-dab/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "deployment-record",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-6-publish",
+      "stage": "build",
+      "description": "Log deployment metadata, components deployed, verification steps, and issues encountered.",
+      "path": "skills/deployment-record/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "deprecation-notice",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-8-evolve",
+      "stage": "ship",
+      "description": "Create a deprecation notice with scope, timeline, migration checklist, and rollback plan.",
+      "path": "skills/deprecation-notice/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "discover-data",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Query Unity Catalog for tables relevant to a data product.",
+      "path": "skills/discover-data/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "domain-aligned",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "AI Catalyst DPLC Domain-Aligned Data Product Generator — Build canonical, domain-aligned data products from existing Unity Catalog source tables.",
+      "path": "skills/domain-aligned/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "downstream-impact-assessment",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-8-evolve",
+      "stage": "ship",
+      "description": "Assess downstream consumer impact from proposed changes, with risk ratings and communication plan.",
+      "path": "skills/downstream-impact-assessment/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-build",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Run the Build phase (Phase 4) of the Data Product Lifecycle.",
+      "path": "skills/dplc-build/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-build-stage",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Run the Deliver stage -- build, validate, and publish a data product.",
+      "path": "skills/dplc-build-stage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-concierge",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Entry point for the Data Product Lifecycle.",
+      "path": "skills/dplc-concierge/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-design",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Phase 3 Design -- sub-orchestrator of dplc-design-stage.",
+      "path": "skills/dplc-design/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-design-stage",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Run the Design stage of the data product lifecycle -- from initial demand through design.",
+      "path": "skills/dplc-design-stage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-discovery",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Phase 2 Discovery -- sub-orchestrator of dplc-design-stage.",
+      "path": "skills/dplc-discovery/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-preflight",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Pre-flight check before any Data Product Lifecycle work.",
+      "path": "skills/dplc-preflight/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-prereq",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-0-prereq",
+      "stage": "design",
+      "description": "Phase 0 Pre-requisites -- sub-orchestrator of dplc-design-stage.",
+      "path": "skills/dplc-prereq/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-publish",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-6-publish",
+      "stage": "build",
+      "description": "Phase 6 Publish sub-orchestrator under /dplc-build-stage.",
+      "path": "skills/dplc-publish/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-ship-stage",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Run the Ship stage -- operate, monitor, and evolve.",
+      "path": "skills/dplc-ship-stage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-triage",
+      "kind": "skill",
+      "tier": "orchestrator",
+      "phase": "phase-1-triage",
+      "stage": "design",
+      "description": "Phase 1 Triage -- sub-orchestrator of dplc-design-stage.",
+      "path": "skills/dplc-triage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "dplc-validate",
+      "kind": "skill",
+      "tier": "unspecified",
+      "phase": "phase-5-validate",
+      "stage": "build",
+      "description": "Phase 5 Validate -- sub-orchestrator of dplc-build-stage.",
+      "path": "skills/dplc-validate/SKILL.md",
+      "registered": true,
+      "gaps": [
+        "tier"
+      ]
+    },
+    {
+      "id": "effort-estimate",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Estimate effort with work breakdown, assumptions, and risks.",
+      "path": "skills/effort-estimate/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "feasibility-report",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Assess technical, data availability, and regulatory feasibility for a proposed data product.",
+      "path": "skills/feasibility-report/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "fetch-confluence",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Fetch and parse Confluence pages as Markdown context.",
+      "path": "skills/fetch-confluence/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "fetching-dbt-docs",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Retrieves and searches dbt Core CLI documentation pages in LLM-friendly markdown format.",
+      "path": "skills/fetching-dbt-docs/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "generate-dag",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generate an RFD-0011-compliant Airflow DAG for a data product dataset, composing with the Databricks Asset Bundle produced by /setup-databricks-asset-bundle.",
+      "path": "skills/generate-dag/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "implement-feedback",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Given Jira ticket IDs (e.g.",
+      "path": "skills/implement-feedback/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "incident-log",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Record production incidents with severity, resolution, duration, trends, and action items.",
+      "path": "skills/incident-log/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "integration-blueprint",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Document source systems, integration patterns, error handling, and downstream targets.",
+      "path": "skills/integration-blueprint/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "integration-test-report",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Document integration test scenarios, performance results, and pass/fail status.",
+      "path": "skills/integration-test-report/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "load-confluence-context",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Retrieve Confluence pages as Markdown context.",
+      "path": "skills/load-confluence-context/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "marketplace-search",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-1-triage",
+      "stage": "design",
+      "description": "Search the Capital Group marketplace for existing data products before triaging a new request.",
+      "path": "skills/marketplace-search/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "nfr-specification",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Specify non-functional requirements: performance, scalability, reliability, observability, and cost constraints.",
+      "path": "skills/nfr-specification/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "optimize-compute",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Compute-utilization optimizer for Databricks jobs and SQL warehouses powering dbt pipelines.",
+      "path": "skills/optimize-compute/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "optimize-databricks-job",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Performance optimizer for Databricks Asset Bundle (DAB) jobs.",
+      "path": "skills/optimize-databricks-job/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "optimize-dbsql-query",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Scan SQL files (compiled dbt models or hand-written DBSQL queries) for common Databricks SQL performance pitfalls and emit findings under the SQL-PERF-DBSQL-* family.",
+      "path": "skills/optimize-dbsql-query/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "outcome-kpi-statement",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Define measurable business outcomes, KPIs, and success criteria.",
+      "path": "skills/outcome-kpi-statement/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "parse-lineage",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Trace column-level lineage from SQL files or inline SQL.",
+      "path": "skills/parse-lineage/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "phase-zero-checklist",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-0-prereq",
+      "stage": "design",
+      "description": "Verify organizational prerequisites before entering Triage — roles, infrastructure, demand tracker readiness.",
+      "path": "skills/phase-zero-checklist/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "poc-spike-findings",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Document PoC or spike findings with approach, results, and recommendations.",
+      "path": "skills/poc-spike-findings/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "privacy-impact-assessment",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Assess data classification, PII inventory, privacy risks, and required controls.",
+      "path": "skills/privacy-impact-assessment/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "process-feedback",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Turn captured AI Catalyst feedback into prioritized Jira work.",
+      "path": "skills/process-feedback/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "product-requirements-document",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Create a comprehensive product requirements document covering business context, functional requirements, data requirements, and acceptance criteria.",
+      "path": "skills/product-requirements-document/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "profile-columns",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Compute column-level statistics from table data.",
+      "path": "skills/profile-columns/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "query-catalog",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Discover catalogs, schemas, tables, and columns in Unity Catalog.",
+      "path": "skills/query-catalog/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "query-table",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Run SQL against a connected Databricks workspace.",
+      "path": "skills/query-table/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "register-data-contract",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Capability skill that creates or updates the ODCS (Open Data Contract Standard) `contract.yaml` for a scaffolded data product at `data-products/{domain}/datasets/{product}/contract/contract.yaml`.",
+      "path": "skills/register-data-contract/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "release-notes",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-6-publish",
+      "stage": "build",
+      "description": "Write release notes: summary, what is new, known limitations, and migration notes.",
+      "path": "skills/release-notes/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "requirements-acceptance-criteria",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-2-discovery",
+      "stage": "design",
+      "description": "Define functional and non-functional requirements with testable acceptance criteria.",
+      "path": "skills/requirements-acceptance-criteria/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "rfd-authoring",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "none",
+      "stage": "standalone",
+      "description": "Author a new Request for Discussion (RFD) or edit an existing one.",
+      "path": "skills/rfd-authoring/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "run-dbt-on-databricks",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Execute dbt models against a Databricks warehouse or cluster using three invocation modes: local developer iteration, bundle-deploy (DAB push), and bundle-run (job execution).",
+      "path": "skills/run-dbt-on-databricks/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "runbook",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Generate an operational runbook — health checks, alert responses, escalation paths, maintenance schedules.",
+      "path": "skills/runbook/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "scaffold-data-product",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Scaffold a data-product subtree under `data-products/{domain}/datasets/{product}/` per RFD 0003: airflow/, bundle/, dbt/, contract/, specs/ with placeholder README.md, databricks.yml stub, dbt_project.yml stub, and empty contract directory.",
+      "path": "skills/scaffold-data-product/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "scaffold-repo-structure",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Answer \"where does file X live?\" for a Catalyst data product repo, or scaffold the empty directory tree for a new product.",
+      "path": "skills/scaffold-repo-structure/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "schedule-backfill-plan",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Design the ingestion schedule, historical backfill strategy, and rollback plan.",
+      "path": "skills/schedule-backfill-plan/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "security-design",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Document authentication, authorization, encryption, audit trails, and threat model.",
+      "path": "skills/security-design/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "setup-databricks-asset-bundle",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Scaffold the Databricks Asset Bundle (DAB) for a dbt data product in the edo-ig-data-products shape: writes one databricks.yml per product (with glob includes, sync paths, and local/dev/sqa/prd + DR targets), the variables/ directory (variables.yml + per-env + complex cluster shapes in clusters.yml), and per-dataset bundle files (one for the dbt run and one for Deequ DQ verification).",
+      "path": "skills/setup-databricks-asset-bundle/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "setup-dbt-project",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Scaffold a new dbt project for Databricks: dbt_project.yml (with UC catalog vars, Volume target-path, and the full Delta table properties block), profiles.yml, .sqlfluff, .pre-commit-config.yaml, .dbtignore, and packages.yml.",
+      "path": "skills/setup-dbt-project/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "setup-monitoring-and-logging",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Configure dbt artifact capture for serverless dbt-on-Databricks jobs and write a per-product runbook documenting the log escalation chain (Airflow callback → Databricks run page + runs/get-output API → UC Volume for dbt artifacts).",
+      "path": "skills/setup-monitoring-and-logging/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "setup-workspace",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "cross-cutting",
+      "stage": "cross-cutting",
+      "description": "Prepares a local machine to run AI Catalyst.",
+      "path": "skills/setup-workspace/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "sla-dashboard-spec",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Specify SLA monitoring dashboard: panels, data sources, alert thresholds, and access controls.",
+      "path": "skills/sla-dashboard-spec/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "source-aligned",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Generate source-aligned data product artifacts — ingestion YAML, DQ rules, dbt models (staging/integration/prepared), DDL, source YAML, and Airflow DAGs — from a CSV, DAT, or .out.gz source file.",
+      "path": "skills/source-aligned/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "transformation-spec",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-3-design",
+      "stage": "design",
+      "description": "Specify model topology, materialization decisions, and backfill strategy for a data product.",
+      "path": "skills/transformation-spec/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "troubleshoot-dbt-on-databricks",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Diagnose and resolve common dbt-on-Databricks failures: SSL/CA cert errors, auth failures, materialization misconfiguration, warehouse connectivity issues, public PyPI 404s (CG network blocks public registries), and job cold-start timeouts.",
+      "path": "skills/troubleshoot-dbt-on-databricks/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "uat-sign-off",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-5-validate",
+      "stage": "build",
+      "description": "Document UAT test scope, results, sign-off, and conditions for production deployment.",
+      "path": "skills/uat-sign-off/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "unit-test-report",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Summarize unit test coverage, categories, and notable findings.",
+      "path": "skills/unit-test-report/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "usage-analytics-report",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-8-evolve",
+      "stage": "ship",
+      "description": "Report usage metrics, consumer breakdown, KPI performance, and improvement recommendations.",
+      "path": "skills/usage-analytics-report/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "validate-dag",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Validate an existing Airflow DAG against RFD 0011 (DAG Standards) and produce a structured compliance report.",
+      "path": "skills/validate-dag/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "validate-dbt",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Pre-deploy dbt validation gate for a Databricks data product.",
+      "path": "skills/validate-dbt/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "warranty-handoff-sign-off",
+      "kind": "skill",
+      "tier": "document",
+      "phase": "phase-7-operate",
+      "stage": "ship",
+      "description": "Document warranty period criteria, actuals, and sign-off for transition to BAU operations.",
+      "path": "skills/warranty-handoff-sign-off/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "working-with-dbt-mesh",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Implements dbt Mesh governance features (model contracts, access modifiers, groups, versioning) and multi-project collaboration with cross-project refs.",
+      "path": "skills/working-with-dbt-mesh/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "write-dbt-model",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Author a single dbt model `.sql` file under `{product}/dbt/{layer}/{model_name}.sql` plus update a per-layer `_{layer}__models.yml` config file with column test stubs.",
+      "path": "skills/write-dbt-model/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "write-dbt-source",
+      "kind": "skill",
+      "tier": "capability",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Render a dbt sources YAML file at `data-products/{domain}/datasets/{product}/dbt/{layer}/_{layer}__sources.yml` declaring Unity Catalog external source tables.",
+      "path": "skills/write-dbt-source/SKILL.md",
+      "registered": true,
+      "gaps": []
+    },
+    {
+      "id": "write-dbt-wrapper",
+      "kind": "skill",
+      "tier": "workflow",
+      "phase": "phase-4-build",
+      "stage": "build",
+      "description": "Writes the repo-root `dbt_wrapper.py` — a dispatcher script that drives dbt from a Databricks Python task (deps / seed / run / test), hydrates ambient job-context credentials, and handles the cgrepo CA certificate for SSL on dbt deps.",
+      "path": "skills/write-dbt-wrapper/SKILL.md",
+      "registered": true,
+      "gaps": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "architecture-diagram",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "architecture-diagram",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "architecture-diagram",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "build-checklist",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "build-checklist",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "build-checklist",
+      "target": "security-design",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "architecture-diagram",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "architecture-diagram",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "data-contract",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "data-model",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "databricks-config",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "databricks-unity-catalog",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "dbt-best-practices",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "integration-blueprint",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "integration-blueprint",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "nfr-specification",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "nfr-specification",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "schedule-backfill-plan",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "schedule-backfill-plan",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "security-design",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "security-design",
+      "type": "consumes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "transformation-spec",
+      "type": "composes"
+    },
+    {
+      "source": "build-preflight",
+      "target": "transformation-spec",
+      "type": "consumes"
+    },
+    {
+      "source": "business-case",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "business-case",
+      "target": "effort-estimate",
+      "type": "consumes"
+    },
+    {
+      "source": "business-case",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "code-review-sign-off",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "configure-sql-warehouse",
+      "target": "databricks-dbsql",
+      "type": "composes"
+    },
+    {
+      "source": "configure-sql-warehouse",
+      "target": "databricks-execution-compute",
+      "type": "composes"
+    },
+    {
+      "source": "configure-sql-warehouse",
+      "target": "nfr-specification",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-aligned",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-aligned",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-aligned",
+      "target": "data-modeling",
+      "type": "composes"
+    },
+    {
+      "source": "consumer-aligned",
+      "target": "discover-data",
+      "type": "composes"
+    },
+    {
+      "source": "consumer-aligned",
+      "target": "generate-dag",
+      "type": "composes"
+    },
+    {
+      "source": "consumer-onboarding-guide",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-onboarding-guide",
+      "target": "deployment-record",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-onboarding-guide",
+      "target": "uat-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "consumer-use-case-map",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "data-contract",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "data-contract",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "data-model",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "data-model",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "data-modeling",
+      "target": "data-profiling",
+      "type": "consumes"
+    },
+    {
+      "source": "data-modeling",
+      "target": "discover-data",
+      "type": "consumes"
+    },
+    {
+      "source": "data-profiling",
+      "target": "discover-data",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-controls-plan",
+      "target": "data-profiling",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-controls-plan",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-controls-plan",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-sign-off",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-sign-off",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "data-quality-sign-off",
+      "target": "unit-test-report",
+      "type": "consumes"
+    },
+    {
+      "source": "dataops-handoff-draft",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "dataops-handoff-draft",
+      "target": "nfr-specification",
+      "type": "consumes"
+    },
+    {
+      "source": "dataops-handoff-draft",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "demand-tracker-entry",
+      "target": "phase-zero-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "deploy-airflow-local",
+      "target": "connect-databricks",
+      "type": "composes"
+    },
+    {
+      "source": "deploy-dab",
+      "target": "connect-databricks",
+      "type": "composes"
+    },
+    {
+      "source": "deploy-dab",
+      "target": "setup-databricks-asset-bundle",
+      "type": "consumes"
+    },
+    {
+      "source": "deployment-record",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "deployment-record",
+      "target": "uat-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "deprecation-notice",
+      "target": "downstream-impact-assessment",
+      "type": "consumes"
+    },
+    {
+      "source": "deprecation-notice",
+      "target": "usage-analytics-report",
+      "type": "consumes"
+    },
+    {
+      "source": "domain-aligned",
+      "target": "data-modeling",
+      "type": "composes"
+    },
+    {
+      "source": "domain-aligned",
+      "target": "data-profiling",
+      "type": "composes"
+    },
+    {
+      "source": "domain-aligned",
+      "target": "discover-data",
+      "type": "composes"
+    },
+    {
+      "source": "domain-aligned",
+      "target": "generate-dag",
+      "type": "composes"
+    },
+    {
+      "source": "downstream-impact-assessment",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "downstream-impact-assessment",
+      "target": "usage-analytics-report",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "dplc-build",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "dplc-publish",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "dplc-validate",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-build-stage",
+      "target": "transformation-spec",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "data-contract",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "data-profiling",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "databricks-config",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "domain-aligned",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-build-stage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-design",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-design-stage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-discovery",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-preflight",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-prereq",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-ship-stage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "dplc-triage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "marketplace-search",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "setup-workspace",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-concierge",
+      "target": "source-aligned",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "architecture-diagram",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "column-lineage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "data-contract",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "data-model",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "data-modeling",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "data-quality-controls-plan",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "dataops-handoff-draft",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "integration-blueprint",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "nfr-specification",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "schedule-backfill-plan",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "security-design",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design",
+      "target": "transformation-spec",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design-stage",
+      "target": "dplc-design",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design-stage",
+      "target": "dplc-discovery",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design-stage",
+      "target": "dplc-prereq",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-design-stage",
+      "target": "dplc-triage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "business-case",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "data-profiling",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "discover-data",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "effort-estimate",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "feasibility-report",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "load-confluence-context",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "outcome-kpi-statement",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "poc-spike-findings",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "privacy-impact-assessment",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "product-requirements-document",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-discovery",
+      "target": "requirements-acceptance-criteria",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-preflight",
+      "target": "configure-sql-warehouse",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-preflight",
+      "target": "connect-databricks",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-preflight",
+      "target": "databricks-config",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-preflight",
+      "target": "setup-workspace",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-prereq",
+      "target": "phase-zero-checklist",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "consumer-onboarding-guide",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "deployment-record",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "marketplace-search",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "release-notes",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-publish",
+      "target": "uat-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "architecture-diagram",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "dataops-handoff-draft",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "deprecation-notice",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "downstream-impact-assessment",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "dplc-design-stage",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "incident-log",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "runbook",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "sla-dashboard-spec",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "usage-analytics-report",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-ship-stage",
+      "target": "warranty-handoff-sign-off",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-triage",
+      "target": "consumer-use-case-map",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-triage",
+      "target": "demand-tracker-entry",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-triage",
+      "target": "marketplace-search",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-triage",
+      "target": "phase-zero-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "code-review-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "data-quality-sign-off",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "dataops-handoff-draft",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "integration-test-report",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "product-requirements-document",
+      "type": "consumes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "uat-sign-off",
+      "type": "composes"
+    },
+    {
+      "source": "dplc-validate",
+      "target": "unit-test-report",
+      "type": "consumes"
+    },
+    {
+      "source": "effort-estimate",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "effort-estimate",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "feasibility-report",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "feasibility-report",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "generate-dag",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "generate-dag",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "generate-dag",
+      "target": "databricks-jobs",
+      "type": "composes"
+    },
+    {
+      "source": "generate-dag",
+      "target": "scaffold-repo-structure",
+      "type": "composes"
+    },
+    {
+      "source": "generate-dag",
+      "target": "setup-databricks-asset-bundle",
+      "type": "composes"
+    },
+    {
+      "source": "incident-log",
+      "target": "runbook",
+      "type": "consumes"
+    },
+    {
+      "source": "incident-log",
+      "target": "sla-dashboard-spec",
+      "type": "consumes"
+    },
+    {
+      "source": "integration-blueprint",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "integration-blueprint",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "integration-test-report",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "integration-test-report",
+      "target": "unit-test-report",
+      "type": "consumes"
+    },
+    {
+      "source": "load-confluence-context",
+      "target": "fetch-confluence",
+      "type": "composes"
+    },
+    {
+      "source": "nfr-specification",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "nfr-specification",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "optimize-compute",
+      "target": "connect-databricks",
+      "type": "composes"
+    },
+    {
+      "source": "optimize-databricks-job",
+      "target": "setup-databricks-asset-bundle",
+      "type": "composes"
+    },
+    {
+      "source": "outcome-kpi-statement",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "outcome-kpi-statement",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "poc-spike-findings",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "privacy-impact-assessment",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "business-case",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "data-profiling",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "discover-data",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "effort-estimate",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "feasibility-report",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "outcome-kpi-statement",
+      "type": "consumes"
+    },
+    {
+      "source": "product-requirements-document",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "register-data-contract",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "register-data-contract",
+      "target": "scaffold-data-product",
+      "type": "composes"
+    },
+    {
+      "source": "release-notes",
+      "target": "deployment-record",
+      "type": "consumes"
+    },
+    {
+      "source": "release-notes",
+      "target": "uat-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "requirements-acceptance-criteria",
+      "target": "consumer-use-case-map",
+      "type": "consumes"
+    },
+    {
+      "source": "requirements-acceptance-criteria",
+      "target": "demand-tracker-entry",
+      "type": "consumes"
+    },
+    {
+      "source": "runbook",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "runbook",
+      "target": "dataops-handoff-draft",
+      "type": "consumes"
+    },
+    {
+      "source": "runbook",
+      "target": "deployment-record",
+      "type": "consumes"
+    },
+    {
+      "source": "schedule-backfill-plan",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "schedule-backfill-plan",
+      "target": "integration-blueprint",
+      "type": "consumes"
+    },
+    {
+      "source": "schedule-backfill-plan",
+      "target": "requirements-acceptance-criteria",
+      "type": "consumes"
+    },
+    {
+      "source": "security-design",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "security-design",
+      "target": "privacy-impact-assessment",
+      "type": "consumes"
+    },
+    {
+      "source": "setup-databricks-asset-bundle",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "setup-databricks-asset-bundle",
+      "target": "databricks-bundles",
+      "type": "composes"
+    },
+    {
+      "source": "setup-databricks-asset-bundle",
+      "target": "setup-dbt-project",
+      "type": "consumes"
+    },
+    {
+      "source": "setup-databricks-asset-bundle",
+      "target": "write-dbt-wrapper",
+      "type": "composes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "build-preflight",
+      "type": "composes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "databricks-config",
+      "type": "composes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "databricks-unity-catalog",
+      "type": "composes"
+    },
+    {
+      "source": "setup-dbt-project",
+      "target": "dbt-best-practices",
+      "type": "composes"
+    },
+    {
+      "source": "setup-monitoring-and-logging",
+      "target": "databricks-jobs",
+      "type": "composes"
+    },
+    {
+      "source": "sla-dashboard-spec",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "sla-dashboard-spec",
+      "target": "nfr-specification",
+      "type": "consumes"
+    },
+    {
+      "source": "sla-dashboard-spec",
+      "target": "outcome-kpi-statement",
+      "type": "consumes"
+    },
+    {
+      "source": "transformation-spec",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "transformation-spec",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "troubleshoot-dbt-on-databricks",
+      "target": "databricks-docs",
+      "type": "composes"
+    },
+    {
+      "source": "uat-sign-off",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "uat-sign-off",
+      "target": "data-quality-sign-off",
+      "type": "consumes"
+    },
+    {
+      "source": "unit-test-report",
+      "target": "build-checklist",
+      "type": "consumes"
+    },
+    {
+      "source": "usage-analytics-report",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "usage-analytics-report",
+      "target": "outcome-kpi-statement",
+      "type": "consumes"
+    },
+    {
+      "source": "usage-analytics-report",
+      "target": "sla-dashboard-spec",
+      "type": "consumes"
+    },
+    {
+      "source": "validate-dag",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "validate-dbt",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "validate-dbt",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "warranty-handoff-sign-off",
+      "target": "incident-log",
+      "type": "consumes"
+    },
+    {
+      "source": "warranty-handoff-sign-off",
+      "target": "runbook",
+      "type": "consumes"
+    },
+    {
+      "source": "warranty-handoff-sign-off",
+      "target": "sla-dashboard-spec",
+      "type": "consumes"
+    },
+    {
+      "source": "write-dbt-model",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "write-dbt-model",
+      "target": "data-model",
+      "type": "consumes"
+    },
+    {
+      "source": "write-dbt-model",
+      "target": "setup-dbt-project",
+      "type": "composes"
+    },
+    {
+      "source": "write-dbt-source",
+      "target": "data-contract",
+      "type": "consumes"
+    },
+    {
+      "source": "write-dbt-source",
+      "target": "register-data-contract",
+      "type": "composes"
+    },
+    {
+      "source": "write-dbt-source",
+      "target": "setup-dbt-project",
+      "type": "composes"
+    },
+    {
+      "source": "write-dbt-wrapper",
+      "target": "databricks-python-sdk",
+      "type": "composes"
+    }
+  ],
+  "unresolved": [
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": ".airflow/airflow_settings.yaml",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": ".airflow/airflow_settings.yaml.example",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": ".astro/config.yaml",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": ".env",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": "Dockerfile",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "deploy-airflow-local",
+      "target": "docker-compose.override.yml",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "optimize-compute",
+      "target": "databricks.yml",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "optimize-compute",
+      "target": "dbt_project.yml",
+      "type": "consumes"
+    },
+    {
+      "reason": "artifact",
+      "source": "optimize-compute",
+      "target": "profiles.yml",
+      "type": "consumes"
+    }
+  ]
+}

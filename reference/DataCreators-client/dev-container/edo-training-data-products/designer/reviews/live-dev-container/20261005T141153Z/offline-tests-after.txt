@@ -1,0 +1,12 @@
+# offline tests after fixes, 2026-10-05T15:11:32Z, course HEAD 933fed3
+## CLIENT_ROOT (no .git), pandoc 3.1.11 on PATH
+=========================== short test summary info ============================
+SKIPPED [1] tests/challenges/offline/test_ch03_stub_sync.py:56: not in a Git work tree (e.g. the authoring container's CLIENT_ROOT or a learner package)
+126 passed, 1 skipped in 1.73s
+## course mount (in Git), pandoc on PATH
+.......................................................                  [100%]
+127 passed in 2.30s
+## course mount, no pandoc
+=========================== short test summary info ============================
+SKIPPED [1] ../../../../../edo-training-data-products/tests/challenges/offline/test_v2_contracts.py:50: sync-v2-course.py parses READMEs with pandoc, which is not on PATH
+126 passed, 1 skipped in 1.29s

@@ -1,0 +1,17 @@
+id: dplc-design-stage.case-01-behavior
+skill: skills/dplc-design-stage
+type: behavior
+description: >-
+  Define stage orchestrator. Should run the four phase orchestrators in
+  order: prereq → triage → discovery → design. Each phase orchestrator is
+  a separate sub-skill and must be invoked sequentially.
+input:
+  arguments: "Run the full Define stage for a new data product."
+expected_sequence:
+  - skills/dplc-prereq
+  - skills/dplc-triage
+  - skills/dplc-discovery
+  - skills/dplc-design
+strict_order: true
+allow_extra: true
+max_steps: 60

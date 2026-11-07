@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "run_id": "20261007T215100Z-reviewed",
+  "story": {
+    "schema_version": 1,
+    "id": "airflow-quality-blocks-publication",
+    "title": "Quality failure blocks downstream publication",
+    "objective": "Explain the observed task state and its business-output evidence boundary.",
+    "tool": "airflow",
+    "task_ids": [
+      "airflow-p1-04"
+    ],
+    "route": "astro-ui",
+    "readiness": "draft",
+    "audience": "Instructor demonstration; completed instructor copy is explicitly identified",
+    "prerequisites": "Prepared runtime and assigned disposable resources; authenticate outside recording",
+    "workspace_source": "challenges/v2-solutions/airflow/phase-one-certified/solution",
+    "source_inputs": [
+      "challenges/v2/airflow/phase-one-certified/README.md",
+      "challenges/v2-solutions/airflow/phase-one-certified/solution"
+    ],
+    "requires": [
+      "browser",
+      "env:DEMO_AIRFLOW_RUN_URL",
+      "env:DEMO_AIRFLOW_LOG_URL"
+    ],
+    "resources": [
+      "fresh private workspace"
+    ],
+    "cleanup": [],
+    "main_book": {
+      "include": false,
+      "teaching_key": "airflow-run-and-recovery"
+    },
+    "steps": [
+      {
+        "id": "run",
+        "action": {
+          "adapter": "browser",
+          "verb": "navigate",
+          "url": "{{env.DEMO_AIRFLOW_RUN_URL}}"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "dbt"
+            }
+          ]
+        },
+        "capture": {
+          "context": "AIRFLOW UI",
+          "hold_seconds": 3
+        },
+        "caption": {
+          "action": "Open the assigned fresh run.",
+          "notice": "Live rehearsal must verify a newly triggered run ID, task states and worker-visible paths."
+        }
+      },
+      {
+        "id": "log",
+        "action": {
+          "adapter": "browser",
+          "verb": "navigate",
+          "url": "{{env.DEMO_AIRFLOW_LOG_URL}}"
+        },
+        "expect": {
+          "exit_code": 0,
+          "checks": [
+            {
+              "kind": "output-contains",
+              "text": "dbt"
+            }
+          ]
+        },
+        "capture": {
+          "context": "AIRFLOW UI",
+          "hold_seconds": 3
+        },
+        "caption": {
+          "action": "Open the relevant real task log.",
+          "notice": "Live rehearsal must bind the task log, independently queried output and receipt to that run."
+        }
+      }
+    ],
+    "closing_question": "Explain the observed task state and its business-output evidence boundary. Which observation supports your explanation?"
+  },
+  "status": "blocked",
+  "route": "astro-ui",
+  "runtime": {
+    "browser": {
+      "status": "available",
+      "detail": "149.0.7827.55"
+    },
+    "env:DEMO_AIRFLOW_RUN_URL": {
+      "status": "blocked",
+      "detail": "Set instructor-assigned DEMO_AIRFLOW_RUN_URL outside recording"
+    },
+    "env:DEMO_AIRFLOW_LOG_URL": {
+      "status": "blocked",
+      "detail": "Set instructor-assigned DEMO_AIRFLOW_LOG_URL outside recording"
+    }
+  },
+  "source_hashes": {
+    "story.yaml": "570f2af74ca20792c381554d53db5e83bcfbc3b1fafd8e1d9bf6922c72d6233b",
+    "manifest.json": "cc73032712b26308e9f2ab835cf5a327476b20d6ed293c79e657d2f9546c6792",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/pipeline.py": "1ae2df006e56e17889cee4e128f387f18f31e3adfc3fb120613be4f1f41d7e01",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/dbt_project.yml": "9f41c9f55fdf307727b66bbdda5ab39448c8939cd64befeb49b4be8e8fa86984",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/fund_exposure.sql": "6c976fd711e3310950181285d8cb7327d017ca26df512483fa1d9683deb98d30",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/schema.yml": "f11cf231300fb82bfeca971f77fee7ed48e29b6d5ce1d3507691eea2f064f2f4",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/sources.yml": "7b8eca8e51c35333509c8342585956464d2514da1a94a052b075d5b1e135f199",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_funds.sql": "b3965cded823b77b094cf7561fc1b55cd7aa9801841561e2e3d50a5611007e7b",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/models/stg_holdings.sql": "0734695fe80879b0e910ae2804f39bab121143eaf5def71f7dc835a67e7682bd",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/profiles.yml": "d13d4c0a23a8ea0d9ca1541e82ecd9f722263570f1aa2415286260024aea6c1f",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/funds.csv": "e62b7e60ff91e12be06e59cafd80e4dbe9b5f08bcfd3df6b3066a482b399f3dc",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/seeds/holdings.csv": "acf7ef0e1c04364e5d1adec2405f6149b6015c20daafe952b2520a4c0bec66ff",
+    "challenges/v2-solutions/airflow/phase-one-certified/solution/project/tests/reconcile_exposure.sql": "ab923ab50e356d64c32b48f5cfcfe53c496dd369c7a1adc441d6f6ebe833c17b",
+    "challenges/v2/airflow/phase-one-certified/README.md": "39ab3b1cf544237dbd8f1d31ed42613287de36c2b87ca938a16f7f5e2ab8056a",
+    "scripts/instructor_demos/README.md": "2e5865ae1a772c454e4e6e35701f43405cc9101c68fa22bf2afbe6d3cdd1d661",
+    "scripts/instructor_demos/__init__.py": "25081f83b1929787748493fe195011e5fc96464e6be82b469b7c36f6cad63401",
+    "scripts/instructor_demos/browser.py": "e32076132bd349f196b60ae9494d64b73e55b5be3723f813dfb563b982aed1f1",
+    "scripts/instructor_demos/contracts.py": "ee61673975ca4d04f30b19034f060855ccecde32201c160cb34a446333ecba4c",
+    "scripts/instructor_demos/publish.py": "07c36414f4ecc0b9726014dba5da030f1458d5b25a1230e5312758897dab6d27",
+    "scripts/instructor_demos/runner.py": "9b45a1103bc979db102ddae73e7ad993ab268c3633151716d70711318398244b",
+    "scripts/instructor_demos/terminal.py": "dcbb00553f3fe8665a2ffcd4a08cb4e504b5deb4bf600b88ccee83381941177a",
+    "instructor-demos/schema/story.schema.json": "7f5ab5aca89dc551d6c3bd5615445aa5ce1341ce3ceb9ff64ad52100177c9607",
+    "instructor-demos/theme/tokens.json": "ef768ab6f14adee5eab08ae44a407e1089dbe78031383b49b89d5fa856308732",
+    "scripts/demo-checks.py": "77de75a050220f73d65e854e430f86438ff7ff8ecae128aa8338fe6cb530247e",
+    "scripts/instructor-demos.py": "20372fc5eafac678fe46b0748c6347560bc4659c0396b95cf566d8f30f8ba529",
+    "instructor-demos/requirements.lock": "542b0ab9ebca53ce299c73dbdc396cfc261202cb399a17386a3db2d5d5297025"
+  },
+  "started_at": "2026-10-07T22:21:59.830080+00:00",
+  "checkpoints": [],
+  "cleanup": [],
+  "review": null,
+  "recording": "raw real-time browser recording; no compressed waits",
+  "reason": "Draft requires live rehearsal",
+  "finished_at": "2026-10-07T22:21:59.830151+00:00"
+}

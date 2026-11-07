@@ -1,0 +1,32 @@
+id: code-review-sign-off.case-01-happy-path
+skill: skills/code-review-sign-off
+type: artifact
+description: 'Bootstrap happy-path case. Record code review findings, resolutions, and sign-off. Use when
+  the user asks
+
+  to "document the code review", "create the review sign-off", "record review
+
+  findings", or "sign off on the code review".'
+input:
+  arguments: 'Record code review sign-off for the employee directory pipeline. Reviewer: lead data engineer.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/code-review-sign-off/templates/code-review-sign-off.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Record code review
+      findings, resolutions, and sign-off. Use when the user asks
+
+      to "document the code review", "create the review sign-off", ''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

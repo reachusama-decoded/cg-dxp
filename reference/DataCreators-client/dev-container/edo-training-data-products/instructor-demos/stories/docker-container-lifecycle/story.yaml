@@ -1,0 +1,97 @@
+schema_version: 1
+id: docker-container-lifecycle
+title: Observe one-shot container lifecycle
+objective: Distinguish an exited process from a removed container and reusable image.
+tool: docker
+task_ids:
+- docker-p1-01
+- docker-p1-05
+route: devcontainer-docker
+readiness: draft
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/docker/phase-one-certified/solution
+source_inputs:
+- challenges/v2/docker/phase-one-certified/README.md
+- challenges/v2-solutions/docker/phase-one-certified/solution
+requires:
+- browser
+- docker-client
+- docker-server
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: docker-images-and-containers
+steps:
+- id: run
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --name {{resource}} python:3.11-slim python -c "print('hello
+      holdings')"
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: hello holdings
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Run a named one-shot workload.
+    notice: The process prints hello holdings and exits.
+- id: inspect
+  action:
+    adapter: terminal
+    session: developer
+    command: docker container inspect {{resource}} --format '{{.State.Status}} {{.State.ExitCode}}
+      {{.Image}}'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 'exited 0 sha256:'
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect its stopped state.
+    notice: The retained container is exited with code zero and records its image
+      identity.
+- id: remove
+  action:
+    adapter: terminal
+    session: developer
+    command: docker rm {{resource}}
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: demo-
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Remove this owned container.
+    notice: Removing the stopped container retains the shared image.
+- id: replay
+  action:
+    adapter: terminal
+    session: developer
+    command: docker run --rm python:3.11-slim python -c "print('hello holdings')"
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: hello holdings
+  capture:
+    context: DEV CONTAINER TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Replay from the same image.
+    notice: A fresh container produces the same output.
+closing_question: Distinguish an exited process from a removed container and reusable
+  image. Which observation supports your explanation?

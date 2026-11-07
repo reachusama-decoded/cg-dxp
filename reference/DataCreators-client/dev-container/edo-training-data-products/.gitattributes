@@ -1,0 +1,10 @@
+*.sh eol=lf
+* text=auto eol=lf
+
+*.sh text eol=lf
+.devcontainer/utils/bashrc text eol=lf
+.airflow/packages.txt text eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf

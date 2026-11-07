@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: dom_trading__trade
+    columns:
+      - name: trade_id
+        data_tests: [not_null, unique]
+      - name: portfolio_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dom_portfolio__portfolio')
+                field: portfolio_id
+      - name: instrument_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dom_instrument__instrument')
+                field: instrument_id
+  - name: rpt_portfolio_summary
+    columns:
+      - name: portfolio_id
+        data_tests: [not_null, unique]

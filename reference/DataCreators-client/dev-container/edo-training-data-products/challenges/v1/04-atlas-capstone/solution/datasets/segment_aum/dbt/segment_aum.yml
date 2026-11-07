@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: agg_segment_aum
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

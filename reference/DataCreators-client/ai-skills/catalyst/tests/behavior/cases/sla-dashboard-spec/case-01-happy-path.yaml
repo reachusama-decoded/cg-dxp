@@ -1,0 +1,35 @@
+id: sla-dashboard-spec.case-01-happy-path
+skill: skills/sla-dashboard-spec
+type: artifact
+description: 'Bootstrap happy-path case. Specify SLA monitoring dashboard: panels, data sources, alert
+  thresholds, and
+
+  access controls. Use when the user asks to "design the SLA dashboard",
+
+  "create the monitoring spec", "define the alert thresholds", or "specify
+
+  the ops dashboard".'
+input:
+  arguments: Produce the SLA dashboard spec for the employee directory data product (freshness, completeness,
+    error rate).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/sla-dashboard-spec/templates/sla-dashboard-spec.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Specify SLA monitoring
+      dashboard: panels, data sources, alert thresholds, and
+
+      access controls. Use when the user asks to "design the SLA das''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

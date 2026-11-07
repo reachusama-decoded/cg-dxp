@@ -1,0 +1,101 @@
+{
+  "challenge_version": "v2",
+  "phases": [
+    {
+      "tool": "git",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/git/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/git/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/git/phase-one-certified/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "git",
+      "phase": "phase-two-proficient",
+      "path": "challenges/v2-solutions/git/phase-two-proficient/solution",
+      "verifier": "challenges/v2-solutions/git/phase-two-proficient/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/git/phase-two-proficient/verify-starter.sh",
+      "evidence_state": "supporting-local-checks; live boundary blocked"
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/docker/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/docker/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/docker/phase-one-certified/verify-starter.sh",
+      "evidence_state": "supporting-local-checks; live boundary blocked"
+    },
+    {
+      "tool": "docker",
+      "phase": "phase-two-proficient",
+      "path": "challenges/v2-solutions/docker/phase-two-proficient/solution",
+      "verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/docker/phase-two-proficient/verify-starter.sh",
+      "evidence_state": "supporting-local-checks; live boundary blocked"
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/dbt/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/dbt/phase-one-certified/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "dbt",
+      "phase": "phase-two-proficient",
+      "path": "challenges/v2-solutions/dbt/phase-two-proficient/solution",
+      "verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/dbt/phase-two-proficient/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "databricks-cli",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/databricks-cli/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/databricks-cli/phase-one-certified/verify-starter.sh",
+      "evidence_state": "supporting-local-checks; live boundary blocked"
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/airflow/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/airflow/phase-one-certified/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "airflow",
+      "phase": "phase-two-proficient",
+      "path": "challenges/v2-solutions/airflow/phase-two-proficient/solution",
+      "verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/airflow/phase-two-proficient/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "kafka",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/kafka/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/kafka/phase-one-certified/verify-starter.sh",
+      "evidence_state": "supporting-local-checks; live boundary blocked"
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-one-certified",
+      "path": "challenges/v2-solutions/capstone/phase-one-certified/solution",
+      "verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/capstone/phase-one-certified/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    },
+    {
+      "tool": "capstone",
+      "phase": "phase-two-proficient",
+      "path": "challenges/v2-solutions/capstone/phase-two-proficient/solution",
+      "verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify.sh",
+      "starter_verifier": "challenges/v2-solutions/capstone/phase-two-proficient/verify-starter.sh",
+      "evidence_state": "local behavior verified; connected/pilot gates separate"
+    }
+  ]
+}

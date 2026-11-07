@@ -1,0 +1,46 @@
+id: generate-dag.case-06-rejects-pagerduty
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Alerting standard enforcement. User explicitly requests a PagerDuty
+  on_failure callback. The skill must refuse, cite Catalyst's alerting
+  standard (RFD 0011 §6 / PY-AIRFLOW-008), explain that PagerDuty is an
+  anti-goal, and explain that failure alerting is provided by Astronomer's
+  built-in platform Datadog integration — there is no DAG-level alerting
+  callback.
+
+input:
+  arguments: >-
+    Generate a DAG for client_positions/daily_positions in production mode.
+    Use PagerDuty for on_failure alerting — that's what my team uses.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: refuses_pagerduty
+      weight: 0.35
+      prompt: >-
+        Does the response refuse to emit a PagerDuty on_failure callback (e.g.,
+        callbacks.pagerduty.notify or any pagerduty import/reference in the DAG)?
+        Score 1 if PagerDuty is explicitly rejected, 0.5 if partially addressed,
+        0 if a PagerDuty callback is emitted. Score 0-1.
+    - id: explains_datadog_platform
+      weight: 0.3
+      prompt: >-
+        Does the response explain that failure alerting goes to Datadog via
+        Astronomer's built-in platform integration (citing RFD 0011 §6 /
+        PY-AIRFLOW-008 or the anti-goals section) and that PagerDuty is an
+        anti-goal? Score 1 if the platform-Datadog model is cited by name or
+        section, 0.5 if stated without a citation, 0 if not mentioned. Score 0-1.
+    - id: no_dag_level_alerting_callback
+      weight: 0.35
+      prompt: >-
+        Does the response AVOID emitting any DAG-level alerting callback — no
+        PagerDuty and no DAG `on_failure_callback` — explaining that Datadog
+        alerting is handled by Astronomer at the platform level? Score 1 if no
+        DAG-level alerting callback is emitted and the platform model is
+        explained, 0.5 if partially addressed, 0 if a DAG-level alerting callback
+        is emitted. Score 0-1.

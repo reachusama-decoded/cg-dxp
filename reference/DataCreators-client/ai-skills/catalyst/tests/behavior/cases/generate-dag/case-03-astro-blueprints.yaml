@@ -1,0 +1,60 @@
+id: generate-dag.case-03-astro-blueprints
+skill: skills/generate-dag
+type: artifact
+description: >-
+  Astro-blueprints pattern. Caller's repo already has .blueprints/*.py
+  and blueprints_loader.py. Skill should detect this and emit a .dag.yml
+  (NOT .dag-factory.yml) format using the team's existing blueprints
+  (`dag_exec_check`, `databricks_run_now`, `xcom_generation`,
+  `kafka_notify`) rather than vendored helpers.
+
+input:
+  arguments: >-
+    Generate an Airflow DAG for asset_reference_data/instrument_ext_curr
+    in production mode. The repo has .blueprints/dag_args.py,
+    .blueprints/dag_exec_check.py, .blueprints/databricks_run_now.py,
+    .blueprints/xcom_generation.py, .blueprints/kafka_notify.py, and
+    blueprints_loader.py — use the astro-blueprints pattern in existing
+    blueprints mode. Bundle is deployed
+    (job: instrument_ext_curr_job). MDS: owner=ig-data@capgroup.com,
+    business_function=investment_research, data_domain=securities_data,
+    data_classification=internal, app_id=cap-ig-research-002.
+    Asset trigger: instrument_universe_ready. Resource tier: md.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: dag_yaml_format
+      weight: 0.25
+      prompt: >-
+        Is the response in .dag.yml format (astro-blueprints existing mode)
+        and does the path reference .dag.yml not .dag-factory.yml? Score 0-1.
+    - id: blueprint_fields_present
+      weight: 0.25
+      prompt: >-
+        Does the response use existing blueprint references such as
+        dag_exec_check, databricks_run_now, xcom_generation, or
+        kafka_notify in `steps:` entries? Score 0-1.
+    - id: steps_block
+      weight: 0.15
+      prompt: >-
+        Does the response use a `steps:` block (existing-mode Pattern B)
+        rather than a `tasks:` block (Pattern A)? Score 0-1.
+    - id: mds_tags_string_list_form
+      weight: 0.15
+      prompt: >-
+        Does the response use tags as a list of `key:value` strings,
+        consistent with the existing blueprints contract? Score 0-1.
+    - id: no_vendored_helpers_emitted
+      weight: 0.1
+      prompt: >-
+        Does the response avoid emitting or mentioning vendored
+        include/shared/databricks_dbt.py and asset_signal.py helpers,
+        since this repo already has existing blueprints? Score 0-1.
+    - id: rfd_citations
+      weight: 0.1
+      prompt: >-
+        Does the response cite RFD 0011 sections inline? Score 0-1.

@@ -1,0 +1,30 @@
+id: transformation-spec.case-01-happy-path
+skill: skills/transformation-spec
+type: artifact
+description: 'Bootstrap happy-path case. Specify model topology, materialization decisions, and
+  backfill strategy for a data product. Use when the user asks to "document the transformations",
+  "write the transformation spec", "specify data lineage", or "map the model topology for this data
+  product". Per-column quality rules and business rules live in the data contract (RFD 0009);
+  transformation logic lives in dbt SQL.'
+input:
+  arguments: "Write the transformation spec for the employee directory product: ${TEST_CATALOG}.${TEST_SCHEMA}.cg_employee_v4\
+    \ \u2192 conformed dim_employee."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/transformation-spec/templates/transformation-spec.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Specify
+      model topology, materialization decisions, and backfill strategy for a data product''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

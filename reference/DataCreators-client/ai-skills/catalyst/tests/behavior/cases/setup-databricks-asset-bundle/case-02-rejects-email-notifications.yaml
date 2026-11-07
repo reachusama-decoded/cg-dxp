@@ -1,0 +1,43 @@
+id: setup-databricks-asset-bundle.case-02-rejects-email-notifications
+skill: skills/setup-databricks-asset-bundle
+type: artifact
+description: >-
+  Alerting boundary guard. User asks to add email_notifications.on_failure to
+  the pipeline DAB job. The skill must refuse, explain that failure alerting is
+  platform-side (Astronomer Datadog) — not the DAB and not a DAG callback — and
+  redirect the user to the platform-side alerting model.
+
+input:
+  arguments: >-
+    Add email_notifications.on_failure to my pipeline DAB job — I want the
+    bundle to send a failure email.
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.75
+  criteria:
+    - id: refuses_email_notifications
+      weight: 0.35
+      prompt: >-
+        Does the response refuse to emit an email_notifications.on_failure block
+        at the job level in the pipeline DAB? Score 1 if it clearly declines to
+        add it, 0.5 if it adds it with heavy caveats, 0 if it emits the block as
+        requested. Score 0-1.
+    - id: explains_airflow_owns_alerting
+      weight: 0.35
+      prompt: >-
+        Does the response explain that failure alerting is handled platform-side
+        by Astronomer's Datadog integration (not a DAG callback or the DAB) and
+        that adding email_notifications at the job level creates a duplicate
+        notification channel? Score 1 if both points are made, 0.5 if only one
+        is stated, 0 if neither is explained. Score 0-1.
+    - id: redirects_to_platform_alerting
+      weight: 0.3
+      prompt: >-
+        Does the response redirect the user to the platform-side alerting model —
+        failure alerting is provided by Astronomer's Datadog integration, not
+        configured in the DAB or via a DAG on_failure_callback (see /generate-dag
+        and RFD 0011 PY-AIRFLOW-008)? Score 1 if a concrete redirect is given,
+        0.5 if vaguely implied, 0 if absent. Score 0-1.

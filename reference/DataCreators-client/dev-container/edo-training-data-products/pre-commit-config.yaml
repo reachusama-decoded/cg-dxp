@@ -1,0 +1,32 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: check-ast
+  - id: check-toml
+  - id: check-yaml
+    args: [ --allow-multiple-documents ]
+  - id: end-of-file-fixer
+    exclude_types:
+    # the astro CLI is removing the EOF on `astro deploy`
+    - dockerignore
+  - id: mixed-line-ending
+  - id: requirements-txt-fixer
+    # requirements.txt is auto-generated from requirements*.in files
+    files: (requirements).*\.in$
+  - id: trailing-whitespace
+- repo: https://github.com/hadolint/hadolint
+  rev: v2.13.1-beta
+  hooks:
+  - id: hadolint
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.12.3
+  hooks:
+  - id: ruff
+    args: [ --fix ]
+  - id: ruff-format
+- repo: https://github.com/sqlfluff/sqlfluff
+  rev: 3.4.2
+  hooks:
+  - id: sqlfluff-lint
+  - id: sqlfluff-fix

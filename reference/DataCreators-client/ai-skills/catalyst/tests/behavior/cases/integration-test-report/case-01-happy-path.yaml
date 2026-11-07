@@ -1,0 +1,35 @@
+id: integration-test-report.case-01-happy-path
+skill: skills/integration-test-report
+type: artifact
+description: 'Bootstrap happy-path case. Document integration test scenarios, performance results, and
+  pass/fail
+
+  status. Use when the user asks to "write the integration test report",
+
+  "document end-to-end test results", "create the test report", or "record
+
+  integration testing".'
+input:
+  arguments: "Write the integration test report for the employee directory pipeline. End-to-end run: source\
+    \ \u2192 bronze \u2192 silver \u2192 gold."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/integration-test-report/templates/integration-test-report.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Document integration
+      test scenarios, performance results, and pass/fail
+
+      status. Use when the user asks to "write the integration test report''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

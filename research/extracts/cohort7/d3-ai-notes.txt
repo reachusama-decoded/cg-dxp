@@ -1,0 +1,45 @@
+    Session Recap: Data and Platform Concepts
+    DBT, repositories, and Airflow
+    • DBT pipelines can carry out much of the data work discussed; the opening
+      remark about the pipelines is unclear in the transcription.
+    • The session estimated that code generation could cover roughly 80 90% of a
+      job, depending on its complexity.
+
+    • The generated code belongs in the EDO data-products repository, inside its
+      data_products folder.
+    • Airflow blueprints can be filled out with YAML to define jobs.
+
+    Databricks, Spark, and storage
+    • The discussion described Databricks as running DBT code by translating it into
+      Spark.
+    • On the paved path, data files in S3 are expected to use Delta format by default.
+    • Delta is a columnar format. The discussion contrasted its support for data
+      changes and consistency guarantees with the greater difficulty of inserting or
+      deleting rows in ordinary Parquet files.
+    • Delta s transaction logs and manifests were noted as part of how it provides
+      these capabilities.
+    Unity Catalog
+    • Three catalog types were identified:
+      ◦ Application catalog
+      ◦ Domain catalog
+      ◦ Source-aligned catalog
+
+    Data quality and materialization
+    • Data-quality tests can be included in data workflows.
+    • Materialization can be configured in two places: in the model file itself and in
+      project-level configuration. The transcript s wording about the second location
+      is unclear.
+
+
+
+
+    Topics proposed for teaching demos
+                                                         –
+                              ’
+’
+Topics proposed for teaching demos
+• Bi-temporal loading: explain the relevant columns and one or two loading
+  strategies.
+• Harness and CI/CD were also identified as demo topics.
+• The session discussion placed these topics in the Thursday-morning lineup.
+

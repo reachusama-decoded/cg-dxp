@@ -1,0 +1,35 @@
+dag_id: atlas_elt_portfolio_perf
+description: Run the Atlas ELT portfolio_perf dataset pipeline.
+schedule: "@daily"
+start_date: "2024-01-01"
+catchup: false
+tags:
+  - atlas_elt
+default_args:
+  owner: EDO TRAINING
+
+steps:
+  run_portfolio_perf_dbt:
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}portfolio_perf_job"
+    databricks_conn_id: caspian-training-databricks
+
+  run_portfolio_perf_dq:
+    depends_on: [run_portfolio_perf_dbt]
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}portfolio_perf_dq_job"
+    databricks_conn_id: caspian-training-databricks
+
+  mock_xcom_generator:
+    depends_on: [run_portfolio_perf_dq]
+    blueprint: mock_xcom
+    domain: atlas_elt
+    model: portfolio_perf
+
+  notify_portfolio_perf:
+    depends_on: [mock_xcom_generator]
+    blueprint: kafka_notify
+    xcom_pull_task: mock_xcom_generator
+    model: portfolio_perf
+    cluster_id: "{{ var.value.dev_cluster_id }}"
+    python_file: "{{ var.value.root_path }}/files/data_products/{{ var.value.data_product_name }}/python/run_data_notify.py"

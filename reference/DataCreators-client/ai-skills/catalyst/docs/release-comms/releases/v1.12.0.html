@@ -1,0 +1,101 @@
+<!-- Catalyst product release comms template — for Catalyst platform releases (new skills, fixes, improvements). Not for data product releases. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Catalyst v1.12.0 Release Notes</title>
+</head>
+<body style="margin:0;padding:32px 16px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Avenir Next',Avenir,sans-serif;color:#333333;">
+
+<div style="max-width:600px;margin:0 auto;">
+
+  <!-- Header -->
+  <p style="margin:0 0 4px 0;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#009CDC;">AI Catalyst</p>
+  <h1 style="margin:0 0 4px 0;font-size:22px;font-weight:700;color:#00294B;">v1.12.0 &mdash; Data Quality Control Planning in Design</h1>
+  <p style="margin:0 0 20px 0;font-size:13px;color:#888888;">August 11, 2026</p>
+
+  <!-- Intro -->
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">Three improvements in v1.12.0:</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>/data-quality-controls-plan</strong> &mdash; turn profiling findings into a short, enforceable set of data quality controls</li>
+    <li style="margin-bottom:4px;"><strong>Skills map</strong> &mdash; a browsable, interactive picture of all 103 skills and how they connect</li>
+    <li style="margin-bottom:4px;"><strong>/rfd-authoring</strong> &mdash; now loads correctly</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 1 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">1. /data-quality-controls-plan &mdash; Plan your data quality controls during Design</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Takes what profiling found about your table, plus what the business actually needs, and proposes a focused set of data quality controls &mdash; not one rule per column. Each control is mapped to a named rule pattern from the Enterprise Data Governance Council&rsquo;s standard, tagged with a quality dimension, and given a monitoring action (stop the pipeline, warn, or check at rest) with a written reason it exists. Each one also comes out as a DQ Next check, so the plan is directly implementable rather than a document that stops at good intentions.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    The approved plan feeds straight into your data contract&rsquo;s Data Quality Rules table, which stays the single source of truth once the contract is signed off. Run <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">/data-quality-controls-plan</code> in Phase 3, after profiling and before the contract is finalised.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;color:#555555;">Fewer rules, each one justified. A control with no action and no rationale doesn&rsquo;t get added &mdash; the skill is built to resist rule sprawl and the alert fatigue that follows it.</p>
+
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>ARVS</strong>, <strong>LQXA</strong> and <strong>NKV</strong> for the data quality work behind this.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Section 2 -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">2. Skills map &mdash; See every skill and how they connect</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">
+    Catalyst now publishes a browsable map of all 103 skills, grouped by lifecycle phase and wired together by the dependencies each skill declares. Filter by phase or skill type, search by name, hover a skill to light up its neighbours, or open one to walk its dependencies in both directions &mdash; what it needs, and what needs it. There is a plain table view as well.
+  </p>
+  <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;color:#555555;">Most useful when you are new to Catalyst and want to see the shape of the whole thing, or when you know roughly where you are in the lifecycle but not which skill comes next.</p>
+
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>CONNMS</strong> for contributing to this.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Updates & Enhancements -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">3. Updates &amp; Enhancements</p>
+  <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:6px;"><strong>/rfd-authoring</strong> &mdash; the skill shipped previously but was never registered, so it could not load. It now works.</li>
+    <li style="margin-bottom:6px;"><strong>/data-contract</strong> &mdash; the quality rules table now receives an approved controls plan directly, using the columns it already had. Nothing about the contract&rsquo;s structure changed.</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Coming Soon -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#009CDC;">4. Coming Soon</p>
+  <p style="margin:0 0 12px 0;font-size:14px;line-height:1.7;">Two data quality governance questions came out of the recent working session and are now in open discussion. Neither is decided, and neither ships in this release &mdash; flagging them because they will shape how quality controls are owned and recorded:</p>
+  <ul style="margin:0 0 12px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:6px;"><strong>Quality accountability artifact</strong> &mdash; whether the lifecycle should carry a named owner for each quality control, so it is clear who acts when one fires.</li>
+    <li style="margin-bottom:6px;"><strong>Quality dimension in the data contract</strong> &mdash; whether the contract&rsquo;s quality rules table should carry the dimension as its own column, rather than inside the rule description.</li>
+  </ul>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.6;color:#555555;">If you have a view on either, the discussion is open and input is welcome.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Also shipped -->
+  <p style="margin:0 0 8px 0;font-size:14px;font-weight:700;color:#333333;">Also shipped</p>
+  <ul style="margin:0 0 12px 0;padding-left:20px;font-size:14px;line-height:1.8;">
+    <li style="margin-bottom:4px;"><strong>Contribution guide</strong> &mdash; a step-by-step cookbook for adding, updating, or retiring a skill, now the front door for anyone who wants to contribute.</li>
+    <li style="margin-bottom:4px;"><strong>Release process</strong> &mdash; the end-to-end release cut is written down rather than remembered (Catalyst dev team).</li>
+    <li style="margin-bottom:4px;"><strong>Test harness</strong> &mdash; a structural check was renamed to match what it actually inspects, and it now fails clearly instead of passing on an empty value (Catalyst dev team).</li>
+    <li style="margin-bottom:4px;"><strong>Skill metadata repairs</strong> &mdash; attribution and required fields completed across several skills, clearing every outstanding check (Catalyst dev team).</li>
+  </ul>
+  <p style="margin:0 0 20px 0;font-size:13px;line-height:1.7;color:#00294B;">Thank you to <strong>SMRDLP</strong> and <strong>NKV</strong> for contributing these.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 20px 0;" />
+
+  <!-- Boilerplate: do not change -->
+  <p style="margin:0 0 8px 0;font-size:14px;line-height:1.7;"><strong>Keeping Your Plugin Up to Date</strong> &mdash; No reinstall needed. <strong>Cmd+Shift+P</strong> &rarr; &ldquo;Developer: Reload Window&rdquo;, or click the refresh icon in the Agent Plugins panel.</p>
+  <p style="margin:0 0 20px 0;font-size:14px;line-height:1.7;"><strong>Share Your Feedback</strong> &mdash; Type <code style="font-family:monospace;font-size:13px;background:#f4f4f4;padding:1px 4px;border-radius:3px;">catalyst-feedback</code> in Copilot Chat to share what worked, what didn&rsquo;t, or what could be better. The more specific you are (&ldquo;expected X, got Y&rdquo;), the faster we can act.</p>
+
+  <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 16px 0;" />
+
+  <!-- Footer: update release link each time -->
+  <!-- NOTE: release tag is unprefixed (e.g. 1.8.0, not v1.8.0) — different token from vX.Y.Z used in the title/body above; don't sweep it into a version find-replace -->
+  <p style="margin:0 0 6px 0;font-size:13px;">Full release notes &rarr; <a href="https://github.com/cg-open-itg/catalyst/releases/tag/1.12.0" style="color:#005F9E;font-weight:600;">Read Release Notes</a></p>
+  <p style="margin:0 0 6px 0;font-size:13px;">Still new to Catalyst? &rarr; <a href="https://capitalgroup.atlassian.net/wiki/spaces/ENTDATA/pages/400056011" style="color:#005F9E;font-weight:600;">Get Started</a></p>
+  <p style="margin:0 0 20px 0;font-size:13px;">Questions or need a hand? &rarr; <a href="https://teams.microsoft.com/l/channel/19%3AhJh0TbbIKhXzuBBnaCfk2YyIXpSis0aHHUEfg5r4jZk1%40thread.tacv2/Catalyst%20Launchpad?groupId=cef04c1f-ef1d-4868-8aa3-e27a06c6becb&amp;tenantId=41b8c056-2dc3-438d-99ee-61e00287adfe" style="color:#005F9E;font-weight:600;">Join Catalyst Launchpad</a></p>
+  <p style="margin:0;font-size:13px;color:#aaaaaa;">===</p>
+
+</div>
+
+</body>
+</html>

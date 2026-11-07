@@ -1,0 +1,35 @@
+id: integration-blueprint.case-01-happy-path
+skill: skills/integration-blueprint
+type: artifact
+description: 'Bootstrap happy-path case. Document source systems, integration patterns, error handling,
+  and downstream
+
+  targets. Use when the user asks to "create the integration blueprint", "map
+
+  the source systems", "document the integration pattern", or "design the
+
+  data flow".'
+input:
+  arguments: "Produce the integration blueprint for an employee directory data product (Databricks \u2192\
+    \ consumers via Marketplace SQL warehouse)."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/integration-blueprint/templates/integration-blueprint.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Document source
+      systems, integration patterns, error handling, and downstream
+
+      targets. Use when the user asks to "create the integration blu''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

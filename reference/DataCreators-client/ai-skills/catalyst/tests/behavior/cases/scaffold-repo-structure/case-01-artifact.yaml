@@ -1,0 +1,36 @@
+id: scaffold-repo-structure.case-01-artifact
+skill: skills/scaffold-repo-structure
+type: artifact
+description: >-
+  Verifies /scaffold-repo-structure can answer a path-lookup question by
+  reading references/repo-structure.md. Caller asks "where does the
+  Airflow DAG file for a dataset live in a Catalyst data product repo?"
+  and expects a path-rooted answer citing the canonical reference.
+
+input:
+  arguments: "Where does the Airflow DAG file for a dataset live in a Catalyst data product repo?"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: cites_canonical_reference
+      weight: 0.4
+      prompt: >-
+        Does the response cite or read from
+        skills/scaffold-repo-structure/references/repo-structure.md
+        (the canonical layout reference)? Score 0-1.
+    - id: gives_path_rooted_answer
+      weight: 0.4
+      prompt: >-
+        Does the response give a concrete path of the form
+        data_products/<product>/datasets/<dataset>/airflow/<dataset>.dag-factory.yml
+        or .dag.yaml? Score 0-1.
+    - id: distinguishes_patterns
+      weight: 0.2
+      prompt: >-
+        Does the response distinguish between the two emission patterns
+        (dag-factory default vs. astro-blueprints) and explain when each
+        applies? Score 0-1.

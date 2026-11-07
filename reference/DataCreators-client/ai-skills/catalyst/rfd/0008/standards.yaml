@@ -1,0 +1,582 @@
+# RFD 0008 Coding Standards — Rule Index
+#
+# This file is the machine-readable index of every rule defined in RFD 0008.
+# Rule IDs are stable: deprecated rules stay in place with status: deprecated
+# and a "replaced_by" pointer. They never get renumbered or reused.
+#
+# Used by:
+#   - Future engineering skills binding to specific rules via metadata.standards
+#   - CI gates mapping rule IDs to linter configurations
+#   - Dashboards aggregating compliance and exception trends
+#
+# Schema per rule:
+#   id:          PY-NAMING-001 (LANG-CATEGORY-NNN)
+#   title:       one-line directive (matches the markdown heading)
+#   language:    python | rust | java | typescript | common
+#   category:    one of the categories defined per language
+#   severity:    error | warning | advisory
+#   since:       version when added (semver)
+#   linter:      list of enforcing linter rule codes, or "advisory"
+#   source:      relative path + heading anchor in the markdown
+
+version: 0.1.0
+
+rules:
+
+# Python
+  - { id: PY-VERSION-001, title: "New projects use Python 3.12+", language: python, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "python/version.md#py-version-001" }
+  - { id: PY-VERSION-002, title: "Existing projects target 3.12 on next major update", language: python, category: VERSION, severity: warning, since: 0.1.0, linter: [advisory], source: "python/version.md#py-version-002" }
+  - { id: PY-VERSION-003, title: "No Python 2 syntax", language: python, category: VERSION, severity: error, since: 0.1.0, linter: ["ruff:UP"], source: "python/version.md#py-version-003" }
+
+  - { id: PY-IMPORT-001, title: "Group imports per PEP 8", language: python, category: IMPORT, severity: error, since: 0.1.0, linter: ["ruff:I"], source: "python/import.md#py-import-001" }
+  - { id: PY-IMPORT-002, title: "Absolute imports only", language: python, category: IMPORT, severity: error, since: 0.1.0, linter: ["ruff:TID252"], source: "python/import.md#py-import-002" }
+  - { id: PY-IMPORT-003, title: "Move type-only imports under TYPE_CHECKING", language: python, category: IMPORT, severity: warning, since: 0.1.0, linter: ["ruff:TCH"], source: "python/import.md#py-import-003" }
+
+  - { id: PY-NAMING-001, title: "Identifier casing per PEP 8", language: python, category: NAMING, severity: error, since: 0.1.0, linter: ["ruff:N"], source: "python/naming.md#py-naming-001" }
+  - { id: PY-NAMING-002, title: "No ambiguous single-character names", language: python, category: NAMING, severity: error, since: 0.1.0, linter: ["ruff:E741"], source: "python/naming.md#py-naming-002" }
+  - { id: PY-NAMING-003, title: "No generic names for variables", language: python, category: NAMING, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/naming.md#py-naming-003" }
+
+  - { id: PY-TYPE-001, title: "All public function signatures must be annotated", language: python, category: TYPE, severity: error, since: 0.1.0, linter: ["ruff:ANN"], source: "python/type.md#py-type-001" }
+  - { id: PY-TYPE-002, title: "All class attributes must be annotated", language: python, category: TYPE, severity: error, since: 0.1.0, linter: ["ruff:ANN", pyright], source: "python/type.md#py-type-002" }
+  - { id: PY-TYPE-003, title: "Annotate non-trivial private functions", language: python, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "python/type.md#py-type-003" }
+  - { id: PY-TYPE-004, title: "Modern type syntax (PEP 585, PEP 604)", language: python, category: TYPE, severity: error, since: 0.1.0, linter: ["ruff:UP006", "ruff:UP007", "ruff:UP035"], source: "python/type.md#py-type-004" }
+  - { id: PY-TYPE-005, title: "No Any without justification", language: python, category: TYPE, severity: warning, since: 0.1.0, linter: ["ruff:ANN401"], source: "python/type.md#py-type-005" }
+  - { id: PY-TYPE-006, title: "Return type reflects all possibilities", language: python, category: TYPE, severity: error, since: 0.1.0, linter: [pyright], source: "python/type.md#py-type-006" }
+  - { id: PY-TYPE-007, title: "Use TypeAlias for complex types", language: python, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/type.md#py-type-007" }
+  - { id: PY-TYPE-008, title: "Use Protocol for structural typing", language: python, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/type.md#py-type-008" }
+
+  - { id: PY-DOC-001, title: "All public symbols have docstrings", language: python, category: DOC, severity: error, since: 0.1.0, linter: ["ruff:D"], source: "python/doc.md#py-doc-001" }
+  - { id: PY-DOC-002, title: "Google docstring format only", language: python, category: DOC, severity: error, since: 0.1.0, linter: ["ruff:D"], source: "python/doc.md#py-doc-002" }
+  - { id: PY-DOC-003, title: "First line is one imperative sentence", language: python, category: DOC, severity: error, since: 0.1.0, linter: ["ruff:D"], source: "python/doc.md#py-doc-003" }
+  - { id: PY-DOC-004, title: "Include Args / Returns / Raises sections when applicable", language: python, category: DOC, severity: warning, since: 0.1.0, linter: ["ruff:D"], source: "python/doc.md#py-doc-004" }
+  - { id: PY-DOC-005, title: "No redundant docstrings", language: python, category: DOC, severity: warning, since: 0.1.0, linter: [advisory], source: "python/doc.md#py-doc-005" }
+
+  - { id: PY-ERROR-001, title: "Never use bare except", language: python, category: ERROR, severity: error, since: 0.1.0, linter: ["ruff:E722", "ruff:B001"], source: "python/error.md#py-error-001" }
+  - { id: PY-ERROR-002, title: "Never use except Exception as catch-all", language: python, category: ERROR, severity: warning, since: 0.1.0, linter: ["ruff:BLE001"], source: "python/error.md#py-error-002" }
+  - { id: PY-ERROR-003, title: "Never swallow exceptions silently", language: python, category: ERROR, severity: error, since: 0.1.0, linter: ["ruff:BLE001", "ruff:S110"], source: "python/error.md#py-error-003" }
+  - { id: PY-ERROR-004, title: "Use raise from e for chaining", language: python, category: ERROR, severity: error, since: 0.1.0, linter: ["ruff:B904"], source: "python/error.md#py-error-004" }
+  - { id: PY-ERROR-005, title: "Define domain exceptions with a base class", language: python, category: ERROR, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/error.md#py-error-005" }
+  - { id: PY-ERROR-006, title: "Prefer multiple specific excepts over one broad except", language: python, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "python/error.md#py-error-006" }
+  - { id: PY-ERROR-007, title: "Prefer context managers over try/finally for resources", language: python, category: ERROR, severity: error, since: 0.1.0, linter: ["ruff:SIM117"], source: "python/error.md#py-error-007" }
+
+  - { id: PY-IDIOM-001, title: "Use sys.exit or SystemExit; never os._exit, quit, or exit", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:PLW1510"], source: "python/idiom.md#py-idiom-001" }
+  - { id: PY-IDIOM-002, title: "Use enumerate instead of range(len(...))", language: python, category: IDIOM, severity: warning, since: 0.1.0, linter: ["ruff:PIE808", "ruff:SIM110"], source: "python/idiom.md#py-idiom-002" }
+  - { id: PY-IDIOM-003, title: "Iterate directly; do not index when index unneeded", language: python, category: IDIOM, severity: warning, since: 0.1.0, linter: ["ruff:SIM"], source: "python/idiom.md#py-idiom-003" }
+  - { id: PY-IDIOM-004, title: "zip strict=True for parallel iteration", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:B905"], source: "python/idiom.md#py-idiom-004" }
+  - { id: PY-IDIOM-005, title: "Comprehensions for transforms; for-loops for side effects", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:C4"], source: "python/idiom.md#py-idiom-005" }
+  - { id: PY-IDIOM-006, title: "Use itertools for complex iteration", language: python, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-006" }
+  - { id: PY-IDIOM-007, title: "f-strings for runtime string construction", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:UP032"], source: "python/idiom.md#py-idiom-007" }
+  - { id: PY-IDIOM-008, title: "format() only when template and data are separate", language: python, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-008" }
+  - { id: PY-IDIOM-009, title: "Never percent-format new code", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:UP031"], source: "python/idiom.md#py-idiom-009" }
+  - { id: PY-IDIOM-010, title: "pathlib only; never string concatenation or os.path", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:PTH"], source: "python/idiom.md#py-idiom-010" }
+  - { id: PY-IDIOM-011, title: "Always use context managers for resources", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:SIM115"], source: "python/idiom.md#py-idiom-011" }
+  - { id: PY-IDIOM-012, title: "Use dataclasses for structured data", language: python, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-012" }
+  - { id: PY-IDIOM-013, title: "frozen True for immutable value objects", language: python, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-013" }
+  - { id: PY-IDIOM-014, title: "slots True for memory-sensitive dataclasses", language: python, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-014" }
+  - { id: PY-IDIOM-015, title: "Lazy logging with percent formatting", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:G"], source: "python/idiom.md#py-idiom-015" }
+  - { id: PY-IDIOM-016, title: "Never print in production code", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:T20"], source: "python/idiom.md#py-idiom-016" }
+  - { id: PY-IDIOM-017, title: "logger.exception to capture tracebacks", language: python, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "python/idiom.md#py-idiom-017" }
+  - { id: PY-IDIOM-018, title: "Always use timezone-aware datetimes", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:DTZ"], source: "python/idiom.md#py-idiom-018" }
+  - { id: PY-IDIOM-019, title: "Never datetime.now without tz; never datetime.utcnow", language: python, category: IDIOM, severity: error, since: 0.1.0, linter: ["ruff:DTZ001", "ruff:DTZ003"], source: "python/idiom.md#py-idiom-019" }
+
+  - { id: PY-TEST-001, title: "pytest only", language: python, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "python/test.md#py-test-001" }
+  - { id: PY-TEST-002, title: "Test file naming test_module.py", language: python, category: TEST, severity: error, since: 0.1.0, linter: [pytest], source: "python/test.md#py-test-002" }
+  - { id: PY-TEST-003, title: "Test function naming describes the scenario", language: python, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "python/test.md#py-test-003" }
+  - { id: PY-TEST-004, title: "80 percent coverage on core/ and clients/", language: python, category: TEST, severity: warning, since: 0.1.0, linter: [coverage], source: "python/test.md#py-test-004" }
+  - { id: PY-TEST-005, title: "No assert True or assert False", language: python, category: TEST, severity: error, since: 0.1.0, linter: ["ruff:B011"], source: "python/test.md#py-test-005" }
+  - { id: PY-TEST-006, title: "Fixtures over setup/teardown", language: python, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "python/test.md#py-test-006" }
+  - { id: PY-TEST-007, title: "Mock at boundaries only", language: python, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "python/test.md#py-test-007" }
+
+  - { id: PY-SECURITY-001, title: "Never execute arbitrary code from untrusted input", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S102", "ruff:S307"], source: "python/security.md#py-security-001" }
+  - { id: PY-SECURITY-002, title: "Parameterized SQL only", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S608"], source: "python/security.md#py-security-002" }
+  - { id: PY-SECURITY-003, title: "No hardcoded secrets", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S105", "ruff:S106", "ruff:S107"], source: "python/security.md#py-security-003" }
+  - { id: PY-SECURITY-004, title: "Safe YAML loading only", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S506"], source: "python/security.md#py-security-004" }
+  - { id: PY-SECURITY-005, title: "No unsafe deserializers with untrusted data", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S301"], source: "python/security.md#py-security-005" }
+  - { id: PY-SECURITY-006, title: "No subprocess with shell True and variable input", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: ["ruff:S602", "ruff:S603", "ruff:S605"], source: "python/security.md#py-security-006" }
+  - { id: PY-SECURITY-007, title: "Validate external input at API boundaries", language: python, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "python/security.md#py-security-007" }
+
+# Rust
+  - { id: RS-VERSION-001, title: "Pin the toolchain via rust-toolchain.toml", language: rust, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "rust/version.md#rs-version-001" }
+  - { id: RS-VERSION-002, title: "MSRV 1.78+, updated quarterly", language: rust, category: VERSION, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/version.md#rs-version-002" }
+  - { id: RS-VERSION-003, title: "No nightly features in production code", language: rust, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "rust/version.md#rs-version-003" }
+
+  - { id: RS-IMPORT-001, title: "Group imports per workspace rustfmt.toml", language: rust, category: IMPORT, severity: error, since: 0.1.0, linter: [rustfmt], source: "rust/import.md#rs-import-001" }
+  - { id: RS-IMPORT-002, title: "Crate-level import granularity", language: rust, category: IMPORT, severity: error, since: 0.1.0, linter: [rustfmt], source: "rust/import.md#rs-import-002" }
+  - { id: RS-IMPORT-003, title: "use super star only in cfg test", language: rust, category: IMPORT, severity: error, since: 0.1.0, linter: [advisory], source: "rust/import.md#rs-import-003" }
+
+  - { id: RS-NAMING-001, title: "Identifier casing per RFC 430", language: rust, category: NAMING, severity: error, since: 0.1.0, linter: [rustc, clippy], source: "rust/naming.md#rs-naming-001" }
+  - { id: RS-NAMING-002, title: "No get prefix on getters", language: rust, category: NAMING, severity: warning, since: 0.1.0, linter: ["clippy:wrong_self_convention"], source: "rust/naming.md#rs-naming-002" }
+  - { id: RS-NAMING-003, title: "set prefix on setters; is/has on boolean getters", language: rust, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/naming.md#rs-naming-003" }
+  - { id: RS-NAMING-004, title: "Conversion prefixes per API Guidelines", language: rust, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/naming.md#rs-naming-004" }
+  - { id: RS-NAMING-005, title: "No ambiguous or generic variable names", language: rust, category: NAMING, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/naming.md#rs-naming-005" }
+
+  - { id: RS-TYPE-001, title: "Debug is required on every public type", language: rust, category: TYPE, severity: error, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-001" }
+  - { id: RS-TYPE-002, title: "Clone unless the type manages a unique resource", language: rust, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-002" }
+  - { id: RS-TYPE-003, title: "PartialEq and Eq on value types", language: rust, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-003" }
+  - { id: RS-TYPE-004, title: "Hash on map-key types", language: rust, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-004" }
+  - { id: RS-TYPE-005, title: "Serialize/Deserialize only on boundary-crossing types", language: rust, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-005" }
+  - { id: RS-TYPE-006, title: "Derive ordering — std first, then third-party", language: rust, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/type.md#rs-type-006" }
+
+  - { id: RS-ERROR-001, title: "Never unwrap or expect outside tests", language: rust, category: ERROR, severity: error, since: 0.1.0, linter: ["clippy:unwrap_used", "clippy:expect_used"], source: "rust/error.md#rs-error-001" }
+  - { id: RS-ERROR-002, title: "Library crates use thiserror", language: rust, category: ERROR, severity: error, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-002" }
+  - { id: RS-ERROR-003, title: "Application crates use anyhow", language: rust, category: ERROR, severity: error, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-003" }
+  - { id: RS-ERROR-004, title: "Never Box dyn Error; use anyhow Error", language: rust, category: ERROR, severity: error, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-004" }
+  - { id: RS-ERROR-005, title: "Use ? for propagation; do not match-and-rewrap", language: rust, category: ERROR, severity: error, since: 0.1.0, linter: ["clippy:question_mark"], source: "rust/error.md#rs-error-005" }
+  - { id: RS-ERROR-006, title: "Add context at domain boundaries", language: rust, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-006" }
+  - { id: RS-ERROR-007, title: "Domain error types are enums, not structs", language: rust, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-007" }
+  - { id: RS-ERROR-008, title: "Convert error types via from on enum variants", language: rust, category: ERROR, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/error.md#rs-error-008" }
+
+  - { id: RS-IDIOM-001, title: "Combinators over match for simple transforms", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: ["clippy:manual_map", "clippy:manual_let_else", "clippy:map_unwrap_or"], source: "rust/idiom.md#rs-idiom-001" }
+  - { id: RS-IDIOM-002, title: "Iterator chains over manual loops for transforms", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: ["clippy:needless_collect", "clippy:manual_filter"], source: "rust/idiom.md#rs-idiom-002" }
+  - { id: RS-IDIOM-003, title: "For-loops for side effects; never iterator chains", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: ["clippy:needless_for_each"], source: "rust/idiom.md#rs-idiom-003" }
+  - { id: RS-IDIOM-004, title: "Field init shorthand", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: ["clippy:redundant_field_names"], source: "rust/idiom.md#rs-idiom-004" }
+  - { id: RS-IDIOM-005, title: "Builder pattern for greater than 4 fields with optionals", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/idiom.md#rs-idiom-005" }
+  - { id: RS-IDIOM-006, title: "From for infallible, TryFrom for fallible", language: rust, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/idiom.md#rs-idiom-006" }
+  - { id: RS-IDIOM-007, title: "Accept impl Into in public function signatures", language: rust, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/idiom.md#rs-idiom-007" }
+  - { id: RS-IDIOM-008, title: "Cow for borrowed-or-owned", language: rust, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/idiom.md#rs-idiom-008" }
+
+  - { id: RS-ASYNC-001, title: "tokio is the async runtime", language: rust, category: ASYNC, severity: error, since: 0.1.0, linter: [advisory], source: "rust/async.md#rs-async-001" }
+  - { id: RS-ASYNC-002, title: "try_join for concurrent independent tasks", language: rust, category: ASYNC, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/async.md#rs-async-002" }
+  - { id: RS-ASYNC-003, title: "select for racing or cancellation", language: rust, category: ASYNC, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/async.md#rs-async-003" }
+  - { id: RS-ASYNC-004, title: "Bound concurrency with Semaphore", language: rust, category: ASYNC, severity: error, since: 0.1.0, linter: [advisory], source: "rust/async.md#rs-async-004" }
+  - { id: RS-ASYNC-005, title: "Never block the runtime", language: rust, category: ASYNC, severity: error, since: 0.1.0, linter: [advisory], source: "rust/async.md#rs-async-005" }
+  - { id: RS-ASYNC-006, title: "Never hold std sync Mutex across await", language: rust, category: ASYNC, severity: error, since: 0.1.0, linter: ["clippy:await_holding_lock"], source: "rust/async.md#rs-async-006" }
+
+  - { id: RS-LOG-001, title: "Use the tracing crate", language: rust, category: LOG, severity: error, since: 0.1.0, linter: ["clippy:print_stdout", "clippy:print_stderr"], source: "rust/log.md#rs-log-001" }
+  - { id: RS-LOG-002, title: "Structured fields, not interpolation", language: rust, category: LOG, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/log.md#rs-log-002" }
+  - { id: RS-LOG-003, title: "instrument on functions for span creation", language: rust, category: LOG, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/log.md#rs-log-003" }
+
+  - { id: RS-DOC-001, title: "All public items have rustdoc", language: rust, category: DOC, severity: warning, since: 0.1.0, linter: ["rustc:missing_docs"], source: "rust/doc.md#rs-doc-001" }
+  - { id: RS-DOC-002, title: "Slash-slash-slash for items, exclamation for module/crate", language: rust, category: DOC, severity: error, since: 0.1.0, linter: [advisory], source: "rust/doc.md#rs-doc-002" }
+  - { id: RS-DOC-003, title: "First line is a third-person summary", language: rust, category: DOC, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/doc.md#rs-doc-003" }
+  - { id: RS-DOC-004, title: "Errors section on Result-returning functions", language: rust, category: DOC, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/doc.md#rs-doc-004" }
+  - { id: RS-DOC-005, title: "Panics section if the function can panic", language: rust, category: DOC, severity: error, since: 0.1.0, linter: [advisory], source: "rust/doc.md#rs-doc-005" }
+  - { id: RS-DOC-006, title: "Examples section on public API entry points", language: rust, category: DOC, severity: warning, since: 0.1.0, linter: [rustdoc-tests], source: "rust/doc.md#rs-doc-006" }
+  - { id: RS-DOC-007, title: "Module-level docs on every public module", language: rust, category: DOC, severity: warning, since: 0.1.0, linter: ["rustc:missing_docs"], source: "rust/doc.md#rs-doc-007" }
+
+  - { id: RS-TEST-001, title: "Unit tests in cfg test; integration in tests directory", language: rust, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-001" }
+  - { id: RS-TEST-002, title: "Test naming test_scenario_expected", language: rust, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-002" }
+  - { id: RS-TEST-003, title: "tokio test for async tests", language: rust, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-003" }
+  - { id: RS-TEST-004, title: "sqlx test for database tests", language: rust, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-004" }
+  - { id: RS-TEST-005, title: "Tests may use unwrap and expect", language: rust, category: TEST, severity: advisory, since: 0.1.0, linter: [clippy-per-crate-allow], source: "rust/test.md#rs-test-005" }
+  - { id: RS-TEST-006, title: "No ignore without a tracking issue", language: rust, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-006" }
+  - { id: RS-TEST-007, title: "assert_eq and assert_ne over raw assert", language: rust, category: TEST, severity: warning, since: 0.1.0, linter: ["clippy:bool_assert_comparison"], source: "rust/test.md#rs-test-007" }
+  - { id: RS-TEST-008, title: "Snapshot tests use insta", language: rust, category: TEST, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/test.md#rs-test-008" }
+
+  - { id: RS-SECURITY-001, title: "unsafe is denied at workspace level", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: ["rustc:unsafe_code"], source: "rust/security.md#rs-security-001" }
+  - { id: RS-SECURITY-002, title: "Every unsafe block requires two-engineer review", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [process-gate], source: "rust/security.md#rs-security-002" }
+  - { id: RS-SECURITY-003, title: "Wrap secrets with the secrecy crate", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "rust/security.md#rs-security-003" }
+  - { id: RS-SECURITY-004, title: "Never hardcode secrets", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [trufflehog], source: "rust/security.md#rs-security-004" }
+  - { id: RS-SECURITY-005, title: "Always use sqlx query macros", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "rust/security.md#rs-security-005" }
+  - { id: RS-SECURITY-006, title: "Validate dynamic identifiers against an allowlist", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "rust/security.md#rs-security-006" }
+  - { id: RS-SECURITY-007, title: "cargo audit in CI; fail on medium and above", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [cargo-audit], source: "rust/security.md#rs-security-007" }
+  - { id: RS-SECURITY-008, title: "Pin Cargo.lock for binaries; not for libraries", language: rust, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "rust/security.md#rs-security-008" }
+  - { id: RS-SECURITY-009, title: "Review new dependencies", language: rust, category: SECURITY, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/security.md#rs-security-009" }
+
+  - { id: RS-CARGO-001, title: "Workspace inheritance for shared settings", language: rust, category: CARGO, severity: error, since: 0.1.0, linter: [advisory], source: "rust/cargo.md#rs-cargo-001" }
+  - { id: RS-CARGO-002, title: "Default features empty", language: rust, category: CARGO, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/cargo.md#rs-cargo-002" }
+  - { id: RS-CARGO-003, title: "Version requirements stable major or minor", language: rust, category: CARGO, severity: warning, since: 0.1.0, linter: [advisory], source: "rust/cargo.md#rs-cargo-003" }
+
+  - { id: RS-PERF-001, title: "Prefer str slice over String in parameters", language: rust, category: PERF, severity: warning, since: 0.1.0, linter: ["clippy:needless_pass_by_value"], source: "rust/perf.md#rs-perf-001" }
+  - { id: RS-PERF-002, title: "Avoid unnecessary cloning", language: rust, category: PERF, severity: warning, since: 0.1.0, linter: ["clippy:implicit_clone", "clippy:redundant_clone"], source: "rust/perf.md#rs-perf-002" }
+  - { id: RS-PERF-003, title: "Vec with_capacity when size is known", language: rust, category: PERF, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/perf.md#rs-perf-003" }
+  - { id: RS-PERF-004, title: "Arc over Clone for large shared data in async", language: rust, category: PERF, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/perf.md#rs-perf-004" }
+  - { id: RS-PERF-005, title: "Profile before optimizing", language: rust, category: PERF, severity: advisory, since: 0.1.0, linter: [advisory], source: "rust/perf.md#rs-perf-005" }
+
+# Java
+  - { id: JV-VERSION-001, title: "New projects use Azul Zulu OpenJDK 21 LTS", language: java, category: VERSION, severity: error, since: 0.1.0, linter: [gradle-toolchain], source: "java/version.md#jv-version-001" }
+  - { id: JV-VERSION-002, title: "Java 17 acceptable; must target 21 on next major", language: java, category: VERSION, severity: warning, since: 0.1.0, linter: [advisory], source: "java/version.md#jv-version-002" }
+  - { id: JV-VERSION-003, title: "Java 11 must move to 17, then 21", language: java, category: VERSION, severity: warning, since: 0.1.0, linter: [advisory], source: "java/version.md#jv-version-003" }
+  - { id: JV-VERSION-004, title: "No Java 8 idioms", language: java, category: VERSION, severity: error, since: 0.1.0, linter: [checkstyle, spotbugs], source: "java/version.md#jv-version-004" }
+
+  - { id: JV-IMPORT-001, title: "Group order per Google Java Style", language: java, category: IMPORT, severity: error, since: 0.1.0, linter: [google-java-format, checkstyle], source: "java/import.md#jv-import-001" }
+  - { id: JV-IMPORT-002, title: "No wildcard imports", language: java, category: IMPORT, severity: error, since: 0.1.0, linter: ["checkstyle:AvoidStarImport"], source: "java/import.md#jv-import-002" }
+  - { id: JV-IMPORT-003, title: "Static imports limited and explicit", language: java, category: IMPORT, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/import.md#jv-import-003" }
+
+  - { id: JV-NAMING-001, title: "Identifier casing per Google Java Style", language: java, category: NAMING, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/naming.md#jv-naming-001" }
+  - { id: JV-NAMING-002, title: "No I prefix on interfaces", language: java, category: NAMING, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/naming.md#jv-naming-002" }
+  - { id: JV-NAMING-003, title: "No Impl suffix as a default", language: java, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "java/naming.md#jv-naming-003" }
+  - { id: JV-NAMING-004, title: "No Hungarian notation", language: java, category: NAMING, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/naming.md#jv-naming-004" }
+  - { id: JV-NAMING-005, title: "No single-character names except loop counters", language: java, category: NAMING, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/naming.md#jv-naming-005" }
+  - { id: JV-NAMING-006, title: "No generic class names like Manager Helper Util Handler", language: java, category: NAMING, severity: advisory, since: 0.1.0, linter: [advisory], source: "java/naming.md#jv-naming-006" }
+  - { id: JV-NAMING-007, title: "Test classes named ClassUnderTestTest", language: java, category: NAMING, severity: error, since: 0.1.0, linter: [advisory], source: "java/naming.md#jv-naming-007" }
+  - { id: JV-NAMING-008, title: "Test methods named methodName_condition_expectedBehavior", language: java, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "java/naming.md#jv-naming-008" }
+
+  - { id: JV-TYPE-001, title: "Records for immutable data carriers", language: java, category: TYPE, severity: error, since: 0.1.0, linter: [advisory], source: "java/type.md#jv-type-001" }
+  - { id: JV-TYPE-002, title: "Sealed classes for closed type hierarchies", language: java, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "java/type.md#jv-type-002" }
+  - { id: JV-TYPE-003, title: "Switch expressions over switch statements", language: java, category: TYPE, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/type.md#jv-type-003" }
+  - { id: JV-TYPE-004, title: "Text blocks for multi-line strings", language: java, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "java/type.md#jv-type-004" }
+  - { id: JV-TYPE-005, title: "var permitted when type is obvious", language: java, category: TYPE, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/type.md#jv-type-005" }
+
+  - { id: JV-NULL-001, title: "Optional only as return type when absence is normal", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [advisory], source: "java/null.md#jv-null-001" }
+  - { id: JV-NULL-002, title: "Never Optional get without isPresent (use combinators)", language: java, category: "NULL", severity: error, since: 0.1.0, linter: ["spotbugs:OPTIONAL_RETURN_NULL"], source: "java/null.md#jv-null-002" }
+  - { id: JV-NULL-003, title: "Never Optional as a method parameter", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [advisory], source: "java/null.md#jv-null-003" }
+  - { id: JV-NULL-004, title: "Never Optional as a field type", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [spotbugs], source: "java/null.md#jv-null-004" }
+  - { id: JV-NULL-005, title: "Never Optional Collection", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [advisory], source: "java/null.md#jv-null-005" }
+  - { id: JV-NULL-006, title: "Never return null from a collection-returning method", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [spotbugs], source: "java/null.md#jv-null-006" }
+  - { id: JV-NULL-007, title: "requireNonNull and blank checks at API boundaries", language: java, category: "NULL", severity: error, since: 0.1.0, linter: [advisory], source: "java/null.md#jv-null-007" }
+
+  - { id: JV-ERROR-001, title: "Never catch Exception as silent catch-all", language: java, category: ERROR, severity: error, since: 0.1.0, linter: ["spotbugs:REC_CATCH_EXCEPTION"], source: "java/error.md#jv-error-001" }
+  - { id: JV-ERROR-002, title: "Never catch Throwable", language: java, category: ERROR, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/error.md#jv-error-002" }
+  - { id: JV-ERROR-003, title: "Never empty catch block", language: java, category: ERROR, severity: error, since: 0.1.0, linter: ["checkstyle:EmptyCatchBlock"], source: "java/error.md#jv-error-003" }
+  - { id: JV-ERROR-004, title: "Always try-with-resources for AutoCloseable", language: java, category: ERROR, severity: error, since: 0.1.0, linter: ["spotbugs:OS_OPEN_STREAM"], source: "java/error.md#jv-error-004" }
+  - { id: JV-ERROR-005, title: "Checked vs unchecked exceptions", language: java, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "java/error.md#jv-error-005" }
+  - { id: JV-ERROR-006, title: "Never throws Exception or throws Throwable", language: java, category: ERROR, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/error.md#jv-error-006" }
+  - { id: JV-ERROR-007, title: "Always chain exceptions with the cause", language: java, category: ERROR, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/error.md#jv-error-007" }
+  - { id: JV-ERROR-008, title: "Domain exceptions in a dedicated package", language: java, category: ERROR, severity: advisory, since: 0.1.0, linter: [advisory], source: "java/error.md#jv-error-008" }
+
+  - { id: JV-IDIOM-001, title: "Streams not for side effects", language: java, category: IDIOM, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/idiom.md#jv-idiom-001" }
+  - { id: JV-IDIOM-002, title: "Method references over lambdas when clear", language: java, category: IDIOM, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/idiom.md#jv-idiom-002" }
+  - { id: JV-IDIOM-003, title: "Limit stream pipelines to about 3 to 4 operations", language: java, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "java/idiom.md#jv-idiom-003" }
+  - { id: JV-IDIOM-004, title: "Use Stream toList or toUnmodifiableList", language: java, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "java/idiom.md#jv-idiom-004" }
+
+  - { id: JV-LOG-001, title: "SLF4J only", language: java, category: LOG, severity: error, since: 0.1.0, linter: [checkstyle, spotbugs], source: "java/log.md#jv-log-001" }
+  - { id: JV-LOG-002, title: "Parameterized messages, not concatenation", language: java, category: LOG, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/log.md#jv-log-002" }
+  - { id: JV-LOG-003, title: "Logger declaration private static final", language: java, category: LOG, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/log.md#jv-log-003" }
+  - { id: JV-LOG-004, title: "Exception as last argument in log calls", language: java, category: LOG, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/log.md#jv-log-004" }
+
+  - { id: JV-TEST-001, title: "JUnit 5 only", language: java, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-001" }
+  - { id: JV-TEST-002, title: "AssertJ for all assertions", language: java, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-002" }
+  - { id: JV-TEST-003, title: "Mockito 5+; never PowerMock", language: java, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-003" }
+  - { id: JV-TEST-004, title: "80 percent line coverage minimum", language: java, category: TEST, severity: error, since: 0.1.0, linter: [jacoco], source: "java/test.md#jv-test-004" }
+  - { id: JV-TEST-005, title: "No Disabled without a tracking issue", language: java, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-005" }
+  - { id: JV-TEST-006, title: "One thing per test method", language: java, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-006" }
+  - { id: JV-TEST-007, title: "Nested classes for grouping", language: java, category: TEST, severity: advisory, since: 0.1.0, linter: [advisory], source: "java/test.md#jv-test-007" }
+
+  - { id: JV-DOC-001, title: "Javadoc on all public types", language: java, category: DOC, severity: error, since: 0.1.0, linter: ["checkstyle:MissingJavadocType"], source: "java/doc.md#jv-doc-001" }
+  - { id: JV-DOC-002, title: "Javadoc on all public and protected methods", language: java, category: DOC, severity: error, since: 0.1.0, linter: ["checkstyle:MissingJavadocMethod"], source: "java/doc.md#jv-doc-002" }
+  - { id: JV-DOC-003, title: "param/return/throws for every parameter, non-void return, declared exception", language: java, category: DOC, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/doc.md#jv-doc-003" }
+  - { id: JV-DOC-004, title: "First sentence is a third-person summary", language: java, category: DOC, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/doc.md#jv-doc-004" }
+  - { id: JV-DOC-005, title: "No author tags", language: java, category: DOC, severity: error, since: 0.1.0, linter: [checkstyle], source: "java/doc.md#jv-doc-005" }
+  - { id: JV-DOC-006, title: "package-info.java for every package", language: java, category: DOC, severity: warning, since: 0.1.0, linter: [checkstyle], source: "java/doc.md#jv-doc-006" }
+
+  - { id: JV-IMMUTABILITY-001, title: "Prefer immutable objects", language: java, category: IMMUTABILITY, severity: warning, since: 0.1.0, linter: [advisory], source: "java/immutability.md#jv-immutability-001" }
+  - { id: JV-IMMUTABILITY-002, title: "Defensive copies of mutable parameters and returns", language: java, category: IMMUTABILITY, severity: error, since: 0.1.0, linter: ["spotbugs:EI_EXPOSE_REP", "spotbugs:EI_EXPOSE_REP2"], source: "java/immutability.md#jv-immutability-002" }
+  - { id: JV-IMMUTABILITY-003, title: "Local variables final when not reassigned", language: java, category: IMMUTABILITY, severity: advisory, since: 0.1.0, linter: [checkstyle], source: "java/immutability.md#jv-immutability-003" }
+  - { id: JV-IMMUTABILITY-004, title: "Classes final unless designed for extension", language: java, category: IMMUTABILITY, severity: warning, since: 0.1.0, linter: [advisory], source: "java/immutability.md#jv-immutability-004" }
+  - { id: JV-IMMUTABILITY-005, title: "List.of/Map.of/Set.of for unmodifiable factory", language: java, category: IMMUTABILITY, severity: warning, since: 0.1.0, linter: [advisory], source: "java/immutability.md#jv-immutability-005" }
+
+  - { id: JV-CONCURRENCY-001, title: "synchronized on public methods only when documented thread-safe", language: java, category: CONCURRENCY, severity: warning, since: 0.1.0, linter: [spotbugs], source: "java/concurrency.md#jv-concurrency-001" }
+  - { id: JV-CONCURRENCY-002, title: "Prefer java.util.concurrent", language: java, category: CONCURRENCY, severity: warning, since: 0.1.0, linter: [advisory], source: "java/concurrency.md#jv-concurrency-002" }
+  - { id: JV-CONCURRENCY-003, title: "Always shut down ExecutorService", language: java, category: CONCURRENCY, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/concurrency.md#jv-concurrency-003" }
+  - { id: JV-CONCURRENCY-004, title: "Never Thread stop, suspend, or resume", language: java, category: CONCURRENCY, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/concurrency.md#jv-concurrency-004" }
+  - { id: JV-CONCURRENCY-005, title: "volatile or AtomicBoolean for shared flags", language: java, category: CONCURRENCY, severity: error, since: 0.1.0, linter: [spotbugs], source: "java/concurrency.md#jv-concurrency-005" }
+
+  - { id: JV-SECURITY-001, title: "PreparedStatement parameter binding for SQL", language: java, category: SECURITY, severity: error, since: 0.1.0, linter: [findsecbugs], source: "java/security.md#jv-security-001" }
+  - { id: JV-SECURITY-002, title: "Never log secrets or PII", language: java, category: SECURITY, severity: error, since: 0.1.0, linter: [findsecbugs], source: "java/security.md#jv-security-002" }
+  - { id: JV-SECURITY-003, title: "Validate identifiers against a safe pattern", language: java, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "java/security.md#jv-security-003" }
+  - { id: JV-SECURITY-004, title: "Never deserialize untrusted data with native ObjectInputStream", language: java, category: SECURITY, severity: error, since: 0.1.0, linter: [findsecbugs], source: "java/security.md#jv-security-004" }
+  - { id: JV-SECURITY-005, title: "OWASP Dependency-Check in CI", language: java, category: SECURITY, severity: error, since: 0.1.0, linter: [owasp-dependency-check], source: "java/security.md#jv-security-005" }
+  - { id: JV-SECURITY-006, title: "Keep dependencies up to date", language: java, category: SECURITY, severity: warning, since: 0.1.0, linter: [renovate, dependabot], source: "java/security.md#jv-security-006" }
+
+  - { id: JV-SPARK-001, title: "Chain DataFrame transformations one per line", language: java, category: SPARK, severity: warning, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-001" }
+  - { id: JV-SPARK-002, title: "Extract complex transformations into named methods", language: java, category: SPARK, severity: warning, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-002" }
+  - { id: JV-SPARK-003, title: "Avoid UDFs when built-in functions work", language: java, category: SPARK, severity: warning, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-003" }
+  - { id: JV-SPARK-004, title: "UDFs handle nulls explicitly; never throw", language: java, category: SPARK, severity: error, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-004" }
+  - { id: JV-SPARK-005, title: "Closures must be serializable; extract values from this", language: java, category: SPARK, severity: error, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-005" }
+  - { id: JV-SPARK-006, title: "Use Broadcast for read-only data larger than a few KB", language: java, category: SPARK, severity: warning, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-006" }
+  - { id: JV-SPARK-007, title: "Always specify explicit Encoders with Dataset.map", language: java, category: SPARK, severity: error, since: 0.1.0, linter: [advisory], source: "java/spark.md#jv-spark-007" }
+
+# TypeScript
+  - { id: TS-VERSION-001, title: "TypeScript 5.x with all strict flags", language: typescript, category: VERSION, severity: error, since: 0.1.0, linter: [tsc], source: "typescript/version.md#ts-version-001" }
+  - { id: TS-VERSION-002, title: "ECMAScript ES2022 minimum", language: typescript, category: VERSION, severity: error, since: 0.1.0, linter: [tsc-target], source: "typescript/version.md#ts-version-002" }
+  - { id: TS-VERSION-003, title: "React 18+", language: typescript, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/version.md#ts-version-003" }
+  - { id: TS-VERSION-004, title: "Node.js 20 LTS+", language: typescript, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/version.md#ts-version-004" }
+  - { id: TS-VERSION-005, title: "ESM only; no CommonJS in new code", language: typescript, category: VERSION, severity: error, since: 0.1.0, linter: [eslint, "tsc:verbatimModuleSyntax"], source: "typescript/version.md#ts-version-005" }
+
+  - { id: TS-IMPORT-001, title: "Group import order", language: typescript, category: IMPORT, severity: error, since: 0.1.0, linter: ["eslint:import/order"], source: "typescript/import.md#ts-import-001" }
+  - { id: TS-IMPORT-002, title: "Type imports use the type keyword", language: typescript, category: IMPORT, severity: error, since: 0.1.0, linter: ["@typescript-eslint/consistent-type-imports"], source: "typescript/import.md#ts-import-002" }
+  - { id: TS-IMPORT-003, title: "Named exports only; no default exports", language: typescript, category: IMPORT, severity: error, since: 0.1.0, linter: ["eslint:import/no-default-export"], source: "typescript/import.md#ts-import-003" }
+
+  - { id: TS-NAMING-001, title: "Identifier casing per table", language: typescript, category: NAMING, severity: error, since: 0.1.0, linter: ["@typescript-eslint/naming-convention"], source: "typescript/naming.md#ts-naming-001" }
+  - { id: TS-NAMING-002, title: "File naming", language: typescript, category: NAMING, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/naming.md#ts-naming-002" }
+  - { id: TS-NAMING-003, title: "Hooks prefixed with use", language: typescript, category: NAMING, severity: error, since: 0.1.0, linter: ["react-hooks/rules-of-hooks"], source: "typescript/naming.md#ts-naming-003" }
+  - { id: TS-NAMING-004, title: "No I prefix on interfaces", language: typescript, category: NAMING, severity: error, since: 0.1.0, linter: ["@typescript-eslint/naming-convention"], source: "typescript/naming.md#ts-naming-004" }
+  - { id: TS-NAMING-005, title: "No Enum suffix on enums", language: typescript, category: NAMING, severity: error, since: 0.1.0, linter: ["@typescript-eslint/naming-convention"], source: "typescript/naming.md#ts-naming-005" }
+  - { id: TS-NAMING-006, title: "Boolean variables use is/has/should", language: typescript, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/naming.md#ts-naming-006" }
+  - { id: TS-NAMING-007, title: "No generic standalone names", language: typescript, category: NAMING, severity: advisory, since: 0.1.0, linter: [advisory], source: "typescript/naming.md#ts-naming-007" }
+
+  - { id: TS-TYPE-001, title: "strict true plus extended strictness", language: typescript, category: TYPE, severity: error, since: 0.1.0, linter: [tsc], source: "typescript/type.md#ts-type-001" }
+  - { id: TS-TYPE-002, title: "Never any; use unknown and narrow", language: typescript, category: TYPE, severity: error, since: 0.1.0, linter: ["@typescript-eslint/no-explicit-any"], source: "typescript/type.md#ts-type-002" }
+  - { id: TS-TYPE-003, title: "Never non-null assertion", language: typescript, category: TYPE, severity: error, since: 0.1.0, linter: ["@typescript-eslint/no-non-null-assertion"], source: "typescript/type.md#ts-type-003" }
+  - { id: TS-TYPE-004, title: "Always narrow unknown before use", language: typescript, category: TYPE, severity: error, since: 0.1.0, linter: ["@typescript-eslint/no-unsafe-star"], source: "typescript/type.md#ts-type-004" }
+  - { id: TS-TYPE-005, title: "satisfies for type validation without widening", language: typescript, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/type.md#ts-type-005" }
+  - { id: TS-TYPE-006, title: "as const for literal tuples and objects", language: typescript, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/type.md#ts-type-006" }
+  - { id: TS-TYPE-007, title: "Discriminated unions over optional fields", language: typescript, category: TYPE, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/type.md#ts-type-007" }
+  - { id: TS-TYPE-008, title: "Template literal types for string constraints", language: typescript, category: TYPE, severity: advisory, since: 0.1.0, linter: [advisory], source: "typescript/type.md#ts-type-008" }
+
+  - { id: TS-REACT-001, title: "Functional components only", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-001" }
+  - { id: TS-REACT-002, title: "Props interface required", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-002" }
+  - { id: TS-REACT-003, title: "Composition over prop drilling beyond 2 levels", language: typescript, category: REACT, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-003" }
+  - { id: TS-REACT-004, title: "Derive state; never useEffect-sync derived state", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-004" }
+  - { id: TS-REACT-005, title: "Early returns for conditional rendering", language: typescript, category: REACT, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-005" }
+  - { id: TS-REACT-006, title: "Extract reusable logic into custom hooks", language: typescript, category: REACT, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-006" }
+  - { id: TS-REACT-007, title: "Type useState parameter when not inferable", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [tsc], source: "typescript/react.md#ts-react-007" }
+  - { id: TS-REACT-008, title: "useCallback only when needed", language: typescript, category: REACT, severity: advisory, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-008" }
+  - { id: TS-REACT-009, title: "TanStack Query for server state", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-009" }
+  - { id: TS-REACT-010, title: "Stable unique keys; never array index", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: ["eslint:react/no-array-index-key"], source: "typescript/react.md#ts-react-010" }
+  - { id: TS-REACT-011, title: "Type event handlers explicitly", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [tsc], source: "typescript/react.md#ts-react-011" }
+  - { id: TS-REACT-012, title: "Error boundaries wrap routes and async-loading components", language: typescript, category: REACT, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/react.md#ts-react-012" }
+
+  - { id: TS-IDIOM-001, title: "Logical AND with explicit boolean", language: typescript, category: IDIOM, severity: error, since: 0.1.0, linter: ["@typescript-eslint/strict-boolean-expressions"], source: "typescript/idiom.md#ts-idiom-001" }
+  - { id: TS-IDIOM-002, title: "No nested ternaries", language: typescript, category: IDIOM, severity: warning, since: 0.1.0, linter: ["eslint:no-nested-ternary"], source: "typescript/idiom.md#ts-idiom-002" }
+  - { id: TS-IDIOM-003, title: "useReducer with discriminated union actions", language: typescript, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/idiom.md#ts-idiom-003" }
+  - { id: TS-IDIOM-004, title: "zod for runtime validation of external data", language: typescript, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/idiom.md#ts-idiom-004" }
+  - { id: TS-IDIOM-005, title: "Compound components for related UI", language: typescript, category: IDIOM, severity: advisory, since: 0.1.0, linter: [advisory], source: "typescript/idiom.md#ts-idiom-005" }
+
+  - { id: TS-ASYNC-001, title: "async await only", language: typescript, category: ASYNC, severity: error, since: 0.1.0, linter: ["@typescript-eslint/promise-function-async"], source: "typescript/async.md#ts-async-001" }
+  - { id: TS-ASYNC-002, title: "No floating promises", language: typescript, category: ASYNC, severity: error, since: 0.1.0, linter: ["@typescript-eslint/no-floating-promises"], source: "typescript/async.md#ts-async-002" }
+  - { id: TS-ASYNC-003, title: "Promise.all for parallel; Promise.allSettled for independent failures", language: typescript, category: ASYNC, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/async.md#ts-async-003" }
+
+  - { id: TS-ERROR-001, title: "catch variables are typed unknown", language: typescript, category: ERROR, severity: error, since: 0.1.0, linter: ["tsc:useUnknownInCatchVariables"], source: "typescript/error.md#ts-error-001" }
+  - { id: TS-ERROR-002, title: "Never swallow errors silently", language: typescript, category: ERROR, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/error.md#ts-error-002" }
+  - { id: TS-ERROR-003, title: "Define domain error classes", language: typescript, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/error.md#ts-error-003" }
+  - { id: TS-ERROR-004, title: "Chain errors with the cause option", language: typescript, category: ERROR, severity: warning, since: 0.1.0, linter: [advisory], source: "typescript/error.md#ts-error-004" }
+
+  - { id: TS-TEST-001, title: "Vitest framework", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/test.md#ts-test-001" }
+  - { id: TS-TEST-002, title: "React Testing Library for components", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/test.md#ts-test-002" }
+  - { id: TS-TEST-003, title: "Test user behavior, not implementation", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/test.md#ts-test-003" }
+  - { id: TS-TEST-004, title: "MSW for API mocking", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/test.md#ts-test-004" }
+  - { id: TS-TEST-005, title: "Tests colocated with .test.tsx", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [vitest-discovery], source: "typescript/test.md#ts-test-005" }
+  - { id: TS-TEST-006, title: "No snapshot tests for component output", language: typescript, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/test.md#ts-test-006" }
+  - { id: TS-TEST-007, title: "80 percent coverage on core business logic", language: typescript, category: TEST, severity: warning, since: 0.1.0, linter: [vitest-coverage], source: "typescript/test.md#ts-test-007" }
+
+  - { id: TS-SECURITY-001, title: "Never render raw HTML from external sources", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: ["eslint:react/no-danger"], source: "typescript/security.md#ts-security-001" }
+  - { id: TS-SECURITY-002, title: "No dynamic code execution", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: ["eslint:no-eval", "eslint:no-implied-eval", "eslint:no-new-func"], source: "typescript/security.md#ts-security-002" }
+  - { id: TS-SECURITY-003, title: "Auth tokens in httpOnly cookies; never localStorage", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/security.md#ts-security-003" }
+  - { id: TS-SECURITY-004, title: "Validate external input with zod at the API boundary", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/security.md#ts-security-004" }
+  - { id: TS-SECURITY-005, title: "Encode user input in URLs", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "typescript/security.md#ts-security-005" }
+  - { id: TS-SECURITY-006, title: "rel noopener noreferrer on external links", language: typescript, category: SECURITY, severity: error, since: 0.1.0, linter: ["eslint:react/jsx-no-target-blank"], source: "typescript/security.md#ts-security-006" }
+
+# SQL / dbt
+  - { id: SQL-VERSION-001, title: "dbt Core 1.8+", language: sql, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "sql/version.md#sql-version-001" }
+  - { id: SQL-VERSION-002, title: "Databricks Runtime 14.3 LTS+", language: sql, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "sql/version.md#sql-version-002" }
+  - { id: SQL-VERSION-003, title: "SQLFluff 3.0+", language: sql, category: VERSION, severity: error, since: 0.1.0, linter: [advisory], source: "sql/version.md#sql-version-003" }
+
+  - { id: SQL-FMT-001, title: "Keywords lowercase", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:capitalisation.keywords"], source: "sql/fmt.md#sql-fmt-001" }
+  - { id: SQL-FMT-002, title: "4-space indentation, no tabs", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:layout.indent"], source: "sql/fmt.md#sql-fmt-002" }
+  - { id: SQL-FMT-003, title: "Trailing commas in select clauses", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:convention.select_trailing_comma"], source: "sql/fmt.md#sql-fmt-003" }
+  - { id: SQL-FMT-004, title: "Explicit join types; on on its own line", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:ambiguous.join"], source: "sql/fmt.md#sql-fmt-004" }
+  - { id: SQL-FMT-005, title: "No implicit comma joins", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:ambiguous.join"], source: "sql/fmt.md#sql-fmt-005" }
+  - { id: SQL-FMT-006, title: "Where conditions one per line; and/or at line start", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:layout"], source: "sql/fmt.md#sql-fmt-006" }
+  - { id: SQL-FMT-007, title: "group by uses column names, not numbers", language: sql, category: FMT, severity: error, since: 0.1.0, linter: ["sqlfluff:references.consistent"], source: "sql/fmt.md#sql-fmt-007" }
+  - { id: SQL-FMT-008, title: "case statements one when per line", language: sql, category: FMT, severity: warning, since: 0.1.0, linter: ["sqlfluff:layout"], source: "sql/fmt.md#sql-fmt-008" }
+
+  - { id: SQL-NAMING-001, title: "Model prefixes required (stg_, int_, fct_, dim_, rpt_, snap_, base_)", language: sql, category: NAMING, severity: error, since: 0.1.0, linter: [advisory], source: "sql/naming.md#sql-naming-001" }
+  - { id: SQL-NAMING-002, title: "Source naming matches external system; staging follows stg_source__table", language: sql, category: NAMING, severity: error, since: 0.1.0, linter: [advisory], source: "sql/naming.md#sql-naming-002" }
+  - { id: SQL-NAMING-003, title: "Column naming conventions (snake_case with type suffixes)", language: sql, category: NAMING, severity: error, since: 0.1.0, linter: ["sqlfluff:capitalisation.identifiers"], source: "sql/naming.md#sql-naming-003" }
+  - { id: SQL-NAMING-004, title: "Singular test files describe the assertion", language: sql, category: NAMING, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/naming.md#sql-naming-004" }
+
+  - { id: SQL-CTE-001, title: "CTEs over subqueries for non-trivial queries", language: sql, category: CTE, severity: error, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-001" }
+  - { id: SQL-CTE-002, title: "One logical step per CTE", language: sql, category: CTE, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-002" }
+  - { id: SQL-CTE-003, title: "Descriptive CTE names", language: sql, category: CTE, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-003" }
+  - { id: SQL-CTE-004, title: "Import CTEs first", language: sql, category: CTE, severity: error, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-004" }
+  - { id: SQL-CTE-005, title: "Final CTE named final; query ends with select star from final", language: sql, category: CTE, severity: error, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-005" }
+  - { id: SQL-CTE-006, title: "No nested CTEs", language: sql, category: CTE, severity: error, since: 0.1.0, linter: [advisory], source: "sql/cte.md#sql-cte-006" }
+  - { id: SQL-CTE-007, title: "Blank line between CTEs", language: sql, category: CTE, severity: warning, since: 0.1.0, linter: ["sqlfluff:layout.spacing"], source: "sql/cte.md#sql-cte-007" }
+
+  - { id: SQL-MODEL-001, title: "One model per file", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-001" }
+  - { id: SQL-MODEL-002, title: "Always ref() and source(); never hardcode table names", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-002" }
+  - { id: SQL-MODEL-003, title: "Never use target.schema for table references", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-003" }
+  - { id: SQL-MODEL-004, title: "Co-locate schema.yml with models", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-004" }
+  - { id: SQL-MODEL-005, title: "Directory structure follows the DAG", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-005" }
+  - { id: SQL-MODEL-006, title: "Config block at top of file, before first CTE", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-006" }
+  - { id: SQL-MODEL-007, title: "Every model has schema YAML entry with description and primary-key tests", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-007" }
+  - { id: SQL-MODEL-008, title: "Staging models do rename and recast only", language: sql, category: MODEL, severity: error, since: 0.1.0, linter: [advisory], source: "sql/model.md#sql-model-008" }
+
+  - { id: SQL-INCR-001, title: "Don't use incremental as a default", language: sql, category: INCR, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-001" }
+  - { id: SQL-INCR-002, title: "Use merge strategy on Databricks", language: sql, category: INCR, severity: error, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-002" }
+  - { id: SQL-INCR-003, title: "is_incremental filter in source CTE, not separate CTE", language: sql, category: INCR, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-003" }
+  - { id: SQL-INCR-004, title: "Compare against destination using this", language: sql, category: INCR, severity: error, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-004" }
+  - { id: SQL-INCR-005, title: "Late-arriving data uses a documented lookback window", language: sql, category: INCR, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-005" }
+  - { id: SQL-INCR-006, title: "Incremental models must work on full-refresh", language: sql, category: INCR, severity: error, since: 0.1.0, linter: [advisory], source: "sql/incr.md#sql-incr-006" }
+
+  - { id: SQL-TEST-001, title: "unique + not_null on every primary key", language: sql, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "sql/test.md#sql-test-001" }
+  - { id: SQL-TEST-002, title: "not_null + relationships on every foreign key", language: sql, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "sql/test.md#sql-test-002" }
+  - { id: SQL-TEST-003, title: "accepted_values on enum-like columns", language: sql, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/test.md#sql-test-003" }
+  - { id: SQL-TEST-004, title: "Singular tests return zero rows to pass", language: sql, category: TEST, severity: error, since: 0.1.0, linter: [dbt-convention], source: "sql/test.md#sql-test-004" }
+  - { id: SQL-TEST-005, title: "Unit tests required for business logic", language: sql, category: TEST, severity: error, since: 0.1.0, linter: [advisory], source: "sql/test.md#sql-test-005" }
+  - { id: SQL-TEST-006, title: "severity warn for non-blocking; error for blocking", language: sql, category: TEST, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/test.md#sql-test-006" }
+
+  - { id: SQL-JINJA-001, title: "Macros for SQL repeated in 3+ models", language: sql, category: JINJA, severity: advisory, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-001" }
+  - { id: SQL-JINJA-002, title: "No macros for one-off or complex business logic", language: sql, category: JINJA, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-002" }
+  - { id: SQL-JINJA-003, title: "Macros named in snake_case; describe what they generate", language: sql, category: JINJA, severity: error, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-003" }
+  - { id: SQL-JINJA-004, title: "Keep business logic in SQL, not Jinja", language: sql, category: JINJA, severity: error, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-004" }
+  - { id: SQL-JINJA-005, title: "Jinja loops acceptable for repetitive column generation", language: sql, category: JINJA, severity: advisory, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-005" }
+  - { id: SQL-JINJA-006, title: "env_var in profiles.yml only, never in model SQL", language: sql, category: JINJA, severity: error, since: 0.1.0, linter: [advisory], source: "sql/jinja.md#sql-jinja-006" }
+
+  - { id: SQL-IDIOM-001, title: "select star only in import CTEs", language: sql, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-001" }
+  - { id: SQL-IDIOM-002, title: "CTEs over subqueries in from", language: sql, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-002" }
+  - { id: SQL-IDIOM-003, title: "No hardcoded dates or magic numbers", language: sql, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-003" }
+  - { id: SQL-IDIOM-004, title: "No or in join conditions", language: sql, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-004" }
+  - { id: SQL-IDIOM-005, title: "Never distinct to fix duplicates", language: sql, category: IDIOM, severity: error, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-005" }
+  - { id: SQL-IDIOM-006, title: "Window functions over self-joins for row-level comparisons", language: sql, category: IDIOM, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/idiom.md#sql-idiom-006" }
+
+  - { id: SQL-PERF-001, title: "Include partition column in where for partition pruning", language: sql, category: PERF, severity: error, since: 0.1.0, linter: [advisory], source: "sql/perf.md#sql-perf-001" }
+  - { id: SQL-PERF-002, title: "Z-ORDER on frequently filtered/joined columns; max 4", language: sql, category: PERF, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/perf.md#sql-perf-002" }
+  - { id: SQL-PERF-003, title: "Avoid distinct on large tables", language: sql, category: PERF, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/perf.md#sql-perf-003" }
+  - { id: SQL-PERF-004, title: "order by only in final reporting models", language: sql, category: PERF, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/perf.md#sql-perf-004" }
+  - { id: SQL-PERF-005, title: "union all over union", language: sql, category: PERF, severity: error, since: 0.1.0, linter: ["sqlfluff:convention"], source: "sql/perf.md#sql-perf-005" }
+  - { id: SQL-PERF-006, title: "Avoid correlated subqueries; use joins or window functions", language: sql, category: PERF, severity: warning, since: 0.1.0, linter: [advisory], source: "sql/perf.md#sql-perf-006" }
+
+  - { id: SQL-SECURITY-001, title: "No hardcoded secrets in SQL files", language: sql, category: SECURITY, severity: error, since: 0.1.0, linter: [gitleaks, advisory], source: "sql/security.md#sql-security-001" }
+  - { id: SQL-SECURITY-002, title: "No PII in test fixtures", language: sql, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "sql/security.md#sql-security-002" }
+  - { id: SQL-SECURITY-003, title: "Validate var() inputs from user-controlled sources", language: sql, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "sql/security.md#sql-security-003" }
+  - { id: SQL-SECURITY-004, title: "Row-level security via Unity Catalog, not in dbt models", language: sql, category: SECURITY, severity: error, since: 0.1.0, linter: [advisory], source: "sql/security.md#sql-security-004" }
+
+# Databricks / Unity Catalog
+  - { id: DBX-DELTA-001, title: "Curated tables use Delta format", language: databricks, category: DELTA, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-001" }
+  - { id: DBX-DELTA-002, title: "Liquid clustering for new managed tables; Z-ORDER on legacy", language: databricks, category: DELTA, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-002" }
+  - { id: DBX-DELTA-003, title: "VACUUM retention >= 7 days", language: databricks, category: DELTA, severity: error, since: 0.1.0, linter: [advisory, audit], source: "databricks/delta.md#dbx-delta-003" }
+  - { id: DBX-DELTA-004, title: "OPTIMIZE via predictive optimization where available", language: databricks, category: DELTA, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-004" }
+  - { id: DBX-DELTA-005, title: "Change Data Feed enabled on tables consumed downstream", language: databricks, category: DELTA, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-005" }
+  - { id: DBX-DELTA-006, title: "Schema evolution is explicit", language: databricks, category: DELTA, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-006" }
+  - { id: DBX-DELTA-007, title: "CHECK constraints for invariants; PRIMARY KEY advisory", language: databricks, category: DELTA, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-007" }
+  - { id: DBX-DELTA-008, title: "Time-travel readers pin to version or timestamp", language: databricks, category: DELTA, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-008" }
+  - { id: DBX-DELTA-009, title: "DEEP CLONE for backups; SHALLOW CLONE for tests only", language: databricks, category: DELTA, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/delta.md#dbx-delta-009" }
+
+  - { id: DBX-UC-001, title: "Three-part names everywhere", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/uc.md#dbx-uc-001" }
+  - { id: DBX-UC-002, title: "Catalog assignment follows the data-product registry", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/uc.md#dbx-uc-002" }
+  - { id: DBX-UC-003, title: "External tables preferred over managed (current posture)", language: databricks, category: UC, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/uc.md#dbx-uc-003" }
+  - { id: DBX-UC-004, title: "Every UC object has an owner and a comment", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/uc.md#dbx-uc-004" }
+  - { id: DBX-UC-005, title: "UC tags for governance", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/uc.md#dbx-uc-005" }
+  - { id: DBX-UC-006, title: "Storage credentials and external locations in IaC", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [terraform-required], source: "databricks/uc.md#dbx-uc-006" }
+  - { id: DBX-UC-007, title: "Volumes for unstructured data; never DBFS in new code", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/uc.md#dbx-uc-007" }
+  - { id: DBX-UC-008, title: "Grants managed via Terraform, not SQL", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [terraform-required], source: "databricks/uc.md#dbx-uc-008" }
+  - { id: DBX-UC-009, title: "Use system schemas for metadata queries", language: databricks, category: UC, severity: advisory, since: 0.1.0, linter: [advisory], source: "databricks/uc.md#dbx-uc-009" }
+  - { id: DBX-UC-010, title: "Lakehouse Federation requires security review", language: databricks, category: UC, severity: error, since: 0.1.0, linter: [process-gate], source: "databricks/uc.md#dbx-uc-010" }
+
+  - { id: DBX-COMPUTE-001, title: "Job clusters for production; all-purpose for development only", language: databricks, category: COMPUTE, severity: error, since: 0.1.0, linter: [cluster-policy], source: "databricks/compute.md#dbx-compute-001" }
+  - { id: DBX-COMPUTE-002, title: "Pin Databricks Runtime version explicitly", language: databricks, category: COMPUTE, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/compute.md#dbx-compute-002" }
+  - { id: DBX-COMPUTE-003, title: "Photon enabled for SQL workloads", language: databricks, category: COMPUTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/compute.md#dbx-compute-003" }
+  - { id: DBX-COMPUTE-004, title: "Auto-termination on all-purpose clusters within 30 minutes", language: databricks, category: COMPUTE, severity: error, since: 0.1.0, linter: [cluster-policy], source: "databricks/compute.md#dbx-compute-004" }
+  - { id: DBX-COMPUTE-005, title: "Cluster policies enforce instance types and budget caps", language: databricks, category: COMPUTE, severity: error, since: 0.1.0, linter: [terraform-required], source: "databricks/compute.md#dbx-compute-005" }
+  - { id: DBX-COMPUTE-006, title: "Serverless SQL warehouses for BI; classic only when serverless cannot serve", language: databricks, category: COMPUTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/compute.md#dbx-compute-006" }
+  - { id: DBX-COMPUTE-007, title: "Init scripts in workspace files only, not DBFS", language: databricks, category: COMPUTE, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/compute.md#dbx-compute-007" }
+
+  - { id: DBX-WORKFLOW-001, title: "Use Databricks Workflows for orchestration", language: databricks, category: WORKFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/workflow.md#dbx-workflow-001" }
+  - { id: DBX-WORKFLOW-002, title: "Job timeouts set explicitly per task", language: databricks, category: WORKFLOW, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/workflow.md#dbx-workflow-002" }
+  - { id: DBX-WORKFLOW-003, title: "Retries with exponential backoff", language: databricks, category: WORKFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/workflow.md#dbx-workflow-003" }
+  - { id: DBX-WORKFLOW-004, title: "Failure notifications go to a team channel", language: databricks, category: WORKFLOW, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/workflow.md#dbx-workflow-004" }
+  - { id: DBX-WORKFLOW-005, title: "Job parameters via job-level params, not hardcoded", language: databricks, category: WORKFLOW, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/workflow.md#dbx-workflow-005" }
+  - { id: DBX-WORKFLOW-006, title: "Task dependencies expressed declaratively", language: databricks, category: WORKFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/workflow.md#dbx-workflow-006" }
+
+  - { id: DBX-SEC-001, title: "Secrets in Databricks secret scopes only", language: databricks, category: SEC, severity: error, since: 0.1.0, linter: [gitleaks, advisory], source: "databricks/sec.md#dbx-sec-001" }
+  - { id: DBX-SEC-002, title: "OAuth client credentials for service-principal auth; never PAT", language: databricks, category: SEC, severity: error, since: 0.1.0, linter: [advisory, audit], source: "databricks/sec.md#dbx-sec-002" }
+  - { id: DBX-SEC-003, title: "PrivateLink for production catalog access", language: databricks, category: SEC, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/sec.md#dbx-sec-003" }
+  - { id: DBX-SEC-004, title: "IP allowlists configured per workspace", language: databricks, category: SEC, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/sec.md#dbx-sec-004" }
+  - { id: DBX-SEC-005, title: "Audit log delivery enabled", language: databricks, category: SEC, severity: error, since: 0.1.0, linter: [terraform-validation], source: "databricks/sec.md#dbx-sec-005" }
+
+  - { id: DBX-WASTE-001, title: "Job cluster oversized vs. peak observed workers", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-001" }
+  - { id: DBX-WASTE-002, title: "Autoscale floor never relaxes", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-002" }
+  - { id: DBX-WASTE-003, title: "Long idle gaps between tasks within a job run", language: databricks, category: WASTE, severity: info, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-003" }
+  - { id: DBX-WASTE-004, title: "dbt threads vs. cluster cores mismatch", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-004" }
+  - { id: DBX-WASTE-005, title: "Materialization heavier than usage justifies", language: databricks, category: WASTE, severity: info, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-005" }
+  - { id: DBX-WASTE-006, title: "Incremental candidate still doing full refresh", language: databricks, category: WASTE, severity: info, since: 0.1.0, status: withdrawn, linter: [advisory], source: "databricks/waste.md#dbx-waste-006" }
+  - { id: DBX-WASTE-007, title: "Spark config overrides likely stale or misconfigured", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-007" }
+  - { id: DBX-WASTE-008, title: "SQL warehouse oversized vs. query history", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-008" }
+  - { id: DBX-WASTE-009, title: "SQL warehouse under-provisioned (queueing)", language: databricks, category: WASTE, severity: warning, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-009" }
+  - { id: DBX-WASTE-010, title: "dbt target points at all-purpose cluster for scheduled runs", language: databricks, category: WASTE, severity: error, since: 0.1.0, linter: [advisory], source: "databricks/waste.md#dbx-waste-010" }
+
+  # Containerization
+  - { id: CONT-BASE-001, title: "Pin the base image and tool versions", language: containerization, category: BASE, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/base.md#cont-base-001" }
+  - { id: CONT-BASE-002, title: "Run the container as a non-root user", language: containerization, category: BASE, severity: warning, since: 0.1.0, linter: [advisory], source: "containerization/base.md#cont-base-002" }
+  - { id: CONT-BASE-003, title: "Setup scripts use strict mode and quote all expansions", language: containerization, category: BASE, severity: error, since: 0.1.0, linter: [shellcheck], source: "containerization/base.md#cont-base-003" }
+  - { id: CONT-BASE-004, title: "Source all base images and packages from internal mirrors", language: containerization, category: BASE, severity: error, since: 0.1.0, linter: [advisory, CI], source: "containerization/base.md#cont-base-004" }
+
+  - { id: CONT-PATH-001, title: "No host- or home-relative hardcoded paths", language: containerization, category: PATH, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/path.md#cont-path-001" }
+  - { id: CONT-PATH-002, title: "Single source of truth for the virtual-environment path", language: containerization, category: PATH, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/path.md#cont-path-002" }
+  - { id: CONT-PATH-003, title: "Derive the workspace location from the container, not a literal repo name", language: containerization, category: PATH, severity: error, since: 0.1.0, linter: [advisory, shellcheck], source: "containerization/path.md#cont-path-003" }
+
+  - { id: CONT-ENV-001, title: "Persist normalized environment to /etc/profile.d for all shells", language: containerization, category: ENV, severity: error, since: 0.1.0, linter: [advisory, shellcheck], source: "containerization/env.md#cont-env-001" }
+  - { id: CONT-ENV-002, title: "Normalize quoted environment values once during setup", language: containerization, category: ENV, severity: warning, since: 0.1.0, linter: [advisory, shellcheck], source: "containerization/env.md#cont-env-002" }
+  - { id: CONT-ENV-003, title: "Per-repo differences live in env/config metadata, not script logic", language: containerization, category: ENV, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/env.md#cont-env-003" }
+
+  - { id: CONT-SETUP-001, title: "Scripts are the unit of vending; tasks call scripts", language: containerization, category: SETUP, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/setup.md#cont-setup-001" }
+  - { id: CONT-SETUP-002, title: "Setup scripts are idempotent and guard on missing inputs", language: containerization, category: SETUP, severity: error, since: 0.1.0, linter: [advisory, shellcheck], source: "containerization/setup.md#cont-setup-002" }
+  - { id: CONT-SETUP-003, title: "No emojis in container scripts or their output", language: containerization, category: SETUP, severity: error, since: 0.1.0, linter: [advisory], source: "containerization/setup.md#cont-setup-003" }
+
+  - { id: CONT-PORT-001, title: "OS-agnostic host-path detection", language: containerization, category: PORT, severity: warning, since: 0.1.0, linter: [advisory, shellcheck], source: "containerization/portability.md#cont-port-001" }
+  - { id: CONT-PORT-002, title: "Separate one-time setup from per-start work", language: containerization, category: PORT, severity: warning, since: 0.1.0, linter: [advisory], source: "containerization/portability.md#cont-port-002" }
+  - { id: CONT-PORT-003, title: "Build architecture-agnostically", language: containerization, category: PORT, severity: warning, since: 0.1.0, linter: [advisory], source: "containerization/portability.md#cont-port-003" }
+
+# Draft entries — registered to unblock skill rule-ID resolution; full text pending RFD authoring.
+# All carry status: draft, severity: advisory, source: "TBD-pending-RFD". Titles paraphrased
+# from the citing skill's inline comments. Do not treat draft rules as enforced standards.
+
+# SQL / dbt on Databricks (DBSQL profile)
+  - { id: SQL-DBSQL-001, title: "OAuth-only profiles.yml", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-002, title: "+materialized default per layer", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-003, title: "Incrementals use merge strategy", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-005, title: "External tables only", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-006, title: "Test coverage on PKs (not_null + unique)", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-007, title: "Catalog/schema set per environment", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-008, title: "No PATs in profiles.yml (cross-ref DBX-SEC-002)", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-DBSQL-009, title: "VACUUM retention >= 168 hours", language: databricks-sql, category: DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# DBSQL performance (static-analysis findings emitted by /optimize-dbsql-query)
+  - { id: SQL-PERF-DBSQL-001, title: "Avoid SELECT * against a source table", language: databricks-sql, category: PERF-DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-PERF-DBSQL-002, title: "No cross join — every join needs an ON clause", language: databricks-sql, category: PERF-DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-PERF-DBSQL-003, title: "Do not wrap predicate columns in functions (defeats pruning)", language: databricks-sql, category: PERF-DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-PERF-DBSQL-004, title: "ORDER BY inside a subquery without LIMIT is discarded", language: databricks-sql, category: PERF-DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: SQL-PERF-DBSQL-005, title: "CREATE TABLE USING DELTA should declare CLUSTER BY", language: databricks-sql, category: PERF-DBSQL, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# Delta extensions — Catalyst tblproperties block (proposed; awaiting RFD 0008 enumeration)
+  - { id: DBX-DELTA-010, title: "UniForm Iceberg compatibility enabled (delta.universalFormat / enableIcebergCompatV2)", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DELTA-011, title: "Column mapping mode = 'name'", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DELTA-012, title: "Deletion vectors enabled (delta.enableDeletionVectors)", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DELTA-013, title: "autoOptimize.optimizeWrite enabled", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DELTA-014, title: "tuneFileSizesForRewrites enabled (MERGE-friendly file sizing)", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DELTA-015, title: "delta.logRetentionDuration must match delta.deletedFileRetentionDuration", language: databricks, category: DELTA, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# Databricks Asset Bundles (RFD 0012 cross-ref; awaiting RFD 0008 enumeration)
+  - { id: DBX-BUNDLE-001, title: "Bundle name = <domain>_<product>", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-002, title: "One bundle per data product", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-003, title: "Workspace host per target from promotions.yml; no inline hosts", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-005, title: "OAuth client credentials (run-as service principal)", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-006, title: "Notifications block wired to the standard alert sink (Datadog webhook)", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-007, title: "Tags include data_product, owner, cost_center", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-008, title: "Permissions block declares run-as + reviewer groups", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-009, title: "DBR LTS runtime; no preview channels in prod targets", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-010, title: "External tables only; managed table requires meta.managed_table_waiver", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-BUNDLE-011, title: "Bundle exposes databricks_job_prefix var for /generate-dag compose", language: databricks, category: BUNDLE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# Compute (extension to existing DBX-COMPUTE-001..007)
+  - { id: DBX-COMPUTE-008, title: "Ephemeral per-job job_cluster allowed; persistent clusters live in compute DAB", language: databricks, category: COMPUTE, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# Job performance findings (emitted by /optimize-databricks-job)
+  - { id: DBX-PERF-001, title: "Job has no max_concurrent_runs configured", language: databricks, category: PERF, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-PERF-002, title: "Task cluster has min_workers == max_workers (no autoscale headroom)", language: databricks, category: PERF, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-PERF-003, title: "Cluster spark_version older than current LTS", language: databricks, category: PERF, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-PERF-004, title: "Job has no timeout_seconds configured", language: databricks, category: PERF, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-PERF-005, title: "Photon disabled on a job cluster", language: databricks, category: PERF, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+
+# Airflow / RFD 0011 (PY-AIRFLOW-* — emitted by /generate-dag; bodies in python/airflow.md)
+  - { id: PY-AIRFLOW-001, title: "Derive partitions and paths from the processing window", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-001--derive-partitions-and-paths-from-the-processing-window" }
+  - { id: PY-AIRFLOW-002, title: "Pin start_date to a static UTC datetime", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-002--pin-start_date-to-a-static-utc-datetime" }
+  - { id: PY-AIRFLOW-003, title: "Declare a retry policy on every task", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-003--declare-a-retry-policy-on-every-task" }
+  - { id: PY-AIRFLOW-004, title: "Use exponential backoff for retries", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-004--use-exponential-backoff-for-retries" }
+  - { id: PY-AIRFLOW-005, title: "Declare compute via approved T-shirt tiers", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-005--declare-compute-via-approved-t-shirt-tiers" }
+  - { id: PY-AIRFLOW-006, title: "Declare the schedule explicitly and set catchup to intent", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-006--declare-the-schedule-explicitly-and-set-catchup-to-intent" }
+  - { id: PY-AIRFLOW-007, title: "Tag every DAG with the required tag set", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-007--tag-every-dag-with-the-required-tag-set" }
+  - { id: PY-AIRFLOW-008, title: "Rely on platform Datadog alerting, not a per-DAG callback", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-008--rely-on-platform-datadog-alerting-not-a-per-dag-callback" }
+  - { id: PY-AIRFLOW-009, title: "No I/O at module scope", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-009--no-io-at-module-scope" }
+  - { id: PY-AIRFLOW-010, title: "Prefer the TaskFlow API for new code", language: python, category: AIRFLOW, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-010--prefer-the-taskflow-api-for-new-code" }
+  - { id: PY-AIRFLOW-011, title: "Keep XCom to metadata, not row data", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-011--keep-xcom-to-metadata-not-row-data" }
+  - { id: PY-AIRFLOW-012, title: "Follow the DAG ID naming convention", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-012--follow-the-dag-id-naming-convention" }
+  - { id: PY-AIRFLOW-013, title: "Resolve secrets through Connections and Variables", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [secret-scan], source: "python/airflow.md#py-airflow-013--resolve-secrets-through-connections-and-variables" }
+  - { id: PY-AIRFLOW-014, title: "Cover every DAG with a pytest integrity test", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [pytest], source: "python/airflow.md#py-airflow-014--cover-every-dag-with-a-pytest-integrity-test" }
+  - { id: PY-AIRFLOW-015, title: "Emit the data-ready event only on success", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-015--emit-the-data-ready-event-only-on-success" }
+  - { id: PY-AIRFLOW-016, title: "Fail fast on deterministic errors", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-016--fail-fast-on-deterministic-errors" }
+  - { id: PY-AIRFLOW-017, title: "Release the worker slot on long waits and bound the timeout", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-017--release-the-worker-slot-on-long-waits-and-bound-the-timeout" }
+  - { id: PY-AIRFLOW-018, title: "Bound DAG parallelism", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-018--bound-dag-parallelism" }
+  - { id: PY-AIRFLOW-019, title: "Default to asset-driven scheduling", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-019--default-to-asset-driven-scheduling" }
+  - { id: PY-AIRFLOW-020, title: "Never pass secrets as operator arguments", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [secret-scan], source: "python/airflow.md#py-airflow-020--never-pass-secrets-as-operator-arguments" }
+  - { id: PY-AIRFLOW-021, title: "Develop and test DAGs locally before pushing", language: python, category: AIRFLOW, severity: advisory, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-021--develop-and-test-dags-locally-before-pushing" }
+  - { id: PY-AIRFLOW-022, title: "Enforce the standard with a value-bounded structural test", language: python, category: AIRFLOW, severity: error, since: 0.1.0, linter: [assert_dag_compliant], source: "python/airflow.md#py-airflow-022--enforce-the-standard-with-a-value-bounded-structural-test" }
+  - { id: PY-AIRFLOW-023, title: "One task is one logical step", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-023--one-task-is-one-logical-step" }
+  - { id: PY-AIRFLOW-024, title: "Keep DAG files thin; shared logic in a versioned library", language: python, category: AIRFLOW, severity: warning, since: 0.1.0, linter: [advisory], source: "python/airflow.md#py-airflow-024--keep-dag-files-thin-shared-logic-in-a-versioned-library" }
+  - { id: DBX-DAB-001, title: "Databricks Asset Bundle layout standard", language: databricks, category: DAB, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DAB-002, title: "DAB targets: dev/prod parity", language: databricks, category: DAB, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DAB-003, title: "DAB resource declaration conventions", language: databricks, category: DAB, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }
+  - { id: DBX-DAB-004, title: "DAB deploy + run lifecycle hooks", language: databricks, category: DAB, severity: advisory, since: 0.1.0, status: draft, linter: [advisory], source: "TBD-pending-RFD" }

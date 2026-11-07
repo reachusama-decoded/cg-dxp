@@ -1,0 +1,4 @@
+# /home/astro/.venv/cosmos — dbt in its own venv, as in the learners' image, with the
+# DuckDB adapter in place of dbt-databricks. dbt-core pinned to the dev container's 1.11.8.
+dbt-core==1.11.8
+dbt-duckdb==1.11.1

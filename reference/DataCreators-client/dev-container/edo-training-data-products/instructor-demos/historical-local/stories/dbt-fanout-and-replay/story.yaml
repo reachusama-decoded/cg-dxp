@@ -1,0 +1,196 @@
+schema_version: 1
+id: dbt-fanout-and-replay
+title: Diagnose fan-out and replay incremental arrivals
+objective: Separate join cardinality from incremental event identity.
+tool: dbt
+task_ids:
+- dbt-p2-01
+- dbt-p2-02
+- dbt-p2-03
+- dbt-p2-04
+route: local-duckdb
+readiness: ready
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/dbt/phase-two-proficient/solution
+source_inputs:
+- challenges/v2/dbt/phase-two-proficient/README.md
+- challenges/v2-solutions/dbt/phase-two-proficient/solution
+- scripts/demo-checks.py
+requires:
+- browser
+- dbt
+- duckdb-python
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: dbt-models-and-tests
+steps:
+- id: baseline
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --profiles-dir . && dbt build --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Completed successfully
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Build the advanced instructor baseline.
+    notice: The five holdings reconcile to total exposure 250.
+- id: fanout
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 -c "import csv; h=list(csv.DictReader(open('seeds/holdings.csv')));
+      f=list(csv.DictReader(open('fixtures/fund_labels_duplicate.csv'))); j=[r for
+      r in h for x in f if r['fund_id']==x['fund_id']]; print(len(j),sum(float(r['market_value'])
+      for r in j))"
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: 7 400.0
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Calculate the duplicate-lookup effect from actual CSVs.
+    notice: The duplicate A lookup creates seven joined rows and total 400; it needs
+      a declared cardinality rule.
+- id: faulty-join
+  action:
+    adapter: terminal
+    session: developer
+    command: 'cp models/fund_exposure.sql fund_exposure.saved.sql
+
+      cp fixtures/fund_labels_duplicate.csv seeds/fund_labels.csv
+
+      cat > models/fund_exposure.sql <<''SQL''
+
+      select h.fund_id,count(*) as holdings,sum(h.market_value) as exposure
+
+      from {{ ref(''stg_holdings'') }} h join {{ ref(''fund_labels'') }} f using(fund_id)
+
+      group by h.fund_id
+
+      SQL
+
+      dbt seed --select fund_labels --profiles-dir . && dbt run --select fund_exposure
+      --profiles-dir . && dbt test --select reconcile_exposure --profiles-dir .'
+  expect:
+    exit_code: 1
+    checks:
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - fanout-failure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Run the defective join and its reconciliation test.
+    notice: The actual output has seven holdings and exposure 400; reconciliation
+      rejects it.
+- id: repair
+  action:
+    adapter: terminal
+    session: developer
+    command: cp fund_exposure.saved.sql models/fund_exposure.sql && dbt build --profiles-dir
+      .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - exposure
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Restore the declared fund-grain join.
+    notice: The consumer model uses the unique fund dimension and again reconciles
+      to 250.
+- id: arrivals
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt run --select arrival_ledger --profiles-dir . && python3 inspect-output.py
+      arrival-ledger
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - arrival-ledger
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect the incremental event ledger.
+    notice: Two event identities contribute total 180.
+- id: changed
+  action:
+    adapter: terminal
+    session: developer
+    command: 'printf ''event_id,fund_id,market_value\ne1,A,125\ne2,B,80\ne3,C,20\n''
+      > seeds/arrivals.csv
+
+      dbt seed --select arrivals --profiles-dir . && dbt run --select arrival_ledger
+      --profiles-dir . && python3 inspect-output.py arrival-ledger'
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - arrival-ledger
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Apply one update and one new event.
+    notice: Three identities now contribute total 225.
+- id: replay
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt run --select arrival_ledger --profiles-dir . && python3 inspect-output.py
+      arrival-ledger
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - arrival-ledger
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Replay the same event batch.
+    notice: The event count remains three and the total remains 225.
+closing_question: Separate join cardinality from incremental event identity. Which
+  observation supports your explanation?
+workspace_files:
+- source: scripts/demo-checks.py
+  destination: inspect-output.py

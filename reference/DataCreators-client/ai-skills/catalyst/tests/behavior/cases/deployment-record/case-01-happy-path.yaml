@@ -1,0 +1,33 @@
+id: deployment-record.case-01-happy-path
+skill: skills/deployment-record
+type: artifact
+description: 'Bootstrap happy-path case. Log deployment metadata, components deployed, verification steps,
+  and issues
+
+  encountered. Use when the user asks to "document the deployment", "create the
+
+  deployment record", "log what was deployed", or "record the release".'
+input:
+  arguments: 'Record the production deployment of the employee directory data product. Environment: prod.
+    Rollback: redeploy v1.0.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/deployment-record/templates/deployment-record.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Log deployment
+      metadata, components deployed, verification steps, and issues
+
+      encountered. Use when the user asks to "document the deployment''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

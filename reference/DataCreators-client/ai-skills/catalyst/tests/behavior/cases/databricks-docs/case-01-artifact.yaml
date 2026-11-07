@@ -1,0 +1,44 @@
+id: databricks-docs.case-01-artifact
+skill: skills/databricks-docs
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "fetch Databricks docs"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: returns_url_or_path
+      weight: 0.35
+      prompt: >-
+        Does the response return a Databricks documentation URL or a
+        well-known doc path, rather than fabricating documentation
+        content as if it were the authoritative source? Score 1.0 if
+        the response provides a real URL (e.g., docs.databricks.com/...)
+        or SDK reference path (databricks-sdk-py.readthedocs.io/...) and
+        directs the user there; 0.5 if a URL-like string is present but
+        appears invented or malformed; 0 if the response invents content
+        that impersonates official docs. Score 0-1.
+    - id: references_docs_index
+      weight: 0.35
+      prompt: >-
+        Does the response reference at least one of the following
+        Databricks documentation domains: `docs.databricks.com/` or
+        `databricks-sdk-py.readthedocs.io/`? Score 1.0 if at least one
+        of these domains appears in a URL or is named explicitly; 0.5
+        if Databricks docs are referenced but without a specific domain;
+        0 if no real Databricks documentation domain is cited. Score 0-1.

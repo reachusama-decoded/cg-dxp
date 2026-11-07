@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: stg_holdings
+    description: One holding per fund, position date and instrument; value is native currency.
+    columns:
+      - name: fund_id
+        data_tests: [not_null]
+      - name: position_date
+        data_tests: [not_null]
+      - name: instrument_id
+        data_tests: [not_null]
+  - name: fund_nav_report
+    description: One fund/date in GBP; synthetic 100 million units excludes cash.
+    columns:
+      - name: exposure_gbp
+        data_tests: [not_null]

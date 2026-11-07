@@ -1,0 +1,44 @@
+id: working-with-dbt-mesh.case-01-artifact
+skill: skills/working-with-dbt-mesh
+type: artifact
+description: >-
+  Smoke test for vendored dbt-labs skill. Verifies the skill loads and
+  produces non-empty Catalyst-shaped output (dbt Core only, no Cloud /
+  Fusion / MCP references).
+
+input:
+  arguments: "set up dbt mesh"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: references_dependencies_yml
+      weight: 0.35
+      prompt: >-
+        Does the response cite `dependencies.yml` as the dbt mesh
+        inter-project dependency file, AND reference either the `groups:`
+        block (for model grouping) or the `access:` property (for model
+        access control contracts between projects)? Score 1.0 if
+        `dependencies.yml` is cited along with `groups:` or `access:`;
+        0.5 if only one of these is present; 0 if `dependencies.yml`
+        is absent. Score 0-1.
+    - id: notes_cloud_enterprise_for_cross_project
+      weight: 0.35
+      prompt: >-
+        Does the response correctly note that cross-project model
+        references using `{{ ref('project_name', 'model_name') }}` syntax
+        require a dbt Cloud Enterprise deployment environment (not
+        available in dbt Core alone)? Score 1.0 if this constraint is
+        stated explicitly and correctly; 0.5 if cross-project refs are
+        mentioned but the Cloud Enterprise requirement is only implied
+        or vague; 0 if cross-project refs are presented as universally
+        available in dbt Core without qualification. Score 0-1.

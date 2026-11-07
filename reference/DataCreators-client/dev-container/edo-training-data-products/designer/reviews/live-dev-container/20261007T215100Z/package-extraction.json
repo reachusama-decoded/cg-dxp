@@ -1,0 +1,68 @@
+{
+  "learner": {
+    "archive_sha256": "8278ea458094a612d23e7550e20f0fa832dc5d09e1be871bf4e2056961271249",
+    "checks": [
+      {
+        "command": [
+          "python3",
+          "scripts/challenge-v2.py",
+          "list"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/challenge-v2.py",
+          "verify-starter",
+          "dbt",
+          "phase-one-certified",
+          "--mode",
+          "offline"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "source_inventory": "Every selected byte checked after extraction",
+    "boundary": "Extracted challenge delivery only; prepared runtime supplied explicitly; full classroom/PDF/connected entry still pending"
+  },
+  "instructor": {
+    "archive_sha256": "aca8e08cae494c07d80c933b8e45d002a78b417c602775bfa04f18597ada39f3",
+    "checks": [
+      {
+        "command": [
+          "python3",
+          "scripts/challenge-v2.py",
+          "list"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/challenge-v2.py",
+          "verify-starter",
+          "dbt",
+          "phase-one-certified",
+          "--mode",
+          "offline"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/challenge-v2.py",
+          "verify-solution",
+          "dbt",
+          "phase-one-certified",
+          "--mode",
+          "offline"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "source_inventory": "Every selected byte checked after extraction",
+    "boundary": "Extracted challenge delivery only; prepared runtime supplied explicitly; full classroom/PDF/connected entry still pending"
+  }
+}

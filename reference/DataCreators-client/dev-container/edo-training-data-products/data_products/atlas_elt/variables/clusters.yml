@@ -1,0 +1,50 @@
+variables:
+  small_cluster:
+    description: "Small cluster definition"
+    type: complex
+    default:
+      spark_version: ${var.databricks_runtime_spark_version}
+      spark_env_vars:
+        PROJECT_HOME: ${var.root_path}/files
+        PYTHONPATH: ${var.root_path}/files:${var.root_path}/files/shared:${var.root_path}/files/data_products/${var.data_product_name}/python
+        DBT_TARGET_PATH: ${var.root_path}/files/data_products/${var.data_product_name}/target
+        DBT_HOST: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+        GIT_SSL_NO_VERIFY: "true"
+        REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
+        SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+        CURL_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
+        GIT_SSL_CAINFO: /etc/ssl/certs/ca-certificates.crt
+      policy_id: ${var.compute_policy_id}
+      node_type_id: m7gd.large
+      autoscale:
+        min_workers: 1
+        max_workers: 2
+      data_security_mode: SINGLE_USER
+      init_scripts:
+        - workspace:
+            destination: ${var.root_path}/files/data_products/${var.data_product_name}/init_scripts/install_requirements.sh
+  dqf_cluster:
+    description: "DQF cluster definition"
+    type: complex
+    default:
+      spark_version: "15.4.x-scala2.12"
+      spark_env_vars:
+        PROJECT_HOME: ${var.root_path}/files
+        PYTHONPATH: ${var.root_path}/files:${var.root_path}/files/shared:${var.root_path}/files/data_products/${var.data_product_name}/python
+        DBT_HOST: https://cg-db-aa00003661-dev-us-east-1.cloud.databricks.com
+        DEFAULT_CATALOG: ${var.default_catalog}
+        DEFAULT_SCHEMA: ${var.default_schema}
+        GIT_SSL_NO_VERIFY: "true"
+      policy_id: ${var.compute_policy_id}
+      node_type_id: m7gd.large
+      num_workers: 0
+      data_security_mode: SINGLE_USER
+      spark_conf:
+        spark.master: "local[*]"
+        # Why: Databricks enforces singleNode profile for this local[*] DQ job-cluster shape.
+        spark.databricks.cluster.profile: "singleNode"
+      custom_tags:
+        ResourceClass: "SingleNode"
+      init_scripts:
+        - workspace:
+            destination: ${var.root_path}/files/data_products/${var.data_product_name}/init_scripts/install_dqf_requirements.sh

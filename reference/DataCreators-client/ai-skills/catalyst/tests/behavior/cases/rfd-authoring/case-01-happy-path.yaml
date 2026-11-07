@@ -1,0 +1,37 @@
+id: rfd-authoring.case-01-happy-path
+skill: skills/rfd-authoring
+type: artifact
+description: 'Happy-path case for the rfd-authoring skill. Author a new Request for
+  Discussion (RFD) following the canonical structure from RFD 1 + RFD 0. Trigger
+  phrases: "draft an RFD", "write an RFD", "propose an RFD", "edit RFD NNNN",
+  "open RFD NNNN", or working on files under rfd/NNNN/.'
+input:
+  arguments: Draft an RFD proposing a convention for how Catalyst skills declare
+    which DPLC phase they serve, so phase-aware orchestrators can route to them
+    without a separate lookup table. Working title "Skill Phase Declaration." Use
+    RFD 0042 as the reservation.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: canonical_sections
+    weight: 0.4
+    prompt: 'Does the output use the five canonical RFD top-level sections in order:
+      `## Problem`, `## Background`, `## Proposal`, `## Alternatives`, `## Impact`?
+      Anti-pattern top-level sections that should NOT appear without explicit
+      justification: `## Implementation`, `## Goals` / `## Non-Goals` (these belong
+      as sub-headings), `## Schema`, `## API`, `## Risks`, `## TODO`, `## Open
+      Questions`. Score 0-1.'
+  - id: frontmatter_valid
+    weight: 0.3
+    prompt: 'Does the output start with valid YAML frontmatter containing at
+      minimum `authors:`, `state:`, and `discussion:` fields? Is `state:` one of
+      the documented enum values (`ideation`, `prediscussion`, `discussion`,
+      `published`, `committed`, `abandoned`)? Score 0-1.'
+  - id: no_placeholders
+    weight: 0.3
+    prompt: 'Is the output free of `[TBD]`, `[fill in]`, lorem-ipsum stubs, or
+      "TODO" placeholders? Does each canonical section have concrete content
+      addressing the prompt rather than placeholder prose? Score 0-1.'

@@ -1,0 +1,24 @@
+id: discover-data.case-03-no-databricks
+type: artifact
+description: |
+  PR #40, dimension 1 of 3: when Databricks is not configured, does
+  the skill explicitly TELL the user creds are missing? Shares
+  run-03-no-databricks with case-04 and case-05 — all three evaluate
+  the same agent transcript along orthogonal dimensions.
+
+run: discover-data.run-03-no-databricks
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.7
+  criteria:
+    - id: detects_missing_creds
+      weight: 1.0
+      prompt: |
+        Does the output explicitly tell the user that Databricks
+        credentials are missing or that the connection cannot be
+        established? Look for phrases like "Databricks is not
+        connected", "credentials are not configured", "cannot verify
+        the source schema", or equivalent. Score 0-1.

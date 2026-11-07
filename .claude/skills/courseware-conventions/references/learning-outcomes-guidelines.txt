@@ -1,0 +1,106 @@
+﻿Why use learning objectives?
+In the most straightforward and efficient manner possible, learning objectives serve to inform both you and your learners about the anticipated results of a training program.
+Objectives are more precise and measurable than general aims. Designing training is like a journey:
+1. Decide on the destination and purpose.
+2. Plan the route.
+3. Monitor progress against the plan during the trip.
+4. Confirm arrival upon reaching the planned destination.
+Training sessions resemble journeys in several ways:
+1. Instructors and learners share a clear destination and purpose.
+2. Objectives guide the instructor's session planning.
+3. Both parties can track progress toward these goals.
+4. Post-training assessments determine if goals were met, identifying needs for further development or necessary curriculum adjustments for future groups.
+Begin objectives with:
+"By the end of this session you will be able to…" 
+Essential elements
+Learning objectives have three essential elements.
+Behaviour
+What the learners will be able to do at the end of the training course or session.
+Standard
+The standard or level to which they will be able to do or perform it.
+Condition
+The situation or circumstances under which performance will be assessed on the course.
+Behaviour
+The behaviour required at the end of a training session should always be expressed as an action verb because these are measurable and/or observable. This makes sure that your objectives spell out the outcomes expected at the end of the training — not back at work, although they should be able to transfer their knowledge, skills and behaviours to work as well.
+Examples of action verbs
+* Analyse
+* Apply
+* Build
+* Calculate
+* Categorise
+* Classify
+* Create
+* Design
+* Draw
+* Explain
+* Format
+* Grade
+* Insert
+* Install
+* Interview
+* Label
+* Link
+* List
+* Log-on
+* Modify
+* Negotiate
+* Order
+* Plan
+* Present
+* Print
+* Rank
+* Run
+* Search
+* Setup
+* Sort
+* Transfer
+* Type
+* Write
+Unobservable behaviours
+* appreciate
+* have an in-depth understanding of
+* be aware of
+* Know
+* be familiar with
+* recognise
+* grasp how to
+* understand
+Standard
+The standard indicates the level of performance required and indicates to what degree of excellence the behaviour is to be performed. The level is also a form of measure for both the instructor and learners.
+Examples of standards
+achieving all elements stated on
+accurately
+at least xx items
+correctly
+in accordance with legislation
+to the company standard
+time, if job related
+within a range of x–x
+within xx words
+without error
+to match an example
+Unquantifiable standards
+* Basic
+* Quickly
+* Confidently
+* Simple
+* Consistently
+* Successfully
+* Effectively
+Condition
+Conditions describe the circumstances, environment, context, tools provided or withheld, constraints or method of testing under which the learner will carry out the behaviour.
+The condition provides consistency and fairness. This means that all learners will be tested in the same way and the outcome will be objective. Conditions can simulate the circumstances in which the task will be performed on the job, which helps to transfer learning back to the workplace.
+Examples of conditions
+* based upon the given scenarios
+* of your own choice
+* Role-play
+* time (if course related)
+* using the given equipment
+* using the given information, data or materials
+* using the mouse, keyboard or touch screen
+* without reference to notes, handouts or manuals
+Irrelevant conditions
+* in a verbal quiz
+* on your own
+* using Excel, (if it is an Excel course)
+* without the assistance of your instructor

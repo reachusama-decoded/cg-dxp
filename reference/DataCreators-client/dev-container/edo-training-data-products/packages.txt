@@ -1,0 +1,10 @@
+# Intentionally left empty.
+#
+# The Astronomer runtime base image declares ONBUILD triggers that fire at
+# `FROM` time and run `install-system-packages` against deb.debian.org —
+# which is unreachable from our build environment.  Keeping this file
+# empty makes that ONBUILD apt-get install a no-op.
+#
+# The real OS package list lives in `os-packages.txt` and is installed by
+# the explicit RUN in the Dockerfile, after we have rewritten
+# /etc/apt/sources.list to point at our internal mirror.

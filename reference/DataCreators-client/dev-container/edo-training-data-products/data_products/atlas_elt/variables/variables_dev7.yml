@@ -1,0 +1,3 @@
+variables:
+  sql_warehouse_id:
+    default: 267dd55b7f7395ce

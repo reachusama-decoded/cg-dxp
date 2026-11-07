@@ -1,0 +1,105 @@
+version: 2
+
+# These four sources are raw Delta tables in your training catalog. They are
+# provisioned as dbt seeds (dbt/seeds/*_raw.csv) that land in your target schema:
+# `mise run challenge:seed 02` loads them, and `mise run challenge:verify 02`
+# seeds them automatically before building. Staging reads them through source(),
+# exactly as it would read a real custodian or Bloomberg feed landed by an
+# upstream ingestion job.
+#
+# Each source pins database/schema to the dbt target, so
+# source('custodian','holdings_raw') resolves to <catalog>.<your_schema>.holdings_raw
+# — the same relation the seed creates.
+
+sources:
+  - name: custodian
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily SFTP drop from the custodian: position-level holdings and cash."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 4, period: hour}
+        error_after: {count: 6, period: hour}
+    tables:
+      - name: holdings_raw
+        description: "Position-level holdings per fund per day."
+        columns:
+          - name: fund_cd
+          - name: pos_dt
+          - name: isin
+          - name: qty
+          - name: mkt_val_lc
+          - name: ccy_cd
+      - name: positions_raw
+        description: "Cash + accrued positions per fund per day."
+        columns:
+          - name: fund_cd
+          - name: pos_dt
+          - name: ccy_cd
+          - name: cash_balance
+          - name: accrued_interest
+
+  - name: bloomberg
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily reference data + end-of-day prices."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 8, period: hour}
+        error_after: {count: 24, period: hour}
+    tables:
+      - name: prices_raw
+        description: "End-of-day close price per instrument per day."
+        columns:
+          - name: isin
+          - name: price_dt
+          - name: close_px
+          # Note: Bloomberg names its currency column `quote_ccy`, not `ccy_cd`
+          # like the custodian feed. Real raw feeds disagree like this; staging
+          # is where you normalise it.
+          - name: quote_ccy
+      - name: refdata_raw
+        description: "Instrument reference: name and asset class."
+        columns:
+          - name: isin
+          - name: instrument_name
+          - name: asset_class
+
+  - name: fx_feed
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Daily FX close rates to a GBP base."
+    config:
+      loaded_at_field: _extracted_at
+      freshness:
+        warn_after:  {count: 6, period: hour}
+        error_after: {count: 12, period: hour}
+    tables:
+      - name: fx_rates_raw
+        description: "One row per currency pair per day."
+        columns:
+          - name: from_ccy
+          - name: to_ccy
+          - name: rate_dt
+          - name: rate
+
+  # This source has no `config:` block on purpose. The fund master is a
+  # slow-moving internal reference table with no `_extracted_at` column, so there
+  # is nothing for `loaded_at_field` to read. `dbt source freshness` therefore
+  # skips it and reports on 5 of the 6 source tables — expected, not a gap.
+  - name: product_ref
+    database: "{{ target.database }}"
+    schema: "{{ target.schema }}"
+    description: "Internal fund master + product catalogue."
+    tables:
+      - name: fund_master_raw
+        description: "One row per fund: name, inception, base currency, strategy."
+        columns:
+          - name: fund_cd
+          - name: fund_name
+          - name: inception_dt
+          - name: base_ccy
+          - name: strategy_code
+          - name: is_active

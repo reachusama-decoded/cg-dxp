@@ -1,0 +1,30 @@
+id: runbook.case-01-happy-path
+skill: skills/runbook
+type: artifact
+description: "Bootstrap happy-path case. Generate an operational runbook \u2014 health checks, alert responses,\
+  \ escalation\npaths, maintenance schedules. Use when the user asks to \"create the runbook\",\n\"document\
+  \ operational procedures\", \"write the ops guide\", \"define health\nchecks and alert responses\",\
+  \ or \"prepare the operations handbook\"."
+input:
+  arguments: Write the runbook for the employee directory data product. Hourly DLT pipeline; alert if
+    freshness > 90 minutes.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/runbook/templates/runbook.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: "Does the output meaningfully address the request described by the skill: 'Generate an operational\
+      \ runbook \u2014 health checks, alert responses, escalation\npaths, maintenance schedules. Use when\
+      \ the user asks to \"create'? Score 0-1."
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

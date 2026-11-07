@@ -1,0 +1,54 @@
+apiVersion: v3.0.0
+kind: DataContract
+id: urn:datacontract:atlas_elt:portfolio_perf
+name: portfolio_perf
+version: 1.0.0
+domain: atlas_elt
+status: draft
+schema:
+  - name: portfolio_perf
+    physicalName: rpt_portfolio_performance
+    logicalType: object
+    physicalType: table
+    format: delta
+    external: true
+    properties:
+      - name: portfolio_id
+        logicalType: string
+        physicalType: string
+        nullable: false
+      - name: aum
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: fees_paid
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: trades
+        logicalType: integer
+        physicalType: bigint
+        nullable: true
+      - name: positions
+        logicalType: integer
+        physicalType: bigint
+        nullable: true
+      - name: buy_value
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: sell_value
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: net_flow
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+      - name: fee_bps_realized
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+grants:
+  select:
+    - ${env_grant_prefix}_ATLAS_ELT_READ

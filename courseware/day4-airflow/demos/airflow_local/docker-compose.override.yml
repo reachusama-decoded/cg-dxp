@@ -1,0 +1,25 @@
+# Merged into the compose file the Astro CLI generates (same mechanism as the learners'
+# repo). Points dbt at the DuckDB files under include/warehouse and keeps telemetry off.
+x-airflow-common: &airflow-common
+  environment:
+    PA_DUCKDB_PATH: /usr/local/airflow/include/warehouse/training_dev.duckdb
+    PA_SCHEMA: training_demo
+    EOD_DUCKDB_PATH: /usr/local/airflow/include/warehouse/eod_prices.duckdb
+    EOD_SCHEMA: training_demo
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    AIRFLOW__LOGGING__REMOTE_LOGGING: "False"
+    ASTRO_DATADOG_TASK_LOGS_ENABLED: "false"
+    AIRFLOW__METRICS__STATSD_DATADOG_ENABLED: "false"
+    AIRFLOW__SECRETS__BACKEND: "airflow.secrets.metastore.MetastoreBackend"
+    AIRFLOW__SECRETS__BACKEND_KWARGS: "{}"
+    AIRFLOW__CORE__TEST_CONNECTION: "Enabled"
+
+services:
+  dag-processor:
+    <<: *airflow-common
+  scheduler:
+    <<: *airflow-common
+  triggerer:
+    <<: *airflow-common
+  api-server:
+    <<: *airflow-common

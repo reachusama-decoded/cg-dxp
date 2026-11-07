@@ -1,0 +1,33 @@
+id: unit-test-report.case-01-happy-path
+skill: skills/unit-test-report
+type: artifact
+description: 'Bootstrap happy-path case. Summarize unit test coverage, categories, and notable findings.
+  Use when the
+
+  user asks to "write the test report", "document unit test results", "create
+
+  the test summary", or "record test coverage".'
+input:
+  arguments: Write the unit-test report for the employee directory pipeline. 32 tests, 1 flaky test on
+    null manager.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/unit-test-report/templates/unit-test-report.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Summarize unit
+      test coverage, categories, and notable findings. Use when the
+
+      user asks to "write the test report", "document unit test resul''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

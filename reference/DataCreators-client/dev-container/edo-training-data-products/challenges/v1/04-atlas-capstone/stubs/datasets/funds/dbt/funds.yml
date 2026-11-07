@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dom_fund__fund
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt
+  - name: src_fundref__funds
+    config:
+      meta:
+        enabled: true
+        domain: atlas_elt

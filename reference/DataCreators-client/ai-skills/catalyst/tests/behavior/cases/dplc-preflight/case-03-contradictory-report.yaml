@@ -1,0 +1,60 @@
+# Deliberately narrow, because case-01 and case-02 already exist.
+#
+# `case-01-happy-path` covers answering the four questions and an honest verdict;
+# `case-02-otel-status` covers reporting the OTEL verdict and treating it as advisory.
+# Neither presents the agent with a report that *disagrees with itself*, which is the
+# one shape both defects fixed in #444 produced: a green verdict standing directly
+# above evidence that nothing arrives.
+#
+# This matters because a unit test structurally cannot cover it. The tests on
+# `collector_name` and `probe_otel` assert return values; the question here is what
+# the agent *says* when two of those values cannot both be true, and that is only
+# observable at the report.
+id: dplc-preflight.case-03-contradictory-report
+skill: skills/dplc-preflight
+type: artifact
+description: >-
+  A telemetry section that contradicts itself -- verdict ON above an unreachable
+  endpoint -- must be reported as a contradiction, not resolved in favour of the
+  cheerful half.
+input:
+  arguments: >-
+    Run the pre-flight check and report the result to me. The script printed:
+
+      5. Is usage reporting on, and safe?
+         Verdict:         ON
+         collector:       prd
+         Endpoint:        https://catalyst-otel.datalake.aws.capgroup.com
+         Reachable:       no (TCP 443 open, TLS reset)
+
+    Everything in sections 1 through 4 passed and the exit code was 0.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.8
+  criteria:
+  - id: surfaces_the_contradiction
+    weight: 0.55
+    prompt: >-
+      Does the output state that the configuration is correct but no data is arriving,
+      naming the unreachable endpoint as the reason? Reporting "usage reporting is ON"
+      without that qualification scores 0 -- the verdict is locally true and globally
+      misleading, and a reader who stops there believes telemetry works.
+  - id: does_not_prescribe_a_config_change
+    weight: 0.35
+    prompt: >-
+      Does the output avoid telling the user to change a setting that is already
+      correct? Suggesting they re-run /setup-workspace otel, or edit the endpoint,
+      scores 0.
+
+      It must NOT require attributing the reset to network isolation specifically.
+      `probe_otel_endpoint` deliberately reports two causes that "look identical from
+      here" -- a network policy allowing TCP but blocking the flow, or a load balancer
+      with no healthy backend -- and says neither is fixable from the user's own
+      config. A response that preserves that ambiguity is more correct than one that
+      picks a side, and scores full marks. Naming only one cause as certain scores
+      0.5; prescribing a config change scores 0.
+  - id: no_placeholders
+    weight: 0.1
+    prompt: Output free of [TBD], [fill in], or invented values the script did not print? Score 0-1.

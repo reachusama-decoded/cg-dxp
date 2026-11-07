@@ -1,0 +1,29 @@
+/* Optional VS Code preview styling. Structure remains usable without this file. */
+body {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 24px 32px 56px;
+  line-height: 1.6;
+  color: var(--vscode-editor-foreground, #203548);
+  background: var(--vscode-editor-background, #fff);
+}
+h1 { line-height: 1.2; margin-top: 1.2em; }
+h2 { margin-top: 2em; padding-bottom: .35em; border-bottom: 2px solid var(--vscode-textLink-foreground, #087f8c); }
+h3 { margin-top: 1.6em; }
+a { color: var(--vscode-textLink-foreground, #087f8c); }
+img { max-width: 100%; height: auto; display: block; margin: 1.25em auto; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0 1.5em; }
+th, td { padding: .7em .85em; vertical-align: top; border: 1px solid var(--vscode-panel-border, #cbd9e2); }
+th { text-align: left; background: var(--vscode-textCodeBlock-background, #eff6f8); }
+blockquote { margin: 1.2em 0; padding: .6em 1em; border-left: 4px solid var(--vscode-textLink-foreground, #087f8c); }
+details { margin: 1em 0; padding: .8em 1em; border: 1px solid var(--vscode-panel-border, #cbd9e2); border-radius: 8px; }
+summary { cursor: pointer; font-weight: 600; }
+summary:focus-visible { outline: 2px solid var(--vscode-focusBorder, #087f8c); outline-offset: 4px; }
+pre { padding: 1em; overflow-x: auto; border-radius: 6px; }
+code { font-size: .94em; }
+@media print {
+  body { max-width: none; padding: 0; color: #203548; background: #fff; }
+  pre { white-space: pre-wrap; }
+  img, tr { break-inside: avoid; }
+  /* Expand disclosures in the editor before printing; CSS cannot toggle open state. */
+}

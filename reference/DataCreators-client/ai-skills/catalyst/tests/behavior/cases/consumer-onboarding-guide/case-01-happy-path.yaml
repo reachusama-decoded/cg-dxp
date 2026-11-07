@@ -1,0 +1,35 @@
+id: consumer-onboarding-guide.case-01-happy-path
+skill: skills/consumer-onboarding-guide
+type: artifact
+description: 'Bootstrap happy-path case. Create a consumer onboarding guide with prerequisites, datasets,
+  example
+
+  queries, and support contacts. Use when the user asks to "write the onboarding
+
+  guide", "create consumer documentation", "how do consumers access this
+
+  product", or "document the getting started steps".'
+input:
+  arguments: "Write the consumer onboarding guide for the employee directory data product (Marketplace\
+    \ \u2192 SQL warehouse)."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/consumer-onboarding-guide/templates/consumer-onboarding-guide.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Create a consumer
+      onboarding guide with prerequisites, datasets, example
+
+      queries, and support contacts. Use when the user asks to "write the''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

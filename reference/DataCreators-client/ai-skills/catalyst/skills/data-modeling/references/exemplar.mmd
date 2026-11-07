@@ -1,0 +1,206 @@
+erDiagram
+    %% =============================================================================
+    %% EXEMPLAR: Bi-Temporal Data Model (Canonical Pattern)
+    %% Domain: Index Data Platform
+    %% Purpose: Reference for structure, format, and level of detail
+    %% =============================================================================
+
+    %% Index Master - Canonical driver table with all vendor/industry identifiers
+    INDEX_MASTER {
+        bigint index_sk PK "SHA2(index_id || dl_business_from_date)"
+        string index_id NK "Canonical index identifier"
+        string isin "ISIN code - industry identifier"
+        string cusip "CUSIP code - industry identifier"
+        string bloomberg_id "Bloomberg index identifier"
+        string jpm_id "JPMorgan index identifier"
+        string refinitiv_id "Refinitiv index identifier"
+        string msci_id "MSCI index identifier"
+        string index_name "Index display name"
+        string index_short_name "Abbreviated name"
+        string index_currency "Base currency ISO 4217"
+        string index_family "Index family grouping"
+        string calculation_frequency "DAILY|MONTHLY|REALTIME"
+        string dl_source "Source system identifier"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System ingestion time"
+        timestamp dl_system_to_date "System superseded time"
+        boolean is_current "Current record flag"
+        string checksum "Change detection hash"
+    }
+
+    %% Fixed Income Attributes - Asset class specific
+    INDEX_FIXED_INCOME_ATTRIBS {
+        bigint attrib_sk PK "SHA2(index_sk || dl_business_from_date)"
+        bigint index_sk FK "Reference to index_master"
+        string duration_type "MODIFIED|EFFECTIVE|MACAULAY"
+        decimal effective_duration "Duration in years"
+        decimal yield_to_maturity "YTM percentage"
+        decimal yield_to_worst "YTW percentage"
+        decimal average_coupon "Weighted avg coupon"
+        decimal average_maturity "Weighted avg maturity years"
+        string credit_quality "Investment grade classification"
+        string sector_breakdown "JSON sector weights"
+        string dl_source "Source system"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Equity Attributes - Asset class specific
+    INDEX_EQUITY_ATTRIBS {
+        bigint attrib_sk PK "SHA2(index_sk || dl_business_from_date)"
+        bigint index_sk FK "Reference to index_master"
+        string weighting_method "MARKET_CAP|EQUAL|FUNDAMENTAL"
+        string rebalance_frequency "QUARTERLY|SEMI_ANNUAL|ANNUAL"
+        int constituent_count "Number of constituents"
+        decimal market_cap_billions "Total market cap USD"
+        decimal pe_ratio "Price to earnings ratio"
+        decimal dividend_yield "Trailing dividend yield"
+        string sector_breakdown "JSON sector weights"
+        string country_breakdown "JSON country weights"
+        string dl_source "Source system"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Multi-Asset Attributes - Asset class specific
+    INDEX_MULTI_ASSET_ATTRIBS {
+        bigint attrib_sk PK "SHA2(index_sk || dl_business_from_date)"
+        bigint index_sk FK "Reference to index_master"
+        decimal equity_weight "Equity allocation percentage"
+        decimal fixed_income_weight "Fixed income allocation"
+        decimal alternatives_weight "Alternatives allocation"
+        decimal cash_weight "Cash allocation"
+        string asset_allocation_json "Detailed allocation breakdown"
+        string rebalance_rule "Allocation rebalance logic"
+        string dl_source "Source system"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Index Returns - Fact table (no business time, uses return_date)
+    INDEX_RETURNS {
+        bigint return_sk PK "SHA2(index_sk || return_date)"
+        bigint index_sk FK "Reference to index_master"
+        date return_date DD "Return observation date"
+        decimal daily_return "Daily return percentage"
+        decimal mtd_return "Month-to-date return"
+        decimal qtd_return "Quarter-to-date return"
+        decimal ytd_return "Year-to-date return"
+        decimal index_level "Index level value"
+        decimal total_return_index "Total return index level"
+        string dl_source "Source system"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Index Constituents - Fact table
+    INDEX_CONSTITUENTS {
+        bigint constituent_sk PK "SHA2(index_sk || security_sk || effective_date)"
+        bigint index_sk FK "Reference to index_master"
+        bigint security_sk FK "Reference to security_master"
+        date effective_date DD "Constituent effective date"
+        decimal weight "Constituent weight percentage"
+        decimal shares "Number of shares"
+        decimal market_value "Market value in index currency"
+        string action "ADD|REMOVE|REWEIGHT"
+        string dl_source "Source system"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Security Master - Canonical driver for securities
+    SECURITY_MASTER {
+        bigint security_sk PK "SHA2(security_id || dl_business_from_date)"
+        string security_id NK "Canonical security identifier"
+        string isin NK "ISIN - industry identifier"
+        string cusip NK "CUSIP - industry identifier"
+        string sedol NK "SEDOL - industry identifier"
+        string bloomberg_id "Bloomberg security ID"
+        string refinitiv_ric "Refinitiv RIC code"
+        string security_name "Security display name"
+        string security_type "EQUITY|BOND|ETF|FUTURE"
+        string asset_class "Fixed Income|Equity|Multi-Asset|Cash|Alternatives|Commodities"
+        string issuer_id FK "Reference to issuer"
+        string currency "Trading currency"
+        string country_of_risk "ISO country code"
+        string dl_source "Source system"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Vendor Extension - Only for unmapped vendor-specific columns
+    INDEX_EXTENSION_BLOOMBERG {
+        bigint extension_sk PK "SHA2(index_sk || dl_business_from_date)"
+        bigint index_sk FK "Reference to index_master"
+        string bb_composite_ticker "Bloomberg composite ticker"
+        string bb_security_typ "Bloomberg security type"
+        string bb_market_sector "Bloomberg market sector"
+        string bb_specific_field_1 "Unmapped Bloomberg field"
+        string dl_source "Source system"
+        timestamp dl_business_from_date "Business validity start"
+        timestamp dl_business_to_date "Business validity end"
+        timestamp dl_system_from_date "System time start"
+        timestamp dl_system_to_date "System time end"
+        boolean is_current "Current flag"
+        string checksum "Change hash"
+    }
+
+    %% Source Tables (Landing Layer)
+    JPM_FI_INDEX {
+        string jpm_id PK "JPMorgan identifier"
+        string index_name "Index name"
+        string currency "Currency code"
+        decimal duration "Duration value"
+        decimal ytm "Yield to maturity"
+        timestamp updated_at "Last update time"
+    }
+
+    BLOOMBERG_EQ_INDEX {
+        string bloomberg_id PK "Bloomberg identifier"
+        string ticker "Index ticker"
+        string name "Index name"
+        string weighting "Weighting method"
+        int constituents "Constituent count"
+        timestamp last_updated "Last update time"
+    }
+
+    REFINITIV_INDEX {
+        string refinitiv_id PK "Refinitiv identifier"
+        string ric "RIC code"
+        string description "Index description"
+        string currency "Currency"
+        timestamp timestamp "Update timestamp"
+    }
+
+    %% Relationships
+    JPM_FI_INDEX ||--o{ INDEX_MASTER : "sources (UNION)"
+    BLOOMBERG_EQ_INDEX ||--o{ INDEX_MASTER : "sources (UNION)"
+    REFINITIV_INDEX ||--o{ INDEX_MASTER : "sources (UNION)"
+    INDEX_MASTER ||--o{ INDEX_FIXED_INCOME_ATTRIBS : "has"
+    INDEX_MASTER ||--o{ INDEX_EQUITY_ATTRIBS : "has"
+    INDEX_MASTER ||--o{ INDEX_MULTI_ASSET_ATTRIBS : "has"
+    INDEX_MASTER ||--o{ INDEX_RETURNS : "has"
+    INDEX_MASTER ||--o{ INDEX_CONSTITUENTS : "contains"
+    INDEX_MASTER ||--o| INDEX_EXTENSION_BLOOMBERG : "extends"
+    SECURITY_MASTER ||--o{ INDEX_CONSTITUENTS : "member_of"

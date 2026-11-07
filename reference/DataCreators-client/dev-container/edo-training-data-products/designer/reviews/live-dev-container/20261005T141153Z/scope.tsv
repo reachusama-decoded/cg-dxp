@@ -1,0 +1,16 @@
+tool	phase	offered	optional	tasks	core	optional_tasks	stretch	other
+git	phase-one-certified	True	False	5	5	0	0	
+git	phase-two-proficient	True	False	5	5	0	0	
+docker	phase-one-certified	True	False	5	5	0	0	
+docker	phase-two-proficient	True	False	5	5	0	0	
+dbt	phase-one-certified	True	False	5	5	0	0	
+dbt	phase-two-proficient	True	False	5	5	0	0	
+databricks-cli	phase-one-certified	True	False	5	5	0	0	
+databricks-cli	phase-two-proficient	False	False	0	0	0	0	
+airflow	phase-one-certified	True	False	5	5	0	0	
+airflow	phase-two-proficient	True	False	5	5	0	0	
+kafka	phase-one-certified	True	True	5	5	0	0	
+kafka	phase-two-proficient	False	True	0	0	0	0	
+capstone	phase-one-certified	True	False	5	5	0	0	
+capstone	phase-two-proficient	True	False	5	5	0	0	
+#source_revision	working-tree; see designer/reviews/implementation-inputs.json

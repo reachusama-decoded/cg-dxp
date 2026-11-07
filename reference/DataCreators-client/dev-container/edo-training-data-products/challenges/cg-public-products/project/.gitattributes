@@ -1,0 +1,2 @@
+# Frozen extracts are hashed in data/manifest.json; keep their CRLF bytes.
+*.csv -text

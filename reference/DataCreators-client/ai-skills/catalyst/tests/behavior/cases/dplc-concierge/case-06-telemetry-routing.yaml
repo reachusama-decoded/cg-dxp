@@ -1,0 +1,31 @@
+id: dplc-concierge.case-06-telemetry-routing
+skill: skills/dplc-concierge
+type: behavior
+description: >-
+  A user asks to turn on usage reporting.  This is not a DPLC request at all —
+  it is the white-glove case the concierge is being broadened to cover — so it
+  must route to setup-workspace rather than asking a lifecycle question or
+  falling through to the guided path.
+input:
+  arguments: "Can you turn on Copilot Chat usage reporting for me?"
+expected_sequence:
+  - skills/setup-workspace
+strict_order: false
+# allow_extra stays TRUE, and the reason is worth recording because the previous
+# revision of this case had it false.
+#
+# Copilot's objection to `true` was fair: on its own the assertion reduces to
+# "setup-workspace appears somewhere", so a run that asked a lifecycle question
+# first would still pass. But `false` is wrong in the other direction, and worse.
+# `runner/sub_skill_detection.py` counts a Read of `skills/<name>/SKILL.md` as an
+# invocation, and setup-workspace's own SKILL.md step 3 tells the agent to use
+# `/dplc-preflight otel --probe-endpoint` to check reachability -- so a CORRECT
+# run surfaces dplc-preflight and fails the case. A test that fails on the
+# behaviour it is meant to reward is worse than a test that is merely weak.
+#
+# The harness has no "must not appear" list and no "first invocation must be X",
+# and every entry in expected_sequence is required rather than permitted, so the
+# strong assertion Copilot wanted cannot be expressed here. Sibling
+# case-03-env-setup-routing.yaml reaches the same conclusion for the same reason.
+allow_extra: true
+max_steps: 30

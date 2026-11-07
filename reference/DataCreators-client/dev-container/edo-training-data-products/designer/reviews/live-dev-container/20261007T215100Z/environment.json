@@ -1,0 +1,98 @@
+{
+  "run_id": "20261007T215100Z",
+  "boundary": "authoring host; not approved dev container",
+  "available": [
+    "git",
+    "uv",
+    "Python 3.13.5",
+    "isolated dbt/DuckDB",
+    "existing local Airflow 3.1.0 module",
+    "Playwright Chromium 149.0.7827.55",
+    "Pandoc",
+    "XeLaTeX",
+    "build-pdf doctor passed"
+  ],
+  "unavailable": [
+    "Docker client/server/context/Compose",
+    "Mise",
+    "Astro worker/API/UI",
+    "Databricks CLI/assigned schema/profile",
+    "Kafka broker/assigned topic",
+    "authorized Git training remote/reviewer"
+  ],
+  "topology": "Local filesystem/browser and disposable local databases only. No nested container or worker mount observed.",
+  "startup": "No dev-container startup observed",
+  "legacy_launcher_defect": "Old venv CLI launchers refer to Capital/ paths removed in repository relocation; fresh isolated dbt env and private module wrapper used.",
+  "overrides": {
+    "V2_DBT_BIN": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/dbt",
+    "V2_PYTHON_BIN": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/demo-dbt/bin/python",
+    "V2_AIRFLOW_PYTHON_BIN": "/home/prox-admin/repo/ts-cg-datacreators/reference/DataCreators-client/dev-container/edo-training-data-products/.local/v2-airflow/bin/python"
+  },
+  "measured_runtimes": {
+    "dbt-duckdb": {
+      "python": "3.11.15",
+      "packages": {
+        "dbt-core": "1.10.13",
+        "dbt-duckdb": "1.9.6",
+        "dbt-databricks": null,
+        "duckdb": "1.4.1",
+        "apache-airflow": null,
+        "apache-airflow-providers-standard": null,
+        "apache-airflow-providers-databricks": null,
+        "astronomer-cosmos": null,
+        "playwright": null,
+        "pyte": null,
+        "PyYAML": "6.0.3",
+        "jsonschema": "4.26.0"
+      }
+    },
+    "local-airflow": {
+      "python": "3.11.15",
+      "packages": {
+        "dbt-core": null,
+        "dbt-duckdb": null,
+        "dbt-databricks": null,
+        "duckdb": null,
+        "apache-airflow": "3.1.0",
+        "apache-airflow-providers-standard": "1.8.0",
+        "apache-airflow-providers-databricks": null,
+        "astronomer-cosmos": null,
+        "playwright": null,
+        "pyte": null,
+        "PyYAML": "6.0.2",
+        "jsonschema": "4.25.1"
+      }
+    },
+    "capture": {
+      "python": "3.11.15",
+      "packages": {
+        "dbt-core": null,
+        "dbt-duckdb": null,
+        "dbt-databricks": null,
+        "duckdb": null,
+        "apache-airflow": null,
+        "apache-airflow-providers-standard": null,
+        "apache-airflow-providers-databricks": null,
+        "astronomer-cosmos": null,
+        "playwright": "1.61.0",
+        "pyte": "0.8.2",
+        "PyYAML": "6.0.3",
+        "jsonschema": "4.26.0"
+      }
+    }
+  },
+  "uv": "uv 0.11.30 (x86_64-unknown-linux-gnu)",
+  "capability_status": {
+    "docker": "blocked: executable unavailable",
+    "mise": "blocked: executable unavailable",
+    "astro": "blocked: executable unavailable",
+    "databricks": "blocked: executable unavailable",
+    "dbt": "available in isolated demo-dbt runtime",
+    "airflow": "available through isolated Python module; no Astro boundary",
+    "ffmpeg": "blocked: executable unavailable",
+    "uv": "available",
+    "pandoc": "available",
+    "xelatex": "available"
+  },
+  "browser": "Observed Chromium 149.0.7827.55 from Playwright 1.61.0"
+}

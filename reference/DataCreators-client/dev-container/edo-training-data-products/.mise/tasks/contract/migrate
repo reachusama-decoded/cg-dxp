@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+# mise description="Generate migration SQL from a contract and apply it to your personal Databricks schema. Usage: mise run contract:migrate <path/to/contract.odcs.yaml>"
+set -euo pipefail
+
+if [ -z "${1:-}" ]; then echo "Usage: mise run contract:migrate <path/to/contract.odcs.yaml>"; exit 1; fi
+if [ -z "${DATABRICKS_TOKEN:-}" ]; then echo "ERROR: DATABRICKS_TOKEN is not set. Check your .env file."; exit 1; fi
+if [ -z "${DATABRICKS_SCHEMA:-}" ]; then echo "ERROR: DATABRICKS_SCHEMA is not set. Set it in your .env file (e.g. DATABRICKS_SCHEMA=dev_yourname)."; exit 1; fi
+if [ -z "${DATABRICKS_CATALOG:-}" ]; then echo "ERROR: DATABRICKS_CATALOG is not set. Check your .env file."; exit 1; fi
+
+CONTRACT="$1"
+DBX_HOST=$(echo "${DATABRICKS_HOST}" | sed 's|^https://||')
+
+# Derive the data product name from the contract path:
+# e.g. data_products/asset_reference_data/datasets/currency/contract/... -> asset_reference_data
+DATA_PRODUCT=$(echo "$CONTRACT" | sed 's|.*data_products/\([^/]*\)/.*|\1|')
+if [ -z "$DATA_PRODUCT" ]; then
+  echo "ERROR: Could not determine data product from contract path: $CONTRACT"
+  echo "       Expected format: data_products/<data_product>/datasets/.../contract/*.odcs.yaml"
+  exit 1
+fi
+
+# Resolve per-data-product location var: DATABRICKS_LOCATION_<DATA_PRODUCT_UPPER>
+DATA_PRODUCT_UPPER=$(echo "$DATA_PRODUCT" | tr '[:lower:]' '[:upper:]')
+LOCATION_VAR="DATABRICKS_LOCATION_${DATA_PRODUCT_UPPER}"
+PRODUCT_LOCATION="${!LOCATION_VAR:-}"
+
+# Migration directory:
+# - Locally defaults to .local/migrations/<data_product> (gitignored, accumulates for ALTER TABLE diff)
+# - FLYWAY_MIGRATION_DIR overrides when set (e.g. by CI)
+CONTRACT_DIR=$(dirname "$CONTRACT")
+MIGRATION_DIR="${FLYWAY_MIGRATION_DIR:-".local/migrations/${DATA_PRODUCT}"}"
+mkdir -p "${MIGRATION_DIR}"
+
+echo "INFO: Generating migration SQL for $CONTRACT -> $MIGRATION_DIR..."
+
+# If the contract schema is marked external: true, the per-data-product location var must be set
+# Use /opt/venv/bin/python3 explicitly — guaranteed to have pyyaml from .devcontainer/requirements.txt
+PYTHON=/opt/venv/bin/python3
+
+# e.g. DATABRICKS_LOCATION_ASSET_REFERENCE_DATA for the asset_reference_data data product
+IS_EXTERNAL=$($PYTHON -c "
+import yaml, sys
+with open('$CONTRACT') as f:
+    raw = yaml.safe_load(f)
+schema = raw.get('schema', [{}])
+print(str(schema[0].get('external', False)).lower())
+")
+if [ "$IS_EXTERNAL" = "true" ] && [ -z "$PRODUCT_LOCATION" ]; then
+  echo "ERROR: Contract schema is marked 'external: true' but ${LOCATION_VAR} is not set."
+  echo "       Set ${LOCATION_VAR} in your .env (e.g. ${LOCATION_VAR}=s3://datalake-curated-dev1-us-east-1/training_dev)"
+  exit 1
+fi
+
+# Determine the expected migration filename to check if already generated for this version
+CONTRACT_VERSION=$($PYTHON -c "import yaml; d=yaml.safe_load(open('$CONTRACT')); print(d['version'])")
+CONTRACT_TABLE=$($PYTHON -c "import yaml; d=yaml.safe_load(open('$CONTRACT')); s=d['schema'][0]; print(s.get('name'))")
+# Dots in version replaced with underscores to match the filename convention used by the generator
+# (e.g. contract version "1.0.3" → filename suffix "_v1_0_3.sql"). This avoids Flyway
+# interpreting the dots as sub-version separators in the V-prefix.
+VERSION_TAG=$(echo "$CONTRACT_VERSION" | tr '.' '_')
+# Check if a migration file already exists for this contract version
+if ls "${MIGRATION_DIR}/V"*"__${CONTRACT_TABLE}_v${VERSION_TAG}.sql" 2>/dev/null | grep -q .; then
+  echo "INFO: Migration already generated for ${CONTRACT_TABLE} v${CONTRACT_VERSION} — skipping generation, proceeding to Flyway..."
+else
+  datacounsel generate-migration "$CONTRACT" --output-dir "$MIGRATION_DIR"
+fi
+
+echo "INFO: Applying migrations from $MIGRATION_DIR to personal schema $DATABRICKS_SCHEMA..."
+
+# Build optional location placeholder from per-data-product var
+# Location always includes /${DATABRICKS_SCHEMA} — for local dev this isolates each developer's
+# S3 prefix; for CI this scopes to the target schema (e.g. training_ref_data).
+LOCATION_FLAG=""
+if [ -n "$PRODUCT_LOCATION" ]; then
+  LOCATION_FLAG="-placeholders.location=${PRODUCT_LOCATION}"
+fi
+
+# EMR location: bucket root without the Databricks prefix (e.g. s3://datalake-curated-dev1-us-east-1)
+# Convention: EMR_LOCATION_<DATA_PRODUCT_UPPER> if set, otherwise strip the last path segment from PRODUCT_LOCATION
+EMR_LOCATION_VAR="EMR_LOCATION_${DATA_PRODUCT_UPPER}"
+EMR_LOCATION="${!EMR_LOCATION_VAR:-}"
+if [ -z "$EMR_LOCATION" ] && [ -n "$PRODUCT_LOCATION" ]; then
+  EMR_LOCATION=$(echo "$PRODUCT_LOCATION" | sed 's|/[^/]*$||')
+fi
+EMR_LOCATION_FLAG=""
+if [ -n "$EMR_LOCATION" ]; then
+  EMR_LOCATION_FLAG="-placeholders.emr_location=${EMR_LOCATION}"
+fi
+
+# Single history table per developer personal schema — timestamp-based filenames
+# guarantee global ordering across all contracts, so one table handles everything.
+HISTORY_TABLE="flyway_schema_history"
+
+flyway migrate \
+  -url="jdbc:databricks://${DBX_HOST}:443/${DATABRICKS_CATALOG};transportMode=http;ssl=1;httpPath=${DATABRICKS_HTTP_PATH};AuthMech=3;UID=token;PWD=${DATABRICKS_TOKEN};EnableArrow=0;ConnSchema=${DATABRICKS_SCHEMA}" \
+  -table="${HISTORY_TABLE}" \
+  -locations="filesystem:${MIGRATION_DIR}" \
+  -placeholders.catalog="${DATABRICKS_CATALOG}" \
+  -placeholders.schema="${DATABRICKS_SCHEMA}" \
+  -placeholders.env_grant_prefix="${FLYWAY_ENV_GRANT_PREFIX:-OZ_DEV}" \
+  -placeholders.data_product="${DATABRICKS_SCHEMA}" \
+  ${LOCATION_FLAG} \
+  ${EMR_LOCATION_FLAG} \
+  -validateOnMigrate=false \
+  -executeInTransaction=false \
+  -baselineOnMigrate=true \
+  -baselineVersion=0
+echo "INFO: Migrations applied to ${DATABRICKS_CATALOG}.${DATABRICKS_SCHEMA}"

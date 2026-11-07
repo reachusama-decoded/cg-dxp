@@ -1,0 +1,28 @@
+id: column-lineage.case-01-happy-path
+skill: skills/column-lineage
+type: artifact
+description: Bootstrap happy-path case. Trace column-level lineage across transformation layers. Use during
+  Phase 3 Design to document lineage, or Phase 8 Evolve to assess the impact of a source column change.
+input:
+  arguments: Trace column lineage for cg_employee_v4 in ${TEST_CATALOG}.${TEST_SCHEMA}.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/core/lineage.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Trace column-level
+      lineage across transformation layers. Use during Phase 3 Design to document lineage, or Phase 8
+      Evolve to assess the impa''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

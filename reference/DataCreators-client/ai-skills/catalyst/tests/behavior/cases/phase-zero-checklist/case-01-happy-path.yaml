@@ -1,0 +1,28 @@
+id: phase-zero-checklist.case-01-happy-path
+skill: skills/phase-zero-checklist
+type: artifact
+description: "Bootstrap happy-path case. Verify organizational prerequisites before entering Triage \u2014\
+  \ roles,\ninfrastructure, demand tracker readiness. Use when the user asks to \"run the\nprereq check\"\
+  , \"are we ready to start\", \"check phase zero\", or \"verify\norganizational readiness\"."
+input:
+  arguments: Confirm Phase 0 readiness for a new HR Analytics data product (employee directory).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/phase-zero-checklist/templates/phase-zero-checklist.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: "Does the output meaningfully address the request described by the skill: 'Verify organizational\
+      \ prerequisites before entering Triage \u2014 roles,\ninfrastructure, demand tracker readiness.\
+      \ Use when the user asks to \"run'? Score 0-1."
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

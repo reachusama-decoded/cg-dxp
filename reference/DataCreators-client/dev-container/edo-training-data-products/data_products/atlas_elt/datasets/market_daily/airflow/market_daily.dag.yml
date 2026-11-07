@@ -1,0 +1,35 @@
+dag_id: atlas_elt_market_daily
+description: Run the Atlas ELT market_daily dataset pipeline.
+schedule: "@daily"
+start_date: "2024-01-01"
+catchup: false
+tags:
+  - atlas_elt
+default_args:
+  owner: EDO TRAINING
+
+steps:
+  run_market_daily_dbt:
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}market_daily_job"
+    databricks_conn_id: caspian-training-databricks
+
+  run_market_daily_dq:
+    depends_on: [run_market_daily_dbt]
+    blueprint: databricks_run_now
+    job_name: "{{ var.value.get('databricks_job_prefix', '') }}market_daily_dq_job"
+    databricks_conn_id: caspian-training-databricks
+
+  mock_xcom_generator:
+    depends_on: [run_market_daily_dq]
+    blueprint: mock_xcom
+    domain: atlas_elt
+    model: market_daily
+
+  notify_market_daily:
+    depends_on: [mock_xcom_generator]
+    blueprint: kafka_notify
+    xcom_pull_task: mock_xcom_generator
+    model: market_daily
+    cluster_id: "{{ var.value.dev_cluster_id }}"
+    python_file: "{{ var.value.root_path }}/files/data_products/{{ var.value.data_product_name }}/python/run_data_notify.py"

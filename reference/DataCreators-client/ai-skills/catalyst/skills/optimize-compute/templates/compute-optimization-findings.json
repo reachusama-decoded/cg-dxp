@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catalyst.capgroup.com/schemas/optimize-compute/compute-optimization-findings.json",
+  "title": "Compute Optimization Findings",
+  "description": "Output of skills/optimize-compute/scripts/evaluate_findings.py. One document per analysis run.",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "target", "window", "findings", "counts", "top_findings"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Semantic version of this schema. Bump on breaking changes.",
+      "const": "1.0.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp marking when this findings document was generated. Apply mode refuses to act on documents older than 24 hours to avoid editing files based on stale snapshots."
+    },
+    "counts": {
+      "type": "object",
+      "description": "Severity rollup for the executive-summary table in the report.",
+      "required": ["error", "warning", "info", "total"],
+      "properties": {
+        "error":   { "type": "integer", "minimum": 0 },
+        "warning": { "type": "integer", "minimum": 0 },
+        "info":    { "type": "integer", "minimum": 0 },
+        "total":   { "type": "integer", "minimum": 0 }
+      }
+    },
+    "top_findings": {
+      "type": "array",
+      "description": "Findings ranked by impact (severity error > warning > info; ties broken by confidence high > medium > low). Used by the report's 'Top findings' table; up to 5 entries.",
+      "items": { "$ref": "#/$defs/Finding" }
+    },
+    "target": {
+      "type": "object",
+      "description": "What was analyzed.",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["job", "warehouse"]
+        },
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "workspace_host": {
+          "type": "string",
+          "description": "Workspace URL (e.g. https://adb-1234.azuredatabricks.net). Optional - the collector emits it only when DATABRICKS_HOST is set or a response payload carries workspace_url; absent otherwise."
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "description": "Time window of the underlying run-history snapshot.",
+      "properties": {
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" },
+        "runs_analyzed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "insufficient_data": {
+      "type": ["object", "null"],
+      "description": "Marker (not a Finding) emitted when neither the run-count nor calendar-span gate is met. Lets the report explain why runtime rules were skipped. Null when the disjunctive gate was satisfied.",
+      "properties": {
+        "reason": { "type": "string" },
+        "min_runs_required": { "type": "integer" },
+        "runs_observed": { "type": "integer" },
+        "min_days_required": { "type": "integer" },
+        "days_observed": { "type": "number" },
+        "skipped_rules": {
+          "type": "array",
+          "description": "Rules skipped because preconditions weren't met. Each entry is an object {rule_id, reason} where reason is optional and supplied when known (e.g. 'no dbt config provided', 'warehouse query history below 200 queries').",
+          "items": {
+            "type": "object",
+            "required": ["rule_id"],
+            "properties": {
+              "rule_id": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Finding" }
+    }
+  },
+  "$defs": {
+    "Finding": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "severity",
+        "title",
+        "evidence",
+        "remediation",
+        "apply_mode_supported",
+        "confidence"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "pattern": "^DBX-WASTE-[0-9]{3}$",
+          "description": "Stable rule identifier. See references/findings-catalog.md for the authoritative catalog."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warning", "error"],
+          "description": "info = surface for awareness; warning = should fix soon; error = wasteful or risky, fix now."
+        },
+        "title": {
+          "type": "string",
+          "description": "One-line human summary, used as the heading in the report."
+        },
+        "evidence": {
+          "type": "object",
+          "description": "Finding-specific fields supporting the diagnosis. Shape varies per rule but values must be JSON-serialisable scalars or short arrays so the report can table-render them.",
+          "additionalProperties": true
+        },
+        "remediation": {
+          "type": "object",
+          "required": ["summary", "config_delta", "affected_files"],
+          "properties": {
+            "summary": {
+              "type": "string",
+              "description": "One- to three-sentence prose describing the fix."
+            },
+            "config_delta": {
+              "type": "object",
+              "description": "Map of config key -> { current, proposed, delete?, add? }. Each key is a dotted path into the affected config file (e.g. 'job_clusters[0].new_cluster.autoscale.max_workers'). `delete: true` signals 'remove this key' (downstream renderers should emit a deletion line rather than 'set to None'). `add: true` signals 'this key is currently absent and should be added'. The `current` / `proposed` values still convey the data when applicable. Used to render the diff block in the report.",
+              "additionalProperties": {
+                "type": "object",
+                "required": ["current", "proposed"],
+                "properties": {
+                  "current": {},
+                  "proposed": {},
+                  "delete": {
+                    "type": "boolean",
+                    "description": "When true, the remediation removes this key. `proposed` will be null."
+                  },
+                  "add": {
+                    "type": "boolean",
+                    "description": "When true, the key is currently absent and the remediation adds it. `current` will be null."
+                  }
+                }
+              }
+            },
+            "affected_files": {
+              "type": "array",
+              "description": "Repo-relative paths that would change if the remediation is applied.",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "apply_mode_supported": {
+          "type": "boolean",
+          "description": "True only when the remediation is a mechanical single-file edit the skill can write deterministically. False for findings that need human judgement (e.g. picking a new instance type)."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "high = rule fired on direct, complete evidence (e.g. all runs in window); medium = rule fired on sampled or indirect evidence (e.g. cluster events missing for some runs); low = heuristic with known false-positive modes."
+        },
+        "estimated_impact": {
+          "type": "string",
+          "description": "Optional free-form impact estimate used to rank top findings in the report (e.g. '~$120/mo', '~25% DBU reduction'). Rules emit this when they can; absence is fine."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0.0",
+      "generated_at": "2026-06-01T12:00:00Z",
+      "counts": { "error": 0, "warning": 1, "info": 0, "total": 1 },
+      "top_findings": [
+        {
+          "rule_id": "DBX-WASTE-001",
+          "severity": "warning",
+          "title": "Peak worker utilization below threshold",
+          "evidence": { "max_workers_configured": 8, "peak_workers_observed": 4 },
+          "remediation": {
+            "summary": "Lower autoscale.max_workers from 8 to 5.",
+            "config_delta": {
+              "job_clusters[0].new_cluster.autoscale.max_workers": { "current": 8, "proposed": 5 }
+            },
+            "affected_files": ["resources/jobs/dbt_prod_daily.yml"]
+          },
+          "apply_mode_supported": false,
+          "confidence": "high",
+          "estimated_impact": "~30% peak DBU reduction"
+        }
+      ],
+      "target": {
+        "kind": "job",
+        "id": "1234",
+        "name": "dbt_prod_daily",
+        "workspace_host": "https://adb-1234.azuredatabricks.net"
+      },
+      "window": {
+        "start": "2026-05-02T00:00:00Z",
+        "end": "2026-06-01T00:00:00Z",
+        "runs_analyzed": 28
+      },
+      "insufficient_data": null,
+      "findings": [
+        {
+          "rule_id": "DBX-WASTE-001",
+          "severity": "warning",
+          "title": "Peak worker utilization below threshold",
+          "evidence": {
+            "max_workers_configured": 8,
+            "peak_workers_observed": 4,
+            "peak_utilization": 0.5,
+            "threshold": 0.6,
+            "runs_evaluated": 28
+          },
+          "remediation": {
+            "summary": "Lower autoscale.max_workers from 8 to 5; peak observed across 28 runs never exceeded 4 workers.",
+            "config_delta": {
+              "job_clusters[0].new_cluster.autoscale.max_workers": {
+                "current": 8,
+                "proposed": 5
+              }
+            },
+            "affected_files": ["resources/jobs/dbt_prod_daily.yml"]
+          },
+          "apply_mode_supported": false,
+          "confidence": "high",
+          "estimated_impact": "~30% peak DBU reduction"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+id: dplc-preflight.case-01-happy-path
+skill: skills/dplc-preflight
+type: artifact
+description: >-
+  The pre-flight answers the four zero-to-one questions: whether Catalyst can run
+  locally, which Databricks workspace is active and which others are configured,
+  whether access actually exists, and where a data product would go. It must
+  report specifics from the script rather than a paraphrased summary, and must not
+  claim readiness unless the check exits 0.
+input:
+  arguments: "Check whether I'm set up to build a data product, and tell me which Databricks workspace I'm pointed at."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_components:
+- skills/dplc-preflight/scripts/preflight.py
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: answers_four_questions
+    weight: 0.4
+    prompt: >-
+      Does the output address all four pre-flight questions -- local toolchain,
+      which Databricks workspace (including any others configured), whether access
+      exists, and where the data product would go? Score 0-1.
+  - id: reports_specifics
+    weight: 0.3
+    prompt: >-
+      Does the output report concrete detected values (Python version, workspace
+      host or profile names, counts of catalogs/warehouses) rather than a generic
+      summary or an assumption about what the user already knows? Score 0-1.
+  - id: honest_verdict
+    weight: 0.3
+    prompt: >-
+      Does the output state a clear verdict and a single next step, without
+      claiming the environment is ready when the check reported a blocker?
+      Score 0-1.

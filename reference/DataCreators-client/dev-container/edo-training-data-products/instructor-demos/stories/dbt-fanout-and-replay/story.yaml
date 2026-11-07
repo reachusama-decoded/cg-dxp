@@ -1,0 +1,228 @@
+schema_version: 1
+id: dbt-fanout-and-replay
+title: Correct a supplied holding and inspect Delta replay
+objective: Explain real input, grain, currency, expected observation and Databricks
+  execution boundary.
+tool: dbt
+task_ids:
+- dbt-guide-09
+- dbt-guide-10
+route: databricks
+readiness: draft
+audience: Instructor demonstration; shipped instructor baseline and prior answer exposure
+  disclosed
+prerequisites: Prepared approved namespace, unique prefix and delivered dbt-databricks;
+  OAuth sign-in outside recording. Live rehearsal, correction/merge queries and human
+  capture review pending. Contract 9716433265bc34de5bb704a99f08200fc6874d244b9b8e4633d8cbbed7c37a19
+workspace_source: instructor-demos/portfolio-assets/dbt
+source_inputs:
+- instructor-demos/portfolio-assets/dbt
+- instructor-demos/portfolio-assets/runtime/README.md
+- instructor-demos/portfolio-assets/runtime/SETUP.md
+- instructor-demos/portfolio-assets/runtime/check-scheduled.py
+- instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.json
+- instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.schema.json
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/advisors.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/clients.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/fund_holdings.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/funds.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/instruments.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/portfolios.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/atlas/trades.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fund_master_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fx_rates_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/holdings_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/positions_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/prices_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/refdata_raw.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_custodian_nav.csv
+- instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_funds.csv
+- instructor-demos/portfolio-assets/runtime/guide-task-map.json
+- instructor-demos/portfolio-assets/runtime/lab.py
+workspace_files:
+- source: instructor-demos/portfolio-assets/runtime/README.md
+  destination: runtime/README.md
+- source: instructor-demos/portfolio-assets/runtime/SETUP.md
+  destination: runtime/SETUP.md
+- source: instructor-demos/portfolio-assets/runtime/check-scheduled.py
+  destination: runtime/check-scheduled.py
+- source: instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.json
+  destination: runtime/dataset-runtime-contract.json
+- source: instructor-demos/portfolio-assets/runtime/dataset-runtime-contract.schema.json
+  destination: runtime/dataset-runtime-contract.schema.json
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/advisors.csv
+  destination: runtime/fixtures/atlas/advisors.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/clients.csv
+  destination: runtime/fixtures/atlas/clients.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/fund_holdings.csv
+  destination: runtime/fixtures/atlas/fund_holdings.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/funds.csv
+  destination: runtime/fixtures/atlas/funds.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/instruments.csv
+  destination: runtime/fixtures/atlas/instruments.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/portfolios.csv
+  destination: runtime/fixtures/atlas/portfolios.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/atlas/trades.csv
+  destination: runtime/fixtures/atlas/trades.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fund_master_raw.csv
+  destination: runtime/fixtures/portfolio/fund_master_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/fx_rates_raw.csv
+  destination: runtime/fixtures/portfolio/fx_rates_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/holdings_raw.csv
+  destination: runtime/fixtures/portfolio/holdings_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/positions_raw.csv
+  destination: runtime/fixtures/portfolio/positions_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/prices_raw.csv
+  destination: runtime/fixtures/portfolio/prices_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/refdata_raw.csv
+  destination: runtime/fixtures/portfolio/refdata_raw.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_custodian_nav.csv
+  destination: runtime/fixtures/portfolio/seed_custodian_nav.csv
+- source: instructor-demos/portfolio-assets/runtime/fixtures/portfolio/seed_funds.csv
+  destination: runtime/fixtures/portfolio/seed_funds.csv
+- source: instructor-demos/portfolio-assets/runtime/guide-task-map.json
+  destination: runtime/guide-task-map.json
+- source: instructor-demos/portfolio-assets/runtime/lab.py
+  destination: runtime/lab.py
+requires:
+- browser
+- dbt
+- env:DC_RELATION_PREFIX
+- env:DBT_SCHEMA
+- env:DBT_CATALOG
+- env:DBT_ACCESS_TOKEN
+- env:DATABRICKS_HOST
+- env:DATABRICKS_HTTP_PATH
+resources:
+- fresh private workspace
+- owned prefixed Databricks relations in pre-provisioned schema
+cleanup:
+- python3 runtime/lab.py cleanup-sql .
+main_book:
+  include: false
+  teaching_key: dbt-models-and-tests
+steps:
+- id: step-1
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 runtime/lab.py mutate . --drill correction
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: file-present
+      path: variation.json
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+- id: step-2
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --project-dir . --profiles-dir . --target local --target-path
+      target --full-refresh
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: file-present
+      path: target/run_results.json
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+- id: step-3
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt run --select +holdings_replay --project-dir . --profiles-dir . --target
+      local --target-path target
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: file-present
+      path: target/run_results.json
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+- id: step-4
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt run --select +holdings_replay --project-dir . --profiles-dir . --target
+      local --target-path target
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: file-present
+      path: target/run_results.json
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+- id: step-5
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 runtime/lab.py check-replay .
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: file-present
+      path: replay-evidence.json
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+- id: step-6
+  action:
+    adapter: terminal
+    session: developer
+    command: python3 runtime/lab.py restore .
+    timeout_seconds: 600
+  expect:
+    exit_code: 0
+    checks:
+    - kind: command
+      argv:
+      - python3
+      - runtime/lab.py
+      - reference
+      - .
+      contains: PEF-
+  capture:
+    context: DEV CONTAINER -> DATABRICKS / PORTFOLIO ANALYTICS
+    hold_seconds: 2
+  caption:
+    action: Correct a supplied holding and inspect Delta replay.
+    notice: Real supplied holdings; independent grain/value evidence and explicit
+      business dates. Observe actual output; installed versions and owned namespace
+      are recorded outside secret sign-in.
+closing_question: Which independent warehouse observation proves the business key/value,
+  and which runtime or human gate is still pending?

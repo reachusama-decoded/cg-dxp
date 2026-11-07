@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://marketplace-service.datalake.aws.capgroup.com/api/v1/marketplace/entities/683/consumable",
+    "post_data": null
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "strict-transport-security": "max-age=31536000 ; includeSubDomains",
+      "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+      "pragma": "no-cache",
+      "access-control-allow-credentials": "true",
+      "x-content-type-options": "nosniff",
+      "expires": "0",
+      "access-control-allow-origin": "https://marketplace.capgroup.com",
+      "date": "Thu, 30 Apr 2026 00:41:37 GMT",
+      "x-xss-protection": "0",
+      "content-type": "application/json",
+      "vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+      "x-frame-options": "DENY"
+    },
+    "body": "{\"id\":683,\"type\":\"dataset_table\",\"version\":11,\"name\":\"CG Positions\",\"description\":\"This table contains history.\",\"bulkUploadId\":\"dt11055\",\"platform\":\"CSPN\",\"useFor\":[],\"doNotUseFor\":[],\"group\":\"Latest\",\"preferred\":true,\"sources\":[{\"values\":[\"urn:li:dataset:(urn:li:dataPlatform:glue,cspn_cons2_prd.cg_positions_gp_v4,PROD)\"],\"system\":\"datahub\",\"databricksWorkspaces\":null},{\"values\":[\"s3a://datalake-curated-prd-us-east-1/cspn_cons2/cg_positions_gp_v4-__PLACEHOLDER__\"],\"system\":\"s3\",\"databricksWorkspaces\":null},{\"values\":[\"investment_management.investment_transaction_position.portfolio_position.cg_positions_gp_v4_audit\",\"investment_management.investment_transaction_position.portfolio_position.cg_positions_gp_v4_current\"],\"system\":\"dremio\",\"databricksWorkspaces\":null}],\"updateFrequency\":\"\",\"historicalCoverage\":[],\"technicalName\":\"cspn_cons2_prd.cg_positions_gp_v4\",\"urn\":\"urn:li:dataset:(urn:li:dataPlatform:glue,cspn_cons2_prd.cg_positions_gp_v4,PROD)\",\"isInternal\":true}"
+  }
+}

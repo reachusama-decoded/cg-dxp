@@ -1,0 +1,40 @@
+id: optimize-compute.case-01-happy-path
+skill: skills/optimize-compute
+type: artifact
+description: |
+  Bootstrap happy-path case. Audit a Databricks job + dbt project for
+  compute utilization waste and emit DBX-WASTE-* findings with run-data
+  evidence and a recommended config delta. Report-only: writes a
+  Markdown report and a JSON findings file; never edits cluster config.
+  Trigger phrases: "optimize compute", "right-size this job", "audit
+  databricks utilization", "dbx-waste check", "compute optimization
+  report".
+input:
+  arguments: |
+    Run optimize-compute in report mode for the sample bundle at
+    tests/fixtures/sample-bundle/. Treat live Databricks access as
+    unavailable — the skill should still produce
+    compute-optimization-findings.json with any rules that can't fire
+    surfaced in insufficient_data.skipped_rules, and must not attempt
+    to edit cluster config or call cluster-lifecycle APIs.
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.3
+    prompt: 'Does the output meaningfully address auditing Databricks compute utilization for a dbt-on-Databricks job and produce DBX-WASTE-* findings (or an explicit insufficient_data report) rather than punting to a different skill? Score 0-1.'
+  - id: format_conformant
+    weight: 0.3
+    prompt: 'Does the output reference the two required artifacts — compute-optimization-findings.json and compute-optimization-report.md — and do any emitted findings carry rule_id (DBX-WASTE-*), severity, target/path, evidence (job/run IDs or observed numbers), and a remediation.config_delta with current/proposed values per the skill''s contract? Score 0-1.'
+  - id: report_only
+    weight: 0.2
+    prompt: 'Did the skill stay report-only — no edits to databricks.yml / resources/**/*.yml / dbt_project.yml / profiles.yml, and no cluster create/resize/start/stop/delete calls? The skill must surface a config_delta as a suggestion, not apply it. Score 0-1.'
+  - id: scope_discipline
+    weight: 0.1
+    prompt: 'Did the skill stay in its lane — i.e., it did NOT duplicate static DAB linting (DBX-PERF-*), SQL body linting (SQL-PERF-DBSQL-*), or dollar-cost / DBU pricing? Score 0-1.'
+  - id: no_placeholders
+    weight: 0.1
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected? Score 0-1.

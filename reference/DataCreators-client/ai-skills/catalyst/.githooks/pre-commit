@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Pre-commit hook: sync plugin version + release date into marketplace.json.
+# Runs sync_plugin_version.py whenever plugin.json or marketplace.json is staged.
+# If marketplace.json gets updated, it's auto-staged so the commit includes the fix.
+
+set -euo pipefail
+
+# Only run if relevant files are staged
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+if ! echo "$STAGED" | grep -qE '(plugin\.json|marketplace\.json)'; then
+  exit 0
+fi
+
+SCRIPT="scripts/sync_plugin_version.py"
+if [[ ! -f "$SCRIPT" ]]; then
+  echo "⚠ sync_plugin_version.py not found — skipping version sync"
+  exit 0
+fi
+
+python3 "$SCRIPT"
+
+# Re-stage marketplace.json if the script changed it
+MARKETPLACE=".github/plugin/marketplace.json"
+if ! git diff --quiet "$MARKETPLACE" 2>/dev/null; then
+  git add "$MARKETPLACE"
+  echo "  → auto-staged $MARKETPLACE"
+fi

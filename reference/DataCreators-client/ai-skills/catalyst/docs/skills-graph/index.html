@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Catalyst — Skills Graph</title>
+<style>
+  /* ── Design tokens ──────────────────────────────────────────────────────
+     Stage palette validated with the dataviz six checks against surface
+     #16161f (dark, --pairs all): lightness band PASS, chroma floor PASS,
+     contrast PASS, CVD worst pair #c98500↔#d95926 ΔE 11.4 (deutan) — the 8–12
+     floor band, legal here because every node carries a permanently visible
+     text label and a per-tier glyph as secondary encoding.
+     Phase is ordinal, so it is encoded by column position, not by hue.      */
+  :root {
+    --page:          #0f0f17;
+    --surface:       #16161f;
+    --surface-2:     #1d1d28;
+    --text-primary:  #ffffff;
+    --text-secondary:#c3c2b7;
+    --text-muted:    #898781;
+    --gridline:      #2c2c2a;
+    --border:        rgba(255, 255, 255, 0.10);
+
+    --stage-design:       #199e70;
+    --stage-build:        #d95926;
+    --stage-ship:         #3987e5;
+    --stage-cross-cutting:#c98500;
+    --stage-standalone:   #898781;
+
+    /* Reserved status color — state, not identity.  Always shipped with the "⚠"
+       icon and a label so it never carries meaning by color alone. */
+    --status-warning:     #fab219;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 28px 24px 64px;
+  }
+
+  .wrap { max-width: 1440px; margin: 0 auto; }
+
+  header h1 { font-size: 1.4em; font-weight: 600; letter-spacing: -0.02em; }
+  header p  { color: var(--text-muted); font-size: 0.875em; margin-top: 4px; }
+  header .counts { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+  /* ── Filter row — one row, above everything it scopes ─────────────────── */
+  .filters {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+    margin: 22px 0 14px; padding: 14px 16px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  }
+  .fgroup { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .fgroup > .flabel {
+    font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); font-weight: 600;
+  }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 11px; border-radius: 999px; cursor: pointer;
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border); font: inherit; font-size: 0.8125em;
+    transition: background 120ms, color 120ms, border-color 120ms;
+  }
+  .chip:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+  .chip:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+  .chip[aria-pressed="true"] { color: var(--text-primary); border-color: currentColor; }
+  .chip .swatch { width: 10px; height: 10px; border-radius: 3px; background: currentColor; flex: none; }
+  .chip .glyph  { font-size: 1.05em; line-height: 1; }
+  .chip[aria-pressed="false"] .swatch,
+  .chip[aria-pressed="false"] .glyph { opacity: 0.35; }
+
+  .chip.stage-design       { --c: var(--stage-design); }
+  .chip.stage-build        { --c: var(--stage-build); }
+  .chip.stage-ship         { --c: var(--stage-ship); }
+  .chip.stage-cross-cutting{ --c: var(--stage-cross-cutting); }
+  .chip.stage-standalone   { --c: var(--stage-standalone); }
+  .chip[aria-pressed="true"].stage-design,
+  .chip[aria-pressed="true"].stage-build,
+  .chip[aria-pressed="true"].stage-ship,
+  .chip[aria-pressed="true"].stage-cross-cutting,
+  .chip[aria-pressed="true"].stage-standalone { border-color: var(--c); }
+  .chip.stage-design .swatch        { background: var(--stage-design); }
+  .chip.stage-build .swatch         { background: var(--stage-build); }
+  .chip.stage-ship .swatch          { background: var(--stage-ship); }
+  .chip.stage-cross-cutting .swatch { background: var(--stage-cross-cutting); }
+  .chip.stage-standalone .swatch    { background: var(--stage-standalone); }
+
+  input[type="search"], select {
+    background: var(--surface-2); color: var(--text-primary);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 6px 10px; font: inherit; font-size: 0.8125em; min-width: 210px;
+  }
+  input[type="search"]:focus-visible, select:focus-visible {
+    outline: 2px solid var(--text-primary); outline-offset: 1px;
+  }
+  .reset { margin-left: auto; }
+
+  /* ── Graph canvas ─────────────────────────────────────────────────────── */
+  .stage-wrap {
+    position: relative; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px; overflow: auto;
+  }
+  svg { display: block; }
+
+  .band-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; fill: var(--text-muted);
+  }
+  .band-rule { stroke: var(--gridline); stroke-width: 1; }
+  .band-count { font-size: 10px; fill: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  .edge {
+    fill: none; stroke-width: 1; stroke: var(--text-muted);
+    opacity: 0.13; transition: opacity 120ms, stroke 120ms, stroke-width 120ms;
+  }
+  .edge.consumes { stroke-dasharray: 3 3; }
+  .edge.hot      { opacity: 0.95; stroke-width: 1.75; }
+  .edge.hot.out  { stroke: var(--text-primary); }
+  .edge.hot.in   { stroke: var(--text-secondary); }
+  .edge.muted    { opacity: 0.03; }
+
+  .node { cursor: pointer; }
+  .node rect {
+    fill: var(--surface-2); stroke: var(--stage); stroke-width: 1.25; rx: 6;
+    transition: fill 120ms, stroke-width 120ms;
+  }
+  .node .tier-bar { fill: var(--stage); stroke: none; }
+  .node .label    { fill: var(--text-secondary); font-size: 11.5px; dominant-baseline: middle; }
+  .node .glyph    { fill: var(--stage); font-size: 10px; dominant-baseline: middle; }
+  .node:hover rect, .node:focus-visible rect { fill: #262633; stroke-width: 2; }
+  .node:focus-visible { outline: none; }
+  .node:focus-visible rect { stroke: var(--text-primary); stroke-width: 2.5; }
+  .node:hover .label, .node:focus-visible .label { fill: var(--text-primary); }
+  .node.hot rect      { fill: #262633; stroke-width: 2.25; }
+  .node.hot .label    { fill: var(--text-primary); font-weight: 600; }
+  .node.selected rect { stroke: var(--text-primary); stroke-width: 2.5; }
+  .node.dimmed        { opacity: 0.16; }
+  .node.hidden        { display: none; }
+  .node.unregistered rect { stroke-dasharray: 4 2.5; }
+  /* Frontmatter gaps get a status color + a "?" tier glyph — never color alone. */
+  .node.has-gaps .glyph { fill: var(--status-warning); }
+
+  .tt-warn {
+    font-size: 0.78em; color: var(--status-warning); margin-top: 6px; line-height: 1.45;
+  }
+
+  /* ── Tooltip ──────────────────────────────────────────────────────────── */
+  .tooltip {
+    position: fixed; z-index: 40; pointer-events: none; max-width: 340px;
+    background: #12121a; border: 1px solid var(--border); border-radius: 9px;
+    padding: 11px 13px; box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    opacity: 0; transition: opacity 90ms;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .tt-name {
+    font-size: 0.95em; font-weight: 650; color: var(--text-primary);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .tooltip .tt-meta { font-size: 0.75em; color: var(--text-muted); margin-top: 3px; }
+  .tooltip .tt-desc { font-size: 0.8125em; color: var(--text-secondary); margin-top: 7px; }
+  .tooltip .tt-rel  {
+    font-size: 0.78em; color: var(--text-secondary); margin-top: 8px;
+    padding-top: 7px; border-top: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  .tt-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+
+  /* ── Detail panel ─────────────────────────────────────────────────────── */
+  .detail {
+    margin-top: 14px; padding: 16px 18px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px; display: none;
+  }
+  .detail.show { display: block; }
+  .detail h2 {
+    font-size: 1.05em; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .detail .d-meta { color: var(--text-muted); font-size: 0.8em; margin-top: 4px; }
+  .detail .d-desc { color: var(--text-secondary); font-size: 0.875em; margin-top: 10px; max-width: 70ch; }
+  .detail .d-cols { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 16px; }
+  .detail .d-col h3 {
+    font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-muted); margin-bottom: 7px; font-weight: 650;
+  }
+  .detail .d-col ul { list-style: none; }
+  .detail .d-col li { margin: 3px 0; }
+  .detail .d-col button {
+    background: none; border: none; padding: 0; cursor: pointer; font: inherit;
+    font-size: 0.83em; color: var(--text-secondary);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    border-bottom: 1px dotted var(--text-muted);
+  }
+  .detail .d-col button:hover { color: var(--text-primary); }
+  .detail .d-col .none { color: var(--text-muted); font-size: 0.83em; font-style: italic; }
+  .detail a.src {
+    font-size: 0.8em; color: var(--text-secondary);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .detail .close {
+    margin-left: auto; background: none; border: 1px solid var(--border);
+    color: var(--text-muted); border-radius: 6px; cursor: pointer;
+    font: inherit; font-size: 0.75em; padding: 3px 9px;
+  }
+  .detail .close:hover { color: var(--text-primary); }
+
+  /* ── Table view (accessibility relief for the floor-band CVD pair) ─────── */
+  .table-wrap { margin-top: 14px; display: none; }
+  .table-wrap.show { display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--gridline); }
+  th { color: var(--text-muted); font-size: 0.88em; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--text-secondary); }
+  td.name { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--text-primary); }
+  td.num { font-variant-numeric: tabular-nums; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px;
+    font-size: 0.78em; color: var(--text-muted); align-items: center;
+  }
+  .legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .line { width: 22px; height: 0; border-top: 1px solid var(--text-muted); }
+  .legend .line.dashed { border-top-style: dashed; }
+
+  .empty, .error {
+    padding: 44px 24px; text-align: center; color: var(--text-muted); font-size: 0.9em;
+  }
+  .error code {
+    display: inline-block; margin-top: 10px; padding: 7px 12px; border-radius: 6px;
+    background: var(--surface-2); color: var(--text-primary);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.95em;
+  }
+  footer { margin-top: 22px; color: var(--text-muted); font-size: 0.78em; }
+  footer code { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--text-secondary); }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI Catalyst — Skills Graph</h1>
+    <p>
+      Every skill in <code>skills/</code>, one column per DPLC lifecycle phase, linked by
+      its declared dependencies. <span class="counts" id="counts"></span>
+    </p>
+  </header>
+
+  <div class="filters" id="filters" role="group" aria-label="Graph filters">
+    <div class="fgroup" id="stage-filters"><span class="flabel">Stage</span></div>
+    <div class="fgroup" id="tier-filters"><span class="flabel">Tier</span></div>
+    <div class="fgroup">
+      <span class="flabel">Edges</span>
+      <button class="chip" type="button" id="f-composes" aria-pressed="true">composes</button>
+      <button class="chip" type="button" id="f-consumes" aria-pressed="true">consumes</button>
+    </div>
+    <div class="fgroup">
+      <label class="flabel" for="search">Search</label>
+      <input type="search" id="search" placeholder="name or description…" autocomplete="off">
+    </div>
+    <div class="fgroup">
+      <button class="chip" type="button" id="f-connected" aria-pressed="false">Linked only</button>
+      <button class="chip" type="button" id="f-gaps" aria-pressed="false">Incomplete frontmatter</button>
+      <button class="chip" type="button" id="f-table" aria-pressed="false">Table view</button>
+    </div>
+    <button class="chip reset" type="button" id="reset">Reset</button>
+  </div>
+
+  <div class="stage-wrap" id="stage-wrap">
+    <svg id="graph" role="img" aria-labelledby="graph-title"><title id="graph-title">Skills dependency graph, grouped by lifecycle phase</title></svg>
+  </div>
+
+  <div class="legend" id="legend"></div>
+
+  <div class="detail" id="detail" role="region" aria-live="polite" aria-label="Selected skill"></div>
+
+  <div class="table-wrap" id="table-wrap">
+    <table id="table">
+      <caption class="sr-only">Skills with phase, tier, and connection counts</caption>
+      <thead><tr>
+        <th scope="col">Skill</th><th scope="col">Phase</th><th scope="col">Stage</th>
+        <th scope="col">Tier</th><th scope="col">Depends on</th><th scope="col">Used by</th>
+        <th scope="col">Notes</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Generated from <code>SKILL.md</code> frontmatter by
+    <code>scripts/build_skills_graph.py</code> — do not hand-edit
+    <code>graph.json</code>.
+    <span id="unresolved-note"></span>
+  </footer>
+</div>
+
+<div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  // Pages serves docs/ as the site root (branch-source, matching
+  // cg-edo/edo-ai-skills), so skills/ is not on the site at all — a relative
+  // "../../skills/…" link 404s once published. Link at the repo blob instead,
+  // the same way docs/index.html links its Markdown targets.
+  const REPO_BLOB = "https://github.com/cg-open-itg/catalyst/blob/HEAD/";
+  const TIER_GLYPH = {
+    orchestrator: "◆", workflow: "▲", document: "■", capability: "●", unspecified: "?",
+  };
+  const TIER_RANK = {
+    orchestrator: 0, workflow: 1, document: 2, capability: 3, unspecified: 4,
+  };
+
+  // Layout constants — phase columns run left to right on the x-axis.
+  // COL_TOP leaves room for the two-line column header (label + count).
+  const COL_PAD_X = 20, COL_TOP = 62, COL_GAP = 26, MIN_COL_W = 96;
+  const ROW_H = 26, CHIP_H = 21, CHIP_PAD = 9, GLYPH_W = 13;
+
+  const $ = (id) => document.getElementById(id);
+  const svg = $("graph"), tooltip = $("tooltip");
+
+  let DATA = null;
+  let nodeById = new Map();
+  let outEdges = new Map(), inEdges = new Map();
+  let nodeEls = new Map();
+  let edgeEls = [];
+  let selected = null;
+
+  const state = {
+    stages: new Set(), tiers: new Set(),
+    edgeTypes: new Set(["composes", "consumes"]),
+    query: "", connectedOnly: false, gapsOnly: false, table: false,
+  };
+
+  // ── Data loading ────────────────────────────────────────────────────────
+  fetch("graph.json")
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(init)
+    .catch(() => {
+      $("stage-wrap").innerHTML =
+        '<div class="error">Could not load <strong>graph.json</strong>.<br>' +
+        'Browsers block <code>fetch</code> over <code>file://</code> — serve the folder instead:' +
+        '<br><code>python3 -m http.server -d docs</code></div>';
+    });
+
+  function init(data) {
+    DATA = data;
+    nodeById = new Map(data.nodes.map((n) => [n.id, n]));
+
+    for (const n of data.nodes) { outEdges.set(n.id, []); inEdges.set(n.id, []); }
+    for (const e of data.edges) {
+      if (outEdges.has(e.source)) outEdges.get(e.source).push(e);
+      if (inEdges.has(e.target)) inEdges.get(e.target).push(e);
+    }
+
+    state.stages = new Set(data.stages.map((s) => s.id));
+    state.tiers = new Set(data.tiers);
+
+    $("counts").textContent =
+      `${data.nodes.length} skills · ${data.edges.length} connections`;
+
+    const missing = (data.unresolved || []).filter((u) => u.reason === "missing");
+    if (missing.length) {
+      $("unresolved-note").textContent =
+        ` ${missing.length} declared dependency target(s) resolve to no skill.`;
+    }
+
+    buildFilters();
+    buildLegend();
+    buildTable();
+    render();
+    wireControls();
+  }
+
+  // ── Filters ─────────────────────────────────────────────────────────────
+  function toggleChip(btn, set, key, onChange) {
+    btn.addEventListener("click", () => {
+      const on = btn.getAttribute("aria-pressed") === "true";
+      btn.setAttribute("aria-pressed", String(!on));
+      if (on) set.delete(key); else set.add(key);
+      onChange();
+    });
+  }
+
+  function buildFilters() {
+    const sf = $("stage-filters");
+    for (const s of DATA.stages) {
+      const count = DATA.nodes.filter((n) => n.stage === s.id).length;
+      if (!count) continue;
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = `chip stage-${s.id}`;
+      b.setAttribute("aria-pressed", "true");
+      const sw = document.createElement("span");
+      sw.className = "swatch";
+      b.append(sw, document.createTextNode(`${s.label} (${count})`));
+      toggleChip(b, state.stages, s.id, render);
+      sf.appendChild(b);
+    }
+
+    const tf = $("tier-filters");
+    for (const t of DATA.tiers) {
+      const count = DATA.nodes.filter((n) => n.tier === t).length;
+      if (!count) continue;
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.setAttribute("aria-pressed", "true");
+      const g = document.createElement("span");
+      g.className = "glyph";
+      g.textContent = TIER_GLYPH[t] || "●";
+      b.append(g, document.createTextNode(`${t} (${count})`));
+      toggleChip(b, state.tiers, t, render);
+      tf.appendChild(b);
+    }
+
+    const gapCount = DATA.nodes.filter((n) => (n.gaps || []).length).length;
+    const gapBtn = $("f-gaps");
+    // Kept in the DOM when empty so resetFilters/wireControls stay unconditional.
+    gapBtn.hidden = gapCount === 0;
+    gapBtn.textContent = `⚠ Incomplete frontmatter (${gapCount})`;
+  }
+
+  function buildLegend() {
+    const el = $("legend");
+    const parts = [];
+    for (const t of DATA.tiers) parts.push([TIER_GLYPH[t] || "●", t]);
+    for (const [glyph, label] of parts) {
+      const s = document.createElement("span");
+      s.className = "item";
+      const g = document.createElement("span");
+      g.textContent = glyph;
+      s.append(g, document.createTextNode(label));
+      el.appendChild(s);
+    }
+    const mk = (cls, label) => {
+      const s = document.createElement("span");
+      s.className = "item";
+      const l = document.createElement("span");
+      l.className = cls;
+      s.append(l, document.createTextNode(label));
+      el.appendChild(s);
+    };
+    mk("line", "composes (declared dependency)");
+    mk("line dashed", "consumes (upstream artifact)");
+    const u = document.createElement("span");
+    u.className = "item";
+    u.textContent = "dashed outline = not registered in plugin.json";
+    el.appendChild(u);
+
+    if (DATA.nodes.some((n) => (n.gaps || []).length)) {
+      const g = document.createElement("span");
+      g.className = "item";
+      const w = document.createElement("span");
+      w.textContent = "⚠";
+      w.style.color = "var(--status-warning)";
+      g.append(w, document.createTextNode("incomplete frontmatter"));
+      el.appendChild(g);
+    }
+  }
+
+  // ── Filtering ───────────────────────────────────────────────────────────
+  function matchesQuery(n) {
+    if (!state.query) return true;
+    const q = state.query.toLowerCase();
+    return n.id.toLowerCase().includes(q) ||
+           (n.description || "").toLowerCase().includes(q);
+  }
+
+  function passesBase(n) {
+    if (state.gapsOnly && !(n.gaps || []).length) return false;
+    return state.stages.has(n.stage) && state.tiers.has(n.tier) && matchesQuery(n);
+  }
+
+  function visibleNodes() {
+    let vis = DATA.nodes.filter(passesBase);
+    if (state.connectedOnly) {
+      const ids = new Set(vis.map((n) => n.id));
+      vis = vis.filter((n) =>
+        (outEdges.get(n.id) || []).some((e) => state.edgeTypes.has(e.type) && ids.has(e.target)) ||
+        (inEdges.get(n.id) || []).some((e) => state.edgeTypes.has(e.type) && ids.has(e.source))
+      );
+    }
+    return vis;
+  }
+
+  // ── Render ──────────────────────────────────────────────────────────────
+  function render() {
+    for (const child of Array.from(svg.childNodes)) {
+      if (child.tagName !== "title") svg.removeChild(child);
+    }
+    nodeEls = new Map();
+    edgeEls = [];
+
+    const vis = visibleNodes();
+    const visIds = new Set(vis.map((n) => n.id));
+
+    if (!vis.length) {
+      svg.setAttribute("viewBox", "0 0 900 160");
+      svg.setAttribute("height", "160");
+      const t = document.createElementNS(SVG_NS, "text");
+      t.setAttribute("x", 450); t.setAttribute("y", 84);
+      t.setAttribute("text-anchor", "middle");
+      t.setAttribute("class", "band-label");
+      t.textContent = "No skills match these filters";
+      svg.appendChild(t);
+      syncTable(vis);
+      return;
+    }
+
+    const edgeLayer = document.createElementNS(SVG_NS, "g");
+    const nodeLayer = document.createElementNS(SVG_NS, "g");
+    const bandLayer = document.createElementNS(SVG_NS, "g");
+    svg.append(bandLayer, edgeLayer, nodeLayer);
+
+    // Measure chip widths with a hidden text probe — approximating from character
+    // counts drifts badly across the 4–34 character range of skill names.
+    const probe = document.createElementNS(SVG_NS, "text");
+    probe.setAttribute("class", "label");
+    probe.setAttribute("visibility", "hidden");
+    svg.appendChild(probe);
+    const widthOf = (label) => {
+      probe.textContent = label;
+      return Math.ceil(probe.getComputedTextLength()) + CHIP_PAD * 2 + GLYPH_W;
+    };
+
+    // Phase runs left to right on the x-axis: one column per phase, in lifecycle
+    // order, skills stacked vertically inside it. Columns are sized to their own
+    // widest chip rather than a shared width — phase 4 carries a 32-character
+    // name while phase 0 holds two short ones, and a uniform width would pad the
+    // short columns to match the longest.
+    const pos = new Map();
+    const columns = [];
+    let x = COL_PAD_X;
+
+    for (const band of DATA.phases) {
+      const members = vis
+        .filter((n) => n.phase === band.id)
+        .sort((a, b) => (TIER_RANK[a.tier] - TIER_RANK[b.tier]) || a.id.localeCompare(b.id));
+      if (!members.length) continue;
+
+      const widths = members.map((n) => widthOf(n.id));
+      const colW = Math.max(...widths, MIN_COL_W);
+
+      members.forEach((n, i) => {
+        pos.set(n.id, {
+          x,
+          y: COL_TOP + i * ROW_H,
+          w: widths[i],
+          h: CHIP_H,
+          colW,
+        });
+      });
+
+      columns.push({ band, x, colW, count: members.length });
+      x += colW + COL_GAP;
+    }
+
+    svg.removeChild(probe);
+
+    const tallest = Math.max(...columns.map((c) => c.count), 1);
+    const totalH = COL_TOP + tallest * ROW_H + 24;
+    const totalW = Math.max(x - COL_GAP + COL_PAD_X, 600);
+
+    svg.setAttribute("viewBox", `0 0 ${totalW} ${totalH}`);
+    svg.setAttribute("width", totalW);
+    svg.setAttribute("height", totalH);
+
+    // Column headers + separators, drawn after sizing so the rules span the
+    // full height. The first column gets no rule -- a line to the left of it
+    // sits at the canvas edge and reads as a border, not a separator.
+    for (const [ci, col] of columns.entries()) {
+      if (ci > 0) {
+        const rule = document.createElementNS(SVG_NS, "line");
+        rule.setAttribute("class", "band-rule");
+        rule.setAttribute("x1", col.x - COL_GAP / 2);
+        rule.setAttribute("x2", col.x - COL_GAP / 2);
+        rule.setAttribute("y1", 14);
+        rule.setAttribute("y2", totalH - 12);
+        bandLayer.appendChild(rule);
+      }
+
+      const lbl = document.createElementNS(SVG_NS, "text");
+      lbl.setAttribute("class", "band-label");
+      lbl.setAttribute("x", col.x);
+      lbl.setAttribute("y", 26);
+      lbl.textContent = col.band.label;
+      bandLayer.appendChild(lbl);
+
+      const cnt = document.createElementNS(SVG_NS, "text");
+      cnt.setAttribute("class", "band-count");
+      cnt.setAttribute("x", col.x);
+      cnt.setAttribute("y", 41);
+      cnt.textContent = `${col.count} skill${col.count === 1 ? "" : "s"}`;
+      bandLayer.appendChild(cnt);
+    }
+
+    // Edges beneath nodes, faint until interaction. Control points offset in x
+    // so the curve leaves one column and enters the next horizontally, matching
+    // the left-to-right lifecycle reading. Same-column edges are a separate
+    // case -- see below.
+    for (const e of DATA.edges) {
+      if (!state.edgeTypes.has(e.type)) continue;
+      if (!visIds.has(e.source) || !visIds.has(e.target)) continue;
+      const a = pos.get(e.source), b = pos.get(e.target);
+      if (!a || !b) continue;
+
+      const y1 = a.y + a.h / 2, y2 = b.y + b.h / 2;
+      const path = document.createElementNS(SVG_NS, "path");
+
+      if (b.x === a.x) {
+        // Same column: both chips share an x, so facing-edge anchoring would
+        // put the target's left edge behind the source's right one and bow the
+        // curve back across every label between the two rows. Leave and
+        // re-enter on the right instead, bulging into the column's gutter.
+        const gx = a.x + a.colW;
+        const bow = 10 + Math.min(Math.abs(y2 - y1) * 0.18, COL_GAP - 12);
+        path.setAttribute(
+          "d",
+          `M ${a.x + a.w} ${y1} C ${gx + bow} ${y1}, ${gx + bow} ${y2}, ${b.x + b.w} ${y2}`
+        );
+      } else {
+        // Anchor on the facing edge of each chip so curves don't cut through text.
+        const forward = b.x > a.x;
+        const x1 = forward ? a.x + a.w : a.x;
+        const x2 = forward ? b.x : b.x + b.w;
+        const dx = Math.abs(x2 - x1);
+        const c = Math.max(28, Math.min(dx * 0.45, 150));
+        path.setAttribute(
+          "d",
+          `M ${x1} ${y1} C ${x1 + (forward ? c : -c)} ${y1}, ${x2 - (forward ? c : -c)} ${y2}, ${x2} ${y2}`
+        );
+      }
+
+      path.setAttribute("class", `edge ${e.type}`);
+      edgeLayer.appendChild(path);
+      edgeEls.push({ el: path, source: e.source, target: e.target });
+    }
+
+    // Nodes
+    for (const n of vis) {
+      const p = pos.get(n.id);
+      if (!p) continue;
+
+      const g = document.createElementNS(SVG_NS, "g");
+      const gaps = n.gaps || [];
+      g.setAttribute("class",
+        `node${n.registered ? "" : " unregistered"}${gaps.length ? " has-gaps" : ""}`);
+      g.setAttribute("transform", `translate(${p.x}, ${p.y})`);
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.style.setProperty("--stage", `var(--stage-${n.stage})`);
+
+      const deps = (outEdges.get(n.id) || []).length;
+      const used = (inEdges.get(n.id) || []).length;
+      g.setAttribute("aria-label",
+        `${n.id}. ${n.tier}, ${phaseLabel(n.phase)}. ` +
+        `Depends on ${deps}, used by ${used}.` +
+        (gaps.length ? ` Missing frontmatter: ${gaps.join(", ")}.` : ""));
+
+      const rect = document.createElementNS(SVG_NS, "rect");
+      rect.setAttribute("width", p.w);
+      rect.setAttribute("height", p.h);
+      g.appendChild(rect);
+
+      const glyph = document.createElementNS(SVG_NS, "text");
+      glyph.setAttribute("class", "glyph");
+      glyph.setAttribute("x", CHIP_PAD);
+      glyph.setAttribute("y", p.h / 2 + 0.5);
+      glyph.textContent = TIER_GLYPH[n.tier] || "●";
+      g.appendChild(glyph);
+
+      const text = document.createElementNS(SVG_NS, "text");
+      text.setAttribute("class", "label");
+      text.setAttribute("x", CHIP_PAD + GLYPH_W);
+      text.setAttribute("y", p.h / 2 + 0.5);
+      text.textContent = n.id;              // untrusted-ish data: textContent only
+      g.appendChild(text);
+
+      g.addEventListener("pointerenter", (ev) => { highlight(n.id); showTip(n, ev); });
+      g.addEventListener("pointermove", (ev) => positionTip(ev));
+      g.addEventListener("pointerleave", () => { clearHighlight(); hideTip(); });
+      g.addEventListener("focus", () => { highlight(n.id); showTipAtNode(n, g); });
+      g.addEventListener("blur", () => { clearHighlight(); hideTip(); });
+      g.addEventListener("click", () => select(n.id));
+      g.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(n.id); }
+      });
+
+      nodeLayer.appendChild(g);
+      nodeEls.set(n.id, g);
+    }
+
+    if (selected && nodeEls.has(selected)) {
+      nodeEls.get(selected).classList.add("selected");
+      highlight(selected);
+    } else if (selected) {
+      closeDetail();
+    }
+
+    syncTable(vis);
+  }
+
+  // ── Highlight ───────────────────────────────────────────────────────────
+  function highlight(id) {
+    const neighbors = new Set([id]);
+    for (const e of edgeEls) {
+      const hit = e.source === id || e.target === id;
+      e.el.classList.toggle("hot", hit);
+      e.el.classList.toggle("out", hit && e.source === id);
+      e.el.classList.toggle("in", hit && e.target === id);
+      e.el.classList.toggle("muted", !hit);
+      if (hit) { neighbors.add(e.source); neighbors.add(e.target); }
+    }
+    for (const [nid, el] of nodeEls) {
+      el.classList.toggle("hot", nid !== id && neighbors.has(nid));
+      el.classList.toggle("dimmed", !neighbors.has(nid));
+    }
+  }
+
+  function clearHighlight() {
+    if (selected && nodeEls.has(selected)) { highlight(selected); return; }
+    for (const e of edgeEls) e.el.classList.remove("hot", "muted", "in", "out");
+    for (const el of nodeEls.values()) el.classList.remove("hot", "dimmed");
+  }
+
+  // ── Tooltip ─────────────────────────────────────────────────────────────
+  function phaseLabel(id) {
+    const p = DATA.phases.find((x) => x.id === id);
+    return p ? p.label : id;
+  }
+
+  function buildTipContent(n) {
+    tooltip.replaceChildren();
+    const name = document.createElement("div");
+    name.className = "tt-name";
+    const dot = document.createElement("span");
+    dot.className = "tt-dot";
+    dot.style.background = `var(--stage-${n.stage})`;
+    name.append(dot, document.createTextNode(n.id));
+
+    const meta = document.createElement("div");
+    meta.className = "tt-meta";
+    meta.textContent =
+      `${TIER_GLYPH[n.tier] || ""} ${n.tier} · ${phaseLabel(n.phase)}` +
+      (n.registered ? "" : " · not registered");
+
+    tooltip.append(name, meta);
+
+    if ((n.gaps || []).length) {
+      const w = document.createElement("div");
+      w.className = "tt-warn";
+      w.textContent = `⚠ no ${n.gaps.join(" or ")} declared in frontmatter`;
+      tooltip.appendChild(w);
+    }
+
+    if (n.description) {
+      const d = document.createElement("div");
+      d.className = "tt-desc";
+      d.textContent = n.description;
+      tooltip.appendChild(d);
+    }
+
+    const rel = document.createElement("div");
+    rel.className = "tt-rel";
+    const deps = (outEdges.get(n.id) || []).length;
+    const used = (inEdges.get(n.id) || []).length;
+    rel.textContent = `${deps} outgoing · ${used} incoming — click to inspect`;
+    tooltip.appendChild(rel);
+  }
+
+  function showTip(n, ev) {
+    buildTipContent(n);
+    tooltip.classList.add("show");
+    tooltip.setAttribute("aria-hidden", "false");
+    positionTip(ev);
+  }
+
+  function showTipAtNode(n, g) {
+    buildTipContent(n);
+    tooltip.classList.add("show");
+    tooltip.setAttribute("aria-hidden", "false");
+    const r = g.getBoundingClientRect();
+    place(r.left, r.bottom + 8);
+  }
+
+  function positionTip(ev) { place(ev.clientX + 14, ev.clientY + 16); }
+
+  function place(x, y) {
+    const r = tooltip.getBoundingClientRect();
+    tooltip.style.left = Math.min(x, window.innerWidth - r.width - 12) + "px";
+    tooltip.style.top = Math.min(y, window.innerHeight - r.height - 12) + "px";
+  }
+
+  function hideTip() {
+    tooltip.classList.remove("show");
+    tooltip.setAttribute("aria-hidden", "true");
+  }
+
+  // ── Detail panel ────────────────────────────────────────────────────────
+  function select(id) {
+    if (selected === id) { closeDetail(); return; }
+    selected = id;
+    for (const [nid, el] of nodeEls) el.classList.toggle("selected", nid === id);
+    highlight(id);
+    renderDetail(nodeById.get(id));
+  }
+
+  function closeDetail() {
+    selected = null;
+    for (const el of nodeEls.values()) el.classList.remove("selected");
+    clearHighlight();
+    $("detail").classList.remove("show");
+    $("detail").replaceChildren();
+  }
+
+  function relList(title, items, emptyText) {
+    const col = document.createElement("div");
+    col.className = "d-col";
+    const h = document.createElement("h3");
+    h.textContent = title;
+    col.appendChild(h);
+    if (!items.length) {
+      const p = document.createElement("div");
+      p.className = "none";
+      p.textContent = emptyText;
+      col.appendChild(p);
+      return col;
+    }
+    const ul = document.createElement("ul");
+    for (const it of items) {
+      const li = document.createElement("li");
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = it.id + (it.type === "consumes" ? "  (consumes)" : "");
+      b.addEventListener("click", () => {
+        if (!nodeEls.has(it.id)) {
+          // Target is filtered out — clear filters so the jump can land.
+          resetFilters();
+          render();
+        }
+        select(it.id);
+        nodeEls.get(it.id)?.scrollIntoView({ block: "center", behavior: "smooth" });
+        nodeEls.get(it.id)?.focus({ preventScroll: true });
+      });
+      li.appendChild(b);
+      ul.appendChild(li);
+    }
+    col.appendChild(ul);
+    return col;
+  }
+
+  function renderDetail(n) {
+    const d = $("detail");
+    d.replaceChildren();
+
+    const h = document.createElement("h2");
+    const dot = document.createElement("span");
+    dot.className = "tt-dot";
+    dot.style.background = `var(--stage-${n.stage})`;
+    h.append(dot, document.createTextNode(n.id));
+    const close = document.createElement("button");
+    close.className = "close";
+    close.type = "button";
+    close.textContent = "Close";
+    close.addEventListener("click", closeDetail);
+    h.appendChild(close);
+
+    const meta = document.createElement("div");
+    meta.className = "d-meta";
+    meta.textContent =
+      `${TIER_GLYPH[n.tier] || ""} ${n.tier} · ${phaseLabel(n.phase)}` +
+      (n.registered ? "" : " · not registered in plugin.json");
+
+    const gapWarn = document.createElement("div");
+    if ((n.gaps || []).length) {
+      gapWarn.className = "tt-warn";
+      gapWarn.textContent =
+        `⚠ ${n.gaps.join(" and ")} not declared in this skill's frontmatter — ` +
+        `its position here is a fallback, not a stated value.`;
+    }
+
+    const desc = document.createElement("div");
+    desc.className = "d-desc";
+    desc.textContent = n.description || "No description in frontmatter.";
+
+    const cols = document.createElement("div");
+    cols.className = "d-cols";
+    const outs = (outEdges.get(n.id) || []).map((e) => ({ id: e.target, type: e.type }));
+    const ins = (inEdges.get(n.id) || []).map((e) => ({ id: e.source, type: e.type }));
+    const arts = (DATA.unresolved || []).filter((u) => u.source === n.id);
+
+    cols.append(
+      relList("Depends on", outs, "nothing — leaf skill"),
+      relList("Used by", ins, "nothing yet"),
+    );
+    if (arts.length) {
+      const col = document.createElement("div");
+      col.className = "d-col";
+      const hh = document.createElement("h3");
+      hh.textContent = "File inputs";
+      col.appendChild(hh);
+      const ul = document.createElement("ul");
+      for (const a of arts) {
+        const li = document.createElement("li");
+        li.className = "none";
+        li.textContent = a.target;
+        ul.appendChild(li);
+      }
+      col.appendChild(ul);
+      cols.appendChild(col);
+    }
+
+    const src = document.createElement("a");
+    src.className = "src";
+    src.href = REPO_BLOB + n.path;
+    src.textContent = n.path;
+    const srcWrap = document.createElement("div");
+    srcWrap.style.marginTop = "14px";
+    srcWrap.appendChild(src);
+
+    d.append(h, meta, gapWarn, desc, cols, srcWrap);
+    d.classList.add("show");
+  }
+
+  // ── Table view ──────────────────────────────────────────────────────────
+  function buildTable() { syncTable(visibleNodes()); }
+
+  function syncTable(vis) {
+    const tbody = $("table").querySelector("tbody");
+    tbody.replaceChildren();
+    for (const n of [...vis].sort((a, b) => a.id.localeCompare(b.id))) {
+      const tr = document.createElement("tr");
+      const notes = [];
+      if ((n.gaps || []).length) notes.push(`no ${n.gaps.join("/")} declared`);
+      if (!n.registered) notes.push("not in plugin.json");
+
+      const cells = [
+        [n.id, "name"],
+        [phaseLabel(n.phase), ""],
+        [(DATA.stages.find((s) => s.id === n.stage) || {}).label || n.stage, ""],
+        [n.tier, ""],
+        [String((outEdges.get(n.id) || []).length), "num"],
+        [String((inEdges.get(n.id) || []).length), "num"],
+        [notes.join("; "), ""],
+      ];
+      for (const [val, cls] of cells) {
+        const td = document.createElement("td");
+        if (cls) td.className = cls;
+        td.textContent = val;
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+  }
+
+  // ── Controls ────────────────────────────────────────────────────────────
+  function resetFilters() {
+    state.stages = new Set(DATA.stages.map((s) => s.id));
+    state.tiers = new Set(DATA.tiers);
+    state.edgeTypes = new Set(["composes", "consumes"]);
+    state.query = "";
+    state.connectedOnly = false;
+    state.gapsOnly = false;
+    $("search").value = "";
+    for (const b of document.querySelectorAll("#stage-filters .chip, #tier-filters .chip")) {
+      b.setAttribute("aria-pressed", "true");
+    }
+    $("f-composes").setAttribute("aria-pressed", "true");
+    $("f-consumes").setAttribute("aria-pressed", "true");
+    $("f-connected").setAttribute("aria-pressed", "false");
+    $("f-gaps").setAttribute("aria-pressed", "false");
+  }
+
+  function wireControls() {
+    let t = null;
+    $("search").addEventListener("input", (e) => {
+      clearTimeout(t);
+      const v = e.target.value;
+      t = setTimeout(() => { state.query = v.trim(); render(); }, 130);
+    });
+
+    toggleChip($("f-composes"), state.edgeTypes, "composes", render);
+    toggleChip($("f-consumes"), state.edgeTypes, "consumes", render);
+
+    $("f-connected").addEventListener("click", () => {
+      state.connectedOnly = !state.connectedOnly;
+      $("f-connected").setAttribute("aria-pressed", String(state.connectedOnly));
+      render();
+    });
+
+    $("f-gaps").addEventListener("click", () => {
+      state.gapsOnly = !state.gapsOnly;
+      $("f-gaps").setAttribute("aria-pressed", String(state.gapsOnly));
+      render();
+    });
+
+    $("f-table").addEventListener("click", () => {
+      state.table = !state.table;
+      $("f-table").setAttribute("aria-pressed", String(state.table));
+      $("table-wrap").classList.toggle("show", state.table);
+    });
+
+    $("reset").addEventListener("click", () => { resetFilters(); closeDetail(); render(); });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { closeDetail(); hideTip(); }
+    });
+
+    // No resize handling on purpose. Column widths derive from their own widest
+    // chip, so the layout is identical at any container width and the SVG simply
+    // scrolls. The earlier row layout wrapped chips against the container and
+    // needed a ResizeObserver to survive the scrollbar appearing mid-render;
+    // column sizing removes that dependency rather than compensating for it.
+  }
+})();
+</script>
+</body>
+</html>

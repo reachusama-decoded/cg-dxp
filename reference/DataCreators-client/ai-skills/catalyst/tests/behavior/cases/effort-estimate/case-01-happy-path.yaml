@@ -1,0 +1,33 @@
+id: effort-estimate.case-01-happy-path
+skill: skills/effort-estimate
+type: artifact
+description: 'Bootstrap happy-path case. Estimate effort with work breakdown, assumptions, and risks.
+  Use when the
+
+  user asks to "estimate the effort", "how long will this take", "create the
+
+  work breakdown", "size this project", or "estimate person-days".'
+input:
+  arguments: "Produce an effort estimate for the employee directory data product. Two engineers, expected\
+    \ scope: 6\u20138 weeks."
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/effort-estimate/templates/effort-estimate.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Estimate effort
+      with work breakdown, assumptions, and risks. Use when the
+
+      user asks to "estimate the effort", "how long will this take", "cr''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

@@ -1,0 +1,72 @@
+# Atlas ELT — instructor copy of the capstone solution on DuckDB. Same model names,
+# folders and alignment tags as data_products/atlas_elt, minus the Databricks bundle,
+# the shared Caspian package and the Volume target path.
+name: 'atlas_elt'
+version: '1.0.0'
+config-version: 2
+profile: 'atlas_elt'
+
+model-paths: ["datasets"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros", "shared/macros"]
+snapshot-paths: ["shared/snapshots"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  atlas_elt:
+    +materialized: view
+    # Alignment tags by layer folder, as in the learners' project:
+    #   dbt run --select tag:source-aligned | tag:domain-aligned | tag:consumer-aligned
+    advisors:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    clients:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    fund_holdings:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    fund_nav:
+      dbt:
+        prepared:    {+tags: ["consumer-aligned"]}
+    funds:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    instruments:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    market_daily:
+      dbt:
+        integration: {+tags: ["domain-aligned"]}
+        prepared:
+          +tags: ["consumer-aligned"]
+          ts_daily_market_incremental:
+            # DuckDB: make the re-run of a day replace rather than append.
+            +incremental_strategy: delete+insert
+    portfolio_perf:
+      dbt:
+        prepared:    {+tags: ["consumer-aligned"]}
+    portfolios:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+    segment_aum:
+      dbt:
+        prepared:    {+tags: ["consumer-aligned"]}
+    trades:
+      dbt:
+        staging:     {+tags: ["source-aligned"]}
+        integration: {+tags: ["domain-aligned"]}
+
+# Seeds land in the target schema, where datasets/sources.yml points. (The learners'
+# project routes them through a Caspian schema macro; one schema is the same idea.)
+seeds:
+  atlas_elt:
+    +quote_columns: false

@@ -1,0 +1,33 @@
+id: consumer-use-case-map.case-01-happy-path
+skill: skills/consumer-use-case-map
+type: artifact
+description: 'Bootstrap happy-path case. Map downstream consumers, their use cases, access patterns, and
+  SLA
+
+  requirements. Use when the user asks to "map the consumers", "who uses this
+
+  data", "document the use cases", or "create the consumer map".'
+input:
+  arguments: 'Map consumers and use cases for an employee directory data product. Initial consumers: HR
+    analytics, workforce planning, security.'
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+expected_template: skills/consumer-use-case-map/templates/consumer-use-case-map.md
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Map downstream
+      consumers, their use cases, access patterns, and SLA
+
+      requirements. Use when the user asks to "map the consumers", "who uses t''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

@@ -1,0 +1,11 @@
+--index-url https://cgrepo-aws.capgroup.com/repository/cgpypi/simple
+dbt-databricks
+dbt-core
+databricks-sql-connector
+setuptools
+wheel
+caspian
+confluent-kafka[avro]
+kafka-python
+httpx
+authlib

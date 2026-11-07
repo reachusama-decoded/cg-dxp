@@ -1,0 +1,16 @@
+[
+  {
+    "dag_id": "REPLACE_WITH_PRODUCT_FOLDER__history_a",
+    "relation_prefix": "REPLACE_WITH_ASSIGNED_PREFIX_history_a",
+    "batch_id": "temporal-demo",
+    "phase": 3,
+    "connection_id": "databricks_default"
+  },
+  {
+    "dag_id": "REPLACE_WITH_PRODUCT_FOLDER__history_b",
+    "relation_prefix": "REPLACE_WITH_ASSIGNED_PREFIX_history_b",
+    "batch_id": "temporal-demo",
+    "phase": 3,
+    "connection_id": "databricks_default"
+  }
+]

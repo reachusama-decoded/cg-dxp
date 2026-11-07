@@ -1,0 +1,29 @@
+id: dplc-concierge.case-05-fast-path-stays-fast
+skill: skills/dplc-concierge
+type: artifact
+description: >-
+  Regression guard against over-correcting. An experienced user with a clear,
+  specific ask must be routed straight through -- not walked through the guided
+  onboarding questions and not put through a pre-flight they did not ask for.
+  Adding the guided path is only safe if the fast path stays fast, so this case
+  is judged on the response rather than a sub-skill sequence.
+input:
+  arguments: "My design artifacts are approved and I'm ready to start Phase 4 Build on the index-data product."
+structural_checks:
+- non_empty_output
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: routes_immediately
+    weight: 0.5
+    prompt: >-
+      Does the response route the user onward (to the Deliver/Build stage) rather
+      than asking newcomer-orientation questions such as what they want to build,
+      whether they want an overview, or whether their machine is set up?
+      Score 0-1.
+  - id: stays_brief
+    weight: 0.5
+    prompt: >-
+      Is the response brief and route-first -- no lifecycle explainer, no
+      multi-step walk-in, no unrequested environment check for a user who stated
+      a clear and specific ask? Score 0-1.

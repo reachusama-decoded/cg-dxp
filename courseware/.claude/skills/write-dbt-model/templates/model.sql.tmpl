@@ -1,0 +1,20 @@
+{{ config(
+    materialized='<<MATERIALIZATION>>',
+    file_format='delta',
+    location_root='<<LOCATION_ROOT>>',
+    tblproperties={
+      'delta.autoOptimize.optimizeWrite': 'true',
+      'delta.autoOptimize.autoCompact': 'true'
+    }
+) }}
+
+-- Model: <<MODEL_NAME>>
+-- Layer: <<LAYER>>
+-- SQL-DBSQL-005: external table via location_root.
+-- SQL-DBSQL-009: operate VACUUM RETAIN 168 HOURS on this table on the
+-- scheduled cadence (handled by the platform vacuum job; see runbook).
+
+select
+    -- TODO: replace with real columns
+    cast(null as string) as id,
+    current_timestamp() as ingested_at

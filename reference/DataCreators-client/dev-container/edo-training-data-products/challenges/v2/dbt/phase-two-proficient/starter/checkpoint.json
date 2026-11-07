@@ -1,0 +1,12 @@
+{
+  "checkpoint": "03-history-and-delivery",
+  "unfinished": [
+    "macros/native_value.sql",
+    "models/marts/holdings_replay.sql",
+    "snapshots/fund_history.sql",
+    "models/marts/fund_nav_report.sql",
+    "models/intermediate/int_holdings_enriched.sql",
+    "tests/matched_enrichment.sql",
+    "tests/nav_reconciliation.sql"
+  ]
+}

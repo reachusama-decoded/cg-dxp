@@ -1,0 +1,191 @@
+[
+  {
+    "source": "challenges/v2/dbt/phase-two-proficient/stretch/README.md",
+    "original_sha256": "945424136df54ab0b72ff91deb6599a1b931711274374bf0489a1e10e5de8bcc",
+    "learner_sha256": "d208339b2dec55e35edb234712682e46e8780c7038b4cf3c8c8b6aaea320b70f",
+    "instructor": "challenges/v2-solutions/dbt/phase-two-proficient/legacy-stretch-answers.md",
+    "answers": [
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "acbb867d165f56ce5b670485d24ffaaeaf54fb32c18639acbd0a13ec049dc5be",
+        "body_sha256": "417a62496d9b34b43ff048b0441503f50f4847b4e51f7e58c9c92677c3680bfc"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "46fe84273d403b29a0ee7e66b5e414e58163a6543bbb4e38ceda9e922936fad1",
+        "body_sha256": "c91738508dc9a6ff342be7835aa9f00066f6fc05f4f511da361f18afbb4872f3"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "c92381e6b74ed15305be5e88235b9f60e290e3dc0c9a5643af5b0772140af245",
+        "body_sha256": "92d937571ad0ca3b4b58d27d311e618bd737537552cfa83eb6e3ff8e4908ced0"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "856dba5172af19529cc3b2e0eb3cedd7977d6b8971b74eeda63e834ddb5747f6",
+        "body_sha256": "8d3f21945733541f8fc976f1a0965ef62d07d29a2fc0c46f85f4ab647ec3f190"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "c6314de5e3685048a35f75868ee6366aa349756847e6d175cd0c7999bdaa7bf5",
+        "body_sha256": "23b183f54cceed9b90287ef80b37bb70f76dbd72f5e1d8cca2bbda301d7b39fe"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "f5ae89ffd9736c73cc2a5946bf4bef68f72c734cb990808db67e2772a80c3e71",
+        "body_sha256": "9eed5b0a59f78937cc294fcf2c23e5e7aef76a8c6ce0715660aba335c972fd5c"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "2666c63976ec44fa5eb1fc936516a9ac05c8413f1473ef401235e33f6f8ff3a8",
+        "body_sha256": "d35a403c71df3818bac8ad26fca90bd1aa29e6aa8f4462146355ce256c64282f"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "9da5b018c5c1e5aba511cfc1b44527137252972d4d7f7f2df80a59c34839ff93",
+        "body_sha256": "288d98065c67a75009e55d91d6f6b9c2842eb3b7e8a7751a07f55803409eb62d"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "195a88052cfbe7754fe63efec98468c245f020500c17389dea0a1264951182c9",
+        "body_sha256": "5c8600ff0dba73a0cab324e1ee7e66b0dcdbf6803fbcbc7145e1c42d4d63542b"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "4b3767b6f803b755633c07c07b68f70b707aa1a83e3fea783e83864f9ed330eb",
+        "body_sha256": "7306e3e76c5406e3c82246854cbc018cb3e0308b869a51305ff7cb6814f4cdb1"
+      }
+    ]
+  },
+  {
+    "source": "challenges/v2/airflow/phase-two-proficient/stretch/README.md",
+    "original_sha256": "0f45c5861cb005f2b14059a2e1d8f01a90081d51db62b61e3209649a79246dbb",
+    "learner_sha256": "73a81e32b627ff1a862f56f76e4871a01fc32d4f43746decfd64573732eece6b",
+    "instructor": "challenges/v2-solutions/airflow/phase-two-proficient/legacy-stretch-answers.md",
+    "answers": [
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "9c4c0f8aaaad6998bea84b80701e37795a9115ff54ee5b664e23d601c7ad64f9",
+        "body_sha256": "cde66ab2de5b1088af1710d1257c3f1175cac0482c0eb430520b6f1bc2acf9d5"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "e62ad79391366eb2ceb8d316c6933920d55bd692e850cb423ac8371aac93ab5d",
+        "body_sha256": "e7ed3a6a580f4596f449d44432b8bd4c3ac2e321957a694c1eb99cc78b464519"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "56f6d9b6d68c42531686a8c52a8805c63acddf1308567dd9e04dc39208597fe4",
+        "body_sha256": "0eaad1498ff18b3c5cae7ec31ca5a48a0a7ed65eea3ffb647c6d9e012d458de7"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "e975b200397164d1332ee9468f3e2d7a6cb643a253af2332ab8a9e50ef9868bf",
+        "body_sha256": "558889c7f2f4894b8ee066daf35c66bf045ae4b32a3b58e285643580000d27d3"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "ca2ff584c7f78cf5fe9048c50aece97f83e258546e62e9064901056118e8a999",
+        "body_sha256": "da3b8738134e0ab94afa8e8da5e7179f0c5753f92e18fc9be5d64d08d7dc9a59"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "760bfda322265144f5fc80e0950c178a37cc858ed789eee0e409fae2804a00e3",
+        "body_sha256": "fada13b5cd09167144491d36743ca81aeeb035d09084b755f7031ed5e0212c8a"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "60ae6f6b1af4c05f2c242339c62d2ceb9911a0279cb754950650118bd17e667e",
+        "body_sha256": "555f11b31cf7bc301dfc1f807153a52ef7830837bb4d9e75922422e5a060fd88"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "307a14050f38a2e7096d9705348096c16a1078196b45d7bcc3b38be236e742e3",
+        "body_sha256": "a5770e6cf6d67ec183e1137f27200898758dc5bf7dfe751f49c3ece7c8034d91"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "612e50638c05c625a311e06c89a1489fd8b4409fa3c4fad93159225592c6e6b6",
+        "body_sha256": "0ffed3304e676e6caebf2c79a6c424c1c51656b055db3720cb916c685c37c091"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "d37895c9e3e486d72c6bc43108566f8fa82a0063bb12b6714f426bd45cc119c1",
+        "body_sha256": "8f1109cb343e0bdbe7f6d7c6c602d1198d6347ee67d8be08259308919d5d2136"
+      }
+    ]
+  },
+  {
+    "source": "challenges/v2/capstone/phase-two-proficient/stretch/README.md",
+    "original_sha256": "f3bdf7f8ac911cd9cbb4a0416815619af252c67e8513598dcbbb1c98cc335b49",
+    "learner_sha256": "c8650f472e75357345dabd3b117e72a1320c83f4626fff38794bfd5b1df55fd3",
+    "instructor": "challenges/v2-solutions/capstone/phase-two-proficient/legacy-stretch-answers.md",
+    "answers": [
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "ba826e66f963f44640b38c2b18e85d6adead32478a91e8baf95f8479f1015aaa",
+        "body_sha256": "7e770f765a5b4cba5355be3965e1de9a12745ee315c2226a9e9840e215bd6bd8"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "a4dbf79a97cc0b65c27874cf62c7cda3342545bf3b3c9e47b42c96ba70b363f6",
+        "body_sha256": "69e4738d25db05b3cb8d9487606f01ba4fafa66ffc357950bbb108388bb9c781"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "16015422a6747070e0fb75b89400d4b2767224879c7243679334bf877b1abb1c",
+        "body_sha256": "af267ca799d8c6383f20db8fa917eb855f5a1ad78def842ec85b93562fcf6c28"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "003b7db7ffa9452621ed2ac1733b0e511d7ad1363300a274f8b2f58efa37b0d3",
+        "body_sha256": "3aab082e5afe76f1956836bd7d973a25f6ad005b829a08486a261e0ff37b7196"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "b6f10bb671038e276fac4693bbfa2b0922618bd6b790f994b749686b8efb72dc",
+        "body_sha256": "34cc47eae6c3e0b2703a2f9f47d0e031d35b91bec0795b22b406e77b6195caa9"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "dfac9858ede5b25a269377d6da843513837a1dee6af319082349f1546d07c159",
+        "body_sha256": "b12f817f3bdc43eb0fe597ae466eed91d37737b614d268def68a499d578cbe1c"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "68234859ffd0f191a8f64b5aca6e283a39c16286355c8bd5d05a21b3facbceca",
+        "body_sha256": "a92afd383b129685cf55bf91e0613e6a7f9af1897683dd64e07973363586cca2"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "78c217c7ad9b5e7a7b355cc0df230afedf1b0ec6309ad320a0da560b9a647728",
+        "body_sha256": "661207f14f53da4994761c541969d03b9de66746d804270e8e4443471499163b"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "608f6dd980d907730d2b0c0ca400df488e54b481e25367a5b54a5513ffe88b42",
+        "body_sha256": "af9ece8921692ecb403f98fe4918e3bde260ada50d12958acbc9403970b1eb9d"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "4ca284a3a4b382b13fa4032d3f7a50d1e4e960f20d284e18a836e41684a9e64c",
+        "body_sha256": "2491a5321aa878c1ac374eecc1dd359d96ff405fe31ab88ee79878ebe1b25240"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "d514fe1f52d38c0d12e71b8576061e71597c36aef8a76cd9ece0d0f2eac306aa",
+        "body_sha256": "ccfffe29fc123cbdfeeaddc1532732e1b1b36f030ccc8893842230809a00559c"
+      },
+      {
+        "title": "Solution",
+        "original_wrapper_sha256": "9d87cbc931ad7ad1af2abe6d003a3907f69a786af0c6ba6c1d64f1e9610189a2",
+        "body_sha256": "a9b73c9a3d2a9df7a429a2b65530edb2ceeb41f004b47743e12c721c885ac6e2"
+      },
+      {
+        "title": "Example solution: Atlas Product Discovery and Reverse-Mapping",
+        "original_wrapper_sha256": "a11c6c0c585732d15b2c5486cf96e71c4215c6e0ae6258c45a038014c689c01e",
+        "body_sha256": "d9bb50d01a83fdc5ee7979faf87050aef9b2eaabcb7b1980d85879ae2b542cd4"
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+id: databricks-python-sdk.case-01-artifact
+skill: skills/databricks-python-sdk
+type: artifact
+description: >-
+  Smoke test for vendored ai-dev-kit skill. Verifies the skill loads and
+  produces non-empty output on a representative trigger. Deeper testing
+  is upstream's responsibility; this case ensures the Catalyst-pass
+  (frontmatter, MCP strip, modification notice) didn't break the skill.
+
+input:
+  arguments: "use the Databricks SDK"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: cites_workspaceclient_pattern
+      weight: 0.35
+      prompt: >-
+        Does the response show the `WorkspaceClient()` instantiation
+        pattern from `databricks.sdk` — either with auto-auth (no
+        arguments, relying on environment or `~/.databrickscfg`) or
+        with an explicit `profile="<name>"` or `host=` / `token=`
+        argument? Score 1.0 if `WorkspaceClient` is used correctly with
+        at least one valid auth pattern; 0.5 if the class is referenced
+        but the instantiation details are absent or wrong; 0 if
+        `WorkspaceClient` is not used or a non-SDK approach is the only
+        thing shown. Score 0-1.
+    - id: pip_uv_neutral
+      weight: 0.35
+      prompt: >-
+        If the response shows package installation of `databricks-sdk`,
+        does it use `pip install` or `uv pip install` (both acceptable
+        per Catalyst convention) WITH the cgrepo index-url flag
+        (`--index-url https://cgrepo-aws.capgroup.com/repository/cgpypi/simple/`)?
+        Score 1.0 if no install command is shown, OR if any install
+        command shown (pip or uv pip) includes the cgrepo --index-url;
+        0 if an install command appears without the --index-url flag or
+        points at pypi.org. Score 0-1.

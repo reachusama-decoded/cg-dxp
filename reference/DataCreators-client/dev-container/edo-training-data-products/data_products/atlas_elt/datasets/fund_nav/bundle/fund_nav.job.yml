@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    fund_nav_job:
+      name: fund_nav_job
+      email_notifications:
+        on_failure:
+          - "Distribution List Of Your Team"
+      tasks:
+        - task_key: dbt_run
+          spark_python_task:
+            python_file: ${workspace.root_path}/files/dbt_wrapper.py
+            parameters:
+              - deps_then_run
+              - --debug
+              - run
+              - --project-dir
+              - ${workspace.root_path}/files/data_products/${var.data_product_name}
+              - --profiles-dir
+              - ${workspace.root_path}/files/data_products/${var.data_product_name}/dbt_profiles
+              - --select
+              - +agg_fund_nav+
+              - --target=${bundle.target}
+              - --vars
+              - '{catalog: ''${var.app_catalog}'', schema: ''${var.target_schema}'', target_schema: ''${var.target_schema}'', http_path: ''${var.http_path}'', checkpoint_table: ''${var.checkpoint_table}'', app_catalog: ''${var.app_catalog}'', caspian_catalog: ''${var.caspian_catalog}'', domain_catalog: ''${var.domain_catalog}''}'
+          existing_cluster_id: ${var.dev_cluster_id}

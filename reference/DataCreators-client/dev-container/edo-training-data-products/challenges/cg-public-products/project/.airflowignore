@@ -1,0 +1,4 @@
+# Shared Astro reads only this product's DAG entry points (glob syntax, like .gitignore).
+*
+!dags/
+!dags/*.py

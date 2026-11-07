@@ -1,0 +1,110 @@
+schema_version: 1
+id: dbt-sources-refs-and-sql
+title: Trace sources and refs into compiled SQL
+objective: Distinguish an external source from a dependency on another model.
+tool: dbt
+task_ids:
+- dbt-p1-02
+- dbt-p1-03
+- dbt-p1-04
+route: local-duckdb
+readiness: ready
+audience: Instructor demonstration; completed instructor copy is explicitly identified
+prerequisites: Prepared runtime and assigned disposable resources; authenticate outside
+  recording
+workspace_source: challenges/v2-solutions/dbt/phase-one-certified/solution
+source_inputs:
+- challenges/v2/dbt/phase-one-certified/README.md
+- challenges/v2-solutions/dbt/phase-one-certified/solution
+- scripts/demo-checks.py
+requires:
+- browser
+- dbt
+- duckdb-python
+resources:
+- fresh private workspace
+cleanup: []
+main_book:
+  include: false
+  teaching_key: dbt-models-and-tests
+steps:
+- id: sources
+  action:
+    adapter: terminal
+    session: developer
+    command: cat models/sources.yml models/stg_holdings.sql
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: source(
+    - kind: output-contains
+      text: decimal(18,2)
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Read the source boundary and staging cast.
+    notice: The source resolves the input relation; staging normalizes the money type.
+- id: refs
+  action:
+    adapter: terminal
+    session: developer
+    command: cat models/fund_exposure.sql
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: ref(
+    - kind: output-contains
+      text: left join
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Read the mart dependencies.
+    notice: The fund-driven left join preserves the fund population.
+- id: compile
+  action:
+    adapter: terminal
+    session: developer
+    command: dbt seed --profiles-dir . && dbt compile --profiles-dir .
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: Concurrency
+    - kind: command
+      argv:
+      - '{{dbt_python}}'
+      - inspect-output.py
+      - lineage
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Compile the real source and ref calls.
+    notice: Compilation resolves relations without claiming a completed business output.
+- id: sql
+  action:
+    adapter: terminal
+    session: developer
+    command: cat target/compiled/v2_portfolio/models/fund_exposure.sql
+  expect:
+    exit_code: 0
+    checks:
+    - kind: output-contains
+      text: stg_funds
+    - kind: output-contains
+      text: stg_holdings
+  capture:
+    context: LOCAL DUCKDB TERMINAL
+    hold_seconds: 2
+  caption:
+    action: Inspect the resolved relation names.
+    notice: Logical dependencies have become concrete local relations.
+closing_question: Distinguish an external source from a dependency on another model.
+  Which observation supports your explanation?
+workspace_files:
+- source: scripts/demo-checks.py
+  destination: inspect-output.py

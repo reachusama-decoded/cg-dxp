@@ -1,0 +1,36 @@
+apiVersion: v3.0.0
+kind: DataContract
+id: urn:datacontract:atlas_elt:funds
+name: funds
+version: 1.0.0
+domain: atlas_elt
+status: draft
+schema:
+  - name: funds
+    physicalName: funds
+    logicalType: object
+    physicalType: table
+    format: delta
+    external: true
+    properties:
+      - name: fund_id
+        logicalType: string
+        physicalType: string
+        nullable: false
+      - name: record_name
+        logicalType: string
+        physicalType: string
+        nullable: true
+      - name: record_status
+        logicalType: string
+        physicalType: string
+        nullable: true
+      - name: dl_current_indicator
+        logicalType: string
+        physicalType: string
+        nullable: true
+        partitioned: true
+        partitionKeyPosition: 1
+grants:
+  select:
+    - ${env_grant_prefix}_ATLAS_ELT_READ

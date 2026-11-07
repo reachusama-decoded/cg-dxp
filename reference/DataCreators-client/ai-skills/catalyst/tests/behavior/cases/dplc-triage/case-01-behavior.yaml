@@ -1,0 +1,15 @@
+id: dplc-triage.case-01-behavior
+skill: skills/dplc-triage
+type: behavior
+description: >-
+  Phase 1 (Triage) orchestrator. Should check the marketplace for duplicates,
+  log demand, and map consumer use cases — in that order — before exiting.
+input:
+  arguments: "Triage a new request: hourly index returns dataset for analytics."
+expected_sequence:
+  - skills/marketplace-search
+  - skills/demand-tracker-entry
+  - skills/consumer-use-case-map
+strict_order: false
+allow_extra: true
+max_steps: 30

@@ -1,0 +1,38 @@
+# Supplied output interface; type/schema enforcement does not prove population or values.
+version: 2
+models:
+  - name: dom_cg__product_cost
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: string
+      - name: product_name
+        data_type: string
+      - name: vehicle
+        data_type: string
+      - name: share_class
+        data_type: string
+      - name: ticker
+        data_type: string
+      - name: asset_class
+        data_type: string
+      - name: category
+        data_type: string
+      - name: currency
+        data_type: string
+      - name: product_source_id
+        data_type: string
+      - name: product_source_url
+        data_type: string
+      - name: net_expense_pct
+        data_type: decimal(12,6)
+      - name: net_expense_bps
+        data_type: decimal(12,4)
+      - name: fee_as_of_date
+        data_type: date
+      - name: fee_source_id
+        data_type: string
+      - name: fee_source_url
+        data_type: string

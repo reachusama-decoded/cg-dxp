@@ -1,0 +1,1 @@
+select n.* from {{ ref('fund_nav_report') }} n full outer join {{ ref('seed_custodian_nav') }} s on n.fund_id=s.fund_id and n.position_date=cast(s.position_date as date) where n.fund_id is null or s.fund_id is null or abs(n.nav_per_unit-s.nav_per_unit)>0.000001

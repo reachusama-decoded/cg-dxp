@@ -1,0 +1,17 @@
+version: 2
+
+# An exposure documents who consumes a mart. It shows up in `dbt docs` lineage and lets
+# `dbt build --select +exposure:compliance_concentration_dashboard` build what a consumer needs.
+exposures:
+  - name: compliance_concentration_dashboard
+    label: "Compliance concentration dashboard"
+    type: dashboard
+    maturity: medium
+    url: https://dashboards.example.internal/compliance/concentration
+    description: "Daily concentration alerts by fund and strategy."
+    depends_on:
+      - ref('agg_fund_exposure')
+      - ref('agg_fund_daily_exposure')
+    owner:
+      name: Compliance analytics
+      email: compliance-analytics@example.internal

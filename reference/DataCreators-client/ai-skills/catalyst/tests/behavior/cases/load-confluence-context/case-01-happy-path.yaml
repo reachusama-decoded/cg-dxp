@@ -1,0 +1,33 @@
+id: load-confluence-context.case-01-happy-path
+skill: skills/load-confluence-context
+type: artifact
+description: Bootstrap happy-path case. Retrieve Confluence pages as Markdown context. Use when requirements,
+  designs, or background information for a data product live in Confluence pages.
+input:
+  arguments: Fetch Confluence page ${TEST_CONFLUENCE_PAGE_ID} (the Index Data Product Proposal in space
+    ${TEST_CONFLUENCE_SPACE}).
+structural_checks:
+- non_empty_output
+- no_placeholder_text
+# load-confluence-context (workflow) wraps fetch-confluence (capability) and delegates
+# the fetch to it (AICAT-172). Assert that delegation rather than the core/client
+# modules, which the wrapper no longer references directly — fetch-confluence's
+# own case-01 covers those.
+expected_components:
+- skills/fetch-confluence
+rubric:
+  threshold: 0.7
+  criteria:
+  - id: request_addressed
+    weight: 0.4
+    prompt: 'Does the output meaningfully address the request described by the skill: ''Retrieve Confluence
+      pages as Markdown context. Use when requirements, designs, or background information for a data
+      product live in Confluen''? Score 0-1.'
+  - id: format_conformant
+    weight: 0.4
+    prompt: Does the output follow the structure the skill prescribes (sections, tables, fields, etc.)?
+      Score 0-1.
+  - id: no_placeholders
+    weight: 0.2
+    prompt: Output free of [TBD], [fill in], lorem-ipsum stubs, or empty cells where data was expected?
+      Score 0-1.

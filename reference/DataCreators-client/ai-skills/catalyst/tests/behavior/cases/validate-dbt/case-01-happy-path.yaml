@@ -1,0 +1,122 @@
+id: validate-dbt.case-01-happy-path
+skill: skills/validate-dbt
+type: artifact
+description: >
+  Pre-deploy dbt validation gate, happy path. An additive change (one new
+  nullable column) to an existing staging model is validated inline: the model
+  SQL, its sources/test config, and a snapshot of the live target schema are
+  pasted in the prompt (the harness has no file-setup support, so the gate runs
+  in inline / reason-from-source mode). The gate should run all three checks —
+  compile, schema diff against the target, and a test-resolution check — correctly
+  classify the new column as additive (non-breaking), confirm the primary key
+  carries not_null + unique, and emit VERDICT: DEPLOY_READY with zero blockers.
+
+input:
+  arguments: |
+    We're at the Phase 4 Build exit gate for the `employee_directory` data
+    product and want to know whether this dbt change is deploy-ready before we
+    deploy the bundle. Run the pre-deploy validation gate (compile check, schema
+    diff against the target, test-resolution check) on the `stg_employee__records`
+    staging model for target `dev` (catalog `app_catalog`, schema
+    `employee_directory`).
+
+    The change adds one new nullable column, `cost_center`, to the existing
+    model. Everything needed is inlined below.
+
+    Model — models/staging/employee/stg_employee__records.sql:
+    ```sql
+    {{ config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='employee_id',
+        file_format='delta'
+    ) }}
+
+    select
+        employee_id,
+        full_name,
+        department,
+        cost_center,        -- new, nullable
+        updated_at
+    from {{ source('hr', 'cg_employee_v4') }}
+    {% if is_incremental() %}
+    where updated_at > (select max(updated_at) from {{ this }})
+    {% endif %}
+    ```
+
+    Sources — models/staging/employee/_employee__sources.yml:
+    ```yaml
+    sources:
+      - name: hr
+        schema: hr_raw
+        tables:
+          - name: cg_employee_v4
+    ```
+
+    Model config — models/staging/employee/_staging__models.yml:
+    ```yaml
+    models:
+      - name: stg_employee__records
+        columns:
+          - name: employee_id
+            tests: [not_null, unique]
+          - name: full_name
+          - name: department
+          - name: cost_center
+          - name: updated_at
+    ```
+
+    Live target schema snapshot — app_catalog.employee_directory.stg_employee__records (target=dev):
+    ```
+    employee_id   bigint     NOT NULL
+    full_name     string     NULL
+    department    string     NULL
+    updated_at    timestamp  NULL
+    ```
+
+structural_checks:
+  - non_empty_output
+  - no_placeholder_text
+  - has_markdown_table
+
+rubric:
+  threshold: 0.70
+  criteria:
+    - id: three_gates_reported
+      weight: 0.3
+      prompt: >
+        Does the output report all three pre-deploy gates — (1) a compile
+        check, (2) a schema diff against the target, and (3) a test-resolution
+        check — each with an explicit outcome or severity (blocker / advisory / ok /
+        n-a)? Score 1 if all three gates are clearly present with outcomes,
+        0.5 if one is missing or vague, 0 if the output is not organized as
+        these gates. Score 0-1.
+    - id: verdict_line
+      weight: 0.25
+      prompt: >
+        Does the output include a single machine-greppable verdict line of the
+        form "VERDICT: DEPLOY_READY — <n> blocker, <n> advisory, <n> ok, <n>
+        n-a" (counts may vary; n-a is expected for the live steps that cannot
+        run inline), and does it read DEPLOY_READY with zero blockers — the
+        correct verdict for this clean, additive change? Score 1 for a
+        correctly-shaped DEPLOY_READY line with zero blockers, 0.5 if the
+        verdict is right but the line is malformed or the blocker count is
+        inconsistent, 0 if BLOCKED or no verdict line. Score 0-1.
+    - id: correct_classification
+      weight: 0.25
+      prompt: >
+        Does the output correctly classify the new `cost_center` column as an
+        ADDITIVE (non-breaking) schema change relative to the live target, and
+        confirm the primary key `employee_id` carries both not_null and unique
+        tests — without inventing a breaking change that isn't there? Score 1
+        if both are correct, 0.5 if one is correct, 0 if it flags a false
+        breaking change or misses the PK coverage. Score 0-1.
+    - id: actionable_and_grounded
+      weight: 0.2
+      prompt: >
+        Are the findings grounded in the actual inlined content (the real
+        columns employee_id / full_name / department / cost_center / updated_at,
+        the real source hr.cg_employee_v4, the real tests) rather than invented
+        models or columns, and does the report give a clear next step (proceed
+        with the bundle deploy when ready, or route failures to
+        /troubleshoot-dbt-on-databricks)? Score 0-1.

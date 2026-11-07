@@ -1,0 +1,38 @@
+apiVersion: v3.0.0
+kind: DataContract
+id: urn:datacontract:atlas_elt:fund_nav
+name: fund_nav
+version: 1.0.0
+domain: atlas_elt
+status: draft
+schema:
+  - name: fund_nav
+    physicalName: agg_fund_nav
+    logicalType: object
+    physicalType: table
+    format: delta
+    external: true
+    properties:
+      - name: fund_id
+        logicalType: string
+        physicalType: string
+        nullable: false
+      - name: name
+        logicalType: string
+        physicalType: string
+        nullable: true
+      - name: style
+        logicalType: string
+        physicalType: string
+        nullable: true
+      - name: holdings
+        logicalType: integer
+        physicalType: bigint
+        nullable: true
+      - name: nav_per_100_units
+        logicalType: number
+        physicalType: decimal
+        nullable: true
+grants:
+  select:
+    - ${env_grant_prefix}_ATLAS_ELT_READ

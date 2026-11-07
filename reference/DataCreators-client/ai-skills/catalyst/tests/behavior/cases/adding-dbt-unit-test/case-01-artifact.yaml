@@ -1,0 +1,41 @@
+id: adding-dbt-unit-test.case-01-artifact
+skill: skills/adding-dbt-unit-test
+type: artifact
+description: >-
+  Smoke test for vendored dbt-labs skill. Verifies the skill loads and
+  produces non-empty Catalyst-shaped output (dbt Core only, no Cloud /
+  Fusion / MCP references).
+
+input:
+  arguments: "add a dbt unit test"
+
+structural_checks:
+  - non_empty_output
+
+rubric:
+  threshold: 0.65
+  criteria:
+    - id: skill_loads_and_responds
+      weight: 0.3
+      prompt: >-
+        Does the response demonstrate the skill loaded and produced a
+        coherent reply on-topic with the trigger phrase (not an error,
+        not a refusal, not a generic "I don't know")? Score 0-1.
+    - id: emits_unit_test_yaml
+      weight: 0.35
+      prompt: >-
+        Does the response emit valid dbt unit test YAML using the
+        `unit_tests:` block (nested under a `models:` file or standalone),
+        with both a `given:` section (input fixture rows) and an `expect:`
+        section (expected output rows)? Score 1.0 if both `given:` and
+        `expect:` are present with plausible fixture data; 0.5 if only
+        one of the two sections is present; 0 if the unit test YAML
+        structure is absent or uses the wrong schema. Score 0-1.
+    - id: dbt_core_only
+      weight: 0.35
+      prompt: >-
+        Does the response stay scoped to dbt Core syntax and avoid
+        referencing dbt Cloud-specific features (e.g., dbt Cloud IDE,
+        dbt Fusion, Cloud Scheduler, dbt Explorer) or MCP tools? Score
+        1.0 if there are no dbt Cloud or dbt Fusion references; 0 if
+        any dbt Cloud or dbt Fusion feature is referenced. Score 0-1.

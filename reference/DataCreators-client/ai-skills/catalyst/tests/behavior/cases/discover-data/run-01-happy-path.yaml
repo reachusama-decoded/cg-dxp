@@ -1,0 +1,13 @@
+type: run
+id: discover-data.run-01-happy-path
+description: |
+  Happy-path execution of discover-data. Inventory tables in
+  ${TEST_CATALOG}.${TEST_SCHEMA} for an employee directory product.
+  Multiple cases evaluate orthogonal dimensions of this single transcript:
+    - case-01-happy-path     → format conformance + groundedness
+    - case-02-discovery-coverage → table enumeration + relevance labels
+skill: skills/discover-data
+input:
+  arguments: Inventory tables in ${TEST_CATALOG}.${TEST_SCHEMA} that look relevant to an employee directory data product.
+environment:
+  databricks: live
