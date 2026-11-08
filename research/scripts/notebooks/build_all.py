@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build every day's anchor notebook, run sheet (Markdown and Word), and activity cards from the day modules.
-Usage: ~/.venvs/cg-dxp/bin/python build_all.py [--no-docx] [day ...]
+Usage: ~/.venvs/cg-dxp/bin/python build_all.py [--no-docx] [--week] [--pdf] [day ...]   (--week also builds the week documents to Word; --pdf prints every instructor document to PDF from its Markdown)
 
 The Word run sheet is built by research/scripts/docx/build_lesson_plan.js (CG Core's lesson-plan builder) from a second
 Markdown written in that builder's dialect under research/build/run-sheets/; courseware/<day>/run-sheet.md keeps its own format."""
@@ -311,11 +311,70 @@ def build(day_name: str):
         (folder / "activities" / f"{a['number']}-{slug}.md").write_text(activity_md(a, mod.DAY))
     print(f"day {mod.DAY}: {nb.name} ({sum(c is not None for c in cells)} cells), {len(mod.ACTIVITIES)} activity cards -> {folder.relative_to(ROOT)}; run-sheet.md{docx_note} -> {inst.relative_to(ROOT)}")
 
+# ---------- the week documents (Markdown only) to Word, and every instructor document to PDF ----------
+WEEK_DOCS = [("instructor/README.md", "instructor pack"), ("instructor/00-week/start-here.md", "start here"),
+             ("instructor/00-week/preflight-checklist.md", "pre-flight checklist"), ("instructor/00-week/llm-guide.md", "LLM guide"),
+             ("instructor/00-week/risks-and-fallbacks.md", "risks and fallbacks")]
+
+def build_week_docs() -> list[str]:
+    """Each week document becomes a .docx beside it: the Markdown is copied under research/build/ with a breadcrumb
+    line after its title (the builder wants one), then built portrait."""
+    out = []
+    BUILD.parent.joinpath("instructor-docs").mkdir(parents=True, exist_ok=True)
+    for rel, kind in WEEK_DOCS:
+        src = ROOT / rel
+        if not src.exists():
+            continue
+        text = src.read_text()
+        title_line, rest = text.split("\n", 1)
+        crumb = f"[Data Creators › instructor pack — {kind}]{{.breadcrumb}}"
+        tmp = BUILD.parent / "instructor-docs" / src.name
+        tmp.write_text(f"{title_line}\n\n{crumb}\n{rest}")
+        ok = build_docx(tmp, src.with_suffix(".docx"), kind=kind, portrait=True)
+        out.append(f"{rel} -> .docx" + ("" if ok else " FAILED"))
+    return out
+
+MD_TO_PDF = ROOT / "research" / "scripts" / "docx" / "md_to_pdf.py"
+
+def export_pdfs() -> list[str]:
+    """Every instructor document (run sheets, prep guides, the week documents, the README) becomes a .pdf beside its
+    Markdown, printed by Chrome from pandoc's HTML with the house print stylesheet (research/scripts/docx/md_to_pdf.py).
+    Word will not open files under automation on this Mac and Pages drops the fonts and the page breaks, so the
+    Markdown, not the .docx, is the PDF's source."""
+    jobs = []
+    for mod_name in ["day1", "day2", "day3", "day4", "day5"]:
+        mod = importlib.import_module(mod_name)
+        folder = INSTRUCTOR / mod.SLUG
+        jobs.append((folder / "run-sheet.md", ["--landscape", "--crumb", f"Data Creators › Day {mod.DAY} — run sheet"]))
+        jobs.append((folder / f"day{mod.DAY}_prep-guide.md", []))
+    for rel, kind in WEEK_DOCS:
+        jobs.append((ROOT / rel, ["--crumb", f"Data Creators › instructor pack — {kind}"]))
+    out = []
+    for src, extra in jobs:
+        if not src.exists():
+            continue
+        pdf = src.with_suffix(".pdf")
+        r = subprocess.run([sys.executable, str(MD_TO_PDF), str(src), str(pdf), *extra], capture_output=True, text=True, timeout=300)
+        out.append(f"{src.relative_to(ROOT)} -> .pdf" + ("" if r.returncode == 0 and pdf.exists() else f" FAILED: {r.stderr.strip()[-300:]}"))
+    return out
+
 DOCX = True
 if __name__ == "__main__":
     args = sys.argv[1:]
     if "--no-docx" in args:
         DOCX = False; args.remove("--no-docx")
+    pdf = "--pdf" in args
+    if pdf:
+        args.remove("--pdf")
+    week = "--week" in args
+    if week:
+        args.remove("--week")
     days = args or ["day1", "day2", "day3", "day4", "day5"]
     for d in days:
         build(d)
+    if DOCX and (week or not args):
+        for line in build_week_docs():
+            print("week docs:", line)
+    if pdf:
+        for line in export_pdfs():
+            print("pdf:", line)

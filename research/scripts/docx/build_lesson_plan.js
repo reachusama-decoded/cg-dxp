@@ -615,7 +615,7 @@ const doc = new Document({
   numbering: { config: [{ reference: "bullets", levels: bullets }, { reference: "numbers", levels: numbers }] },
   sections: [{
     properties: { page: { size: { width: A4_SHORT, height: A4_LONG, orientation: PORTRAIT ? PageOrientation.PORTRAIT : PageOrientation.LANDSCAPE }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
-    headers: { default: new Header({ children: [twoCell([small(`${PROGRAMME} · Day ${session} ${KIND}`)], [small("For instructors")])] }) },
+    headers: { default: new Header({ children: [twoCell([small(session === "?" ? `${PROGRAMME} · ${KIND}` : `${PROGRAMME} · Day ${session} ${KIND}`)], [small("For instructors")])] }) },
     footers: { default: new Footer({ children: [twoCell(
       [new TextRun({ children: ["Page ", PageNumber.CURRENT, " of ", PageNumber.TOTAL_PAGES], font: FONT, size: SMALL, color: DARK })],
       [small(`© ${new Date().getFullYear()} Decoded Limited · decoded.com`)])] }) },

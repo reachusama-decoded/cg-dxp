@@ -5,3 +5,5 @@
 One change from the original: the header, title and description read the programme and document kind from `DOC_PROGRAMME` and `DOC_KIND` (defaults: "CG Core", "lesson plan"). `build_all.py` sets them to "Data Creators" and "run sheet" and writes each day's `run-sheet.md` in the builder's dialect, then `run-sheet.docx` beside it.
 
 Install once: `cd research/scripts/docx && npm install` (node_modules is ignored). Needs `node` and `pandoc` on PATH (or `PANDOC` set).
+
+`md_to_pdf.py` prints a Markdown document to PDF: pandoc makes the HTML, a template adds the fonts in `../fonts/`, the logo, a running header and footer (a repeating table header and footer, since Chrome ignores CSS margin boxes) and the print stylesheet (A4, a page break before each numbered section, table rows that do not split), and headless Chrome prints it. `--landscape` for the run sheets, `--crumb` for the breadcrumb when the Markdown has no `{.breadcrumb}` line. Word on this Mac will not open files under automation and Pages drops the embedded fonts and the page breaks, so the Markdown, not the `.docx`, is the PDF's source.
