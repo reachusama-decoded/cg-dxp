@@ -247,6 +247,7 @@ dbt is ELT: load first, transform in the warehouse. A model is a `select` statem
 
 - Delta Lake: the protocol and the transaction log, https://docs.delta.io/ ; Databricks' architecture and Unity Catalog overviews at https://docs.databricks.com/
 - Apache Spark: the SQL guide and the web UI, https://spark.apache.org/docs/latest/
+- Every Docker command by objective, with the Dockerfile instructions: `courseware/common/glossaries/docker-commands.md` (learners can be given it).
 - Docker: the Dockerfile reference and the build cache, https://docs.docker.com/ ; the CG Core handbook on containers and CI in the sibling clone, `reference/ts-cg-core/courseware/unit01-software-engineering-with-ai/day02-testing-git-containers-ci/learner/module06-containers-ci/day02_m6_handbook.md`.
 - The training repository's troubleshooting guide: `.devcontainer/TROUBLESHOOTING.md`, and the challenge README for Docker.
 - dbt: what a model, a source and a test are, https://docs.getdbt.com/ (Day 3 goes deep).
