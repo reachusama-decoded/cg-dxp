@@ -145,3 +145,50 @@ Instructions, not commands: the recipe `docker build` follows.
 | `.dockerignore` | A file beside the Dockerfile listing what to leave out of the build context (data, `.git`, caches). |
 
 Two habits that keep images small and builds fast: order instructions from least to most frequently changed (base image, system packages, dependencies, then your code) so the cache survives a code change; and use a multi-stage build to compile or install in one stage and copy only the result into a slim final image.
+
+## Build images and run containers securely
+
+The habits, in the order they bite. Most of them are one line in the Dockerfile or one flag on `docker run`; CG's base images and cluster policies already enforce several, which is one reason the paved path starts from them.
+
+### Building the image
+
+| Habit | How |
+|---|---|
+| Start from a trusted, minimal base | `FROM` an image from CG's internal registry or an official image; prefer the `slim` or `alpine` variant so there is less to attack and patch. |
+| Pin what you depend on | A base image tag with a version (`python:3.11-slim`, not `python:latest`), or a digest (`image@sha256:…`) when the build must be reproducible; pinned package versions in `requirements.txt`. |
+| Do not run as root | Create a user and switch to it before `CMD`: `RUN useradd -m app` then `USER app`. A process that escapes a root container is root on the host's kernel. |
+| Keep secrets out of the image | Never `COPY` a `.env`, a key or a token, and never `ENV TOKEN=…` or `ARG` a secret: every layer is readable with `docker history` and stays in the registry forever. Pass secrets at run time (`-e` from a secrets manager, a mounted file) or use `docker build --secret` for build-time needs. |
+| Keep the build context small | A `.dockerignore` that excludes `.git`, data, caches, virtualenvs and anything secret, so they cannot be copied in by accident. |
+| Ship only what runs | A multi-stage build: compile or install in one stage, `COPY --from=` only the result into a slim final image; no compilers, package managers or test data in production. |
+| Update and rebuild | Rebuild regularly from the updated base image so operating-system patches arrive; `docker build --pull` fetches the newest base tag. |
+| Scan before you push | `docker scout cves IMAGE` (Docker Desktop) or Trivy (`trivy image IMAGE`) lists known vulnerabilities; fix or justify the critical ones before the image leaves the laptop. |
+| Declare what the app needs | `EXPOSE` only the port the app listens on; a `HEALTHCHECK` so the platform can tell a wedged container from a healthy one. |
+| Label and track | `LABEL` the owner and version; keep the Dockerfile in Git so every image is traceable to a commit and a pull request. |
+
+### Running the container
+
+| Habit | How |
+|---|---|
+| Least privilege | Never `--privileged`; drop capabilities you do not need: `--cap-drop ALL --cap-add NET_BIND_SERVICE`; `--security-opt no-new-privileges`. |
+| Read-only where possible | `--read-only` with a `--tmpfs /tmp` for scratch space, so a compromised process cannot modify the image's files. |
+| Cap resources | `--memory` and `--cpus` so one container cannot starve the host or its neighbours (the production point from Day 2). |
+| Publish ports narrowly | `-p 127.0.0.1:8080:8080` binds to the laptop only; `-p 8080:8080` listens on every interface, including the office network. |
+| Mount deliberately | Mount the one folder needed, read-only when the app only reads (`-v …:/data:ro`); never mount the Docker socket (`/var/run/docker.sock`) into a container, which hands it control of the engine. |
+| Secrets at run time only | `--env-file` from a file outside Git, or a mounted secret file, or the platform's secrets manager; `docker inspect` shows environment variables to anyone with engine access, so prefer files for anything long-lived. |
+| Isolate the network | A dedicated `docker network` for the services that must talk; containers that do not need the internet get `--network none`. |
+| One process, one job | One application per container; sidecars for logging or proxies rather than a second service inside. |
+| Clean up | `--rm` for one-off runs; `docker system prune` for the rest, so stale containers with old secrets or data do not accumulate. |
+
+### A secure Dockerfile, for the six-holding app
+
+```dockerfile
+FROM python:3.11-slim                       # pinned, minimal, official
+WORKDIR /app
+RUN useradd --create-home --shell /usr/sbin/nologin app
+COPY app/summarize.py app/holdings.csv ./   # only what runs; .dockerignore keeps the rest out
+USER app                                    # never root at run time
+HEALTHCHECK CMD ["python", "-c", "import summarize"] 
+CMD ["python", "summarize.py"]
+```
+
+Run it as `docker run --rm --read-only --memory 256m --cpus 0.5 --cap-drop ALL portfolio-summary`. On the paved path the equivalent choices are already made: the dev container and the Airflow images start from EDO's base images, Harness builds them from Git, secrets live in the secrets manager and arrive at run time, and the cluster policy blocks operators that would give a task an arbitrary shell.
