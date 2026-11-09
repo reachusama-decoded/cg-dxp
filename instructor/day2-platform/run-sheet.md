@@ -125,7 +125,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 **Transition.** Before we leave design: what makes an English rule unimplementable?
 
-**If ahead or behind.** If generation stalls, open common/running-example/data-contract.html.
+**If ahead or behind.** If generation stalls, open common/running-example/03-data-contract.html.
 
 ## 2. Platform architecture
 
@@ -277,7 +277,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 **Demo — one minute of live generation.** Start the generation live, stop after a minute, then open the finished project.
 
-1. In Claude Code: `/setup-dbt-project` with `common/running-example/data-contract.md` and `sttm.md` attached.
+1. In Claude Code: `/setup-dbt-project` with `common/running-example/03-data-contract.md` and `04-sttm.md` attached.
 2. Let it run for a minute and narrate what it reads first.
 3. Stop it and open `demos/contract-to-code/eod_prices/models/`: every CTE comments the STTM rule it implements.
 4. Open `tests/` and `schema.yml` there: the tests mirror the contract's quality rules.

@@ -131,7 +131,7 @@ Demo: STTM and service levels · Activity 6: extend the contract · Break · Sha
 
 **Transition.** Before we leave design: what makes an English rule unimplementable?
 
-**Adapt.** If generation stalls, open common/running-example/data-contract.html.
+**Adapt.** If generation stalls, open common/running-example/03-data-contract.html.
 
 **Assessment.** VS Code Markdown editor, then Copilot/Claude, then the browser
 
@@ -289,7 +289,7 @@ Demo: where output lands, live generation · Activity 8: generate and investigat
 
 **Demo — one minute of live generation.** Start the generation live, stop after a minute, then open the finished project.
 
-1. In Claude Code: `/setup-dbt-project` with `common/running-example/data-contract.md` and `sttm.md` attached.
+1. In Claude Code: `/setup-dbt-project` with `common/running-example/03-data-contract.md` and `04-sttm.md` attached.
 2. Let it run for a minute and narrate what it reads first.
 3. Stop it and open `demos/contract-to-code/eod_prices/models/`: every CTE comments the STTM rule it implements.
 4. Open `tests/` and `schema.yml` there: the tests mirror the contract's quality rules.

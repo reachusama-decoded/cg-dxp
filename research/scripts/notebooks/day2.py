@@ -18,7 +18,7 @@ BLOCKS = [
       purpose="Review a submitted contract in the Markdown editor, then generate a self-contained HTML version with an overview, contents and diagrams.",
       notes=["Open with 'Open with Markdown editor'; then the prompt in the anchor; use a fast model at low effort first and let the big model finish in the background.", "Open the HTML in the browser; show it is navigable and iterable."],
       say=["Same file, two renderings. The AI does not care; you and your reviewers do."],
-      transition="Before we leave design: what makes an English rule unimplementable?", flex="If generation stalls, open common/running-example/data-contract.html."),
+      transition="Before we leave design: what makes an English rule unimplementable?", flex="If generation stalls, open common/running-example/03-data-contract.html."),
  dict(time="10:15–10:45", title="Platform architecture: warehouse, lake, lakehouse and Databricks under the hood", type="Demo + shareback", on_screen="Anchor › Platform architecture (five diagrams); the Delta and Spark demos",
       purpose="Warehouse vs lake vs lakehouse; where Databricks fits; Delta tables under the hood; what the Spark engine does; how the tools fit together.",
       notes=["Elicit each tool's role first, then the tools-together diagram.", "Run the Delta demo: files plus a log, a merge, time travel, OPTIMIZE; then the Spark demo with the UI open.",
@@ -132,7 +132,7 @@ def cells():
          dc.figure("d2-sttm", "Sources, rules and target for the running example",
                    ["Direct, constant, lookup, aggregate, derive: the textbook five; Catalyst splits derive further.",
                     "Row rules matter as much as column rules: dedup, filter, reject, and what a null means in each column.",
-                    "The running example's mapping is in common/running-example/sttm.md: eleven column rules and four row rules."]),
+                    "The running example's mapping is in common/running-example/04-sttm.md: eleven column rules and four row rules."]),
          dc.md(dc.whiteboard("STTM", [
              ("What is a source-to-target mapping? What is its core?", "An artefact showing where data comes from and goes to; the core is the transformation rules."),
              ("What kinds of rule can a column have?", "Direct (copy), constant, lookup (a third table), aggregate (a mean), derive or transform (an operation; concatenate is a subtype). Ask Catalyst for CG's list."),
@@ -164,7 +164,7 @@ def cells():
          dc.part("Activity 6", "extend the contract", time="09:20"),
          act("6"),
          dc.md(dc.prompt("Chat view", "What types of source-to-target transformation do you distinguish, and what service-level indicators and objectives should a data contract state?\n\n/ai-catalyst data-contract\nExtend the attached contract with an STTM section (one rule per target column, plus row rules) and measurable SLAs from this discussion transcript. Keep every other section as it is.",
-                         "Same questions, then: /data-contract  Extend ... (attach common/running-example/data-contract.md and the discussion)")),
+                         "Same questions, then: /data-contract  Extend ... (attach common/running-example/03-data-contract.md and the discussion)")),
          dc.break_(15, "10:00"),
          dc.part("Shareback", "review and present a contract", time="10:00"),
          dc.md(dc.demo("Markdown editor, then a self-contained HTML page", "Read Markdown properly, then turn the contract into one HTML page on a small model and on a big one.", [
@@ -175,11 +175,11 @@ def cells():
                   "Start the same prompt on the biggest model at high effort; let it run while you teach; compare when it finishes.",
                   "Say why the reasoning is hidden now (vendors stopped showing traces after competitors trained on them) and why the big model is slow."])),
          dc.md(dc.prompt("Chat view, contract attached", "Create a well-structured, self-contained HTML document from this contract: an overview at the top, a table of contents, diagrams where they help (sources to target, the SLA timeline), and plain-English prose explaining any section a non-engineer would find hard. One file, no external dependencies.",
-                         "Same prompt. Fallback already rendered: common/running-example/data-contract.html")),
+                         "Same prompt. Fallback already rendered: common/running-example/03-data-contract.html")),
          dc.code("""# Fallback: the contract already rendered as HTML (made with pandoc; the AI version adds prose and diagrams)
 import webbrowser
-webbrowser.open((COMMON / "running-example" / "data-contract.html").as_uri())
-print("opened", COMMON / "running-example" / "data-contract.html")"""),
+webbrowser.open((COMMON / "running-example" / "03-data-contract.html").as_uri())
+print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
          dc.md("### Could someone else implement this rule without asking you what it means?\n\nTake two rules from the room's contracts and test them against this list.\n\n| Ambiguity | Ask | Running-example answer |\n|---|---|---|\n| Identifiers and keys | Which column joins, and is it unique on the lookup side? | ISIN, one primary row per instrument in the master |\n| Null | What does empty mean in this column? | A null FX rate means no same-day rate; the USD price is null and the build fails |\n| Zero, minimum, maximum | Is zero a value or a missing value? What is implausible? | A zero or negative price is a quality failure |\n| Duplicates | Can the source send the same row twice? Which wins? | Re-deliveries: latest vendor timestamp wins |\n| Dates and time zones | Business date or delivery time? Which zone? | Business date of the close; 07:30 America/New_York |\n| Scope words | 'US', 'active', 'price': whose definition? | Market and active flag from the master; price is the primary-listing close |"),
          dc.section(2, "Platform architecture", "s2"),
          dc.part("Demo", "warehouse, lake and lakehouse; Databricks under the hood; Delta; Spark; the tools together", time="10:15"),
@@ -320,7 +320,7 @@ print("opened", COMMON / "running-example" / "data-contract.html")"""),
          dc.code('sql("select table_schema, table_name, table_type from information_schema.tables where table_schema = \'training_demo\' order by table_type, table_name", HERE / "demos/contract-to-code/eod_prices/warehouse/eod_prices.duckdb")\n# What a learner sees in training_dev.training_<user>: the staging views, the intermediate view, the mart table, the seeds.'),
          dc.code('sql("select ticker, price_date, price_native, native_ccy, fx_rate_to_usd, price_usd, price_source from training_demo.rpt_eod_prices_us order by price_date desc, ticker limit 8", HERE / "demos/contract-to-code/eod_prices/warehouse/eod_prices.duckdb")'),
          dc.md(dc.demo("one minute of live generation", "Start the generation live, stop after a minute, then open the finished project.", [
-                  "In Claude Code: `/setup-dbt-project` with `common/running-example/data-contract.md` and `sttm.md` attached.",
+                  "In Claude Code: `/setup-dbt-project` with `common/running-example/03-data-contract.md` and `04-sttm.md` attached.",
                   "Let it run for a minute and narrate what it reads first.",
                   "Stop it and open `demos/contract-to-code/eod_prices/models/`: every CTE comments the STTM rule it implements.",
                   "Open `tests/` and `schema.yml` there: the tests mirror the contract's quality rules.",

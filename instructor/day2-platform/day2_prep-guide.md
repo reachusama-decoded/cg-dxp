@@ -60,7 +60,7 @@ The Markdown editor in VS Code (right-click, Open with…) is how learners shoul
 ### Mechanics
 
 - **Activity 6 (25 minutes).** Individually, ask Catalyst which transformation types and which service measures exist (`transformation-spec`, `sla-dashboard-spec`); then tables pick a Day 1 contract, name the incoming tables and the outgoing table, write concrete rules (lookups, derivations, null rules) and realistic commitments; transcribe the table's discussion and feed it in, as on Day 1. Collect one revised contract per table for the review.
-- **The review demo.** Open a submitted contract in the Markdown editor and edit one cell. Run the HTML prompt on a fast model at low effort and open the page in the browser; start the same prompt on the biggest model at high effort and let it run while you teach. If both stall, `courseware/common/running-example/data-contract.html` is the pre-rendered page (made with pandoc).
+- **The review demo.** Open a submitted contract in the Markdown editor and edit one cell. Run the HTML prompt on a fast model at low effort and open the page in the browser; start the same prompt on the biggest model at high effort and let it run while you teach. If both stall, `courseware/common/running-example/03-data-contract.html` is the pre-rendered page (made with pandoc).
 - **The implementability test.** Take two rules from the room's contracts and ask whether someone else could implement them without asking; rooms find their own ambiguity in a minute.
 
 ## 2. Platform architecture
@@ -239,7 +239,7 @@ dbt is ELT: load first, transform in the warehouse. A model is a `select` statem
 - [ ] `source courseware/common/env/activate.sh`, then `bash courseware/day2-platform/demos/docker/portfolio-summary/demo.sh` prints the six-holding summary; `python demos/delta-under-the-hood/demo.py` ends at the OPTIMIZE step; `python demos/spark-engine/demo.py --hold 20` prints a plan with `Exchange` and the UI answers at http://localhost:4040.
 - [ ] `bash courseware/day2-platform/demos/contract-to-code/eod_prices/run.sh` ends with the price sheet.
 - [ ] Open the Day 2 anchor, Run All, save with outputs; check the diagrams render.
-- [ ] Run the HTML prompt once on a fast model and keep the result; confirm `data-contract.html` opens in the browser.
+- [ ] Run the HTML prompt once on a fast model and keep the result; confirm `03-data-contract.html` opens in the browser.
 - [ ] Open the dev container's Dockerfile from `reference/DataCreators-client/…/.devcontainer/Dockerfile` and find the lines you will point at.
 - [ ] Print the activity cards for 6, 7, 8 and 8b and this day's run sheet; the Databricks setup commands posted in the Teams channel at 13:00.
 
@@ -250,4 +250,4 @@ dbt is ELT: load first, transform in the warehouse. A model is a `select` statem
 - Docker: the Dockerfile reference and the build cache, https://docs.docker.com/ ; the CG Core handbook on containers and CI in the sibling clone, `reference/ts-cg-core/courseware/unit01-software-engineering-with-ai/day02-testing-git-containers-ci/learner/module06-containers-ci/day02_m6_handbook.md`.
 - The training repository's troubleshooting guide: `.devcontainer/TROUBLESHOOTING.md`, and the challenge README for Docker.
 - dbt: what a model, a source and a test are, https://docs.getdbt.com/ (Day 3 goes deep).
-- The running example's STTM and service levels: `courseware/common/running-example/sttm.md` and `service-levels.md`.
+- The running example's STTM and service levels: `courseware/common/running-example/04-sttm.md` and `05-service-levels.md`.

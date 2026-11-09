@@ -31,6 +31,6 @@ Target grain: one row per active, US-listed instrument per business date. Source
 
 - Re-delivered vendor files: later `vendor_ts` wins (R1); both deliveries stay in the landed table so the history is answerable.
 - Same-day FX only (rule 7). Yesterday's rate is wrong, not a fallback.
-- A price that moves more than 5% day on day is published and flagged for the duty-to-explain (see `service-levels.md`); it is not suppressed.
+- A price that moves more than 5% day on day is published and flagged for the duty-to-explain (see `05-service-levels.md`); it is not suppressed.
 - Dual listings: the master carries one primary ISIN per instrument; the vendor's secondary-listing rows do not match `market = 'US'` and drop out at R2.
 - Weekends and US market holidays: no rows expected; the schedule skips them.

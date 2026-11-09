@@ -295,17 +295,17 @@ Whiteboard: how do you design a data product? · Activity 2: justify a product �
 **Demo — the data-contract skill, then a PRD from the transcript.** A Catalyst skill is a prompt file: watch one run on the transcript, then find the invented detail.
 
 1. Open `.claude/skills/data-contract/SKILL.md` (installed by `common/catalyst/install-skills.sh`; the same file learners see in the Catalyst repo): the eight required sections and the quality checks.
-2. Open `.claude/skills/data-contract/templates/data-contract.md`: identity, schema, SLAs, quality rules, access, change management, consumer registry, approvals, revision history.
+2. Open `.claude/skills/data-contract/templates/03-data-contract.md`: identity, schema, SLAs, quality rules, access, change management, consumer registry, approvals, revision history.
 3. Open `.claude/skills/dplc-design/SKILL.md`: it chains requirements-acceptance-criteria, feasibility-report, consumer-use-case-map and data-model.
 4. Open `.claude/skills/dplc-concierge/SKILL.md` and say: start it Friday, maybe a product by Monday.
 5. Learners' form: Copilot Chat, `/ai-catalyst product-requirements-document`, paste a description.
-6. Instructor's form: Claude Code in `courseware/`, `/product-requirements-document`, paste `common/running-example/interview-transcript.md`.
+6. Instructor's form: Claude Code in `courseware/`, `/product-requirements-document`, paste `common/running-example/01-interview-transcript.md`.
 7. Point at the moment the skill file is read: that is how you know Catalyst is on, not plain Copilot.
 8. Read one section of the result aloud and find the invented detail before accepting anything.
 
 **If it breaks.** Catalyst not installed or slow on the demo laptop: review the prepared PRD instead; the lesson survives without the generation.
 
-- Open `common/running-example/prd.md`: the reviewed output, with the corrections in brackets.
+- Open `common/running-example/02-prd.md`: the reviewed output, with the corrections in brackets.
 - Walk the Key Product Information, Problem and Value, and Consumers sections.
 
 **Transition.** Pairs: same product, hidden descriptions, compare.
@@ -372,7 +372,7 @@ Whiteboard: the seven ideas · Demo: the interface on the running example · Bre
 2. Model picker: name this week's models; say which is least compressed and most expensive.
 3. Thinking effort: ask the same question at low and at maximum; compare the time and the answer.
 4. Context: show the conversation length, then `/clear` in Claude or a new chat in Copilot; say when to do it.
-5. The task: "Add realistic SLAs to this contract" with `common/running-example/data-contract.md` attached.
+5. The task: "Add realistic SLAs to this contract" with `common/running-example/03-data-contract.md` attached.
 6. Then: "List every number in the SLA section and where it came from."
 
 **Transition.** Break, then the interview.

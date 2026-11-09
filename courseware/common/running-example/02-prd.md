@@ -141,9 +141,9 @@ The US product team publishes a daily price sheet for US-listed products from a 
 
 | Document | Location |
 |---|---|
-| Data contract | `data-contract.md` |
-| Source-to-target mapping | `sttm.md` |
-| Service levels | `service-levels.md` |
+| Data contract | `03-data-contract.md` |
+| Source-to-target mapping | `04-sttm.md` |
+| Service levels | `05-service-levels.md` |
 
 **Glossary**
 

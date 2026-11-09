@@ -115,7 +115,7 @@ Three things that go wrong on Day 1: Catalyst is not installed or the repository
 
 - **Activity 2 (20 minutes, then a 25-minute debrief).** Tables pick a product from the morning's list or propose a new one and answer the non-technical questions; paper and a note taker; the output is the most interesting question. The debrief whiteboard in the run sheet lists what rooms usually say.
 - **The Catalyst demo.** Open the skill files in `courseware/.claude/skills/` (the same files learners see in the Catalyst repository): `data-contract/SKILL.md` and its template, `dplc-design/SKILL.md` to show skills calling skills, `dplc-concierge/SKILL.md` for the warning about speed. Then generate: learners' form in Copilot Chat, instructor's form in Claude Code opened on `courseware/`, with the running example's transcript pasted into `/product-requirements-document`. Point at the moment the skill file is read.
-- **If the generation stalls or Catalyst is missing on the laptop**, open `courseware/common/running-example/prd.md`, the reviewed output with the corrections in brackets, and walk the key product information, problem and value, and consumers sections. The lesson survives without the generation.
+- **If the generation stalls or Catalyst is missing on the laptop**, open `courseware/common/running-example/02-prd.md`, the reviewed output with the corrections in brackets, and walk the key product information, problem and value, and consumers sections. The lesson survives without the generation.
 - **Activity 3 (10 minutes, straight before lunch).** Each learner runs the PRD skill alone from the same one-paragraph brief; the table compares after lunch if the debrief slot allows. Expect several learners to hit "repository not found" here: that is the lunchtime setup slot.
 
 ## 3. AI foundations and effective practice
@@ -153,7 +153,7 @@ Three things that go wrong on Day 1: Catalyst is not installed or the repository
 
 ### Mechanics
 
-- **The side-by-side demo.** Copilot Chat on one half (what learners see), Claude Code on the other. Show the model picker and name the models; ask the same question at low and at maximum effort and compare; show the conversation length, then `/clear` or a new chat. Then the task: "Add realistic SLAs to this contract" with `courseware/common/running-example/data-contract.md` attached, followed by "List every number in the SLA section and where it came from". The point lands when the model admits the numbers were invented.
+- **The side-by-side demo.** Copilot Chat on one half (what learners see), Claude Code on the other. Show the model picker and name the models; ask the same question at low and at maximum effort and compare; show the conversation length, then `/clear` or a new chat. Then the task: "Add realistic SLAs to this contract" with `courseware/common/running-example/03-data-contract.md` attached, followed by "List every number in the SLA section and where it came from". The point lands when the model admits the numbers were invented.
 - **Timing.** Forty minutes for the block including the demo; the break follows.
 
 ## 4. Interview, generate and the lifecycle
@@ -192,7 +192,7 @@ Activity 5 has learners interview Catalyst about itself: the phases of the lifec
 
 - **Voice Memos demo.** Record thirty seconds, pause, Done; the Transcript button; click off and on again, then Copy transcript. Closing the laptop lid stops a recording, which matters for the course transcript too.
 - **Activity 4 (30 minutes).** Roles, the seven questions, the prompt in the anchor (the transcript pasted into the PRD skill, then the contract skill with the PRD in context). Outputs: a transcript, a PRD, a contract, and the list of what the documents got wrong.
-- **The planted-errors reflect.** `courseware/common/running-example/data-contract-planted-errors.md` holds five invented details with the answer key at the end of the file; three minutes for the room to find them before the key.
+- **The planted-errors reflect.** `courseware/common/running-example/03-data-contract-planted-errors.md` holds five invented details with the answer key at the end of the file; three minutes for the room to find them before the key.
 - **Activity 5 (15 minutes).** Individually, then tables: the lifecycle questions; the expected answers are in the anchor.
 - **Artefacts to keep.** One PRD and one contract per table; Day 2's Activity 6 extends a Day 1 contract and the review demo opens a submitted one.
 
@@ -233,7 +233,7 @@ Answer without notes; the answers follow.
 - [ ] Walk `instructor/00-week/preflight-checklist.md` once more; confirm the platform-support contact for Monday morning.
 - [ ] Open `courseware/day1-design/day1_anchor.ipynb` with the `cg-dxp` kernel, run the Setup cell, Run All, save with outputs.
 - [ ] In Claude Code opened on `courseware/`, type `/` and confirm `product-requirements-document` and `data-contract` are listed; run the PRD skill once on the running example's transcript so the first live call is not the first ever.
-- [ ] Open `courseware/common/running-example/prd.md`, `data-contract.md` and `data-contract-planted-errors.md`; find the five planted errors yourself.
+- [ ] Open `courseware/common/running-example/02-prd.md`, `03-data-contract.md` and `03-data-contract-planted-errors.md`; find the five planted errors yourself.
 - [ ] Record thirty seconds in Voice Memos and copy the transcript; confirm the course-transcript laptop will not sleep.
 - [ ] Print the activity cards in `courseware/day1-design/activities/`, one per table, and this day's run sheet.
 - [ ] Paper, pens and name cards on every table; the whiteboard visible from everywhere; the projector at 16-point.

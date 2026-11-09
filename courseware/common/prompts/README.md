@@ -9,7 +9,7 @@ One entry per AI beat in the week. The Copilot form comes first (what learners t
 | | Copilot (learners) | Claude Code (instructor) |
 |---|---|---|
 | Run a Catalyst skill | `/ai-catalyst <skill-name> <your request>` | `/<skill-name> <your request>` |
-| Attach a file | `#file:prd.md` (or drag it into the chat) | `@common/running-example/prd.md` |
+| Attach a file | `#file:02-prd.md` (or drag it into the chat) | `@common/running-example/02-prd.md` |
 | Whole repository as context | `@workspace` | Claude reads what it needs; name the folder |
 | Let it run commands | Agent mode | Default; approvals asked unless auto-approved |
 | Start fresh | New chat | `/clear` |
@@ -27,12 +27,12 @@ Skills installed on both sides and used this week: `product-requirements-documen
 Claude: `/product-requirements-document` with the same text.
 
 **Activity 4, PRD from an interview transcript.**
-> `/ai-catalyst product-requirements-document` Write the PRD from this transcript. #file:interview-transcript.md Mark anything you could not find in the transcript as an open question.
+> `/ai-catalyst product-requirements-document` Write the PRD from this transcript. #file:01-interview-transcript.md Mark anything you could not find in the transcript as an open question.
 
-Claude: `/product-requirements-document Write the PRD from @common/running-example/interview-transcript.md …`
+Claude: `/product-requirements-document Write the PRD from @common/running-example/01-interview-transcript.md …`
 
 **Data contract from the PRD.**
-> `/ai-catalyst data-contract` Draft the data contract for the product in #file:prd.md. Use the transcript #file:interview-transcript.md for field names, owners and timings; do not invent any.
+> `/ai-catalyst data-contract` Draft the data contract for the product in #file:02-prd.md. Use the transcript #file:01-interview-transcript.md for field names, owners and timings; do not invent any.
 
 **Find the invented detail** (use after every generation).
 > List every concrete fact in this document (names, dates, numbers, owners, field names, revision history) that does not appear in the transcript or the PRD. Quote the line for each.
@@ -43,12 +43,12 @@ Claude: `/product-requirements-document Write the PRD from @common/running-examp
 ## Day 2: contract to platform
 
 **Activity 6, extend the contract with an STTM and service levels.**
-> `/ai-catalyst transformation-spec` Add a source-to-target mapping to #file:data-contract.md for the fields in its schema section. For each target field give the source field, the transformation in English, the null rule and the check that guards it. Flag any field whose source you cannot find.
+> `/ai-catalyst transformation-spec` Add a source-to-target mapping to #file:03-data-contract.md for the fields in its schema section. For each target field give the source field, the transformation in English, the null rule and the check that guards it. Flag any field whose source you cannot find.
 
 > `/ai-catalyst sla-dashboard-spec` Propose the service-level indicators, objectives and the consumer-facing agreement for this contract, with measurable numbers and the clock each one is measured on.
 
 **Markdown to HTML** (pick a fast model with low effort first; the point is to see the harness, not the prose).
-> Convert #file:data-contract.md into one self-contained HTML page with a table of contents, no external assets, printable in A4. Keep every word.
+> Convert #file:03-data-contract.md into one self-contained HTML page with a table of contents, no external assets, printable in A4. Keep every word.
 
 **Challenge 01, Docker, when stuck.**
 > Explain this Dockerfile line by line and say which lines produce a layer. #file:Dockerfile
@@ -56,11 +56,11 @@ Claude: `/product-requirements-document Write the PRD from @common/running-examp
 > My container exits straight away. Here is `docker ps -a` and `docker logs <id>`: [paste]. Tell me whether the problem is the command, the working directory, a missing file or the port, and the one change to make.
 
 **Activity 8, generate the code from the contract.**
-> `/ai-catalyst setup-dbt-project` Set up a dbt project for the product in #file:data-contract.md with staging, intermediate and mart layers, tagged by layer.
+> `/ai-catalyst setup-dbt-project` Set up a dbt project for the product in #file:03-data-contract.md with staging, intermediate and mart layers, tagged by layer.
 
 > `/ai-catalyst write-dbt-source` Define the sources from the contract's source section, with freshness thresholds from the service levels.
 
-> `/ai-catalyst write-dbt-model` Implement the mart from the STTM in #file:data-contract.md. One model per layer; every STTM rule traceable to a line.
+> `/ai-catalyst write-dbt-model` Implement the mart from the STTM in #file:03-data-contract.md. One model per layer; every STTM rule traceable to a line.
 
 > `/ai-catalyst generate-dag` Generate the Airflow DAG for this dbt project: a freshness gate first, the dbt project as a task group, a publish step, a schedule that meets the contract's delivery time, retries and failure callbacks.
 

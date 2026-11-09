@@ -22,10 +22,10 @@ Four lines to say on Day 1 when the interface comes up: the model is the engine,
 
 | Beat | Live with Claude | Ready in `courseware/common/running-example/` |
 |---|---|---|
-| Day 1 PRD from a transcript | Yes: paste `interview-transcript.md` into `/product-requirements-document` | `prd.md` |
-| Day 1 data contract | Yes: `/data-contract` with the PRD in context | `data-contract.md`, `data-contract-planted-errors.md` |
-| Day 2 extend with STTM and SLAs | Yes, if Day 1 ran on time | `sttm.md`, `service-levels.md` |
-| Day 2 Markdown to HTML | Yes, on a fast model with low effort first | `data-contract.html` |
+| Day 1 PRD from a transcript | Yes: paste `01-interview-transcript.md` into `/product-requirements-document` | `02-prd.md` |
+| Day 1 data contract | Yes: `/data-contract` with the PRD in context | `03-data-contract.md`, `03-data-contract-planted-errors.md` |
+| Day 2 extend with STTM and SLAs | Yes, if Day 1 ran on time | `04-sttm.md`, `05-service-levels.md` |
+| Day 2 Markdown to HTML | Yes, on a fast model with low effort first | `03-data-contract.html` |
 | Day 2 contract to dbt and Airflow | Show the first minute live, then open the prepared project | `day2-platform/demos/contract-to-code/eod_prices/` and the `eod_prices_daily` DAG |
 
 Rule for every live generation: before accepting anything, read one section aloud and find the invented detail (a field, an owner, a revision history entry, an SLA number). There is always one. That is the lesson, not the generation.
