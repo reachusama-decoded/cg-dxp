@@ -8,7 +8,7 @@ The materials for Capital Group's five-day Data Creators programme. Everything h
 | `common/running-example/` | The product used in every demo: the interview transcript, PRD, data contract (with a planted-errors version), source-to-target mapping and service levels for a US end-of-day instrument price sheet. |
 | `common/prompts/` | The prompt library: one entry per activity, Copilot first and Claude Code where it differs. |
 | `common/diagrams/` | Every diagram in the notebooks, as Mermaid sources and rendered PNGs. |
-| `common/glossaries/` | Reference lists to keep open during the practicals: the Docker commands by objective, with the Dockerfile instructions. |
+| `common/glossaries/` | Reference lists to keep open during the practicals: the Docker commands by objective, the Dockerfile instructions, and secure build and run practice. |
 | `common/env/` | Scripts that create the local demo environment (a Python virtualenv with dbt and DuckDB, the Astro CLI) and check it. |
 | `common/catalyst/` | Installs a subset of the Catalyst skills for Claude Code into `.claude/skills/`, so the same skills learners run in Copilot can be run here. |
 

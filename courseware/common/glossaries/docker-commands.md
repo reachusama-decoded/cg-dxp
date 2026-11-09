@@ -1,6 +1,8 @@
-# Docker commands, by what you are trying to do
+# Docker: the commands, and how to use them securely
 
 One line per command. The flags listed are the ones that matter in practice; `docker <command> --help` has the rest. Everything here runs in the dev container's terminal or on a laptop with Docker Desktop; `astro dev start` runs several of these for you.
+
+# Part 1 — The commands, by what you are trying to do
 
 ## Check the engine
 
@@ -122,7 +124,7 @@ One line per command. The flags listed are the ones that matter in practice; `do
 | `docker container prune` | Deletes every stopped container. |
 | `docker builder prune` | Deletes the build cache; the next build pulls and runs everything again. |
 
-## The Dockerfile, for reference
+## The Dockerfile instructions, for reference
 
 Instructions, not commands: the recipe `docker build` follows.
 
@@ -146,7 +148,7 @@ Instructions, not commands: the recipe `docker build` follows.
 
 Two habits that keep images small and builds fast: order instructions from least to most frequently changed (base image, system packages, dependencies, then your code) so the cache survives a code change; and use a multi-stage build to compile or install in one stage and copy only the result into a slim final image.
 
-## Build images and run containers securely
+# Part 2 — Build images and run containers securely
 
 The habits, in the order they bite. Most of them are one line in the Dockerfile or one flag on `docker run`; CG's base images and cluster policies already enforce several, which is one reason the paved path starts from them.
 
