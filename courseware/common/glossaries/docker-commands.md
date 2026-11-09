@@ -152,7 +152,7 @@ Two habits that keep images small and builds fast: order instructions from least
 
 The habits, in the order they bite. Most of them are one line in the Dockerfile or one flag on `docker run`; CG's base images and cluster policies already enforce several, which is one reason the paved path starts from them.
 
-### Building the image
+## Building the image
 
 | Habit | How |
 |---|---|
@@ -167,7 +167,7 @@ The habits, in the order they bite. Most of them are one line in the Dockerfile 
 | Declare what the app needs | `EXPOSE` only the port the app listens on; a `HEALTHCHECK` so the platform can tell a wedged container from a healthy one. |
 | Label and track | `LABEL` the owner and version; keep the Dockerfile in Git so every image is traceable to a commit and a pull request. |
 
-### Running the container
+## Running the container
 
 | Habit | How |
 |---|---|
@@ -181,7 +181,7 @@ The habits, in the order they bite. Most of them are one line in the Dockerfile 
 | One process, one job | One application per container; sidecars for logging or proxies rather than a second service inside. |
 | Clean up | `--rm` for one-off runs; `docker system prune` for the rest, so stale containers with old secrets or data do not accumulate. |
 
-### A secure Dockerfile, for the six-holding app
+## A secure Dockerfile, for the six-holding app
 
 ```dockerfile
 FROM python:3.11-slim                       # pinned, minimal, official
