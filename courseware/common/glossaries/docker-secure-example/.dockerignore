@@ -1,0 +1,12 @@
+# What never enters the build context, so it can never be COPY'd into an image by accident.
+.git
+.gitignore
+**/__pycache__
+**/*.pyc
+.venv
+venv
+.env            # real secrets live here on a laptop; the image must never contain them
+.env.example
+data/           # the data is mounted at run time, not baked into the image
+docker-compose.yml
+README.md

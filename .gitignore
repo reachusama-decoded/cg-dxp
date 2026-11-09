@@ -25,3 +25,6 @@ reference/ts-cg-core/
 
 # Word builder dependencies
 **/node_modules/
+
+# the secure-container example's secrets file
+courseware/common/glossaries/docker-secure-example/.env

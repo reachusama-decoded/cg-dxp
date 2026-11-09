@@ -1,0 +1,4 @@
+# Pinned versions: the same build next month installs the same code. Update deliberately, with a scan.
+fastapi==0.115.6
+uvicorn==0.34.0
+psycopg[binary]==3.2.4

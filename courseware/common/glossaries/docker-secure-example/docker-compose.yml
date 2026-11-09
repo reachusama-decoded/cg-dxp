@@ -1,0 +1,54 @@
+# Two services that run together: the API and its database. Every security choice from the glossary is here as a line.
+services:
+  api:
+    build: .                               # the Dockerfile beside this file
+    image: portfolio-api:local
+    env_file: .env                         # secrets arrive at run time from a file that is never committed or built in
+    environment:
+      DATA_FILE: /data/holdings.csv
+    volumes:
+      - ./data:/data:ro                    # the one folder the app needs, read-only
+    ports:
+      - "127.0.0.1:8000:8000"              # reachable from this laptop only, not from the office network
+    read_only: true                        # the image's filesystem cannot be modified by a compromised process
+    tmpfs:
+      - /tmp                               # scratch space, in memory, gone with the container
+    cap_drop:
+      - ALL                                # no Linux capabilities at all; the app needs none
+    security_opt:
+      - no-new-privileges:true             # a process cannot gain privileges through setuid binaries
+    deploy:
+      resources:
+        limits:
+          memory: 256M                     # a runaway process cannot starve the host
+          cpus: "0.5"
+    depends_on:
+      db:
+        condition: service_healthy         # start the API only when the database answers
+    networks:
+      - backend
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine              # pinned major version, minimal variant
+    env_file: .env                         # POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
+    volumes:
+      - dbdata:/var/lib/postgresql/data    # a named volume: the data outlives the container
+    networks:
+      - backend                            # no ports published: only the API can reach it, by name
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    restart: unless-stopped
+
+networks:
+  backend: {}                              # a private network for these two; nothing else can join by accident
+
+volumes:
+  dbdata: {}

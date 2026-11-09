@@ -184,13 +184,29 @@ The habits, in the order they bite. Most of them are one line in the Dockerfile 
 ## A secure Dockerfile, for the six-holding app
 
 ```dockerfile
-FROM python:3.11-slim                       # pinned, minimal, official
+# Start from a pinned, minimal, official image: a known Python, a small Debian, nothing extra to patch.
+FROM python:3.11-slim
+
+# Every later instruction, and the running app, works in /app (created if missing).
 WORKDIR /app
+
+# Create an ordinary user for the app to run as. --create-home gives it a home folder (some tools need one);
+# --shell /usr/sbin/nologin means nobody can log in as it, even inside the container. The user exists only in the image.
 RUN useradd --create-home --shell /usr/sbin/nologin app
-COPY app/summarize.py app/holdings.csv ./   # only what runs; .dockerignore keeps the rest out
-USER app                                    # never root at run time
-HEALTHCHECK CMD ["python", "-c", "import summarize"] 
+
+# Copy only the two files the app needs, from the build context into /app. Nothing else from the folder gets in,
+# and .dockerignore stops .git, data dumps and secrets from being part of the context at all.
+COPY app/summarize.py app/holdings.csv ./
+
+# From here on, instructions and the container's process run as "app", not root. If the app is compromised,
+# the attacker holds an unprivileged account inside a container, not root on a shared kernel.
+USER app
+
+# A command Docker runs periodically to decide whether the container is healthy; here, can the module import.
+HEALTHCHECK CMD ["python", "-c", "import summarize"]
+
+# What runs when the container starts; `docker run IMAGE other-command` replaces it.
 CMD ["python", "summarize.py"]
 ```
 
-Run it as `docker run --rm --read-only --memory 256m --cpus 0.5 --cap-drop ALL portfolio-summary`. On the paved path the equivalent choices are already made: the dev container and the Airflow images start from EDO's base images, Harness builds them from Git, secrets live in the secrets manager and arrive at run time, and the cluster policy blocks operators that would give a task an arbitrary shell.
+Run it as `docker run --rm --read-only --memory 256m --cpus 0.5 --cap-drop ALL portfolio-summary`. A fuller, runnable example with a backend service, a database and Compose is in `docker-secure-example/` beside this file. On the paved path the equivalent choices are already made: the dev container and the Airflow images start from EDO's base images, Harness builds them from Git, secrets live in the secrets manager and arrive at run time, and the cluster policy blocks operators that would give a task an arbitrary shell.
