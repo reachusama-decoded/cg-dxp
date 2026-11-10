@@ -344,7 +344,7 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
          |---|---|---|---|
          | 1 Run an image | Run a public image's Python | `docker run --rm python:3.11-slim python --version` | One line, `Python 3.11.x`; the container has already exited |
          | 2 Look inside | Open a shell in a container | `docker run --rm -it python:3.11-slim bash`, then `ls /`, `cat /etc/os-release`, `exit` | A Linux root listing; `os-release` names Debian |
-         | 3 Write the Dockerfile | Fill the three TODO lines in `starter/Dockerfile` | `grep -E '^(FROM\|WORKDIR\|COPY\|CMD)' Dockerfile` | Exactly four lines, in that order |
+         | 3 Write the Dockerfile | Fill the three TODO lines in `starter/Dockerfile` | `grep -E '^(FROM\\|WORKDIR\\|COPY\\|CMD)' Dockerfile` | Exactly four lines, in that order |
          | 4 Build | Bake the recipe into an image | `docker build -t portfolio-summary .` (twice) | Steps the first time; `CACHED` the second; `docker images` shows the row, about 130 MB |
          | 5 Run | Start a container from your image | `docker run --rm portfolio-summary` | `Portfolio summary` then `6 holdings, total market value 12,011,626.50` |
          | 6 Tag (optional) | Give the image a version | `docker tag portfolio-summary portfolio-summary:v1` | Two rows, `latest` and `v1`, one image ID |
