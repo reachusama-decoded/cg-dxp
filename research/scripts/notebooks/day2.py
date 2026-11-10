@@ -449,7 +449,7 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
          | Park an edit | `git stash`, `git stash pop` | Changes set aside, then brought back |
          | Keep things out | `.gitignore` | `.env`, `target/`, data files: never offered |
 
-         In VS Code the Source Control view runs the same commands behind buttons: stage, commit, branch, push, and the diff on every changed file.
+         In VS Code the Source Control view runs the same commands behind buttons: stage, commit, branch, push, and the diff on every changed file. The full list, by objective, with the files Git reads and the safe-working habits: `common/glossaries/git-commands.md`.
          """),
          dc.md(dc.demo("the pull request on screen", "The training repository in CG's GitHub organisation, from the dev container: the practical's steps, done once.", [
                   "`git remote -v` and `git status`: the shared copy's address, and the Dockerfile Challenge 7 changed.",
@@ -472,6 +472,7 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
                             support=["No push rights to the training repository: stop after the log; the pull request steps were the demo.",
                                      "`Please tell me who you are`: set `git config --global user.name` and `user.email` once.",
                                      "An SSL certificate error on push: the dev container's `TROUBLESHOOTING.md`, under Git SSL certificate errors.",
+                                     "Every Git and GitHub command by objective, the files Git reads, and how to work safely with branches, pull requests and credentials: `common/glossaries/git-commands.md`.",
                                      "The commands by objective are in the table above; VS Code's Source Control view does the same with buttons."],
                             stretch="A second commit on the branch, and watch the pull request update. `git revert` the first commit and read the diff. Read the training repository's `pre-commit-config.yaml` and say what each hook checks before a commit is allowed.")),
          dc.say(["Commit is local; push is what shares it. Two verbs, two risks.",
