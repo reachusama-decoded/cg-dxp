@@ -108,6 +108,8 @@ One line per command. The flags listed are the ones that matter in practice; `do
 
 `astro dev start`, `stop`, `restart` and `astro dev run …` wrap Compose: the Astro CLI writes the Compose file for the scheduler, DAG processor, API server, triggerer and Postgres and runs it. `docker ps` shows those containers.
 
+A runnable three-service example of all of this, with the network commands above, is `day2-platform/demos/docker/compose/`: Postgres with no published port, an API that reaches it by service name, a one-shot report, and every line of the Compose file commented.
+
 ## Registries and sign-in
 
 | Command | What it does |

@@ -171,7 +171,11 @@ Databricks is the compute that runs dbt's SQL as Spark; dbt holds the transforma
 
 **The dev container.** A Docker container that VS Code launches into: the terminal prompt is inside it, the tools (mise, the Astro CLI, dbt, the Databricks CLI) are there, and the training repository is mounted. Its Dockerfile starts from a flyway stage and CG's Python 3.13 image from the internal registry, installs the Astro CLI, starship and mise with `RUN curl` lines, installs the Databricks CLI through mise, copies the setup scripts and puts a virtualenv at `/opt/venv` on `PATH`. EDO maintains it; learners never will; but they can now read it. Tags and registries are how CG ships its Airflow and dbt images: tag, push, pull elsewhere.
 
+**Several containers together: Compose and the network.** A real system is several containers: on Day 4 `astro dev start` runs Airflow's scheduler, API server, triggerer and Postgres. Compose describes them in one file (`docker-compose.yml`): each `service` is a container, built from a Dockerfile or pulled as an image; `depends_on` with a health condition sets the start order; a `volume` keeps a database's files beyond the container's life. Compose also creates a private network for the project, and on it each service's name is a hostname: the API connects to `db`, Docker's embedded DNS (at 127.0.0.11 inside every container on a user-defined network) turns the name into the container's current address, and no address is written anywhere. `ports:` is the only way in from outside: `127.0.0.1:8000:8000` forwards the laptop's port 8000 to the container's and binds it to the laptop alone; a service without a `ports:` line (the database) can be reached only by its neighbours on the network, not by the laptop and not by a container on Docker's default network, which cannot even resolve the name. Who talks to whom is a line in the file, and so is who cannot. The demo's three services are Postgres seeded with the running example's price sheet, a small HTTP API that queries it by name, and a one-shot `psql` report that runs one query and exits, the shape of a dbt run or an Airflow task.
+
 ![Dockerfile, image, container](../../courseware/common/diagrams/png/d2-docker.png)
+
+![Three services on one private network](../../courseware/common/diagrams/png/d2-compose.png)
 
 ### Teaching notes
 
@@ -181,11 +185,14 @@ Databricks is the compute that runs dbt's SQL as Spark; dbt holds the transforma
   - *Why is my VS Code terminal not my laptop's terminal this week?* Because VS Code opened a shell inside the dev container; your laptop's files are not there unless mounted.
   - *Can I install things in the dev container?* Yes, until it is rebuilt; anything permanent goes in the Dockerfile or to EDO.
   - *Windows?* Docker Desktop in Linux-containers mode, and files saved with LF line endings.
-- **Misconceptions to catch.** An image is a small VM. A container keeps its data (it does not, unless a volume is mounted: the demo's second cell proves it). Docker is Kubernetes (Kubernetes runs many Dockers).
+  - *How does the API find the database?* By name. Compose puts both on one private network and Docker's DNS resolves the service name to the container's address; the API is told `DB_HOST: db` and nothing else.
+  - *Can anything else on my laptop reach that database?* No: it publishes no port. Only containers on the same network can, and only the API publishes a port, bound to 127.0.0.1.
+- **Misconceptions to catch.** An image is a small VM. A container keeps its data (it does not, unless a volume is mounted: the demo's second cell proves it). Docker is Kubernetes (Kubernetes runs many Dockers). Containers on one laptop can all talk to each other (only on a shared network; the default network has no name resolution, and nothing reaches a container that publishes no port).
 
 ### Mechanics
 
 - **The demo mirrors the challenge's six steps**, same commands and outputs, so nothing in the practical is a first sighting: run an image; look inside (`-it`, `ls /`, `os-release`, the `/tmp` proof); the Dockerfile as a commented sample with the four instructions (the starter leaves three as TODOs); build twice and read `CACHED`; run and the exact two output lines, then the mounted CSV; tag. Then the gate (`mise run challenge:verify 01` prints PASS) and the four stalls. A table in the anchor lists step, command and expected output. Docker Desktop must be running: `docker info`.
+- **The Compose demo (optional, six minutes), `demos/docker/compose/`.** Eight cells, the same as `bash demo.sh`: a clean slate and the commented file; `up -d --build` and `ps -a` (db `5432/tcp` with no arrow, api `127.0.0.1:8000->8000`, report `Exited (0)`); the report's log; `docker network inspect eod_backend`; name resolution inside api and `resolv.conf`; `curl localhost:8000/health` and `/prices?instrument_id=…`; isolation three ways (`docker port`, a container off the network, one on it); `down -v`. Run it at the end of the morning demo if the room is quick, otherwise in the last six minutes before the shareback. The first `up` pulls Postgres and builds the API image, about a minute: run it the evening before so the cache is warm, and check port 8000 is free. Say the password in the file is a demo value and point at the secure example for the `.env` way.
 - **Challenge 7, `challenges/v1/01-docker-intro` (35 minutes).** From `starter/`: 1 run an image; 2 look inside (isolation); 3 write the Dockerfile (`starter/Dockerfile` has one TODO per line; the app under `starter/app/` is complete and not touched); 4 build the image; 5 run it; 6 try it yourself (optional: tags, variations). The finished image prints "Portfolio summary", then "6 holdings, total market value 12,011,626.50". Gate: `mise run challenge:verify 01` prints PASS. Stretch for the experienced: multi-stage builds, resource limits, Kubernetes.
 - **Stalls.** "Cannot connect to the Docker daemon": the engine is not running, start Docker Desktop. "permission denied on the socket": on Linux the user is not in the docker group; use the dev container. "exec format error" or script not found: CRLF line endings after editing on Windows; save as LF and rebuild. The first pull of `python:3.11-slim` is slow once. Building from the wrong folder: `.` is the build context and the Dockerfile copies `app/` from it.
 
@@ -265,6 +272,7 @@ Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plu
 12. Which contract section becomes the DAG schedule, which becomes the freshness gate, and which becomes the tests?
 13. Commit versus push, in one line each; then why a pull request rather than a push to main?
 14. A learner pushed a branch with a `.env` holding a Databricks token. What do you tell them to do first?
+15. In the Compose demo the database has no `ports:` line. Who can reach it, and how does the API know its address?
 
 ### Answers
 
@@ -282,11 +290,13 @@ Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plu
 12. The delivery time (service levels) becomes the schedule; the freshness commitment becomes the `dbt source freshness` thresholds the gate checks; the data quality rules become the tests.
 13. A commit records a snapshot on your branch, locally; push copies the branch to GitHub. `main` is what Harness deploys, so it is protected and reached only through a reviewed, checked pull request.
 14. Rotate the token first: the commit keeps it even after the file is deleted. Then remove the file, add `.env` to `.gitignore`, commit, and tell the platform team; rewriting the branch's history is their call.
+15. Only containers on the project's private network (`api`, `report`, or one started with `--network eod_backend`); not the laptop, and not a container on the default network, which cannot resolve the name. The API is given the service name `db`, and Docker's embedded DNS on that network resolves it to the container's current address.
 
 ## The evening before
 
 - [ ] Docker Desktop running; `docker info` prints engine details.
 - [ ] `source courseware/common/env/activate.sh`, then `bash courseware/day2-platform/demos/docker/portfolio-summary/demo.sh` prints the six-holding summary; `python demos/delta-under-the-hood/demo.py` ends at the OPTIMIZE step; `python demos/spark-engine/demo.py --hold 20` prints a plan with `Exchange` and the UI answers at http://localhost:4040.
+- [ ] `bash courseware/day2-platform/demos/docker/compose/demo.sh` runs through to `down` (the first run pulls Postgres and builds the API image); nothing else is listening on port 8000.
 - [ ] Open the Day 2 anchor, Run All, save with outputs; check the diagrams render.
 - [ ] Run the HTML prompt once on a fast model and keep the result; confirm `03-data-contract.html` opens in the browser.
 - [ ] Open the dev container's Dockerfile from `reference/DataCreators-client/…/.devcontainer/Dockerfile` and find the lines you will point at.

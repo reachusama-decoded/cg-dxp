@@ -11,7 +11,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 1 | Day 1 recap and the map of the week | 09:00–09:25 | Recap: what we made yesterday · Whiteboard: source-, domain- and consumer-aligned · Today, and the two musts |
 | 2 | Mappings and service commitments | 09:25–10:45 | Demo: STTM and service levels · Worked example: the running example's contract, mapping and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract |
 | 3 | Platform architecture | 10:45–11:15 | Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together · Shareback |
-| 4 | Docker | 11:15–13:55 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives |
+| 4 | Docker | 11:15–13:55 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Demo (optional): three containers with Compose, and the network between them · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives |
 | 5 | Git and GitHub (optional) | 13:55–14:15 | Demo: the loop on a scratch repository, then the pull request on screen · Optional practical: branch, commit, push, pull request · Break |
 | 6 | Catalyst skills, and setting up for tomorrow | 14:15–15:00 | Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close |
 
@@ -25,7 +25,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 2 | 10:15–10:30 | Break | Break |  |
 | 2 | 10:30–10:45 | Review and present a contract | Shareback + demo | VS Code Markdown editor, then Copilot/Claude, then the browser |
 | 3 | 10:45–11:15 | Platform architecture: warehouse, lake, lakehouse and Databricks under the hood | Demo + shareback | Anchor › Platform architecture (five diagrams); the Delta and Spark demos |
-| 4 | 11:15–11:40 | Docker demonstration | Demo | Anchor › Docker; a terminal; the dev container's Dockerfile |
+| 4 | 11:15–11:40 | Docker demonstration | Demo | Anchor › Docker; a terminal; the dev container's Dockerfile; if run, Anchor › the Compose demo |
 | 4 | 11:40–12:00 | Challenge 7 — Docker practical | Challenge | Anchor › Challenge box; learners in challenges/v1/01-docker-intro |
 | 4 | 12:00–13:00 | Lunch | Break |  |
 | 4 | 13:00–13:45 | Challenge 7 continued, with the stretch | Challenge | Anchor › Challenge box and the stretch list |
@@ -253,7 +253,7 @@ Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools to
 
 ### 4. Docker
 
-Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives
+Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Demo (optional): three containers with Compose, and the network between them · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives
 
 #### 11:15 · 25 min · Instructor-led demo — Demo — Docker in the six steps of the challenge
 
@@ -264,6 +264,7 @@ Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate ·
 - Mirror the challenge's six sections in order with the same commands: run an image, look inside, the Dockerfile (a commented sample on screen), build and the cache, run and the expected two lines, tag; then the gate and the four stalls.
 - Show the training repo's Dockerfile: FROM, COPY, RUN, USER, ENV. Say EDO maintains it.
 - Point at the glossary: every command by objective, and the secure example, for the afternoon.
+- Optional, six minutes: the Compose demo (three containers, a private network, name resolution, one published port, a one-shot report, isolation three ways). Here if the room is quick; otherwise the last six minutes before the shareback, while finishers are on the stretch. The first `docker compose up` pulls and builds for about a minute, so run it the evening before.
 
 **Say.**
 
@@ -292,9 +293,27 @@ Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate ·
 5. Say: EDO maintains this; you never will; but now you can read it.
 6. Open Docker Desktop: Images, then Settings and Resources, briefly.
 
+**Demo (optional) — three containers with Compose, and the network between them.**
+
+**Demo — three containers with Compose, and the network between them.** `demos/docker/compose/`: Postgres seeded with the running example's price sheet, a small HTTP API that queries it by name, and a one-shot report. Every line of the Compose file is commented; the eight cells below are `demo.sh` in order.
+
+1. Open `docker-compose.yml`: three services (`db`, `api`, `report`), one network (`backend`), one volume. Read the comments on `networks:`, `ports:` and `depends_on:`; say the password is a demo value and point at the secure example for `.env`.
+2. `docker compose up -d --build`, then `docker compose ps -a`: db has `5432/tcp` with no arrow (published nowhere); api has `127.0.0.1:8000->8000`; report has exited 0.
+3. `docker compose logs report`: the one-shot ran one query against `db` and exited; the shape of a dbt run or an Airflow task.
+4. `docker network inspect eod_backend`: the two running containers and their private addresses.
+5. Inside api, resolve `db` and read `resolv.conf`: the service name is the hostname, Docker's embedded DNS at 127.0.0.11 answers, no address is written anywhere.
+6. `curl localhost:8000/health` and `/prices?instrument_id=US0378331005` from the laptop: through the one published port, the API answers by querying db over the network.
+7. Isolation three ways: `docker port` shows api published and db not; a container on the default network cannot resolve `db`; one started with `--network eod_backend` can.
+8. `docker compose down -v`: containers, network and volume gone; the images stay.
+9. Say: on Day 4 `astro dev start` does exactly this for Airflow, and `docker ps` will show the same shape: Postgres with no published port, one web port, services finding each other by name.
+10. Say: read-only, a memory cap, a non-root user, one port bound to 127.0.0.1: the glossary's security rules, each as a line in a file.
+11. Say: who talks to whom is a line in the file, and so is who cannot.
+
 **Transition.** Challenge 7 in the dev container; lunch when you reach a good stopping point, back at 13:00.
 
-**Assessment.** Anchor › Docker; a terminal; the dev container's Dockerfile
+**Adapt.** Ahead: the Compose demo now. Behind: skip it here; before the shareback is its other slot.
+
+**Assessment.** Anchor › Docker; a terminal; the dev container's Dockerfile; if run, Anchor › the Compose demo
 
 #### 11:40 · 20 min · Independent or pairs work — Challenge 7 — Docker practical
 
@@ -321,7 +340,7 @@ Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate ·
 
 #### 13:00 · 45 min · Independent or pairs work — Challenge 7 continued — with the stretch
 
-**Purpose.** Everyone reaches PASS on the gate; fast finishers take section 6, the variations, multi-stage builds, resource limits or the secure example.
+**Purpose.** Everyone reaches PASS on the gate; fast finishers take section 6, the variations, resource limits, the Compose demo, multi-stage builds or the secure example.
 
 **Instructor notes.**
 
@@ -334,7 +353,7 @@ Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate ·
 
 **Transition.** Shareback.
 
-**Adapt.** If most of the room has PASS by 13:30, start the shareback at 13:30 and give the optional Git and GitHub section (5) the fifteen minutes gained.
+**Adapt.** If the Compose demo was not run in the morning, run it for the whole room in the last six minutes before the shareback, whenever that starts. If most of the room has PASS by 13:30, start the shareback at 13:30 and give the optional Git and GitHub section (5) the fifteen minutes gained.
 
 **Assessment.** Anchor › Challenge box and the stretch list
 

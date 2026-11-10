@@ -360,6 +360,20 @@ flowchart LR
   class C1,C2 blue
   class Rg,Dv grey
 """
+D["d2-compose"] = """
+flowchart LR
+  L["Your laptop<br/>curl localhost:8000"] -->|"127.0.0.1:8000 → 8000<br/>the one published port"| A
+  subgraph N["eod_backend: the project's private network"]
+    direction LR
+    A["api<br/>queries by name"] -->|"db:5432"| Db["db<br/>Postgres, no ports:"]
+    Rp["report<br/>one query, then exits"] -->|"db:5432"| Db
+  end
+  X["Any other container<br/>default network"] -.->|"db? no such host"| Db
+  class L yellow
+  class A,Rp blue
+  class Db focus
+  class X grey
+"""
 D["d2-git"] = """
 flowchart LR
   W["Working copy<br/>edit files"] -->|git add · git commit| B["Branch<br/>feature/…"]

@@ -1,0 +1,73 @@
+# Three containers that run together, the way `astro dev start` runs Airflow's scheduler, API server, triggerer
+# and Postgres on Day 4: one file names the services, Compose creates a private network and a volume for them
+# and starts them in dependency order. Every line is commented.
+#   docker compose up -d --build      build, pull, create, start        docker compose ps -a      who is running
+#   docker compose logs report        one service's output              docker compose down -v    remove it all
+
+name: eod                                  # the project name: prefixes the containers (eod-db-1), the network (eod_backend) and the volume (eod_dbdata)
+
+services:                                  # each entry below is one container, built here or pulled as an image
+
+  db:                                      # the service name is also its hostname on the network: the API connects to "db", not to an address
+    image: postgres:16-alpine              # a public image, pinned to a major version, minimal variant; nothing to build
+    environment:                           # the image reads these at its first start to create the database and its user
+      POSTGRES_USER: creator
+      POSTGRES_PASSWORD: creator-demo      # demo only: the secure example beside the glossary loads this from an uncommitted .env file; on the paved path it arrives from the secrets manager
+      POSTGRES_DB: prices
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro   # the image runs every .sql in this folder once, when its data directory is empty
+      - ../../../../common/running-example/data:/seed:ro            # the running example's price sheet, read-only, for init.sql to COPY from
+      - dbdata:/var/lib/postgresql/data    # a named volume: the data outlives the container; `down -v` deletes it
+    networks:
+      - backend                            # joined to the private network, and nothing else
+    # no `ports:` block: nothing outside the backend network can reach Postgres, not even this laptop
+    healthcheck:                           # "healthy" means Postgres answers queries, not just that the process started
+      test: ["CMD-SHELL", "pg_isready -U creator -d prices"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  api:                                     # a small HTTP service that answers questions by querying db over the network
+    build: ./api                           # built from api/Dockerfile; `docker compose up --build` rebuilds it
+    image: eod-api:local                   # the name the built image gets
+    environment:
+      DB_HOST: db                          # the service name: Docker's DNS turns it into db's address on the backend network
+      DB_USER: creator
+      DB_PASSWORD: creator-demo            # see the note on db
+      DB_NAME: prices
+      PYTHONDONTWRITEBYTECODE: "1"         # nothing is written to the image's filesystem, which is read-only below
+    ports:
+      - "127.0.0.1:8000:8000"              # the one door in: this laptop's port 8000 forwards to the container's 8000; 127.0.0.1 keeps it off the office network
+    networks:
+      - backend                            # the same network as db, so "db" resolves here
+    depends_on:
+      db:
+        condition: service_healthy         # start the API only once db's healthcheck passes
+    read_only: true                        # the container's filesystem cannot be modified by a compromised process
+    tmpfs:
+      - /tmp                               # scratch space, in memory, gone with the container
+    deploy:
+      resources:
+        limits:
+          memory: 128M                     # a cap: a runaway process cannot starve the laptop
+          cpus: "0.5"
+
+  report:                                  # a one-shot container: runs one query against db and exits, the shape of a dbt run or an Airflow task
+    image: postgres:16-alpine              # reused only for its psql client; the image is already on the laptop for db
+    environment:
+      PGPASSWORD: creator-demo             # psql reads the password from this variable
+    command: >                             # replaces the image's default command (starting a server); when it finishes, the container exits
+      psql -h db -U creator -d prices -c
+      "select count(*) as rows, count(distinct instrument_id) as instruments, min(price_date) as first_day, max(price_date) as last_day from eod_prices"
+    networks:
+      - backend                            # the same network, so "db" resolves here too
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"                          # a finished container stays finished; `docker compose ps -a` shows it Exited (0)
+
+networks:
+  backend: {}                              # a private bridge network Compose creates for this project; containers on it reach each other by service name; nothing joins it by accident
+
+volumes:
+  dbdata: {}                               # the named volume for Postgres's files

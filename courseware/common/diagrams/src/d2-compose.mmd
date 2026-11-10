@@ -1,0 +1,19 @@
+flowchart LR
+  L["Your laptop<br/>curl localhost:8000"] -->|"127.0.0.1:8000 → 8000<br/>the one published port"| A
+  subgraph N["eod_backend: the project's private network"]
+    direction LR
+    A["api<br/>queries by name"] -->|"db:5432"| Db["db<br/>Postgres, no ports:"]
+    Rp["report<br/>one query, then exits"] -->|"db:5432"| Db
+  end
+  X["Any other container<br/>default network"] -.->|"db? no such host"| Db
+  class L yellow
+  class A,Rp blue
+  class Db focus
+  class X grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

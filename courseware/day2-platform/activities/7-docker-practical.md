@@ -10,7 +10,7 @@ In the dev container, work through `challenges/v1/01-docker-intro/README.md` sec
 - `mise run challenge:verify 01` showing PASS
 - An answer to: why did the container stop, and what survives when you run a fresh one?
 
-**Finished early?** Section 6 (tags); multi-stage builds; resource limits (`--memory`, `--cpus`); read the training repository's own Dockerfile and explain three lines of it; or build and run the secure example in `common/glossaries/docker-secure-example/`.
+**Finished early?** Section 6 (tags); multi-stage builds; resource limits (`--memory`, `--cpus`); read the training repository's own Dockerfile and explain three lines of it; run the Compose demo in `demos/docker/compose/` and add a fourth service that queries `db` by name; or build and run the secure example in `common/glossaries/docker-secure-example/`.
 
 **Debrief questions**
 
