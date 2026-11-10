@@ -166,6 +166,33 @@ def cells():
                    ["Direct, constant, lookup, aggregate, derive: the textbook five; Catalyst splits derive further.",
                     "Row rules matter as much as column rules: dedup, filter, reject, and what a null means in each column.",
                     "The running example's mapping is in common/running-example/04-sttm.md: eleven column rules and four row rules."]),
+         dc.md("""
+         #### How a rule is written
+
+         One row per target column. The columns of the mapping, and what goes in each:
+
+         | Column | What it holds |
+         |---|---|
+         | Target column | The name in the consumer-aligned table, from the contract's schema |
+         | Type | The target data type, with precision for money and rates (`DECIMAL(18,6)`) |
+         | Rule type | One of the five below: it tells a reviewer what kind of work the column needs before reading the rule |
+         | Source | Which source table and column, by alias (V for the vendor feed, I for the instrument master, F for FX) |
+         | Rule, in English | Precise enough to implement without asking: the operation, the join key, what null means, zero and negative, which value wins |
+
+         Row rules sit beneath the column rules and say which rows exist at all: dedup (which delivery wins), filter (which rows are in scope), reject (what cannot be placed and is dropped), and what a null means per column.
+
+         #### The five rule types
+
+         | Rule type | What it means | Running example | What a reviewer checks |
+         |---|---|---|---|
+         | Direct | Copy the source value, perhaps renamed, trimmed or cast | `price_date` from `V.px_date`, cast to date: the business date of the close, not the delivery time | The type and the cast; what null or an unexpected value means |
+         | Constant | A fixed value with no source column | `price_source = 'VENDOR'` (`'MANUAL'` reserved for an override that does not exist yet) | That the value list is closed and documented |
+         | Lookup | A value fetched from another table by a key | `ticker` from the instrument master, joined on `upper(trim(isin))`; a missing master row leaves it null and fails the relationship test | That the key is unique on the lookup side; what happens with zero or several matches |
+         | Aggregate | One value from several source rows | The latest delivery per instrument and date (row rule R1: the row with the latest `vendor_ts` wins) | The grain, and the tie-break |
+         | Derive | Compute from one or more inputs with an operation | `price_usd = price_native * fx_rate_to_usd`, null when the rate is null so the build fails; `price_key = instrument_id || '|' || price_date` | The units, the null arithmetic, and the test that guards the result |
+
+         Catalyst's `transformation-spec` returns a CG-specific list that splits derive further (conversions, concatenations, conditional logic); the five above are the textbook set and every CG type is one of them.
+         """),
          dc.md(dc.whiteboard("STTM", [
              ("What is a source-to-target mapping? What is its core?", "An artefact showing where data comes from and goes to; the core is the transformation rules."),
              ("What kinds of rule can a column have?", "Direct (copy), constant, lookup (a third table), aggregate (a mean), derive or transform (an operation; concatenate is a subtype). Ask Catalyst for CG's list."),
