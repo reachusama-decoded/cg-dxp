@@ -1,0 +1,19 @@
+flowchart LR
+  W["Working copy<br/>edit files"] -->|git add · git commit| B["Branch<br/>feature/…"]
+  B -->|git push| R["GitHub<br/>the shared copy"]
+  R --> PR["Pull request<br/>diff · review · checks"]
+  PR -->|merge| M["main"]
+  M -->|Harness deploys| P["Astro · Databricks"]
+  M -.->|git pull| W
+  class W yellow
+  class B blue
+  class R,PR focus
+  class M green
+  class P grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

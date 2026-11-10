@@ -360,6 +360,20 @@ flowchart LR
   class C1,C2 blue
   class Rg,Dv grey
 """
+D["d2-git"] = """
+flowchart LR
+  W["Working copy<br/>edit files"] -->|git add · git commit| B["Branch<br/>feature/…"]
+  B -->|git push| R["GitHub<br/>the shared copy"]
+  R --> PR["Pull request<br/>diff · review · checks"]
+  PR -->|merge| M["main"]
+  M -->|Harness deploys| P["Astro · Databricks"]
+  M -.->|git pull| W
+  class W yellow
+  class B blue
+  class R,PR focus
+  class M green
+  class P grey
+"""
 D["d2-dbt-flow"] = """
 flowchart LR
   M["SELECT per model<br/>+ Jinja"] -->|dbt run| W["CREATE VIEW / TABLE<br/>in order"]

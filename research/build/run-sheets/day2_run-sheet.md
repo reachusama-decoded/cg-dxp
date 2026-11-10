@@ -11,8 +11,9 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 1 | Day 1 recap and the map of the week | 09:00–09:25 | Recap: what we made yesterday · Whiteboard: source-, domain- and consumer-aligned · Today, and the two musts |
 | 2 | Mappings and service commitments | 09:25–10:45 | Demo: STTM and service levels · Worked example: the running example's contract, mapping and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract |
 | 3 | Platform architecture | 10:45–11:15 | Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together · Shareback |
-| 4 | Docker | 11:15–14:15 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives · Break |
-| 5 | Catalyst skills, and setting up for tomorrow | 14:15–15:00 | Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close |
+| 4 | Docker | 11:15–13:55 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives |
+| 5 | Git and GitHub (optional) | 13:55–14:15 | Demo: the loop on a scratch repository, then the pull request on screen · Optional practical: branch, commit, push, pull request · Break |
+| 6 | Catalyst skills, and setting up for tomorrow | 14:15–15:00 | Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close |
 
 ## Day at a glance
 
@@ -28,10 +29,10 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 4 | 11:40–12:00 | Challenge 7 — Docker practical | Challenge | Anchor › Challenge box; learners in challenges/v1/01-docker-intro |
 | 4 | 12:00–13:00 | Lunch | Break |  |
 | 4 | 13:00–13:45 | Challenge 7 continued, with the stretch | Challenge | Anchor › Challenge box and the stretch list |
-| 4 | 13:45–14:00 | Docker shareback | Shareback | Anchor › Docker shareback box |
-| 4 | 14:00–14:15 | Break | Break |  |
-| 5 | 14:15–14:45 | Catalyst skills overview, and experimentation if time allows | Demo + challenge | Anchor › Skills: tiers, phases, how to load; Activity 8 card |
-| 5 | 14:45–15:00 | Databricks setup and close | Shareback | Anchor › Before learners leave |
+| 4 | 13:45–14:00 | Docker shareback, then Git and GitHub if the room is ahead | Shareback | Anchor › Docker shareback box; then, if run, Anchor › Git and GitHub |
+| 5 | 14:00–14:15 | Break | Break |  |
+| 6 | 14:15–14:45 | Catalyst skills overview, and experimentation if time allows | Demo + challenge | Anchor › Skills: tiers, phases, how to load; Activity 8 card |
+| 6 | 14:45–15:00 | Databricks setup and close | Shareback | Anchor › Before learners leave |
 
 ## Timeline
 
@@ -251,7 +252,7 @@ Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools to
 
 ### 4. Docker
 
-Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives · Break
+Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives
 
 #### 11:15 · 25 min · Instructor-led demo — Demo — Docker in the six steps of the challenge
 
@@ -332,36 +333,77 @@ Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate ·
 
 **Transition.** Shareback.
 
-**Adapt.** If most of the room has PASS by 13:30, start the shareback early and give the skills block the time.
+**Adapt.** If most of the room has PASS by 13:30, start the shareback at 13:30 and give the optional Git and GitHub section (5) the fifteen minutes gained.
 
 **Assessment.** Anchor › Challenge box and the stretch list
 
-#### 13:45 · 15 min · Feedback and discussion — Shareback — image, container, what survives
+#### 13:45 · 10 min · Feedback and discussion — Shareback — image, container, what survives
 
-**Purpose.** Image versus container versus writable files; what travels with the image; one surprise per table.
+**Purpose.** Image versus container versus writable files; what travels with the image; one surprise per table. Then, optionally, section 5: the Git loop on a scratch repository and the pull request on screen.
 
 **Instructor notes.**
 
 - Ask one table per question; show the PASS count.
 - Close the loop to the platform: this is how CG ships Airflow and dbt images.
+- Section 5, Git and GitHub, is optional. Room ahead: run its six cells and the pull request on screen in this slot (fifteen minutes). Otherwise run it at 14:30 in place of Activity 8, or show the six cells in five minutes and make the practical homework.
+- Check before the day whether learners can push branches to the training repository; if not, the push and pull-request steps are demo only and the practical stops at the log.
 
 **Say.**
 
 - “What travels with the image, and what does not?”
 
+**Assessment.** Anchor › Docker shareback box; then, if run, Anchor › Git and GitHub
+
+### 5. Git and GitHub (optional)
+
+Demo: the loop on a scratch repository, then the pull request on screen · Optional practical: branch, commit, push, pull request · Break
+
+#### 13:55 · 5 min · Instructor-led demo — Demo — the loop on a scratch repository, then the pull request on screen
+
+**Demo — the loop on a scratch repository.** Each cell is one step on a throwaway repository in `demos/git/sandbox`; the commands are the ones you type in the dev container.
+
+1. Step 1, a repository and a first commit: `git init`, then `git add` and `git commit -m`; `git log --oneline` shows one commit with its message.
+2. Step 2, what changed: edit the file; `git status --short` names it and `git diff` shows the lines. Read the diff before every commit: it is what the reviewer reads.
+3. Step 3, a branch: `git switch -c feature/sttm-rules` and commit there; `git log --oneline --graph --all` shows the branch one commit ahead of main.
+4. Step 4, the merge: back on main, `git merge --no-ff` brings the branch in; on GitHub that is the approved pull request's merge button.
+5. Step 5, what never goes in: a `.env` with a token appears in `git status`; one line in `.gitignore` and Git no longer offers it.
+6. Step 6, undo: `git restore` drops an uncommitted edit; `git revert` undoes a commit with a new commit; history on a shared branch is never rewritten.
+7. Say: commit is local, push is what shares it. Two verbs, two risks.
+8. Say: a token in a commit is a token to rotate, even after you delete the file: the commit keeps it.
+
+**Demo — the pull request on screen.** The training repository in CG's GitHub organisation, from the dev container: the practical's steps, done once.
+
+1. `git remote -v` and `git status`: the shared copy's address, and the Dockerfile Challenge 7 changed.
+2. `git switch -c feature/<username>-docker`, `git add challenges/v1/01-docker-intro/starter/Dockerfile`, `git commit -m 'Challenge 7: the portfolio-summary Dockerfile'`.
+3. `git push -u origin feature/<username>-docker`: GitHub prints the pull-request link.
+4. The pull request page: a title, a description (what, why, how to verify: `mise run challenge:verify 01`), the Files changed tab with the four lines, one review comment, the checks, the merge button (not pressed).
+5. Point at Thursday: the same page is where a dbt model or a DAG is accepted, and Harness deploys the merge.
+6. Say: a pull request is a conversation about a diff; the merge is the decision.
+
+**Optional practical — branch, commit, push, pull request.**
+
+**Challenge — Your Dockerfile in a pull request.** `challenges/v1/01-docker-intro/starter/Dockerfile` · 15 min, or homework.
+
+**Say.**
+
+- “Commit is local; push is what shares it. Two verbs, two risks.”
+- “Nobody edits main. Your branch, your pull request, someone else's eyes, then the merge: that is how the dbt models reach production on Thursday.”
+
 **Transition.** Break, then where Catalyst's skills fit.
 
-**Assessment.** Anchor › Docker shareback box
+**Adapt.** Behind: skip section 5; the commands table is in the anchor and the practical is homework.
+
+**Assessment.** Anchor › Docker shareback box; then, if run, Anchor › Git and GitHub
 
 #### 14:00 · 15 min · Break — Break, back at 14:15
 
-### 5. Catalyst skills, and setting up for tomorrow
+### 6. Catalyst skills, and setting up for tomorrow
 
 Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close
 
 #### 14:15 · 30 min · Instructor-led demo — Demo — the skills, their tiers and the lifecycle; how to load them
 
-**Purpose.** The map of Catalyst's skills by tier and lifecycle phase, which ones the week uses, and how to load them; then, if time allows, one design-phase skill run on a learner's own product. No dbt generation today.
+**Purpose.** The map of Catalyst's skills by tier and lifecycle phase, which ones the week uses, and how to load them; then, if time allows, one design-phase skill run on a learner's own product, or the optional Git practical. No dbt generation today.
 
 **Instructor notes.**
 

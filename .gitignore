@@ -28,3 +28,6 @@ reference/ts-cg-core/
 
 # the secure-container example's secrets file
 courseware/common/glossaries/docker-secure-example/.env
+
+# the Git demo's throwaway repository
+courseware/day2-platform/demos/git/sandbox/

@@ -48,15 +48,17 @@ BLOCKS = [
       purpose="Everyone reaches PASS on the gate; fast finishers take section 6, the variations, multi-stage builds, resource limits or the secure example.",
       notes=["Circulate with the glossary open; the stalls are the engine, CRLF line endings and the build context.", "Collect the PASS count by 13:40."],
       say=["PASS is the floor, not the ceiling: the stretch list is where the experienced people go."],
-      transition="Shareback.", flex="If most of the room has PASS by 13:30, start the shareback early and give the skills block the time."),
- dict(time="13:45–14:00", title="Docker shareback", type="Shareback", on_screen="Anchor › Docker shareback box",
-      purpose="Image versus container versus writable files; what travels with the image; one surprise per table.",
-      notes=["Ask one table per question; show the PASS count.", "Close the loop to the platform: this is how CG ships Airflow and dbt images."],
+      transition="Shareback.", flex="If most of the room has PASS by 13:30, start the shareback at 13:30 and give the optional Git and GitHub section (5) the fifteen minutes gained."),
+ dict(time="13:45–14:00", title="Docker shareback, then Git and GitHub if the room is ahead", type="Shareback", on_screen="Anchor › Docker shareback box; then, if run, Anchor › Git and GitHub",
+      purpose="Image versus container versus writable files; what travels with the image; one surprise per table. Then, optionally, section 5: the Git loop on a scratch repository and the pull request on screen.",
+      notes=["Ask one table per question; show the PASS count.", "Close the loop to the platform: this is how CG ships Airflow and dbt images.",
+             "Section 5, Git and GitHub, is optional. Room ahead: run its six cells and the pull request on screen in this slot (fifteen minutes). Otherwise run it at 14:30 in place of Activity 8, or show the six cells in five minutes and make the practical homework.",
+             "Check before the day whether learners can push branches to the training repository; if not, the push and pull-request steps are demo only and the practical stops at the log."],
       say=["What travels with the image, and what does not?"],
-      transition="Break, then where Catalyst's skills fit.", flex=""),
+      transition="Break, then where Catalyst's skills fit.", flex="Behind: skip section 5; the commands table is in the anchor and the practical is homework."),
  dict(time="14:00–14:15", title="Break", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
  dict(time="14:15–14:45", title="Catalyst skills overview, and experimentation if time allows", type="Demo + challenge", on_screen="Anchor › Skills: tiers, phases, how to load; Activity 8 card",
-      purpose="The map of Catalyst's skills by tier and lifecycle phase, which ones the week uses, and how to load them; then, if time allows, one design-phase skill run on a learner's own product. No dbt generation today.",
+      purpose="The map of Catalyst's skills by tier and lifecycle phase, which ones the week uses, and how to load them; then, if time allows, one design-phase skill run on a learner's own product, or the optional Git practical. No dbt generation today.",
       notes=["Tiers diagram, the phase table, the five skills used so far, the ones Wednesday and Thursday use.", "Show the settings and /plugins once; the 'reading skill file' tell.",
              "Activity 8 is optional: a design skill on their own PRD and contract, never a build skill."],
       say=["Pick the skill for the phase you are in. A build skill on a design that is not agreed produces confident code for the wrong product."],
@@ -105,8 +107,10 @@ SECTIONS = [
  dict(n=3, title="Platform architecture", anchor="s3", start="10:45",
       parts=["Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together", "Shareback"]),
  dict(n=4, title="Docker", anchor="s4", start="11:15",
-      parts=["Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate", "Demo: the dev container's Dockerfile", "Challenge 7: Docker practical", "Lunch", "Challenge 7 continued, with the stretch", "Shareback: image, container, what survives", "Break"]),
- dict(n=5, title="Catalyst skills, and setting up for tomorrow", anchor="s5", start="14:15",
+      parts=["Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate", "Demo: the dev container's Dockerfile", "Challenge 7: Docker practical", "Lunch", "Challenge 7 continued, with the stretch", "Shareback: image, container, what survives"]),
+ dict(n=5, title="Git and GitHub (optional)", anchor="s5", start="13:55",
+      parts=["Demo: the loop on a scratch repository, then the pull request on screen", "Optional practical: branch, commit, push, pull request", "Break"]),
+ dict(n=6, title="Catalyst skills, and setting up for tomorrow", anchor="s6", start="14:15",
       parts=["Demo: the skills, their tiers and the lifecycle; how to load them", "Activity 8 (if time allows): one design skill on your product", "Databricks setup", "Close"]),
 ]
 
@@ -402,9 +406,77 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
                      "What travels with the image, and what does not?",
                      "Why did the container stop, and what survives when you run a fresh one?",
                      "One thing from the stretch list that surprised you."])),
+         # ---------------- 5. git and github (optional) ----------------
+         dc.section(5, "Git and GitHub (optional)", "s5"),
+         dc.part("Demo", "the loop on a scratch repository, then the pull request on screen", time="13:55"),
+         dc.anchor("Why will tomorrow's dbt code live on a branch and reach production through a pull request?",
+                   "Git records a folder's history as commits on branches, on your machine. GitHub holds the shared copy and the pull request: the diff, the review, the checks and the merge.",
+                   "The contract, the dbt models and the DAG are files. The pull request is where acceptance happens, Harness deploys what main contains, and Git remembers who changed what and why.",
+                   "Six steps on a throwaway repository (init, status and diff, branch, merge, ignore, undo), the commands by objective, then the training repository's pull request on screen. The practical is the same loop on your Challenge 7 Dockerfile."),
+         dc.figure("d2-git", "The loop: working copy, commit, branch, push, pull request, merge, deploy",
+                   ["A commit is a snapshot of the whole folder with an author, a time and a message; a branch is a named line of commits.",
+                    "Commit is local and push is what shares it: two verbs, two risks.",
+                    "A pull request is a conversation about a diff: the reviewer reads the changed lines, the checks run, and the merge is the decision.",
+                    "What main contains is what Harness deploys; nobody edits main directly."]),
+         dc.md(dc.demo("the loop on a scratch repository", "Each cell is one step on a throwaway repository in `demos/git/sandbox`; the commands are the ones you type in the dev container.", [
+                  "Step 1, a repository and a first commit: `git init`, then `git add` and `git commit -m`; `git log --oneline` shows one commit with its message.",
+                  "Step 2, what changed: edit the file; `git status --short` names it and `git diff` shows the lines. Read the diff before every commit: it is what the reviewer reads.",
+                  "Step 3, a branch: `git switch -c feature/sttm-rules` and commit there; `git log --oneline --graph --all` shows the branch one commit ahead of main.",
+                  "Step 4, the merge: back on main, `git merge --no-ff` brings the branch in; on GitHub that is the approved pull request's merge button.",
+                  "Step 5, what never goes in: a `.env` with a token appears in `git status`; one line in `.gitignore` and Git no longer offers it.",
+                  "Step 6, undo: `git restore` drops an uncommitted edit; `git revert` undoes a commit with a new commit; history on a shared branch is never rewritten.",
+                  "Say: commit is local, push is what shares it. Two verbs, two risks.",
+                  "Say: a token in a commit is a token to rotate, even after you delete the file: the commit keeps it."])),
+         dc.code("!rm -rf demos/git/sandbox && mkdir -p demos/git/sandbox\n!cd demos/git/sandbox && git init -q -b main && git config user.name 'Data Creator' && git config user.email 'creator@example.com'\n!cd demos/git/sandbox && printf '# EOD prices: data contract\\n\\nOwner: pricing data team\\n' > contract.md && git add contract.md && git commit -q -m 'Add the EOD prices contract skeleton'\n!cd demos/git/sandbox && git log --oneline\n# Step 1. A repository is a folder with a history. The first commit records the file, who made it, when and why."),
+         dc.code("!cd demos/git/sandbox && printf '\\n## Rules\\n\\n- price_gbp = price_local * fx_rate (derive)\\n' >> contract.md\n!cd demos/git/sandbox && git status --short\n!cd demos/git/sandbox && git diff\n# Step 2. status names the changed files; diff shows the lines. Read the diff before every commit: it is what the reviewer reads."),
+         dc.code("!cd demos/git/sandbox && (git switch -c feature/sttm-rules 2>/dev/null || git switch feature/sttm-rules)\n!cd demos/git/sandbox && git add contract.md && git commit -q -m 'Add the price_gbp derive rule to the STTM'\n!cd demos/git/sandbox && git log --oneline --graph --all\n# Step 3. Work on a branch, never on main. The branch carries your commits until a pull request brings them back."),
+         dc.code("!cd demos/git/sandbox && git switch -q main && git merge --no-ff -q -m 'Merge feature/sttm-rules: the price_gbp rule' feature/sttm-rules\n!cd demos/git/sandbox && git log --oneline --graph\n!cd demos/git/sandbox && cat contract.md\n# Step 4. What GitHub does when the pull request is approved: main now has the rule, and the history shows where it came from."),
+         dc.code("!cd demos/git/sandbox && printf 'DATABRICKS_TOKEN=dapi-not-a-real-token\\n' > .env && git status --short\n!cd demos/git/sandbox && printf '.env\\n' > .gitignore && git add .gitignore && git commit -q -m 'Ignore the local secrets file' && echo '--- after .gitignore:' && git status --short\n# Step 5. Secrets and generated files stay out of history: list them in .gitignore before the first commit."),
+         dc.code("!cd demos/git/sandbox && printf 'oops\\n' >> contract.md && git status --short && git restore contract.md && echo '--- after restore:' && git status --short\n!cd demos/git/sandbox && printf 'oops\\n' >> contract.md && git commit -qam 'A mistake' && git revert --no-edit HEAD >/dev/null && git log --oneline -3 && tail -1 contract.md\n# Step 6. restore drops an uncommitted edit; revert undoes a commit with a new one. History on a shared branch is never rewritten."),
+         dc.md("""
+         | Objective | Command | What you see |
+         |---|---|---|
+         | Get the shared copy | `git clone <url>` | A folder with its whole history inside |
+         | Where am I, what changed | `git status`, `git branch --show-current` | The changed files; the branch name |
+         | The exact lines | `git diff`, `git diff --staged` | Lines removed and added, file by file |
+         | Record a change | `git add <file>`, `git commit -m "<what and why>"` | A new commit on the current branch |
+         | Read the history | `git log --oneline --graph --all` | One line per commit, branches drawn |
+         | Work on a branch | `git switch -c <name>`, `git switch main` | A new branch from here; back to main |
+         | Share, catch up | `git push -u origin <branch>`, `git pull` | Your commits on GitHub; others' commits here |
+         | Undo | `git restore <file>`, `git restore --staged <file>`, `git revert <commit>` | An edit dropped; a file unstaged; a commit undone by a new one |
+         | Park an edit | `git stash`, `git stash pop` | Changes set aside, then brought back |
+         | Keep things out | `.gitignore` | `.env`, `target/`, data files: never offered |
+
+         In VS Code the Source Control view runs the same commands behind buttons: stage, commit, branch, push, and the diff on every changed file.
+         """),
+         dc.md(dc.demo("the pull request on screen", "The training repository in CG's GitHub organisation, from the dev container: the practical's steps, done once.", [
+                  "`git remote -v` and `git status`: the shared copy's address, and the Dockerfile Challenge 7 changed.",
+                  "`git switch -c feature/<username>-docker`, `git add challenges/v1/01-docker-intro/starter/Dockerfile`, `git commit -m 'Challenge 7: the portfolio-summary Dockerfile'`.",
+                  "`git push -u origin feature/<username>-docker`: GitHub prints the pull-request link.",
+                  "The pull request page: a title, a description (what, why, how to verify: `mise run challenge:verify 01`), the Files changed tab with the four lines, one review comment, the checks, the merge button (not pressed).",
+                  "Point at Thursday: the same page is where a dbt model or a DAG is accepted, and Harness deploys the merge.",
+                  "Say: a pull request is a conversation about a diff; the merge is the decision."])),
+         dc.part("Optional practical", "branch, commit, push, pull request"),
+         dc.md(dc.challenge("Your Dockerfile in a pull request", "challenges/v1/01-docker-intro/starter/Dockerfile", "15 min, or homework",
+                            "The loop from the demo, on the file you wrote in Challenge 7, in the dev container.",
+                            [("What learners do", [
+                                "`git status`: the Dockerfile you edited is listed as modified, and nothing else.",
+                                "`git switch -c feature/<your-username>-docker`: a branch of your own.",
+                                "`git add challenges/v1/01-docker-intro/starter/Dockerfile`, then `git commit -m '<what and why>'`: one commit.",
+                                "`git log --oneline --graph -3`: your commit on your branch, ahead of main.",
+                                "`git push -u origin feature/<your-username>-docker`, open the link GitHub prints, create the pull request: a title and three lines (what, why, how to verify).",
+                                "Ask your neighbour to review it: one comment on the diff. Do not merge."])],
+                            "`git log --oneline --graph -3` shows your commit on your branch; the pull request exists, with a description and one review comment.",
+                            support=["No push rights to the training repository: stop after the log; the pull request steps were the demo.",
+                                     "`Please tell me who you are`: set `git config --global user.name` and `user.email` once.",
+                                     "An SSL certificate error on push: the dev container's `TROUBLESHOOTING.md`, under Git SSL certificate errors.",
+                                     "The commands by objective are in the table above; VS Code's Source Control view does the same with buttons."],
+                            stretch="A second commit on the branch, and watch the pull request update. `git revert` the first commit and read the diff. Read the training repository's `pre-commit-config.yaml` and say what each hook checks before a commit is allowed.")),
+         dc.say(["Commit is local; push is what shares it. Two verbs, two risks.",
+                 "Nobody edits main. Your branch, your pull request, someone else's eyes, then the merge: that is how the dbt models reach production on Thursday."]),
          dc.break_(15, "14:15"),
-         # ---------------- 5. catalyst skills, setup, close ----------------
-         dc.section(5, "Catalyst skills, and setting up for tomorrow", "s5"),
+         # ---------------- 6. catalyst skills, setup, close ----------------
+         dc.section(6, "Catalyst skills, and setting up for tomorrow", "s6"),
          dc.part("Demo", "the skills, their tiers and the lifecycle; how to load them", time="14:15"),
          dc.anchor("Which skill do I reach for, and when?",
                    "About a hundred Catalyst skills in four tiers that compose downwards, each tagged with the lifecycle phase it serves; the five you have used sit in discovery and design.",

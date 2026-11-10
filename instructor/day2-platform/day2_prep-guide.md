@@ -2,11 +2,11 @@
 
 [Data Creators › Day 2 — instructor prep guide]{.breadcrumb}
 
-An hour's reading to be workshop-ready for Tuesday. The sections mirror the anchor notebook's five numbered sections (revised on the morning of Day 2 after Day 1 as delivered): for each, the concepts in depth, the teaching notes (how to explain it, what to whiteboard, the questions rooms ask and the answers), and the mechanics of the demos and challenges. The self-test at the end finds the gaps; the evening-before checklist is what to run. The run sheet beside this file has the timings, lines and whiteboard scripts.
+An hour's reading to be workshop-ready for Tuesday. The sections mirror the anchor notebook's six numbered sections, the fifth optional (revised on the morning of Day 2 after Day 1 as delivered): for each, the concepts in depth, the teaching notes (how to explain it, what to whiteboard, the questions rooms ask and the answers), and the mechanics of the demos and challenges. The self-test at the end finds the gaps; the evening-before checklist is what to run. The run sheet beside this file has the timings, lines and whiteboard scripts.
 
 ## The day in one page
 
-Yesterday's contract is today's input. By the end of the day it has mapping rules and measurable commitments, the room understands what Databricks and Delta actually do with their data, everyone has built and run a container, and everyone knows which Catalyst skill belongs to which phase. No dbt code is generated today: the two musts are the design documents before the first break and Docker done by the end of the day. The platform block is the one to know cold: the previous cohort got a twenty-minute history lecture; this cohort gets diagrams, two demos on the laptop, and a shareback.
+Yesterday's contract is today's input. By the end of the day it has mapping rules and measurable commitments, the room understands what Databricks and Delta actually do with their data, everyone has built and run a container, and everyone knows which Catalyst skill belongs to which phase. If the room is ahead, it has also seen the Git loop and a pull request. No dbt code is generated today: the two musts are the design documents before the first break and Docker done by the end of the day. The platform block is the one to know cold: the previous cohort got a twenty-minute history lecture; this cohort gets diagrams, two demos on the laptop, and a shareback.
 
 | # | Section | What happens | You must be able to |
 |---|---|---|---|
@@ -14,7 +14,8 @@ Yesterday's contract is today's input. By the end of the day it has mapping rule
 | 2 | Mappings and service commitments | STTM and SLI/SLO/SLA on the whiteboard, Activity 6 (30 minutes), the review and HTML demo | Name the rule types and the nines table from memory; separate an indicator from an objective from an agreement |
 | 3 | Platform architecture | Warehouse, lake, lakehouse; Databricks under the hood; Delta; how the tools fit together; shareback, in thirty minutes | Draw the lakehouse as a relational database split in two; explain a Delta commit |
 | 4 | Docker | The six demo cells and the dev container's Dockerfile before lunch; Challenge 7 to PASS after it with a stretch list; a shareback | Explain image versus container, layers and the cache, and why one app per container |
-| 5 | Catalyst skills, and setting up for tomorrow | The skills by tier and phase, how the plugin loads, an optional design skill on the learners' own product, the Databricks setup everyone needs for Wednesday | Say which skill belongs to which phase, and why no build skill runs today |
+| 5 | Git and GitHub (optional) | Six cells on a scratch repository, the pull request on screen, a fifteen-minute practical or homework; run only if the room is ahead | Explain commit versus push and branch versus main; say why nobody edits main |
+| 6 | Catalyst skills, and setting up for tomorrow | The skills by tier and phase, how the plugin loads, an optional design skill on the learners' own product, the Databricks setup everyone needs for Wednesday | Say which skill belongs to which phase, and why no build skill runs today |
 
 Three things that go wrong: the HTML render on a big model at high effort does not finish on stage (run a fast model at low effort first and keep the pre-rendered page); Docker Desktop is not running or a Windows laptop is in the wrong container mode; the Databricks OAuth setup takes minutes per person (it is the last block of the day, and anyone who finishes Docker early starts it then).
 
@@ -188,7 +189,39 @@ Databricks is the compute that runs dbt's SQL as Spark; dbt holds the transforma
 - **Challenge 7, `challenges/v1/01-docker-intro` (35 minutes).** From `starter/`: 1 run an image; 2 look inside (isolation); 3 write the Dockerfile (`starter/Dockerfile` has one TODO per line; the app under `starter/app/` is complete and not touched); 4 build the image; 5 run it; 6 try it yourself (optional: tags, variations). The finished image prints "Portfolio summary", then "6 holdings, total market value 12,011,626.50". Gate: `mise run challenge:verify 01` prints PASS. Stretch for the experienced: multi-stage builds, resource limits, Kubernetes.
 - **Stalls.** "Cannot connect to the Docker daemon": the engine is not running, start Docker Desktop. "permission denied on the socket": on Linux the user is not in the docker group; use the dev container. "exec format error" or script not found: CRLF line endings after editing on Windows; save as LF and rebuild. The first pull of `python:3.11-slim` is slow once. Building from the wrong folder: `.` is the build context and the Dockerfile copies `app/` from it.
 
-## 5. Catalyst skills, and setting up for tomorrow
+## 5. Git and GitHub (optional)
+
+### Concepts
+
+#### Commits, branches and the shared copy
+
+**What it is.** Git is a version control system: it records the history of a folder as commits, each a snapshot of every file with an author, a time and a message, chained on branches. Everything happens on the learner's machine until they push. GitHub holds the shared copy of the repository (the remote, `origin`) and adds what Git alone does not have: the pull request, code review, the checks that run on every push, and the merge button. The loop: edit in the working copy, `git add` to stage, `git commit` to record, on a branch of your own; `git push` to share the branch; open a pull request; a reviewer reads the diff, the checks run, the merge brings the branch into `main`; `git pull` brings `main` back to everyone's working copy. Commit is local and push is what shares it: two verbs, two risks.
+
+**Why it matters this week.** Everything the room makes is a file: the contract, the dbt models and their YAML, the DAG, the Dockerfile. The tools-together diagram puts GitHub between the dev container and Harness: a pull request submitted and approved triggers the deployment pipeline, and what `main` contains is what runs on Astro and Databricks. Day 4 says it directly: a pull request is where acceptance happens, and a deleted test is a block of red lines that is easy to skim past. Nobody edits `main`.
+
+**What never goes in.** Secrets (`.env`, tokens, keys), generated artefacts (`target/`, `dbt_packages/`, logs) and data files stay out of history through `.gitignore`, written before the first commit. A token in a commit is a token to rotate even after the file is deleted, because the commit keeps it; the platform team is the escalation. The training repository's `pre-commit-config.yaml` runs checks before every commit: whitespace and line endings, YAML and TOML syntax, `hadolint` on Dockerfiles, `ruff` on Python, `sqlfluff` on SQL. In dev and higher environments CI generates the migration SQL from the contract and commits it to the branch; the creator commits only the `.odcs.yaml` contract, never the generated SQL.
+
+![The loop: working copy, commit, branch, push, pull request, merge, deploy](../../courseware/common/diagrams/png/d2-git.png)
+
+### Teaching notes
+
+- **Why now.** Tomorrow's dbt project lives in files on a branch; a learner who has never branched loses work or edits `main`. Fifteen minutes here saves the first hour tomorrow. It is optional because Docker is the must: if the room is behind, the table of commands in the anchor and the practical as homework are enough.
+- **Likely questions and answers.**
+  - *Do I need the command line?* No: VS Code's Source Control view stages, commits, branches, pushes and shows the diff with buttons; the commands are what it runs, and the ones to know when a button is greyed out.
+  - *Commit or push?* Commit records locally, as often as you like; push shares the branch. Nothing is lost by committing; nothing is seen until you push.
+  - *What is a merge conflict?* Two branches changed the same lines; Git asks a human to choose. Small branches merged often avoid most of them.
+  - *Can I push to main?* Not in CG's repositories: `main` is protected, and the pull request is the only way in.
+  - *GitHub Desktop or the `gh` CLI?* Either; the dev container's guidance prefers whichever authenticates reliably for the room.
+- **Misconceptions to catch.** Commit means it is shared (not until pushed). GitHub is Git (GitHub is the shared copy plus review and checks). Deleting a committed secret removes it (the history keeps it; rotate). `main` is where you work (it is where reviewed work lands).
+
+### Mechanics
+
+- **The demo (six cells).** A throwaway repository in `demos/git/sandbox` (gitignored; the first cell recreates it): init and a first commit; an edit with `git status --short` and `git diff`; a branch `feature/sttm-rules` with a commit and `git log --oneline --graph --all`; the merge back into `main` with `--no-ff` so the branch shows in the graph; a `.env` with a fake token appearing in `git status`, then hidden by `.gitignore`; `git restore` for an uncommitted edit and `git revert` for a committed one. Each cell's comment is the one line to say. `demos/git/demo.sh` runs the same six steps in a terminal.
+- **The pull request on screen.** From the dev container, on the training repository: `git remote -v`, a branch, the Dockerfile from Challenge 7 added and committed, `git push -u origin`, the pull request page (title, three-line description, Files changed, one review comment, the checks), and the merge button not pressed. Check before the day whether learners can push branches to the training repository; if they cannot, the push and pull request are demo only and the practical stops at the log.
+- **The practical (15 minutes, or homework).** The same loop on the learner's own Dockerfile: status, branch, add, commit, log, push, pull request, a neighbour's review comment; no merge. Gate: `git log --oneline --graph -3` shows the commit on the branch, and the pull request exists with a description and a comment. Stalls: identity not set (`git config --global user.name` and `user.email`), the SSL certificate error (the dev container's `TROUBLESHOOTING.md`), and a branch name that already exists (`git switch` without `-c`).
+- **When to run it.** Three slots, in order of preference: the fifteen minutes gained if the room reaches PASS by 13:30 and the shareback starts early; 14:30 in place of Activity 8; or the six cells in five minutes at the end of the shareback, with the practical as homework.
+
+## 6. Catalyst skills, and setting up for tomorrow
 
 ### Concepts
 
@@ -230,6 +263,8 @@ Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plu
 10. Image versus container, in one line; then why only the `COPY` layer rebuilds when the app changes.
 11. Name three things in the dev container's Dockerfile and who maintains it.
 12. Which contract section becomes the DAG schedule, which becomes the freshness gate, and which becomes the tests?
+13. Commit versus push, in one line each; then why a pull request rather than a push to main?
+14. A learner pushed a branch with a `.env` holding a Databricks token. What do you tell them to do first?
 
 ### Answers
 
@@ -245,6 +280,8 @@ Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plu
 10. An image is the layered read-only template, a container is a running instance; layers are cached in order, so a change in `app/` invalidates the `COPY` layer and everything after it, not the base image.
 11. Two `FROM` lines (a flyway stage, CG's Python 3.13 image), `RUN curl` installs of the Astro CLI, starship and mise, `mise install databricks-cli`, `ENV VIRTUAL_ENV=/opt/venv` on `PATH`, copied setup scripts; EDO maintains it.
 12. The delivery time (service levels) becomes the schedule; the freshness commitment becomes the `dbt source freshness` thresholds the gate checks; the data quality rules become the tests.
+13. A commit records a snapshot on your branch, locally; push copies the branch to GitHub. `main` is what Harness deploys, so it is protected and reached only through a reviewed, checked pull request.
+14. Rotate the token first: the commit keeps it even after the file is deleted. Then remove the file, add `.env` to `.gitignore`, commit, and tell the platform team; rewriting the branch's history is their call.
 
 ## The evening before
 
@@ -253,6 +290,7 @@ Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plu
 - [ ] Open the Day 2 anchor, Run All, save with outputs; check the diagrams render.
 - [ ] Run the HTML prompt once on a fast model and keep the result; confirm `03-data-contract.html` opens in the browser.
 - [ ] Open the dev container's Dockerfile from `reference/DataCreators-client/…/.devcontainer/Dockerfile` and find the lines you will point at.
+- [ ] Run the six Git cells once (they recreate `demos/git/sandbox`); ask the platform team whether learners can push branches to the training repository.
 - [ ] Print the activity cards for 6, 7 and 8 and this day's run sheet; the Databricks setup commands posted in the Teams channel at 14:45.
 
 ## Go deeper
