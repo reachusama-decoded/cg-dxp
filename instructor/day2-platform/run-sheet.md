@@ -7,9 +7,9 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | # | Section | Time | What happens |
 |---|---|---|---|
 | 1 | Day 1 recap and the map of the week | 09:00–09:25 | Recap: what we made yesterday · Whiteboard: source-, domain- and consumer-aligned · Today, and the two musts |
-| 2 | Mappings and service commitments | 09:25–10:45 | Demo: STTM and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract |
+| 2 | Mappings and service commitments | 09:25–10:45 | Demo: STTM and service levels · Worked example: the running example's contract, mapping and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract |
 | 3 | Platform architecture | 10:45–11:15 | Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together · Shareback |
-| 4 | Docker | 11:15–14:15 | Demo: the six cells and the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives · Break |
+| 4 | Docker | 11:15–14:15 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives · Break |
 | 5 | Catalyst skills, and setting up for tomorrow | 14:15–15:00 | Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close |
 
 ## Timeline
@@ -95,10 +95,12 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 - Elicit rule types on the whiteboard; Catalyst returns a CG-specific list, say so.
 - The nines table is in the anchor; say the month, week, day, hour, minute mnemonic.
+- Last five minutes: screen-share the running example (03-data-contract.md sections 2 to 4, 04-sttm.md, 05-service-levels.md) so they see a finished one before extending their own.
 
 **Say.**
 
 - “An SLI is a number you can measure. An SLO is what you wish it were. An SLA is how far it may stray before you owe someone an explanation.”
+- “This is what yours will look like in thirty minutes: one rule per column, row rules beneath, a number and a clock on every commitment.”
 
 **Ask at the whiteboard — STTM.** Ask in order, write what the room says, add what is missing.
 
@@ -116,6 +118,15 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | Give me indicators. | Delay from delivery time (which time zone?), latency, throughput, recovery time (service, data or level), completeness, accuracy, freshness, availability, support turnaround, a duty to explain. |
 | What is availability, and what does 99.9% mean? | The share of time the service works, in nines. 90% is a month a year; 99% a working week; 99.9% a working day; 99.99% an hour; 99.999% five minutes. |
 | How do providers get more nines? | Cloned infrastructure, global and local load balancing, a disaster-recovery site that already takes some traffic. Nines tell you about spare capacity. |
+
+### Worked example — the running example's contract, mapping and service levels · 09:25–09:45
+
+**Demo — a finished set, before you extend your own.** Screen-share the running example: the contract, then its mapping and service levels as separate documents.
+
+1. Open `common/running-example/03-data-contract.md` in the Markdown preview: section 2 (the schema, the target), section 3 (the SLAs) and section 4 (the quality rules).
+2. Open `04-sttm.md`: one rule per target column with its type, rule type, source and the rule in English; the four row rules beneath; the edge cases agreed in the interview.
+3. Open `05-service-levels.md`: each commitment as an indicator, an objective and an agreement, with its clock and how it is measured.
+4. Say: this is what yours will look like after the activity, in the same template Catalyst uses; the two cells below keep both documents on the projector.
 
 **Transition.** Activity 6: put both into yesterday's contract.
 
@@ -230,7 +241,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ## 4. Docker
 
-### Demo — containers, the challenge's six cells, the dev container's Dockerfile · 11:15–11:40
+### Demo — Docker in the six steps of the challenge · 11:15–11:40
 
 **Purpose.** Dependencies, reproducibility, isolation and resource limits; Dockerfile to image to container; the dev container and its terminal.
 
@@ -238,7 +249,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 **Instructor notes.**
 
-- Run the anchor's cells: run an image, look inside, build, run, tag.
+- Mirror the challenge's six sections in order with the same commands: run an image, look inside, the Dockerfile (a commented sample on screen), build and the cache, run and the expected two lines, tag; then the gate and the four stalls.
 - Show the training repo's Dockerfile: FROM, COPY, RUN, USER, ENV. Say EDO maintains it.
 - Point at the glossary: every command by objective, and the secure example, for the afternoon.
 
@@ -246,16 +257,19 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 - “Your terminal in VS Code is inside a container. That is why dbt and astro are there and why your laptop's Python is not.”
 
-**Demo — the five steps of Challenge 7, in cells.** The challenge's own six-holding app (`demos/docker/portfolio-summary/`), run and built in cells before learners do it.
+**Demo — Docker in the six steps of the challenge.** The same six steps, commands and outputs as `challenges/v1/01-docker-intro`, run here on the challenge's own six-holding app; you type them yourselves in the practical.
 
 1. Check Docker Desktop is running: the whale in the menu bar, or `docker info`.
-2. Cell 1: run `python:3.11-slim` and print its Python; the container exits when the command does.
-3. Cell 2: write a file inside one container and list it from another: its own filesystem, gone with the container.
-4. Cell 3: read the app's Dockerfile: FROM, WORKDIR, COPY, CMD.
-5. Cell 4: build twice; the second build is all CACHED.
-6. Cell 5: run the app, then run it with a mounted holdings file: same image, different data.
-7. Cell 6: tag the image: two names, one ID; that is how CG ships Airflow and dbt images.
-8. After each cell, say what learners will see at the same step of `challenges/v1/01-docker-intro`.
+2. Step 1, run an image: `docker run --rm python:3.11-slim python --version`; the first run pulls the image, the container prints one line and is gone.
+3. Step 2, look inside: `docker run --rm -it python:3.11-slim bash`, then `ls /` and `cat /etc/os-release` (Debian, not your laptop); a file written in `/tmp` is gone in the next container.
+4. Step 3, the Dockerfile: four instructions in order, `FROM`, `WORKDIR`, `COPY`, `CMD`; the sample below is commented line by line; the starter leaves three of them as TODOs for you.
+5. Step 4, build: `docker build -t portfolio-summary .` from the folder with the Dockerfile; the `.` is the build context; build twice and read `CACHED`; `docker images | grep portfolio-summary`.
+6. Step 5, run: `docker run --rm portfolio-summary` prints exactly two lines; mount a different CSV with `-v` and the same image gives a different answer.
+7. Step 6, tag: `docker tag portfolio-summary portfolio-summary:v1`; two names, one image ID; that is how CG ships Airflow and dbt images.
+8. The gate: `mise run challenge:verify 01` from anywhere in the repository builds the starter image, runs it, checks the two lines and prints PASS.
+9. Say: nothing in the practical is new after this; the glossary has every command by what it does.
+
+### Demo — the dev container's Dockerfile · 11:15–11:40
 
 **Demo — the dev container's Dockerfile.** The learners' dev container is a Dockerfile they can now read.
 

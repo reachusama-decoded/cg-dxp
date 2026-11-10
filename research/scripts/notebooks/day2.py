@@ -12,8 +12,10 @@ BLOCKS = [
       transition="The core of the contract you did not write yesterday: the mapping.", flex="Running late: skip the discovery recap; keep the alignment picture."),
  dict(time="09:25–09:45", title="Mappings and service commitments", type="Demo", on_screen="Anchor › STTM and service levels (two diagrams, nines table)",
       purpose="Source-to-target mapping rule types; SLI, SLO and SLA as measure, ideal, tolerance; the indicators a product needs; availability in nines.",
-      notes=["Elicit rule types on the whiteboard; Catalyst returns a CG-specific list, say so.", "The nines table is in the anchor; say the month, week, day, hour, minute mnemonic."],
-      say=["An SLI is a number you can measure. An SLO is what you wish it were. An SLA is how far it may stray before you owe someone an explanation."],
+      notes=["Elicit rule types on the whiteboard; Catalyst returns a CG-specific list, say so.", "The nines table is in the anchor; say the month, week, day, hour, minute mnemonic.",
+             "Last five minutes: screen-share the running example (03-data-contract.md sections 2 to 4, 04-sttm.md, 05-service-levels.md) so they see a finished one before extending their own."],
+      say=["An SLI is a number you can measure. An SLO is what you wish it were. An SLA is how far it may stray before you owe someone an explanation.",
+           "This is what yours will look like in thirty minutes: one rule per column, row rules beneath, a number and a clock on every commitment."],
       transition="Activity 6: put both into yesterday's contract.", flex="Running late: skip how providers get nines; keep the table."),
  dict(time="09:45–10:15", title="Activity 6 — Extend the contract", type="Challenge", on_screen="Anchor › Activity 6 card",
       purpose="Ask Catalyst for the transformation types and service measures, then add realistic STTM rules and commitments to a Day 1 contract.",
@@ -33,7 +35,7 @@ BLOCKS = [
       transition="Straight into Docker: the box all of this runs in.", flex="Behind: the tools-together diagram and the Delta demo only; the timeline and Spark are optional."),
  dict(time="11:15–11:40", title="Docker demonstration", type="Demo", on_screen="Anchor › Docker; a terminal; the dev container's Dockerfile",
       purpose="Dependencies, reproducibility, isolation and resource limits; Dockerfile to image to container; the dev container and its terminal.",
-      notes=["Run the anchor's cells: run an image, look inside, build, run, tag.", "Show the training repo's Dockerfile: FROM, COPY, RUN, USER, ENV. Say EDO maintains it.", "Point at the glossary: every command by objective, and the secure example, for the afternoon."],
+      notes=["Mirror the challenge's six sections in order with the same commands: run an image, look inside, the Dockerfile (a commented sample on screen), build and the cache, run and the expected two lines, tag; then the gate and the four stalls.", "Show the training repo's Dockerfile: FROM, COPY, RUN, USER, ENV. Say EDO maintains it.", "Point at the glossary: every command by objective, and the secure example, for the afternoon."],
       say=["Your terminal in VS Code is inside a container. That is why dbt and astro are there and why your laptop's Python is not."],
       transition="Challenge 7 in the dev container; lunch when you reach a good stopping point, back at 13:00.", flex=""),
  dict(time="11:40–12:00", title="Challenge 7 — Docker practical", type="Challenge", on_screen="Anchor › Challenge box; learners in challenges/v1/01-docker-intro",
@@ -99,11 +101,11 @@ SECTIONS = [
  dict(n=1, title="Day 1 recap and the map of the week", anchor="s1", start="09:00",
       parts=["Recap: what we made yesterday", "Whiteboard: source-, domain- and consumer-aligned", "Today, and the two musts"]),
  dict(n=2, title="Mappings and service commitments", anchor="s2", start="09:25",
-      parts=["Demo: STTM and service levels", "Activity 6: extend the contract", "Break", "Shareback: review and present a contract"]),
+      parts=["Demo: STTM and service levels", "Worked example: the running example's contract, mapping and service levels", "Activity 6: extend the contract", "Break", "Shareback: review and present a contract"]),
  dict(n=3, title="Platform architecture", anchor="s3", start="10:45",
       parts=["Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together", "Shareback"]),
  dict(n=4, title="Docker", anchor="s4", start="11:15",
-      parts=["Demo: the six cells and the dev container's Dockerfile", "Challenge 7: Docker practical", "Lunch", "Challenge 7 continued, with the stretch", "Shareback: image, container, what survives", "Break"]),
+      parts=["Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate", "Demo: the dev container's Dockerfile", "Challenge 7: Docker practical", "Lunch", "Challenge 7 continued, with the stretch", "Shareback: image, container, what survives", "Break"]),
  dict(n=5, title="Catalyst skills, and setting up for tomorrow", anchor="s5", start="14:15",
       parts=["Demo: the skills, their tiers and the lifecycle; how to load them", "Activity 8 (if time allows): one design skill on your product", "Databricks setup", "Close"]),
 ]
@@ -221,6 +223,14 @@ def cells():
          | 99.99% | about 53 minutes | an hour |
          | 99.999% | about 5 minutes | a coffee |
          """),
+         dc.part("Worked example", "the running example's contract, mapping and service levels"),
+         dc.md(dc.demo("a finished set, before you extend your own", "Screen-share the running example: the contract, then its mapping and service levels as separate documents.", [
+                  "Open `common/running-example/03-data-contract.md` in the Markdown preview: section 2 (the schema, the target), section 3 (the SLAs) and section 4 (the quality rules).",
+                  "Open `04-sttm.md`: one rule per target column with its type, rule type, source and the rule in English; the four row rules beneath; the edge cases agreed in the interview.",
+                  "Open `05-service-levels.md`: each commitment as an indicator, an objective and an agreement, with its clock and how it is measured.",
+                  "Say: this is what yours will look like after the activity, in the same template Catalyst uses; the two cells below keep both documents on the projector."])),
+         dc.code('from IPython.display import Markdown, display\ndisplay(Markdown((COMMON / "running-example" / "04-sttm.md").read_text()))'),
+         dc.code('display(Markdown((COMMON / "running-example" / "05-service-levels.md").read_text()))'),
          dc.part("Activity 6", "extend the contract", time="09:45"),
          act("6"),
          dc.md(dc.prompt("Chat view", "What types of source-to-target transformation do you distinguish, and what service-level indicators and objectives should a data contract state?\n\n/ai-catalyst data-contract\nExtend the attached contract with an STTM section (one rule per target column, plus row rules) and measurable SLAs from this discussion transcript. Keep every other section as it is.",
@@ -309,7 +319,7 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
                      "One tool on the diagram you have used, and one you have not."])),
          # ---------------- 4. docker ----------------
          dc.section(4, "Docker", "s4"),
-         dc.part("Demo", "containers, the challenge's six cells, the dev container's Dockerfile", time="11:15"),
+         dc.part("Demo", "Docker in the six steps of the challenge", time="11:15"),
          dc.anchor("Why is your VS Code terminal not your laptop's terminal this week?",
                    "A container bundles an application with its dependencies down to the OS user space; an image is the frozen template; a Dockerfile is the recipe.",
                    "Repeatable environments, isolation (network, ports, resources), the same bytes on a laptop, a build server and the cloud.",
@@ -319,21 +329,37 @@ print("opened", COMMON / "running-example" / "03-data-contract.html")"""),
                     "An image is layered and cached: change the app and only COPY onwards rebuilds.",
                     "A container lives as long as its command; a fresh container starts clean from the image.",
                     "Isolation is the production point: one app per container, controlled ports, capped CPU and memory, a limited blast radius."]),
-         dc.md(dc.demo("the five steps of Challenge 7, in cells", "The challenge's own six-holding app (`demos/docker/portfolio-summary/`), run and built in cells before learners do it.", [
+         dc.md(dc.demo("Docker in the six steps of the challenge", "The same six steps, commands and outputs as `challenges/v1/01-docker-intro`, run here on the challenge's own six-holding app; you type them yourselves in the practical.", [
                   "Check Docker Desktop is running: the whale in the menu bar, or `docker info`.",
-                  "Cell 1: run `python:3.11-slim` and print its Python; the container exits when the command does.",
-                  "Cell 2: write a file inside one container and list it from another: its own filesystem, gone with the container.",
-                  "Cell 3: read the app's Dockerfile: FROM, WORKDIR, COPY, CMD.",
-                  "Cell 4: build twice; the second build is all CACHED.",
-                  "Cell 5: run the app, then run it with a mounted holdings file: same image, different data.",
-                  "Cell 6: tag the image: two names, one ID; that is how CG ships Airflow and dbt images.",
-                  "After each cell, say what learners will see at the same step of `challenges/v1/01-docker-intro`."])),
-         dc.code("!docker run --rm python:3.11-slim python --version\n# Python from inside a container built from an image, not from this laptop. The container exited when the command did."),
-         dc.code('!docker run --rm python:3.11-slim bash -c "head -1 /etc/os-release && touch /tmp/proof.txt && ls /tmp"\n!docker run --rm python:3.11-slim ls /tmp\n# Its own Linux filesystem; the file written in the first container is gone in the second.'),
-         dc.code('!grep -E "^(FROM|WORKDIR|COPY|CMD)" demos/docker/portfolio-summary/Dockerfile\n# The whole recipe: base image, where, what, how to run.'),
-         dc.code("!cd demos/docker/portfolio-summary && docker build -t portfolio-summary . 2>&1 | tail -3\n!cd demos/docker/portfolio-summary && docker build -t portfolio-summary . 2>&1 | grep -cE 'CACHED' \n# Build twice: the second build is almost entirely cached."),
-         dc.code('!docker run --rm portfolio-summary\n!docker run --rm -v "$PWD/demos/docker/portfolio-summary/app/holdings.csv:/app/holdings.csv:ro" portfolio-summary\n# The app, Python and the OS libraries travel together. Mount a different CSV and the same image gives a different answer.'),
-         dc.code("!docker tag portfolio-summary portfolio-summary:v1 && docker images portfolio-summary\n# Two names, one image ID. Tag, push to a registry, pull elsewhere: that is how CG ships Airflow and dbt images."),
+                  "Step 1, run an image: `docker run --rm python:3.11-slim python --version`; the first run pulls the image, the container prints one line and is gone.",
+                  "Step 2, look inside: `docker run --rm -it python:3.11-slim bash`, then `ls /` and `cat /etc/os-release` (Debian, not your laptop); a file written in `/tmp` is gone in the next container.",
+                  "Step 3, the Dockerfile: four instructions in order, `FROM`, `WORKDIR`, `COPY`, `CMD`; the sample below is commented line by line; the starter leaves three of them as TODOs for you.",
+                  "Step 4, build: `docker build -t portfolio-summary .` from the folder with the Dockerfile; the `.` is the build context; build twice and read `CACHED`; `docker images | grep portfolio-summary`.",
+                  "Step 5, run: `docker run --rm portfolio-summary` prints exactly two lines; mount a different CSV with `-v` and the same image gives a different answer.",
+                  "Step 6, tag: `docker tag portfolio-summary portfolio-summary:v1`; two names, one image ID; that is how CG ships Airflow and dbt images.",
+                  "The gate: `mise run challenge:verify 01` from anywhere in the repository builds the starter image, runs it, checks the two lines and prints PASS.",
+                  "Say: nothing in the practical is new after this; the glossary has every command by what it does."])),
+         dc.md("""
+         | Step | What you do | The command | What you should see |
+         |---|---|---|---|
+         | 1 Run an image | Run a public image's Python | `docker run --rm python:3.11-slim python --version` | One line, `Python 3.11.x`; the container has already exited |
+         | 2 Look inside | Open a shell in a container | `docker run --rm -it python:3.11-slim bash`, then `ls /`, `cat /etc/os-release`, `exit` | A Linux root listing; `os-release` names Debian |
+         | 3 Write the Dockerfile | Fill the three TODO lines in `starter/Dockerfile` | `grep -E '^(FROM\|WORKDIR\|COPY\|CMD)' Dockerfile` | Exactly four lines, in that order |
+         | 4 Build | Bake the recipe into an image | `docker build -t portfolio-summary .` (twice) | Steps the first time; `CACHED` the second; `docker images` shows the row, about 130 MB |
+         | 5 Run | Start a container from your image | `docker run --rm portfolio-summary` | `Portfolio summary` then `6 holdings, total market value 12,011,626.50` |
+         | 6 Tag (optional) | Give the image a version | `docker tag portfolio-summary portfolio-summary:v1` | Two rows, `latest` and `v1`, one image ID |
+         | Gate | Prove it | `mise run challenge:verify 01` | `PASS` |
+
+         **If it stalls.** `Cannot connect to the Docker daemon`: the engine is not running, start Docker Desktop. `permission denied` on the socket: use the dev container. `exec format error` or script not found: CRLF line endings after editing on Windows; save as LF and rebuild. A slow first `run` or `build`: the base image is being pulled, once.
+         """),
+         dc.code("!docker run --rm python:3.11-slim python --version\n# Step 1. Python from inside a container built from an image, not from this laptop. The container exited when the command did."),
+         dc.code('!docker run --rm python:3.11-slim bash -c "ls / && cat /etc/os-release | head -2"\n# Step 2, non-interactive form (the challenge uses -it for a real shell). A Linux root and a Debian os-release: the container\'s own filesystem.'),
+         dc.code('!docker run --rm python:3.11-slim bash -c "touch /tmp/proof.txt && ls /tmp"\n!docker run --rm python:3.11-slim ls /tmp\n# Step 2, the variation: the file written in the first container is gone in the second. Each container starts clean from the image.'),
+         dc.code('!cat demos/docker/portfolio-summary/Dockerfile\n!echo "--- the four instructions the check greps for:" && grep -E "^(FROM|WORKDIR|COPY|CMD)" demos/docker/portfolio-summary/Dockerfile\n# Step 3. A sample Dockerfile: base, then where, then what, then how to run. The starter gives FROM and leaves the other three as TODOs.'),
+         dc.code("!cd demos/docker/portfolio-summary && docker build -t portfolio-summary . 2>&1 | tail -3\n!cd demos/docker/portfolio-summary && echo \"--- second build, CACHED lines:\" && docker build -t portfolio-summary . 2>&1 | grep -cE 'CACHED'\n!docker images | grep portfolio-summary\n# Step 4. Build twice: the second build is almost entirely cached. The image row is mostly the shared Python base layer."),
+         dc.code('!docker run --rm portfolio-summary\n!echo "--- same image, a mounted CSV:" && docker run --rm -v "$PWD/demos/docker/portfolio-summary/app/holdings.csv:/app/holdings.csv:ro" portfolio-summary\n# Step 5. Exactly the two lines the gate checks. Mount a different CSV and the same image gives a different answer: image and data are separate.'),
+         dc.code("!docker tag portfolio-summary portfolio-summary:v1 && docker images portfolio-summary\n# Step 6. Two names, one image ID. Tag, push to a registry, pull elsewhere: that is how CG ships Airflow and dbt images."),
+         dc.part("Demo", "the dev container's Dockerfile"),
          dc.md(dc.demo("the dev container's Dockerfile", "The learners' dev container is a Dockerfile they can now read.", [
                   "Open `reference/DataCreators-client/dev-container/edo-training-data-products/.devcontainer/Dockerfile`, the file VS Code builds for learners (the cell below prints its head).",
                   "Point at the two `FROM` lines: a flyway stage, then CG's Python 3.13 image from the internal registry.",
