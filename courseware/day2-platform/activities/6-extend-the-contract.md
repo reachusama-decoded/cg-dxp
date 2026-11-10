@@ -1,6 +1,6 @@
 # Activity 6 — Extend the contract
 
-*Day 2 · Individual, then pairs or tables · 25 minutes*
+*Day 2 · Individual, then pairs or tables · 30 minutes*
 
 On your own, ask Catalyst what source-to-target transformation types and what service-level indicators and objectives it knows. Then, in pairs or at your table, take one of yesterday's data contracts: name the incoming tables and the outgoing table, write the rules that get you from one to the other (lookups, derivations, filters, what nulls mean), and the commitments a consumer would hold you to. Transcribe the discussion, give it to Catalyst, extend the contract, then inspect and revise.
 

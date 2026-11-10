@@ -1,23 +1,48 @@
-# Day 2 instructor prep guide — Mappings, service levels and implementation foundations
+# Day 2 instructor prep guide — Mappings, service levels, the platform and Docker
 
 [Data Creators › Day 2 — instructor prep guide]{.breadcrumb}
 
-An hour's reading to be workshop-ready for Tuesday. The sections mirror the anchor notebook's four numbered sections: for each, the concepts in depth, the teaching notes (how to explain it, what to whiteboard, the questions rooms ask and the answers), and the mechanics of the demos and challenges. The self-test at the end finds the gaps; the evening-before checklist is what to run. The run sheet beside this file has the timings, lines and whiteboard scripts.
+An hour's reading to be workshop-ready for Tuesday. The sections mirror the anchor notebook's five numbered sections (revised on the morning of Day 2 after Day 1 as delivered): for each, the concepts in depth, the teaching notes (how to explain it, what to whiteboard, the questions rooms ask and the answers), and the mechanics of the demos and challenges. The self-test at the end finds the gaps; the evening-before checklist is what to run. The run sheet beside this file has the timings, lines and whiteboard scripts.
 
 ## The day in one page
 
-Yesterday's contract is today's input. By the end of the day it has mapping rules and measurable commitments, the room understands what Databricks, Delta and Spark actually do with their data, everyone has built and run a container, and pairs have generated dbt and Airflow code from a contract and read it critically. The platform block is the one to know cold: the previous cohort got a twenty-minute history lecture; this cohort gets diagrams, two demos on the laptop, and a shareback.
+Yesterday's contract is today's input. By the end of the day it has mapping rules and measurable commitments, the room understands what Databricks and Delta actually do with their data, everyone has built and run a container, and everyone knows which Catalyst skill belongs to which phase. No dbt code is generated today: the two musts are the design documents before the first break and Docker done by the end of the day. The platform block is the one to know cold: the previous cohort got a twenty-minute history lecture; this cohort gets diagrams, two demos on the laptop, and a shareback.
 
 | # | Section | What happens | You must be able to |
 |---|---|---|---|
-| 1 | Mappings and service commitments | STTM and SLI/SLO/SLA on the whiteboard, Activity 6, the review and HTML demo | Name the rule types and the nines table from memory; separate an indicator from an objective from an agreement |
-| 2 | Platform architecture | Warehouse, lake, lakehouse; Databricks under the hood; Delta; Spark; how the tools fit together; shareback | Draw the lakehouse as a relational database split in two; explain a Delta commit and a Spark shuffle |
-| 3 | Docker | The six demo cells, the dev container's Dockerfile, Challenge 7 | Explain image versus container, layers and the cache, and why one app per container |
-| 4 | Contract to code | Where output lands, one minute of live generation, Activity 8, the debrief, Activity 8b | Read generated dbt and Airflow code against a contract and find the assumption it did not state |
+| 1 | Day 1 recap and the map of the week | The room reclaims yesterday; source-, domain- and consumer-aligned as the bridge from the contract to the mapping; today's two musts | Give the three alignment one-liners and place yesterday's contract among them |
+| 2 | Mappings and service commitments | STTM and SLI/SLO/SLA on the whiteboard, Activity 6 (30 minutes), the review and HTML demo | Name the rule types and the nines table from memory; separate an indicator from an objective from an agreement |
+| 3 | Platform architecture | Warehouse, lake, lakehouse; Databricks under the hood; Delta; how the tools fit together; shareback, in thirty minutes | Draw the lakehouse as a relational database split in two; explain a Delta commit |
+| 4 | Docker | The six demo cells and the dev container's Dockerfile before lunch; Challenge 7 to PASS after it with a stretch list; a shareback | Explain image versus container, layers and the cache, and why one app per container |
+| 5 | Catalyst skills, and setting up for tomorrow | The skills by tier and phase, how the plugin loads, an optional design skill on the learners' own product, the Databricks setup everyone needs for Wednesday | Say which skill belongs to which phase, and why no build skill runs today |
 
-Three things that go wrong: the HTML render on a big model at high effort does not finish on stage (run a fast model at low effort first and keep the pre-rendered page); Docker Desktop is not running or a Windows laptop is in the wrong container mode; the Databricks OAuth setup takes minutes per person and eats the afternoon (start it during the Docker practical for anyone finished early).
+Three things that go wrong: the HTML render on a big model at high effort does not finish on stage (run a fast model at low effort first and keep the pre-rendered page); Docker Desktop is not running or a Windows laptop is in the wrong container mode; the Databricks OAuth setup takes minutes per person (it is the last block of the day, and anyone who finishes Docker early starts it then).
 
-## 1. Mappings and service commitments
+## 1. Day 1 recap and the map of the week
+
+### Concepts
+
+#### What Day 1 left behind
+
+A list of the room's own products and pain points; PRDs and data contracts generated from interview transcripts and reviewed for the invented detail; the discovery methods (interviews fastest, follow-up questions the real questions, observation for what people cannot say, surveys for scale with suspect answers); and the vocabulary of the lifecycle. The recording of Day 1 captured only its last ten minutes (`instructor/day1-design/day1_delivery-notes.md`), so reclaim the day from the room rather than from notes: ask what a data product is, what discovery taught, what the generated documents got wrong, and which documents exist now in which order.
+
+#### Source-, domain- and consumer-aligned
+
+The three words say whose shape a table is built for, and they are the bridge from yesterday to today. *Source-aligned*: the producer's shape, kept faithfully as an audit path (the vendor price file as it arrived). *Consumer-aligned*: the shape of a decision, one row per business question (the US price sheet: one row per instrument per business day, in USD, by 07:30 Eastern), which is what yesterday's contract describes. *Domain-aligned*: the firm's one definition of each entity, agreed by the data owner and reused by every consumer (what an instrument, a close and a business date are); the running example borrows it from the instrument master, Friday's product builds it. Today's mapping is the path from source-aligned to consumer-aligned, rule by rule, written in the domain's words. The older names (dbt's staging, intermediate, marts; the medallion bronze, silver, gold) describe a project's structure and a data set's cleanliness; alignment describes purpose, and it is the one a creator decides.
+
+### Teaching notes
+
+- **Ask, write, add.** The recap whiteboard in the run sheet has the answers rooms give; the room produces most of it.
+- **Three one-liners, no more**, for alignment: their shape, the firm's shape, your reader's shape. The domain layer gets its full treatment on Friday; today it only needs to exist in the picture.
+- **Likely questions.** *Is domain-aligned the same as cleaned staging?* No: staging renames and casts; domain-aligned applies one agreed definition. *Who decides the domain definition?* The domain's business data owner, not the consumer. *Which layer is the contract?* The consumer-aligned target; the mapping describes how to reach it from the sources.
+- **Say the two musts** before the day runs: design documents before the first break, Docker at PASS by the end of the day; no dbt generation today.
+
+### Mechanics
+
+- Twenty-five minutes: ten on the recap whiteboard, ten on alignment with the two diagrams, five on the agenda and the musts.
+- The alignment diagrams are the Day 1 `d1-alignment` picture and Day 5's `d5-alignment-naming`, so Friday's vocabulary is already familiar.
+
+## 2. Mappings and service commitments
 
 ### Concepts
 
@@ -63,7 +88,7 @@ The Markdown editor in VS Code (right-click, Open with…) is how learners shoul
 - **The review demo.** Open a submitted contract in the Markdown editor and edit one cell. Run the HTML prompt on a fast model at low effort and open the page in the browser; start the same prompt on the biggest model at high effort and let it run while you teach. If both stall, `courseware/common/running-example/03-data-contract.html` is the pre-rendered page (made with pandoc).
 - **The implementability test.** Take two rules from the room's contracts and ask whether someone else could implement them without asking; rooms find their own ambiguity in a minute.
 
-## 2. Platform architecture
+## 3. Platform architecture
 
 ### Concepts
 
@@ -132,7 +157,7 @@ Databricks is the compute that runs dbt's SQL as Spark; dbt holds the transforma
 - **Shareback (one minute per table).** One thing Databricks does that a plain file store cannot; one thing dbt relies on Databricks for; one tool on the diagram you have used and one you have not.
 - **If behind**, show the tools-together diagram and the Delta demo only; the Spark demo and the history diagram are the flex.
 
-## 3. Docker
+## 4. Docker
 
 ### Concepts
 
@@ -162,46 +187,33 @@ Databricks is the compute that runs dbt's SQL as Spark; dbt holds the transforma
 - **Challenge 7, `challenges/v1/01-docker-intro` (35 minutes).** From `starter/`: 1 run an image; 2 look inside (isolation); 3 write the Dockerfile (`starter/Dockerfile` has one TODO per line; the app under `starter/app/` is complete and not touched); 4 build the image; 5 run it; 6 try it yourself (optional: tags, variations). The finished image prints "Portfolio summary", then "6 holdings, total market value 12,011,626.50". Gate: `mise run challenge:verify 01` prints PASS. Stretch for the experienced: multi-stage builds, resource limits, Kubernetes.
 - **Stalls.** "Cannot connect to the Docker daemon": the engine is not running, start Docker Desktop. "permission denied on the socket": on Linux the user is not in the docker group; use the dev container. "exec format error" or script not found: CRLF line endings after editing on Windows; save as LF and rebuild. The first pull of `python:3.11-slim` is slow once. Building from the wrong folder: `.` is the build context and the Dockerfile copies `app/` from it.
 
-## 4. Contract to code
+## 5. Catalyst skills, and setting up for tomorrow
 
 ### Concepts
 
-#### What a reviewed contract produces
+#### The map of the skills
 
-**The skills.** `setup-dbt-project` scaffolds a project with layers and tags; `write-dbt-source` declares the sources with freshness thresholds from the service levels; `write-dbt-model` implements the mart from the STTM, one model per layer, every rule traceable to a line; `generate-dag` writes the Airflow DAG with a freshness gate first, the dbt project as a task group, a publish step, a schedule that meets the delivery time, retries and failure callbacks; `validate-dbt` and `validate-dag` check the result. Copilot without a skill also works, with more review.
+About a hundred and six skills in the Catalyst repository, in four tiers that compose downwards: orchestrators (11) run a lifecycle phase or stage end to end (`dplc-concierge`, `dplc-triage`, `dplc-design`, `dplc-build`, `dplc-publish`); workflow skills (15) run several steps as one job (`source-aligned`, `domain-aligned`, `consumer-aligned`, `setup-dbt-project`, `data-modeling`); document skills (37) make one artefact from a template (`product-requirements-document`, `data-contract`, `transformation-spec`, `sla-dashboard-spec`, `runbook`); capability skills (42) do one composable action (`connect-databricks`, `query-table`, `profile-columns`, `write-dbt-model`, `generate-dag`, `validate-dag`). Underneath sits deterministic Python (profiling, platform clients) that is not a skill. Each skill is tagged with the phase it serves: build is the largest cluster, then design, then discovery; triage, validate, publish, operate and evolve have a handful each; about fifteen are cross-cutting.
 
-**What becomes what.** The schema section becomes models and column definitions; the quality rules become tests; the freshness commitment becomes `dbt source freshness` thresholds; the delivery time becomes the DAG's schedule; each STTM rule becomes a CTE with a comment naming the rule; the consumer registry becomes exposures. What the model still cannot know is the assumption the contract did not state, which is what the review finds, and the fix goes into the contract before the code.
+#### Which skill, when
 
-**Where output lands.** Learners run `mise run setup:databricks` (browser OAuth, press Enter through the prompts, minutes per person) and `dpc-check`, then see their tables in the Databricks UI under Catalog, `training_dev`, `training_‹username›`. On the paved path you rarely open that UI: you write dbt in files, run it from the container, and commit. Here the same tables land in a DuckDB file, which is why the demo project runs on this laptop without Databricks.
+The five the room has used sit in discovery and design: `product-requirements-document`, `data-contract`, `transformation-spec`, `sla-dashboard-spec` and the concierge. Wednesday and Thursday use the build skills (`setup-dbt-project`, `write-dbt-source`, `write-dbt-model`, `validate-dbt`, `adding-dbt-unit-test`, `generate-dag`, `validate-dag`); Thursday's Phase 2 touches publish and operate (`runbook`, `consumer-onboarding-guide`, `release-notes`); Friday's evidence maps to validate. The rule the afternoon teaches: pick the skill for the phase you are in. A build skill run on a design nobody has agreed produces confident code for the wrong product, which is why no dbt is generated today.
 
-**The 80/20 message.** If most of the technical job comes from the first pass over a good contract, then the interviews, the transcripts, the iteration and the design review are the job; the remaining part is running, reviewing, testing edge cases. One effective loop: transcribe, generate, print, annotate by hand, feed the corrections back, repeat.
+#### Loading the plugin
 
-![Contract to code](../../courseware/common/diagrams/png/d2-contract-to-code.png)
-
-![The dbt flow a generated project follows](../../courseware/common/diagrams/png/d2-dbt-flow.png)
-
-#### A preview of Days 3 and 4
-
-dbt is ELT: load first, transform in the warehouse. A model is a `select` statement in a file whose name is the model's name; `{{ ref() }}` and `{{ source() }}` build the dependency graph; YAML holds tests and materialisation (view or table); the commands are `debug`, `seed`, `run`, `test`, `build`. Airflow's DAG is Python; at CG, YAML blueprints fill placeholders in standard Python; the Cosmos task group renders each dbt model and test as an Airflow task. Both get a full day.
+Three VS Code settings (`chat.plugins.enabled`, `chat.useAgentSkills`, `chat.plugins.marketplaces` pointing at the Catalyst repository, or at a local copy), a reload, `/plugins` to enable AI Catalyst, and `/ai-catalyst` listing the skills. A skill is a `SKILL.md` with a template and checks; Copilot shows it reading the file, and without that line it is plain Copilot. On this laptop the same skills run in Claude Code as `/<skill-name>` from `courseware/.claude/skills/`.
 
 ### Teaching notes
 
-- **Debrief in this order** (the whiteboard in the run sheet): what the generated project contains; where each contract section went; what it assumed that the contract never said; what you would change in the contract. Then the dbt flow diagram.
-- **Likely questions and answers.**
-  - *It generated twenty files; do I need them all?* No. Keep the ones that implement the contract, delete the rest; a smaller project is a reviewable one.
-  - *Why did it make a staging layer?* dbt convention: rename and cast once, close to the source, so every later model reads clean columns.
-  - *How do I run it?* From the dev container against Databricks: `dbt debug`, `seed`, `run`, `test`, `build`. Tomorrow.
-  - *What is the twenty per cent?* Running it, reading every line, the edge cases the contract was silent on, the tests that prove them.
-  - *Can it generate the Airflow part too?* Yes, from the same contract; the schedule comes from the SLA and the gate from the freshness commitment, which is why those sections had to be numbers.
-- **Misconceptions to catch.** Generated code is correct because it runs. A bigger prompt gives a better project (a better contract does). The DAG is the product (the tables are; the DAG keeps the promises).
+- **Thirty minutes in total**: ten on the tiers and the phase table, five on loading, fifteen for Activity 8 if the room has time; otherwise Activity 8 is homework and the time goes to the Databricks setup.
+- **Likely questions.** *Can I just use the concierge?* It routes you, slowly; prefer the specific skill. *Which skill writes the dbt project?* `setup-dbt-project` and the `write-dbt-*` skills, tomorrow. *Is a design skill's output final?* No; review it for the invented detail exactly as the PRD was reviewed.
+- **Misconceptions to catch.** More skills run means a better product (the right skill for the phase does). A generated data model is the data model (the owner agrees it).
 
 ### Mechanics
 
-- **Demo: where output lands.** The learners' steps (setup, `dpc-check`, the Databricks catalog view), then the DuckDB equivalent: `bash demos/contract-to-code/eod_prices/run.sh` seeds three feeds (vendor prices, instrument master, FX rates), builds `stg_vendor_prices`, `stg_instruments`, `stg_fx_rates`, `int_prices_usd` and the mart `rpt_eod_prices_us`, and runs the tests, including `assert_us_completeness` and `assert_no_future_prices`. The `sql()` cells list the schema and show the price sheet.
-- **Demo: one minute of live generation.** In Claude Code, `/setup-dbt-project` with the contract and the STTM attached; narrate what it reads first; stop after a minute and open the prepared project's models (a CTE per STTM rule, each commented), its tests (they mirror the quality rules), and `eod_prices_daily.py` in the Day 4 Airflow project, whose schedule is the contract's delivery commitment turned into a weekday cron in New York time.
-- **Activity 8 (50 minutes).** Pairs generate a dbt project and an Airflow DAG from their contract (simulated data if needed), add comments, ask how to run it and where output lands, run as far as they can. Advanced pairs: a loading strategy the standard macro does not cover, or Airflow logging to Datadog.
-- **Activity 8b (20 minutes).** Pairs swap: take STTM rule R3 and the model that implements it; point to the source column, the transformation and the null rule; run the validate skills on the other pair's code. The corrections go into the contract, and the close asks each pair for one correction and why.
-- **Before learners leave.** One generated project and one revised contract per pair kept; Databricks setup done for everyone, because tomorrow's first command is `dbt debug`.
+- **Activity 8 (optional, 20 minutes).** Pairs run one design skill on their own PRD and contract (`consumer-use-case-map`, `data-model`, `architecture-diagram`, `data-quality-controls-plan` or `nfr-specification`), review it, and bring one line: what it added and what it invented.
+- **Databricks setup (14:45).** Everyone runs `mise run setup:databricks` (browser OAuth, Enter through the prompts, minutes per person) and `dpc-check`, and finds `training_dev.training_‹username›` in the catalog, because tomorrow's first command is `dbt debug`. Anyone blocked gets the platform-support contact tonight.
+- **Before learners leave.** Each table's extended contract shared; Challenge 7 at PASS for everyone; Databricks set up; access problems on a separate list from content questions.
 
 ## Readiness self-test
 
@@ -237,11 +249,10 @@ dbt is ELT: load first, transform in the warehouse. A model is a `select` statem
 
 - [ ] Docker Desktop running; `docker info` prints engine details.
 - [ ] `source courseware/common/env/activate.sh`, then `bash courseware/day2-platform/demos/docker/portfolio-summary/demo.sh` prints the six-holding summary; `python demos/delta-under-the-hood/demo.py` ends at the OPTIMIZE step; `python demos/spark-engine/demo.py --hold 20` prints a plan with `Exchange` and the UI answers at http://localhost:4040.
-- [ ] `bash courseware/day2-platform/demos/contract-to-code/eod_prices/run.sh` ends with the price sheet.
 - [ ] Open the Day 2 anchor, Run All, save with outputs; check the diagrams render.
 - [ ] Run the HTML prompt once on a fast model and keep the result; confirm `03-data-contract.html` opens in the browser.
 - [ ] Open the dev container's Dockerfile from `reference/DataCreators-client/…/.devcontainer/Dockerfile` and find the lines you will point at.
-- [ ] Print the activity cards for 6, 7, 8 and 8b and this day's run sheet; the Databricks setup commands posted in the Teams channel at 13:00.
+- [ ] Print the activity cards for 6, 7 and 8 and this day's run sheet; the Databricks setup commands posted in the Teams channel at 14:45.
 
 ## Go deeper
 
