@@ -9,7 +9,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 1 | Day 1 recap and the map of the week | 09:00–09:25 | Recap: what we made yesterday · Whiteboard: source-, domain- and consumer-aligned · Today, and the two musts |
 | 2 | Mappings and service commitments | 09:25–10:45 | Demo: STTM and service levels · Worked example: the running example's contract, mapping and service levels · Activity 6: extend the contract · Break · Shareback: review and present a contract |
 | 3 | Platform architecture | 10:45–11:15 | Demo: warehouse, lake, lakehouse; Databricks under the hood; Delta; the tools together · Shareback |
-| 4 | Docker | 11:15–13:55 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Demo (optional): three containers with Compose, and the network between them · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives |
+| 4 | Docker | 11:15–13:55 | Demo: Docker in the six steps of the challenge, a sample Dockerfile, the gate · Demo: the dev container's Dockerfile · Demo (optional): two containers with Compose, and the network between them · Challenge 7: Docker practical · Lunch · Challenge 7 continued, with the stretch · Shareback: image, container, what survives |
 | 5 | Git and GitHub (optional) | 13:55–14:15 | Demo: the loop on a scratch repository, then the pull request on screen · Optional practical: branch, commit, push, pull request · Break |
 | 6 | Catalyst skills, and setting up for tomorrow | 14:15–15:00 | Demo: the skills, their tiers and the lifecycle; how to load them · Activity 8 (if time allows): one design skill on your product · Databricks setup · Close |
 
@@ -254,7 +254,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 - Mirror the challenge's six sections in order with the same commands: run an image, look inside, the Dockerfile (a commented sample on screen), build and the cache, run and the expected two lines, tag; then the gate and the four stalls.
 - Show the training repo's Dockerfile: FROM, COPY, RUN, USER, ENV. Say EDO maintains it.
 - Point at the glossary: every command by objective, and the secure example, for the afternoon.
-- Optional, six minutes: the Compose demo (three containers, a private network, name resolution, one published port, a one-shot report, isolation three ways). Here if the room is quick; otherwise the last six minutes before the shareback, while finishers are on the stretch. The first `docker compose up` pulls and builds for about a minute, so run it the evening before.
+- Optional, six minutes: the Compose demo (two containers, a private network, name resolution, one published port, isolation three ways). Here if the room is quick; otherwise the last six minutes before the shareback, while finishers are on the stretch. The first `docker compose up` pulls and builds for about a minute, so run it the evening before.
 
 **Say.**
 
@@ -283,14 +283,14 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 5. Say: EDO maintains this; you never will; but now you can read it.
 6. Open Docker Desktop: Images, then Settings and Resources, briefly.
 
-### Demo (optional) — three containers with Compose, and the network between them · 11:15–11:40
+### Demo (optional) — two containers with Compose, and the network between them · 11:15–11:40
 
-**Demo — three containers with Compose, and the network between them.** `demos/docker/compose/`: Postgres seeded with the running example's price sheet, a small HTTP API that queries it by name, and a one-shot report. Every line of the Compose file is commented; the eight cells below are `demo.sh` in order.
+**Demo — two containers with Compose, and the network between them.** `demos/docker/compose/`: Postgres seeded with the running example's price sheet, and a small HTTP API that queries it by name. Every line of the Compose file is commented; the eight cells below are `demo.sh` in order.
 
-1. Open `docker-compose.yml`: three services (`db`, `api`, `report`), one network (`backend`), one volume. Read the comments on `networks:`, `ports:` and `depends_on:`; say the password is a demo value and point at the secure example for `.env`.
-2. `docker compose up -d --build`, then `docker compose ps -a`: db has `5432/tcp` with no arrow (published nowhere); api has `127.0.0.1:8000->8000`; report has exited 0.
-3. `docker compose logs report`: the one-shot ran one query against `db` and exited; the shape of a dbt run or an Airflow task.
-4. `docker network inspect eod_backend`: the two running containers and their private addresses.
+1. Open `docker-compose.yml`: two services (`db`, `api`), one network (`backend`), one volume. Read the comments on `networks:`, `ports:` and `depends_on:`; say the password is a demo value and point at the secure example for `.env`.
+2. `docker compose up -d --build`, then `docker compose ps -a`: db has `5432/tcp` with no arrow (published nowhere); api has `127.0.0.1:8000->8000`.
+3. `docker compose logs api`: the API started and was told the database's name, nothing more.
+4. `docker network inspect eod_backend`: the two containers and their private addresses.
 5. Inside api, resolve `db` and read `resolv.conf`: the service name is the hostname, Docker's embedded DNS at 127.0.0.11 answers, no address is written anywhere.
 6. `curl localhost:8000/health` and `/prices?instrument_id=US0378331005` from the laptop: through the one published port, the API answers by querying db over the network.
 7. Isolation three ways: `docker port` shows api published and db not; a container on the default network cannot resolve `db`; one started with `--network eod_backend` can.

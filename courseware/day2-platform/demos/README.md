@@ -3,7 +3,7 @@
 | Folder | What it shows | Run |
 |---|---|---|
 | `docker/portfolio-summary/` | The challenge's six-holding app: run an image, look inside, build, run, mount, tag (the same steps as challenge 01) | `bash demo.sh` |
-| `docker/compose/` | Three containers on one private network: Postgres seeded with the running example's price sheet, an HTTP API that queries it by service name, a one-shot report; the network and its members, name resolution, the one published port, isolation three ways, `down -v` | `bash demo.sh` |
+| `docker/compose/` | Two containers on one private network: Postgres seeded with the running example's price sheet, an HTTP API that queries it by service name; the network and its members, name resolution, the one published port, isolation three ways, `down -v` | `bash demo.sh` |
 | `delta-under-the-hood/` | A Delta table on disk: Parquet files plus a transaction log; append, MERGE, history, time travel, OPTIMIZE; read back from DuckDB | `python demo.py` |
 | `spark-engine/` | A local Spark: driver, executors, partitions, a SQL plan with its shuffle, the Spark UI | `python demo.py --hold 90`, then open http://localhost:4040 |
 | `git/` | The Git section's six steps on a throwaway repository: a first commit, status and diff, a branch, the merge, `.gitignore`, restore and revert | `bash demo.sh` |

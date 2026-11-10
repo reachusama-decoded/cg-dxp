@@ -1,8 +1,8 @@
-# Three containers that run together, the way `astro dev start` runs Airflow's scheduler, API server, triggerer
+# Two containers that run together, the way `astro dev start` runs Airflow's scheduler, API server, triggerer
 # and Postgres on Day 4: one file names the services, Compose creates a private network and a volume for them
 # and starts them in dependency order. Every line is commented.
 #   docker compose up -d --build      build, pull, create, start        docker compose ps -a      who is running
-#   docker compose logs report        one service's output              docker compose down -v    remove it all
+#   docker compose logs api           one service's output              docker compose down -v    remove it all
 
 name: eod                                  # the project name: prefixes the containers (eod-db-1), the network (eod_backend) and the volume (eod_dbdata)
 
@@ -52,19 +52,6 @@ services:                                  # each entry below is one container, 
           memory: 128M                     # a cap: a runaway process cannot starve the laptop
           cpus: "0.5"
 
-  report:                                  # a one-shot container: runs one query against db and exits, the shape of a dbt run or an Airflow task
-    image: postgres:16-alpine              # reused only for its psql client; the image is already on the laptop for db
-    environment:
-      PGPASSWORD: creator-demo             # psql reads the password from this variable
-    command: >                             # replaces the image's default command (starting a server); when it finishes, the container exits
-      psql -h db -U creator -d prices -c
-      "select count(*) as rows, count(distinct instrument_id) as instruments, min(price_date) as first_day, max(price_date) as last_day from eod_prices"
-    networks:
-      - backend                            # the same network, so "db" resolves here too
-    depends_on:
-      db:
-        condition: service_healthy
-    restart: "no"                          # a finished container stays finished; `docker compose ps -a` shows it Exited (0)
 
 networks:
   backend: {}                              # a private bridge network Compose creates for this project; containers on it reach each other by service name; nothing joins it by accident

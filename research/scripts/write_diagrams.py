@@ -366,11 +366,10 @@ flowchart LR
   subgraph N["eod_backend: the project's private network"]
     direction LR
     A["api<br/>queries by name"] -->|"db:5432"| Db["db<br/>Postgres, no ports:"]
-    Rp["report<br/>one query, then exits"] -->|"db:5432"| Db
   end
   X["Any other container<br/>default network"] -.->|"db? no such host"| Db
   class L yellow
-  class A,Rp blue
+  class A blue
   class Db focus
   class X grey
 """

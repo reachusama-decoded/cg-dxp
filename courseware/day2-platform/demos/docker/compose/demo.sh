@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# Day 2 Compose demo: three containers on one private network, in the order of the anchor's cells. Docker Desktop
+# Day 2 Compose demo: two containers on one private network, in the order of the anchor's cells. Docker Desktop
 # must be running. The first run pulls postgres:16-alpine and builds the API image (about a minute); later runs are seconds.
 set -euo pipefail
 cd "$(dirname "$0")"
 step() { printf '\n\033[1;34m== %s ==\033[0m\n' "$*"; }
 step "0. A clean slate: remove any earlier run of this project, its network and its volume"
 docker compose down -v --remove-orphans 2>/dev/null || true
-step "1. The file: three services, one network, one volume"
+step "1. The file: two services, one network, one volume"
 docker compose config --services
 step "2. Up: build the API image, pull Postgres, create the network and the volume, start in dependency order"
 docker compose up -d --build
 docker compose ps -a --format 'table {{.Service}}\t{{.Status}}\t{{.Ports}}'
-step "3. The one-shot report ran one query against db, by name, and exited"
-docker compose logs --no-log-prefix report
+step "3. The API's log: it started, and was told the database's name and nothing more"
+docker compose logs --no-log-prefix api
 step "4. The network Compose created, and who is on it"
 docker network ls --filter name=eod_
 docker network inspect eod_backend --format '{{range .Containers}}{{println .Name .IPv4Address}}{{end}}'
