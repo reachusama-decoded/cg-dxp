@@ -14,6 +14,10 @@ One product carries every demo and fallback in the week, so the room sees the sa
 
 The implementation of this product is `day2-platform/demos/contract-to-code/eod_prices/` (dbt on DuckDB) and the `eod_prices_daily` DAG in `day4-airflow/demos/airflow_local/`.
 
+## Sample data
+
+`data/` holds the three source files as landed (the vendor feed, the instrument master, the FX rates), the domain-aligned intermediate table and the published price sheet, the last two exported from the dbt build. The contract's schema describes the price sheet, not the sources; `data/README.md` says which rows show each mapping rule at work.
+
 ## The order, and why
 
 The numbers are the order of creation, which is the lifecycle's order: the interview produces the transcript; the PRD is generated from the transcript (why the product exists, who decides with it); the data contract is written from the PRD (what is promised, to whom); the mapping needs the contract's target schema (how each column is produced); the service levels need the consumer's decision time (the numbers the contract's SLA section promises). Each later document revises the one before it, which is what the contract's revision history is for. Only after the five are reviewed does the code start: the schema becomes models, the quality rules become tests, the mapping becomes the CTEs and the service levels become the schedule and the freshness gate (`courseware/day2-platform/demos/contract-to-code/eod_prices/` and the `eod_prices_daily` DAG in the Day 4 stack).

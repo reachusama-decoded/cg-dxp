@@ -133,7 +133,8 @@ Demo: STTM and service levels · Worked example: the running example's contract,
 1. Open `common/running-example/03-data-contract.md` in the Markdown preview: section 2 (the schema, the target), section 3 (the SLAs) and section 4 (the quality rules).
 2. Open `04-sttm.md`: one rule per target column with its type, rule type, source and the rule in English; the four row rules beneath; the edge cases agreed in the interview.
 3. Open `05-service-levels.md`: each commitment as an indicator, an objective and an agreement, with its clock and how it is measured.
-4. Say: this is what yours will look like after the activity, in the same template Catalyst uses; the two cells below keep both documents on the projector.
+4. Open `data/`: the three source files as landed, the intermediate table and the price sheet. The contract's schema is the price sheet's, not the vendor's; the last cell shows the first rows of each.
+5. Say: this is what yours will look like after the activity, in the same template Catalyst uses; the two cells below keep both documents on the projector.
 
 **Transition.** Activity 6: put both into yesterday's contract.
 
