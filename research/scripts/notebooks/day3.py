@@ -423,7 +423,7 @@ con.execute(f"""
 con.sql("select isin, px_date, px_ccy, px_close, round(price_usd, 4) as price_usd from prices_usd where px_ccy <> 'USD' order by isin, px_date").df()
 # It ran, with no error. Now look at HSBC (GB0005405286): the dollar price equals the pound price. Who would have noticed?'''),
          dc.md("The script ran, and three prices are wrong. The SQL is the easy part; dbt is for everything around it."),
-         fig("d3-without-with", "Six questions a hand-run script cannot answer, and what dbt gives you for each"),
+         fig("d3-script-vs-dbt", "Six questions a hand-run script cannot answer, and what dbt gives you for each", height=360),
          dc.md("#### How a dbt project comes together: the path for the next thirty minutes"),
          fig("d3-journey", "The path: eight steps from an empty folder to a tested, documented table",
                    ["Each step adds one kind of file and one command. First make it run (steps 1 to 4), then make it right and say what it is (steps 5 to 8).",

@@ -481,7 +481,7 @@ flowchart TB
   class E,F,G focus
   class H green
 """
-D["d3-without-with"] = """
+D["d3-script-vs-dbt"] = """
 flowchart TB
   subgraph S ["A SQL script, run by hand"]
     S1["<b>Is it right?</b><br/>Someone looks,<br/>sometimes"]
