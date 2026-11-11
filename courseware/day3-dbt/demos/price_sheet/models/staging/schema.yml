@@ -1,4 +1,4 @@
-# schema.yml: what each model and column means, and the promises dbt checks
+# staging/schema.yml: what each staging model and column means, and the promises dbt checks
 version: 2
 
 models:
@@ -15,14 +15,3 @@ models:
           - accepted_values:
               arguments:
                 values: ['USD', 'EUR', 'GBP', 'JPY']
-
-  - name: prices_usd
-    description: "End-of-day prices in US dollars. One row per instrument per day."
-    columns:
-      - name: instrument_id
-        tests:
-          - not_null
-      - name: price_usd
-        description: "Close price times the day's FX rate to USD."
-        tests:
-          - not_null

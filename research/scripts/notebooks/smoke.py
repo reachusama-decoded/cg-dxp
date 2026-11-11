@@ -31,7 +31,8 @@ def run_cell(src, ns, cwd):
     if src.startswith("%%writefile "):          # the cell is a file: write it, as Jupyter would
         first, _, body = src.partition("\n")
         target = Path(cwd) / first.split(None, 1)[1].strip()
-        target.parent.mkdir(parents=True, exist_ok=True)
+        if not target.parent.is_dir():           # Jupyter's %%writefile does not create folders either
+            return False, f"%%writefile: no such folder {target.parent}"
         target.write_text(body + "\n")
         return True, f"wrote {target}"
     def flush():

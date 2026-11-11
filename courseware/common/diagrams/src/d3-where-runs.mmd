@@ -1,0 +1,14 @@
+flowchart LR
+  F["<b>The same dbt project</b><br/>models · YAML · tests · commands"]
+  F -->|"profiles.yml<br/>type: duckdb"| A["<b>Demos on screen</b><br/>DuckDB: a file on the instructor's laptop<br/>instant, no connection"]
+  F -->|"profiles.yml<br/>type: databricks"| B["<b>Your challenge</b><br/>Databricks: Spark, Delta on S3<br/>training_dev.training_YOU"]
+  class F blue
+  class A grey
+  class B focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

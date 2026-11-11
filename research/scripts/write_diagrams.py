@@ -465,6 +465,122 @@ flowchart LR
   class D focus
   class F green
 """
+D["d3-journey"] = """
+flowchart TB
+  subgraph R1 ["First: make it run"]
+    direction LR
+    A["<b>1 Set up</b><br/>project + profile<br/>dbt debug"] --> B["<b>2 Load</b><br/>raw data<br/>dbt seed"] --> C["<b>3 Model</b><br/>source + SELECT<br/>dbt run"] --> D["<b>4 Connect</b><br/>ref() + a join<br/>dbt run"]
+  end
+  subgraph R2 ["Then: make it right, and say what it is"]
+    direction LR
+    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Guard</b><br/>a singular test<br/>dbt build"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D blue
+  class E,F,G focus
+  class H green
+"""
+D["d3-without-with"] = """
+flowchart TB
+  subgraph S ["A SQL script, run by hand"]
+    S1["<b>Is it right?</b><br/>Someone looks,<br/>sometimes"]
+    S2["<b>What order?</b><br/>Someone<br/>remembers"]
+    S3["<b>What does<br/>it mean?</b><br/>Ask the author"]
+    S4["<b>Same rule in<br/>five places?</b><br/>Copy and paste"]
+    S5["<b>Dev and prod?</b><br/>Edit the script"]
+    S6["<b>What changed?</b><br/>Nobody knows"]
+  end
+  subgraph D ["The same work in dbt"]
+    D1["Tests on<br/>every build"]
+    D2["ref() sets<br/>the order"]
+    D3["Docs and lineage,<br/>generated"]
+    D4["Written once,<br/>as a macro"]
+    D5["Same files,<br/>another target"]
+    D6["Git and<br/>pull requests"]
+  end
+  S1 --> D1
+  S2 --> D2
+  S3 --> D3
+  S4 --> D4
+  S5 --> D5
+  S6 --> D6
+  class S1,S2,S3,S4,S5,S6 red
+  class D1,D2,D3,D4,D5,D6 green
+"""
+D["d3-where-runs"] = """
+flowchart LR
+  F["<b>The same dbt project</b><br/>models · YAML · tests · commands"]
+  F -->|"profiles.yml<br/>type: duckdb"| A["<b>Demos on screen</b><br/>DuckDB: a file on the instructor's laptop<br/>instant, no connection"]
+  F -->|"profiles.yml<br/>type: databricks"| B["<b>Your challenge</b><br/>Databricks: Spark, Delta on S3<br/>training_dev.training_YOU"]
+  class F blue
+  class A grey
+  class B focus
+"""
+D["d3-jinja"] = """
+flowchart LR
+  J1["{{ source('vendor_feed', 'prices_raw') }}"] --> O1["a raw table's full name"]
+  J2["{{ ref('stg_prices') }}"] --> O2["another model's name,<br/>and an edge in the graph"]
+  J3["{{ config(materialized = 'table') }}"] --> O3["a setting for this model"]
+  J4["{{ this }}"] --> O4["this model's own table"]
+  J5["if · for · macro<br/>(in curly-brace-percent tags)"] --> O5["logic that writes SQL:<br/>at 13:00"]
+  class J1,J2,J3,J4 blue
+  class J5 grey
+  class O1,O2,O3,O4 green
+  class O5 grey
+"""
+D["d3-yaml"] = """
+flowchart LR
+  E["<b>.yml = .yaml</b><br/>same format,<br/>two spellings"]
+  E --> Fx
+  E --> An
+  subgraph Fx ["Two fixed names"]
+    F1["dbt_project.yml"]
+    F2["profiles.yml"]
+  end
+  subgraph An ["Any other name: dbt reads the keys inside"]
+    K1["sources:<br/>raw tables"]
+    K2["models:<br/>descriptions, tests"]
+    K3["seeds: · snapshots:"]
+    K4["unit_tests:"]
+  end
+  class E focus
+  class F1,F2 yellow
+  class K1,K2,K3,K4 blue
+"""
+D["d3-demo-to-challenge"] = """
+flowchart LR
+  subgraph A ["You just saw"]
+    A1["debug · seed · the raw rows"]
+    A2["dbt_project.yml · profiles.yml"]
+    A3["sources.yml · source()"]
+    A4["staging/stg_prices: rename, cast, clean"]
+    A5["config() · dbt build · --select"]
+    A6["schema.yml tests"]
+    A7["int_ and fct_ models: ref(), a join"]
+    A8["a singular test · docs"]
+  end
+  subgraph B ["In the challenge README"]
+    B1["S1 Inspect the raw data"]
+    B2["S2 Read the project"]
+    B3["S3 Sources and freshness"]
+    B4["S4, S5 Staging models"]
+    B5["S6, S7 Materialise and build"]
+    B6["S8, C5 Tests"]
+    B7["C1 to C4 Joins and marts"]
+    B8["C6 Reconciliation · C8 Docs"]
+  end
+  A1 --> B1
+  A2 --> B2
+  A3 --> B3
+  A4 --> B4
+  A5 --> B5
+  A6 --> B6
+  A7 --> B7
+  A8 --> B8
+  class A1,A2,A3,A4,A5,A6,A7,A8 blue
+  class B1,B2,B3,B4,B5,B6,B7,B8 focus
+"""
 D["d3-what-dbt-does"] = """
 flowchart LR
   Src["Source systems"] -->|"extract + load<br/>(other tools)"| Raw["Raw tables"]
@@ -482,22 +598,25 @@ flowchart LR
 """
 D["d3-project-anatomy"] = """
 flowchart TB
-  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults"]
+  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults per folder"]
   P --> Y2["profiles.yml<br/>connection, targets"]
   P --> M["models/<br/>one SELECT per .sql file<br/>+ YAML: sources, descriptions, tests"]
   P --> Sd["seeds/<br/>small CSVs"]
   P --> T["tests/<br/>singular tests"]
   P --> Mc["macros/<br/>reusable Jinja"]
   P --> Tg["target/<br/>written by dbt"]
+  M --> L1["staging/<br/>stg_ : clean one raw table"]
+  M --> L2["intermediate/<br/>int_ : joins and rules"]
+  M --> L3["marts/<br/>fct_ agg_ : what consumers read"]
   class P focus
   class Y1,Y2 yellow
-  class M blue
+  class M,L1,L2,L3 blue
   class Sd,T,Mc aqua
   class Tg grey
 """
 D["d3-compile"] = """
 flowchart LR
-  A["models/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
+  A["models/staging/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
   B -->|wrap| C["target/run/<br/>create view ... as<br/>SELECT"]
   C -->|send| D["Warehouse<br/>view stg_prices"]
   class A blue
@@ -506,12 +625,28 @@ flowchart LR
 """
 D["d3-first-dag"] = """
 flowchart LR
-  R1[("vendor_prices_raw")] -->|"source()"| S1["stg_prices<br/>view"]
-  R2[("fx_rates_raw")] -->|"source()"| S2["stg_fx_rates<br/>view"]
-  S1 -->|"ref()"| M["prices_usd<br/>table"]
-  S2 -->|"ref()"| M
+  subgraph raw ["Raw (seeds)"]
+    R1[("vendor_prices_raw")]
+    R2[("fx_rates_raw")]
+  end
+  subgraph stg ["staging/ : views"]
+    S1["stg_prices"]
+    S2["stg_fx_rates"]
+  end
+  subgraph int ["intermediate/ : views"]
+    I["int_prices_usd"]
+  end
+  subgraph mart ["marts/ : tables"]
+    M["fct_prices_usd"]
+  end
+  R1 -->|"source()"| S1
+  R2 -->|"source()"| S2
+  S1 -->|"ref()"| I
+  S2 -->|"ref()"| I
+  I -->|"ref()"| M
   class R1,R2 grey
   class S1,S2 aqua
+  class I blue
   class M focus
 """
 D["d3-tests"] = """
@@ -537,7 +672,7 @@ flowchart LR
 """
 D["d3-macro"] = """
 flowchart LR
-  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["prices_usd"]
+  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["int_prices_usd"]
   Mc --> M2["another model"]
   Mc --> M3["another model"]
   M1 --> Cp["Compiled SQL<br/>the expression, expanded"]

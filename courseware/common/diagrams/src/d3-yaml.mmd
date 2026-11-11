@@ -1,0 +1,24 @@
+flowchart LR
+  E["<b>.yml = .yaml</b><br/>same format,<br/>two spellings"]
+  E --> Fx
+  E --> An
+  subgraph Fx ["Two fixed names"]
+    F1["dbt_project.yml"]
+    F2["profiles.yml"]
+  end
+  subgraph An ["Any other name: dbt reads the keys inside"]
+    K1["sources:<br/>raw tables"]
+    K2["models:<br/>descriptions, tests"]
+    K3["seeds: · snapshots:"]
+    K4["unit_tests:"]
+  end
+  class E focus
+  class F1,F2 yellow
+  class K1,K2,K3,K4 blue
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

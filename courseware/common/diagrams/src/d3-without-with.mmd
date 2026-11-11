@@ -1,0 +1,32 @@
+flowchart TB
+  subgraph S ["A SQL script, run by hand"]
+    S1["<b>Is it right?</b><br/>Someone looks,<br/>sometimes"]
+    S2["<b>What order?</b><br/>Someone<br/>remembers"]
+    S3["<b>What does<br/>it mean?</b><br/>Ask the author"]
+    S4["<b>Same rule in<br/>five places?</b><br/>Copy and paste"]
+    S5["<b>Dev and prod?</b><br/>Edit the script"]
+    S6["<b>What changed?</b><br/>Nobody knows"]
+  end
+  subgraph D ["The same work in dbt"]
+    D1["Tests on<br/>every build"]
+    D2["ref() sets<br/>the order"]
+    D3["Docs and lineage,<br/>generated"]
+    D4["Written once,<br/>as a macro"]
+    D5["Same files,<br/>another target"]
+    D6["Git and<br/>pull requests"]
+  end
+  S1 --> D1
+  S2 --> D2
+  S3 --> D3
+  S4 --> D4
+  S5 --> D5
+  S6 --> D6
+  class S1,S2,S3,S4,S5,S6 red
+  class D1,D2,D3,D4,D5,D6 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

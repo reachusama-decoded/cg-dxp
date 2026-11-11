@@ -1,0 +1,38 @@
+flowchart LR
+  subgraph A ["You just saw"]
+    A1["debug · seed · the raw rows"]
+    A2["dbt_project.yml · profiles.yml"]
+    A3["sources.yml · source()"]
+    A4["staging/stg_prices: rename, cast, clean"]
+    A5["config() · dbt build · --select"]
+    A6["schema.yml tests"]
+    A7["int_ and fct_ models: ref(), a join"]
+    A8["a singular test · docs"]
+  end
+  subgraph B ["In the challenge README"]
+    B1["S1 Inspect the raw data"]
+    B2["S2 Read the project"]
+    B3["S3 Sources and freshness"]
+    B4["S4, S5 Staging models"]
+    B5["S6, S7 Materialise and build"]
+    B6["S8, C5 Tests"]
+    B7["C1 to C4 Joins and marts"]
+    B8["C6 Reconciliation · C8 Docs"]
+  end
+  A1 --> B1
+  A2 --> B2
+  A3 --> B3
+  A4 --> B4
+  A5 --> B5
+  A6 --> B6
+  A7 --> B7
+  A8 --> B8
+  class A1,A2,A3,A4,A5,A6,A7,A8 blue
+  class B1,B2,B3,B4,B5,B6,B7,B8 focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -13,7 +13,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 | # | Section | Time | What happens |
 |---|---|---|---|
-| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in four pictures · Before we start: two things you could not judge yesterday · Demo: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
+| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
 | 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating: Phase 2 to lunch · Lunch |
 | 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
 | 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
@@ -41,7 +41,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ### 1. dbt from zero: one transformation through the whole life cycle
 
-Recap: yesterday's platform in four pictures · Before we start: two things you could not judge yesterday · Demo: project, profile, seeds, source, model, Jinja, ref, tests, build, docs
+Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs
 
 #### 09:00 · 10 min · Explain — Recap — yesterday's platform in four pictures
 
@@ -70,13 +70,17 @@ Recap: yesterday's platform in four pictures · Before we start: two things you 
 
 **Instructor notes.**
 
-- Present from the notebook; no whiteboard. Each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.
-- About five minutes a step, forty minutes in all. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.
-- At Step 3, spend two minutes on the Jinja table: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.
+- Present from the notebook; no whiteboard. The flow is: what dbt is for (one picture), why use it (the same transformation as a hand-run script that is silently wrong, then the without-and-with table), the path (eight steps on one picture), then the build. About five minutes for what and why, thirty for the steps, five for docs and the map to the challenge.
+- In the build, each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.
+- Learners do not run the demo: it is DuckDB on your laptop, and their hands-on is the challenge on Databricks. The 'Where things run today' table says so; point at it once before Step 1.
+- About four minutes a step. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.
+- Step 4 has a view-or-table beat: the models block of dbt_project.yml sets it per folder (staging and intermediate views, marts tables, as in the challenge), then config() in one model overrides it and is taken out again. It is challenge S6 in two minutes.
+- At Step 3, spend two minutes on the Jinja picture: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.
 - Run the section once before the room arrives so dbt's first-run delay is gone; the first cell resets the folder each time.
 
 **Say.**
 
+- “This script ran without an error and three prices are wrong. The SQL is the easy part; dbt is for everything around the SQL.”
 - “You write a SELECT. dbt writes the CREATE, works out the order, and checks the result.”
 - “The run was green and three prices were missing. A successful run says the SQL executed, not that the answer is right.”
 - “A test is only a query for the rows that break a rule. No rows, it passes.”
@@ -233,24 +237,25 @@ Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we
 
 #### 14:20 · 15 min · Independent or pairs work — Activity 9b — second look at yesterday's AI-generated dbt
 
-**Purpose.** Learners reopen the dbt project they generated yesterday, return to the two things they wrote down at 09:00 that they could not judge, and record what they catch now that they know dbt.
+**Purpose.** Learners reopen the dbt project they generated yesterday, name two things in it they could not judge then, assess it now that they know dbt, and prompt Copilot again to fix one thing they caught.
 
 **Instructor notes.**
 
 - This closes the loop the room opened yesterday: 'do we trust it, review all of it, or review some of it?' The answer the activity gives is an order to review in: sources, staging, joins, tests, then anything nobody asked for.
 - Yesterday some projects did not finish generating. Those learners pair with a neighbour whose project did, or review the Day 2 example in courseware/day2-platform/demos/contract-to-code/eod_prices.
-- Ten minutes of review in pairs, five of shareback: two or three pairs give one thing they catch now. Things still not judged go in the Q&A table.
+- Two minutes to write the two things down, eight to review and re-prompt in pairs, five of shareback: two or three pairs give what they caught, the prompt they wrote and whether the fix held. Things still not judged go in the Q&A table.
 
 **Say.**
 
-- “Take out the two things you wrote down this morning. Can you judge them now?”
+- “Think back to yesterday afternoon. Write down two things in that project you could not judge. Can you judge them now?”
+- “Yesterday your prompt was: build me a project. Today it can be: the join in this model drops rows with no FX rate; keep them and add a not_null test. That is the difference knowing dbt makes.”
 - “You do not review five hundred files. You review in graph order, and you start with the tests: do they guard the promises in your contract?”
 
 **Activity 9b — Second look at yesterday's AI-generated dbt.** Pairs, 15 min; the card is in `activities/`.
 
 **Transition.** From what you caught to what we learned today.
 
-**Adapt.** Short of time: pairs check only their two morning notes and the tests.
+**Adapt.** Short of time: pairs check only their two things and the tests, and write the prompt without running it.
 
 **Assessment.** Anchor › Activity 9b card; learners in the project Copilot and Catalyst generated on Day 2
 
@@ -325,7 +330,7 @@ Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we
 
 ## Before learners leave
 
-- [ ] The two things each learner could not judge in yesterday's generated project, marked as judged or still open, and one thing they catch now.
+- [ ] Two things each learner could not judge in yesterday's generated project, marked as judged or still open; one thing they caught, and the prompt that fixed it.
 - [ ] The working dbt project, model and test results, one independent output check and the outstanding questions for orchestration, kept where they are.
 - [ ] Each learner can trace one plain-English mapping through its model and its test.
 - [ ] Two volunteers (or a guest) confirmed for tomorrow's bitemporal and deployment slots, with the brief.

@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph R1 ["First: make it run"]
+    direction LR
+    A["<b>1 Set up</b><br/>project + profile<br/>dbt debug"] --> B["<b>2 Load</b><br/>raw data<br/>dbt seed"] --> C["<b>3 Model</b><br/>source + SELECT<br/>dbt run"] --> D["<b>4 Connect</b><br/>ref() + a join<br/>dbt run"]
+  end
+  subgraph R2 ["Then: make it right, and say what it is"]
+    direction LR
+    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Guard</b><br/>a singular test<br/>dbt build"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D blue
+  class E,F,G focus
+  class H green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

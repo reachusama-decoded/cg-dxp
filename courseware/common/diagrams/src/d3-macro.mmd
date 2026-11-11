@@ -1,5 +1,5 @@
 flowchart LR
-  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["prices_usd"]
+  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["int_prices_usd"]
   Mc --> M2["another model"]
   Mc --> M3["another model"]
   M1 --> Cp["Compiled SQL<br/>the expression, expanded"]

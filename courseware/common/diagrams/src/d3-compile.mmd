@@ -1,5 +1,5 @@
 flowchart LR
-  A["models/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
+  A["models/staging/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
   B -->|wrap| C["target/run/<br/>create view ... as<br/>SELECT"]
   C -->|send| D["Warehouse<br/>view stg_prices"]
   class A blue

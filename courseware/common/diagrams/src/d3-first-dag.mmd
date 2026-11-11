@@ -1,10 +1,26 @@
 flowchart LR
-  R1[("vendor_prices_raw")] -->|"source()"| S1["stg_prices<br/>view"]
-  R2[("fx_rates_raw")] -->|"source()"| S2["stg_fx_rates<br/>view"]
-  S1 -->|"ref()"| M["prices_usd<br/>table"]
-  S2 -->|"ref()"| M
+  subgraph raw ["Raw (seeds)"]
+    R1[("vendor_prices_raw")]
+    R2[("fx_rates_raw")]
+  end
+  subgraph stg ["staging/ : views"]
+    S1["stg_prices"]
+    S2["stg_fx_rates"]
+  end
+  subgraph int ["intermediate/ : views"]
+    I["int_prices_usd"]
+  end
+  subgraph mart ["marts/ : tables"]
+    M["fct_prices_usd"]
+  end
+  R1 -->|"source()"| S1
+  R2 -->|"source()"| S2
+  S1 -->|"ref()"| I
+  S2 -->|"ref()"| I
+  I -->|"ref()"| M
   class R1,R2 grey
   class S1,S2 aqua
+  class I blue
   class M focus
 classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
 classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a

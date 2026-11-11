@@ -1,0 +1,14 @@
+# marts/schema.yml: the same, for the table consumers read
+version: 2
+
+models:
+  - name: fct_prices_usd
+    description: "End-of-day prices in US dollars. One row per instrument per day."
+    columns:
+      - name: instrument_id
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Close price times the day's FX rate to USD."
+        tests:
+          - not_null

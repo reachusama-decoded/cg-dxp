@@ -1,6 +1,4 @@
--- prices_usd: every price in US dollars. The table consumers read.
-{{ config(materialized='table') }}
-
+-- int_prices_usd: every price joined to its day's FX rate and converted. Same rows as stg_prices.
 select
     p.instrument_id,
     p.price_date,

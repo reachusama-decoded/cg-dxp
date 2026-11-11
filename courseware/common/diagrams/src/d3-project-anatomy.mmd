@@ -1,14 +1,17 @@
 flowchart TB
-  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults"]
+  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults per folder"]
   P --> Y2["profiles.yml<br/>connection, targets"]
   P --> M["models/<br/>one SELECT per .sql file<br/>+ YAML: sources, descriptions, tests"]
   P --> Sd["seeds/<br/>small CSVs"]
   P --> T["tests/<br/>singular tests"]
   P --> Mc["macros/<br/>reusable Jinja"]
   P --> Tg["target/<br/>written by dbt"]
+  M --> L1["staging/<br/>stg_ : clean one raw table"]
+  M --> L2["intermediate/<br/>int_ : joins and rules"]
+  M --> L3["marts/<br/>fct_ agg_ : what consumers read"]
   class P focus
   class Y1,Y2 yellow
-  class M blue
+  class M,L1,L2,L3 blue
   class Sd,T,Mc aqua
   class Tg grey
 classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a

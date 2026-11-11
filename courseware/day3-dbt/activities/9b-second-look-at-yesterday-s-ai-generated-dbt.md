@@ -2,18 +2,19 @@
 
 *Day 3 · Pairs · 15 minutes*
 
-Yesterday Copilot and Catalyst generated a dbt project from your contract, before you knew dbt. This morning you wrote down two things in it you could not judge. Reopen that project with a partner (if yours did not finish, use your partner's) and review it in graph order: the sources, then staging, then the joins, then the tests, then anything nobody asked for. For each of your two notes, decide whether you can judge it now.
+Yesterday Copilot and Catalyst generated a dbt project from your contract, before you knew dbt. First, write down two things in that project you could not judge yesterday. Then reopen it with a partner (if yours did not finish, use your partner's) and assess it in graph order: the sources, then staging, then the joins, then the tests, then anything nobody asked for. Finally, pick one thing you caught and prompt Copilot again to fix it: name the file, say what is wrong and say how you will check the fix. Read what it changed and run the check.
 
 **Produce**
 
-- Your two morning notes, each marked: can judge now, or still cannot
-- One thing you catch now that you could not have caught yesterday, with the file it is in
+- Two things you could not judge yesterday, each marked: can judge now, or still cannot
+- One thing you catch now that you would have approved yesterday, with the file it is in
+- The prompt you wrote to fix it, and whether the fix passed your check
 - One thing you still cannot judge, for the questions table
 
 **Debrief questions**
 
 - What did you catch today that you would have approved yesterday?
-- Which file did you open first, and why that one?
+- How is today's prompt different from yesterday's?
 - Did the AI write anything nobody asked for? What would you delete?
 
 **What to look for, in order**

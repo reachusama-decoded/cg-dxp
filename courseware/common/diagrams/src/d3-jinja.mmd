@@ -1,0 +1,17 @@
+flowchart LR
+  J1["{{ source('vendor_feed', 'prices_raw') }}"] --> O1["a raw table's full name"]
+  J2["{{ ref('stg_prices') }}"] --> O2["another model's name,<br/>and an edge in the graph"]
+  J3["{{ config(materialized = 'table') }}"] --> O3["a setting for this model"]
+  J4["{{ this }}"] --> O4["this model's own table"]
+  J5["if · for · macro<br/>(in curly-brace-percent tags)"] --> O5["logic that writes SQL:<br/>at 13:00"]
+  class J1,J2,J3,J4 blue
+  class J5 grey
+  class O1,O2,O3,O4 green
+  class O5 grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a
