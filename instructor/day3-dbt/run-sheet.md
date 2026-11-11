@@ -11,16 +11,16 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 | # | Section | Time | What happens |
 |---|---|---|---|
-| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
+| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Ice-breaker: one thing you always double-check · Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
 | 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 · Break · Walkthrough: Phase 2 · Circulating: Phase 2 to lunch · Lunch |
-| 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
+| 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, OPTIMIZE and ZORDER, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
 | 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
 
 ## Timeline
 
 | § | Time | Block | Type | On screen |
 |---|---|---|---|---|
-| 1 | 09:00–09:10 | Recap: yesterday's platform in four pictures | Recap | Anchor › section 1, Recap (four Day 2 diagrams) |
+| 1 | 09:00–09:10 | Ice-breaker, then recap: yesterday's platform in four pictures | Recap | Anchor › section 1, Ice-breaker box, then Recap (four Day 2 diagrams) |
 | 1 | 09:10–09:50 | dbt from zero: one transformation through the whole life cycle | Demo | Anchor › section 1, top to bottom (demos/price_sheet) |
 | 2 | 09:50–10:00 | Challenge 9 — dbt practical: launch and first sections | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
 | 2 | 10:00–10:15 | Break | Break |  |
@@ -37,15 +37,16 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ## 1. dbt from zero: one transformation through the whole life cycle
 
-### Recap — yesterday's platform in four pictures · 09:00–09:10
+### Ice-breaker — one thing you always double-check · 09:00–09:10
 
 **Purpose.** Put everyone on the same page before dbt: where the tables live, what runs the SQL, and which box of the tools picture today zooms into.
 
-**On screen.** Anchor › section 1, Recap (four Day 2 diagrams)
+**On screen.** Anchor › section 1, Ice-breaker box, then Recap (four Day 2 diagrams)
 
 **Instructor notes.**
 
-- Ten minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.
+- Open with the ice-breaker, two or three minutes: one thing you always double-check, even though it is almost always fine. One answer each; type a few into the notebook. Its link to the day is tests: a check written down once and run every time. Return to it at Step 5.
+- Then about seven minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.
 - End on the tools picture with a finger on the dbt box: today is that box, tomorrow is the Airflow box above it.
 - Anyone who missed Day 2: point them at the Day 2 anchor's section 3 for the full version.
 
@@ -53,6 +54,8 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 - “One line each: what is a lakehouse, what does Databricks do with your SQL, what is a Delta table?”
 - “dbt holds no data and does no computing. It sends SQL; everything on these pictures is what receives it.”
+
+### Recap — yesterday's platform in four pictures · 09:00–09:10
 
 **Transition.** So what is in a dbt project? Two CSVs and an empty folder.
 
@@ -66,13 +69,16 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 **Instructor notes.**
 
+- Before Step 1, two pictures set up the build: the three layers (staging, intermediate, marts: each one's job, folder and prefix) and the plan (four dashed boxes). The plan picture returns after Steps 2 to 7 as a tracker: yellow is what the step built, blue was built earlier, red has a failing test. Point at it each time so the room knows where it is.
 - Present from the notebook; no whiteboard. The flow is: what dbt is for (one picture), why use it (the same transformation as a hand-run script that is silently wrong, then the without-and-with table), the path (eight steps on one picture), then the build. About five minutes for what and why, thirty for the steps, five for docs and the map to the challenge.
 - In the build, each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.
 - Learners do not run the demo cells; their hands-on is the challenge, on Databricks. Say so once before Step 1. The demo runs against a local warehouse file on your laptop so each step answers at once; the notebook does not name it, and there is no need to dwell on it.
-- About four minutes a step. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.
+- About four minutes a step. Steps 5 and 6 are the point: one test fails on three rows with an empty dollar price, one line in staging fixes it, the build goes green. Never skip them.
+- Testing is kept to one red-then-green cycle. Step 7 only adds a test written as a SQL file (no price is zero or negative); it passes. There is no second failure and no deduplication.
 - Step 4 has a view-or-table beat: the models block of dbt_project.yml sets it per folder (staging and intermediate views, marts tables, as in the challenge), then config() in one model overrides it and is taken out again. It is challenge S6 in two minutes.
 - At Step 3, spend two minutes on the Jinja picture: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.
-- Run the section once before the room arrives so dbt's first-run delay is gone; the first cell resets the folder each time.
+- Run the section once before the room arrives so dbt's first-run delay is gone; the reset cell empties the folder each time.
+- Commands are plain: a %cd cell at the start of each demo sets the working folder once, then cells are just !dbt run, !dbt test and so on, with dbt's full output. If you jump to a cell out of order, run that part's %cd cell first, or dbt runs in the other project.
 
 **Say.**
 
@@ -86,11 +92,11 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 1. Read each file aloud before running the command that uses it; ask the room to predict the output.
 2. Steps 5 and 6 are the point of the demo: two tests fail on real rows, one line fixes the model, the build goes green. Do not skip them.
 3. Step 3's compiled SQL is the Jinja explanation: curly braces in, plain SQL out. Learners meet source(), ref() and config() within the first hour of the challenge.
-4. `demos/price_sheet/README.md` lists every step, file and expected result; `bash demos/price_sheet/reset.sh` starts again.
+4. `demos/price_sheet/README.md` lists every step, file and expected result; `bash reset.sh` starts again.
 
 **Transition.** The same kinds of file, more of them: the Portfolio Analytics challenge.
 
-**If ahead or behind.** Behind at 09:40: skip Step 7 (the singular test) and say it is the pattern of C6. Ahead: open the docs site and click through the lineage graph.
+**If ahead or behind.** Behind at 09:40: skip Step 7 (the test of your own) and say it is the pattern of C6. Ahead: open the docs site and click through the lineage graph.
 
 ## 2. The dbt practical: launch, Phase 1 and the walkthrough
 
@@ -176,13 +182,14 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ### Demo — Jinja that writes SQL: a loop, a macro, then the production pieces · 13:00–13:25
 
-**Purpose.** Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in tomorrow's bitemporal macro.
+**Purpose.** Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in Friday's capstone.
 
 **On screen.** Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics)
 
 **Instructor notes.**
 
 - Two cells on this morning's price sheet (a for loop, a macro), then four on the Portfolio Analytics copy (dispatching macro and generic test, snapshot, incremental, unit test).
+- Before the unit test there are two pictures for the Databricks post-hook in challenge C9: OPTIMIZE compacts small files into large ones; ZORDER BY puts similar rows in the same file so a filter can skip files. Two minutes; it answers the question learners ask when they reach C9.
 - After each cell show the compiled SQL: the lesson is that Jinja runs at compile time and the warehouse sees plain SQL.
 - None of this is needed to finish the challenge; say so, so nobody abandons Phase 2 for it.
 
@@ -247,49 +254,45 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ### Debrief — what did we learn? · 14:35–14:45
 
-**Purpose.** Ask the room what it learned and fill gaps from the ten topics; arrange tomorrow's contributions (bitemporal loading, deployment).
+**Purpose.** Ask the room what it learned and fill gaps from the six topics, all from today. Bitemporal loading is not part of today; if tomorrow's plan needs volunteers for it or for the deployment demo, ask for them here.
 
 **On screen.** Anchor › Recap table
 
 **Instructor notes.**
 
 - Ask 'what did we learn?' and fill gaps from the recap table rather than lecturing.
-- Recruit two volunteers for tomorrow: one with bitemporal loading in production, one with Harness access; give them the anchor's brief.
+- Only if tomorrow's plan still has them: ask for a volunteer for the bitemporal loading slot and one with Harness access for the deployment demo. Check with tomorrow's instructor first; nothing in the notebook asks for this.
 
 **Say.**
 
-- “Who here has a bitemporal table in production? Would you show us tomorrow morning: the columns and one or two loading strategies, ten minutes?”
+- “What did we learn today? Call them out and I will write them up.”
 
 **Ask at the whiteboard — what did we learn? (fill gaps from this list, do not lecture it).** Ask in order, write what the room says, add what is missing.
 
 | Ask | Expect, then add |
 |---|---|
-| Models and conventions | Staging and integration models; CG naming (stg_, int_, fct_, agg_; on Friday src_, dom_, rpt_); the SQL behind a transformation is a SELECT dbt wraps. |
-| Dependencies and change | ref() and source() build the graph; a source or schema change is visible in lineage; dbt docs show it. |
-| Testing and contracts | Schema tests and singular tests are the contract's quality rules made executable; catalog information and descriptions come from the same YAML. |
-| Bitemporal loading | Tomorrow morning: the columns and one or two strategies, from a volunteer or guest. Questions to carry: what is business time vs system time? what happens on a correction? |
-| Deployment context | Tomorrow afternoon: Harness and CI/CD, with screenshots for anyone without access. |
-| Catalyst | Generation, iteration, and the repository's data_products area where the code goes; 80 to 90% of the code from a good contract. |
-| Airflow preview | YAML-configured blueprints are tomorrow's topic; today's dbt project is what they will run. |
-| Execution and storage | dbt SQL runs on Databricks as Spark; files on S3 in Delta: columnar, with logs and manifests that give transactions; you can insert and delete, unlike plain Parquet. |
-| Catalogue conventions | Application, domain and source-aligned catalogs; publish via the domain catalog; the Marketplace is discovery. |
-| Quality and materialisation | Checks at project and model level; materialisation set per folder in dbt_project.yml or in the model file. |
+| Models and layers | A model is a SELECT in a file. Staging cleans one raw table (stg_), intermediate joins and applies rules (int_), marts are what consumers read (fct_, agg_). |
+| Dependencies | source() and ref() build the graph; dbt works out the order, and the same graph is the lineage in the docs. |
+| Tests | A test is a query for the rows that break a rule. Generic tests in YAML, your own as a SQL file; dbt build runs them with the models. |
+| Views and tables | Set per folder in dbt_project.yml; config() in a model overrides it. Incremental and snapshot for large tables and for history. |
+| Jinja and macros | Curly braces are replaced before the warehouse sees the SQL; a macro is a rule written once. |
+| Reviewing generated code | Read it in graph order: sources, staging, joins, tests. Yesterday you could not judge it; today you can. |
 
 **Transition.** Pairs: swap a mapping and its test.
 
 ### Activity 9 — test review in pairs · 14:45–14:55
 
-**Purpose.** Exchange one mapping rule and its test; propose a wrong result and decide whether the test would catch it; agree one improvement.
+**Purpose.** Pairs take one test, name a wrong result that would get past it, and agree one extra test.
 
 **On screen.** Anchor › Activity 9 card
 
 **Instructor notes.**
 
-- The three wrong results: a duplicated join, a missing dated FX rate, a changed unit.
+- If a pair is stuck for a wrong result, offer one: a join that doubles the rows, a missing FX rate, a value in the wrong unit.
 
 **Say.**
 
-- “Would your test catch it? If not, write the expected failure before you write the fix.”
+- “What wrong result would still get past this test? What one test would catch it?”
 
 **Activity 9 — Test review in pairs.** Pairs, 10 min; the card is in `activities/`.
 
@@ -319,5 +322,4 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 - [ ] Two things each learner could not judge in yesterday's generated project, marked as judged or still open; one thing they caught, and the prompt that fixed it.
 - [ ] The working dbt project, model and test results, one independent output check and the outstanding questions for orchestration, kept where they are.
 - [ ] Each learner can trace one plain-English mapping through its model and its test.
-- [ ] Two volunteers (or a guest) confirmed for tomorrow's bitemporal and deployment slots, with the brief.
 - [ ] The Airflow baseline is ready: Databricks auth works, challenge 02's seeds are loaded, and Astro has been started once after setup.

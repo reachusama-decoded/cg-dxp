@@ -1,0 +1,22 @@
+flowchart TB
+  Q["Query: where fund_id = 'F12'"]
+  subgraph U ["Without ZORDER: every file holds every fund"]
+    direction LR
+    u1["file 1<br/>funds A to Z"] ~~~ u2["file 2<br/>funds A to Z"] ~~~ u3["file 3<br/>funds A to Z"] ~~~ u4["file 4<br/>funds A to Z"]
+  end
+  subgraph Z ["With ZORDER BY (fund_id): similar rows share a file"]
+    direction LR
+    z1["file 1<br/>funds A to F<br/>READ"] ~~~ z2["file 2<br/>funds G to M<br/>skipped"] ~~~ z3["file 3<br/>funds N to S<br/>skipped"] ~~~ z4["file 4<br/>funds T to Z<br/>skipped"]
+  end
+  Q -->|"reads all 4 files"| U
+  Q -->|"reads 1 file, skips 3"| Z
+  class Q blue
+  class u1,u2,u3,u4,z1 focus
+  class z2,z3,z4 grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

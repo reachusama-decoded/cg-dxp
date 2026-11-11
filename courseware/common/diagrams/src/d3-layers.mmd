@@ -1,0 +1,16 @@
+flowchart LR
+  R[("<b>Raw tables</b><br/>landed by other tools<br/>(seeds, in training)")] -->|"source()"| S["<b>staging/</b> · stg_<br/>one model per raw table<br/>rename, cast, clean<br/><i>view</i>"]
+  S -->|"ref()"| I["<b>intermediate/</b> · int_<br/>joins and business rules<br/><i>view</i>"]
+  I -->|"ref()"| M["<b>marts/</b> · fct_ agg_<br/>the tables consumers read<br/><i>table</i>"]
+  M --> C["Consumers:<br/>reports, dashboards,<br/>other products"]
+  class R,C grey
+  class S aqua
+  class I blue
+  class M focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

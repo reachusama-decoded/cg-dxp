@@ -5,7 +5,7 @@ flowchart TB
   end
   subgraph R2 ["Then: make it right, and say what it is"]
     direction LR
-    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Guard</b><br/>a singular test<br/>dbt build"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
+    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Your own test</b><br/>a SQL file in tests/<br/>dbt test"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
   end
   R1 --> R2
   class A,B grey

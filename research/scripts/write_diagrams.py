@@ -473,7 +473,7 @@ flowchart TB
   end
   subgraph R2 ["Then: make it right, and say what it is"]
     direction LR
-    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Guard</b><br/>a singular test<br/>dbt build"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
+    E["<b>5 Promise</b><br/>tests in YAML<br/>dbt test"] --> F["<b>6 Fix</b><br/>edit the model<br/>dbt build"] --> G["<b>7 Your own test</b><br/>a SQL file in tests/<br/>dbt test"] --> H["<b>8 Explain</b><br/>docs + lineage<br/>dbt docs"]
   end
   R1 --> R2
   class A,B grey
@@ -571,6 +571,101 @@ flowchart LR
   A8 --> B8
   class A1,A2,A3,A4,A5,A6,A7,A8 blue
   class B1,B2,B3,B4,B5,B6,B7,B8 focus
+"""
+D["d3-optimize"] = """
+flowchart LR
+  subgraph B ["After many writes: lots of small files"]
+    direction LR
+    f1["file"] ~~~ f2["file"] ~~~ f3["file"] ~~~ f4["file"]
+    f5["file"] ~~~ f6["file"] ~~~ f7["file"] ~~~ f8["file"]
+  end
+  subgraph A ["After OPTIMIZE: a few large files"]
+    direction LR
+    g1["large file"] ~~~ g2["large file"]
+  end
+  B ==>|"OPTIMIZE table"| A
+  A -.- N["Same rows.<br/>Fewer files to open: faster reads.<br/>Old files kept until VACUUM."]
+  class f1,f2,f3,f4,f5,f6,f7,f8 grey
+  class g1,g2 focus
+  class N green
+"""
+D["d3-zorder"] = """
+flowchart TB
+  Q["Query: where fund_id = 'F12'"]
+  subgraph U ["Without ZORDER: every file holds every fund"]
+    direction LR
+    u1["file 1<br/>funds A to Z"] ~~~ u2["file 2<br/>funds A to Z"] ~~~ u3["file 3<br/>funds A to Z"] ~~~ u4["file 4<br/>funds A to Z"]
+  end
+  subgraph Z ["With ZORDER BY (fund_id): similar rows share a file"]
+    direction LR
+    z1["file 1<br/>funds A to F<br/>READ"] ~~~ z2["file 2<br/>funds G to M<br/>skipped"] ~~~ z3["file 3<br/>funds N to S<br/>skipped"] ~~~ z4["file 4<br/>funds T to Z<br/>skipped"]
+  end
+  Q -->|"reads all 4 files"| U
+  Q -->|"reads 1 file, skips 3"| Z
+  class Q blue
+  class u1,u2,u3,u4,z1 focus
+  class z2,z3,z4 grey
+"""
+D["d3-layers"] = """
+flowchart LR
+  R[("<b>Raw tables</b><br/>landed by other tools<br/>(seeds, in training)")] -->|"source()"| S["<b>staging/</b> · stg_<br/>one model per raw table<br/>rename, cast, clean<br/><i>view</i>"]
+  S -->|"ref()"| I["<b>intermediate/</b> · int_<br/>joins and business rules<br/><i>view</i>"]
+  I -->|"ref()"| M["<b>marts/</b> · fct_ agg_<br/>the tables consumers read<br/><i>table</i>"]
+  M --> C["Consumers:<br/>reports, dashboards,<br/>other products"]
+  class R,C grey
+  class S aqua
+  class I blue
+  class M focus
+"""
+
+# The price-sheet build as a progress tracker: the same graph at each step of the Day 3 demo, with what is
+# not built yet (dashed), what was built earlier (green), what this step built (yellow) and failing tests (red).
+def _tracker(state, note=None):
+    note = note or {}
+    lab = lambda key, name: f'{name}<br/>{note[key]}' if key in note else name
+    cls = {"todo": [], "done": [], "now": [], "fail": []}
+    for key in ("R1", "R2", "S1", "S2", "I", "M"):
+        cls[state.get(key, "todo")].append(key)
+    lines = ["flowchart LR",
+             '  subgraph raw ["Raw (seeds)"]',
+             f'    R1[("{lab("R1", "vendor_prices_raw")}")]', f'    R2[("{lab("R2", "fx_rates_raw")}")]', "  end",
+             '  subgraph stg ["staging/ (views)"]',
+             f'    S1["{lab("S1", "stg_prices")}"]', f'    S2["{lab("S2", "stg_fx_rates")}"]', "  end",
+             '  subgraph int ["intermediate/ (view)"]',
+             f'    I["{lab("I", "int_prices_usd")}"]', "  end",
+             '  subgraph mart ["marts/ (table)"]',
+             f'    M["{lab("M", "fct_prices_usd")}"]', "  end",
+             '  R1 -->|"source()"| S1', '  R2 -->|"source()"| S2', '  S1 -->|"ref()"| I', '  S2 -->|"ref()"| I', '  I -->|"ref()"| M']
+    lines += [f"  class {','.join(v)} {k}" for k, v in cls.items() if v]
+    lines += ["classDef todo fill:#FFFFFF,stroke:#999999,stroke-dasharray:5 4,color:#888888",
+              "classDef done fill:#C9DAF8,stroke:#434343,color:#1a1a1a",
+              "classDef now fill:#F8DB59,stroke:#434343,stroke-width:3px,color:#1a1a1a",
+              "classDef fail fill:#F4CCCC,stroke:#990000,stroke-width:3px,color:#1a1a1a"]
+    return "\n".join(lines) + "\n"
+
+_ALL = ("R1", "R2", "S1", "S2", "I", "M")
+D["d3-build-plan"] = _tracker({})
+D["d3-build-2"] = _tracker({"R1": "now", "R2": "now"})
+D["d3-build-3"] = _tracker({"R1": "done", "R2": "done", "S1": "now"})
+D["d3-build-4"] = _tracker({"R1": "done", "R2": "done", "S1": "done", "S2": "now", "I": "now", "M": "now"})
+D["d3-build-5"] = _tracker({**{k: "done" for k in _ALL}, "M": "fail"}, {"S1": "currency: gbp", "M": "test fails: 3 empty prices"})
+D["d3-build-6"] = _tracker({**{k: "done" for k in _ALL}, "S1": "now"}, {"S1": "fixed: GBP", "M": "2 tests pass"})
+D["d3-build-7"] = _tracker({**{k: "done" for k in _ALL}, "M": "now"}, {"M": "3 tests pass"})
+D["d3-seed-vs-source"] = """
+flowchart LR
+  subgraph T ["In training"]
+    C["CSV files<br/>in seeds/"] -->|"dbt seed"| RT[("raw table")]
+  end
+  subgraph P ["On a real product"]
+    Sy["Source systems"] -->|"an ingestion tool<br/>(not dbt)"| RP[("raw table")]
+  end
+  RT --> Y["<b>sources.yml</b><br/>declares the raw table"]
+  RP --> Y
+  Y -->|"source()"| M["Your staging model"]
+  class C,Sy grey
+  class RT,RP aqua
+  class Y focus
+  class M blue
 """
 D["d3-what-dbt-does"] = """
 flowchart LR

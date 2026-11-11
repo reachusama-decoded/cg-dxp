@@ -1,0 +1,25 @@
+flowchart LR
+  subgraph raw ["Raw (seeds)"]
+    R1[("vendor_prices_raw")]
+    R2[("fx_rates_raw")]
+  end
+  subgraph stg ["staging/ (views)"]
+    S1["stg_prices"]
+    S2["stg_fx_rates"]
+  end
+  subgraph int ["intermediate/ (view)"]
+    I["int_prices_usd"]
+  end
+  subgraph mart ["marts/ (table)"]
+    M["fct_prices_usd"]
+  end
+  R1 -->|"source()"| S1
+  R2 -->|"source()"| S2
+  S1 -->|"ref()"| I
+  S2 -->|"ref()"| I
+  I -->|"ref()"| M
+  class R1,R2,S1,S2,I,M todo
+classDef todo fill:#FFFFFF,stroke:#999999,stroke-dasharray:5 4,color:#888888
+classDef done fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef now fill:#F8DB59,stroke:#434343,stroke-width:3px,color:#1a1a1a
+classDef fail fill:#F4CCCC,stroke:#990000,stroke-width:3px,color:#1a1a1a

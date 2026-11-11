@@ -2,7 +2,7 @@
 """Smoke-run an anchor notebook's code cells outside Jupyter, skipping the long demos.
 
 Each code cell runs from its day folder: Python lines are exec'd in one shared namespace,
-`!` lines run through the shell, `%` magics are ignored, except `%%writefile`, which writes its file (full runs only). Cells that start a long demo
+`!` lines run through the shell, `%` magics are ignored, except `%cd`, which changes folder, and `%%writefile`, which writes its file (full runs only). Cells that start a long demo
 (run.sh, demo.sh, build.sh, docker, Spark, dbt builds, claude, npx) are skipped.
 Usage: smoke.py [--full] day1 day2 ... | all   (--full runs the demos too; needs Docker Desktop and, for Day 4, the Airflow stack started)
 """
@@ -30,7 +30,7 @@ def run_cell(src, ns, cwd):
     py, out = [], []
     if src.startswith("%%writefile "):          # the cell is a file: write it, as Jupyter would
         first, _, body = src.partition("\n")
-        target = Path(cwd) / first.split(None, 1)[1].strip()
+        target = Path(os.getcwd()) / first.split(None, 1)[1].strip()
         if not target.parent.is_dir():           # Jupyter's %%writefile does not create folders either
             return False, f"%%writefile: no such folder {target.parent}"
         target.write_text(body + "\n")
@@ -43,10 +43,13 @@ def run_cell(src, ns, cwd):
         s = line.lstrip()
         if s.startswith("!"):
             flush()
-            rc, o = shell(s[1:], cwd)
+            rc, o = shell(s[1:], os.getcwd())
             out.append(o[-600:])
-            if rc != 0:
+            if rc != 0 and "on purpose" not in s:      # a demo step that is meant to fail says so
                 return False, f"shell rc={rc}: {s[1:80]}\n" + o[-800:]
+        elif s.startswith("%cd "):                      # the notebook sets its working folder once per part
+            flush()
+            os.chdir(s[4:].strip().format(**{k: v for k, v in ns.items() if isinstance(v, (str, Path))}))
         elif s.startswith("%"):
             continue
         else:

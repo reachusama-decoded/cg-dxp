@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph T ["In training"]
+    C["CSV files<br/>in seeds/"] -->|"dbt seed"| RT[("raw table")]
+  end
+  subgraph P ["On a real product"]
+    Sy["Source systems"] -->|"an ingestion tool<br/>(not dbt)"| RP[("raw table")]
+  end
+  RT --> Y["<b>sources.yml</b><br/>declares the raw table"]
+  RP --> Y
+  Y -->|"source()"| M["Your staging model"]
+  class C,Sy grey
+  class RT,RP aqua
+  class Y focus
+  class M blue
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

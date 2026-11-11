@@ -1,0 +1,22 @@
+flowchart LR
+  subgraph B ["After many writes: lots of small files"]
+    direction LR
+    f1["file"] ~~~ f2["file"] ~~~ f3["file"] ~~~ f4["file"]
+    f5["file"] ~~~ f6["file"] ~~~ f7["file"] ~~~ f8["file"]
+  end
+  subgraph A ["After OPTIMIZE: a few large files"]
+    direction LR
+    g1["large file"] ~~~ g2["large file"]
+  end
+  B ==>|"OPTIMIZE table"| A
+  A -.- N["Same rows.<br/>Fewer files to open: faster reads.<br/>Old files kept until VACUUM."]
+  class f1,f2,f3,f4,f5,f6,f7,f8 grey
+  class g1,g2 focus
+  class N green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -25,7 +25,13 @@ The section teaches dbt on the smallest useful example before anyone opens the c
 
 **What and why (five minutes).** One picture says what dbt is: the transformation step, SELECT statements in files that dbt turns into tables and views in the warehouse, with no data or compute of its own. Then a cell runs the same price-sheet transformation as a hand-written SQL script: it finishes without an error and three HSBC prices are wrong, because `gbp` does not match `GBP` and the script defaults a missing rate to 1. A table sets the script beside dbt on six questions (is it right, what order, what does it mean, reuse, environments, what changed). A path picture then shows the eight steps: first make it run (set up, load, model, connect), then make it right and say what it is (promise, fix, guard, explain).
 
-**The build (thirty minutes).** The project is `courseware/day3-dbt/demos/price_sheet/`: it starts as two raw CSVs from Day 2's running example (36 vendor prices, 9 FX rates) and ends as four models in three layers (`staging/`, `intermediate/`, `marts/`, the challenge's layout and prefixes), five tests and a docs site. The one transformation is a price in US dollars: the close price times that day's FX rate. Every other file exists to show one dbt idea.
+**The layers and the tracker.** Before Step 1 the notebook shows the three layers every dbt project here uses (staging: one model per raw table, clean only, views, `stg_`; intermediate: joins and rules, views, `int_`; marts: what consumers read, tables, `fct_` and `agg_`) and then the plan for the demo: two raw tables, two staging models, one intermediate model, one mart, all drawn dashed. The same picture comes back after Steps 2 to 7 as a tracker: yellow for what the step just built, blue for what was built earlier, red for a failing test. At Step 5 it shows the lesson in one picture: the mart is red, and the staging model upstream is labelled with the cause, the currency written `gbp`.
+
+![The layers](../../courseware/common/diagrams/png/d3-layers.png)
+
+![The tracker at Step 5](../../courseware/common/diagrams/png/d3-build-5.png)
+
+**The build (thirty minutes).** The project is `courseware/day3-dbt/demos/price_sheet/`: it starts as two raw CSVs from Day 2's running example (36 vendor prices, 9 FX rates) and ends as four models in three layers (`staging/`, `intermediate/`, `marts/`, the challenge's layout and prefixes), three tests and a docs site. The one transformation is a price in US dollars: the close price times that day's FX rate. Every other file exists to show one dbt idea.
 
 ![What dbt does](../../courseware/common/diagrams/png/d3-what-dbt-does.png)
 
@@ -34,13 +40,13 @@ The section teaches dbt on the smallest useful example before anyone opens the c
 | Step | The cell writes or runs | The idea | What the room sees |
 |---|---|---|---|
 | 1 | `dbt_project.yml`, `profiles.yml`, `dbt debug` | A project is a folder; the profile is the connection, and the only file that differs between DuckDB and Databricks | All checks passed |
-| 2 | `dbt seed` | Seeds stand in for landed feeds; dbt starts with the raw data already in the warehouse | HSBC's currency written `gbp`; Apple delivered twice on 4 November |
+| 2 | `dbt seed` | Seeds stand in for landed feeds; dbt starts with the raw data already in the warehouse | The non-dollar prices; one currency is written `gbp` in lower case |
 | 3 | `models/sources.yml`, `models/staging/stg_prices.sql`, `dbt run` | A model is a SELECT in a file; dbt compiles the Jinja, wraps the SELECT in a CREATE and sends it | One view; `source(...)` replaced by the real table name in `target/compiled/` |
 | 4 | `staging/stg_fx_rates.sql`, `intermediate/int_prices_usd.sql`, `marts/fct_prices_usd.sql`, `dbt run` | The three layers and their prefixes, as in the challenge; `ref()` builds the graph and the order | Four models in order; HSBC's dollar price empty although the run is green |
 | 4, continued | The `models:` block of `dbt_project.yml`; `stg_fx_rates.sql` with `config(materialized='table')`, then without | Materialisation is set per folder and overridden per model: challenge S6 | Three views and one table; the staging model becomes a table, then a view again |
-| 5 | `staging/schema.yml`, `marts/schema.yml`, `dbt test` | Tests are queries for the rows that break a rule; descriptions live in the same YAML | Two failures: `accepted_values` on `gbp`, `not_null` on three prices |
-| 6 | `staging/stg_prices.sql` again, `dbt build` | The fix goes in the model, two layers upstream of the failing test; build runs seeds, models and tests in graph order | Ten results, all green |
-| 7 | A singular test, `stg_prices.sql` again, `dbt build` | Any SQL file in `tests/` is a test; the dedup pattern learners write in S5 | Red on the Apple re-delivery, then green; 35 rows |
+| 5 | `marts/schema.yml`, `dbt test` | Tests are queries for the rows that break a rule; descriptions live in the same YAML | One failure: `not_null` on `price_usd`, three rows; the cell after shows them, with currency `gbp` and no rate |
+| 6 | `staging/stg_prices.sql` again, `dbt build` | The fix goes in the model, upstream of the failing test; build runs seeds, models and tests in graph order | Eight results, all green |
+| 7 | `tests/assert_prices_are_positive.sql`, `dbt test --select` | Any SQL file in `tests/` is a test: it returns the rows that break a rule | One test, passing |
 | 8 | `dbt docs generate` | Docs and lineage come from the same files | The catalog, and the list of models and tests upstream of `fct_prices_usd` |
 
 **Jinja, early.** Learners use Jinja from the challenge's fourth section, so Step 3 explains it: two curly braces print a value into the SQL (`source()`, `ref()`, `config()`, `this`); a brace and a percent sign run logic (`if`, `for`, `macro`), which the challenge does not need and the 13:00 demo covers. Jinja runs on the laptop at compile time; the warehouse only receives plain SQL, and `target/compiled/` is where to read it.
@@ -49,18 +55,23 @@ The section teaches dbt on the smallest useful example before anyone opens the c
 
 - **Learners work on Databricks; the notebook does not mention DuckDB.** Learners do not run the demo cells; everything they do (the challenge, yesterday's generated project, Activity 9b) runs in their dev container against Databricks. Your demo cells run against a local DuckDB file so each step answers at once, but the learner-facing notebook does not name it: the only trace is `type: duckdb` in the demo's `profiles.yml`, with a comment that theirs says `type: databricks`. If asked, say the demo uses a local warehouse, the SQL and the commands are the same, and only the profile differs.
 - **Present the notebook; no whiteboard.** Each `%%writefile` cell is the file itself. Read it aloud, ask what the next command will print, then run it. About four minutes a step.
-- **Steps 5 and 6 are the lesson.** The run at Step 4 is green and three prices are missing; the tests at Step 5 catch it twice; one line in staging fixes it. Say: a successful run means the SQL executed, not that the answer is right.
-- **The recap (09:00, ten minutes).** Four Day 2 diagrams, each with a question to ask and the two lines to land. Let the room answer; do not re-teach. Finish on the tools picture with the dbt box: dbt holds no data and does no computing, it sends SQL to everything on these pictures.
+- **The ice-breaker (09:00, two or three minutes).** "What is one thing you always double-check, even though it is almost always fine?" One answer each, at work or at home; type a few into the notebook's answers cell. The link to the day is in the folded facilitator notes: you double-check because being wrong is costly and you would not otherwise find out, and a dbt test is that check written down once and run every time. Return to it at Step 5.
+- **The recap (about seven minutes, after the ice-breaker).** Four Day 2 diagrams, each with a question to ask, a cell to type the room's answers into, and the answer folded under facilitator notes. Let the room answer; do not re-teach. Finish on the tools picture with the dbt box: dbt holds no data and does no computing, it sends SQL to everything on these pictures.
+- **Steps 5 and 6 are the lesson, and the only red-then-green cycle.** The run at Step 4 is green and three prices are missing; the test at Step 5 catches it; one line in staging (`upper(trim(px_ccy))`) fixes it. Say: a successful run means the SQL executed, not that the answer is right. The domain is kept deliberately plain: a price, a currency, a rate.
+- **Step 7 is only "a SQL file is a test".** The rule is that no price is zero or negative; it passes. There is no second failure and no deduplication. The raw file does contain one instrument delivered twice on 4 November; the demo does not use it, and deduplication is what learners write in the challenge's S5.
 - **If behind at 09:40**, skip Step 7 and say it is the pattern of C6 (the NAV reconciliation). If ahead, serve the docs site and click through the lineage graph.
 - **The mapping table** at the end of the section ties each step to a README section; leave it on screen while launching the challenge.
+- **Seeds and sources.** Step 3 opens with a picture for this: in training `dbt seed` loads the CSVs, and the project then declares those tables under `sources:` and reads them with `source(...)`, as if another tool had landed them. That is how raw data arrives on a real product, so the models learners write would not change; only where the raw tables come from. (A seed can also be read with `ref()`; the demo and the challenge use `source()` on purpose.)
 - **YAML files.** Step 3 has a short box on this because the room asks: `.yml` and `.yaml` are the same format and dbt reads both; only `dbt_project.yml` and `profiles.yml` have fixed names; every other YAML file under `models/` can be called anything, because dbt reads the top-level keys (`sources:`, `models:`, `seeds:`, `unit_tests:`), not the file name. `sources.yml` and `schema.yml` are conventions; Catalyst writes `_staging__sources.yml` and `_staging__models.yml`.
-- **Likely questions.** *Why seeds?* Small reference data and demos; real feeds are loaded by other tools and declared as sources. *Where did the CREATE statement come from?* dbt's materialisation wrote it; see `target/run/`. *Why did the join miss?* `gbp` is not `GBP`; string joins are exact. *Is `where rn = 1` the only way to deduplicate?* No; `qualify` is shorter on Databricks and DuckDB, and the challenge's solution uses `row_number()` too.
+- **Likely questions.** *Why seeds?* Small reference data and demos; real feeds are loaded by other tools and declared as sources. *Where did the CREATE statement come from?* dbt's materialisation wrote it; see `target/run/`. *Why did the join miss?* `gbp` is not `GBP`; string joins are exact.
 
 ### Mechanics
 
 - **Before the room arrives**, run section 1 top to bottom once: the first cell runs `reset.sh`, which deletes everything in the folder except `seeds/`, the README and the script, and the cells rebuild it. The folder's README lists every step and its expected result.
 - **The 13:00 cells** write `models/marts/agg_prices_by_ccy.sql`, `macros/to_usd.sql` and a new `models/intermediate/int_prices_usd.sql` into the same folder, so run section 1 before them.
 - **The docs site**: `cd courseware/day3-dbt/demos/price_sheet && dbt docs serve --host 127.0.0.1 --port 8082`.
+- **Plain commands, one per cell.** A `%cd` cell at the start of each demo part sets the working folder once (price sheet, then the Portfolio Analytics copy, then back), so the cells are just `!dbt run`, `!dbt test` and so on with dbt's full output, and each cell holds one command or one query. If you jump to a cell out of order, run that part's `%cd` cell first, or dbt runs in the other project. One cell is marked "on purpose": the test that fails at Step 5.
+- **Time zones.** The Portfolio Analytics copy stamps its seeds in UTC so `dbt source freshness` passes wherever the laptop is; before this fix it reported the custodian feed as stale in Los Angeles.
 
 ## 2. The dbt practical: launch, Phase 1 and the walkthrough
 
@@ -134,6 +145,14 @@ Two cells on the morning's price sheet come first. A `for` loop over a list of c
 
 ![A macro: written once, expanded wherever it is called](../../courseware/common/diagrams/png/d3-macro.png)
 
+#### OPTIMIZE and ZORDER: the post-hook in challenge C9
+
+The challenge's marts folder has `+post-hook: "OPTIMIZE {{ this }} ZORDER BY (fund_id, position_date)"`, and the 13:00 demo has two pictures for it. A Delta table is a folder of Parquet files; every write adds more, often small ones, and opening thousands of small files is slow. `OPTIMIZE` rewrites them into fewer, larger files: the rows are the same, and the old files stay until `VACUUM`, so time travel still works. `ZORDER BY` is an option of `OPTIMIZE` that sorts the rows while compacting, so rows with similar values in the chosen columns share a file. Delta records the smallest and largest value of each column per file, so a query filtering on those columns skips every file whose range cannot match (data skipping). Choose columns that queries filter and join on, two or three at most. It costs compute, so it suits small marts after every build and is scheduled for large tables. On the training data it makes no visible difference; in the instructor's copy the hook is a macro that does nothing, because these are Delta operations.
+
+![OPTIMIZE](../../courseware/common/diagrams/png/d3-optimize.png)
+
+![ZORDER BY](../../courseware/common/diagrams/png/d3-zorder.png)
+
 #### The stretch: what a production project adds
 
 **A dispatching macro.** `to_base_ccy(amount, fx_rate)` returns a base-currency amount with a cast that works on Databricks and DuckDB, chosen by `adapter.dispatch` on `target.type`. Macros are Jinja functions; dispatch is how one project runs on several warehouses.
@@ -150,7 +169,7 @@ Two cells on the morning's price sheet come first. A `for` loop over a list of c
 
 ### Teaching notes
 
-- **Let the technical people go deep** after Phase 2 rather than holding everyone to the same task: the stretch cells, the bitemporal macro preview for tomorrow, Airflow logging to Datadog.
+- **Let the technical people go deep** after Phase 2 rather than holding everyone to the same task: the stretch cells, a macro of their own, Airflow logging to Datadog.
 - **Likely questions and answers.**
   - *Incremental or snapshot?* Incremental processes only new rows of a fact; a snapshot records the changes of a dimension over time.
   - *Unit test or data test?* A unit test fixes the input rows and checks the logic; a data test runs against the real table and checks the data.
@@ -167,14 +186,14 @@ Two cells on the morning's price sheet come first. A `for` loop over a list of c
 
 ### Concepts
 
-The facts to pull from the room, in the order rooms tend to give them: dbt pipelines can do most of the work; most of the code can be generated from a good contract; the code lives in the training repository under `data_products/` (the capstone runs in the wrong folder at your own risk); Airflow blueprints are filled with YAML; Databricks only runs Spark, so dbt SQL is translated to Spark; data on S3 is Delta by default, columnar, with logs that give ACID and row-level inserts and deletes; three Unity Catalog types; data quality tests are easy to add; materialisation is configured in the project file and can be overridden in the model.
+The facts to pull from the room are six, all from today: models and the three layers (staging, intermediate, marts, with their prefixes); `source()` and `ref()` building the graph, the order and the lineage; tests as queries for the rows that break a rule, generic in YAML and your own as a SQL file; views and tables set per folder and overridden with `config()`, with incremental and snapshot for large tables and for history; Jinja and macros; and reviewing generated code in graph order.
 
 ### Teaching notes
 
 - **Ask, write, add.** "What did we learn?" and write the room's answers up; fill gaps from the list above rather than lecturing it.
 - **Activity 9b, a second look at yesterday's AI-generated dbt (14:20, 15 minutes).** On Day 2 the room generated a dbt project with Copilot and Catalyst before knowing dbt, and the shareback asked how to review that much output: trust it, review all of it, or review some of it; one table also noticed that the AI writes more than is needed. The whole activity sits at the end of the day, when learners know dbt. Two minutes: each learner writes down two things in that project they could not judge yesterday. Eight minutes in pairs: reopen the project, assess it in graph order (sources, staging, joins, tests, materialisations, then anything nobody asked for) with the card's table, then pick one thing they caught and prompt Copilot again to fix it, naming the file, what is wrong and the check; read the diff and run the check. Five minutes of shareback: what was caught, the prompt, whether the fix held. The point to land: yesterday's prompt was "build me a project"; today's names a model, a fault and a test. Some projects did not finish generating yesterday; those learners use a partner's, or the Day 2 example in `courseware/day2-platform/demos/contract-to-code/eod_prices`. What is still not judged goes in the Q&A table.
-- **Activity 9, test review in pairs (10 minutes).** Each pair takes a test another pair wrote: which contract rule does it guard, what wrong data would still slip through, what one extra test would close the gap. The close asks two or three pairs for their example.
-- **Before learners leave.** The project built through Phase 2 at least; the list of commands and discoveries kept; tomorrow's volunteers for bitemporal loading and Harness asked for.
+- **Activity 9, test review in pairs (10 minutes).** One question, kept simple: each pair picks one test from their project, names one wrong result that would still get past it, and agrees one extra test that would catch it. If a pair is stuck for a wrong result, offer a join that doubles the rows, a missing FX rate, or a value in the wrong unit. The close asks two or three pairs for their example.
+- **Before learners leave.** The project built through Phase 2 at least; the list of commands and discoveries kept. Bitemporal loading is not part of today and is not in today's challenge (it appears only in Friday's capstone). Ask for volunteers for tomorrow's bitemporal or deployment slots only if tomorrow's instructor still plans them.
 
 ## Readiness self-test
 
@@ -211,7 +230,7 @@ The facts to pull from the room, in the order rooms tend to give them: dbt pipel
 - [ ] `bash courseware/day3-dbt/demos/portfolio_analytics/demo.sh stretch` ends green; open the lineage site once.
 - [ ] Open the Day 3 anchor, Run All, save with outputs; section 1 rebuilds `demos/price_sheet` (Step 5 shows two failing tests on purpose) and the walkthrough cells show the numbers above.
 - [ ] Read the challenge README's Phase 1 once more and the solution of S4 (`stg_holdings`), so your first circulating answer is exact.
-- [ ] Ask for Thursday's volunteers (bitemporal loading, Harness) at the end of the day; have the guest brief ready.
+- [ ] Check with Thursday's instructor whether the bitemporal loading and Harness slots still need volunteers; ask the room at the end of the day only if they do.
 - [ ] Print the cards for Activities 9 and 9b and this day's run sheet.
 
 ## Go deeper
