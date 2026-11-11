@@ -4,15 +4,15 @@ import dc
 DAY, SLUG, TITLE = 3, "day3-dbt", "dbt practical and consolidation"
 
 BLOCKS = [
- dict(time="09:00–09:10", title="Ice-breaker, then recap: yesterday's platform in four pictures", type="Recap", on_screen="Anchor › section 1, Ice-breaker box, then Recap (four Day 2 diagrams)",
-      purpose="Put everyone on the same page before dbt: where the tables live, what runs the SQL, and which box of the tools picture today zooms into.",
-      notes=["Open with the ice-breaker, two or three minutes: one thing you always double-check, even though it is almost always fine. One answer each; type a few into the notebook. Its link to the day is tests: a check written down once and run every time. Return to it at Step 5.",
-             "Then about seven minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.",
-             "End on the tools picture with a finger on the dbt box: today is that box, tomorrow is the Airflow box above it.",
+ dict(time="09:00–09:10", title="Ice-breaker, then recap: yesterday's platform in two pictures", type="Recap", on_screen="Anchor › section 1, Ice-breaker box, then Recap (two Day 2 diagrams)",
+      purpose="Put everyone on the same page before dbt: where the tables live and what runs the SQL.",
+      notes=["Open with the ice-breaker, the first thing in the notebook, above the agenda, two or three minutes: one thing you always double-check, even though it is almost always fine. One answer each; type a few into the notebook. Its link to the day is tests: a check written down once and run every time. Return to it at Step 5.",
+             "Then about seven minutes, two pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.",
+             "End by saying where today sits: dbt holds the transformation rules and sends SQL to the platform on these pictures. The tools-together flow is not repeated; the room has seen it several times.",
              "Anyone who missed Day 2: point them at the Day 2 anchor's section 3 for the full version."],
-      say=["One line each: what is a lakehouse, what does Databricks do with your SQL, what is a Delta table?",
+      say=["One line each: what is a lakehouse, and what does Databricks do with your SQL?",
            "dbt holds no data and does no computing. It sends SQL; everything on these pictures is what receives it."],
-      transition="So what is in a dbt project? Two CSVs and an empty folder.", flex="Short of time: the under-the-hood picture and the tools picture only."),
+      transition="So what is in a dbt project? Two CSVs and an empty folder.", flex="Short of time: the under-the-hood picture only."),
  dict(time="09:10–09:50", title="dbt from zero: one transformation through the whole life cycle", type="Demo", on_screen="Anchor › section 1, top to bottom (demos/price_sheet)",
       purpose="Show every kind of file in a dbt project being written and run once, on a small example, so the challenge's tasks are recognisable: project and profile, seeds, a source, a model, Jinja, ref, materialisation, tests failing and fixed, build, docs.",
       notes=["Before Step 1, two pictures set up the build: the three layers (staging, intermediate, marts: each one's job, folder and prefix) and the plan (four dashed boxes). The plan picture returns after Steps 2 to 7 as a tracker: yellow is what the step built, blue was built earlier, red has a failing test. Point at it each time so the room knows where it is.",
@@ -127,7 +127,7 @@ ACTIVITIES = [
 
 SECTIONS = [
  dict(n=1, title="dbt from zero: one transformation through the whole life cycle", anchor="s1", start="09:00",
-      parts=["Ice-breaker: one thing you always double-check", "Recap: yesterday's platform in four pictures", "Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs"]),
+      parts=["Recap: yesterday's platform in two pictures", "Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs"]),
  dict(n=2, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s2", start="09:50",
       parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1", "Break", "Walkthrough: Phase 2", "Circulating: Phase 2 to lunch", "Lunch"]),
  dict(n=3, title="Advanced dbt, then complete and extend the practical", anchor="s3", start="13:00",
@@ -154,7 +154,7 @@ def recap_fig(png: str, alt: str, ask: str, answer: str, today: str, height: int
     room's answers into (double-click, type, Shift+Enter); and the answer, folded under 'Facilitator notes'."""
     src = f"../common/diagrams/png/{png}.png"
     img = f'<img src="{src}" alt="{alt}" style="max-height:{height}px; max-width:100%;">' if height else f"![{alt}]({src})"
-    return [dc.md(f"{img}\n\n**Ask:** {ask}"),
+    return [dc.md(f"{img}\n\n**Think:** {ask}"),
             dc.md("**Answers from the room:**\n\n- "),
             dc.md("<details><summary><strong>Facilitator notes</strong></summary>\n\n"
                   f"- **Answer:** {answer}\n- **Today:** {today}\n\n</details>")]
@@ -197,12 +197,15 @@ F_SOURCES = """
 version: 2
 
 sources:
-  - name: vendor_feed
+  - name: vendor_feed                 # a label you choose for a group of raw tables, usually the system they come from.
+                                      # Not a database: it is the first word in source('vendor_feed', 'vendor_prices_raw')
     description: "End-of-day close prices from the pricing vendor, in each instrument's own currency."
-    schema: demo
+    schema: demo                      # where the raw tables really live in the warehouse
+                                      # (on Databricks you can add  database: <catalog>  too; left out, dbt uses your profile's)
     tables:
-      - name: vendor_prices_raw
-  - name: fx_feed
+      - name: vendor_prices_raw       # the real table name: the second word in source(...)
+
+  - name: fx_feed                     # a second group: one source per system
     description: "Daily FX closes to US dollars."
     schema: demo
     tables:
@@ -361,15 +364,7 @@ def cells():
     PA = "demos/portfolio_analytics"
     DB = "PORTFOLIO"
     C = [dc.title(3, TITLE, "anchor notebook"),
-         
-         *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
-         dc.code(dc.setup_cell(3)),
-         dc.code(f'''# The two demo warehouses the cells below query: local files on the instructor's laptop
-PRICE_SHEET = HERE / "{PS}/warehouse/price_sheet.duckdb"
-PORTFOLIO = HERE / "demos/portfolio_analytics/warehouse/training_dev.duckdb"'''),
-         dc.agenda(SECTIONS, lead='An ice-breaker and a short recap of yesterday\'s platform, forty minutes of dbt from zero on a small example, then self-paced practice from the README, with the instructor walking the room, all the way to lunch. After lunch, twenty-five minutes of advanced dbt, then more practice. Recap and a pair exercise at the end.'),
-         dc.section(1, "dbt from zero: one transformation through the whole life cycle", "s1"),
-         dc.part("Ice-breaker", "one thing you always double-check", time="09:00"),
+         dc.md("### Ice-breaker — one thing you always double-check"),
          dc.md(dc.reflect("ICE-BREAKER — one thing you always double-check", "What is one thing you always double-check, even though it is almost always fine? One answer each, at work or at home.", [
                      "The front door. The oven. The attachment before you press send.",
                      "The recipient of an email. The total on a bill. The alarm for tomorrow."])),
@@ -378,7 +373,15 @@ PORTFOLIO = HERE / "demos/portfolio_analytics/warehouse/training_dev.duckdb"''')
                "- Two or three minutes: go round quickly, one answer each, type a few in the cell above.\n"
                "- **The link to today:** you double-check because being wrong is costly and you would not otherwise find out. That is what a dbt test is: a check you write down once, and dbt runs it every time, so nobody has to remember.\n"
                "- Come back to it at Step 5 of the demo: \"this is the oven check, for a price sheet\".\n\n</details>"),
-         dc.part("Recap", "yesterday's platform in four pictures"),
+         
+         *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
+         dc.code(dc.setup_cell(3)),
+         dc.code(f'''# The two demo warehouses the cells below query: local files on the instructor's laptop
+PRICE_SHEET = HERE / "{PS}/warehouse/price_sheet.duckdb"
+PORTFOLIO = HERE / "demos/portfolio_analytics/warehouse/training_dev.duckdb"'''),
+         dc.agenda(SECTIONS, lead='A short recap of yesterday\'s platform, forty minutes of dbt from zero on a small example, then self-paced practice from the README, with the instructor walking the room, all the way to lunch. After lunch, twenty-five minutes of advanced dbt, then more practice. Recap and a pair exercise at the end.'),
+         dc.section(1, "dbt from zero: one transformation through the whole life cycle", "s1"),
+         dc.part("Recap", "yesterday's platform in two pictures", time="09:00"),
          dc.md("Ten minutes to put everyone on the same page. Today's dbt models are SQL that runs on this platform; one question per picture."),
          *recap_fig("d3-recap-lakehouse", "Data warehouse, data lake, lakehouse",
                    "What does a lakehouse keep from the lake, and what does it add?",
@@ -388,14 +391,6 @@ PORTFOLIO = HERE / "demos/portfolio_analytics/warehouse/training_dev.duckdb"''')
                    "Where is your data stored, and what runs your SQL?",
                    "Storage is your S3 bucket in Delta format. Compute is Spark, on a SQL warehouse. Unity Catalog names every table `catalog.schema.table`.",
                    "Your tables land in `training_dev.training_<you>`; the raw data arrives with `dbt seed`."),
-         *recap_fig("d2-delta-format", "A Delta table: Parquet files plus a transaction log",
-                   "What does the log give you that plain Parquet files do not?",
-                   "Every write is a commit: ACID, versions and time travel, MERGE and DELETE on files.",
-                   "`OPTIMIZE ... ZORDER` in challenge C9 is a Delta operation, run by dbt after each mart is built.", height=400),
-         *recap_fig("d3-recap-tools", "How the tools fit together: write, ship, schedule, transform, run, store",
-                   "Which tool decides when, which holds the rules, which does the work?",
-                   "Airflow decides when. dbt holds the transformation rules and the tests. Databricks runs the SQL as Spark and writes Delta to S3.",
-                   "This is the dbt box. Tomorrow: the Airflow box that runs today's project."),
          dc.part("Demo", "one price sheet, from two raw files to a tested, documented table", time="09:10"),
          dc.anchor("Yesterday Catalyst generated a dbt project for you. What is in it, and what does dbt do with each file?",
                    "dbt on the smallest useful example: two raw files, four models in three layers, three tests, one documented table, on Day 2's price data.",
@@ -452,8 +447,8 @@ sql(f"""
          wf("profiles.yml", F_PROFILES),
          dc.code(f'!dbt debug\n# dbt debug answers one question: can dbt find the project, find the profile and open the connection? It is the first command in the challenge too.'),
          dc.md("#### Step 2 — The raw data: seeds stand in for the feeds that land in the warehouse"),
-         dc.code(f'!dbt seed\nsql("select isin, px_date, px_close, px_ccy from demo.vendor_prices_raw where px_ccy <> \'USD\' order by isin, px_date", {PSDB})\n# dbt seed loads each CSV in seeds/ as a table. These are the prices that are not in US dollars. Look closely at the currency of the second instrument: gbp, in lower case. It matters in a few minutes.'),
-         dc.code(f'sql("select * from demo.fx_rates_raw order by rate_dt, from_ccy", {PSDB})\n# One rate per currency per day, to US dollars. The transformation: price in dollars = close price x that day\'s rate.'),
+         dc.code(f'!dbt seed\n!dbt show --inline "select isin, px_date, px_close, px_ccy from demo.vendor_prices_raw where px_ccy <> \'USD\' order by isin, px_date" --limit 10\n# dbt show --inline runs any query in the warehouse and prints the rows. These are the prices that are not in US dollars. Look closely at the currency of the second instrument: gbp, in lower case. It matters in a few minutes.'),
+         dc.code(f'!dbt show --select fx_rates_raw --limit 10\n# One rate per currency per day, to US dollars. The transformation: price in dollars = close price x that day\'s rate.'),
          fig("d3-build-2", "Where we are: the raw data is loaded. No models yet.", height=300),
          dc.md("#### Step 3 — Declare the source, write the first model, run it"),
          fig("d3-seed-vs-source", "Seeds stand in for the feeds: however a raw table arrives, you declare it in sources.yml and read it with source()", [
@@ -471,7 +466,7 @@ sql(f"""
                    ["Compile: the curly braces are replaced, here `source(...)` becomes the real table name. The result is plain SQL in `target/compiled/`.",
                     "Wrap: dbt puts your SELECT inside `create view ... as` or `create table ... as`, according to the model's materialisation. That is in `target/run/`.",
                     "Send: the warehouse executes it. The model's file name is the name of the view or table."]),
-         dc.code(f'!dbt run\nsql("select * from demo.stg_prices order by instrument_id, price_date limit 6", {PSDB})\n# One model, one view called stg_prices. You wrote a SELECT; dbt wrote the CREATE.'),
+         dc.code(f'!dbt run\n!dbt show --select stg_prices --limit 6\n# dbt show runs the query of a model and prints the first rows: the way to look at a result without leaving dbt. One model, one view called stg_prices. You wrote a SELECT; dbt wrote the CREATE.'),
          fig("d3-build-3", "Where we are: the first staging model is built. Three models to go.", height=300),
          dc.code('!cat target/compiled/price_sheet/models/staging/stg_prices.sql\n# What dbt compiled: your SELECT, with the curly braces replaced by the real table name.'),
          dc.code('!cat target/run/price_sheet/models/staging/stg_prices.sql\n# What the warehouse ran: the same SELECT, wrapped in create view ... as.'),
@@ -488,19 +483,20 @@ sql(f"""
                  "Every `source()` and `ref()` is an edge. dbt reads them all, then builds the models from left to right.",
                  "You never write the order down. Add a model and the graph changes by itself.",
                  "The same graph is the lineage picture in the docs, and what `--select +fct_prices_usd` walks."], height=300),
-         dc.code(f'sql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where native_ccy <> \'USD\' order by instrument_id, price_date", {PSDB})\n# The run was green. Look at the HSBC rows (GB0005405286): no rate, no dollar price. A successful run says the SQL executed, not that the answer is right.'),
+         dc.code(f'!dbt show --inline "select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where native_ccy <> \'USD\' order by instrument_id, price_date" --limit 10\n# The run was green. Look at the HSBC rows (GB0005405286): no rate, no dollar price. A successful run says the SQL executed, not that the answer is right.'),
          dc.md("#### Step 4, continued — View or table? Set per folder in dbt_project.yml, overridden in one model with config()"),
          fig("d3-materialisations", "A materialisation is how dbt saves a model: view, table, incremental or snapshot", [
                  "View: a saved query, built on read. Cheap and always fresh. Staging and intermediate, because nobody reads them directly.",
                  "Table: written when dbt runs. Fast to read. Marts, because consumers and dashboards read them.",
-                 "Set once per folder in `dbt_project.yml`; `config()` at the top of a model file overrides it for that model. Incremental and snapshot: at 13:00.",
+                 "Set once per folder in `dbt_project.yml`; `config()` at the top of a model file overrides it for that model.",
+                 "Incremental: a big table where each run adds only the new rows, so it does not rebuild everything. Snapshot: a table that keeps each old version of a row with the dates it was true, so you can see what a value used to be. Both are shown at 13:00; today you only need view and table.",
                  "In the challenge: S6, and the `models:` block you read in S2."]),
          dc.code(f'''!cat dbt_project.yml
-sql("select table_name, table_type from information_schema.tables where table_schema = 'demo' and table_name not like '%_raw' order by table_name", {PSDB})
+!dbt show --inline "select table_name, table_type from information_schema.tables where table_schema = 'demo' and table_name not like '%_raw' order by table_name" --limit 10
 # The folder decides: staging/ and intermediate/ are views, marts/ is a table. Nothing in the SQL files says so.'''),
          wf("models/staging/stg_fx_rates.sql", F_STG_FX_TABLE),
          dc.code(f'''!dbt run --select stg_fx_rates
-sql("select table_name, table_type from information_schema.tables where table_schema = 'demo' and table_name = 'stg_fx_rates'", {PSDB})
+!dbt show --inline "select table_name, table_type from information_schema.tables where table_schema = 'demo' and table_name = 'stg_fx_rates'" --limit 10
 # config() in the file beats the folder setting: the log now says "table model". This is the variation in challenge S6.'''),
          wf("models/staging/stg_fx_rates.sql", F_STG_FX),
          dc.code(f'''!dbt run --select stg_fx_rates
@@ -513,7 +509,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
          wf("models/marts/schema.yml", F_SCHEMA_MARTS),
          dc.code('!dbt test    # one test fails here, on purpose\n# Two promises: every row has an instrument, and every row has a dollar price. The second one fails, on three rows.'),
          dc.code('!cat target/compiled/price_sheet/models/marts/schema.yml/not_null_fct_prices_usd_price_usd.sql\n# A test is only a query: it selects the rows that break the promise. No rows back means PASS.'),
-         dc.code(f'sql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where price_usd is null", {PSDB})\n# The three rows the test found. Their currency is written gbp, the rates table says GBP, so the join found no rate and the dollar price is empty.'),
+         dc.code(f'!dbt show --inline "select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where price_usd is null" --limit 10\n# The three rows the test found. Their currency is written gbp, the rates table says GBP, so the join found no rate and the dollar price is empty.'),
          fig("d3-build-5", "Where we are: one test fails on the mart. The cause is upstream, in staging, where the currency should be cleaned.", height=300),
          dc.md("#### Step 6 — Fix the model, then dbt build: run and test together"),
          wf("models/staging/stg_prices.sql", F_STG_PRICES_2),
@@ -522,7 +518,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
                     "`--select` narrows any command: one model, `+model` with everything upstream, `model+` with everything downstream, `tag:staging` for a layer.",
                     "Daily loop: edit a file, `dbt build --select` that model, read the result."]),
          dc.md("Every dbt command by objective, the `--select` syntax, the files dbt reads and writes, and what to do when something goes wrong: `common/glossaries/dbt-commands.md`. Keep it open during the challenge."),
-         dc.code(f'!dbt build\nsql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where native_ccy = \'GBP\' order by price_date", {PSDB})\n# One line changed in staging: the currency is now upper case. Build re-created the models and re-ran the tests; both pass, and the three rows have a dollar price.'),
+         dc.code(f'!dbt build\n!dbt show --inline "select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where native_ccy = \'GBP\' order by price_date" --limit 10\n# One line changed in staging: the currency is now upper case. Build re-created the models and re-ran the tests; both pass, and the three rows have a dollar price.'),
          fig("d3-build-6", "Where we are: one line fixed in staging, and both tests pass.", height=300),
          dc.md("#### Step 7 — A test of your own: any query that returns the rows that break a rule"),
          wf("tests/assert_prices_are_positive.sql", F_SINGULAR),
@@ -617,7 +613,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
          dc.section(3, "Advanced dbt, then complete and extend the practical", "s3"),
          dc.part("Demo", "Jinja that writes SQL: a loop, a macro, then the production pieces", time="13:00"),
          dc.anchor("This morning's Jinja filled in names. What else can it do, and what does a production dbt project have that the challenge does not?",
-                   "A loop and a macro on this morning's price sheet; then a macro that dispatches on the warehouse, a custom generic test, a snapshot (SCD type 2), an incremental mart and a unit test on the Portfolio Analytics project.",
+                   "A loop and a macro on this morning's price sheet; then a macro that dispatches on the warehouse, a custom generic test, a snapshot (the history of rows that change), an incremental mart and a unit test on the Portfolio Analytics project.",
                    "These are the pieces the platform's vended project uses, and the macros you will read in Friday's capstone.",
                    "Twenty-five minutes on screen. Then carry on with Phase 2, or ask Copilot to add one of these to your project."),
          fig("d3-macro", "A macro: SQL written once, expanded wherever it is called",
@@ -635,7 +631,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
          dc.md("#### On the Portfolio Analytics project: a macro that dispatches on the warehouse, and a generic test of your own"),
          dc.code('%cd {HERE}/demos/portfolio_analytics\n# The rest of the demo runs in the instructor\'s copy of the challenge project.'),
          dc.code(f'!cat macros/to_base_ccy.sql\n!cat tests/generic/test_non_negative.sql\n# A macro names a repeated expression once; a generic test is a macro that returns the violating rows.'),
-         dc.md("#### A snapshot: the history of rows that change (SCD type 2)"),
+         dc.md("#### A snapshot: keep the old versions of rows that change"),
          dc.code(f'!dbt snapshot\nsql("select fund_cd, fund_name, strategy_code, is_active, dbt_valid_from, dbt_valid_to from training_demo.fund_master_snapshot order by 1", {DB})\n# A snapshot keeps history: change a watched column in the seed, snapshot again, and the old row closes (dbt_valid_to) while a new one opens. Tomorrow adds the second clock.'),
          dc.md("#### An incremental model: only the new rows"),
          dc.code(f'!dbt run --select agg_fund_daily_exposure_incremental\n!dbt run --select agg_fund_daily_exposure_incremental\n!cat models/stretch/agg_fund_daily_exposure_incremental.sql\n# First run: full load. Second run: only dates newer than the table holds, replaced on the unique key (delete+insert) so a re-delivered day does not duplicate.'),

@@ -225,7 +225,11 @@ def setup_cell(day: int) -> str:
     os.environ["PATH"] = ":".join([str(VENV / "bin"), str(Path.home() / ".local" / "bin"),
                                    "/Applications/Docker.app/Contents/Resources/bin", "/opt/homebrew/bin", os.environ["PATH"]])
     os.environ.setdefault("DBT_SEND_ANONYMOUS_USAGE_STATS", "false")
-    HERE = Path.cwd()                      # courseware/day{day}-*/
+    # The notebook's own folder, courseware/day{day}-*/, found from wherever the kernel is now, so this cell can be
+    # run again after a %cd into a demo folder. It also changes back to that folder.
+    HERE = next((p for p in [Path.cwd(), *Path.cwd().parents] if (p / "day{day}_anchor.ipynb").exists()), None)
+    assert HERE is not None, "Open this notebook from its own folder (courseware/day{day}-*)"
+    os.chdir(HERE)
     COMMON = HERE.parent / "common"
     assert COMMON.exists(), "Open this notebook from its own folder (courseware/day{day}-*)"
 

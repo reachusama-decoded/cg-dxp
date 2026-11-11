@@ -12,7 +12,7 @@ import nbformat
 
 ROOT = Path(__file__).resolve().parents[3]
 SLUGS = {1: "day1-design", 2: "day2-platform", 3: "day3-dbt", 4: "day4-airflow", 5: "day5-capstone"}
-SKIP_QUICK = re.compile(r"%%writefile|reset\.sh|run\.sh|demo\.sh|build\.sh|docker |curl |spark-engine|delta-under-the-hood|\bdbt (build|run|seed|test|snapshot|source|deps|docs|compile)\b|\bclaude\b|npx|quick_diagram\(|\bastro |mmdc")
+SKIP_QUICK = re.compile(r"%%writefile|reset\.sh|run\.sh|demo\.sh|build\.sh|docker |curl |spark-engine|delta-under-the-hood|\bdbt (build|run|seed|test|snapshot|source|deps|docs|compile|show|debug|ls)\b|\bclaude\b|npx|quick_diagram\(|\bastro |mmdc")
 SKIP_FULL = re.compile(r"\bclaude\b|npx|quick_diagram\(|mmdc|docs serve|--hold")
 SKIP = SKIP_QUICK
 

@@ -13,7 +13,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 | # | Section | Time | What happens |
 |---|---|---|---|
-| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Ice-breaker: one thing you always double-check · Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
+| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in two pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
 | 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 · Break · Walkthrough: Phase 2 · Circulating: Phase 2 to lunch · Lunch |
 | 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, OPTIMIZE and ZORDER, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
 | 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
@@ -22,7 +22,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 | § | Time | Block | Type | On screen |
 |---|---|---|---|---|
-| 1 | 09:00–09:10 | Ice-breaker, then recap: yesterday's platform in four pictures | Recap | Anchor › section 1, Ice-breaker box, then Recap (four Day 2 diagrams) |
+| 1 | 09:00–09:10 | Ice-breaker, then recap: yesterday's platform in two pictures | Recap | Anchor › section 1, Ice-breaker box, then Recap (two Day 2 diagrams) |
 | 1 | 09:10–09:50 | dbt from zero: one transformation through the whole life cycle | Demo | Anchor › section 1, top to bottom (demos/price_sheet) |
 | 2 | 09:50–10:00 | Challenge 9 — dbt practical: launch and first sections | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
 | 2 | 10:00–10:15 | Break | Break |  |
@@ -41,31 +41,29 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ### 1. dbt from zero: one transformation through the whole life cycle
 
-Ice-breaker: one thing you always double-check · Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs
+Recap: yesterday's platform in two pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs
 
-#### 09:00 · 10 min · Explain — Ice-breaker — one thing you always double-check
+#### 09:00 · 10 min · Explain — Recap — yesterday's platform in two pictures
 
-**Purpose.** Put everyone on the same page before dbt: where the tables live, what runs the SQL, and which box of the tools picture today zooms into.
+**Purpose.** Put everyone on the same page before dbt: where the tables live and what runs the SQL.
 
 **Instructor notes.**
 
-- Open with the ice-breaker, two or three minutes: one thing you always double-check, even though it is almost always fine. One answer each; type a few into the notebook. Its link to the day is tests: a check written down once and run every time. Return to it at Step 5.
-- Then about seven minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.
-- End on the tools picture with a finger on the dbt box: today is that box, tomorrow is the Airflow box above it.
+- Open with the ice-breaker, the first thing in the notebook, above the agenda, two or three minutes: one thing you always double-check, even though it is almost always fine. One answer each; type a few into the notebook. Its link to the day is tests: a check written down once and run every time. Return to it at Step 5.
+- Then about seven minutes, two pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.
+- End by saying where today sits: dbt holds the transformation rules and sends SQL to the platform on these pictures. The tools-together flow is not repeated; the room has seen it several times.
 - Anyone who missed Day 2: point them at the Day 2 anchor's section 3 for the full version.
 
 **Say.**
 
-- “One line each: what is a lakehouse, what does Databricks do with your SQL, what is a Delta table?”
+- “One line each: what is a lakehouse, and what does Databricks do with your SQL?”
 - “dbt holds no data and does no computing. It sends SQL; everything on these pictures is what receives it.”
-
-**Recap — yesterday's platform in four pictures.**
 
 **Transition.** So what is in a dbt project? Two CSVs and an empty folder.
 
-**Adapt.** Short of time: the under-the-hood picture and the tools picture only.
+**Adapt.** Short of time: the under-the-hood picture only.
 
-**Assessment.** Anchor › section 1, Ice-breaker box, then Recap (four Day 2 diagrams)
+**Assessment.** Anchor › section 1, Ice-breaker box, then Recap (two Day 2 diagrams)
 
 #### 09:10 · 40 min · Instructor-led demo — Demo — one price sheet, from two raw files to a tested, documented table
 

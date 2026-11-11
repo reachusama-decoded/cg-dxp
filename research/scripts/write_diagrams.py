@@ -813,10 +813,10 @@ flowchart LR
 """
 D["d3-materialisations"] = """
 flowchart TB
-  Cfg["dbt_project.yml per folder<br/>or config() in the model"] --> V["view<br/>built on read"]
-  Cfg --> Tb["table<br/>written at build"]
-  Cfg --> Inc["incremental<br/>new rows only"]
-  Cfg --> Sn["snapshot<br/>SCD type 2 history"]
+  Cfg["Set per folder in dbt_project.yml,<br/>or in one model with config()"] --> V["<b>view</b><br/>a saved query:<br/>runs when someone reads it"]
+  Cfg --> Tb["<b>table</b><br/>saved when dbt runs:<br/>fast to read"]
+  Cfg --> Inc["<b>incremental</b><br/>a table that only<br/>adds the new rows"]
+  Cfg --> Sn["<b>snapshot</b><br/>keeps the old versions<br/>of rows that change"]
   class V aqua
   class Tb focus
   class Inc blue
