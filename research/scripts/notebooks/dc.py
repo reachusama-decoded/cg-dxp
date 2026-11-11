@@ -216,7 +216,7 @@ def how_to_use(day: int, extra: str = "") -> list:
 
 def setup_cell(day: int) -> str:
     return _d(f"""
-    # Setup: the demo environment on PATH, DuckDB and pandas for showing results, a quick diagram helper
+    # Setup: the demo environment on PATH, a sql() helper for showing results, a quick diagram helper
     import os, sys, subprocess, textwrap
     from pathlib import Path
     from IPython.display import Image, Markdown, display
@@ -241,7 +241,7 @@ def setup_cell(day: int) -> str:
         display(Image(filename=str(out)))
 
     def sql(query: str, db: Path, read_only: bool = True):
-        \"\"\"Run a query against a DuckDB file and show it as a table.\"\"\"
+        \"\"\"Run a query against a demo warehouse file and show it as a table.\"\"\"
         import duckdb, pandas as pd
         pd.set_option("display.width", 200); pd.set_option("display.max_columns", 30)
         con = duckdb.connect(str(db), read_only=read_only)

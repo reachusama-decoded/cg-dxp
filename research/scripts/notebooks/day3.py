@@ -16,7 +16,7 @@ BLOCKS = [
       purpose="Show every kind of file in a dbt project being written and run once, on a small example, so the challenge's tasks are recognisable: project and profile, seeds, a source, a model, Jinja, ref, materialisation, tests failing and fixed, build, docs.",
       notes=["Present from the notebook; no whiteboard. The flow is: what dbt is for (one picture), why use it (the same transformation as a hand-run script that is silently wrong, then the without-and-with table), the path (eight steps on one picture), then the build. About five minutes for what and why, thirty for the steps, five for docs and the map to the challenge.",
              "In the build, each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.",
-             "Learners do not run the demo: it is DuckDB on your laptop, and their hands-on is the challenge on Databricks. The 'Where things run today' table says so; point at it once before Step 1.",
+             "Learners do not run the demo cells; their hands-on is the challenge, on Databricks. Say so once before Step 1. The demo runs against a local warehouse file on your laptop so each step answers at once; the notebook does not name it, and there is no need to dwell on it.",
              "About four minutes a step. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.",
              "Step 4 has a view-or-table beat: the models block of dbt_project.yml sets it per folder (staging and intermediate views, marts tables, as in the challenge), then config() in one model overrides it and is taken out again. It is challenge S6 in two minutes.",
              "At Step 3, spend two minutes on the Jinja picture: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.",
@@ -125,7 +125,7 @@ SECTIONS = [
  dict(n=1, title="dbt from zero: one transformation through the whole life cycle", anchor="s1", start="09:00",
       parts=["Recap: yesterday's platform in four pictures", "Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs"]),
  dict(n=2, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s2", start="09:50",
-      parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1 on DuckDB", "Break", "Walkthrough: Phase 2 on DuckDB", "Circulating: Phase 2 to lunch", "Lunch"]),
+      parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1", "Break", "Walkthrough: Phase 2", "Circulating: Phase 2 to lunch", "Lunch"]),
  dict(n=3, title="Advanced dbt, then complete and extend the practical", anchor="s3", start="13:00",
       parts=["Demo: a loop, a macro, a custom test, snapshot, incremental, unit test", "Challenge 9 continued: Phase 2 and the stretch", "Break"]),
  dict(n=4, title="Consolidation", anchor="s4", start="14:20",
@@ -134,7 +134,7 @@ SECTIONS = [
 
 # ---------- the "dbt from zero" project: every file the notebook writes, in the order it writes them ----------
 PS = "demos/price_sheet"
-PSDB = f'HERE / "{PS}/warehouse/price_sheet.duckdb"'
+PSDB = "PRICE_SHEET"            # defined once in the notebook, in the cell after Setup
 
 def fig(png: str, caption: str, notes: list[str] | None = None, height: int | None = None):
     """A picture with one caption line; the explanation is folded under 'Notes' so the screen stays visual."""
@@ -183,8 +183,8 @@ price_sheet:
   target: dev
   outputs:
     dev:
-      type: duckdb                          # the learners' profile says: type: databricks
-      path: warehouse/price_sheet.duckdb    # ...and there: host, http_path, catalog
+      type: duckdb                          # the demo's warehouse: a local file. Yours says: type: databricks
+      path: warehouse/price_sheet.duckdb    # ...and yours has: host, http_path, catalog
       schema: demo                          # the schema the models are created in
 """
 F_SOURCES = """
@@ -372,11 +372,14 @@ def cells():
     act = lambda n: dc.md(dc.activity(n, A[n]["title"], A[n]["grouping"], A[n]["minutes"], A[n]["brief"], A[n]["outputs"], A[n].get("debrief"), A[n].get("early")))
     
     PA = "demos/portfolio_analytics"
-    DB = f'HERE / "{PA}/warehouse/training_dev.duckdb"'
+    DB = "PORTFOLIO"
     C = [dc.title(3, TITLE, "anchor notebook"),
          
          *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
          dc.code(dc.setup_cell(3)),
+         dc.code(f'''# The two demo warehouses the cells below query: local files on the instructor's laptop
+PRICE_SHEET = HERE / "{PS}/warehouse/price_sheet.duckdb"
+PORTFOLIO = HERE / "demos/portfolio_analytics/warehouse/training_dev.duckdb"'''),
          dc.agenda(SECTIONS, lead='A ten-minute recap of yesterday\'s platform, forty minutes of dbt from zero on a small example, then self-paced practice from the README, with the instructor walking the room, all the way to lunch. After lunch, twenty-five minutes of advanced dbt, then more practice. Recap and a pair exercise at the end.'),
          dc.section(1, "dbt from zero: one transformation through the whole life cycle", "s1"),
          dc.part("Recap", "yesterday's platform in four pictures", time="09:00"),
@@ -401,7 +404,7 @@ def cells():
          dc.anchor("Yesterday Catalyst generated a dbt project for you. What is in it, and what does dbt do with each file?",
                    "dbt on the smallest useful example: two raw files, four models in three layers, five tests, one documented table, on Day 2's price data.",
                    "Every file in today's challenge is one of the kinds shown here. Once you have seen each one written and run, the README's tasks are recognisable.",
-                   "Watch and predict: each cell on screen writes one file or runs one command, on DuckDB on the instructor's laptop. You do not run these cells. In forty minutes you build the real pipeline yourself, on Databricks."),
+                   "Watch and predict: each cell on screen writes one file or runs one command. You do not run these cells. In forty minutes you build the real pipeline yourself, on Databricks."),
          dc.md("#### First: what dbt is for"),
          fig("d3-what-dbt-does", "dbt is the T in extract, load, transform: SQL files in, tables and views out", [
                  "Other tools load the raw data. You write SELECT statements in files, kept in Git; dbt wraps each in a CREATE, runs them in order and tests the results.",
@@ -409,18 +412,16 @@ def cells():
                  "Analysts, analytics engineers and data engineers use the same files. At Capital Group every data product on the paved path has a dbt project; Airflow triggers a Databricks job that runs it."]),
          dc.md("#### Why use it: the same price sheet without dbt"),
          dc.code(f'''# Without dbt: one SQL script, run by hand. Prices in US dollars = close price x the day's FX rate.
-import duckdb
 seeds = HERE / "{PS}/seeds"
-con = duckdb.connect()
-con.execute(f"""
-    create table prices_usd as
+sql(f"""
     select p.isin, p.px_date, p.px_ccy, p.px_close,
-           p.px_close * coalesce(f.rate, 1) as price_usd
+           round(p.px_close * coalesce(f.rate, 1), 4) as price_usd
     from '{{seeds}}/vendor_prices_raw.csv' p
     left join '{{seeds}}/fx_rates_raw.csv' f
       on f.from_ccy = p.px_ccy and f.rate_dt = p.px_date
-""")
-con.sql("select isin, px_date, px_ccy, px_close, round(price_usd, 4) as price_usd from prices_usd where px_ccy <> 'USD' order by isin, px_date").df()
+    where p.px_ccy <> 'USD'
+    order by p.isin, p.px_date
+""", ":memory:", read_only=False)
 # It ran, with no error. Now look at HSBC (GB0005405286): the dollar price equals the pound price. Who would have noticed?'''),
          dc.md("The script ran, and three prices are wrong. The SQL is the easy part; dbt is for everything around it."),
          fig("d3-script-vs-dbt", "Six questions a hand-run script cannot answer, and what dbt gives you for each", height=360),
@@ -428,10 +429,6 @@ con.sql("select isin, px_date, px_ccy, px_close, round(price_usd, 4) as price_us
          fig("d3-journey", "The path: eight steps from an empty folder to a tested, documented table",
                    ["Each step adds one kind of file and one command. First make it run (steps 1 to 4), then make it right and say what it is (steps 5 to 8).",
                     "It is the order you would work in on a real product, and the order of the challenge README."]),
-         fig("d3-where-runs", "Where things run today: the demos on DuckDB, your challenge on Databricks. Same files, same commands.",
-             ["You do not run the demo cells. Everything you do today, and everything Copilot generates for you, runs on Databricks in `training_dev.training_<you>`.",
-              "Only `profiles.yml` differs. DuckDB needs no connection or cluster, so each step shows its result straight away.",
-              "Only on Databricks: Delta tables, `OPTIMIZE ... ZORDER` (challenge C9), Unity Catalog names."]),
          dc.md(dc.demo("dbt from zero, eight steps", f"A project that starts as two CSVs in <code>{PS}/seeds/</code>; each cell writes one file or runs one command.", [
                   "Read each file aloud before running the command that uses it; ask the room to predict the output.",
                   "Steps 5 and 6 are the point of the demo: two tests fail on real rows, one line fixes the model, the build goes green. Do not skip them.",
@@ -509,6 +506,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
                    ["`dbt build` runs seeds, models and tests in graph order; if a test fails, everything downstream of it is skipped.",
                     "`--select` narrows any command: one model, `+model` with everything upstream, `model+` with everything downstream, `tag:staging` for a layer.",
                     "Daily loop: edit a file, `dbt build --select` that model, read the result."]),
+         dc.md("Every dbt command by objective, the `--select` syntax, the files dbt reads and writes, and what to do when something goes wrong: `common/glossaries/dbt-commands.md`. Keep it open during the challenge."),
          dc.code(f'!cd {PS} && dbt build 2>&1 | grep -E "OK|PASS|FAIL|ERROR|SKIP|Done"\nsql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.fct_prices_usd where native_ccy = \'GBP\' order by price_date", {PSDB})\n# One line changed in staging; build re-created the models and re-ran the four tests. HSBC now has a dollar price.'),
          dc.md("#### Step 7 — A singular test: any query that returns the rows that break a rule"),
          wf("tests/assert_one_price_per_instrument_per_day.sql", F_SINGULAR),
@@ -550,8 +548,8 @@ sql("select table_name, table_type from information_schema.tables where table_sc
                       support=["Keep a list of commands, configuration changes, questions and discoveries; the recap is built from it."])),
          dc.md(dc.say(["Attempt each section before you open its solution. The solution is for comparing, not for copying.",
                        "You can run the raw dbt commands from the project folder. If dbt says it cannot find your credentials, open a fresh terminal so mise loads the environment, or rerun mise run setup:databricks."])),
-         dc.part("Walkthrough", "Phase 1 on DuckDB: sources and staging"),
-         dc.md(dc.demo("the same project, on DuckDB, section by section", f"The learners' challenge 02 solution ported to DuckDB in <code>{PA}/</code>: one cell per README section, for \"what should I see?\".", [
+         dc.part("Walkthrough", "Phase 1: sources and staging"),
+         dc.md(dc.demo("the same project, section by section", f"The instructor's copy of the challenge 02 solution in <code>{PA}/</code>: one cell per README section, for \"what should I see?\".", [
                   "Same model names, layers, tags and tests; the Databricks-only post-hook is a no-op macro here.",
                   f"Use a cell when someone asks what they should see; `{PA}/README.md` maps each cell to its README section.",
                   "Say once: the SQL is the same; only the target differs."])),
@@ -569,7 +567,7 @@ sql("select table_name, table_type from information_schema.tables where table_sc
          dc.md("#### S8 — A staging test is a query that must return no rows"),
          dc.code(f'!sed -n "1,20p" {PA}/models/staging/schema.yml\n!cd {PA} && dbt test --select stg_holdings 2>&1 | grep -E "PASS|FAIL|Done"\n# not_null and unique compile to select-the-violations queries. Zero rows is a pass.'),
          dc.break_(15, "10:15"),
-         dc.part("Walkthrough", "Phase 2 on DuckDB: intermediate, marts, tests, docs", time="10:15"),
+         dc.part("Walkthrough", "Phase 2: intermediate, marts, tests, docs", time="10:15"),
          dc.md("#### C1 — The enrichment join: holdings × prices × FX, grain unchanged"),
          dc.code(f'!sed -n "1,45p" {PA}/models/intermediate/int_holdings_enriched.sql\n# Left joins on (instrument, date) and (currency, GBP, date). Ask the room: what happens when the FX rate is missing? Here it defaults to 1.0 via coalesce; the running example on Day 2 chose to leave it null and fail the test. Both are decisions; the contract should say which.'),
          dc.md("#### C3, C4 — The marts: an aggregate by strategy and the daily-grain fact with a calculated NAV"),

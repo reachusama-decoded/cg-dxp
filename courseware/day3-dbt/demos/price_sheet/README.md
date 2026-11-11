@@ -1,6 +1,6 @@
 # price_sheet: dbt from zero (Day 3, section 1 and the 13:00 advanced part)
 
-The smallest useful dbt project, on Day 2's price data and DuckDB. It starts as two raw CSVs in `seeds/`; the Day 3 anchor notebook writes every other file with a `%%writefile` cell and runs the dbt command that uses it, so the room sees each file appear and what dbt does with it.
+The smallest useful dbt project, on Day 2's price data, run by the instructor against a local warehouse file (learners work on Databricks, in the challenge). It starts as two raw CSVs in `seeds/`; the Day 3 anchor notebook writes every other file with a `%%writefile` cell and runs the dbt command that uses it, so the room sees each file appear and what dbt does with it.
 
 | Step in the anchor | File the cell writes | Command | What the room sees |
 |---|---|---|---|

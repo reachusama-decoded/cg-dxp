@@ -47,7 +47,7 @@ The section teaches dbt on the smallest useful example before anyone opens the c
 
 ### Teaching notes
 
-- **Demos on DuckDB, learners on Databricks.** Learners do not run the demo cells; everything they do (the challenge, yesterday's generated project, Activity 9b) runs in their dev container against Databricks. The notebook has a 'Where things run today' table before Step 1: same dbt, commands and files; only `profiles.yml` and the warehouse differ, plus the Databricks-only pieces (Delta, `OPTIMIZE ... ZORDER`, Unity Catalog names). Point at it once.
+- **Learners work on Databricks; the notebook does not mention DuckDB.** Learners do not run the demo cells; everything they do (the challenge, yesterday's generated project, Activity 9b) runs in their dev container against Databricks. Your demo cells run against a local DuckDB file so each step answers at once, but the learner-facing notebook does not name it: the only trace is `type: duckdb` in the demo's `profiles.yml`, with a comment that theirs says `type: databricks`. If asked, say the demo uses a local warehouse, the SQL and the commands are the same, and only the profile differs.
 - **Present the notebook; no whiteboard.** Each `%%writefile` cell is the file itself. Read it aloud, ask what the next command will print, then run it. About four minutes a step.
 - **Steps 5 and 6 are the lesson.** The run at Step 4 is green and three prices are missing; the tests at Step 5 catch it twice; one line in staging fixes it. Say: a successful run means the SQL executed, not that the answer is right.
 - **The recap (09:00, ten minutes).** Four Day 2 diagrams, each with a question to ask and the two lines to land. Let the room answer; do not re-teach. Finish on the tools picture with the dbt box: dbt holds no data and does no computing, it sends SQL to everything on these pictures.
@@ -222,3 +222,4 @@ The facts to pull from the room, in the order rooms tend to give them: dbt pipel
 - The instructor's copy and its cell-to-section map: `courseware/day3-dbt/demos/portfolio_analytics/README.md`.
 - The Open Data Contract Standard: https://bitol-io.github.io/open-data-contract-standard/
 - Unity Catalog concepts: https://docs.databricks.com/data-governance/unity-catalog/
+- Every dbt command by objective, the `--select` syntax, the files dbt reads and writes, the Jinja forms, materialisations, good habits and a troubleshooting table: `courseware/common/glossaries/dbt-commands.md`.

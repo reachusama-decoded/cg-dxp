@@ -14,7 +14,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | # | Section | Time | What happens |
 |---|---|---|---|
 | 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
-| 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating: Phase 2 to lunch · Lunch |
+| 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 · Break · Walkthrough: Phase 2 · Circulating: Phase 2 to lunch · Lunch |
 | 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
 | 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
 
@@ -72,7 +72,7 @@ Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use i
 
 - Present from the notebook; no whiteboard. The flow is: what dbt is for (one picture), why use it (the same transformation as a hand-run script that is silently wrong, then the without-and-with table), the path (eight steps on one picture), then the build. About five minutes for what and why, thirty for the steps, five for docs and the map to the challenge.
 - In the build, each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.
-- Learners do not run the demo: it is DuckDB on your laptop, and their hands-on is the challenge on Databricks. The 'Where things run today' table says so; point at it once before Step 1.
+- Learners do not run the demo cells; their hands-on is the challenge, on Databricks. Say so once before Step 1. The demo runs against a local warehouse file on your laptop so each step answers at once; the notebook does not name it, and there is no need to dwell on it.
 - About four minutes a step. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.
 - Step 4 has a view-or-table beat: the models block of dbt_project.yml sets it per folder (staging and intermediate views, marts tables, as in the challenge), then config() in one model overrides it and is taken out again. It is challenge S6 in two minutes.
 - At Step 3, spend two minutes on the Jinja picture: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.
@@ -100,7 +100,7 @@ Recap: yesterday's platform in four pictures · Demo: what dbt is for, why use i
 
 ### 2. The dbt practical: launch, Phase 1 and the walkthrough
 
-Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating: Phase 2 to lunch · Lunch
+Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 · Break · Walkthrough: Phase 2 · Circulating: Phase 2 to lunch · Lunch
 
 #### 09:50 · 5 min · Explain — Launch — the pipeline you will build today
 
@@ -127,9 +127,9 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 - “Attempt each section before you open its solution. The solution is for comparing, not for copying.”
 - “You can run the raw dbt commands from the project folder. If dbt says it cannot find your credentials, open a fresh terminal so mise loads the environment, or rerun mise run setup:databricks.”
 
-**Walkthrough — Phase 1 on DuckDB: sources and staging.**
+**Walkthrough — Phase 1: sources and staging.**
 
-**Demo — the same project, on DuckDB, section by section.** The learners' challenge 02 solution ported to DuckDB in `demos/portfolio_analytics/`: one cell per README section, for "what should I see?".
+**Demo — the same project, section by section.** The instructor's copy of the challenge 02 solution in `demos/portfolio_analytics/`: one cell per README section, for "what should I see?".
 
 1. Same model names, layers, tags and tests; the Databricks-only post-hook is a no-op macro here.
 2. Use a cell when someone asks what they should see; `demos/portfolio_analytics/README.md` maps each cell to its README section.
@@ -143,7 +143,7 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 #### 10:00 · 15 min · Break — Break, back at 10:15
 
-#### 10:15 · 45 min · Instructor-led demo — Walkthrough — Phase 2 on DuckDB: intermediate, marts, tests, docs
+#### 10:15 · 45 min · Instructor-led demo — Walkthrough — Phase 2: intermediate, marts, tests, docs
 
 **Purpose.** Phase 1 complete for most; Phase 2 started by some; blockers resolved; questions collected.
 

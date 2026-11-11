@@ -508,15 +508,6 @@ flowchart TB
   class S1,S2,S3,S4,S5,S6 red
   class D1,D2,D3,D4,D5,D6 green
 """
-D["d3-where-runs"] = """
-flowchart LR
-  F["<b>The same dbt project</b><br/>models · YAML · tests · commands"]
-  F -->|"profiles.yml<br/>type: duckdb"| A["<b>Demos on screen</b><br/>DuckDB: a file on the instructor's laptop<br/>instant, no connection"]
-  F -->|"profiles.yml<br/>type: databricks"| B["<b>Your challenge</b><br/>Databricks: Spark, Delta on S3<br/>training_dev.training_YOU"]
-  class F blue
-  class A grey
-  class B focus
-"""
 D["d3-jinja"] = """
 flowchart LR
   J1["{{ source('vendor_feed', 'prices_raw') }}"] --> O1["a raw table's full name"]
