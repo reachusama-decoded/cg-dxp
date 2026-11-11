@@ -2,22 +2,59 @@
 
 [Data Creators › Day 3 — instructor prep guide]{.breadcrumb}
 
-An hour's reading to be workshop-ready for Wednesday. The sections mirror the anchor notebook's four numbered sections: the concepts in depth, the teaching notes, and the mechanics of the practical and the walkthrough. Wednesday is mostly unstructured practical time, so the value of this guide is in two places: knowing the pipeline well enough to answer "what should I see?" at any section, and being able to give the platform session yourself if no guest comes. The run sheet beside this file has the timings and the lines.
+An hour's reading to be workshop-ready for Wednesday. The sections mirror the anchor notebook's four numbered sections: the concepts in depth, the teaching notes, and the mechanics of the practical and the walkthrough. Wednesday opens with a ten-minute recap of Tuesday's platform and forty minutes of taught dbt on a small example and is then mostly unstructured practical time, so the value of this guide is in two places: being able to present the small example cell by cell, and knowing the pipeline well enough to answer "what should I see?" at any section. There is no platform session this week: its content was covered on Day 2, and the 11:00 hour goes to the practical. The run sheet beside this file has the timings and the lines.
 
 ## The day in one page
 
-Learners build, test and document the Portfolio Analytics pipeline on Databricks from `challenges/v1/02-dbt-pipeline`: Phase 1 (sources and staging, about an hour) then Phase 2 (intermediate, marts, tests, docs, a capstone mart). The instructor's copy of the same project runs on DuckDB in the anchor, one cell per README section. At 11:00 the platform team speaks (or you do); at 14:30 the room consolidates by answering "what did we learn?", then pairs review each other's tests.
+The day opens with a ten-minute recap of Day 2's platform in four pictures (warehouse, lake and lakehouse; Databricks under the hood; the Delta format; the tools together), one question per picture, so everyone is on the same page. Then dbt from zero, from 09:10 to 09:50: a small project (`demos/price_sheet`, Day 2's price data on DuckDB) that the anchor writes file by file and runs, presented from the notebook with no whiteboard. Then learners build, test and document the Portfolio Analytics pipeline on Databricks from `challenges/v1/02-dbt-pipeline`: Phase 1 (sources and staging, about an hour) then Phase 2 (intermediate, marts, tests, docs, a capstone mart). The instructor's copy of the same project runs on DuckDB in the anchor, one cell per README section. The practical runs through to lunch; at 13:00 there are twenty-five minutes of advanced dbt (a loop, a macro, a custom test, a snapshot, an incremental model, a unit test), then the practical resumes; at 14:30 the room consolidates by answering "what did we learn?", then pairs review each other's tests.
 
 | # | Section | What happens | You must be able to |
 |---|---|---|---|
-| 1 | The dbt practical: launch, Phase 1 and the walkthrough | Launch, Challenge 9, the walkthrough cells, circulating, the break | Say what each of the eleven models does and what a finished Phase 1 looks like |
-| 2 | The platform session | The guest, or the instructor-led version | Give twenty-five minutes on Airflow at CG, Unity Catalog, contracts and the vended repository |
-| 3 | Complete and extend the practical | Phase 2, then the stretch: macros, snapshots, incremental, unit tests | Explain each stretch piece and when a production project needs it |
-| 4 | Consolidation | What did we learn?, Activity 9, the close | Pull the day's facts from the room rather than lecture them |
+| 1 | dbt from zero: one transformation through the whole life cycle | The four-picture recap, then eight steps on `demos/price_sheet`, each a file written or a command run | Present every cell, say what each file is for, and explain why two tests fail at Step 5 |
+| 2 | The dbt practical: launch, Phase 1 and the walkthrough | Launch, Challenge 9, the walkthrough cells, the break, circulating through Phase 2 to lunch | Say what each of the eleven models does and what a finished Phase 1 looks like |
+| 3 | Advanced dbt, then complete and extend the practical | The 13:00 demo (loop, macro, custom test, snapshot, incremental, unit test), then Phase 2 and the stretch | Explain each stretch piece and when a production project needs it |
+| 4 | Consolidation | Activity 9b (a second look at yesterday's AI-generated dbt), what did we learn?, Activity 9, the close | Pull the day's facts from the room rather than lecture them; name the order to review generated dbt in |
 
 Three things that go wrong: a learner reaches for `mise run challenge:reset 02` "to start clean" and deletes authored work; a build fails on the connection and someone re-authenticates five times when the token simply did not reach the shell; the day runs out of structure after lunch and the pair test review is skipped. Say the first before anyone types; the auth check is in the LLM guide; the run sheet protects the last.
 
-## 1. The dbt practical: launch, Phase 1 and the walkthrough
+## 1. dbt from zero: one transformation through the whole life cycle
+
+### Concepts
+
+The section teaches dbt on the smallest useful example before anyone opens the challenge. The project is `courseware/day3-dbt/demos/price_sheet/`: it starts as two raw CSVs from Day 2's running example (36 vendor prices, 9 FX rates) and ends as three models, five tests and a docs site. The one transformation is a price in US dollars: the close price times that day's FX rate. Every other file exists to show one dbt idea.
+
+![What dbt does](../../courseware/common/diagrams/png/d3-what-dbt-does.png)
+
+| Step | The cell writes or runs | The idea | What the room sees |
+|---|---|---|---|
+| 1 | `dbt_project.yml`, `profiles.yml`, `dbt debug` | A project is a folder; the profile is the connection, and the only file that differs between DuckDB and Databricks | All checks passed |
+| 2 | `dbt seed` | Seeds stand in for landed feeds; dbt starts with the raw data already in the warehouse | HSBC's currency written `gbp`; Apple delivered twice on 4 November |
+| 3 | `sources.yml`, `stg_prices.sql`, `dbt run` | A model is a SELECT in a file; dbt compiles the Jinja, wraps the SELECT in a CREATE and sends it | One view; `source(...)` replaced by the real table name in `target/compiled/` |
+| 4 | `stg_fx_rates.sql`, `prices_usd.sql`, `dbt run` | `ref()` builds the graph and the order; `config()` sets a materialisation | Three models in order, two views and a table; HSBC's dollar price empty although the run is green |
+| 5 | `schema.yml`, `dbt test` | Tests are queries for the rows that break a rule; descriptions live in the same YAML | Two failures: `accepted_values` on `gbp`, `not_null` on three prices |
+| 6 | `stg_prices.sql` again, `dbt build` | The fix goes in the model; build runs seeds, models and tests in graph order | Nine results, all green |
+| 7 | A singular test, `stg_prices.sql` again, `dbt build` | Any SQL file in `tests/` is a test; the dedup pattern learners write in S5 | Red on the Apple re-delivery, then green; 35 rows |
+| 8 | `dbt docs generate` | Docs and lineage come from the same files | The catalog, and the list of models and tests upstream of `prices_usd` |
+
+**Jinja, early.** Learners use Jinja from the challenge's fourth section, so Step 3 explains it: two curly braces print a value into the SQL (`source()`, `ref()`, `config()`, `this`); a brace and a percent sign run logic (`if`, `for`, `macro`), which the challenge does not need and the 13:00 demo covers. Jinja runs on the laptop at compile time; the warehouse only receives plain SQL, and `target/compiled/` is where to read it.
+
+### Teaching notes
+
+- **Present the notebook; no whiteboard.** Each `%%writefile` cell is the file itself. Read it aloud, ask what the next command will print, then run it. About five minutes a step, forty minutes in all.
+- **Steps 5 and 6 are the lesson.** The run at Step 4 is green and three prices are missing; the tests at Step 5 catch it twice; one line in staging fixes it. Say: a successful run means the SQL executed, not that the answer is right.
+- **The recap (09:00, ten minutes).** Four Day 2 diagrams, each with a question to ask and the two lines to land. Let the room answer; do not re-teach. Finish on the tools picture with the dbt box: dbt holds no data and does no computing, it sends SQL to everything on these pictures.
+- **If behind at 09:40**, skip Step 7 and say it is the pattern of C6 (the NAV reconciliation). If ahead, serve the docs site and click through the lineage graph.
+- **The mapping table** at the end of the section ties each step to a README section; leave it on screen while launching the challenge.
+- **YAML files.** Step 3 has a short box on this because the room asks: `.yml` and `.yaml` are the same format and dbt reads both; only `dbt_project.yml` and `profiles.yml` have fixed names; every other YAML file under `models/` can be called anything, because dbt reads the top-level keys (`sources:`, `models:`, `seeds:`, `unit_tests:`), not the file name. `sources.yml` and `schema.yml` are conventions; Catalyst writes `_staging__sources.yml` and `_staging__models.yml`.
+- **Likely questions.** *Why seeds?* Small reference data and demos; real feeds are loaded by other tools and declared as sources. *Where did the CREATE statement come from?* dbt's materialisation wrote it; see `target/run/`. *Why did the join miss?* `gbp` is not `GBP`; string joins are exact. *Is `where rn = 1` the only way to deduplicate?* No; `qualify` is shorter on Databricks and DuckDB, and the challenge's solution uses `row_number()` too.
+
+### Mechanics
+
+- **Before the room arrives**, run section 1 top to bottom once: the first cell runs `reset.sh`, which deletes everything in the folder except `seeds/`, the README and the script, and the cells rebuild it. The folder's README lists every step and its expected result.
+- **The 13:00 cells** write `models/prices_by_ccy.sql`, `macros/to_usd.sql` and a new `prices_usd.sql` into the same folder, so run section 1 before them.
+- **The docs site**: `cd courseware/day3-dbt/demos/price_sheet && dbt docs serve --host 127.0.0.1 --port 8082`.
+
+## 2. The dbt practical: launch, Phase 1 and the walkthrough
 
 ### Concepts
 
@@ -75,49 +112,19 @@ Staging (views): `stg_holdings` renames and casts the custodian's `fund_cd, pos_
 - **Stalls.** Connection errors: run the three-step auth check from the repository's Copilot instructions before logging in again; a token that did not reach the shell is the usual cause. `dbt docs serve` refusing to bind: the `--host 127.0.0.1 --port 8081` flags. A model that parses but returns the placeholder: the stub was never replaced. A decimal overflow only appears on DuckDB (the instructor's copy widens one cast); Databricks does not need it.
 - **The gate.** `mise run challenge:verify 02` seeds, runs and tests; green means solved. Keep a list of commands, configuration changes, questions and discoveries: the recap is built from it.
 
-## 2. The platform session
-
-### Concepts
-
-The guest slot is an hour with the platform team. If nobody comes, the twenty-five-minute instructor-led version in the anchor covers the four topics below, drawn from what the platform team told the previous cohort; say that it is their picture, dated, and that the platform team owns the current answer.
-
-#### Airflow at Capital Group
-
-One open-source Airflow (2.11) ran about twelve thousand live DAGs over an enormous Kubernetes cluster, with noisy-neighbour problems because one DAG can take thousands of Spark executors. Astronomer advised that about two thousand DAGs is the largest sensible instance. The options were many self-managed Airflows (too much management), the AWS managed service (weak scaling, no disaster-recovery story for tier-one data) or Astronomer, which was chosen for its disaster-recovery plugin, its contribution record, its support, a CLI that runs everything locally and quick deployments. Today a team gets an Airflow vended through DevOps templates with an opinionated repository that favours Databricks; the migration is a messy middle over months: net-new jobs go to Astro now, critical pipelines move last. The vended instances run Airflow 3 with the new UI (learners live in the Airflow UI, not the Astro UI, which is for platform operations) and the Astro executor.
-
-**Cross-team dependencies.** Within one Airflow, assets: a DAG publishes an asset and downstream DAGs subscribe. Across many Airflows, a CG plugin reads published assets and pushes them to Kafka through centrally managed secrets, so no API tokens are shared, and a system-lineage view shows which job consumes which asset. The old scheduler still exists and integrates both ways.
-
-**Operations.** Onboarding to operations with a criticality level, a warranty period and knowledge transfer; Datadog dashboards vended per Airflow instance; non-production instances hibernate outside business hours; health-check DAGs available but costed; monthly release notes; a Catalyst skill updates a team's repository from the template, with a pull request to review because teams customise.
-
-![Airflow at CG: one instance, then many](../../courseware/common/diagrams/png/d3-airflow-federation.png)
-
-#### Databricks and Unity Catalog
-
-Seven years of Databricks, from a workspace-bound metastore that could not share to Unity Catalog, where data lives outside the workspace and is bound to workspaces, one Unity per region. Three catalog types: *application* catalogs (one per workspace; the team's scratch pad and the jump point to publishing), one *source-aligned* catalog (ingestion-like, minimal translation; some teams already publish straight into it), and *domain* catalogs (where curation happens; domain and consumer-aligned data). Access is automated at schema level through directory groups, supported manually at table level, and attribute-based later. Application catalogs cannot be shared: a team writes to its application catalog and a vended blueprint copies to the domain catalog after the data quality rules run, which keeps tiering, quality and access standard. Serverless compute is preferred; classic compute starts machines and needs warm-up. Disaster-recovery rules for data will be the creator's to write.
-
-![Application, source-aligned and domain catalogs](../../courseware/common/diagrams/png/d3-catalogs.png)
-
-#### Contracts, the repository and the Marketplace
-
-Contracts follow the Open Data Contract Standard and the product standard, as YAML, including access; a contract is required to publish to a domain catalog, and contracts seed the Marketplace, which is the discovery layer. A check that the contract exists and conforms is coming to CI. The vended repository: dot files (linters, pre-commit, mise), `data_products/` with blueprints such as the DAG execution check and the Databricks run-now blueprint, clusters and pools, shared assets, then infrastructure code, plugins and tests. A data product is a Databricks Asset Bundle plus a dbt project with datasets; inside a dataset folder sit the dbt code, the Airflow YAML that a blueprint turns into a DAG, and the job YAML with the lines that run dbt. An Airflow task only triggers a Databricks job; Databricks runs the SQL.
-
-### Teaching notes
-
-- **With a guest**, agree the agenda in advance, one line per topic: where code goes, how deployment is initiated, where execution is visible, how failures are investigated, how access is granted. Keep the room's questions from the Q&A table ready.
-- **Without a guest**, teach from the two diagrams and the three paragraphs above, and be explicit that the numbers are the platform team's from a previous cohort.
-- **Likely questions and answers.**
-  - *Can I publish from my application catalog directly?* No: the vended blueprint copies to the domain catalog after quality rules, so tiering and access stay standard.
-  - *Do I get my own Airflow?* Your team does, vended through the template; you do not run it.
-  - *Where does the contract go?* In the repository as YAML; it gates publication and seeds the Marketplace.
-  - *Airflow 2 or 3?* Vended instances are Airflow 3; the learners' container runs 3.1 too.
-
-## 3. Complete and extend the practical
+## 3. Advanced dbt, then complete and extend the practical
 
 ### Concepts
 
 #### Phase 2, section by section
 
 C1 the enrichment join (`int_holdings_enriched`: holdings times prices times FX, grain unchanged); C2 the two supporting intermediates; C3 the first mart, `agg_fund_exposure`; C4 the second, `fct_portfolio_returns`; C5 generic tests on the marts; C6 the singular NAV reconciliation within tolerance; C7 the full build; C8 docs and the lineage graph; C9 the Databricks post-hook; C10 the capstone mart `agg_fund_daily_exposure` and its reconciliation test, end to end. The finished build on this laptop shows four strategy codes with exposures that sum by code (EQ-EM, EQ-GC, EQ-LC, FI-IG), two rows each, and a NAV test that returns no rows.
+
+#### The 13:00 demo: Jinja that writes SQL
+
+Two cells on the morning's price sheet come first. A `for` loop over a list of currencies writes one `count(case when ...)` column per currency in `prices_by_ccy`; the compiled SQL shows the four lines the loop produced. Then a macro, `to_usd(amount, ccy, rate)`, holds the conversion rule once; `prices_usd` calls it, the compiled SQL shows the expression expanded, and the tests still pass. A macro is a function that returns SQL text. The remaining cells run on the Portfolio Analytics copy and are described below.
+
+![A macro: written once, expanded wherever it is called](../../courseware/common/diagrams/png/d3-macro.png)
 
 #### The stretch: what a production project adds
 
@@ -157,6 +164,7 @@ The facts to pull from the room, in the order rooms tend to give them: dbt pipel
 ### Teaching notes
 
 - **Ask, write, add.** "What did we learn?" and write the room's answers up; fill gaps from the list above rather than lecturing it.
+- **Activity 9b, a second look at yesterday's AI-generated dbt (14:20, 15 minutes).** On Day 2 the room generated a dbt project with Copilot and Catalyst before knowing dbt, and the shareback asked how to review that much output: trust it, review all of it, or review some of it; one table also noticed that the AI writes more than is needed. At 09:00 today each learner writes down two things in that project they could not judge. At 14:20 pairs reopen the project and review it in graph order (sources, staging, joins, tests, materialisations, then anything nobody asked for) with the card's table, and mark each note as judged or still open. Ten minutes in pairs, five of shareback: one thing caught now that would have been approved yesterday. Some projects did not finish generating yesterday; those learners use a partner's, or the Day 2 example in `courseware/day2-platform/demos/contract-to-code/eod_prices`. What is still not judged goes in the Q&A table.
 - **Activity 9, test review in pairs (10 minutes).** Each pair takes a test another pair wrote: which contract rule does it guard, what wrong data would still slip through, what one extra test would close the gap. The close asks two or three pairs for their example.
 - **Before learners leave.** The project built through Phase 2 at least; the list of commands and discoveries kept; tomorrow's volunteers for bitemporal loading and Harness asked for.
 
@@ -193,11 +201,10 @@ The facts to pull from the room, in the order rooms tend to give them: dbt pipel
 ## The evening before
 
 - [ ] `bash courseware/day3-dbt/demos/portfolio_analytics/demo.sh stretch` ends green; open the lineage site once.
-- [ ] Open the Day 3 anchor, Run All, save with outputs; the walkthrough cells show the numbers above.
+- [ ] Open the Day 3 anchor, Run All, save with outputs; section 1 rebuilds `demos/price_sheet` (Step 5 shows two failing tests on purpose) and the walkthrough cells show the numbers above.
 - [ ] Read the challenge README's Phase 1 once more and the solution of S4 (`stg_holdings`), so your first circulating answer is exact.
-- [ ] Confirm whether the platform team is coming; if yes, send the five agenda lines; if no, rehearse the twenty-five-minute version from the two diagrams.
 - [ ] Ask for Thursday's volunteers (bitemporal loading, Harness) at the end of the day; have the guest brief ready.
-- [ ] Print Activity 9's card and this day's run sheet.
+- [ ] Print the cards for Activities 9 and 9b and this day's run sheet.
 
 ## Go deeper
 

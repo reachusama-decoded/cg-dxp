@@ -1,0 +1,16 @@
+flowchart LR
+  G["Generic test<br/>YAML, on a column<br/>not_null · unique ·<br/>accepted_values · relationships"] --> Q["A query for the rows<br/>that break the rule"]
+  Sg["Singular test<br/>a .sql file in tests/"] --> Q
+  Q -->|"no rows"| Pass["PASS"]
+  Q -->|"rows"| Fail["FAIL<br/>downstream skipped"]
+  class G,Sg blue
+  class Q focus
+  class Pass green
+  class Fail red
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

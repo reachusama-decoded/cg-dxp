@@ -31,7 +31,7 @@ One rule covers most of this page: a demo that fails live is not repaired live. 
 
 | Risk | Signal | Fallback |
 |---|---|---|
-| A guest does not come (sponsor, platform team, bitemporal, Harness) | No confirmation by the evening before | Each slot has an instructor-led version in the anchor: the whiteboard script, the diagram and the demo. Run it as the plan says and keep the slot's questions for a later guest. |
+| A guest does not come (sponsor, bitemporal, Harness) | No confirmation by the evening before | Each slot has an instructor-led version in the anchor: the whiteboard script, the diagram and the demo. Run it as the plan says and keep the slot's questions for a later guest. |
 | A guest runs long | Past the slot by ten minutes | Thank them, take two questions, and cut the next block's flex (every run sheet row names what to drop). |
 | Extra attendees on Day 5 | People who were not in the week turn up for the capstone | Name cards, a table of their own, pair them with a team for the discovery hour; they can follow Phase 1 at their own pace. |
 | Mixed experience in the room | Some have used dbt or Airflow in production, some never | Ask on Day 1 and write the names down; give the experienced the stretch tasks and the Day 4 morning teaching slots; sit them with beginners during practicals. |

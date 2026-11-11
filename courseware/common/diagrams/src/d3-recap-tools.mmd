@@ -1,0 +1,17 @@
+flowchart LR
+  A["<b>Catalyst, dev container</b><br/>write the code"] --> B["<b>GitHub, Harness</b><br/>review, deploy"]
+  B --> C["<b>Airflow on Astro</b><br/>decides when"]
+  C -->|Cosmos| D["<b>dbt</b><br/>rules and tests"]
+  D -->|SQL| E["<b>Databricks (Spark)</b><br/>does the work"]
+  E --> F["<b>Delta on S3</b><br/>Unity Catalog, Marketplace"]
+  class A,B aqua
+  class C,E blue
+  class D focus
+  class F green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

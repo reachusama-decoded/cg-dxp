@@ -97,8 +97,10 @@ def break_(minutes: int, back_at: str, lunch: bool = False):
     return md(_box("#434343", "#EFEFEF", TEXT, "#fff", f"{icon} {word} &nbsp;·&nbsp; {minutes} min &nbsp;·&nbsp; back at {back_at}",
                    "Questions go in the table at the end; the next part starts on time."))
 
-def figure(png: str, alt: str, bullets: list[str] | None = None, rel: str = "../common/diagrams/png"):
-    body = f"![{alt}]({rel}/{png}.png)"
+def figure(png: str, alt: str, bullets: list[str] | None = None, rel: str = "../common/diagrams/png", height: int | None = None):
+    """`height` caps the picture's height in pixels so the figure and its bullets fit one screen."""
+    body = (f'<img src="{rel}/{png}.png" alt="{alt}" style="max-height:{height}px; max-width:100%;">' if height
+            else f"![{alt}]({rel}/{png}.png)")
     if bullets:
         body += "\n\n" + "\n".join(f"- {b}" for b in bullets)
     return md(body)

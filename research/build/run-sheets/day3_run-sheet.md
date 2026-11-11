@@ -6,47 +6,107 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ## Before the day
 
+- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.
 - The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand.
 
 ## Sections
 
 | # | Section | Time | What happens |
 |---|---|---|---|
-| 1 | The dbt practical: launch, Phase 1 and the walkthrough | 09:00–11:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating |
-| 2 | The platform session | 11:00–13:00 | Guest: the platform team (or the instructor-led version) · Lunch |
-| 3 | Complete and extend the practical | 13:00–14:30 | Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break |
-| 4 | Consolidation | 14:30–15:00 | Debrief: what did we learn? · Activity 9: test review in pairs · Close |
+| 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in four pictures · Before we start: two things you could not judge yesterday · Demo: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
+| 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating: Phase 2 to lunch · Lunch |
+| 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
+| 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
 
 ## Day at a glance
 
 | § | Time | Block | Type | On screen |
 |---|---|---|---|---|
-| 1 | 09:00–10:00 | Challenge 9 — dbt practical: launch and first hour | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
-| 1 | 10:00–10:15 | Break | Break |  |
-| 1 | 10:15–11:00 | Continue dbt practical | Practical | Anchor › Walkthrough cells (for support) |
-| 2 | 11:00–12:00 | Guest session: the platform | Talk | Anchor › Platform session (two diagrams, agenda, questions) |
+| 1 | 09:00–09:10 | Recap: yesterday's platform in four pictures | Recap | Anchor › section 1, Recap (four Day 2 diagrams) |
+| 1 | 09:10–09:50 | dbt from zero: one transformation through the whole life cycle | Demo | Anchor › section 1, top to bottom (demos/price_sheet) |
+| 2 | 09:50–10:00 | Challenge 9 — dbt practical: launch and first sections | Practical | Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline |
+| 2 | 10:00–10:15 | Break | Break |  |
+| 2 | 10:15–11:00 | Continue dbt practical | Practical | Anchor › Walkthrough cells (for support) |
+| 2 | 11:00–12:00 | Continue dbt practical: Phase 2 to lunch | Practical | Anchor › Circulation checklist and symptom table; learners in challenges/v1/02-dbt-pipeline |
 | 2 | 12:00–13:00 | Lunch | Break |  |
-| 3 | 13:00–14:15 | Complete and extend dbt practical | Practical | Anchor › Stretch section |
-| 3 | 14:15–14:30 | Break | Break |  |
-| 4 | 14:30–14:45 | Consolidation | Debrief | Anchor › Recap table |
+| 3 | 13:00–13:25 | Advanced dbt: a loop, a macro, a custom test, snapshot, incremental, unit test | Demo | Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics) |
+| 3 | 13:25–14:05 | Complete and extend dbt practical | Practical | Anchor › Launch box and walkthrough cells; learners in challenges/v1/02-dbt-pipeline |
+| 3 | 14:05–14:20 | Break | Break |  |
+| 4 | 14:20–14:35 | Second look at yesterday's AI-generated dbt | Pair activity | Anchor › Activity 9b card; learners in the project Copilot and Catalyst generated on Day 2 |
+| 4 | 14:35–14:45 | Consolidation | Debrief | Anchor › Recap table |
 | 4 | 14:45–14:55 | Test review in pairs | Pair activity | Anchor › Activity 9 card |
 | 4 | 14:55–15:00 | Closing discussion | Debrief | Anchor › Before learners leave |
 
 ## Timeline
 
-### 1. The dbt practical: launch, Phase 1 and the walkthrough
+### 1. dbt from zero: one transformation through the whole life cycle
 
-Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating
+Recap: yesterday's platform in four pictures · Before we start: two things you could not judge yesterday · Demo: project, profile, seeds, source, model, Jinja, ref, tests, build, docs
 
-#### 09:00 · 10 min · Explain — Launch — the pipeline you will build today
+#### 09:00 · 10 min · Explain — Recap — yesterday's platform in four pictures
 
-**Purpose.** Launch the assigned dbt project, explain the task sequence and the checks, and get everyone building Phase 1 (sources and staging).
+**Purpose.** Put everyone on the same page before dbt: where the tables live, what runs the SQL, and which box of the tools picture today zooms into.
 
 **Instructor notes.**
 
-- Ten-minute launch from the anchor: where to work, the first three commands, what a green section looks like, what reset deletes.
+- Ten minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.
+- End on the tools picture with a finger on the dbt box: today is that box, tomorrow is the Airflow box above it.
+- Anyone who missed Day 2: point them at the Day 2 anchor's section 3 for the full version.
+
+**Say.**
+
+- “One line each: what is a lakehouse, what does Databricks do with your SQL, what is a Delta table?”
+- “dbt holds no data and does no computing. It sends SQL; everything on these pictures is what receives it.”
+
+**Transition.** So what is in a dbt project? Two CSVs and an empty folder.
+
+**Adapt.** Short of time: the under-the-hood picture and the tools picture only.
+
+**Assessment.** Anchor › section 1, Recap (four Day 2 diagrams)
+
+#### 09:10 · 40 min · Instructor-led demo — Demo — one price sheet, from two raw files to a tested, documented table
+
+**Purpose.** Show every kind of file in a dbt project being written and run once, on a small example, so the challenge's tasks are recognisable: project and profile, seeds, a source, a model, Jinja, ref, materialisation, tests failing and fixed, build, docs.
+
+**Instructor notes.**
+
+- Present from the notebook; no whiteboard. Each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.
+- About five minutes a step, forty minutes in all. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.
+- At Step 3, spend two minutes on the Jinja table: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.
+- Run the section once before the room arrives so dbt's first-run delay is gone; the first cell resets the folder each time.
+
+**Say.**
+
+- “You write a SELECT. dbt writes the CREATE, works out the order, and checks the result.”
+- “The run was green and three prices were missing. A successful run says the SQL executed, not that the answer is right.”
+- “A test is only a query for the rows that break a rule. No rows, it passes.”
+
+**Demo — dbt from zero, eight steps.** A project that starts as two CSVs in `demos/price_sheet/seeds/`; each cell writes one file or runs one command.
+
+1. Read each file aloud before running the command that uses it; ask the room to predict the output.
+2. Steps 5 and 6 are the point of the demo: two tests fail on real rows, one line fixes the model, the build goes green. Do not skip them.
+3. Step 3's compiled SQL is the Jinja explanation: curly braces in, plain SQL out. Learners meet source(), ref() and config() within the first hour of the challenge.
+4. `demos/price_sheet/README.md` lists every step, file and expected result; `bash demos/price_sheet/reset.sh` starts again.
+
+**Transition.** The same kinds of file, more of them: the Portfolio Analytics challenge.
+
+**Adapt.** Behind at 09:40: skip Step 7 (the singular test) and say it is the pattern of C6. Ahead: open the docs site and click through the lineage graph.
+
+**Assessment.** Anchor › section 1, top to bottom (demos/price_sheet)
+
+### 2. The dbt practical: launch, Phase 1 and the walkthrough
+
+Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on DuckDB · Break · Walkthrough: Phase 2 on DuckDB · Circulating: Phase 2 to lunch · Lunch
+
+#### 09:50 · 5 min · Explain — Launch — the pipeline you will build today
+
+**Purpose.** Launch the assigned dbt project, explain the task sequence and the checks, and get everyone into Phase 1 (sources and staging) before the break.
+
+**Instructor notes.**
+
+- Five-minute launch from the anchor: where to work, the first three commands, what a green section looks like, what reset deletes.
 - Then circulate with the three-point checklist. Collect questions in the Q&A table for the recap.
-- Remind people to break around 10:00.
+- Break at 10:00; most will be in S1 or S2.
 
 **Say.**
 
@@ -54,7 +114,7 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 **Assessment.** Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline
 
-#### 09:10 · 50 min · Independent or pairs work — Challenge 9 — dbt practical: Phase 1 first
+#### 09:55 · 5 min · Independent or pairs work — Challenge 9 — dbt practical: Phase 1 first
 
 **Challenge — dbt practical (challenge 02).** `challenges/v1/02-dbt-pipeline/README.md` · about 3 hours across the day.
 
@@ -92,67 +152,111 @@ Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 on Du
 
 - “Could this join pass its tests and still double the reported value?”
 
-**Circulating — three questions per learner, and the symptom table.**
-
-**Transition.** At 11:00 the platform session, or the instructor-led version.
+**Transition.** At 11:00 the practical carries on to lunch.
 
 **Assessment.** Anchor › Walkthrough cells (for support)
 
-### 2. The platform session
+#### 11:00 · 60 min · Independent or pairs work — Circulating — Phase 2 to lunch: three questions per learner, and the symptom table
 
-Guest: the platform team (or the instructor-led version) · Lunch
-
-#### 11:00 · 60 min · Explain — Guest — the platform team, or the instructor-led version
-
-**Purpose.** Why the paved path works this way: Airflow on Astronomer, Databricks and Unity Catalog, contracts, the vended repository, compute, operations.
+**Purpose.** Phase 1 complete for everyone; Phase 2 under way for most; each learner asked the three circulation questions once before lunch.
 
 **Instructor notes.**
 
-- If a guest comes: send them the anchor's agenda line; keep the learners' questions list ready; record answers in the Q&A table.
-- If nobody comes: the anchor's instructor-led script, twenty-five minutes, then questions.
+- No platform session this week: its content (Airflow at CG, Unity Catalog and the three catalog types, contracts, the vended repository) was covered on Day 2, so the hour goes to the practical.
+- Walk the room with the three-point checklist; use the symptom table for the stalls; keep adding to the Q&A table for the recap.
+- Platform questions that come up: answer from Day 2's platform section, or log them in the Q&A table for the platform team.
 
 **Say.**
 
-- “Every tool choice on the path has a reason and a trade-off. Ask about the trade-offs.”
+- “Show me the grain of this model, the key on the right-hand side of the join, and what happens to a row with no match.”
 
 **Transition.** Lunch.
 
-**Adapt.** A short guest session returns time to the practical.
+**Adapt.** Anyone still in Phase 1 at 11:30: pair them with a neighbour who has finished S7.
 
-**Assessment.** Anchor › Platform session (two diagrams, agenda, questions)
+**Assessment.** Anchor › Circulation checklist and symptom table; learners in challenges/v1/02-dbt-pipeline
 
 #### 12:00 · 60 min · Break — Lunch, back at 13:00
 
-### 3. Complete and extend the practical
+### 3. Advanced dbt, then complete and extend the practical
 
-Challenge 9 continued: Phase 2 · Stretch: macros, snapshots, incremental, unit tests · Break
+Demo: a loop, a macro, a custom test, snapshot, incremental, unit test · Challenge 9 continued: Phase 2 and the stretch · Break
 
-#### 13:00 · 75 min · Independent or pairs work — Challenge 9 continued — Phase 2, then the stretch: macros, snapshots, incremental, unit tests
+#### 13:00 · 25 min · Instructor-led demo — Demo — Jinja that writes SQL: a loop, a macro, then the production pieces
+
+**Purpose.** Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in tomorrow's bitemporal macro.
+
+**Instructor notes.**
+
+- Two cells on this morning's price sheet (a for loop, a macro), then four on the Portfolio Analytics copy (dispatching macro and generic test, snapshot, incremental, unit test).
+- After each cell show the compiled SQL: the lesson is that Jinja runs at compile time and the warehouse sees plain SQL.
+- None of this is needed to finish the challenge; say so, so nobody abandons Phase 2 for it.
+
+**Say.**
+
+- “A macro is a function that returns SQL text. If you have pasted the same expression into three models, it wants to be a macro.”
+- “A snapshot keeps the history of rows that change; an incremental model avoids rebuilding rows that do not.”
+
+**Transition.** Back to the practical: Phase 2, then your choice of stretch.
+
+**Adapt.** Short of time: the loop, the macro and the snapshot; point at the other cells.
+
+**Assessment.** Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics)
+
+#### 13:25 · 40 min · Independent or pairs work — Challenge 9 continued — Phase 2, then your choice of stretch
 
 **Purpose.** Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.
 
 **Instructor notes.**
 
-- About three hours of practice across the day in total; nobody has to finish Phase 2.
+- About three and a half hours of practice across the day in total; nobody has to finish Phase 2.
 - Early finishers investigate one planted error in a copied project and show the failure and the repair.
 
 **Say.**
 
 - “A successful build is not evidence. Show me one value you checked a different way.”
 
+**Say.**
+
+- “Carry on where you stopped. Phase 2 first; nobody has to finish it.”
+- “Finished C10? Ask Copilot to add one of the pieces you just saw to your project: a unit test for stg_holdings is the quickest.”
+
 **Transition.** Break, then the recap.
 
-**Assessment.** Anchor › Stretch section
+**Assessment.** Anchor › Launch box and walkthrough cells; learners in challenges/v1/02-dbt-pipeline
 
-#### 14:15 · 15 min · Break — Break, back at 14:30
+#### 14:05 · 15 min · Break — Break, back at 14:20
 
 ### 4. Consolidation
 
-Debrief: what did we learn? · Activity 9: test review in pairs · Close
+Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
-#### 14:30 · 15 min · Feedback and discussion — Debrief — what did we learn?
+#### 14:20 · 15 min · Independent or pairs work — Activity 9b — second look at yesterday's AI-generated dbt
 
-**Purpose.** Ask the room what it learned and write the ten topics up; arrange tomorrow's contributions (bitemporal loading, deployment).
+**Purpose.** Learners reopen the dbt project they generated yesterday, return to the two things they wrote down at 09:00 that they could not judge, and record what they catch now that they know dbt.
+
+**Instructor notes.**
+
+- This closes the loop the room opened yesterday: 'do we trust it, review all of it, or review some of it?' The answer the activity gives is an order to review in: sources, staging, joins, tests, then anything nobody asked for.
+- Yesterday some projects did not finish generating. Those learners pair with a neighbour whose project did, or review the Day 2 example in courseware/day2-platform/demos/contract-to-code/eod_prices.
+- Ten minutes of review in pairs, five of shareback: two or three pairs give one thing they catch now. Things still not judged go in the Q&A table.
+
+**Say.**
+
+- “Take out the two things you wrote down this morning. Can you judge them now?”
+- “You do not review five hundred files. You review in graph order, and you start with the tests: do they guard the promises in your contract?”
+
+**Activity 9b — Second look at yesterday's AI-generated dbt.** Pairs, 15 min; the card is in `activities/`.
+
+**Transition.** From what you caught to what we learned today.
+
+**Adapt.** Short of time: pairs check only their two morning notes and the tests.
+
+**Assessment.** Anchor › Activity 9b card; learners in the project Copilot and Catalyst generated on Day 2
+
+#### 14:35 · 10 min · Feedback and discussion — Debrief — what did we learn?
+
+**Purpose.** Ask the room what it learned and fill gaps from the ten topics; arrange tomorrow's contributions (bitemporal loading, deployment).
 
 **Instructor notes.**
 
@@ -221,6 +325,7 @@ Debrief: what did we learn? · Activity 9: test review in pairs · Close
 
 ## Before learners leave
 
+- [ ] The two things each learner could not judge in yesterday's generated project, marked as judged or still open, and one thing they catch now.
 - [ ] The working dbt project, model and test results, one independent output check and the outstanding questions for orchestration, kept where they are.
 - [ ] Each learner can trace one plain-English mapping through its model and its test.
 - [ ] Two volunteers (or a guest) confirmed for tomorrow's bitemporal and deployment slots, with the brief.

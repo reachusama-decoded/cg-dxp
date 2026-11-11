@@ -416,6 +416,137 @@ flowchart LR
   class Tb,Ru green
   class Rv yellow
 """
+# Landscape versions of two Day 2 platform pictures, for the Day 3 recap: each fits one screen.
+D["d3-recap-lakehouse"] = """
+flowchart LR
+  subgraph W ["Data warehouse"]
+    direction LR
+    W1["Tables, SQL, ACID"] --- W2["Proprietary storage"] --- W3["Costly to scale,<br/>structured only"]
+  end
+  subgraph L ["Data lake"]
+    direction LR
+    L1["Files in object storage<br/>(S3), any format"] --- L2["Cheap, scales"] --- L3["No guarantees:<br/>the swamp"]
+  end
+  subgraph H ["Lakehouse"]
+    direction TB
+    H1["Files in object storage"] --- H2["+ open table format<br/>(Delta): ACID, versions"] --- H3["+ SQL engine (Spark)<br/>+ governance (Unity Catalog)"]
+  end
+  W --> H
+  L --> H
+  class W1,W2,W3 grey
+  class L1,L2,L3 yellow
+  class H1,H2 blue
+  class H3 focus
+"""
+D["d3-recap-databricks"] = """
+flowchart LR
+  S["<b>Sources</b><br/>Vendor files<br/>Databases<br/>Streams, APIs"] --> I["<b>Ingestion</b><br/>Auto Loader, COPY INTO<br/>dbt seed, notebooks<br/>Kafka, Lakeflow"]
+  I --> D["<b>Storage: S3</b><br/>Delta tables<br/>Parquet + _delta_log"]
+  D <--> E["<b>Compute: Databricks</b><br/>Spark clusters<br/>SQL warehouses (Photon)"]
+  E --> U["<b>Consumers</b><br/>dbt<br/>Notebooks, BI<br/>Marketplace, APIs"]
+  G["<b>Governance: Unity Catalog</b><br/>catalog.schema.table<br/>permissions, lineage"] -.-> D
+  G -.-> E
+  class S grey
+  class I aqua
+  class D focus
+  class E blue
+  class G green
+  class U yellow
+"""
+D["d3-recap-tools"] = """
+flowchart LR
+  A["<b>Catalyst, dev container</b><br/>write the code"] --> B["<b>GitHub, Harness</b><br/>review, deploy"]
+  B --> C["<b>Airflow on Astro</b><br/>decides when"]
+  C -->|Cosmos| D["<b>dbt</b><br/>rules and tests"]
+  D -->|SQL| E["<b>Databricks (Spark)</b><br/>does the work"]
+  E --> F["<b>Delta on S3</b><br/>Unity Catalog, Marketplace"]
+  class A,B aqua
+  class C,E blue
+  class D focus
+  class F green
+"""
+D["d3-what-dbt-does"] = """
+flowchart LR
+  Src["Source systems"] -->|"extract + load<br/>(other tools)"| Raw["Raw tables"]
+  subgraph WH["The warehouse: Databricks, or DuckDB on a laptop"]
+    Raw --> Mod["Views and tables<br/>built by dbt"]
+  end
+  Files["SQL + YAML files<br/>in Git"] --> Dbt["dbt<br/>compile · order · run · test · document"]
+  Dbt -->|"sends SQL"| Mod
+  Mod --> Use["Consumers"]
+  class Src,Use grey
+  class Raw aqua
+  class Mod green
+  class Files blue
+  class Dbt focus
+"""
+D["d3-project-anatomy"] = """
+flowchart TB
+  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults"]
+  P --> Y2["profiles.yml<br/>connection, targets"]
+  P --> M["models/<br/>one SELECT per .sql file<br/>+ YAML: sources, descriptions, tests"]
+  P --> Sd["seeds/<br/>small CSVs"]
+  P --> T["tests/<br/>singular tests"]
+  P --> Mc["macros/<br/>reusable Jinja"]
+  P --> Tg["target/<br/>written by dbt"]
+  class P focus
+  class Y1,Y2 yellow
+  class M blue
+  class Sd,T,Mc aqua
+  class Tg grey
+"""
+D["d3-compile"] = """
+flowchart LR
+  A["models/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
+  B -->|wrap| C["target/run/<br/>create view ... as<br/>SELECT"]
+  C -->|send| D["Warehouse<br/>view stg_prices"]
+  class A blue
+  class B,C grey
+  class D green
+"""
+D["d3-first-dag"] = """
+flowchart LR
+  R1[("vendor_prices_raw")] -->|"source()"| S1["stg_prices<br/>view"]
+  R2[("fx_rates_raw")] -->|"source()"| S2["stg_fx_rates<br/>view"]
+  S1 -->|"ref()"| M["prices_usd<br/>table"]
+  S2 -->|"ref()"| M
+  class R1,R2 grey
+  class S1,S2 aqua
+  class M focus
+"""
+D["d3-tests"] = """
+flowchart LR
+  G["Generic test<br/>YAML, on a column<br/>not_null · unique ·<br/>accepted_values · relationships"] --> Q["A query for the rows<br/>that break the rule"]
+  Sg["Singular test<br/>a .sql file in tests/"] --> Q
+  Q -->|"no rows"| Pass["PASS"]
+  Q -->|"rows"| Fail["FAIL<br/>downstream skipped"]
+  class G,Sg blue
+  class Q focus
+  class Pass green
+  class Fail red
+"""
+D["d3-lifecycle"] = """
+flowchart LR
+  A["Declare<br/>the source"] --> B["Write<br/>the SELECT"] --> C["Run"] --> D["Test"] --> E["Document"] --> F["Commit,<br/>pull request"]
+  D -.->|"fails: fix the model"| B
+  F -.->|"next change"| B
+  class A,B blue
+  class C,E aqua
+  class D focus
+  class F green
+"""
+D["d3-macro"] = """
+flowchart LR
+  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["prices_usd"]
+  Mc --> M2["another model"]
+  Mc --> M3["another model"]
+  M1 --> Cp["Compiled SQL<br/>the expression, expanded"]
+  M2 --> Cp
+  M3 --> Cp
+  class Mc focus
+  class M1,M2,M3 blue
+  class Cp grey
+"""
 D["d3-pipeline"] = """
 flowchart LR
   subgraph src ["sources"]

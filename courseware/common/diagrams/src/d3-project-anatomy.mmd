@@ -1,0 +1,20 @@
+flowchart TB
+  P["price_sheet/<br/>a dbt project is a folder"] --> Y1["dbt_project.yml<br/>name, defaults"]
+  P --> Y2["profiles.yml<br/>connection, targets"]
+  P --> M["models/<br/>one SELECT per .sql file<br/>+ YAML: sources, descriptions, tests"]
+  P --> Sd["seeds/<br/>small CSVs"]
+  P --> T["tests/<br/>singular tests"]
+  P --> Mc["macros/<br/>reusable Jinja"]
+  P --> Tg["target/<br/>written by dbt"]
+  class P focus
+  class Y1,Y2 yellow
+  class M blue
+  class Sd,T,Mc aqua
+  class Tg grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

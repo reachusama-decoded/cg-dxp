@@ -1,0 +1,8 @@
+# dbt_project.yml: what this project is called and how its models are built by default
+name: price_sheet
+version: '1.0'
+profile: price_sheet          # which connection in profiles.yml to use
+
+models:
+  price_sheet:
+    +materialized: view       # the default for every model: a saved query, built on read

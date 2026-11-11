@@ -1,0 +1,14 @@
+flowchart LR
+  A["models/stg_prices.sql<br/>SELECT with {{ source(...) }}"] -->|compile| B["target/compiled/<br/>plain SELECT,<br/>real table names"]
+  B -->|wrap| C["target/run/<br/>create view ... as<br/>SELECT"]
+  C -->|send| D["Warehouse<br/>view stg_prices"]
+  class A blue
+  class B,C grey
+  class D green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

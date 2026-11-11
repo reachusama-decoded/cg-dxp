@@ -1,0 +1,17 @@
+flowchart LR
+  Mc["macros/to_usd.sql<br/>the rule, written once"] --> M1["prices_usd"]
+  Mc --> M2["another model"]
+  Mc --> M3["another model"]
+  M1 --> Cp["Compiled SQL<br/>the expression, expanded"]
+  M2 --> Cp
+  M3 --> Cp
+  class Mc focus
+  class M1,M2,M3 blue
+  class Cp grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

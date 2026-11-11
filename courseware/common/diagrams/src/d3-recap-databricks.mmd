@@ -1,0 +1,20 @@
+flowchart LR
+  S["<b>Sources</b><br/>Vendor files<br/>Databases<br/>Streams, APIs"] --> I["<b>Ingestion</b><br/>Auto Loader, COPY INTO<br/>dbt seed, notebooks<br/>Kafka, Lakeflow"]
+  I --> D["<b>Storage: S3</b><br/>Delta tables<br/>Parquet + _delta_log"]
+  D <--> E["<b>Compute: Databricks</b><br/>Spark clusters<br/>SQL warehouses (Photon)"]
+  E --> U["<b>Consumers</b><br/>dbt<br/>Notebooks, BI<br/>Marketplace, APIs"]
+  G["<b>Governance: Unity Catalog</b><br/>catalog.schema.table<br/>permissions, lineage"] -.-> D
+  G -.-> E
+  class S grey
+  class I aqua
+  class D focus
+  class E blue
+  class G green
+  class U yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

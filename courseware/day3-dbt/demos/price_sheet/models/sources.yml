@@ -1,0 +1,14 @@
+# sources.yml: the raw tables this project reads but does not build
+version: 2
+
+sources:
+  - name: vendor_feed
+    description: "End-of-day close prices from the pricing vendor, in each instrument's own currency."
+    schema: demo
+    tables:
+      - name: vendor_prices_raw
+  - name: fx_feed
+    description: "Daily FX closes to US dollars."
+    schema: demo
+    tables:
+      - name: fx_rates_raw

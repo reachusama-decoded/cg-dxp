@@ -1,12 +1,31 @@
 """Day 3 — dbt practical and consolidation."""
+import textwrap
 import dc
 DAY, SLUG, TITLE = 3, "day3-dbt", "dbt practical and consolidation"
 
 BLOCKS = [
- dict(time="09:00–10:00", title="Challenge 9 — dbt practical: launch and first hour", type="Practical", on_screen="Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline",
-      purpose="Launch the assigned dbt project, explain the task sequence and the checks, and get everyone building Phase 1 (sources and staging).",
-      notes=["Ten-minute launch from the anchor: where to work, the first three commands, what a green section looks like, what reset deletes.",
-             "Then circulate with the three-point checklist. Collect questions in the Q&A table for the recap.", "Remind people to break around 10:00."],
+ dict(time="09:00–09:10", title="Recap: yesterday's platform in four pictures", type="Recap", on_screen="Anchor › section 1, Recap (four Day 2 diagrams)",
+      purpose="Put everyone on the same page before dbt: where the tables live, what runs the SQL, and which box of the tools picture today zooms into.",
+      notes=["Ten minutes, four pictures from Day 2, two or three lines each. Ask one question per picture and let the room answer; do not re-teach.",
+             "End on the tools picture with a finger on the dbt box: today is that box, tomorrow is the Airflow box above it.",
+             "Anyone who missed Day 2: point them at the Day 2 anchor's section 3 for the full version."],
+      say=["One line each: what is a lakehouse, what does Databricks do with your SQL, what is a Delta table?",
+           "dbt holds no data and does no computing. It sends SQL; everything on these pictures is what receives it."],
+      transition="So what is in a dbt project? Two CSVs and an empty folder.", flex="Short of time: the under-the-hood picture and the tools picture only."),
+ dict(time="09:10–09:50", title="dbt from zero: one transformation through the whole life cycle", type="Demo", on_screen="Anchor › section 1, top to bottom (demos/price_sheet)",
+      purpose="Show every kind of file in a dbt project being written and run once, on a small example, so the challenge's tasks are recognisable: project and profile, seeds, a source, a model, Jinja, ref, materialisation, tests failing and fixed, build, docs.",
+      notes=["Present from the notebook; no whiteboard. Each cell writes one file (%%writefile) or runs one command. Read the file, ask the room to predict the output, run it.",
+             "About five minutes a step, forty minutes in all. Steps 5 and 6 (two tests fail on the HSBC rows, one line fixes it, the build goes green) are the point: never skip them.",
+             "At Step 3, spend two minutes on the Jinja table: learners meet source(), ref() and config() in the first hour of the challenge. Loops and macros wait until 13:00.",
+             "Run the section once before the room arrives so dbt's first-run delay is gone; the first cell resets the folder each time."],
+      say=["You write a SELECT. dbt writes the CREATE, works out the order, and checks the result.",
+           "The run was green and three prices were missing. A successful run says the SQL executed, not that the answer is right.",
+           "A test is only a query for the rows that break a rule. No rows, it passes."],
+      transition="The same kinds of file, more of them: the Portfolio Analytics challenge.", flex="Behind at 09:40: skip Step 7 (the singular test) and say it is the pattern of C6. Ahead: open the docs site and click through the lineage graph."),
+ dict(time="09:50–10:00", title="Challenge 9 — dbt practical: launch and first sections", type="Practical", on_screen="Anchor › Launch box; learners in challenges/v1/02-dbt-pipeline",
+      purpose="Launch the assigned dbt project, explain the task sequence and the checks, and get everyone into Phase 1 (sources and staging) before the break.",
+      notes=["Five-minute launch from the anchor: where to work, the first three commands, what a green section looks like, what reset deletes.",
+             "Then circulate with the three-point checklist. Collect questions in the Q&A table for the recap.", "Break at 10:00; most will be in S1 or S2."],
       say=["The README teaches dbt as you go: concept, task, hint, check, a variation, then the solution. Attempt before you open the solution."],
       transition="Break; carry on after it.", flex="Anyone who knows dbt: skip to Phase 2 and the stretch list."),
  dict(time="10:00–10:15", title="Break", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
@@ -15,22 +34,39 @@ BLOCKS = [
       notes=["Use the anchor's DuckDB walkthrough cells to show an expected result when someone is stuck; never type in their project.",
              "Access problems to the platform contact; code problems to the pair next to them first."],
       say=["Could this join pass its tests and still double the reported value?"],
-      transition="At 11:00 the platform session, or the instructor-led version.", flex=""),
- dict(time="11:00–12:00", title="Guest session: the platform", type="Talk", on_screen="Anchor › Platform session (two diagrams, agenda, questions)",
-      purpose="Why the paved path works this way: Airflow on Astronomer, Databricks and Unity Catalog, contracts, the vended repository, compute, operations.",
-      notes=["If a guest comes: send them the anchor's agenda line; keep the learners' questions list ready; record answers in the Q&A table.",
-             "If nobody comes: the anchor's instructor-led script, twenty-five minutes, then questions."],
-      say=["Every tool choice on the path has a reason and a trade-off. Ask about the trade-offs."],
-      transition="Lunch.", flex="A short guest session returns time to the practical."),
+      transition="At 11:00 the practical carries on to lunch.", flex=""),
+ dict(time="11:00–12:00", title="Continue dbt practical: Phase 2 to lunch", type="Practical", on_screen="Anchor › Circulation checklist and symptom table; learners in challenges/v1/02-dbt-pipeline",
+      purpose="Phase 1 complete for everyone; Phase 2 under way for most; each learner asked the three circulation questions once before lunch.",
+      notes=["No platform session this week: its content (Airflow at CG, Unity Catalog and the three catalog types, contracts, the vended repository) was covered on Day 2, so the hour goes to the practical.",
+             "Walk the room with the three-point checklist; use the symptom table for the stalls; keep adding to the Q&A table for the recap.",
+             "Platform questions that come up: answer from Day 2's platform section, or log them in the Q&A table for the platform team."],
+      say=["Show me the grain of this model, the key on the right-hand side of the join, and what happens to a row with no match."],
+      transition="Lunch.", flex="Anyone still in Phase 1 at 11:30: pair them with a neighbour who has finished S7."),
  dict(time="12:00–13:00", title="Lunch", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
- dict(time="13:00–14:15", title="Complete and extend dbt practical", type="Practical", on_screen="Anchor › Stretch section",
+ dict(time="13:00–13:25", title="Advanced dbt: a loop, a macro, a custom test, snapshot, incremental, unit test", type="Demo", on_screen="Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics)",
+      purpose="Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in tomorrow's bitemporal macro.",
+      notes=["Two cells on this morning's price sheet (a for loop, a macro), then four on the Portfolio Analytics copy (dispatching macro and generic test, snapshot, incremental, unit test).",
+             "After each cell show the compiled SQL: the lesson is that Jinja runs at compile time and the warehouse sees plain SQL.",
+             "None of this is needed to finish the challenge; say so, so nobody abandons Phase 2 for it."],
+      say=["A macro is a function that returns SQL text. If you have pasted the same expression into three models, it wants to be a macro.",
+           "A snapshot keeps the history of rows that change; an incremental model avoids rebuilding rows that do not."],
+      transition="Back to the practical: Phase 2, then your choice of stretch.", flex="Short of time: the loop, the macro and the snapshot; point at the other cells."),
+ dict(time="13:25–14:05", title="Complete and extend dbt practical", type="Practical", on_screen="Anchor › Launch box and walkthrough cells; learners in challenges/v1/02-dbt-pipeline",
       purpose="Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.",
-      notes=["About three hours of practice across the day in total; nobody has to finish Phase 2.", "Early finishers investigate one planted error in a copied project and show the failure and the repair."],
+      notes=["About three and a half hours of practice across the day in total; nobody has to finish Phase 2.", "Early finishers investigate one planted error in a copied project and show the failure and the repair."],
       say=["A successful build is not evidence. Show me one value you checked a different way."],
       transition="Break, then the recap.", flex=""),
- dict(time="14:15–14:30", title="Break", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
- dict(time="14:30–14:45", title="Consolidation", type="Debrief", on_screen="Anchor › Recap table",
-      purpose="Ask the room what it learned and write the ten topics up; arrange tomorrow's contributions (bitemporal loading, deployment).",
+ dict(time="14:05–14:20", title="Break", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
+ dict(time="14:20–14:35", title="Second look at yesterday's AI-generated dbt", type="Pair activity", on_screen="Anchor › Activity 9b card; learners in the project Copilot and Catalyst generated on Day 2",
+      purpose="Learners reopen the dbt project they generated yesterday, return to the two things they wrote down at 09:00 that they could not judge, and record what they catch now that they know dbt.",
+      notes=["This closes the loop the room opened yesterday: 'do we trust it, review all of it, or review some of it?' The answer the activity gives is an order to review in: sources, staging, joins, tests, then anything nobody asked for.",
+             "Yesterday some projects did not finish generating. Those learners pair with a neighbour whose project did, or review the Day 2 example in courseware/day2-platform/demos/contract-to-code/eod_prices.",
+             "Ten minutes of review in pairs, five of shareback: two or three pairs give one thing they catch now. Things still not judged go in the Q&A table."],
+      say=["Take out the two things you wrote down this morning. Can you judge them now?",
+           "You do not review five hundred files. You review in graph order, and you start with the tests: do they guard the promises in your contract?"],
+      transition="From what you caught to what we learned today.", flex="Short of time: pairs check only their two morning notes and the tests."),
+ dict(time="14:35–14:45", title="Consolidation", type="Debrief", on_screen="Anchor › Recap table",
+      purpose="Ask the room what it learned and fill gaps from the ten topics; arrange tomorrow's contributions (bitemporal loading, deployment).",
       notes=["Ask 'what did we learn?' and fill gaps from the recap table rather than lecturing.", "Recruit two volunteers for tomorrow: one with bitemporal loading in production, one with Harness access; give them the anchor's brief."],
       say=["Who here has a bitemporal table in production? Would you show us tomorrow morning: the columns and one or two loading strategies, ten minutes?"],
       transition="Pairs: swap a mapping and its test.", flex=""),
@@ -46,12 +82,33 @@ BLOCKS = [
       transition="", flex=""),
 ]
 
-LEAVE_WITH = ["The working dbt project, model and test results, one independent output check and the outstanding questions for orchestration, kept where they are.",
+LEAVE_WITH = ["The two things each learner could not judge in yesterday's generated project, marked as judged or still open, and one thing they catch now.",
+              "The working dbt project, model and test results, one independent output check and the outstanding questions for orchestration, kept where they are.",
               "Each learner can trace one plain-English mapping through its model and its test.",
               "Two volunteers (or a guest) confirmed for tomorrow's bitemporal and deployment slots, with the brief.",
               "The Airflow baseline is ready: Databricks auth works, challenge 02's seeds are loaded, and Astro has been started once after setup."]
 
 ACTIVITIES = [
+ dict(number="9b", title="Second look at yesterday's AI-generated dbt", grouping="Pairs", minutes=15,
+      brief="Yesterday Copilot and Catalyst generated a dbt project from your contract, before you knew dbt. This morning you wrote down two things in it you could not judge. Reopen that project with a partner (if yours did not finish, use your partner's) and review it in graph order: the sources, then staging, then the joins, then the tests, then anything nobody asked for. For each of your two notes, decide whether you can judge it now.",
+      outputs=["Your two morning notes, each marked: can judge now, or still cannot",
+               "One thing you catch now that you could not have caught yesterday, with the file it is in",
+               "One thing you still cannot judge, for the questions table"],
+      debrief=["What did you catch today that you would have approved yesterday?", "Which file did you open first, and why that one?", "Did the AI write anything nobody asked for? What would you delete?"],
+      extra="""
+      **What to look for, in order**
+
+      | Where | Ask |
+      |---|---|
+      | `sources.yml` | Is every raw table declared, or are there hard-coded table names in the SQL? |
+      | Staging models | One row per what? Are names, types and codes cleaned here, and are duplicates handled? |
+      | Joins | Are the keys unique on the right-hand side? What happens to a row with no match: dropped, null, or a silent default? |
+      | Tests | Does each promise in your contract (keys, not null, accepted values, a reconciliation) have a test? Would any test fail if the data were wrong? |
+      | `dbt_project.yml`, `config()` | Which models are views and which are tables, and is that what consumers need? |
+      | Everything else | Which files, models or macros did nobody ask for? |
+
+      Open one model's file under `target/compiled/` if you are unsure what the warehouse receives.
+      """),
  dict(number="9", title="Test review in pairs", grouping="Pairs", minutes=10,
       brief="Swap one mapping rule and the test that guards it with the person next to you. The reviewer proposes a wrong result the pipeline could produce: a duplicated join, a missing dated FX rate, a changed unit. Decide together whether the test would catch it. Agree one improvement and write down the expected failure.",
       outputs=["One rule, its test, and a wrong result the test would or would not catch", "One improvement (a new test, a tightened test, or an independent check) and the failure it should produce"],
@@ -59,15 +116,211 @@ ACTIVITIES = [
 ]
 
 SECTIONS = [
- dict(n=1, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s1", start="09:00",
-      parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1 on DuckDB", "Break", "Walkthrough: Phase 2 on DuckDB", "Circulating"]),
- dict(n=2, title="The platform session", anchor="s2", start="11:00",
-      parts=["Guest: the platform team (or the instructor-led version)", "Lunch"]),
- dict(n=3, title="Complete and extend the practical", anchor="s3", start="13:00",
-      parts=["Challenge 9 continued: Phase 2", "Stretch: macros, snapshots, incremental, unit tests", "Break"]),
- dict(n=4, title="Consolidation", anchor="s4", start="14:30",
-      parts=["Debrief: what did we learn?", "Activity 9: test review in pairs", "Close"]),
+ dict(n=1, title="dbt from zero: one transformation through the whole life cycle", anchor="s1", start="09:00",
+      parts=["Recap: yesterday's platform in four pictures", "Before we start: two things you could not judge yesterday", "Demo: project, profile, seeds, source, model, Jinja, ref, tests, build, docs"]),
+ dict(n=2, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s2", start="09:50",
+      parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1 on DuckDB", "Break", "Walkthrough: Phase 2 on DuckDB", "Circulating: Phase 2 to lunch", "Lunch"]),
+ dict(n=3, title="Advanced dbt, then complete and extend the practical", anchor="s3", start="13:00",
+      parts=["Demo: a loop, a macro, a custom test, snapshot, incremental, unit test", "Challenge 9 continued: Phase 2 and the stretch", "Break"]),
+ dict(n=4, title="Consolidation", anchor="s4", start="14:20",
+      parts=["Activity 9b: second look at yesterday's AI-generated dbt", "Debrief: what did we learn?", "Activity 9: test review in pairs", "Close"]),
 ]
+
+# ---------- the "dbt from zero" project: every file the notebook writes, in the order it writes them ----------
+PS = "demos/price_sheet"
+PSDB = f'HERE / "{PS}/warehouse/price_sheet.duckdb"'
+
+def recap_fig(png: str, alt: str, ask: str, answer: str, today: str, height: int | None = None) -> list:
+    """A recap picture as three cells: the picture with the question to ask the room; a cell of its own to type the
+    room's answers into (double-click, type, Shift+Enter); and the answer, folded under 'Facilitator notes'."""
+    src = f"../common/diagrams/png/{png}.png"
+    img = f'<img src="{src}" alt="{alt}" style="max-height:{height}px; max-width:100%;">' if height else f"![{alt}]({src})"
+    return [dc.md(f"{img}\n\n**Ask:** {ask}"),
+            dc.md("**Answers from the room:**\n\n- "),
+            dc.md("<details><summary><strong>Facilitator notes</strong></summary>\n\n"
+                  f"- **Answer:** {answer}\n- **Today:** {today}\n\n</details>")]
+
+def wf(path: str, body: str):
+    """A %%writefile cell: the cell is the file, so the room reads exactly what dbt reads."""
+    return dc.code(f"%%writefile {PS}/{path}\n" + textwrap.dedent(body).strip("\n") + "\n")
+
+F_PROJECT = """
+# dbt_project.yml: what this project is called and how its models are built by default
+name: price_sheet
+version: '1.0'
+profile: price_sheet          # which connection in profiles.yml to use
+
+models:
+  price_sheet:
+    +materialized: view       # the default for every model: a saved query, built on read
+"""
+F_PROFILES = """
+# profiles.yml: where the SQL runs. One project, one or more targets.
+price_sheet:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb                          # the learners' profile says: type: databricks
+      path: warehouse/price_sheet.duckdb    # ...and there: host, http_path, catalog
+      schema: demo                          # the schema the models are created in
+"""
+F_SOURCES = """
+# sources.yml: the raw tables this project reads but does not build
+version: 2
+
+sources:
+  - name: vendor_feed
+    description: "End-of-day close prices from the pricing vendor, in each instrument's own currency."
+    schema: demo
+    tables:
+      - name: vendor_prices_raw
+  - name: fx_feed
+    description: "Daily FX closes to US dollars."
+    schema: demo
+    tables:
+      - name: fx_rates_raw
+"""
+F_STG_PRICES_1 = """
+-- stg_prices: one row per raw price, renamed and typed. No joins, no business logic.
+select
+    isin                               as instrument_id,
+    cast(px_date as date)              as price_date,
+    cast(px_close as decimal(18, 6))   as price_native,
+    px_ccy                             as native_ccy,
+    cast(vendor_ts as timestamp)       as vendor_ts
+from {{ source('vendor_feed', 'vendor_prices_raw') }}
+"""
+F_STG_FX = """
+-- stg_fx_rates: one row per currency per day
+select
+    from_ccy,
+    cast(rate_dt as date)              as rate_date,
+    cast(rate as decimal(18, 6))       as fx_rate
+from {{ source('fx_feed', 'fx_rates_raw') }}
+"""
+F_PRICES_USD_1 = """
+-- prices_usd: every price in US dollars. The table consumers read.
+{{ config(materialized='table') }}
+
+select
+    p.instrument_id,
+    p.price_date,
+    p.native_ccy,
+    p.price_native,
+    case when p.native_ccy = 'USD' then 1.0 else f.fx_rate end   as fx_rate_to_usd,
+    cast(p.price_native * case when p.native_ccy = 'USD' then 1.0 else f.fx_rate end
+         as decimal(18, 6))                                      as price_usd
+from {{ ref('stg_prices') }} p
+left join {{ ref('stg_fx_rates') }} f
+    on  f.from_ccy  = p.native_ccy
+    and f.rate_date = p.price_date
+"""
+F_SCHEMA = """
+# schema.yml: what each model and column means, and the promises dbt checks
+version: 2
+
+models:
+  - name: stg_prices
+    description: "Vendor prices, renamed and typed. One row per instrument per day."
+    columns:
+      - name: instrument_id
+        description: "ISIN."
+        tests:
+          - not_null
+      - name: native_ccy
+        description: "ISO currency code of the price, upper case."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['USD', 'EUR', 'GBP', 'JPY']
+
+  - name: prices_usd
+    description: "End-of-day prices in US dollars. One row per instrument per day."
+    columns:
+      - name: instrument_id
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Close price times the day's FX rate to USD."
+        tests:
+          - not_null
+"""
+F_STG_PRICES_2 = """
+-- stg_prices: one row per raw price, renamed and typed. No joins, no business logic.
+select
+    upper(trim(isin))                  as instrument_id,
+    cast(px_date as date)              as price_date,
+    cast(px_close as decimal(18, 6))   as price_native,
+    upper(trim(px_ccy))                as native_ccy,      -- the fix: 'gbp' becomes 'GBP'
+    cast(vendor_ts as timestamp)       as vendor_ts
+from {{ source('vendor_feed', 'vendor_prices_raw') }}
+"""
+F_SINGULAR = """
+-- A singular test: a query that returns the rows that break the rule. No rows, the test passes.
+-- Rule: one price per instrument per day.
+select instrument_id, price_date, count(*) as prices
+from {{ ref('prices_usd') }}
+group by instrument_id, price_date
+having count(*) > 1
+"""
+F_STG_PRICES_3 = """
+-- stg_prices: one row per instrument per day, renamed and typed. No joins, no business logic.
+with typed as (
+    select
+        upper(trim(isin))                  as instrument_id,
+        cast(px_date as date)              as price_date,
+        cast(px_close as decimal(18, 6))   as price_native,
+        upper(trim(px_ccy))                as native_ccy,
+        cast(vendor_ts as timestamp)       as vendor_ts
+    from {{ source('vendor_feed', 'vendor_prices_raw') }}
+),
+
+ranked as (
+    select *,
+           row_number() over (partition by instrument_id, price_date order by vendor_ts desc) as rn
+    from typed
+)
+
+-- the fix: when the vendor delivers a price twice, the latest delivery wins
+select instrument_id, price_date, price_native, native_ccy, vendor_ts
+from ranked
+where rn = 1
+"""
+F_LOOP = """
+-- prices_by_ccy: one column per currency, written by a loop instead of by hand
+{% set currencies = ['USD', 'EUR', 'GBP', 'JPY'] %}
+
+select
+    price_date,
+    {% for ccy in currencies %}
+    count(case when native_ccy = '{{ ccy }}' then 1 end) as prices_in_{{ ccy | lower }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+from {{ ref('prices_usd') }}
+group by price_date
+order by price_date
+"""
+F_MACRO = """
+{# to_usd: the conversion rule, written once. A macro is a function that returns SQL text. #}
+{% macro to_usd(amount, ccy, rate) %}
+    cast({{ amount }} * case when {{ ccy }} = 'USD' then 1.0 else {{ rate }} end as decimal(18, 6))
+{% endmacro %}
+"""
+F_PRICES_USD_2 = """
+-- prices_usd: every price in US dollars. The table consumers read.
+{{ config(materialized='table') }}
+
+select
+    p.instrument_id,
+    p.price_date,
+    p.native_ccy,
+    p.price_native,
+    case when p.native_ccy = 'USD' then 1.0 else f.fx_rate end   as fx_rate_to_usd,
+    {{ to_usd('p.price_native', 'p.native_ccy', 'f.fx_rate') }}  as price_usd
+from {{ ref('stg_prices') }} p
+left join {{ ref('stg_fx_rates') }} f
+    on  f.from_ccy  = p.native_ccy
+    and f.rate_date = p.price_date
+"""
 
 def cells():
     A = {a["number"]: a for a in ACTIVITIES}
@@ -77,20 +330,161 @@ def cells():
     DB = f'HERE / "{PA}/warehouse/training_dev.duckdb"'
     C = [dc.title(3, TITLE, "anchor notebook"),
          
-         *dc.how_to_use(3, "- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
+         *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
          dc.code(dc.setup_cell(3)),
-         dc.agenda(SECTIONS, lead='The rhythm changes: a short launch, then self-paced practice from the README, with the instructor walking the room. A platform session at 11:00 (guest or instructor-led). Recap and a pair exercise at the end.'),
-         dc.section(1, "The dbt practical: launch, Phase 1 and the walkthrough", "s1"),
-         dc.part("Launch", "the pipeline you will build today", time="09:00"),
-         dc.anchor("Yesterday Catalyst generated a dbt project for you. Could you have written it, and could you tell if it is wrong?",
+         dc.agenda(SECTIONS, lead='A ten-minute recap of yesterday\'s platform, forty minutes of dbt from zero on a small example, then self-paced practice from the README, with the instructor walking the room, all the way to lunch. After lunch, twenty-five minutes of advanced dbt, then more practice. Recap and a pair exercise at the end.'),
+         dc.section(1, "dbt from zero: one transformation through the whole life cycle", "s1"),
+         dc.part("Recap", "yesterday's platform in four pictures", time="09:00"),
+         dc.md("Ten minutes to put everyone on the same page. Today's dbt models are SQL that runs on this platform; one question per picture."),
+         *recap_fig("d3-recap-lakehouse", "Data warehouse, data lake, lakehouse",
+                   "What does a lakehouse keep from the lake, and what does it add?",
+                   "Cheap files in object storage, plus a table format (Delta) for transactions and versions, an engine (Spark) for SQL, and a catalog (Unity Catalog) for names and permissions.",
+                   "Every dbt model becomes a table or a view in that lakehouse.", height=400),
+         *recap_fig("d3-recap-databricks", "Databricks under the hood: sources, ingestion, Delta storage, Spark compute, Unity Catalog, consumers",
+                   "Where is your data stored, and what runs your SQL?",
+                   "Storage is your S3 bucket in Delta format. Compute is Spark, on a SQL warehouse. Unity Catalog names every table `catalog.schema.table`.",
+                   "Your tables land in `training_dev.training_<you>`; the raw data arrives with `dbt seed`."),
+         *recap_fig("d2-delta-format", "A Delta table: Parquet files plus a transaction log",
+                   "What does the log give you that plain Parquet files do not?",
+                   "Every write is a commit: ACID, versions and time travel, MERGE and DELETE on files.",
+                   "`OPTIMIZE ... ZORDER` in challenge C9 is a Delta operation, run by dbt after each mart is built.", height=400),
+         *recap_fig("d3-recap-tools", "How the tools fit together: write, ship, schedule, transform, run, store",
+                   "Which tool decides when, which holds the rules, which does the work?",
+                   "Airflow decides when. dbt holds the transformation rules and the tests. Databricks runs the SQL as Spark and writes Delta to S3.",
+                   "This is the dbt box. Tomorrow: the Airflow box that runs today's project."),
+         dc.md(dc.reflect("BEFORE WE START — two things you could not judge yesterday", "Yesterday afternoon Copilot and Catalyst generated a dbt project for you, and the room asked: do we trust it, review all of it, or review some of it? Write down two things in that project you could not judge. Keep the note; you will come back to it at 14:20.", [
+                     "A file or folder whose purpose you could not tell.",
+                     "SQL you could not say was right: a join, a calculation, the curly braces.",
+                     "A test you could not say was checking anything.",
+                     "Something that looked like more than you asked for."])),
+         dc.part("Demo", "one price sheet, from two raw files to a tested, documented table", time="09:10"),
+         dc.anchor("Yesterday Catalyst generated a dbt project for you. What is in it, and what does dbt do with each file?",
+                   "dbt on the smallest useful example: two raw files, three models, five tests, one documented table, on Day 2's price data.",
+                   "Every file in today's challenge is one of the kinds shown here. Once you have seen each one written and run, the README's tasks are recognisable.",
+                   "Each cell writes one file or runs one command. Read the file, predict the output, then run it. Forty minutes, then you build the real pipeline."),
+         dc.figure("d3-what-dbt-does", "dbt does the T: it turns SQL files into tables and views inside the warehouse",
+                   ["Other tools extract and load: the raw data is already in the warehouse when dbt starts.",
+                    "You write SELECT statements in files, kept in Git. dbt wraps each one in the CREATE statement, runs them in the right order, and tests the results.",
+                    "dbt holds no data and does no computing: the warehouse (Databricks for you, DuckDB on this laptop) does the work."]),
+         dc.md(dc.demo("dbt from zero, eight steps", f"A project that starts as two CSVs in <code>{PS}/seeds/</code>; each cell writes one file or runs one command.", [
+                  "Read each file aloud before running the command that uses it; ask the room to predict the output.",
+                  "Steps 5 and 6 are the point of the demo: two tests fail on real rows, one line fixes the model, the build goes green. Do not skip them.",
+                  "Step 3's compiled SQL is the Jinja explanation: curly braces in, plain SQL out. Learners meet source(), ref() and config() within the first hour of the challenge.",
+                  f"`{PS}/README.md` lists every step, file and expected result; `bash {PS}/reset.sh` starts again."])),
+         dc.md("#### Step 1 — A dbt project is a folder: two YAML files and a folder of SQL"),
+         dc.figure("d3-project-anatomy", "The anatomy of a dbt project folder",
+                   ["`dbt_project.yml`: the project's name and its defaults. `profiles.yml`: the connection, one entry per target (dev, prod).",
+                    "`models/`: one SELECT per `.sql` file, plus YAML that describes and tests them. `seeds/`: small CSVs dbt loads. `tests/` and `macros/`: later this morning and after lunch.",
+                    "`target/`: what dbt writes when it runs (compiled SQL, run results, the docs site). Never edited, never committed."]),
+         dc.code(f'!bash {PS}/reset.sh\n# The starting point: two raw CSV files and nothing else. `dbt init` would scaffold the folder; here every file is written by hand so you see what is in it.'),
+         wf("dbt_project.yml", F_PROJECT),
+         wf("profiles.yml", F_PROFILES),
+         dc.code(f'!cd {PS} && dbt debug 2>&1 | grep -E "profiles.yml file|dbt_project.yml file|adapter type|Connection test|All checks"\n# dbt debug answers one question: can dbt find the project, find the profile and open the connection? It is the first command in the challenge too.'),
+         dc.md("#### Step 2 — The raw data: seeds stand in for the feeds that land in the warehouse"),
+         dc.code(f'!cd {PS} && dbt seed 2>&1 | grep -E "OK loaded|ERROR|Done"\nsql("select isin, px_date, px_close, px_ccy, vendor_ts from demo.vendor_prices_raw where isin in (\'US0378331005\', \'GB0005405286\') order by isin, px_date, vendor_ts", {PSDB})\n# dbt seed loads each CSV in seeds/ as a table. Look closely: HSBC\'s currency is written gbp, and Apple arrives twice on 4 November. Both matter in a few minutes.'),
+         dc.code(f'sql("select * from demo.fx_rates_raw order by rate_dt, from_ccy", {PSDB})\n# One rate per currency per day, to US dollars. The transformation: price in dollars = close price x that day\'s rate.'),
+         dc.md("#### Step 3 — Declare the source, write the first model, run it"),
+         wf("models/sources.yml", F_SOURCES),
+         dc.md("""
+         **YAML files in dbt: `.yml`, `.yaml`, `sources.yml`, `schema.yml`.**
+
+         - **Today every file is `.yml`**, here and in the challenge, with the same names: `dbt_project.yml`, `profiles.yml`, `models/sources.yml`, `schema.yml`.
+         - **`.yml` and `.yaml` are the same thing.** Both are YAML, the indented `key: value` format; the two spellings of the extension mean nothing different, and dbt reads either under `models/`. You will see `.yaml` in other tools this week (Airflow blueprints, Databricks bundles, data contracts).
+         - **Two names are fixed:** `dbt_project.yml` and `profiles.yml`. dbt looks for exactly those names, with `.yml`.
+         - **Every other YAML file can have any name.** dbt reads all the YAML files under `models/` (and `seeds/`, `snapshots/`, `macros/`) and looks at the top-level keys inside, not at the file name:
+
+         | Top-level key | What it declares | Used today in |
+         |---|---|---|
+         | `sources:` | Raw tables the project reads but does not build | Step 3; S3 in the challenge |
+         | `models:` | Descriptions, columns and tests for models | Step 5; S8 and C5 |
+         | `seeds:`, `snapshots:` | The same, for seeds and snapshots | |
+         | `unit_tests:` | Unit tests with made-up input rows | 13:00 |
+
+         - **So `sources.yml` and `schema.yml` are habits, not rules.** One file could hold both keys; a large project has one pair per folder. The challenge uses `models/sources.yml` and a `schema.yml` in each layer folder. Catalyst names them per layer, for example `_staging__sources.yml` and `_staging__models.yml`. All work the same.
+         - **Indentation is the syntax.** Two spaces per level, never tabs; a misplaced indent is the most common dbt parse error.
+         """),
+         wf("models/stg_prices.sql", F_STG_PRICES_1),
+         dc.figure("d3-compile", "What dbt run does with a model file: compile, wrap, send",
+                   ["Compile: the curly braces are replaced, here `source(...)` becomes the real table name. The result is plain SQL in `target/compiled/`.",
+                    "Wrap: dbt puts your SELECT inside `create view ... as` or `create table ... as`, according to the model's materialisation. That is in `target/run/`.",
+                    "Send: the warehouse executes it. The model's file name is the name of the view or table."]),
+         dc.code(f'!cd {PS} && dbt run 2>&1 | grep -E "OK created|ERROR|Done"\nsql("select * from demo.stg_prices order by instrument_id, price_date limit 6", {PSDB})\n# One model, one view called stg_prices. You wrote a SELECT; dbt wrote the CREATE.'),
+         dc.code(f'print("--- what you wrote: models/stg_prices.sql (last line)")\n!tail -1 {PS}/models/stg_prices.sql\nprint("\\n--- what dbt compiled: target/compiled/ (last line)")\n!tail -1 {PS}/target/compiled/price_sheet/models/stg_prices.sql\nprint("\\n--- what the warehouse ran: target/run/")\n!head -6 {PS}/target/run/price_sheet/models/stg_prices.sql'),
+         dc.md("""
+         **Jinja: the curly braces.** dbt models are SQL with a template language, Jinja, on top. Jinja runs on your machine when dbt compiles; the warehouse only ever receives plain SQL. These are the forms you meet today:
+
+         | You write | It means | First used in the challenge |
+         |---|---|---|
+         | `{{ source('vendor_feed', 'vendor_prices_raw') }}` | A raw table declared in a sources YAML file. dbt fills in the catalog and schema. | S4, the first staging model |
+         | `{{ ref('stg_prices') }}` | Another model in this project. dbt fills in its name and learns the build order. | C1, the first join |
+         | `{{ config(materialized='table') }}` | A setting for this one model. | S6, materialisations |
+         | `{{ this }}` | The table or view the current model builds. | C9, the post-hook |
+         | `{% if ... %}`, `{% for ... %}`, `{% macro ... %}` | Logic that writes SQL for you. | Not needed in the challenge; at 13:00 |
+
+         Two curly braces print a value into the SQL. A curly brace and a percent sign run logic and print nothing. When a model misbehaves, open its file under `target/compiled/` and read the SQL the warehouse received.
+         """),
+         dc.md("#### Step 4 — A second model with ref(): dbt works out the order"),
+         wf("models/stg_fx_rates.sql", F_STG_FX),
+         wf("models/prices_usd.sql", F_PRICES_USD_1),
+         dc.figure("d3-first-dag", "The graph dbt builds from source() and ref()",
+                   ["Every `source()` and `ref()` is an edge. dbt reads them all, then builds the models from left to right.",
+                    "You never write the order down. Add a model and the graph changes by itself.",
+                    "The same graph is the lineage picture in the docs, and what `--select +prices_usd` walks."]),
+         dc.code(f'!cd {PS} && dbt run 2>&1 | grep -E "OK created|ERROR|Done"\nsql("select table_name, table_type from information_schema.tables where table_schema = \'demo\' order by table_type, table_name", {PSDB})\n# Three models, built in graph order: the two staging views first, then prices_usd. The project default is view; prices_usd asked for table with config().'),
+         dc.code(f'sql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.prices_usd where native_ccy <> \'USD\' order by instrument_id, price_date", {PSDB})\n# The run was green. Look at the HSBC rows (GB0005405286): no rate, no dollar price. A successful run says the SQL executed, not that the answer is right.'),
+         dc.md("#### Step 5 — Tests: promises written down, checked on every run"),
+         dc.figure("d3-tests", "Two kinds of dbt test, one idea: select the rows that break the rule",
+                   ["A generic test is a named rule attached to a column in YAML: `not_null`, `unique`, `accepted_values`, `relationships`.",
+                    "A singular test is a SQL file in `tests/` for a rule the four cannot express.",
+                    "Both compile to a query for the violating rows. No rows returned: pass. The same YAML holds the descriptions the docs show."]),
+         wf("models/schema.yml", F_SCHEMA),
+         dc.code(f'!cd {PS} && dbt test 2>&1 | grep -E "PASS|FAIL|ERROR|Got|Done"\n# Two failures: one currency value that is not in the accepted list (gbp), and three dollar prices that are null. The same three HSBC rows, caught twice.'),
+         dc.code(f'!cat {PS}/target/compiled/price_sheet/models/schema.yml/not_null_prices_usd_price_usd.sql\nsql("select native_ccy, count(*) as prices from demo.stg_prices group by native_ccy order by 1", {PSDB})\n# A test is only a query. This one selects the rows where price_usd is null; the cause is one level upstream: gbp is not GBP, so the join to the FX rates finds nothing.'),
+         dc.md("#### Step 6 — Fix the model, then dbt build: run and test together, in graph order"),
+         wf("models/stg_prices.sql", F_STG_PRICES_2),
+         dc.figure("d3-commands", "The dbt commands, and dbt build that chains them",
+                   ["`dbt build` runs seeds, models and tests in graph order; if a test fails, everything downstream of it is skipped.",
+                    "`--select` narrows any command: one model, `+model` with everything upstream, `model+` with everything downstream, `tag:staging` for a layer.",
+                    "Daily loop: edit a file, `dbt build --select` that model, read the result."]),
+         dc.code(f'!cd {PS} && dbt build 2>&1 | grep -E "OK|PASS|FAIL|ERROR|SKIP|Done"\nsql("select instrument_id, price_date, native_ccy, price_native, fx_rate_to_usd, price_usd from demo.prices_usd where native_ccy = \'GBP\' order by price_date", {PSDB})\n# One line changed in staging; build re-created the models and re-ran the four tests. HSBC now has a dollar price.'),
+         dc.md("#### Step 7 — A singular test: any query that returns the rows that break a rule"),
+         wf("tests/assert_one_price_per_instrument_per_day.sql", F_SINGULAR),
+         dc.code(f'!cd {PS} && dbt test --select assert_one_price_per_instrument_per_day 2>&1 | grep -E "PASS|FAIL|ERROR|Got|Done"\nsql("select instrument_id, price_date, price_native, vendor_ts from demo.stg_prices where instrument_id = \'US0378331005\' and price_date = \'2026-11-04\' order by vendor_ts", {PSDB})\n# One failing row: Apple on 4 November has two prices, because the vendor re-delivered a correction. Which one should consumers get? The contract says the latest.'),
+         wf("models/stg_prices.sql", F_STG_PRICES_3),
+         dc.code(f'!cd {PS} && dbt build 2>&1 | grep -E "PASS|FAIL|ERROR|SKIP|Done"\nsql("select count(*) as price_rows, count(distinct instrument_id) as instruments, min(price_date) as first_day, max(price_date) as last_day from demo.prices_usd", {PSDB})\n# All five tests pass. 36 raw rows became 35 prices: the earlier Apple delivery is gone, by a rule that is written down and tested.'),
+         dc.md("#### Step 8 — Docs and lineage come from the same files"),
+         dc.code(f'!cd {PS} && dbt docs generate 2>&1 | grep -E "Catalog written|Building catalog|ERROR"\n!cd {PS} && dbt -q ls --resource-type model test --select +prices_usd\nprint("\\nTo browse the site: cd {PS} && dbt docs serve --host 127.0.0.1 --port 8082   (the lineage graph is the blue button, bottom right)")\n# The descriptions in schema.yml, the columns from the warehouse and the graph from ref() become a website. Nothing extra was written for it.'),
+         dc.figure("d3-lifecycle", "The life cycle of a dbt model, as you just saw it",
+                   ["Declare the source, write the SELECT, run it, look at the rows.",
+                    "Write the promise as a test. When it fails, the fix goes in the model, never in the data.",
+                    "Build, document, commit: the pull request carries the SQL, the tests and the descriptions together."]),
+         dc.md("""
+         **From this demo to the challenge.** The Portfolio Analytics project is the same seven kinds of file, with more models:
+
+         | You just saw | In the challenge README |
+         |---|---|
+         | `dbt debug`, `dbt seed`, looking at the raw rows | S1 Inspect the raw data |
+         | `dbt_project.yml`, `profiles.yml` | S2 Read the dbt project |
+         | `sources.yml` and `source()` | S3 Declare sources and freshness |
+         | `stg_prices`: rename, cast, clean | S4, S5 The staging models |
+         | `+materialized` and `config()` | S6 Materialisations |
+         | `dbt build`, `--select` | S7 Build the staging layer |
+         | `schema.yml` tests | S8 A staging test; C5 Generic tests |
+         | `prices_usd`: `ref()` and a join | C1 to C4 Intermediate models and marts |
+         | The singular test | C6 The NAV reconciliation |
+         | `dbt docs generate` | C8 Docs and lineage |
+         """),
+         dc.section(2, "The dbt practical: launch, Phase 1 and the walkthrough", "s2"),
+         dc.part("Launch", "the pipeline you will build today", time="09:50"),
+         dc.anchor("You have seen one model through its life cycle. Can you build a pipeline of ten, and tell when it is wrong?",
                    "dbt from the inside: sources, staging, intermediate, marts, tests, docs, on the Portfolio Analytics case, on Databricks.",
                    "Reviewing generated code needs the same knowledge as writing it; the practical builds that knowledge one section at a time.",
-                   "Work the README in order: concept, task, hint, check, variation, solution. Build Phase 1 before lunch, Phase 2 after."),
+                   "Work the README in order: concept, task, hint, check, variation, solution. Phase 1 by about 11:00, Phase 2 from there and after lunch."),
          dc.figure("d3-pipeline", "The Portfolio Analytics pipeline the learners build: five sources, staging, intermediate, three marts, tests",
                    ["Six raw feeds ship as seeds; five are modelled; refdata is there to inspect and for freshness practice.",
                     "Staging renames and casts, one model per source; intermediate does the joins; marts are the consumer-aligned facts and aggregates.",
                     "The tests are promises from a contract made executable: not null, unique, a relationship, accepted values, NAV within one basis point, the rollup reconciles."]),
-         dc.part("Challenge 9", "dbt practical: Phase 1 first", time="09:10"),
+         dc.part("Challenge 9", "dbt practical: Phase 1 first", time="09:55"),
          dc.md(dc.challenge("dbt practical (challenge 02)", "challenges/v1/02-dbt-pipeline/README.md", "about 3 hours across the day",
                       "Build, test and document the Portfolio Analytics pipeline: eight staging sections, then ten challenges.",
                       [("Where to work", [
@@ -144,7 +538,7 @@ def cells():
          dc.md("#### C9, C10 — The Databricks post-hook and the capstone mart"),
          dc.code(f'!cat {PA}/macros/optimize_mart.sql\n# On Databricks: OPTIMIZE ... ZORDER BY (fund_id, position_date) after each mart, a Delta optimisation. Here: a no-op. A macro that dispatches on target.type is how one project runs on two warehouses.'),
          dc.code(f'sql("select * from training_demo.agg_fund_daily_exposure order by 1,2", {DB})\n!sed -n "1,20p" {PA}/tests/reconcile_daily_exposure.sql\n# C10: the (fund, date) rollup must preserve the strategy-level total. Learners create both the mart and this test.'),
-         dc.part("Circulating", "three questions per learner, and the symptom table"),
+         dc.part("Circulating", "Phase 2 to lunch: three questions per learner, and the symptom table", time="11:00"),
          dc.md(dc.reflect("CIRCULATION CHECKLIST — three questions per learner", "Ask: could this join pass its tests and still double the reported value? A successful build alone is insufficient.", [
                      "Sources and staging: can they say what one row means, name its key, and explain the types and units?",
                      "Joins and models: are the lookup keys unique on the right-hand side, do dates belong in the join, and what happens to unmatched rows?",
@@ -161,51 +555,43 @@ def cells():
          | `dbt docs serve` cannot bind | `DBT_HOST` holds the Databricks host | `dbt docs serve --host 127.0.0.1 --port 8081` |
          | A relationship test fails after a learner edits a key | Keys changed in staging without the fund master | Trace the key back to the source; staging must not invent keys |
          """),
-         dc.section(2, "The platform session", "s2"),
-         dc.part("Guest", "the platform team, or the instructor-led version", time="11:00"),
-         dc.anchor("Why does the paved path look the way it does?",
-                   "An hour from the platform team: Airflow on Astronomer, Databricks and Unity Catalog, contracts and the Marketplace, the vended repository, compute, operations.",
-                   "Learners will create products in that repository next month; the decisions behind it are the context the practicals cannot give.",
-                   "Agree the agenda with the guest; keep the questions list ready; or give the instructor-led version from the diagrams."),
-         dc.md("**Agenda to agree with a guest (one line each):** where code goes (the vended repository and its data_products folder) · how Airflow is vended (Astro per team, blueprints in YAML, Databricks jobs) · the three catalog types and how a product reaches the domain catalog · data contracts (ODCS) and the Marketplace · compute (serverless by default) · operations onboarding, warranty and Datadog · what is still changing."),
-         dc.figure("d3-catalogs", "Unity Catalog on the paved path: application, source-aligned and domain catalogs, and the Marketplace",
-                   ["Your workspace's application catalog is where you build and test; nothing is shared from it.",
-                    "After the data quality rules pass, a vended blueprint copies the product to the domain catalog; that is how you share.",
-                    "One source-aligned catalog for ingested feeds; some producing teams publish straight into it.",
-                    "Access: schema-level groups automated today, table-level by request, attribute-level later. The contract (ODCS, YAML) records it and seeds the Marketplace."]),
-         dc.figure("d3-airflow-federation", "From one central Airflow to a vended Astro deployment per team",
-                   ["Today's single instance runs about twelve thousand DAGs on one cluster; noisy neighbours are the daily problem.",
-                    "The path vends an Astro deployment and a Databricks workspace per team from a template; net-new jobs start there.",
-                    "Cross-team dependencies: publish an asset; a platform plugin forwards it through Kafka; no shared API tokens.",
-                    "Operations: onboarding with a criticality level, a warranty period, vended Datadog dashboards; non-production Airflow hibernates outside business hours."]),
-         dc.md("""
-         <details><summary><strong>Instructor-led version</strong> (twenty-five minutes, if no guest comes)</summary>
-
-         1. **Airflow today and tomorrow.** One open-source Airflow 2.11 instance, about 12,000 live DAGs (15,000 total) on a very large Kubernetes cluster; the vendor's recommended maximum is about 2,000. Options weighed: many self-run clusters (too much to manage), the cloud provider's managed Airflow (scaling and recovery not good enough for tier-one data), Astronomer (chosen: recovery objectives met with a plugin then a managed feature, the largest open-source contributor, a CLI that runs everything locally, quick vending). Migration is a "messy middle" over months: new jobs go to Astro now, critical pipelines last. Airflow 2.11 is end of life, so vended instances are Airflow 3 with the new UI; learners live in the Airflow UI, not the Astro console.
-         2. **Dependencies across teams.** Airflow assets: publish one, downstream DAGs subscribe. Across many Airflows a platform plugin forwards asset events through a Kafka topic using centrally managed secrets, so no team shares an API token. A system-lineage view helps discovery; it is not a data lineage tool. The legacy scheduler still exists; integration is by API in both directions.
-         3. **Databricks and Unity Catalog.** Seven years of Databricks; the old metastore could not share. Unity Catalog holds data outside any workspace and binds catalogs to workspaces, one Unity per region. Three catalog types: application (one per workspace, your scratch pad and jump point), source-aligned (one; ingested feeds with minimal translation; some teams publish directly), domain (curation; domain data and consumer-aligned data). Access at schema level by group, automated; table level by request; attribute level later.
-         4. **Contracts and the vended repository.** Contracts in the Open Data Contract Standard (YAML), required to publish to a domain catalog, seeding the Marketplace; a CI check for them is coming. The repository: dot-files for linters and tooling; `data_products/` with blueprints (dependency checks, a Databricks run-now task), clusters and pools, shared assets; a data product is a Databricks Asset Bundle plus a dbt project with datasets, each dataset holding its dbt, its Airflow YAML and its job YAML; an Airflow task only triggers the Databricks job, which runs the dbt commands. A Catalyst skill pulls template updates into your repository; review the pull request because you will have customised things.
-         5. **Compute and cost.** Serverless by default; classic compute warms up and costs while idle. Health-check DAGs are vended but cost money; non-production Airflow hibernates outside business hours; cost reports are coming; teams now own patching and vulnerabilities in their platform.
-         6. **Questions rooms ask:** tiering (the platform is tier one; disaster recovery rules will be the creator's to write), can an application catalog be shared (no: write to it, the blueprint copies after quality rules), should source teams publish directly to the source-aligned catalog (increasingly yes), is the DDL migration tool staying (probably replaced by contract-driven deployment), consumer workspaces for business users (being designed).
-
-         </details>
-         """),
          dc.break_(60, "13:00", lunch=True),
-         dc.section(3, "Complete and extend the practical", "s3"),
-         dc.part("Challenge 9 continued", "Phase 2, then the stretch: macros, snapshots, incremental, unit tests", time="13:00"),
-         dc.anchor("The README's Phase 2 is done. What does a production dbt project have that this one does not?",
-                   "Macros that dispatch on the warehouse, a custom generic test, a snapshot (SCD type 2), an incremental mart, a unit test, an exposure.",
+         dc.section(3, "Advanced dbt, then complete and extend the practical", "s3"),
+         dc.part("Demo", "Jinja that writes SQL: a loop, a macro, then the production pieces", time="13:00"),
+         dc.anchor("This morning's Jinja filled in names. What else can it do, and what does a production dbt project have that the challenge does not?",
+                   "A loop and a macro on this morning's price sheet; then a macro that dispatches on the warehouse, a custom generic test, a snapshot (SCD type 2), an incremental mart and a unit test on the Portfolio Analytics project.",
                    "These are the pieces the platform's vended project uses, and what tomorrow's bitemporal macro builds on.",
-                   "Run the cells; then ask Copilot or Claude to add the same to the learner project, with the Catalyst skill for unit tests."),
+                   "Twenty-five minutes on screen. Then carry on with Phase 2, or ask Copilot to add one of these to your project."),
+         dc.figure("d3-macro", "A macro: SQL written once, expanded wherever it is called",
+                   ["A macro lives in `macros/` and takes arguments, like a function. It returns SQL text.",
+                    "Every model that calls it gets the same expression at compile time; change the macro and every model changes.",
+                    "The warehouse never sees the macro, only the expanded SQL in `target/compiled/`."]),
+         dc.md("#### A loop: four columns from one line"),
+         wf("models/prices_by_ccy.sql", F_LOOP),
+         dc.code(f'!cd {PS} && dbt show --select prices_by_ccy 2>&1 | tail -8\n!sed -n "/^select/,/^from/p" {PS}/target/compiled/price_sheet/models/prices_by_ccy.sql | grep -v "^ *$"\n# The loop ran at compile time and wrote four count(...) lines. Add a currency to the list and the model gains a column.'),
+         dc.md("#### A macro: the conversion rule in one place"),
+         wf("macros/to_usd.sql", F_MACRO),
+         wf("models/prices_usd.sql", F_PRICES_USD_2),
+         dc.code(f'!cd {PS} && dbt build --select prices_usd 2>&1 | grep -E "OK|PASS|FAIL|ERROR|Done"\n!sed -n "/fx_rate_to_usd/,/price_usd/p" {PS}/target/compiled/price_sheet/models/prices_usd.sql | grep -v "^ *$"\n# The model now calls to_usd(...); the compiled SQL shows the expression the macro returned. The tests still pass: same answer, one definition.'),
+         dc.md("#### On the Portfolio Analytics project: a macro that dispatches on the warehouse, and a generic test of your own"),
          dc.code(f'!cat {PA}/macros/to_base_ccy.sql\n!cat {PA}/tests/generic/test_non_negative.sql\n# A macro names a repeated expression once; a generic test is a macro that returns the violating rows.'),
+         dc.md("#### A snapshot: the history of rows that change (SCD type 2)"),
          dc.code(f'!cd {PA} && dbt snapshot 2>&1 | grep -E "snapshot|Done"\nsql("select fund_cd, fund_name, strategy_code, is_active, dbt_valid_from, dbt_valid_to from training_demo.fund_master_snapshot order by 1", {DB})\n# A snapshot keeps history: change a watched column in the seed, snapshot again, and the old row closes (dbt_valid_to) while a new one opens. Tomorrow adds the second clock.'),
+         dc.md("#### An incremental model: only the new rows"),
          dc.code(f'!cd {PA} && dbt run --select agg_fund_daily_exposure_incremental 2>&1 | grep -E "incremental|Done"\n!cd {PA} && dbt run --select agg_fund_daily_exposure_incremental 2>&1 | grep -E "incremental|Done"\n!sed -n "1,25p" {PA}/models/stretch/agg_fund_daily_exposure_incremental.sql\n# First run: full load. Second run: only dates newer than the table holds, replaced on the unique key (delete+insert) so a re-delivered day does not duplicate.'),
+         dc.md("#### A unit test: the model's logic on made-up rows"),
          dc.code(f'!sed -n "/unit_tests:/,\\$p" {PA}/models/stretch/stretch.yml\n!cd {PA} && dbt test --select stg_holdings,test_type:unit 2>&1 | grep -E "unit_test|PASS|FAIL|Done"\n# A unit test runs the model SQL on made-up rows and compares with expected rows: no warehouse data, pure logic.'),
          dc.md(dc.prompt("Chat view, in the learner project", "/ai-catalyst adding-dbt-unit-test\nAdd a dbt unit test for stg_holdings covering: a null ISIN becomes CASH_<ccy>; fund codes are trimmed and upper-cased; a row with a null position date is dropped.",
                          "/adding-dbt-unit-test  (same text) — or simply: add a unit_tests entry for stg_holdings in a YAML file covering those three cases")),
-         dc.break_(15, "14:30"),
+         dc.part("Challenge 9 continued", "Phase 2, then your choice of stretch", time="13:25"),
+         dc.md(dc.say(["Carry on where you stopped. Phase 2 first; nobody has to finish it.",
+                       "Finished C10? Ask Copilot to add one of the pieces you just saw to your project: a unit test for stg_holdings is the quickest."])),
+         dc.break_(15, "14:20"),
          dc.section(4, "Consolidation", "s4"),
-         dc.part("Debrief", "what did we learn?", time="14:30"),
+         dc.part("Activity 9b", "second look at yesterday's AI-generated dbt", time="14:20"),
+         act("9b"),
+         dc.md(A["9b"]["extra"]),
+         dc.part("Debrief", "what did we learn?", time="14:35"),
          dc.md(dc.whiteboard("what did we learn? (fill gaps from this list, do not lecture it)", [
              ("Models and conventions", "Staging and integration models; CG naming (stg_, int_, fct_, agg_; on Friday src_, dom_, rpt_); the SQL behind a transformation is a SELECT dbt wraps."),
              ("Dependencies and change", "ref() and source() build the graph; a source or schema change is visible in lineage; dbt docs show it."),

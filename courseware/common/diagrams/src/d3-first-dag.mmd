@@ -1,0 +1,15 @@
+flowchart LR
+  R1[("vendor_prices_raw")] -->|"source()"| S1["stg_prices<br/>view"]
+  R2[("fx_rates_raw")] -->|"source()"| S2["stg_fx_rates<br/>view"]
+  S1 -->|"ref()"| M["prices_usd<br/>table"]
+  S2 -->|"ref()"| M
+  class R1,R2 grey
+  class S1,S2 aqua
+  class M focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

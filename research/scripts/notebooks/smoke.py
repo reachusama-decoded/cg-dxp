@@ -2,7 +2,7 @@
 """Smoke-run an anchor notebook's code cells outside Jupyter, skipping the long demos.
 
 Each code cell runs from its day folder: Python lines are exec'd in one shared namespace,
-`!` lines run through the shell, `%` magics are ignored. Cells that start a long demo
+`!` lines run through the shell, `%` magics are ignored, except `%%writefile`, which writes its file (full runs only). Cells that start a long demo
 (run.sh, demo.sh, build.sh, docker, Spark, dbt builds, claude, npx) are skipped.
 Usage: smoke.py [--full] day1 day2 ... | all   (--full runs the demos too; needs Docker Desktop and, for Day 4, the Airflow stack started)
 """
@@ -12,7 +12,7 @@ import nbformat
 
 ROOT = Path(__file__).resolve().parents[3]
 SLUGS = {1: "day1-design", 2: "day2-platform", 3: "day3-dbt", 4: "day4-airflow", 5: "day5-capstone"}
-SKIP_QUICK = re.compile(r"run\.sh|demo\.sh|build\.sh|docker |curl |spark-engine|delta-under-the-hood|\bdbt (build|run|seed|test|snapshot|source|deps|docs|compile)\b|\bclaude\b|npx|quick_diagram\(|\bastro |mmdc")
+SKIP_QUICK = re.compile(r"%%writefile|reset\.sh|run\.sh|demo\.sh|build\.sh|docker |curl |spark-engine|delta-under-the-hood|\bdbt (build|run|seed|test|snapshot|source|deps|docs|compile)\b|\bclaude\b|npx|quick_diagram\(|\bastro |mmdc")
 SKIP_FULL = re.compile(r"\bclaude\b|npx|quick_diagram\(|mmdc|docs serve|--hold")
 SKIP = SKIP_QUICK
 
@@ -28,6 +28,12 @@ def shell(cmd, cwd):
 def run_cell(src, ns, cwd):
     """Returns (ok, output)."""
     py, out = [], []
+    if src.startswith("%%writefile "):          # the cell is a file: write it, as Jupyter would
+        first, _, body = src.partition("\n")
+        target = Path(cwd) / first.split(None, 1)[1].strip()
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(body + "\n")
+        return True, f"wrote {target}"
     def flush():
         if py:
             exec(compile("\n".join(py), "<cell>", "exec"), ns)

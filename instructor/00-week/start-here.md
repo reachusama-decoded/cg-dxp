@@ -28,7 +28,7 @@ Tables of three or four, mixed by team where possible. Each person has a laptop;
 
 ## Guests
 
-People may come to speak, usually in the morning: a sponsor's welcome on Day 1, a platform-team session on Day 3, and bitemporal loading or deployment on Day 4. Each slot in the run sheets has an instructor-led version in case nobody comes, written from what the platform team and learners said in the previous cohort. If a guest confirms, send them the slot's agenda line and keep the slot's questions ready for them.
+People may come to speak, usually in the morning: a sponsor's welcome on Day 1, and bitemporal loading or deployment on Day 4 (there is no platform-team session on Day 3 this week: its content was covered on Day 2). Each slot in the run sheets has an instructor-led version in case nobody comes, written from what the platform team and learners said in the previous cohort. If a guest confirms, send them the slot's agenda line and keep the slot's questions ready for them.
 
 ## Before Monday
 
