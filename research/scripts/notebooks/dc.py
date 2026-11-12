@@ -181,6 +181,19 @@ def say(lines: list[str]):
     _item("say", lines)
     return None
 
+def notes(title_text: str, items: list[str]):
+    """Instructor-only: the explanation that goes with a picture, a table or a set of commands, recorded for the run sheet. Produces no cell."""
+    _item("notes", {"title": title_text, "items": list(items)})
+    return None
+
+def command_note(command: str, text: str):
+    """Instructor-only: what to say about one command. Consecutive commands share one run-sheet list. Produces no cell."""
+    items = _cur_part()["items"]
+    if not items or items[-1][0] != "commands":
+        items.append(("commands", []))
+    items[-1][1].append((command, text))
+    return None
+
 def fallback(line: str, bullets: list[str] | None = None) -> str:
     _item("fallback", {"line": line, "bullets": bullets or []})
     box = _box("#F4CCCC", "#F4CCCC", TEXT, "#fff", "🧯 IF IT BREAKS", line)

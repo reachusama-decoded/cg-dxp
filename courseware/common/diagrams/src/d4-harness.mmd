@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph Y ["What a creator does"]
+    direction TB
+    Y1["Open a pull request"] --> Y2["Get it reviewed<br/>and approved"] --> Y3["Merge"]
+  end
+  subgraph H ["What Harness does, from the merge"]
+    direction TB
+    H1["Build and test"] --> H2["Deploy to SQA<br/><i>shared: check who<br/>deployed last</i>"] --> H3["Deploy to production<br/><i>needs a change record</i>"]
+  end
+  Y3 ==>|"the merge<br/>starts the pipeline"| H1
+  H -.- R["What a creator reads:<br/>which pipeline ran,<br/>its logs,<br/>who deployed last night"]
+  class Y1,Y2,Y3 blue
+  class H1,H2,H3 focus
+  class R yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -1,0 +1,25 @@
+flowchart LR
+  subgraph G ["What it gives"]
+    direction TB
+    G1["Faster feedback:<br/>you hear the same day<br/>that something broke"]
+    G2["A shared view:<br/>the team sees what changed<br/>and what is live"]
+    G3["A record:<br/>who released what,<br/>and when"]
+  end
+  subgraph C ["What it costs"]
+    direction TB
+    C1["Automation with no person<br/>looking: a deleted test is<br/>easy to approve"]
+    C2["Shared systems fail together:<br/>when the pipeline is down,<br/>nobody releases"]
+    C3["Upkeep: approvals,<br/>audit and maintenance<br/>are real work"]
+  end
+  G1 ~~~ C1
+  G2 ~~~ C2
+  G3 ~~~ C3
+  class G1,G2,G3 green
+  class C1,C2,C3 red
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

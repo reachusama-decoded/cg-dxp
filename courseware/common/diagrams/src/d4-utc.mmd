@@ -1,0 +1,16 @@
+flowchart LR
+  R["The run starts<br/><b>Thursday 03:00 Pacific</b><br/>and loads Wednesday's rates"] --> B["<b>Business clock</b><br/>dl_business_start_dt<br/>= Wednesday 4 Nov<br/><i>from the data</i>"]
+  R --> S["<b>System clock</b><br/>dl_system_start_ts<br/>= Thursday 5 Nov, 11:00 UTC<br/><i>from the load, always UTC</i>"]
+  B -.- N["Two dates on one row, and neither is wrong.<br/>Always say which clock a date column is."]
+  S -.- N
+  class R grey
+  class B blue
+  class S aqua
+  class N yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

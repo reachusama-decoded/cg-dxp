@@ -1108,6 +1108,26 @@ flowchart TB
   class A,B,D,E,F blue
   class Tz,K yellow
 """
+D["d4-cron-syntax"] = """
+flowchart TB
+  subgraph F ["Five fields, read left to right"]
+    direction LR
+    A["<b>0</b><br/>minute<br/>0 to 59"] ~~~ B["<b>6</b><br/>hour<br/>0 to 23"] ~~~ Cc["<b>*</b><br/>day of month<br/>1 to 31"] ~~~ Dd["<b>*</b><br/>month<br/>1 to 12"] ~~~ E["<b>1-5</b><br/>day of week<br/>0 to 6, Sunday is 0"]
+  end
+  subgraph S ["Four symbols"]
+    direction LR
+    S1["<b>*</b><br/>every value"] ~~~ S2["<b>,</b><br/>a list<br/>9,17"] ~~~ S3["<b>-</b><br/>a range<br/>1-5"] ~~~ S4["<b>/</b><br/>a step<br/>*/15"]
+  end
+  subgraph X ["Read these"]
+    direction LR
+    X1["<b>0 6 * * 1-5</b><br/>06:00,<br/>Monday to Friday"] ~~~ X2["<b>*/15 * * * *</b><br/>every 15 minutes"] ~~~ X3["<b>0 9,17 * * *</b><br/>09:00 and 17:00,<br/>every day"] ~~~ X4["<b>30 2 1 * *</b><br/>02:30 on the 1st<br/>of every month"]
+  end
+  F --> S --> X
+  class A,B,Cc,Dd,E blue
+  class S1,S2,S3,S4 yellow
+  class X1 focus
+  class X2,X3,X4 green
+"""
 D["d4-retries"] = """
 flowchart TB
   subgraph T ["One task, three attempts (retries: 2)"]
@@ -1235,6 +1255,98 @@ flowchart LR
   A8 --> B8
   class A1,A2,A3,A4,A5,A6,A7,A8 blue
   class B1,B2,B3,B4,B5,B6,B7,B8 focus
+"""
+D["d4-loading-strategies"] = """
+flowchart LR
+  A["<b>Truncate and reload</b><br/>empty the table,<br/>load everything again"] ~~~ B["<b>Insert overwrite</b><br/>replace one slice,<br/>for example one day"] ~~~ C["<b>SCD type 2</b><br/>a changed row gets<br/>a start and an end date"] ~~~ Dd["<b>Bitemporal</b><br/>SCD type 2,<br/>with a second clock"]
+  A -.- RA["Remembers:<br/>only the latest load"]
+  B -.- RB["Remembers:<br/>the latest version<br/>of each slice"]
+  C -.- RC["Remembers:<br/>when each value<br/>was true"]
+  Dd -.- RD["Remembers:<br/>when it was true,<br/>and when we believed it"]
+  class A,B grey
+  class C blue
+  class Dd focus
+  class RA,RB red
+  class RC yellow
+  class RD green
+"""
+D["d4-delivery-types"] = """
+flowchart LR
+  subgraph F ["Full"]
+    F1["The source sends<br/><b>every record</b>, every run"] --> F2["Compare all of it<br/>with the table:<br/>costly on a large table"]
+  end
+  subgraph I ["Incremental"]
+    I1["The source sends only<br/><b>new or changed</b> records,<br/>each with a business key"] --> I2["A known key with new content<br/>ends the previous version"]
+  end
+  subgraph Bl ["Balance"]
+    B1["The source sends<br/><b>balances</b>:<br/>amounts as at a date"] --> B2["Its own strategy:<br/>ask the platform team<br/>which one your model needs"]
+  end
+  F ~~~ I ~~~ Bl
+  class F1,I1,B1 blue
+  class F2,I2,B2 yellow
+"""
+D["d4-correction"] = """
+flowchart TB
+  subgraph O ["Overwrite: one row, always the latest"]
+    direction LR
+    O1["Wednesday<br/>GBP = <b>1.628112</b><br/>the report uses it"] -->|"Thursday:<br/>the correction"| O2["GBP = <b>1.268112</b><br/>the old value is gone"] --> O3["What did Wednesday's<br/>report use?<br/><b>Nobody can say</b>"]
+  end
+  subgraph K ["Keep both: a correction adds a row"]
+    direction LR
+    K1["Wednesday<br/>GBP = <b>1.628112</b><br/>the report uses it"] -->|"Thursday:<br/>the correction"| K2["1.628112: believed Wed to Thu<br/>1.268112: believed from Thu"] --> K3["As was: 1.628112<br/>As is: 1.268112<br/><b>Both answers</b>"]
+  end
+  O ~~~ K
+  class O1,K1 grey
+  class O2,O3 red
+  class K2 focus
+  class K3 green
+"""
+D["d4-utc"] = """
+flowchart LR
+  R["The run starts<br/><b>Thursday 03:00 Pacific</b><br/>and loads Wednesday's rates"] --> B["<b>Business clock</b><br/>dl_business_start_dt<br/>= Wednesday 4 Nov<br/><i>from the data</i>"]
+  R --> S["<b>System clock</b><br/>dl_system_start_ts<br/>= Thursday 5 Nov, 11:00 UTC<br/><i>from the load, always UTC</i>"]
+  B -.- N["Two dates on one row, and neither is wrong.<br/>Always say which clock a date column is."]
+  S -.- N
+  class R grey
+  class B blue
+  class S aqua
+  class N yellow
+"""
+D["d4-cicd-tradeoffs"] = """
+flowchart LR
+  subgraph G ["What it gives"]
+    direction TB
+    G1["Faster feedback:<br/>you hear the same day<br/>that something broke"]
+    G2["A shared view:<br/>the team sees what changed<br/>and what is live"]
+    G3["A record:<br/>who released what,<br/>and when"]
+  end
+  subgraph C ["What it costs"]
+    direction TB
+    C1["Automation with no person<br/>looking: a deleted test is<br/>easy to approve"]
+    C2["Shared systems fail together:<br/>when the pipeline is down,<br/>nobody releases"]
+    C3["Upkeep: approvals,<br/>audit and maintenance<br/>are real work"]
+  end
+  G1 ~~~ C1
+  G2 ~~~ C2
+  G3 ~~~ C3
+  class G1,G2,G3 green
+  class C1,C2,C3 red
+"""
+D["d4-harness"] = """
+flowchart LR
+  subgraph Y ["What a creator does"]
+    direction TB
+    Y1["Open a pull request"] --> Y2["Get it reviewed<br/>and approved"] --> Y3["Merge"]
+  end
+  subgraph H ["What Harness does, from the merge"]
+    direction TB
+    H1["Build and test"] --> H2["Deploy to SQA<br/><i>shared: check who<br/>deployed last</i>"] --> H3["Deploy to production<br/><i>needs a change record</i>"]
+  end
+  Y3 ==>|"the merge<br/>starts the pipeline"| H1
+  H -.- R["What a creator reads:<br/>which pipeline ran,<br/>its logs,<br/>who deployed last night"]
+  class Y1,Y2,Y3 blue
+  class H1,H2,H3 focus
+  class R yellow
 """
 D["d4-bitemporal-rows"] = """
 flowchart TB

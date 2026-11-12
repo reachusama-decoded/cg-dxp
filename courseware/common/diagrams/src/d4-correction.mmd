@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph O ["Overwrite: one row, always the latest"]
+    direction LR
+    O1["Wednesday<br/>GBP = <b>1.628112</b><br/>the report uses it"] -->|"Thursday:<br/>the correction"| O2["GBP = <b>1.268112</b><br/>the old value is gone"] --> O3["What did Wednesday's<br/>report use?<br/><b>Nobody can say</b>"]
+  end
+  subgraph K ["Keep both: a correction adds a row"]
+    direction LR
+    K1["Wednesday<br/>GBP = <b>1.628112</b><br/>the report uses it"] -->|"Thursday:<br/>the correction"| K2["1.628112: believed Wed to Thu<br/>1.268112: believed from Thu"] --> K3["As was: 1.628112<br/>As is: 1.268112<br/><b>Both answers</b>"]
+  end
+  O ~~~ K
+  class O1,K1 grey
+  class O2,O3 red
+  class K2 focus
+  class K3 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

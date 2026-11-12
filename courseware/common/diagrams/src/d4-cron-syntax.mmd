@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph F ["Five fields, read left to right"]
+    direction LR
+    A["<b>0</b><br/>minute<br/>0 to 59"] ~~~ B["<b>6</b><br/>hour<br/>0 to 23"] ~~~ Cc["<b>*</b><br/>day of month<br/>1 to 31"] ~~~ Dd["<b>*</b><br/>month<br/>1 to 12"] ~~~ E["<b>1-5</b><br/>day of week<br/>0 to 6, Sunday is 0"]
+  end
+  subgraph S ["Four symbols"]
+    direction LR
+    S1["<b>*</b><br/>every value"] ~~~ S2["<b>,</b><br/>a list<br/>9,17"] ~~~ S3["<b>-</b><br/>a range<br/>1-5"] ~~~ S4["<b>/</b><br/>a step<br/>*/15"]
+  end
+  subgraph X ["Read these"]
+    direction LR
+    X1["<b>0 6 * * 1-5</b><br/>06:00,<br/>Monday to Friday"] ~~~ X2["<b>*/15 * * * *</b><br/>every 15 minutes"] ~~~ X3["<b>0 9,17 * * *</b><br/>09:00 and 17:00,<br/>every day"] ~~~ X4["<b>30 2 1 * *</b><br/>02:30 on the 1st<br/>of every month"]
+  end
+  F --> S --> X
+  class A,B,Cc,Dd,E blue
+  class S1,S2,S3,S4 yellow
+  class X1 focus
+  class X2,X3,X4 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

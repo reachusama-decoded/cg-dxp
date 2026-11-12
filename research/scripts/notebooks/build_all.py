@@ -102,6 +102,10 @@ def run_sheet_md(mod, reg) -> str:
                     out += [f"**Activity {pl['number']} — {pl['title']}.** {pl['grouping']}, {pl['minutes']} min; the card is in `activities/`.", ""]
                 elif kind == "challenge":
                     out += [f"**Challenge — {pl['title']}.** `{pl['path']}` · {pl['minutes']}.", ""]
+                elif kind == "notes":
+                    out += [f"**{pl['title']}**", ""] + [f"- {x}" for x in pl["items"]] + [""]
+                elif kind == "commands":
+                    out += ["**On the commands.**", ""] + [f"- `{c}` {t}" for c, t in pl] + [""]
             if b and last[id(b)] == i:
                 if b.get("transition"):
                     out += [f"**Transition.** {b['transition']}", ""]
@@ -213,6 +217,10 @@ def _items_md(items) -> list[str]:
             out += [f"**Activity {pl['number']} — {mdtext(pl['title'])}.** {pl['grouping']}, {pl['minutes']} min; the card is in `activities/`.", ""]
         elif kind == "challenge":
             out += [f"**Challenge — {mdtext(pl['title'])}.** `{pl['path']}` · {mdtext(pl['minutes'])}.", ""]
+        elif kind == "notes":
+            out += [f"**{mdtext(pl['title'])}**", ""] + [f"- {mdtext(x)}" for x in pl["items"]] + [""]
+        elif kind == "commands":
+            out += ["**On the commands.**", ""] + [f"- `{c}` {mdtext(t)}" for c, t in pl] + [""]
     return out
 
 def _label(label: str, title: str) -> str:

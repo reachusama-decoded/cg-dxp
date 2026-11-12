@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph F ["Full"]
+    F1["The source sends<br/><b>every record</b>, every run"] --> F2["Compare all of it<br/>with the table:<br/>costly on a large table"]
+  end
+  subgraph I ["Incremental"]
+    I1["The source sends only<br/><b>new or changed</b> records,<br/>each with a business key"] --> I2["A known key with new content<br/>ends the previous version"]
+  end
+  subgraph Bl ["Balance"]
+    B1["The source sends<br/><b>balances</b>:<br/>amounts as at a date"] --> B2["Its own strategy:<br/>ask the platform team<br/>which one your model needs"]
+  end
+  F ~~~ I ~~~ Bl
+  class F1,I1,B1 blue
+  class F2,I2,B2 yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

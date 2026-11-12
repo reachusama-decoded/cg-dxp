@@ -82,13 +82,13 @@ profile_config = ProfileConfig(
 )
 
 default_args = {
-    "owner": "pricing-data-team",
-    "retries": 2,
-    "retry_delay": timedelta(seconds=15),          # the learners' DAG: timedelta(minutes=2)
-    "retry_exponential_backoff": True,
-    "max_retry_delay": timedelta(minutes=20),
-    "on_failure_callback": on_failure_callback,
-    "on_retry_callback": on_retry_callback,
+    "owner": "pricing-data-team",                  # who is responsible; shown in the Airflow UI
+    "retries": 2,                                  # two more tries after a failure: three attempts in all
+    "retry_delay": timedelta(seconds=15),          # wait before the first retry (the learners' DAG: timedelta(minutes=2))
+    "retry_exponential_backoff": True,             # each wait is longer than the last, roughly doubling
+    "max_retry_delay": timedelta(minutes=20),      # the longest the backoff wait can grow to
+    "on_failure_callback": on_failure_callback,    # called when a task has used its retries and failed
+    "on_retry_callback": on_retry_callback,        # called each time a task fails and is about to retry
 }
 
 with DAG(

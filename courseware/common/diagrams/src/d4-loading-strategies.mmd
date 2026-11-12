@@ -1,0 +1,19 @@
+flowchart LR
+  A["<b>Truncate and reload</b><br/>empty the table,<br/>load everything again"] ~~~ B["<b>Insert overwrite</b><br/>replace one slice,<br/>for example one day"] ~~~ C["<b>SCD type 2</b><br/>a changed row gets<br/>a start and an end date"] ~~~ Dd["<b>Bitemporal</b><br/>SCD type 2,<br/>with a second clock"]
+  A -.- RA["Remembers:<br/>only the latest load"]
+  B -.- RB["Remembers:<br/>the latest version<br/>of each slice"]
+  C -.- RC["Remembers:<br/>when each value<br/>was true"]
+  Dd -.- RD["Remembers:<br/>when it was true,<br/>and when we believed it"]
+  class A,B grey
+  class C blue
+  class Dd focus
+  class RA,RB red
+  class RC yellow
+  class RD green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a
