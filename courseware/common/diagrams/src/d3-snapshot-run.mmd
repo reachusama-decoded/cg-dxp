@@ -1,0 +1,18 @@
+flowchart LR
+  Run["<b>dbt snapshot</b><br/>each run"] --> C{"Each source row:<br/>is there a current version<br/>with the same key?"}
+  C -->|"no: a new key"| A["Insert it<br/><i>current</i>"]
+  C -->|"yes, rate unchanged"| B["Do nothing"]
+  C -->|"yes, rate changed"| D["Close the old version<br/>(set dbt_valid_to)<br/>insert the new one, <i>current</i>"]
+  K["<b>unique_key</b> [from_ccy, rate_dt]<br/>which rows are the same thing<br/><b>check_cols</b> [rate]<br/>which change makes a new version"] -.- C
+  class Run blue
+  class C yellow
+  class A,D focus
+  class B grey
+  class K green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

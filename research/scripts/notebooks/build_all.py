@@ -296,6 +296,8 @@ def build(day_name: str):
     inst = INSTRUCTOR / mod.SLUG                      # instructor-only: run sheets and the prep guide
     inst.mkdir(parents=True, exist_ok=True)
     (inst / "run-sheet.md").write_text(run_sheet_md(mod, dc.REG))
+    for name, make in getattr(mod, "BACKUP_NOTEBOOKS", {}).items():   # instructor-only notebooks, beside the run sheet
+        dc.write(make(), inst / name)
     docx_note = ""
     if DOCX:
         BUILD.mkdir(parents=True, exist_ok=True)

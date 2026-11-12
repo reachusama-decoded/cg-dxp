@@ -2,12 +2,15 @@
 version: 2
 
 sources:
-  - name: vendor_feed
+  - name: vendor_feed                 # a label you choose for a group of raw tables, usually the system they come from.
+                                      # Not a database: it is the first word in source('vendor_feed', 'vendor_prices_raw')
     description: "End-of-day close prices from the pricing vendor, in each instrument's own currency."
-    schema: demo
+    schema: demo                      # where the raw tables really live in the warehouse
+                                      # (on Databricks you can add  database: <catalog>  too; left out, dbt uses your profile's)
     tables:
-      - name: vendor_prices_raw
-  - name: fx_feed
+      - name: vendor_prices_raw       # the real table name: the second word in source(...)
+
+  - name: fx_feed                     # a second group: one source per system
     description: "Daily FX closes to US dollars."
     schema: demo
     tables:

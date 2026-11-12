@@ -1,0 +1,27 @@
+flowchart LR
+  subgraph R1 ["Raw table, first delivery"]
+    r1["GBP · 5 Nov · <b>1.268</b>"]
+  end
+  subgraph R2 ["Raw table, after the vendor restates"]
+    r2["GBP · 5 Nov · <b>1.300</b>"]
+  end
+  subgraph S ["Snapshot table: every version kept"]
+    direction TB
+    s1["GBP · 5 Nov · <b>1.268</b><br/>valid from: snapshot 1<br/>valid to: snapshot 2 · <i>closed</i>"]
+    s2["GBP · 5 Nov · <b>1.300</b><br/>valid from: snapshot 2<br/>valid to: empty · <i>current</i>"]
+  end
+  R1 ==>|"vendor restates"| R2
+  r1 -.->|"dbt snapshot 1"| s1
+  r2 -.->|"dbt snapshot 2"| s2
+  R2 -.- N["1.268 is gone<br/>from the raw table"]
+  class r1,s1 grey
+  class r2 blue
+  class s2 focus
+  class N red
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

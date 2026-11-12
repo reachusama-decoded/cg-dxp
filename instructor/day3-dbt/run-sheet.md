@@ -5,7 +5,8 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 ## Before the day
 
 - Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.
-- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand.
+- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh` once before the day; the cells then rebuild pieces on demand.
+- Section 3's advanced demo carries on in `demos/price_sheet/`, so run section 1 before it.
 
 ## Sections
 
@@ -13,7 +14,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 |---|---|---|---|
 | 1 | dbt from zero: one transformation through the whole life cycle | 09:00–09:50 | Recap: yesterday's platform in two pictures · Demo: what dbt is for, why use it, then the build: project, profile, seeds, source, model, Jinja, ref, tests, build, docs |
 | 2 | The dbt practical: launch, Phase 1 and the walkthrough | 09:50–13:00 | Launch: the pipeline · Challenge 9: dbt practical · Walkthrough: Phase 1 · Break · Walkthrough: Phase 2 · Circulating: Phase 2 to lunch · Lunch |
-| 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, a custom test, snapshot, incremental, OPTIMIZE and ZORDER, unit test · Challenge 9 continued: Phase 2 and the stretch · Break |
+| 3 | Advanced dbt, then complete and extend the practical | 13:00–14:20 | Demo: a loop, a macro, OPTIMIZE and ZORDER · Challenge 9 continued: Phase 2 and the stretch · Break |
 | 4 | Consolidation | 14:20–15:00 | Activity 9b: second look at yesterday's AI-generated dbt · Debrief: what did we learn? · Activity 9: test review in pairs · Close |
 
 ## Timeline
@@ -27,7 +28,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 | 2 | 10:15–11:00 | Continue dbt practical | Practical | Anchor › Walkthrough cells (for support) |
 | 2 | 11:00–12:00 | Continue dbt practical: Phase 2 to lunch | Practical | Anchor › Circulation checklist and symptom table; learners in challenges/v1/02-dbt-pipeline |
 | 2 | 12:00–13:00 | Lunch | Break |  |
-| 3 | 13:00–13:25 | Advanced dbt: a loop, a macro, a custom test, snapshot, incremental, unit test | Demo | Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics) |
+| 3 | 13:00–13:25 | Advanced dbt: a loop and a macro | Demo | Anchor › section 3 demo cells (demos/price_sheet) |
 | 3 | 13:25–14:05 | Complete and extend dbt practical | Practical | Anchor › Launch box and walkthrough cells; learners in challenges/v1/02-dbt-pipeline |
 | 3 | 14:05–14:20 | Break | Break |  |
 | 4 | 14:20–14:35 | Second look at yesterday's AI-generated dbt | Pair activity | Anchor › Activity 9b card; learners in the project Copilot and Catalyst generated on Day 2 |
@@ -178,16 +179,17 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ## 3. Advanced dbt, then complete and extend the practical
 
-### Demo — Jinja that writes SQL: a loop, a macro, then the production pieces · 13:00–13:25
+### Demo — Jinja that writes SQL: a loop and a macro · 13:00–13:25
 
 **Purpose.** Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in Friday's capstone.
 
-**On screen.** Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics)
+**On screen.** Anchor › section 3 demo cells (demos/price_sheet)
 
 **Instructor notes.**
 
-- Two cells on this morning's price sheet (a for loop, a macro), then four on the Portfolio Analytics copy (dispatching macro and generic test, snapshot, incremental, unit test).
-- Before the unit test there are two pictures for the Databricks post-hook in challenge C9: OPTIMIZE compacts small files into large ones; ZORDER BY puts similar rows in the same file so a filter can skip files. Two minutes; it answers the question learners ask when they reach C9.
+- Everything runs on this morning's price sheet: a for loop and a macro. The section 1 cells must have run first.
+- Generic tests of your own, snapshots, incremental models and unit tests are left for learners to explore (one folded pointer cell). Backup if the room asks: instructor/day3-dbt/day3_backup_advanced.ipynb runs all four on the same price sheet (a positive test on price_usd, a snapshot of the FX rates with one rate restated, an incremental mart run twice, a unit test of int_prices_usd), with two snapshot pictures and the Copilot prompt for a stg_holdings unit test, to show learners who ask. Run it after the section 3 cells.
+- After the macro there are two pictures for the Databricks post-hook in challenge C9: OPTIMIZE compacts small files into large ones; ZORDER BY puts similar rows in the same file so a filter can skip files. Two minutes; it answers the question learners ask when they reach C9.
 - After each cell show the compiled SQL: the lesson is that Jinja runs at compile time and the warehouse sees plain SQL.
 - None of this is needed to finish the challenge; say so, so nobody abandons Phase 2 for it.
 
@@ -198,7 +200,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 **Transition.** Back to the practical: Phase 2, then your choice of stretch.
 
-**If ahead or behind.** Short of time: the loop, the macro and the snapshot; point at the other cells.
+**If ahead or behind.** Short of time: the macro alone, then the OPTIMIZE picture.
 
 ### Challenge 9 continued — Phase 2, then your choice of stretch · 13:25–14:05
 
@@ -218,7 +220,7 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 **Say.**
 
 - “Carry on where you stopped. Phase 2 first; nobody has to finish it.”
-- “Finished C10? Ask Copilot to add one of the pieces you just saw to your project: a unit test for stg_holdings is the quickest.”
+- “Finished C10? Ask Copilot to add one of the pieces from the On your own list to your project: a unit test for stg_holdings is the quickest.”
 
 **Transition.** Break, then the recap.
 

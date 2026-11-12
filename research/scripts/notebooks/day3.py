@@ -51,15 +51,16 @@ BLOCKS = [
       say=["Show me the grain of this model, the key on the right-hand side of the join, and what happens to a row with no match."],
       transition="Lunch.", flex="Anyone still in Phase 1 at 11:30: pair them with a neighbour who has finished S7."),
  dict(time="12:00–13:00", title="Lunch", type="Break", on_screen="", purpose="", notes=[], say=[], transition="", flex=""),
- dict(time="13:00–13:25", title="Advanced dbt: a loop, a macro, a custom test, snapshot, incremental, unit test", type="Demo", on_screen="Anchor › section 3 demo cells (demos/price_sheet, then demos/portfolio_analytics)",
+ dict(time="13:00–13:25", title="Advanced dbt: a loop and a macro", type="Demo", on_screen="Anchor › section 3 demo cells (demos/price_sheet)",
       purpose="Show what Jinja does beyond filling in names, and the pieces a production project adds, so learners recognise them in the vended project and in Friday's capstone.",
-      notes=["Two cells on this morning's price sheet (a for loop, a macro), then four on the Portfolio Analytics copy (dispatching macro and generic test, snapshot, incremental, unit test).",
-             "Before the unit test there are two pictures for the Databricks post-hook in challenge C9: OPTIMIZE compacts small files into large ones; ZORDER BY puts similar rows in the same file so a filter can skip files. Two minutes; it answers the question learners ask when they reach C9.",
+      notes=["Everything runs on this morning's price sheet: a for loop and a macro. The section 1 cells must have run first.",
+             "Generic tests of your own, snapshots, incremental models and unit tests are left for learners to explore (one folded pointer cell). Backup if the room asks: instructor/day3-dbt/day3_backup_advanced.ipynb runs all four on the same price sheet (a positive test on price_usd, a snapshot of the FX rates with one rate restated, an incremental mart run twice, a unit test of int_prices_usd), with two snapshot pictures and the Copilot prompt for a stg_holdings unit test, to show learners who ask. Run it after the section 3 cells.",
+             "After the macro there are two pictures for the Databricks post-hook in challenge C9: OPTIMIZE compacts small files into large ones; ZORDER BY puts similar rows in the same file so a filter can skip files. Two minutes; it answers the question learners ask when they reach C9.",
              "After each cell show the compiled SQL: the lesson is that Jinja runs at compile time and the warehouse sees plain SQL.",
              "None of this is needed to finish the challenge; say so, so nobody abandons Phase 2 for it."],
       say=["A macro is a function that returns SQL text. If you have pasted the same expression into three models, it wants to be a macro.",
            "A snapshot keeps the history of rows that change; an incremental model avoids rebuilding rows that do not."],
-      transition="Back to the practical: Phase 2, then your choice of stretch.", flex="Short of time: the loop, the macro and the snapshot; point at the other cells."),
+      transition="Back to the practical: Phase 2, then your choice of stretch.", flex="Short of time: the macro alone, then the OPTIMIZE picture."),
  dict(time="13:25–14:05", title="Complete and extend dbt practical", type="Practical", on_screen="Anchor › Launch box and walkthrough cells; learners in challenges/v1/02-dbt-pipeline",
       purpose="Complete and explain the work; Phase 2 for those on it; stretch (macros, snapshots, incremental, unit tests) for fast finishers.",
       notes=["About three and a half hours of practice across the day in total; nobody has to finish Phase 2.", "Early finishers investigate one planted error in a copied project and show the failure and the repair."],
@@ -131,7 +132,7 @@ SECTIONS = [
  dict(n=2, title="The dbt practical: launch, Phase 1 and the walkthrough", anchor="s2", start="09:50",
       parts=["Launch: the pipeline", "Challenge 9: dbt practical", "Walkthrough: Phase 1", "Break", "Walkthrough: Phase 2", "Circulating: Phase 2 to lunch", "Lunch"]),
  dict(n=3, title="Advanced dbt, then complete and extend the practical", anchor="s3", start="13:00",
-      parts=["Demo: a loop, a macro, a custom test, snapshot, incremental, OPTIMIZE and ZORDER, unit test", "Challenge 9 continued: Phase 2 and the stretch", "Break"]),
+      parts=["Demo: a loop, a macro, OPTIMIZE and ZORDER", "Challenge 9 continued: Phase 2 and the stretch", "Break"]),
  dict(n=4, title="Consolidation", anchor="s4", start="14:20",
       parts=["Activity 9b: second look at yesterday's AI-generated dbt", "Debrief: what did we learn?", "Activity 9: test review in pairs", "Close"]),
 ]
@@ -332,6 +333,50 @@ left join {{ ref('stg_fx_rates') }} f
     on  f.from_ccy  = p.native_ccy
     and f.rate_date = p.price_date
 """
+F_GENERIC = """
+{# positive: this morning's rule as a generic test, so any column can use it. dbt fills in the model and the column. #}
+{% test positive(model, column_name) %}
+select * from {{ model }} where {{ column_name }} <= 0
+{% endtest %}
+"""
+F_SCHEMA_MARTS_2 = F_SCHEMA_MARTS.rstrip("\n") + "\n          - positive                    # our own generic test, used like not_null\n"
+F_SNAPSHOT = """
+# A snapshot: dbt keeps every version of each FX rate, so a restated rate does not overwrite the old one
+snapshots:
+  - name: fx_rates_snapshot
+    relation: source('fx_feed', 'fx_rates_raw')   # what to keep the history of
+    config:
+      unique_key: [from_ccy, rate_dt]           # what makes one row: a currency on a day
+      strategy: check                           # a new version when a column below changes
+      check_cols: [rate]
+"""
+F_INCREMENTAL = """
+-- fct_prices_incremental: the first run loads every day; later runs add only the days the table does not have
+{{ config(materialized='incremental') }}
+
+select * from {{ ref('int_prices_usd') }}
+{% if is_incremental() %}
+where price_date > (select max(price_date) from {{ this }})   -- {{ this }} is the table as it is now
+{% endif %}
+"""
+F_UNIT = """
+# A unit test: run int_prices_usd on rows we make up, and compare with the rows we expect
+unit_tests:
+  - name: int_prices_usd_converts_to_dollars
+    model: int_prices_usd
+    given:                                      # made-up input rows, in place of the real models
+      - input: ref('stg_prices')
+        rows:
+          - {instrument_id: 'A', price_date: '2026-11-05', native_ccy: 'USD', price_native: 100}
+          - {instrument_id: 'B', price_date: '2026-11-05', native_ccy: 'GBP', price_native: 10}
+      - input: ref('stg_fx_rates')
+        rows:
+          - {from_ccy: 'GBP', rate_date: '2026-11-05', fx_rate: 1.25}
+    expect:                                     # what the model should return: USD unchanged, 10 GBP x 1.25
+      rows:
+        - {instrument_id: 'A', price_usd: 100}
+        - {instrument_id: 'B', price_usd: 12.5}
+"""
 
 def one_per_cell(cells: list) -> list:
     """At most one shell command or one SQL query per code cell, so the room reads one thing and sees one result.
@@ -374,7 +419,7 @@ def cells():
                "- **The link to today:** you double-check because being wrong is costly and you would not otherwise find out. That is what a dbt test is: a check you write down once, and dbt runs it every time, so nobody has to remember.\n"
                "- Come back to it at Step 5 of the demo: \"this is the oven check, for a price sheet\".\n\n</details>"),
          
-         *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh stretch` once before the day; the cells then rebuild pieces on demand."),
+         *dc.how_to_use(3, "- Section 1 builds a small dbt project from two CSVs in `demos/price_sheet/`, one cell at a time; its first cell resets the folder. Run the section once before the room arrives.\n- The walkthrough cells run the same project as the learners' challenge, on DuckDB in `demos/portfolio_analytics/`. Run `bash demos/portfolio_analytics/demo.sh` once before the day; the cells then rebuild pieces on demand.\n- Section 3's advanced demo carries on in `demos/price_sheet/`, so run section 1 before it."),
          dc.code(dc.setup_cell(3)),
          dc.code(f'''# The two demo warehouses the cells below query: local files on the instructor's laptop
 PRICE_SHEET = HERE / "{PS}/warehouse/price_sheet.duckdb"
@@ -611,11 +656,11 @@ sql(f"""
          """),
          dc.break_(60, "13:00", lunch=True),
          dc.section(3, "Advanced dbt, then complete and extend the practical", "s3"),
-         dc.part("Demo", "Jinja that writes SQL: a loop, a macro, then the production pieces", time="13:00"),
-         dc.anchor("This morning's Jinja filled in names. What else can it do, and what does a production dbt project have that the challenge does not?",
-                   "A loop and a macro on this morning's price sheet; then a macro that dispatches on the warehouse, a custom generic test, a snapshot (the history of rows that change), an incremental mart and a unit test on the Portfolio Analytics project.",
+         dc.part("Demo", "Jinja that writes SQL: a loop and a macro", time="13:00"),
+         dc.anchor("This morning's Jinja filled in names. What else can it do?",
+                   "A loop and a macro on this morning's price sheet, then what OPTIMIZE and ZORDER do on Databricks. Generic tests of your own, snapshots, incremental models and unit tests are yours to explore.",
                    "These are the pieces the platform's vended project uses, and the macros you will read in Friday's capstone.",
-                   "Twenty-five minutes on screen. Then carry on with Phase 2, or ask Copilot to add one of these to your project."),
+                   "A short demo on screen. Then carry on with Phase 2, or ask Copilot to add one of these to your project."),
          fig("d3-macro", "A macro: SQL written once, expanded wherever it is called",
                    ["A macro lives in `macros/` and takes arguments, like a function. It returns SQL text.",
                     "Every model that calls it gets the same expression at compile time; change the macro and every model changes.",
@@ -627,14 +672,31 @@ sql(f"""
          dc.md("#### A macro: the conversion rule in one place"),
          wf("macros/to_usd.sql", F_MACRO),
          wf("models/intermediate/int_prices_usd.sql", F_INT_2),
-         dc.code(f'!dbt build --select int_prices_usd+\n!cat target/compiled/price_sheet/models/intermediate/int_prices_usd.sql\n# The model now calls to_usd(...); the compiled SQL shows the expression the macro returned. The tests still pass: same answer, one definition.'),
-         dc.md("#### On the Portfolio Analytics project: a macro that dispatches on the warehouse, and a generic test of your own"),
-         dc.code('%cd {HERE}/demos/portfolio_analytics\n# The rest of the demo runs in the instructor\'s copy of the challenge project.'),
-         dc.code(f'!cat macros/to_base_ccy.sql\n!cat tests/generic/test_non_negative.sql\n# A macro names a repeated expression once; a generic test is a macro that returns the violating rows.'),
-         dc.md("#### A snapshot: keep the old versions of rows that change"),
-         dc.code(f'!dbt snapshot\nsql("select fund_cd, fund_name, strategy_code, is_active, dbt_valid_from, dbt_valid_to from training_demo.fund_master_snapshot order by 1", {DB})\n# A snapshot keeps history: change a watched column in the seed, snapshot again, and the old row closes (dbt_valid_to) while a new one opens. Tomorrow adds the second clock.'),
-         dc.md("#### An incremental model: only the new rows"),
-         dc.code(f'!dbt run --select agg_fund_daily_exposure_incremental\n!dbt run --select agg_fund_daily_exposure_incremental\n!cat models/stretch/agg_fund_daily_exposure_incremental.sql\n# First run: full load. Second run: only dates newer than the table holds, replaced on the unique key (delete+insert) so a re-delivered day does not duplicate.'),
+         dc.code(f'!dbt build --select int_prices_usd+\n# The + after the name: this model and everything downstream of it (fct_prices_usd, agg_prices_by_ccy) and their tests. Before the name, +int_prices_usd, it would be everything upstream.\n!cat target/compiled/price_sheet/models/intermediate/int_prices_usd.sql\n# The model now calls to_usd(...); the compiled SQL shows the expression the macro returned. The tests still pass: same answer, one definition.'),
+         dc.md("""
+         <details><summary><strong>dbt docs: Jinja and macros</strong></summary>
+
+         - [Jinja and macros](https://docs.getdbt.com/docs/build/jinja-macros): what Jinja does in dbt, and how to write and call a macro.
+         - [Using Jinja](https://docs.getdbt.com/guides/using-jinja): a step-by-step guide, from a loop in one model to a macro you reuse.
+         - [How we style our Jinja](https://docs.getdbt.com/best-practices/how-we-style/4-how-we-style-our-jinja): dbt Labs' guideline for readable Jinja, and when not to use a macro.
+         - [dbt Jinja functions](https://docs.getdbt.com/reference/dbt-jinja-functions-context-variables): everything dbt adds to Jinja: `ref`, `source`, `config`, `this`, `var`, `is_incremental`.
+         - [Graph operators](https://docs.getdbt.com/reference/node-selection/graph-operators): the `+` in `--select int_prices_usd+`.
+         - [Jinja template designer](https://jinja.palletsprojects.com/en/stable/templates/): the Jinja language itself: `if`, `for`, `set`, filters such as `lower`.
+
+         </details>
+         """),
+         dc.md("""
+         <details><summary><strong>On your own: generic tests, snapshots, incremental models and unit tests</strong></summary>
+
+         - **A generic test of your own** ([docs](https://docs.getdbt.com/best-practices/writing-custom-generic-tests))**:** a test with arguments, in `tests/generic/`, used in the YAML like `not_null`. This morning's "prices are positive" rule could become one.
+         - **Snapshot** ([docs](https://docs.getdbt.com/docs/build/snapshots))**:** keeps every version of a row that changes, with the dates each version was true. `dbt snapshot` runs it.
+         - **Incremental model** ([docs](https://docs.getdbt.com/docs/build/incremental-models))**:** a table that adds only the new rows on each run instead of rebuilding. The filter sits inside `{% if is_incremental() %}`.
+         - **Unit test** ([docs](https://docs.getdbt.com/docs/build/unit-tests))**:** runs a model's SQL on made-up rows and compares the result with the rows you expect, so the logic is checked without warehouse data. To try one, ask Copilot for a unit test of `stg_holdings` in your project.
+
+         Snapshots and incremental models are in `common/glossaries/dbt-commands.md`, under materialisations. To try one, ask Copilot to add a snapshot of the fund master or an incremental version of a mart to your project, run it twice, and read what changed.
+
+         </details>
+         """),
          dc.md("#### On Databricks: OPTIMIZE and ZORDER, the post-hook in challenge C9"),
          dc.md("""
          ```yaml
@@ -653,14 +715,10 @@ sql(f"""
                  "`ZORDER BY (fund_id, position_date)` sorts the rows while compacting, so each file covers a narrow range of funds and dates.",
                  "Choose the columns that queries filter and join on; two or three at most, because each extra column weakens the effect.",
                  "These are Delta operations: they run on Databricks only. On the training data, a handful of rows, you will not see a difference; the hook shows the pattern."]),
-         dc.md("#### A unit test: the model's logic on made-up rows"),
-         dc.code(f'!cat models/stretch/stretch.yml\n!dbt test --select stg_holdings,test_type:unit\n# A unit test runs the model SQL on made-up rows and compares with expected rows: no warehouse data, pure logic.'),
-         dc.md(dc.prompt("Chat view, in the learner project", "/ai-catalyst adding-dbt-unit-test\nAdd a dbt unit test for stg_holdings covering: a null ISIN becomes CASH_<ccy>; fund codes are trimmed and upper-cased; a row with a null position date is dropped.",
-                         "/adding-dbt-unit-test  (same text) — or simply: add a unit_tests entry for stg_holdings in a YAML file covering those three cases")),
          dc.code('%cd {HERE}'),
          dc.part("Challenge 9 continued", "Phase 2, then your choice of stretch", time="13:25"),
          dc.md(dc.say(["Carry on where you stopped. Phase 2 first; nobody has to finish it.",
-                       "Finished C10? Ask Copilot to add one of the pieces you just saw to your project: a unit test for stg_holdings is the quickest."])),
+                       "Finished C10? Ask Copilot to add one of the pieces from the On your own list to your project: a unit test for stg_holdings is the quickest."])),
          dc.break_(15, "14:20"),
          dc.section(4, "Consolidation", "s4"),
          dc.part("Activity 9b", "second look at yesterday's AI-generated dbt", time="14:20"),
@@ -689,3 +747,70 @@ sql(f"""
          dc.md(dc.leave_with(LEAVE_WITH)),
          *dc.qa_section(3)]
     return one_per_cell(C)
+
+
+# ---------- instructor-only backup: snapshot and incremental on the price sheet (built into instructor/day3-dbt/) ----------
+def _bfig(png: str, caption: str, notes: list[str], height: int):
+    """A picture for a notebook in instructor/day3-dbt/: same diagrams, one folder further from courseware/common."""
+    body = f'<img src="../../courseware/common/diagrams/png/{png}.png" alt="{caption}" style="max-height:{height}px; max-width:100%;">\n\n*{caption}*'
+    body += "\n\n<details><summary>Notes</summary>\n\n" + "\n".join(f"- {n}" for n in notes) + "\n\n</details>"
+    return dc.md(body)
+
+def backup_cells():
+    return [dc.title(3, "Backup: generic test, snapshot, incremental, unit test", "instructor backup"),
+            dc.md("""
+            Instructor only: show this if the room asks about reusable tests, history, large tables or testing logic. It runs on the price sheet in `courseware/day3-dbt/demos/price_sheet`, after the anchor's section 3 cells (the four models and the `to_usd` macro must be built).
+
+            The restated FX rate stays in the warehouse until the next `reset.sh` or `dbt seed`.
+            """),
+            dc.code('''# Setup: the demo environment on PATH, then work in the price sheet folder
+import os
+from pathlib import Path
+VENV = Path(os.environ.get("CG_DXP_VENV", Path.home() / ".venvs" / "cg-dxp"))
+os.environ["PATH"] = ":".join([str(VENV / "bin"), "/opt/homebrew/bin", os.environ["PATH"]])
+os.environ.setdefault("DBT_SEND_ANONYMOUS_USAGE_STATS", "false")
+ROOT = next(p for p in [Path.cwd(), *Path.cwd().parents] if (p / "courseware" / "day3-dbt").is_dir())
+PS = ROOT / "courseware/day3-dbt/demos/price_sheet"
+os.chdir(PS)
+(PS / "snapshots").mkdir(exist_ok=True); (PS / "tests" / "generic").mkdir(parents=True, exist_ok=True)
+print("Working in", PS)'''),
+            dc.md("#### A generic test of your own: this morning's rule, for any column"),
+            wf("tests/generic/test_positive.sql", F_GENERIC),
+            wf("models/marts/schema.yml", F_SCHEMA_MARTS_2),
+            dc.code('!dbt test --select fct_prices_usd\n# Four tests on the mart now: the two not_null tests, this morning\'s test of your own, and the new positive test, used in the YAML like a built-in one.'),
+            dc.code('!cat target/compiled/price_sheet/models/marts/schema.yml/positive_fct_prices_usd_price_usd.sql\n# dbt filled in the model and the column: the same select-the-violations query as this morning\'s test, now reusable.'),
+            dc.md("#### A snapshot: keep the old versions of rows that change"),
+            _bfig("d3-snapshot", "A snapshot keeps every version of a row; the raw table keeps only the latest", [
+                    "The vendor restates a rate: the raw table is overwritten, and yesterday's value is gone.",
+                    "The snapshot table keeps both: the old version closed (dbt_valid_to set), the new one current (dbt_valid_to empty).",
+                    "So you can answer: what did we think the rate was on Monday, and what do we think it is now?"], 360),
+            wf("snapshots/fx_rates_snapshot.yml", F_SNAPSHOT),
+            _bfig("d3-snapshot-run", "What each dbt snapshot run does, row by row", [
+                    "`unique_key` says which rows are the same thing: one currency on one day.",
+                    "`check_cols` says which change counts: here, a new rate. Any other column can change without a new version.",
+                    "Run it on a schedule, after each delivery: dbt can only keep the versions it sees."], 300),
+            dc.code('!dbt snapshot\n# First run: one version of every FX rate, each one open (dbt_valid_to is empty).'),
+            dc.code('''# The vendor restates one rate: the GBP close for 5 November was wrong. The raw table now holds only the new value.
+import duckdb
+con = duckdb.connect("warehouse/price_sheet.duckdb")
+con.execute("update demo.fx_rates_raw set rate = 1.300000 where from_ccy = 'GBP' and rate_dt = '2026-11-05'")
+con.close()'''),
+            dc.code('!dbt snapshot\n# Second run: dbt sees the rate changed, closes the old version and opens a new one.'),
+            dc.code('!dbt show --inline "select from_ccy, rate_dt, rate, dbt_valid_from, dbt_valid_to from demo.fx_rates_snapshot where from_ccy = \'GBP\' and rate_dt = \'2026-11-05\' order by dbt_valid_from" --limit 10\n# Two versions of one rate: the old one closed (dbt_valid_to is set), the new one open. The raw table kept only the new one.'),
+            dc.md("#### An incremental model: only the new rows"),
+            wf("models/marts/fct_prices_incremental.sql", F_INCREMENTAL),
+            dc.code('!dbt run --select fct_prices_incremental\n# First run: the table does not exist yet, so dbt builds it from every row.'),
+            dc.code('!dbt run --select fct_prices_incremental\n# Second run: the table exists, so is_incremental() is true and dbt adds only the days the table does not have. Today there are none.'),
+            dc.code('!cat target/compiled/price_sheet/models/marts/fct_prices_incremental.sql\n# The second run\'s SELECT: the where clause is there now. dbt inserts these rows instead of rebuilding the table.'),
+            dc.md("#### A unit test: the model's logic on made-up rows\n\n[dbt docs: unit tests](https://docs.getdbt.com/docs/build/unit-tests)"),
+            wf("models/intermediate/unit_tests.yml", F_UNIT),
+            dc.code('!dbt test --select test_type:unit\n# A unit test runs the model SQL on made-up rows and compares with expected rows: no warehouse data, pure logic. Change 12.5 to 12 and run it again to see it fail.'),
+            dc.md(dc.prompt("Chat view, in the learner project", "/ai-catalyst adding-dbt-unit-test\nAdd a dbt unit test for stg_holdings covering: a null ISIN becomes CASH_<ccy>; fund codes are trimmed and upper-cased; a row with a null position date is dropped.",
+                            "/adding-dbt-unit-test  (same text) — or simply: add a unit_tests entry for stg_holdings in a YAML file covering those three cases")),
+            dc.md("""
+            #### Tidy up
+
+            The generic test, the snapshot, the incremental model and the unit test stay in the price sheet project until the next `bash reset.sh`, so a later `dbt build` builds them too. Run the reset before the next delivery.
+            """)]
+
+BACKUP_NOTEBOOKS = {"day3_backup_advanced.ipynb": backup_cells}
