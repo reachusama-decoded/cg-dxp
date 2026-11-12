@@ -1,0 +1,26 @@
+flowchart LR
+  subgraph B ["Business clock: when was it true?"]
+    direction TB
+    B1["The GBP rate <b>for 4 November</b>"]
+    B2["dl_business_start_dt<br/>dl_business_end_dt"]
+  end
+  subgraph S ["System clock: when did we believe it?"]
+    direction TB
+    S1["We loaded it <b>on Wednesday at 06:00</b>,<br/>and corrected it <b>on Thursday</b>"]
+    S2["dl_system_start_ts<br/>dl_system_end_ts"]
+  end
+  R["One row =<br/>one rate<br/>+ both clocks"] --> B
+  R --> S
+  B -.- QB["Answers: what was the rate<br/>on that day?"]
+  S -.- QS["Answers: what did Wednesday's<br/>report say?"]
+  class R focus
+  class B1,B2 blue
+  class S1,S2 aqua
+  class QB,QS green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -606,6 +606,41 @@ flowchart TB
   class u1,u2,u3,u4,z1 focus
   class z2,z3,z4 grey
 """
+D["d3-snapshot"] = """
+flowchart LR
+  subgraph R1 ["Raw table, first delivery"]
+    r1["GBP · 5 Nov · <b>1.268</b>"]
+  end
+  subgraph R2 ["Raw table, after the vendor restates"]
+    r2["GBP · 5 Nov · <b>1.300</b>"]
+  end
+  subgraph S ["Snapshot table: every version kept"]
+    direction TB
+    s1["GBP · 5 Nov · <b>1.268</b><br/>valid from: snapshot 1<br/>valid to: snapshot 2 · <i>closed</i>"]
+    s2["GBP · 5 Nov · <b>1.300</b><br/>valid from: snapshot 2<br/>valid to: empty · <i>current</i>"]
+  end
+  R1 ==>|"vendor restates"| R2
+  r1 -.->|"dbt snapshot 1"| s1
+  r2 -.->|"dbt snapshot 2"| s2
+  R2 -.- N["1.268 is gone<br/>from the raw table"]
+  class r1,s1 grey
+  class r2 blue
+  class s2 focus
+  class N red
+"""
+D["d3-snapshot-run"] = """
+flowchart LR
+  Run["<b>dbt snapshot</b><br/>each run"] --> C{"Each source row:<br/>is there a current version<br/>with the same key?"}
+  C -->|"no: a new key"| A["Insert it<br/><i>current</i>"]
+  C -->|"yes, rate unchanged"| B["Do nothing"]
+  C -->|"yes, rate changed"| D["Close the old version<br/>(set dbt_valid_to)<br/>insert the new one, <i>current</i>"]
+  K["<b>unique_key</b> [from_ccy, rate_dt]<br/>which rows are the same thing<br/><b>check_cols</b> [rate]<br/>which change makes a new version"] -.- C
+  class Run blue
+  class C yellow
+  class A,D focus
+  class B grey
+  class K green
+"""
 D["d3-layers"] = """
 flowchart LR
   R[("<b>Raw tables</b><br/>landed by other tools<br/>(seeds, in training)")] -->|"source()"| S["<b>staging/</b> · stg_<br/>one model per raw table<br/>rename, cast, clean<br/><i>view</i>"]
@@ -854,6 +889,352 @@ flowchart LR
   class New focus
   class A1,A2 blue
   class K aqua
+"""
+D["d4-bt-path"] = """
+flowchart TB
+  subgraph R1 ["First: build the history table"]
+    direction LR
+    A["<b>1 Start</b><br/>yesterday's price sheet<br/>dbt build"] --> B["<b>2 Deliveries</b><br/>three FX files<br/>dbt seed"] --> C["<b>3 Model</b><br/>two clocks on<br/>every row"] --> D["<b>4 Macro</b><br/>how a delivery<br/>lands"]
+  end
+  subgraph R2 ["Then: load it, and ask it questions"]
+    direction LR
+    E["<b>5 Load 1</b><br/>the first day"] --> F["<b>6 Load 2</b><br/>a new day,<br/>one wrong rate"] --> G["<b>7 Load 3</b><br/>the vendor's<br/>correction"] --> H["<b>8 Questions</b><br/>as is, as of,<br/>as was"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D blue
+  class E,F,G focus
+  class H green
+"""
+D["d4-two-clocks"] = """
+flowchart LR
+  subgraph B ["Business clock: when was it true?"]
+    direction TB
+    B1["The GBP rate <b>for 4 November</b>"]
+    B2["dl_business_start_dt<br/>dl_business_end_dt"]
+  end
+  subgraph S ["System clock: when did we believe it?"]
+    direction TB
+    S1["We loaded it <b>on Wednesday at 06:00</b>,<br/>and corrected it <b>on Thursday</b>"]
+    S2["dl_system_start_ts<br/>dl_system_end_ts"]
+  end
+  R["One row =<br/>one rate<br/>+ both clocks"] --> B
+  R --> S
+  B -.- QB["Answers: what was the rate<br/>on that day?"]
+  S -.- QS["Answers: what did Wednesday's<br/>report say?"]
+  class R focus
+  class B1,B2 blue
+  class S1,S2 aqua
+  class QB,QS green
+"""
+D["d4-bt-macro"] = """
+flowchart LR
+  In["Each row in<br/>the new delivery"] --> C{"Is there a current row<br/>for this currency?"}
+  C -->|"no"| A["<b>Insert</b><br/>current"]
+  C -->|"yes, same rate"| B["<b>Nothing</b><br/>safe to re-run"]
+  C -->|"yes, different rate"| Dd{"Is the business date<br/>later, or the same?"}
+  Dd -->|"later: a new day"| N["1 close the old row's <b>system</b> clock<br/>2 copy it with its <b>business</b> clock ended<br/>3 insert the new rate, current"]
+  Dd -->|"the same: a correction"| X["1 close the old row's <b>system</b> clock<br/>3 insert the corrected rate, current"]
+  class In blue
+  class C,Dd yellow
+  class A,N,X focus
+  class B grey
+"""
+D["d4-bt-load-1"] = """
+flowchart LR
+  F["Delivery D1<br/>GBP for 3 Nov = 1.267013"] ==>|"load 1"| A
+  subgraph T ["fx_rates_history: GBP"]
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → open<br/><i>current</i>"]
+  end
+  class F grey
+  class A focus
+"""
+D["d4-bt-load-2"] = """
+flowchart LR
+  subgraph D3 ["GBP, the rate for 3 Nov"]
+    direction LR
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → <b>load 2</b><br/><i>closed: no longer believed<br/>as it stood</i>"] -->|"carried<br/>forward"| B["<b>B</b> · 1.267013<br/>business: 3 Nov → <b>3 Nov</b><br/>system: load 2 → open<br/><i>still true for its own day</i>"]
+  end
+  subgraph D4 ["GBP, the rate for 4 Nov"]
+    direction LR
+    F["Delivery D2<br/>4 Nov = 1.628112<br/>a new day;<br/>the rate is wrong"] ==>|"load 2"| C["<b>C</b> · 1.628112<br/>business: 4 Nov → open<br/>system: load 2 → open<br/><i>current</i>"]
+  end
+  D3 ~~~ D4
+  class F grey
+  class A grey
+  class B blue
+  class C focus
+"""
+D["d4-bt-load-3"] = """
+flowchart LR
+  subgraph D3 ["GBP, the rate for 3 Nov: untouched by the correction"]
+    direction LR
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → load 2"] --> B["<b>B</b> · 1.267013<br/>business: 3 Nov → 3 Nov<br/>system: load 2 → open"]
+  end
+  subgraph D4 ["GBP, the rate for 4 Nov"]
+    direction LR
+    C["<b>C</b> · 1.628112<br/>business: 4 Nov → open<br/>system: load 2 → <b>load 3</b><br/><i>closed: the wrong rate, kept</i>"] -->|"replaced,<br/>not erased"| Dn["<b>D</b> · 1.268112<br/>business: 4 Nov → open<br/>system: load 3 → open<br/><i>current</i>"]
+    F["Delivery D2-CORR<br/>4 Nov = 1.268112<br/>the same day, corrected"] ==>|"load 3"| Dn
+  end
+  D3 ~~~ D4
+  class F grey
+  class A,B grey
+  class C red
+  class Dn focus
+"""
+D["d4-bt-questions"] = """
+flowchart LR
+  Q1["<b>As is</b><br/>What is the rate now?"] -->|"both clocks open"| Dn["<b>D</b> · 1.268112<br/>4 Nov, corrected"]
+  Q2["<b>As of 3 Nov</b><br/>What was the rate that day,<br/>as we know it today?"] -->|"business clock covers 3 Nov,<br/>system clock open"| B["<b>B</b> · 1.267013<br/>3 Nov"]
+  Q3["<b>As was</b><br/>What did Wednesday's<br/>report use?"] -->|"system clock covers<br/>Wednesday"| C["<b>C</b> · 1.628112<br/>4 Nov, wrong"]
+  class Q1,Q2,Q3 yellow
+  class Dn focus
+  class B blue
+  class C red
+"""
+D["d4-why-orchestration"] = """
+flowchart TB
+  subgraph S ["dbt build, typed by hand"]
+    S1["<b>When?</b><br/>When someone<br/>remembers"]
+    S2["<b>Stale input?</b><br/>It builds<br/>anyway"]
+    S3["<b>A blip?</b><br/>It fails;<br/>type it again"]
+    S4["<b>It broke?</b><br/>Nobody is<br/>told"]
+    S5["<b>Yesterday?</b><br/>No record"]
+  end
+  subgraph D ["The same build, run by Airflow"]
+    D1["A schedule,<br/>in a time zone"]
+    D2["A freshness gate<br/>stops the run"]
+    D3["Retries,<br/>with backoff"]
+    D4["Callbacks alert<br/>the right people"]
+    D5["Every run, state<br/>and log is kept"]
+  end
+  S1 --> D1
+  S2 --> D2
+  S3 --> D3
+  S4 --> D4
+  S5 --> D5
+  class S1,S2,S3,S4,S5 red
+  class D1,D2,D3,D4,D5 green
+"""
+D["d4-airflow-path"] = """
+flowchart TB
+  subgraph R1 ["Read the DAG"]
+    direction LR
+    A["<b>1 Why</b><br/>orchestration"] --> B["<b>2 Anatomy</b><br/>of a DAG"] --> C["<b>3 Connect</b><br/>dbt debug"] --> D["<b>4 The gate</b><br/>freshness"] --> E["<b>5 Cosmos</b><br/>the task group"]
+  end
+  subgraph R2 ["Wire it, run it, break it"]
+    direction LR
+    F["<b>6 Wire</b><br/>the chain: >>"] --> G["<b>7 Schedule</b><br/>cron + time zone"] --> H["<b>8 Retries</b><br/>and backoff"] --> I["<b>9 First run</b><br/>trigger, check"] --> J["<b>10 Logs</b><br/>fail, fix, clear"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D,E blue
+  class F focus
+  class G,H aqua
+  class I,J green
+"""
+D["d4-ps-dag"] = """
+flowchart LR
+  S["start"] --> F["source_freshness_check<br/><i>is the vendor feed fresh?</i>"] --> G
+  subgraph G ["dbt_pipeline: Cosmos, one task per model"]
+    direction LR
+    St["stg_prices<br/>stg_fx_rates"] --> In["int_prices_usd"] --> Ma["fct_prices_usd<br/>agg_prices_by_ccy"] --> Te["dbt_test"]
+  end
+  G --> P["publish_to_catalog<br/><i>SLA: 90 minutes</i>"] --> E["end"]
+  class S,E grey
+  class F yellow
+  class St,In,Ma,Te blue
+  class P focus
+"""
+D["d4-dag-anatomy"] = """
+flowchart LR
+  File["<b>A file in dags/</b><br/>price_sheet_daily.py"] --> Dag["<b>with DAG(...) as dag:</b><br/>dag_id · schedule · start_date<br/>default_args · tags"]
+  Dag --> T["<b>Tasks</b> created inside it<br/>EmptyOperator · PythonOperator<br/>DbtTaskGroup"]
+  T --> W["<b>a >> b</b><br/>b runs after a"]
+  Da["<b>default_args</b><br/>inherited by every task:<br/>owner, retries, callbacks"] -.-> Dag
+  Pr["The DAG processor reads the folder<br/>and registers every DAG it finds"] -.-> File
+  class File grey
+  class Dag focus
+  class T blue
+  class W green
+  class Da,Pr yellow
+"""
+D["d4-freshness-gate"] = """
+flowchart LR
+  Feed["Latest vendor_ts<br/>in the raw feed"] --> Age{"How old<br/>is it?"}
+  Age -->|"under 4 hours"| Ok["<b>pass</b><br/>the run carries on"]
+  Age -->|"4 to 6 hours<br/>warn_after"| Warn["<b>warn</b><br/>a warning in the log;<br/>the run carries on"]
+  Age -->|"over 6 hours<br/>error_after"| Err["<b>error</b><br/>the task fails;<br/>nothing is built"]
+  Ok --> Build["dbt_pipeline"]
+  Warn --> Build
+  Err -.->|"upstream_failed"| Skip["no build,<br/>no publish"]
+  class Feed grey
+  class Age yellow
+  class Ok green
+  class Warn focus
+  class Err,Skip red
+  class Build blue
+"""
+D["d4-cosmos"] = """
+flowchart TB
+  subgraph P ["The dbt project: source() and ref() give the order"]
+    direction LR
+    M1["stg_prices"] --> M3["int_prices_usd"]
+    M2["stg_fx_rates"] --> M3
+    M3 --> M4["fct_prices_usd"] --> M5["agg_prices_by_ccy"]
+  end
+  P ==>|"Cosmos reads the project"| A
+  subgraph A ["Airflow tasks: nobody wrote them by hand"]
+    direction LR
+    T1["stg_prices_run"] --> T3["int_prices_usd_run"]
+    T2["stg_fx_rates_run"] --> T3
+    T3 --> T4["fct_prices_usd_run"] --> T5["agg_prices_by_ccy_run"] --> T6["dbt_test"]
+  end
+  class M1,M2,M3,M4,M5 blue
+  class T1,T2,T3,T4,T5 focus
+  class T6 green
+"""
+D["d4-cron"] = """
+flowchart TB
+  C["<b>0 6 * * 1-5</b>"]
+  C --> A["<b>0</b><br/>minute"]
+  C --> B["<b>6</b><br/>hour"]
+  C --> D["<b>*</b><br/>day of month:<br/>any"]
+  C --> E["<b>*</b><br/>month:<br/>any"]
+  C --> F["<b>1-5</b><br/>day of week:<br/>Monday to Friday"]
+  Tz["<b>start_date</b> in Europe/London<br/>06:00 stays 06:00 UK,<br/>summer and winter"] -.-> C
+  K["<b>catchup=False</b>: no backfill of missed days<br/><b>max_active_runs=1</b>: never two runs at once"] -.-> C
+  class C focus
+  class A,B,D,E,F blue
+  class Tz,K yellow
+"""
+D["d4-retries"] = """
+flowchart TB
+  subgraph T ["One task, three attempts (retries: 2)"]
+    direction LR
+    A1["Attempt 1<br/><b>fails</b>"] -->|"wait:<br/>retry_delay"| A2["Attempt 2<br/><b>fails</b>"] -->|"wait: twice<br/>as long"| A3["Attempt 3<br/><b>fails</b>"] --> Fd["Task is <b>failed</b><br/>the tasks after it:<br/>upstream_failed"]
+  end
+  subgraph N ["What each one triggers"]
+    direction LR
+    R1["Attempts 1 and 2:<br/>the task is <b>up_for_retry</b><br/>on_retry_callback: a ticket (P3)"] ~~~ Cb["Attempt 3:<br/>on_failure_callback:<br/>Datadog event (P1) + Teams (P2)"] ~~~ Ok["If any attempt succeeds:<br/>the run carries on,<br/>and nobody is paged"]
+  end
+  T --> N
+  class A1,A2 focus
+  class A3,Fd red
+  class R1 yellow
+  class Cb red
+  class Ok green
+"""
+D["d4-clear"] = """
+flowchart TB
+  subgraph F ["The failed run"]
+    direction LR
+    G1["source_freshness_check<br/><b>failed</b>"] --> G2["dbt_pipeline<br/>upstream_failed"] --> G3["publish_to_catalog<br/>upstream_failed"]
+  end
+  F -->|"1 read the log · 2 fix the cause · 3 Clear the failed task, with Include Downstream"| R
+  subgraph R ["The same run, re-queued from the task you cleared"]
+    direction LR
+    H1["source_freshness_check<br/><b>success</b>"] --> H2["dbt_pipeline<br/>success"] --> H3["publish_to_catalog<br/>success"]
+  end
+  class G1 red
+  class G2,G3 grey
+  class H1,H2,H3 green
+"""
+D["d4-alert-tiers"] = """
+flowchart LR
+  subgraph Ev ["What happened"]
+    direction TB
+    E1["A task <b>failed</b><br/>after all its retries"]
+    E2["The run is <b>slow</b>:<br/>the SLA was missed"]
+    E3["A task is about<br/>to <b>retry</b>"]
+    E4["The run <b>succeeded</b>"]
+  end
+  subgraph Cb ["The callback, and where it is attached"]
+    direction TB
+    C1["on_failure_callback<br/><i>default_args: every task</i>"]
+    C2["sla_miss_callback<br/><i>on the DAG</i>"]
+    C3["on_retry_callback<br/><i>default_args: every task</i>"]
+    C4["on_success_callback<br/><i>on the last task only</i>"]
+  end
+  subgraph Ch ["Who hears about it"]
+    direction TB
+    P1["<b>P1</b> Datadog event;<br/>support pages the on-call<br/>(xMatters) + Teams"]
+    P2["<b>P2</b> Microsoft Teams:<br/>notify, do not page"]
+    P3["<b>P3</b> a ticket:<br/>nobody is disturbed"]
+    P4["One Teams message<br/>per green run"]
+  end
+  E1 --> C1 --> P1
+  E2 --> C2 --> P2
+  E3 --> C3 --> P3
+  E4 --> C4 --> P4
+  class E1,P1 red
+  class E2,P2 focus
+  class E3,P3 yellow
+  class E4,P4 green
+  class C1,C2,C3,C4 blue
+"""
+D["d4-monitoring"] = """
+flowchart TB
+  A1["<b>Alerting: something just broke</b><br/>a task failed, an SLA was missed<br/>callbacks fire when it happens"]
+  A1 --> M
+  subgraph M ["Monitoring: something is drifting. Six panels"]
+    direction TB
+    M1["1 Run status"] ~~~ M4["4 SLA compliance"]
+    M2["2 Run duration"] ~~~ M5["5 Source freshness<br/><i>watches the clock</i>"]
+    M3["3 Task failure rate"] ~~~ M6["6 Source volume<br/><i>watches the row count:<br/>on time, but short</i>"]
+  end
+  class A1 red
+  class M1,M2,M3,M4 blue
+  class M5 yellow
+  class M6 focus
+"""
+D["d4-two-shapes"] = """
+flowchart TB
+  subgraph Co ["Cosmos: dbt runs on the Airflow worker"]
+    direction LR
+    W1["Airflow worker<br/>runs dbt"] -->|"SQL"| DB1[("Databricks<br/>SQL warehouse")] --- N1["One Airflow task per model:<br/>you see which model failed"]
+  end
+  subgraph Sr ["Submit-run: dbt runs inside Databricks (CG's paved path)"]
+    direction LR
+    W2["Airflow task submits<br/>a job, then waits"] -->|"DatabricksSubmitRunOperator"| DB2[("Databricks job<br/>runs dbt")] --- N2["One task per step: the job is one box.<br/>Logs live in Databricks;<br/>the worker stays free"]
+  end
+  Co ~~~ Sr
+  class W1,W2 blue
+  class DB1,DB2 focus
+  class N1,N2 yellow
+"""
+D["d4-demo-to-challenge"] = """
+flowchart LR
+  subgraph A ["You just saw, on the price sheet"]
+    A1["why · the DAG file · dbt debug"]
+    A2["the freshness gate, run alone"]
+    A3["the Cosmos task group"]
+    A4["the chain: one line of >>"]
+    A5["the schedule · retries"]
+    A6["a green run · the rows it published"]
+    A7["a failure: log, fix, clear"]
+    A8["alerts · monitoring · runbook · tests"]
+  end
+  subgraph B ["In the challenge README"]
+    B1["1 to 3 Why, anatomy, connect"]
+    B2["4 The freshness gate"]
+    B3["5 The Cosmos DbtTaskGroup"]
+    B4["6 Wire the chain: your one TODO"]
+    B5["7, 8 Scheduling, retries"]
+    B6["9 First full run"]
+    B7["10 Logs and re-running"]
+    B8["Phase 2: challenges 1 to 10"]
+  end
+  A1 --> B1
+  A2 --> B2
+  A3 --> B3
+  A4 --> B4
+  A5 --> B5
+  A6 --> B6
+  A7 --> B7
+  A8 --> B8
+  class A1,A2,A3,A4,A5,A6,A7,A8 blue
+  class B1,B2,B3,B4,B5,B6,B7,B8 focus
 """
 D["d4-bitemporal-rows"] = """
 flowchart TB

@@ -1,0 +1,11 @@
+# Working files: reset.sh restores them from start/, and the notebook writes the rest
+dbt_project.yml
+profiles.yml
+models/
+macros/
+tests/
+target/
+logs/
+warehouse/
+.user.yml
+!start/**

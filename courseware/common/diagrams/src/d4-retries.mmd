@@ -1,0 +1,22 @@
+flowchart TB
+  subgraph T ["One task, three attempts (retries: 2)"]
+    direction LR
+    A1["Attempt 1<br/><b>fails</b>"] -->|"wait:<br/>retry_delay"| A2["Attempt 2<br/><b>fails</b>"] -->|"wait: twice<br/>as long"| A3["Attempt 3<br/><b>fails</b>"] --> Fd["Task is <b>failed</b><br/>the tasks after it:<br/>upstream_failed"]
+  end
+  subgraph N ["What each one triggers"]
+    direction LR
+    R1["Attempts 1 and 2:<br/>the task is <b>up_for_retry</b><br/>on_retry_callback: a ticket (P3)"] ~~~ Cb["Attempt 3:<br/>on_failure_callback:<br/>Datadog event (P1) + Teams (P2)"] ~~~ Ok["If any attempt succeeds:<br/>the run carries on,<br/>and nobody is paged"]
+  end
+  T --> N
+  class A1,A2 focus
+  class A3,Fd red
+  class R1 yellow
+  class Cb red
+  class Ok green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

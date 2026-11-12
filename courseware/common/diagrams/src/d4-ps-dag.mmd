@@ -1,0 +1,18 @@
+flowchart LR
+  S["start"] --> F["source_freshness_check<br/><i>is the vendor feed fresh?</i>"] --> G
+  subgraph G ["dbt_pipeline: Cosmos, one task per model"]
+    direction LR
+    St["stg_prices<br/>stg_fx_rates"] --> In["int_prices_usd"] --> Ma["fct_prices_usd<br/>agg_prices_by_ccy"] --> Te["dbt_test"]
+  end
+  G --> P["publish_to_catalog<br/><i>SLA: 90 minutes</i>"] --> E["end"]
+  class S,E grey
+  class F yellow
+  class St,In,Ma,Te blue
+  class P focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

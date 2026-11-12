@@ -1,0 +1,23 @@
+# dbt_project.yml: what this project is called and how each folder of models is built
+name: price_sheet
+version: '1.0'
+profile: price_sheet          # which connection in profiles.yml to use
+
+models:
+  price_sheet:
+    staging:                  # models/staging/: one model per raw table, cleaned
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:             # models/intermediate/: the joins and the business rules
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:                    # models/marts/: the tables consumers read
+      +materialized: table
+      +tags: ["marts"]
+
+# The raw price feed is a seed here. Stamping vendor_ts when it loads makes the feed look just delivered,
+# so the freshness gate passes on a fresh seed. `bash run.sh stale price_sheet_daily` makes it look two days old.
+seeds:
+  price_sheet:
+    vendor_prices_raw:
+      +post-hook: "update {{ this }} set vendor_ts = {{ dbt.current_timestamp() }}"

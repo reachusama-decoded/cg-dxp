@@ -1,0 +1,21 @@
+flowchart LR
+  Feed["Latest vendor_ts<br/>in the raw feed"] --> Age{"How old<br/>is it?"}
+  Age -->|"under 4 hours"| Ok["<b>pass</b><br/>the run carries on"]
+  Age -->|"4 to 6 hours<br/>warn_after"| Warn["<b>warn</b><br/>a warning in the log;<br/>the run carries on"]
+  Age -->|"over 6 hours<br/>error_after"| Err["<b>error</b><br/>the task fails;<br/>nothing is built"]
+  Ok --> Build["dbt_pipeline"]
+  Warn --> Build
+  Err -.->|"upstream_failed"| Skip["no build,<br/>no publish"]
+  class Feed grey
+  class Age yellow
+  class Ok green
+  class Warn focus
+  class Err,Skip red
+  class Build blue
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -6,24 +6,26 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ## Before the day
 
-- Before the day: `bash demos/airflow_local/run.sh start` (Docker Desktop running; the image is already built) and `bash demos/bitemporal/demo.sh` once. The Airflow UI is http://localhost:8080.
+- Both demos build on Day 3's price sheet. Section 1 runs in `demos/price_sheet/` (its first cell resets the folder to Day 3's finished project). Section 2 runs the same project as the `price_sheet_daily` DAG on the local Airflow stack in `demos/airflow_local/`.
+- Before the day: Docker Desktop running, then `bash demos/airflow_local/run.sh start` and `bash demos/airflow_local/run.sh seed`. The Airflow UI is http://localhost:8080. Run sections 1 and 2 once before the room arrives.
+- Backups, not shown in the notebook: `bash demos/bitemporal/demo.sh` (the associate example) and the `portfolio_analytics_daily` DAG in the same stack (the learners' challenge DAG).
 
 ## Sections
 
 | # | Section | Time | What happens |
 |---|---|---|---|
-| 1 | Bitemporal loading | 09:00–09:45 | Demo: two clocks, three loads, four questions · Guest or volunteer: a real table · Shareback: which clock? |
-| 2 | Airflow orchestration | 09:45–13:30 | Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a controlled failure · Challenge 10: Airflow practical · Lunch · Shareback: one run, one log, one output check |
+| 1 | Bitemporal loading | 09:00–09:45 | Demo: two clocks on the price sheet, three deliveries, three questions · Guest or volunteer: a real table · Shareback: which clock? |
+| 2 | Airflow orchestration | 09:45–13:30 | Orientation: why orchestrate, and reading a DAG · Break · Demo: the challenge's steps 3 to 10 on the price sheet · Launch · Challenge 10: Airflow practical · Walkthrough: Phase 2 on the price sheet · Lunch · Shareback: one run, one log, one output check |
 | 3 | CI/CD and release operations | 13:30–15:00 | Demo: GitOps, Harness, Datadog · Break · Activity 10: release decision · Activity 11: explain a failure and repair · Friday preparation |
 
 ## Day at a glance
 
 | § | Time | Block | Type | On screen |
 |---|---|---|---|---|
-| 1 | 09:00–09:45 | Bitemporal loading | Demo + shareback | Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen |
-| 2 | 09:45–10:00 | Orchestration and capstone orientation | Demo | Anchor › The DAG diagram; Friday preview |
+| 1 | 09:00–09:45 | Bitemporal loading, on yesterday's price sheet | Demo + shareback | Anchor › section 1, top to bottom (demos/price_sheet); a guest or volunteer's screen |
+| 2 | 09:45–10:00 | Orchestration and capstone orientation | Demo | Anchor › section 2, steps 1 and 2 (demos/airflow_local); Friday preview |
 | 2 | 10:00–10:15 | Break | Break |  |
-| 2 | 10:15–10:45 | Airflow demonstration | Demo | Anchor › Airflow cells; the Airflow UI at localhost:8080 |
+| 2 | 10:15–10:45 | Airflow demonstration | Demo | Anchor › section 2, steps 3 to 10; the Airflow UI at localhost:8080 |
 | 2 | 10:45–12:00 | Challenge 10 — Airflow practical | Challenge | Anchor › Challenge box; learners in challenges/v1/03-airflow-orchestration |
 | 2 | 12:00–13:00 | Lunch | Break |  |
 | 2 | 13:00–13:30 | Continue Airflow practical, regroup at 13:30 | Challenge + shareback | Anchor › Challenge box |
@@ -37,21 +39,25 @@ Instructor-only companion to the anchor notebook, in the notebook's order: the s
 
 ### 1. Bitemporal loading
 
-Demo: two clocks, three loads, four questions · Guest or volunteer: a real table · Shareback: which clock?
+Demo: two clocks on the price sheet, three deliveries, three questions · Guest or volunteer: a real table · Shareback: which clock?
 
-#### 09:00 · 45 min · Instructor-led demo — Demo — two clocks, three loads, four questions
+#### 09:00 · 45 min · Instructor-led demo — Demo — two clocks on the price sheet: three deliveries, three questions
 
 **Purpose.** Business time and system time; loading strategies; a worked history with a correction; which clock answers which question.
 
 **Instructor notes.**
 
-- A volunteer or guest shows a real table for ten minutes if one was recruited yesterday; the anchor's demo on DuckDB covers the same ground either way.
-- Ask the Monday/Wednesday question before opening any code; use one concrete timeline.
+- Eight steps on Day 3's price sheet, one command per cell: reset and build, look at the three FX deliveries, write the history model, write the macro, three loads with the GBP rows and a picture after each, then the three questions.
+- The story: the vendor sends a wrong GBP rate for 4 November (1.628112, two digits swapped) and corrects it in the next delivery (1.268112). After load 3 GBP has four rows; name them A, B, C, D as the pictures do.
+- The last query shows one GBP price in dollars twice, as was and as is: the link back to yesterday's price sheet, which could only ever show one.
+- A volunteer or guest shows a real table for ten minutes if one was recruited yesterday; the demo covers the same ground either way.
 - Shareback: each table answers one 'which clock?' question.
+- Backup: bash demos/bitemporal/demo.sh runs the older associate example from one script.
 
 **Say.**
 
-- “The source corrects Monday's value on Wednesday. What was true on Monday, and what did we believe on Tuesday?”
+- “The vendor sends a wrong rate on Wednesday and corrects it on Thursday. What was the rate, and what did Wednesday's report say?”
+- “Yesterday's snapshot kept one clock. Two clocks tell a new day from a correction.”
 
 **Ask at the whiteboard — loading strategies and two clocks.** Ask in order, write what the room says, add what is missing.
 
@@ -60,16 +66,8 @@ Demo: two clocks, three loads, four questions · Guest or volunteer: a real tabl
 | How can new data land in a table? | Truncate and reload; insert-overwrite; SCD type 2 (effective start and end dates keep history). Bitemporal is SCD2 with a second clock. |
 | What are the two clocks? | Business time: when the fact was true in the world (the business date). System time: when the warehouse loaded or believed it. Separate columns for start and end of each, plus a current indicator and a row hash. |
 | Full, incremental, balance? | Full: the source sends the whole book of record each run (expensive: every row re-versioned). Incremental: only new or changed records with a business key; a known key with new content ends the previous version. Balance: for monetary balances. Some models need a custom strategy. |
-| Why does a correction matter? | Because 'as was' must still answer what the report said on Tuesday, and 'as of' must give the corrected Monday value today. Overwriting destroys the first; a status flag cannot express either. |
+| Why does a correction matter? | Because 'as was' must still answer what the report said on Wednesday, and 'as of' must give the corrected value today. Overwriting destroys the first; a status flag cannot express either. |
 | UTC or local? | The platform stamps system time in UTC; a run at 03:00 Pacific for the previous business day shows yesterday's business date. Always say which clock a date column is. |
-
-**Demo — three loads on DuckDB, then the four questions.** Three loads of a tiny associate feed, then the four questions, from one script.
-
-1. Run the cell: `demos/bitemporal/demo.sh` seeds, loads day 1, loads day 2, loads the correction, and prints the history and the as-is, as-of and as-was queries.
-2. Read the history row by row: which load wrote each row, and which clock closed it.
-3. Run the two `sql()` cells: the audit trail for one associate, then as-of 2 November.
-4. Open `demos/bitemporal/macros/bitemporal_load.sql` (the cell prints it): three steps on one screen.
-5. Say: the paved path's `bitemporal_load_v2` does the same job with more strategies.
 
 **Guest or volunteer — a real bitemporal table.**
 
@@ -77,21 +75,22 @@ Demo: two clocks, three loads, four questions · Guest or volunteer: a real tabl
 
 **Transition.** From history to timing: orchestration.
 
-**Adapt.** Over time: skip the macro walk, keep the four queries.
+**Adapt.** Over time: show the macro picture but not the macro file; keep the three loads and the three questions.
 
-**Assessment.** Anchor › Bitemporal (diagram, demo cells, the macro); a guest or volunteer's screen
+**Assessment.** Anchor › section 1, top to bottom (demos/price_sheet); a guest or volunteer's screen
 
 ### 2. Airflow orchestration
 
-Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a controlled failure · Challenge 10: Airflow practical · Lunch · Shareback: one run, one log, one output check
+Orientation: why orchestrate, and reading a DAG · Break · Demo: the challenge's steps 3 to 10 on the price sheet · Launch · Challenge 10: Airflow practical · Walkthrough: Phase 2 on the price sheet · Lunch · Shareback: one run, one log, one output check
 
-#### 09:45 · 15 min · Explain — Orientation — the DAG, and Friday's preview
+#### 09:45 · 15 min · Explain — Orientation — why orchestrate, and reading a DAG
 
-**Purpose.** What orchestration is, connected to the pipeline generated on Day 2; a preview of Friday's work and its starting files.
+**Purpose.** What orchestration is, on yesterday's price sheet; how to read a DAG file; a preview of Friday's work and its starting files.
 
 **Instructor notes.**
 
-- Open the eod_prices DAG from Day 2: it is the same shape as the challenge's.
+- Steps 1 and 2 of the challenge on the price_sheet_daily DAG: why orchestrate (the five-gaps picture), the path, the DAG picture, then the top of the DAG file and the DAG block.
+- The first cell puts the TODO back (run.sh unwire), so the DAG starts as the learners' does.
 - Friday: Phase 1 scope, two to three hours, the working folder rule.
 
 **Say.**
@@ -105,48 +104,35 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 **Transition.** Break, then the Airflow demo.
 
-**Assessment.** Anchor › The DAG diagram; Friday preview
+**Assessment.** Anchor › section 2, steps 1 and 2 (demos/airflow_local); Friday preview
 
 #### 10:00 · 15 min · Break — Break, back at 10:15
 
-#### 10:15 · 30 min · Instructor-led demo — Demo — the stack, a run, the UI, a controlled failure
+#### 10:15 · 30 min · Instructor-led demo — Demo — connect, gate, group, wire, schedule, retry, run, repair
 
-**Purpose.** Operators, dependencies, callbacks, the UI, Astro blueprints, and a controlled failure, on a local Astro stack running Day 3's project.
+**Purpose.** Steps 3 to 10 of the challenge on the price sheet: the connection, the freshness gate, the Cosmos group, the one line of wiring, the schedule, retries, a green run, and a controlled failure with its repair.
 
 **Instructor notes.**
 
-- Start the stack before the day (bash run.sh start); seed; trigger; show graph, grid, a task log, the code tab.
-- Read >> as 'and then'. Open callbacks.py. Show a blueprint and its YAML.
-- Controlled failure: stale, trigger, the freshness task fails and the rest is upstream_failed; fresh, trigger, green.
+- Start the stack before the day (bash run.sh start). Every step is one command per cell; keep the UI open beside the notebook and switch to it at steps 6, 9 and 10.
+- Step 6 is the learners' one line: run.sh wire replaces the TODO. Read >> as 'and then'.
+- Step 9: a green run takes about half a minute here. The dbt show cell is the evidence, not the green boxes.
+- Step 10: stale, trigger, wait about a minute: the gate goes yellow twice, then red, and the rest is upstream_failed. Then fresh, and Clear the failed task in the UI with Include Downstream. The demo DAG waits 15 seconds between retries; the learners' waits 2 minutes, so tell them a failure takes about ten minutes to turn red.
+- Close with the blueprint picture: at CG most DAGs come from a blueprint and YAML.
+- Backup: portfolio_analytics_daily, the learners' own DAG, is in the same stack (bash run.sh trigger, wait, status with no DAG name).
 
 **Say.**
 
-- “A green graph is not evidence that the data is right. The publish task shows the rows; that is evidence.”
+- “A green graph is not evidence that the data is right. The rows are the evidence.”
+- “You write one line today. Everything else, you read and prove.”
 
-**Demo — the stack, a run, the UI.** Trigger a run on the local Astro stack and read it in the UI the way learners will.
-
-1. Before the day, in `demos/airflow_local/`: `bash run.sh start`.
-2. Run the cells below: seed, trigger, wait, status.
-3. Open http://localhost:8080: the DAGs list with owner, schedule and tags.
-4. Graph view: five boxes and the dbt task group.
-5. Grid view: one column per run.
-6. Click `publish_to_catalog` and open its log: the published rows are in it.
-7. Code tab: the DAG file as deployed.
-8. Say: learners use the same commands: `astro dev run dags list`, `dags trigger`, `tasks states-for-dag-run`.
-
-**Demo — a controlled failure, then the repair.** Break the freshness gate on purpose, read the log, repair, rerun.
-
-1. Run the stale cell: the custodian feed looks two days old; a run is triggered.
-2. Watch the freshness gate fail and everything downstream go `upstream_failed`: no publish, no rows.
-3. Open the failed task's log in the UI and read the first useful line aloud.
-4. Run the fresh cell: the feed is stamped fresh, a run is triggered, green.
-5. Say: this is the same drill as the challenge's Phase 2 and Friday's questions: late input, failed check, repeated run.
+**Launch — from this demo to your challenge.**
 
 **Transition.** Challenge 10 until lunch.
 
-**Adapt.** If the stack misbehaves, the status and log cells still show a previous green run.
+**Adapt.** Short of time: steps 4, 6, 9 and 10. If the stack misbehaves, the status cell still shows the earlier runs.
 
-**Assessment.** Anchor › Airflow cells; the Airflow UI at localhost:8080
+**Assessment.** Anchor › section 2, steps 3 to 10; the Airflow UI at localhost:8080
 
 #### 10:45 · 75 min · Independent or pairs work — Challenge 10 — Airflow practical
 
@@ -162,6 +148,14 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 - “Which run produced this result, and what proves the data is right?”
 
 **Challenge — Airflow practical (challenge 03).** `challenges/v1/03-airflow-orchestration/README.md` · until 13:30, with lunch.
+
+**Walkthrough — Phase 2: production operations, on the price sheet.**
+
+**Demo — Phase 2 on the price sheet.** The ten Phase 2 challenges, one or two cells each, for when learners reach them.
+
+1. Use these cells at 13:00, or beside a learner who has reached Phase 2.
+2. Every Phase 2 file ships complete: the task is to read each piece and prove it does what it says.
+3. The failed run from step 10 is the evidence for challenges 1 to 4.
 
 **Transition.** Lunch.
 
@@ -179,6 +173,7 @@ Orientation: the DAG, and Friday · Break · Demo: the stack, a run, the UI, a c
 
 - Keep credential and path errors separate from the intended data-quality failure.
 - Shareback: a pair shows the current run, a useful log line, and the warehouse output.
+- For learners in Phase 2: the anchor's Phase 2 walkthrough shows each of the ten challenges on the price sheet, with the morning's failed run as the evidence for the alert tiers. Ten minutes on screen at 13:00 if several pairs are there.
 
 **Say.**
 

@@ -1,0 +1,16 @@
+# dbt_project.yml: what this project is called and how each folder of models is built
+name: price_sheet
+version: '1.0'
+profile: price_sheet          # which connection in profiles.yml to use
+
+models:
+  price_sheet:
+    staging:                  # models/staging/: one model per raw table, cleaned
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:             # models/intermediate/: the joins and the business rules
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:                    # models/marts/: the tables consumers read
+      +materialized: table
+      +tags: ["marts"]

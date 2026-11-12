@@ -1,0 +1,38 @@
+flowchart LR
+  subgraph A ["You just saw, on the price sheet"]
+    A1["why · the DAG file · dbt debug"]
+    A2["the freshness gate, run alone"]
+    A3["the Cosmos task group"]
+    A4["the chain: one line of >>"]
+    A5["the schedule · retries"]
+    A6["a green run · the rows it published"]
+    A7["a failure: log, fix, clear"]
+    A8["alerts · monitoring · runbook · tests"]
+  end
+  subgraph B ["In the challenge README"]
+    B1["1 to 3 Why, anatomy, connect"]
+    B2["4 The freshness gate"]
+    B3["5 The Cosmos DbtTaskGroup"]
+    B4["6 Wire the chain: your one TODO"]
+    B5["7, 8 Scheduling, retries"]
+    B6["9 First full run"]
+    B7["10 Logs and re-running"]
+    B8["Phase 2: challenges 1 to 10"]
+  end
+  A1 --> B1
+  A2 --> B2
+  A3 --> B3
+  A4 --> B4
+  A5 --> B5
+  A6 --> B6
+  A7 --> B7
+  A8 --> B8
+  class A1,A2,A3,A4,A5,A6,A7,A8 blue
+  class B1,B2,B3,B4,B5,B6,B7,B8 focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

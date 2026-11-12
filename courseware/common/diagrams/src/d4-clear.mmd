@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph F ["The failed run"]
+    direction LR
+    G1["source_freshness_check<br/><b>failed</b>"] --> G2["dbt_pipeline<br/>upstream_failed"] --> G3["publish_to_catalog<br/>upstream_failed"]
+  end
+  F -->|"1 read the log · 2 fix the cause · 3 Clear the failed task, with Include Downstream"| R
+  subgraph R ["The same run, re-queued from the task you cleared"]
+    direction LR
+    H1["source_freshness_check<br/><b>success</b>"] --> H2["dbt_pipeline<br/>success"] --> H3["publish_to_catalog<br/>success"]
+  end
+  class G1 red
+  class G2,G3 grey
+  class H1,H2,H3 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

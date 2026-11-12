@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph D3 ["GBP, the rate for 3 Nov"]
+    direction LR
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → <b>load 2</b><br/><i>closed: no longer believed<br/>as it stood</i>"] -->|"carried<br/>forward"| B["<b>B</b> · 1.267013<br/>business: 3 Nov → <b>3 Nov</b><br/>system: load 2 → open<br/><i>still true for its own day</i>"]
+  end
+  subgraph D4 ["GBP, the rate for 4 Nov"]
+    direction LR
+    F["Delivery D2<br/>4 Nov = 1.628112<br/>a new day;<br/>the rate is wrong"] ==>|"load 2"| C["<b>C</b> · 1.628112<br/>business: 4 Nov → open<br/>system: load 2 → open<br/><i>current</i>"]
+  end
+  D3 ~~~ D4
+  class F grey
+  class A grey
+  class B blue
+  class C focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

@@ -1,0 +1,22 @@
+flowchart TB
+  subgraph R1 ["Read the DAG"]
+    direction LR
+    A["<b>1 Why</b><br/>orchestration"] --> B["<b>2 Anatomy</b><br/>of a DAG"] --> C["<b>3 Connect</b><br/>dbt debug"] --> D["<b>4 The gate</b><br/>freshness"] --> E["<b>5 Cosmos</b><br/>the task group"]
+  end
+  subgraph R2 ["Wire it, run it, break it"]
+    direction LR
+    F["<b>6 Wire</b><br/>the chain: >>"] --> G["<b>7 Schedule</b><br/>cron + time zone"] --> H["<b>8 Retries</b><br/>and backoff"] --> I["<b>9 First run</b><br/>trigger, check"] --> J["<b>10 Logs</b><br/>fail, fix, clear"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D,E blue
+  class F focus
+  class G,H aqua
+  class I,J green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

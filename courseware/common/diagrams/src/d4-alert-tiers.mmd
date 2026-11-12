@@ -1,0 +1,38 @@
+flowchart LR
+  subgraph Ev ["What happened"]
+    direction TB
+    E1["A task <b>failed</b><br/>after all its retries"]
+    E2["The run is <b>slow</b>:<br/>the SLA was missed"]
+    E3["A task is about<br/>to <b>retry</b>"]
+    E4["The run <b>succeeded</b>"]
+  end
+  subgraph Cb ["The callback, and where it is attached"]
+    direction TB
+    C1["on_failure_callback<br/><i>default_args: every task</i>"]
+    C2["sla_miss_callback<br/><i>on the DAG</i>"]
+    C3["on_retry_callback<br/><i>default_args: every task</i>"]
+    C4["on_success_callback<br/><i>on the last task only</i>"]
+  end
+  subgraph Ch ["Who hears about it"]
+    direction TB
+    P1["<b>P1</b> Datadog event;<br/>support pages the on-call<br/>(xMatters) + Teams"]
+    P2["<b>P2</b> Microsoft Teams:<br/>notify, do not page"]
+    P3["<b>P3</b> a ticket:<br/>nobody is disturbed"]
+    P4["One Teams message<br/>per green run"]
+  end
+  E1 --> C1 --> P1
+  E2 --> C2 --> P2
+  E3 --> C3 --> P3
+  E4 --> C4 --> P4
+  class E1,P1 red
+  class E2,P2 focus
+  class E3,P3 yellow
+  class E4,P4 green
+  class C1,C2,C3,C4 blue
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

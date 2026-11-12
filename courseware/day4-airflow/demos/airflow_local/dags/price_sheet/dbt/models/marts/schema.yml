@@ -1,0 +1,15 @@
+# schema.yml: what the model and its columns mean, and the promises dbt checks
+version: 2
+
+models:
+  - name: fct_prices_usd
+    description: "End-of-day prices in US dollars."
+    columns:
+      - name: instrument_id
+        description: "ISIN: the instrument the price is for."
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Close price times the day's FX rate to USD."
+        tests:
+          - not_null

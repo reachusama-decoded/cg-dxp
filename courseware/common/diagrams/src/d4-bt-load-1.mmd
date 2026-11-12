@@ -1,0 +1,14 @@
+flowchart LR
+  F["Delivery D1<br/>GBP for 3 Nov = 1.267013"] ==>|"load 1"| A
+  subgraph T ["fx_rates_history: GBP"]
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → open<br/><i>current</i>"]
+  end
+  class F grey
+  class A focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

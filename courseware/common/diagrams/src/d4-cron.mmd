@@ -1,0 +1,19 @@
+flowchart TB
+  C["<b>0 6 * * 1-5</b>"]
+  C --> A["<b>0</b><br/>minute"]
+  C --> B["<b>6</b><br/>hour"]
+  C --> D["<b>*</b><br/>day of month:<br/>any"]
+  C --> E["<b>*</b><br/>month:<br/>any"]
+  C --> F["<b>1-5</b><br/>day of week:<br/>Monday to Friday"]
+  Tz["<b>start_date</b> in Europe/London<br/>06:00 stays 06:00 UK,<br/>summer and winter"] -.-> C
+  K["<b>catchup=False</b>: no backfill of missed days<br/><b>max_active_runs=1</b>: never two runs at once"] -.-> C
+  class C focus
+  class A,B,D,E,F blue
+  class Tz,K yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

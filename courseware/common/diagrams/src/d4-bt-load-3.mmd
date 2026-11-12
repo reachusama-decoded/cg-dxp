@@ -1,0 +1,22 @@
+flowchart LR
+  subgraph D3 ["GBP, the rate for 3 Nov: untouched by the correction"]
+    direction LR
+    A["<b>A</b> · 1.267013<br/>business: 3 Nov → open<br/>system: load 1 → load 2"] --> B["<b>B</b> · 1.267013<br/>business: 3 Nov → 3 Nov<br/>system: load 2 → open"]
+  end
+  subgraph D4 ["GBP, the rate for 4 Nov"]
+    direction LR
+    C["<b>C</b> · 1.628112<br/>business: 4 Nov → open<br/>system: load 2 → <b>load 3</b><br/><i>closed: the wrong rate, kept</i>"] -->|"replaced,<br/>not erased"| Dn["<b>D</b> · 1.268112<br/>business: 4 Nov → open<br/>system: load 3 → open<br/><i>current</i>"]
+    F["Delivery D2-CORR<br/>4 Nov = 1.268112<br/>the same day, corrected"] ==>|"load 3"| Dn
+  end
+  D3 ~~~ D4
+  class F grey
+  class A,B grey
+  class C red
+  class Dn focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

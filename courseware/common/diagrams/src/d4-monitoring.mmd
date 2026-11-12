@@ -1,0 +1,20 @@
+flowchart TB
+  A1["<b>Alerting: something just broke</b><br/>a task failed, an SLA was missed<br/>callbacks fire when it happens"]
+  A1 --> M
+  subgraph M ["Monitoring: something is drifting. Six panels"]
+    direction TB
+    M1["1 Run status"] ~~~ M4["4 SLA compliance"]
+    M2["2 Run duration"] ~~~ M5["5 Source freshness<br/><i>watches the clock</i>"]
+    M3["3 Task failure rate"] ~~~ M6["6 Source volume<br/><i>watches the row count:<br/>on time, but short</i>"]
+  end
+  class A1 red
+  class M1,M2,M3,M4 blue
+  class M5 yellow
+  class M6 focus
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

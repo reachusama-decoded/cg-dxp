@@ -1,0 +1,8 @@
+# profiles.yml: where the SQL runs. One project, one or more targets.
+price_sheet:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb                          # the demo's warehouse: a local file. Yours says: type: databricks
+      path: warehouse/price_sheet.duckdb    # ...and yours has: host, http_path, catalog
+      schema: demo                          # the schema the models are created in

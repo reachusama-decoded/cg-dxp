@@ -1,0 +1,10 @@
+# profiles.yml: where the SQL runs. In the demo stack the warehouse is a file inside the Airflow containers;
+# the learners' profile says type: databricks, with a host, an http_path and a catalog.
+price_sheet:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('PS_DUCKDB_PATH', '/usr/local/airflow/include/warehouse/price_sheet.duckdb') }}"
+      schema: demo
+      threads: 1

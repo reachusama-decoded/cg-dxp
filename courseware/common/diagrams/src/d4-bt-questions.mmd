@@ -1,0 +1,15 @@
+flowchart LR
+  Q1["<b>As is</b><br/>What is the rate now?"] -->|"both clocks open"| Dn["<b>D</b> · 1.268112<br/>4 Nov, corrected"]
+  Q2["<b>As of 3 Nov</b><br/>What was the rate that day,<br/>as we know it today?"] -->|"business clock covers 3 Nov,<br/>system clock open"| B["<b>B</b> · 1.267013<br/>3 Nov"]
+  Q3["<b>As was</b><br/>What did Wednesday's<br/>report use?"] -->|"system clock covers<br/>Wednesday"| C["<b>C</b> · 1.628112<br/>4 Nov, wrong"]
+  class Q1,Q2,Q3 yellow
+  class Dn focus
+  class B blue
+  class C red
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

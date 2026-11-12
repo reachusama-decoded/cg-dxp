@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph R1 ["First: build the history table"]
+    direction LR
+    A["<b>1 Start</b><br/>yesterday's price sheet<br/>dbt build"] --> B["<b>2 Deliveries</b><br/>three FX files<br/>dbt seed"] --> C["<b>3 Model</b><br/>two clocks on<br/>every row"] --> D["<b>4 Macro</b><br/>how a delivery<br/>lands"]
+  end
+  subgraph R2 ["Then: load it, and ask it questions"]
+    direction LR
+    E["<b>5 Load 1</b><br/>the first day"] --> F["<b>6 Load 2</b><br/>a new day,<br/>one wrong rate"] --> G["<b>7 Load 3</b><br/>the vendor's<br/>correction"] --> H["<b>8 Questions</b><br/>as is, as of,<br/>as was"]
+  end
+  R1 --> R2
+  class A,B grey
+  class C,D blue
+  class E,F,G focus
+  class H green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

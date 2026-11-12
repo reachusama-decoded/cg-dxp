@@ -1,0 +1,18 @@
+flowchart LR
+  In["Each row in<br/>the new delivery"] --> C{"Is there a current row<br/>for this currency?"}
+  C -->|"no"| A["<b>Insert</b><br/>current"]
+  C -->|"yes, same rate"| B["<b>Nothing</b><br/>safe to re-run"]
+  C -->|"yes, different rate"| Dd{"Is the business date<br/>later, or the same?"}
+  Dd -->|"later: a new day"| N["1 close the old row's <b>system</b> clock<br/>2 copy it with its <b>business</b> clock ended<br/>3 insert the new rate, current"]
+  Dd -->|"the same: a correction"| X["1 close the old row's <b>system</b> clock<br/>3 insert the corrected rate, current"]
+  class In blue
+  class C,Dd yellow
+  class A,N,X focus
+  class B grey
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

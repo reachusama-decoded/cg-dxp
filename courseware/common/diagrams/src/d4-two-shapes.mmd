@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph Co ["Cosmos: dbt runs on the Airflow worker"]
+    direction LR
+    W1["Airflow worker<br/>runs dbt"] -->|"SQL"| DB1[("Databricks<br/>SQL warehouse")] --- N1["One Airflow task per model:<br/>you see which model failed"]
+  end
+  subgraph Sr ["Submit-run: dbt runs inside Databricks (CG's paved path)"]
+    direction LR
+    W2["Airflow task submits<br/>a job, then waits"] -->|"DatabricksSubmitRunOperator"| DB2[("Databricks job<br/>runs dbt")] --- N2["One task per step: the job is one box.<br/>Logs live in Databricks;<br/>the worker stays free"]
+  end
+  Co ~~~ Sr
+  class W1,W2 blue
+  class DB1,DB2 focus
+  class N1,N2 yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

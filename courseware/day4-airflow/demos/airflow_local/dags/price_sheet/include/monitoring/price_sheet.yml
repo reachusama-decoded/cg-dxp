@@ -1,0 +1,51 @@
+# Monitoring config: price_sheet_daily
+#
+# Six panels for the pipeline's health. Each names a metric, an alert condition and the channel it
+# routes to. Channels follow the CG model: "datadog" is the automatic alert sink (support pages the
+# on-call through xMatters from the Datadog payload), "teams" is the Microsoft Teams chat surface,
+# "ticket" opens a tracking ticket.
+
+dashboard:
+  name: "Price sheet: pipeline health"
+  refresh_interval: "5m"
+  time_range: "7d"
+
+panels:
+
+  - name: "DAG run status"
+    metric: "dagrun.state (success/failed/running), last 30 days"
+    alert_condition: "3 or more consecutive failures"
+    alert_channel: "datadog, teams"
+    description: "Run outcomes over time. Consecutive failures point to a systemic cause, not a blip."
+
+  - name: "Run duration"
+    metric: "dagrun.duration.success (seconds) per run"
+    alert_condition: "duration exceeds 2x the 7-day rolling average"
+    alert_channel: "teams"
+    description: "End-to-end time of successful runs. A steady rise means growing volumes or a slow warehouse."
+
+  - name: "Task failure rate"
+    metric: "task_instance.state=failed by task_id, 7-day rolling"
+    alert_condition: "any single task exceeds a 10% failure rate over 7 days"
+    alert_channel: "teams, ticket"
+    description: "Failures per task. Flags a flaky task: usually the freshness gate or a brittle test."
+
+  - name: "SLA compliance"
+    metric: "percentage of runs publishing before 07:30 UK"
+    alert_condition: "compliance drops below 95% over 30 days"
+    alert_channel: "datadog, teams"
+    description: "How often the price sheet met its deadline. Below 95% needs escalation."
+
+  - name: "Source freshness"
+    metric: "time since the latest vendor_ts in vendor_prices_raw"
+    alert_condition: "the vendor feed exceeds its warn_after threshold (4h)"
+    alert_channel: "teams"
+    description: "Delivery health. A warning means the feed is going stale; an error stops the next run."
+
+  - name: "Source volume anomaly"
+    metric: "rows landed today in vendor_prices_raw, against the trailing 7-day average for the weekday"
+    alert_condition: "today's rows are below 80% of the trailing 7-day average"
+    alert_channel: "datadog, teams"
+    description: >
+      Catches a feed that is on time but short. Freshness watches the clock; this panel watches the
+      volume, so a truncated file is caught when it lands, not three steps later at the tests.

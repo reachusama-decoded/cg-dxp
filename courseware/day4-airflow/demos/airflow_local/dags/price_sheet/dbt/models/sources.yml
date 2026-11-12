@@ -1,0 +1,20 @@
+# sources.yml: the raw tables this project reads but does not build, and how fresh they must be
+version: 2
+
+sources:
+  - name: vendor_feed
+    description: "End-of-day close prices from the pricing vendor, in each instrument's own currency."
+    schema: demo
+    config:
+      loaded_at_field: vendor_ts                    # the column freshness measures: when the vendor sent the price
+      freshness:
+        warn_after:  {count: 4, period: hour}       # older than this: a warning, and the run carries on
+        error_after: {count: 6, period: hour}       # older than this: an error, and the gate stops the run
+    tables:
+      - name: vendor_prices_raw
+
+  - name: fx_feed
+    description: "Daily FX closes to US dollars."
+    schema: demo
+    tables:
+      - name: fx_rates_raw

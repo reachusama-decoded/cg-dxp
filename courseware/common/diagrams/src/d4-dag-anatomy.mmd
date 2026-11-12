@@ -1,0 +1,18 @@
+flowchart LR
+  File["<b>A file in dags/</b><br/>price_sheet_daily.py"] --> Dag["<b>with DAG(...) as dag:</b><br/>dag_id · schedule · start_date<br/>default_args · tags"]
+  Dag --> T["<b>Tasks</b> created inside it<br/>EmptyOperator · PythonOperator<br/>DbtTaskGroup"]
+  T --> W["<b>a >> b</b><br/>b runs after a"]
+  Da["<b>default_args</b><br/>inherited by every task:<br/>owner, retries, callbacks"] -.-> Dag
+  Pr["The DAG processor reads the folder<br/>and registers every DAG it finds"] -.-> File
+  class File grey
+  class Dag focus
+  class T blue
+  class W green
+  class Da,Pr yellow
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

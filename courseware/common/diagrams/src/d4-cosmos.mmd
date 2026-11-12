@@ -1,0 +1,24 @@
+flowchart TB
+  subgraph P ["The dbt project: source() and ref() give the order"]
+    direction LR
+    M1["stg_prices"] --> M3["int_prices_usd"]
+    M2["stg_fx_rates"] --> M3
+    M3 --> M4["fct_prices_usd"] --> M5["agg_prices_by_ccy"]
+  end
+  P ==>|"Cosmos reads the project"| A
+  subgraph A ["Airflow tasks: nobody wrote them by hand"]
+    direction LR
+    T1["stg_prices_run"] --> T3["int_prices_usd_run"]
+    T2["stg_fx_rates_run"] --> T3
+    T3 --> T4["fct_prices_usd_run"] --> T5["agg_prices_by_ccy_run"] --> T6["dbt_test"]
+  end
+  class M1,M2,M3,M4,M5 blue
+  class T1,T2,T3,T4,T5 focus
+  class T6 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a

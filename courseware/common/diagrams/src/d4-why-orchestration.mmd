@@ -1,0 +1,29 @@
+flowchart TB
+  subgraph S ["dbt build, typed by hand"]
+    S1["<b>When?</b><br/>When someone<br/>remembers"]
+    S2["<b>Stale input?</b><br/>It builds<br/>anyway"]
+    S3["<b>A blip?</b><br/>It fails;<br/>type it again"]
+    S4["<b>It broke?</b><br/>Nobody is<br/>told"]
+    S5["<b>Yesterday?</b><br/>No record"]
+  end
+  subgraph D ["The same build, run by Airflow"]
+    D1["A schedule,<br/>in a time zone"]
+    D2["A freshness gate<br/>stops the run"]
+    D3["Retries,<br/>with backoff"]
+    D4["Callbacks alert<br/>the right people"]
+    D5["Every run, state<br/>and log is kept"]
+  end
+  S1 --> D1
+  S2 --> D2
+  S3 --> D3
+  S4 --> D4
+  S5 --> D5
+  class S1,S2,S3,S4,S5 red
+  class D1,D2,D3,D4,D5 green
+classDef blue fill:#C9DAF8,stroke:#434343,color:#1a1a1a
+classDef yellow fill:#FFF2CC,stroke:#434343,color:#1a1a1a
+classDef focus fill:#F8DB59,stroke:#434343,color:#1a1a1a
+classDef green fill:#D9EAD3,stroke:#434343,color:#1a1a1a
+classDef aqua fill:#D0E0E3,stroke:#434343,color:#1a1a1a
+classDef grey fill:#F3F3F3,stroke:#434343,color:#1a1a1a
+classDef red fill:#F4CCCC,stroke:#434343,color:#1a1a1a
